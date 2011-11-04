@@ -1,0 +1,49 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>Widget</bookmark>
+
+<!-- Default view area of widget view will be restricted to focus rect of parent item. -->
+<mediaDisplay
+	name=WidgetView
+	itemPerPage=1
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=0:0:0
+	showHeader="no"
+	showDefaultInfo="no"
+>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ("left" == userInput || "right" == userInput || "enter" == userInput || "return" == userInput) {
+		redrawDisplay("no");
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>Widget</title>
+	<link>rss_file://./setup_menu/scripts/widget.rss</link>
+
+
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+	1
+</itemSize>
+
+
+</channel>
+</rss>

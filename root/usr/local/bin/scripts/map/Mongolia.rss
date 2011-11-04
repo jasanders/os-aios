@@ -1,0 +1,366 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Mongolia</title>
+<link>./scripts/map/Mongolia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Altai</title>
+<cur>MGXX0023</cur>
+<for>Altai</for>
+</item>
+
+
+<item>
+<title>Arvaiheer</title>
+<cur>MGXX0028</cur>
+<for>Arvaiheer</for>
+</item>
+
+
+<item>
+<title>Baitag</title>
+<cur>MGXX0020</cur>
+<for>Baitag</for>
+</item>
+
+
+<item>
+<title>Baruun-Urt</title>
+<cur>MGXX0033</cur>
+<for>Baruun%2dUrt</for>
+</item>
+
+
+<item>
+<title>Baruunkharaa</title>
+<cur>MGXX0017</cur>
+<for>Baruunkharaa</for>
+</item>
+
+
+<item>
+<title>Baruunturuun</title>
+<cur>MGXX0007</cur>
+<for>Baruunturuun</for>
+</item>
+
+
+<item>
+<title>Bayan-Ovoo</title>
+<cur>MGXX0031</cur>
+<for>Bayan%2dOvoo</for>
+</item>
+
+
+<item>
+<title>Bayanbulag</title>
+<cur>MGXX0022</cur>
+<for>Bayanbulag</for>
+</item>
+
+
+<item>
+<title>Bayandelger</title>
+<cur>MGXX0039</cur>
+<for>Bayandelger</for>
+</item>
+
+<item>
+<title>Bayanhongor</title>
+<cur>MGXX0027</cur>
+<for>Bayanhongor</for>
+</item>
+
+
+<item>
+<title>Bulgan</title>
+<cur>MGXX0016</cur>
+<for>Bulgan</for>
+</item>
+
+
+<item>
+<title>Choibalsan</title>
+<cur>MGXX0019</cur>
+<for>Choibalsan</for>
+</item>
+
+
+<item>
+<title>Choir</title>
+<cur>MGXX0030</cur>
+<for>Choir</for>
+</item>
+
+
+<item>
+<title>Dalanzadgad</title>
+<cur>MGXX0041</cur>
+<for>Dalanzadgad</for>
+</item>
+
+
+<item>
+<title>Dashbalbar</title>
+<cur>MGXX0018</cur>
+<for>Dashbalbar</for>
+</item>
+
+
+<item>
+<title>Dzuunmod</title>
+<cur>MGXX0002</cur>
+<for>Dzuunmod</for>
+</item>
+
+<item>
+<title>Erdenemandal</title>
+<cur>MGXX0015</cur>
+<for>Erdenemandal</for>
+</item>
+
+
+<item>
+<title>Gaiuut</title>
+<cur>MGXX0025</cur>
+<for>Gaiuut</for>
+</item>
+
+
+<item>
+<title>Hatgal</title>
+<cur>MGXX0005</cur>
+<for>Hatgal</for>
+</item>
+
+
+<item>
+<title>Hovd</title>
+<cur>MGXX0010</cur>
+<for>Hovd</for>
+</item>
+
+
+<item>
+<title>Hujirt</title>
+<cur>MGXX0026</cur>
+<for>Hujirt</for>
+</item>
+
+
+<item>
+<title>Hutag</title>
+<cur>MGXX0014</cur>
+<for>Hutag</for>
+</item>
+
+
+<item>
+<title>Khalkh-Gol</title>
+<cur>MGXX0034</cur>
+<for>Khalkh%2dGol</for>
+</item>
+
+<item>
+<title>Maanti</title>
+<cur>MGXX0029</cur>
+<for>Maanti</for>
+</item>
+
+
+<item>
+<title>Mandalgovi</title>
+<cur>MGXX0037</cur>
+<for>Mandalgovi</for>
+</item>
+
+
+<item>
+<title>Matad</title>
+<cur>MGXX0035</cur>
+<for>Matad</for>
+</item>
+
+
+<item>
+<title>Muren</title>
+<cur>MGXX0013</cur>
+<for>Muren</for>
+</item>
+
+<item>
+<title>Omno-Gobi</title>
+<cur>MGXX0009</cur>
+<for>Omno%2dGobi</for>
+</item>
+
+
+<item>
+<title>Rinchinlhumbe</title>
+<cur>MGXX0004</cur>
+<for>Rinchinlhumbe</for>
+</item>
+
+
+<item>
+<title>Saikhan-Ovoo</title>
+<cur>MGXX0036</cur>
+<for>Saikhan%2dOvoo</for>
+</item>
+
+
+<item>
+<title>Tarialan</title>
+<cur>MGXX0012</cur>
+<for>Tarialan</for>
+</item>
+
+
+<item>
+<title>Tosontsengel</title>
+<cur>MGXX0011</cur>
+<for>Tosontsengel</for>
+</item>
+
+
+<item>
+<title>Tsetserleg</title>
+<cur>MGXX0024</cur>
+<for>Tsetserleg</for>
+</item>
+
+
+<item>
+<title>Tsogt-Ovoo</title>
+<cur>MGXX0038</cur>
+<for>Tsogt%2dOvoo</for>
+</item>
+
+
+<item>
+<title>Ulaan-Gom</title>
+<cur>MGXX0006</cur>
+<for>Ulaan%2dGom</for>
+</item>
+
+
+<item>
+<title>Uliastai</title>
+<cur>MGXX0021</cur>
+<for>Uliastai</for>
+</item>
+
+
+<item>
+<title>Underkhaan</title>
+<cur>MGXX0032</cur>
+<for>Underkhaan</for>
+</item>
+
+
+<item>
+<title>Zamyn-Uud</title>
+<cur>MGXX0040</cur>
+<for>Zamyn%2dUud</for>
+</item>
+
+
+</channel></rss>

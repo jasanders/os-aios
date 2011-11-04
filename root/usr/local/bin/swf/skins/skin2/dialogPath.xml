@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="root" path="../../skins/skin2/"/>			
+		<item label="BGSound" path="../../skins/skin2/sound/BGSound.mp3"/>	
+		<item label="BGImage" path="../../skins/skin2/image/BGImage.png"/>	
+		<item label="HomeMemu" path="../../skins/skin2/HomeMenu.swf"/>	
+		<item label="SetupMenu" path="../../skins/skin1/Setup.swf"/>
+		<item label="GuideMenu" path="../../skins/skin1/GuideMenu.swf"/>
+		<item label="DisplayInfoDlg" path="../../skins/skin1/DisplayInfoDlg.swf"/>
+		<item label="InputIdPwd" path="../../skins/skin1/InputIdPwd.swf"/>
+		<item label="NetAddrSetting" path="../../skins/skin1/NetAddrSetting.swf"/>
+		<item label="DigitalPwdChange" path="../../skins/skin1/DigitalPwdChange.swf"/>
+		<item label="DigitalPwdCheck" path="../../skins/skin1/DigitalPwdCheck.swf"/>
+		<item label="DigitalInputDlg" path="../../skins/skin1/DigitalInputDlg.swf"/>
+		<item label="popupCheckDlg" path="../../skins/skin1/popupCheckDlg.swf"/>
+		<item label="popupListDlg" path="../../skins/skin1/popupListDlg.swf"/>
+		<item label="popupSmallListDlg" path="../../skins/skin1/popupSmallListDlg.swf"/>
+		<item label="popupKBD" path="../../skins/skin1/popupKBD.swf"/>
+		<item label="TimeSetting" path="../../skins/skin1/TimeSetting.swf"/>
+		<item label="FixedIPSetting" path="../../skins/skin1/setup/FixedIPSetting.swf"/>
+		<item label="NetUpgradeDlg" path="../../skins/skin1/setup/NetUpgradeDlg.swf"/>
+		<item label="NetworkConnect" path="../../skins/skin1/setup/NetworkConnect.swf"/>
+		<item label="P2PSetting" path="../../skins/skin1/setup/P2PSetting.swf"/>
+		<item label="WirelessAPListDlg" path="../../skins/skin1/setup/WirelessAPListDlg.swf"/>
+		<item label="WirelessSetting" path="../../skins/skin1/setup/WirelessSetting.swf"/>
+		<item label="DtvRating" path="../../skins/skin1/setup/DtvRating.swf"/>		
+		<item label="DTVTime" path="../../skins/skin1/setup/DTVTime.swf"/>		
+		<item label="TvSystemDlg" path="../../skins/skin1/setup/flowTvSystem.swf"/>		
+		<item label="AutoChannelScanDlg" path="../../skins/skin1/setup/AutoChannelScanDlg.swf"/>		
+		<item label="ManualChannelScanDlg" path="../../skins/skin1/setup/ManualChannelScanDlg.swf"/>		
+		<!--item label="ManualChannelScanCheck" path="../../skins/skin1/setup/ManualChannelScanCheck.swf"/-->		
+		<item label="DtvChannelEditDlg" path="../../skins/skin1/setup/DtvChannelEditDlg.swf"/>		
+		<item label="flowChannelSet" path="../../skins/skin1/setup/flowChannelSet.swf"/>		
+		<item label="MiniFbw_LeafFolder" path="../../skins/skin1/filebrowser/MiniFbw_LeafFolder.swf"/>
+		
+</menu>
+
+

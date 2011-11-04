@@ -1,0 +1,4 @@
+#!/bin/sh
+
+/sbin/modprobe venus1394
+

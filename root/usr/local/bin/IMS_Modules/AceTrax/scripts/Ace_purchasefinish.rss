@@ -1,0 +1,139 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>PopupConfirm</bookmark>
+
+
+<!-- mediaDisplay of parent will be merged into the mediaDisplay here, include all child elements, ex: onEnter, text, image, etc. -->
+<mediaDisplay
+	name=photoView
+	
+	viewAreaXPC=32.81
+	viewAreaYPC=24.31
+	viewAreaWidthPC=35.78
+	viewAreaHeightPC=53.75
+	
+	showDefaultInfo=no
+	drawItemBorder=no
+	autoSelectMenu=no
+	autoSelectItem=no
+	showHeader=no
+	centerXPC=25.57
+	centerYPC=53.41
+	itemPerPage = 2
+	fontSize = 18
+
+	itemXPC = 25.57
+	itemYPC = 53.41
+	itemWidthPC = 48.42
+	itemHeightPC = 11.82
+	itemGapYPC = 1.36
+	rowCount=2
+	columnCount=1
+
+	itemBackgroundColor = -1:-1:-1
+
+	idleImageXPC=0
+	idleImageYPC=85.56
+	idleImageWidthPC=100
+	idleImageHeightPC=14.44
+	>
+
+<backgroundDisplay name=finishBackground>
+                <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+				<script>
+                        "../image/popup_bg.fsp";
+				</script>
+                </image>
+</backgroundDisplay>
+
+<text align=center offsetXPC=3 offsetYPC=5 widthPC=94 heightPC=12 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = getEnv("movieTitle");
+	if(message == null){
+		message = "An unexpected error occurred, please try again later.";
+	}
+    message;
+  </script>
+</text>
+
+<onEnter>
+	setParentFade(128);
+</onEnter>
+
+<onUserInput>
+</onUserInput>
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 backgroundColor=117:117:117 useBackgroundSurface=no>
+	<script>
+		status = getDrawingItemState();
+		if (status == "focus")
+		{
+			"../image/popup_grey_focus.fsp";
+		}
+		else
+		{
+			"../image/popup_grey_unfocus.fsp";
+		}
+
+	</script>
+	</image>
+	<text align=center offsetXPC=10 offsetYPC=10 widthPC=80 heightPC=80 backgroundColor=-1:-1:-1 fontSize=14 useBackgroundSurface=no>
+	<foregroundColor>
+	<script>
+	if (getQueryItemIndex() == 1)
+	{
+		"255:255:255";
+	}
+	else
+	{
+		"255:255:255";
+	}
+	</script>
+	</foregroundColor>
+	<script>
+		getStringArrayAt(itemtitleArray, -1);
+	</script>
+	</text>
+</itemDisplay>
+</mediaDisplay>
+<script>
+ispurchase = 0;
+if(getEnv("browseepisode") == "yes")
+	itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_BROWSE]");
+else
+	itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_PLAY]");
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_BACK]");
+itemSize = 2;
+setFocusItemIndex(0);
+</script>
+<onExit>
+unsetEnv("browseepisode");
+if(ispurchase == 0)
+	unsetEnv("IsPurchase","false");
+</onExit>
+<item_template>
+<onClick>
+index = getFocusItemIndex();
+if(index == 0){
+	setEnv("Action","Play");
+}
+else if(index == 1){
+	setEnv("Action","Download");
+}
+postMessage("return");
+ret = true;
+</onClick>
+</item_template>
+
+<channel>
+	<title>Popup Confirm</title>
+	<link>rss_file://./scripts/setup/popupConfirm.rss</link>
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+</channel>
+</rss>

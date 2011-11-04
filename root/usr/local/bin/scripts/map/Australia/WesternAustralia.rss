@@ -1,0 +1,556 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=15
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=15
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(0, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>WesternAustralia</title>
+<link>./scripts/map/Australia/WesternAustralia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<item>
+<title>Adele Island</title>
+<cur>ASXX0148</cur>
+<for>Adele Island</for>
+</item>
+
+<item>
+<title>Albany</title>
+<cur>ASXX0413</cur>
+<for>Albany</for>
+</item>
+
+<item>
+<title>Armadale</title>
+<cur>ASXX0003</cur>
+<for>Armadale</for>
+</item>
+
+<item>
+<title>Augusta</title>
+<cur>ASXX0404</cur>
+<for>Augusta</for>
+</item>
+
+<item>
+<title>Badgingarra</title>
+<cur>ASXX0424</cur>
+<for>Badgingarra</for>
+</item>
+
+<item>
+<title>Balladonia</title>
+<cur>ASXX0239</cur>
+<for>Balladonia</for>
+</item>
+
+<item>
+<title>Bedout Island</title>
+<cur>ASXX0170</cur>
+<for>Bedout Island</for>
+</item>
+
+<item>
+<title>Boologooro</title>
+<cur>ASXX0014</cur>
+<for>Boologooro</for>
+</item>
+
+<item>
+<title>Broad Arrow</title>
+<cur>ASXX0017</cur>
+<for>Broad Arrow</for>
+</item>
+
+<item>
+<title>Broome</title>
+<cur>ASXX0019</cur>
+<for>Broome</for>
+</item>
+
+<item>
+<title>Bullsbrook</title>
+<cur>ASXX0232</cur>
+<for>Bullsbrook</for>
+</item>
+
+<item>
+<title>Bunbury</title>
+<cur>ASXX0228</cur>
+<for>Bunbury</for>
+</item>
+
+<item>
+<title>Busselton</title>
+<cur>ASXX0426</cur>
+<for>Busselton</for>
+</item>
+
+<item>
+<title>Carnarvon</title>
+<cur>ASXX0024</cur>
+<for>Carnarvon</for>
+</item>
+
+<item>
+<title>Coolgardie</title>
+<cur>ASXX0028</cur>
+<for>Coolgardie</for>
+</item>
+
+<item>
+<title>Corrigin</title>
+<cur>ASXX0236</cur>
+<for>Corrigin</for>
+</item>
+
+<item>
+<title>Cygnet Bay</title>
+<cur>ASXX0145</cur>
+<for>Cygnet Bay</for>
+</item>
+
+<item>
+<title>Dampier</title>
+<cur>ASXX0030</cur>
+<for>Dampier</for>
+</item>
+
+<item>
+<title>Denham</title>
+<cur>ASXX0198</cur>
+<for>Denham</for>
+</item>
+
+<item>
+<title>Derby</title>
+<cur>ASXX0034</cur>
+<for>Derby</for>
+</item>
+
+<item>
+<title>Dongara</title>
+<cur>ASXX0035</cur>
+<for>Dongara</for>
+</item>
+
+<item>
+<title>Dwellingup</title>
+<cur>ASXX0235</cur>
+<for>Dwellingup</for>
+</item>
+
+<item>
+<title>Esperance Aerodrome</title>
+<cur>ASXX0349</cur>
+<for>Esperance Aerodrome</for>
+</item>
+
+<item>
+<title>Eucla</title>
+<cur>ASXX0396</cur>
+<for>Eucla</for>
+</item>
+
+<item>
+<title>Forrest</title>
+<cur>ASXX0376</cur>
+<for>Forrest</for>
+</item>
+
+<item>
+<title>Fremantle</title>
+<cur>ASXX0041</cur>
+<for>Fremantle</for>
+</item>
+
+<item>
+<title>Geraldton</title>
+<cur>ASXX0044</cur>
+<for>Geraldton</for>
+</item>
+
+<item>
+<title>Gibson</title>
+<cur>ASXX0045</cur>
+<for>Gibson</for>
+</item>
+
+<item>
+<title>Goldsworthy</title>
+<cur>ASXX0048</cur>
+<for>Goldsworthy</for>
+</item>
+
+<item>
+<title>Gosnells</title>
+<cur>ASXX0050</cur>
+<for>Gosnells</for>
+</item>
+
+<item>
+<title>Greenough</title>
+<cur>ASXX0054</cur>
+<for>Greenough</for>
+</item>
+
+<item>
+<title>Halls Creek</title>
+<cur>ASXX0402</cur>
+<for>Halls Creek</for>
+</item>
+
+<item>
+<title>Hopetoun</title>
+<cur>ASXX0058</cur>
+<for>Hopetoun</for>
+</item>
+
+<item>
+<title>Jacup</title>
+<cur>ASXX0348</cur>
+<for>Jacup</for>
+</item>
+
+<item>
+<title>Jurien</title>
+<cur>ASXX0345</cur>
+<for>Jurien</for>
+</item>
+
+<item>
+<title>Kalamunda</title>
+<cur>ASXX0234</cur>
+<for>Kalamunda</for>
+</item>
+
+<item>
+<title>Kalbarri</title>
+<cur>ASXX0062</cur>
+<for>Kalbarri</for>
+</item>
+
+<item>
+<title>Kalgoorlie</title>
+<cur>ASXX0063</cur>
+<for>Kalgoorlie</for>
+</item>
+
+<item>
+<title>Kambalda</title>
+<cur>ASXX0064</cur>
+<for>Kambalda</for>
+</item>
+
+<item>
+<title>Karratha</title>
+<cur>ASXX0343</cur>
+<for>Karratha</for>
+</item>
+
+<item>
+<title>Karratha Airport</title>
+<cur>ASXX0342</cur>
+<for>Karratha Airport</for>
+</item>
+
+<item>
+<title>Kimberley Downs</title>
+<cur>ASXX0066</cur>
+<for>Kimberley Downs</for>
+</item>
+
+<item>
+<title>Kununurra</title>
+<cur>ASXX0397</cur>
+<for>Kununurra</for>
+</item>
+
+<item>
+<title>Kwinana</title>
+<cur>ASXX0068</cur>
+<for>Kwinana</for>
+</item>
+
+<item>
+<title>Lake Grace</title>
+<cur>ASXX0237</cur>
+<for>Lake Grace</for>
+</item>
+
+<item>
+<title>Lancelin</title>
+<cur>ASXX0346</cur>
+<for>Lancelin</for>
+</item>
+
+<item>
+<title>Laverton</title>
+<cur>ASXX0405</cur>
+<for>Laverton</for>
+</item>
+
+<item>
+<title>Learmonth</title>
+<cur>ASXX0381</cur>
+<for>Learmonth</for>
+</item>
+
+<item>
+<title>Leonora</title>
+<cur>ASXX0201</cur>
+<for>Leonora</for>
+</item>
+
+<item>
+<title>Mandurah</title>
+<cur>ASXX0071</cur>
+<for>Mandurah</for>
+</item>
+
+<item>
+<title>Marble Bar</title>
+<cur>ASXX0173</cur>
+<for>Marble Bar</for>
+</item>
+
+<item>
+<title>Meekatharra</title>
+<cur>ASXX0400</cur>
+<for>Meekatharra</for>
+</item>
+
+<item>
+<title>Mettler</title>
+<cur>ASXX0347</cur>
+<for>Mettler</for>
+</item>
+
+<item>
+<title>Mount Magnet</title>
+<cur>ASXX0401</cur>
+<for>Mount Magnet</for>
+</item>
+
+<item>
+<title>Naturaliste</title>
+<cur>ASXX0225</cur>
+<for>Naturaliste</for>
+</item>
+
+<item>
+<title>Newman</title>
+<cur>ASXX0399</cur>
+<for>Newman</for>
+</item>
+
+<item>
+<title>Norseman</title>
+<cur>ASXX0238</cur>
+<for>Norseman</for>
+</item>
+
+<item>
+<title>North Island</title>
+<cur>ASXX0200</cur>
+<for>North Island</for>
+</item>
+
+<item>
+<title>Onslow</title>
+<cur>ASXX0167</cur>
+<for>Onslow</for>
+</item>
+
+<item>
+<title>Paynes Find</title>
+<cur>ASXX0199</cur>
+<for>Paynes Find</for>
+</item>
+
+<item>
+<title>Perth</title>
+<cur>ASXX0230</cur>
+<for>Perth</for>
+</item>
+
+<item>
+<title>Port Hedland</title>
+<cur>ASXX0092</cur>
+<for>Port Hedland</for>
+</item>
+
+<item>
+<title>Rockingham</title>
+<cur>ASXX0101</cur>
+<for>Rockingham</for>
+</item>
+
+<item>
+<title>Roebourne</title>
+<cur>ASXX0102</cur>
+<for>Roebourne</for>
+</item>
+
+<item>
+<title>Rottnest Island</title>
+<cur>ASXX0226</cur>
+<for>Rottnest Island</for>
+</item>
+
+<item>
+<title>Southern Cross</title>
+<cur>ASXX0109</cur>
+<for>Southern Cross</for>
+</item>
+
+<item>
+<title>Spearwood</title>
+<cur>ASXX0231</cur>
+<for>Spearwood</for>
+</item>
+
+<item>
+<title>Swanbourne</title>
+<cur>ASXX0233</cur>
+<for>Swanbourne</for>
+</item>
+
+<item>
+<title>Telfer Mining Centre</title>
+<cur>ASXX0398</cur>
+<for>Telfer Mining Centre</for>
+</item>
+
+<item>
+<title>Thangoo</title>
+<cur>ASXX0116</cur>
+<for>Thangoo</for>
+</item>
+
+<item>
+<title>Thevenard Island</title>
+<cur>ASXX0166</cur>
+<for>Thevenard Island</for>
+</item>
+
+<item>
+<title>Wanneroo</title>
+<cur>ASXX0119</cur>
+<for>Wanneroo</for>
+</item>
+
+<item>
+<title>Wittenoom</title>
+<cur>ASXX0172</cur>
+<for>Wittenoom</for>
+</item>
+
+<item>
+<title>Wooramel</title>
+<cur>ASXX0126</cur>
+<for>Wooramel</for>
+</item>
+
+<item>
+<title>Wyndham</title>
+<cur>ASXX0149</cur>
+<for>Wyndham</for>
+</item>
+
+
+
+</channel></rss>

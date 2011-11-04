@@ -1,0 +1,522 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Home_Menu </bookmark>
+
+<onExit>
+	SetScreenSaverStatus("no");
+</onExit>
+<mediaDisplay name=photoFocusView
+
+	backgroundColor=-1:-1:-1
+
+	viewAreaXPC=0
+	viewAreaYPC=0
+	viewAreaWidthPC=100
+	viewAreaHeightPC=100
+
+	rowCount=1
+	columnCount=7
+
+	sideTopHeightPC=0
+	sideBottomHeightPC=0
+
+	itemGrid.heightPC=50
+	itemGrid.gapXPC=2
+
+	itemGrid.element.xPC=6.8
+	itemGrid.element.yPC=33
+	itemGrid.element.widthPC=9.53
+	itemGrid.element.heightPC=16.94
+
+
+	itemGrid.focusElement.yPC=25.77
+	itemGrid.focusElement.widthPC=13.59
+	itemGrid.focusElement.heightPC=24.17
+
+	itemGrid.focusElementBackground.widthPC = 13.59
+	itemGrid.focusElementBackground.heightPC= 24.17
+
+	itemBackgroundColor=-1:-1:-1
+
+	bottomArea.yPC=100
+
+	enableStretchBlt=no
+	circlingItems=no
+
+	showHeader = "no"
+	showDefaultInfo=no
+
+	DoAnimation = "no"
+	AnimationType = 1
+	AnimationStep = 26
+	AnimationDelay = 1
+	BackgroundDark = "no"
+   	slideItems=yes
+    stretchInFocus=yes
+>
+
+	<backgroundDisplay name=HomeMenuBackground>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+				BG_image = "./home_menu/skin4s/image/HomeMenu_BG" + image_type;
+			</script>
+		</image>
+	</backgroundDisplay>
+
+	<BltRows>
+		<script>
+			print("***********************   ", EntryTimes);
+			if(EntryTimes &lt; 2){
+				500;
+			}
+			else{
+				120;
+			}
+		</script>
+	</BltRows>
+
+	<BackgroundDark>
+		<script>
+			ret = "yes";
+			if(CurrentAP=="IMSAP"){
+				if(CurrentType=="Photo"){
+					ret = "no";
+				}else if(CurrentType=="Video"){
+					ret = "no";
+				}
+			}else if(CurrentAP=="VideoPlayback"){
+				ret = "no";
+			}else if(CurrentAP=="PhotoPlaybackAP"){
+				ret = "no";
+			}
+		</script>
+	</BackgroundDark>
+
+	<!-- the entry point of the view, you can set the initial focus here -->
+	<!-- you can also use postMessage to do the initial operation on the focus item -->
+	<onEnter>
+		executeScript("UpgradeCheck");
+		CurAPName = getCurrentAPName();
+ 		image_type = ".fsp";
+ 		print("CurAPName:", CurAPName, "===> FS PNG");
+
+  		CurrentAP = getEnv("EntryStatusString1");
+		CurrentType = getEnv("EntryStatusString2");
+		PlayMusic = getEnv("EntryStatusString3");
+		CurrentSubType = getEnv("EntryStatusString4");
+		CurrentSubType5 = getEnv("EntryStatusString5");
+		CurrentSubType6 = getEnv("EntryStatusString6");
+		CurrentSubType7 = getEnv("EntryStatusString7");
+		print("CurStatus:" , CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+		SetScreenSaverStatus("yes");
+
+		IsAVinDisable = "yes";
+		IMSDisable = "yes";
+		MarketDisable = "yes";
+		WebBrowserDisable = "yes";
+		PodcastDisable = "yes";
+
+		if(IsItemDisasble("IsAVinDisable") == "false"){
+			IsAVinDisable = "no";
+		}
+		if(IsItemDisasble("NetworkDisable") == "false"){
+			IMSDisable = "no";
+		}
+		if(IsItemDisasble("flashMarketDisable") == "false"){
+			MarketDisable = "no";
+		}
+		if(IsItemDisasble("WebBrowserDisable") == "false"){
+			WebBrowserDisable = "no";
+		}
+		if(IsItemDisasble("PodcastDisable")  == "false"){
+			PodcastDisable = "no";
+        }
+        FocusCnt = 0;
+		AVinFocus = FocusCnt;
+		if(IsAVinDisable == "no"){
+			FocusCnt = FocusCnt + 1;
+		}
+		MovieFocus = FocusCnt;
+			FocusCnt = FocusCnt + 1;
+		MusicFocus = FocusCnt;
+			FocusCnt = FocusCnt + 1;
+		PhotoFocus = FocusCnt;
+			FocusCnt = FocusCnt + 1;
+		IMSFocus = FocusCnt;
+		if(IMSDisable == "no"){
+			FocusCnt = FocusCnt + 1;
+		}
+		MarketFocus = FocusCnt;
+		if(MarketDisable == "no"){
+			FocusCnt = FocusCnt + 1;
+		}
+		SetupFocus = FocusCnt;
+		OperaFocus = FocusCnt;
+
+		CurrentSel = 0;
+		if(CurrentAP=="IMSAP"){
+			CurrentSel = IMSFocus;
+		}else if(CurrentAP=="SetupMenuAP"){
+			CurrentSel = SetupFocus;
+		}else if(CurrentAP=="VideoPlayback"){
+			CurrentSel = MovieFocus;
+		}else if(CurrentAP=="PhotoPlaybackAP"){
+			CurrentSel = PhotoFocus;
+		}else if(CurrentAP=="WebBrowserAP"){
+			CurrentSel = OperaFocus;
+		}else if(CurrentAP=="GBrowserSelectAP"){
+			CurrentSel = PhotoFocus;
+		}else if(CurrentAP=="AudioPlaybackAP"){
+			CurrentSel = MusicFocus;
+		}else if(CurrentAP=="SearchViewAP"){
+
+			if(CurrentType=="Video"){
+				CurrentSel = MovieFocus;
+			}else if(CurrentType=="Photo"){
+				CurrentSel = PhotoFocus;
+			}else if(CurrentType=="Music"){
+				CurrentSel = MusicFocus;
+			}else{
+				CurrentSel = MovieFocus;
+			}
+		}else if(CurrentAP=="GBrowserGridViewAP"){
+
+			if(CurrentType=="Video"){
+				CurrentSel = MovieFocus;
+			}else if(CurrentType=="Photo"){
+				CurrentSel = PhotoFocus;
+			}else if(CurrentType=="Music"){
+				CurrentSel = MusicFocus;
+			}else{
+				CurrentSel = MovieFocus;
+			}
+		}else if(MarketDisable == "no"){
+			if(CurrentAP=="SWFMenuAP"){
+				if(CurrentType=="AppStore"){
+					CurrentSel = MarketFocus;
+				}
+			}
+		}
+		print("3Sel: ",CurrentSel, CurrentAP, CurrentType);
+
+		setItemFocus(CurrentSel);
+		redrawDisplay();
+
+        EntryTimes = 1;
+        BltType = "NoBitBlt";
+
+	</onEnter>
+
+	<onUserInput>
+		userInput = currentUserInput();
+		if ("guide" == userInput){
+			print("====== ignore guide key ======");
+			"true";
+		}else if("up" == userInput){
+                        "true";
+                }
+		else if (userInput == "edit")
+		{
+			print("ignore edit key");
+			"true";
+		}
+		else{
+			print("====== process key: ", userInput);
+			"false";
+		}
+	</onUserInput>
+	<!-- over write user key mapping here -->
+	<!-- return true means the event has been handled -->
+	<!-- return false means the View will continue to handle the event -->
+
+
+	<text offsetXPC=0 offsetYPC=55 widthPC=100 heightPC=10 fontSize=22 foregroundColor=255:255:255 backgroundColor=-1:-1:-1 align=center redraw=yes useBackgroundSurface=yes>
+		<script>
+			focusIndex = getFocusItemIndex();
+			title = getItemInfo(focusIndex, "title");
+		</script>
+	</text>
+
+</mediaDisplay>
+
+
+  <item_template>
+	<media:thumbnail>
+		<script>
+			thumbnail = getItemInfo("imagePath");
+			ItemGroup = getItemInfo("group");
+			state = getDrawingItemState();
+			if (state == "focus") {
+				thumbnail = thumbnail;
+			}
+			else if (state== "unfocus"){
+				thumbnail= thumbnail + "_unfocus";
+			}
+	        else {
+				thumbnail = null;
+			}
+			if(thumbnail != null){
+				thumbnail = thumbnail + image_type;
+			}
+
+		</script>
+	</media:thumbnail>
+  </item_template>
+
+
+<channel>
+	<title> HomeMenu </title>
+	<link>./home_menu/skin4s/scripts/HomeMenu.rss</link>
+
+<item>
+<title>$[IMS_DTV]</title>
+<imagePath> ./home_menu/skin4s/image/Home_AVin </imagePath>
+<disable>
+	<script>
+		IsAVinDisable;
+	</script>
+</disable>
+<onClick>
+	<script>
+		APName = "RootAP";
+		menuCmd(APName);
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[GBROWSER_MOVIE]</title>
+<imagePath> ./home_menu/skin4s/image/Home_Movie </imagePath>
+<group> DB </group>
+<onClick>
+	<script>
+		subStoragePath = getStoragePath("key");
+		subStoragePath = subStoragePath + "DeviceSelects.dat";
+		StatusArray = readStringFromFile(subStoragePath);
+
+		ViewSel = "Grid";
+		if (selectArray != null){
+			ViewSel = getStringArrayAt(StatusArray, 0);
+		}
+		MMType = "Video";
+
+		StatusArray = null;
+		StatusArray = pushBackStringArray(StatusArray, ViewSel);
+		StatusArray = pushBackStringArray(StatusArray, MMType);
+		writeStringToFile(subStoragePath, StatusArray);
+
+		APName = "GBrowserGridViewAP";
+		Source = "Dev";
+		print("select::", Source, ViewSel, MMType);
+		menuCmd(APName, Source, ViewSel, MMType, BltType);
+		null;
+	</script>
+
+</onClick>
+</item>
+
+<item>
+<title>$[GBROWSER_MUSIC]</title>
+<imagePath> ./home_menu/skin4s/image/Home_Music </imagePath>
+<group> DB </group>
+<onClick>
+	<script>
+		subStoragePath = getStoragePath("key");
+		subStoragePath = subStoragePath + "DeviceSelects.dat";
+		StatusArray = readStringFromFile(subStoragePath);
+
+		ViewSel = "Grid";
+		if (selectArray != null){
+			ViewSel = getStringArrayAt(StatusArray, 0);
+		}
+		MMType = "Music";
+
+		StatusArray = null;
+		StatusArray = pushBackStringArray(StatusArray, ViewSel);
+		StatusArray = pushBackStringArray(StatusArray, MMType);
+		writeStringToFile(subStoragePath, StatusArray);
+
+		APName = "GBrowserGridViewAP";
+		Source = "Dev";
+		print("select::", Source, ViewSel, MMType);
+		menuCmd(APName, Source, ViewSel, MMType, BltType);
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[GBROWSER_PICTURE]</title>
+<imagePath> ./home_menu/skin4s/image/Home_Photo </imagePath>
+<group> DB </group>
+<onClick>
+	<script>
+		subStoragePath = getStoragePath("key");
+		subStoragePath = subStoragePath + "DeviceSelects.dat";
+		StatusArray = readStringFromFile(subStoragePath);
+
+		ViewSel = "Grid";
+		if (selectArray != null){
+			ViewSel = getStringArrayAt(StatusArray, 0);
+		}
+		MMType = "Photo";
+
+		StatusArray = null;
+		StatusArray = pushBackStringArray(StatusArray, ViewSel);
+		StatusArray = pushBackStringArray(StatusArray, MMType);
+		writeStringToFile(subStoragePath, StatusArray);
+
+		APName = "GBrowserGridViewAP";
+		Source = "Dev";
+		print("select::", Source, ViewSel, MMType);
+		menuCmd(APName, Source, ViewSel, MMType, BltType);
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[IMS_APP]</title>
+<disable>
+	<script>
+		IMSDisable;
+	</script>
+</disable>
+<imagePath> ./home_menu/skin4s/image/Home_Internet </imagePath>
+<onClick>
+	<script>
+
+		APName = "IMSAP";
+		MenuType = "TopMenu";
+		MenuLink = "rss_file://./scripts/menu.rss";
+		menuCmd(APName, MenuType, MenuLink, BltType);
+
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[IMS_MARKET]</title>
+<disable>
+	<script>
+		MarketDisable;
+	</script>
+</disable>
+<imagePath> ./home_menu/skin4s/image/Home_Market </imagePath>
+<onClick>
+	<script>
+		APName = "SWFMenuAP";
+		swf_path = GetMenuPath("AppStore");
+		Init_item = "6";
+		CurAPName = getCurrentAPName();
+		CurMenuType = "TopMenu";
+		CurMenuLink = "rss_file://./home_menu/skin4s/scripts/HomeMenu.rss";
+		menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
+		null;
+	</script>
+</onClick>
+</item>
+
+
+<!--
+<item>
+<title>Video Podcast</title>
+<disable>
+        <script>
+                PodcastDisable;
+        </script>
+</disable>
+<imagePath> ./home_menu/skin4s/image/v_home_174</imagePath>
+<onClick>
+        <script>
+
+                APName = "IMSAP";
+                MenuType = "TopMenu";
+                MenuLink = "http://218.210.127.133/VideoPodcast/scripts/videopodcast.rss";
+                menuCmd(APName, MenuType, MenuLink, BltType);
+
+                null;
+        </script>
+</onClick>
+</item>
+-->
+
+<item>
+<title>$[SETUP_MENU]</title>
+<imagePath> ./home_menu/skin4s/image/Home_Setup </imagePath>
+<onClick>
+	<script>
+		APName = "MenuBarAP";
+		MenuType = "TopMenu";
+		MenuLink = "rss_file://./setup_menu/skin4s/scripts/setup.rss";
+		menuCmd(APName, MenuType, MenuLink, BltType);
+
+		null;
+	</script>
+</onClick>
+</item>
+
+<!--
+<item>
+<title>$[IMS_WEB_BROWSER]</title>
+<disable>
+	<script>
+		WebBrowserDisable;
+	</script>
+</disable>
+<imagePath> ./home_menu/skin4s/image/Home_Opera </imagePath>
+<onClick>
+	<script>
+		APName = "WebBrowserAP";
+		menuCmd(APName);
+		null;
+	</script>
+</onClick>
+</item>
+-->
+
+</channel>
+
+<UpgradeCheck>
+	VersionNum = "0";
+	UpgStoragePath = getStoragePath("key") + "UpgradeVersion.dat";
+	VersionArray = readStringFromFile(UpgStoragePath);
+	StrVersion = null;
+	if (VersionArray == null){
+		executeScript("UpdateVersion");
+	}else{
+		StrVersion = getStringArrayAt(VersionArray, 0);
+		if(StrVersion != VersionNum){
+			executeScript("UpdateVersion");
+		}
+	}
+</UpgradeCheck>
+
+<UpdateVersion>
+	print("========================== UpgradeCheck", VersionNum ," ================");
+	print("    original:", StrVersion);
+	print("    new:", VersionNum);
+	VersionArray = null;
+	VersionArray = pushBackStringArray(VersionArray, VersionNum);
+	writeStringToFile(UpgStoragePath, VersionArray);
+
+	print("delete setting files");
+	print("=============================================================");
+	DelPath = getStoragePath("key") + "MoviesSelects.dat";
+	DeleteFile(DelPath);
+	DelPath = getStoragePath("key") + "MusicSelects.dat";
+	DeleteFile(DelPath);
+	DelPath = getStoragePath("key") + "PicturePlayingSelects.dat";
+	DeleteFile(DelPath);
+	DelPath = getStoragePath("key") + "PictureSelects.dat";
+	DeleteFile(DelPath);
+	DelPath = getStoragePath("key") + "DeviceSelects.dat";
+	DeleteFile(DelPath);
+
+</UpdateVersion>
+
+</rss>

@@ -1,0 +1,86 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <bookmark>mediafly_getUserName</bookmark>
+  <onEnter>
+    null;
+    prompt = "$[Enter Your User Name]";
+    redrawDisplay();
+    entryCount  = 0;
+    print("entryCount1: ",entryCount);
+    
+  </onEnter>
+
+  <mediaDisplay
+    name="onePartView"
+    itemPerPage="1"
+    viewAreaXPC="18"
+    viewAreaYPC="5"
+    viewAreaWidthPC="50"
+    viewAreaHeightPC="5"
+    itemXPC="0"
+    itemYPC="0"
+    itemWidthPC="100"
+    itemHeightPC="20"
+
+    sideLeftWidthPC="100"
+    sideRightWidthPC="0"
+    imageLeftSide="./IMS_Modules/Mediafly/image/arrow_cover.fsp"
+    imageRightSide=""
+    imageFocus=""
+   
+    sideColorRight="-1:-1:-1"
+    sideColorLeft="-1:-1:-1"
+    sideColorTop="-1:-1:-1"
+    sideColorBottom="-1:-1:-1"
+    backgroundColor="-1:-1:-1"
+    focusBorderColor="-1:-1:-1"
+    unFocusBorderColor="-1:-1:-1"
+    itemBackgroundColor="-1:-1:-1"
+    showHeader="no"
+    showDefaultInfo="no"
+>
+
+    <text offsetXPC="0" offsetYPC="2" widthPC="100" heightPC="100" align="left" fontSize="10" lines="1">
+      <script>
+        prompt;
+      </script>
+    </text>
+
+
+    <script>
+      /* tsp get user name and return */
+      if(entryCount &lt; 2)
+      {
+      print("Get user name");
+      userName = getInput("Please input user name");
+      print("-----------------------userName: ",userName);
+      print("entryCount2: ",entryCount);
+      entryCount += 1;
+      }
+      else prompt = "";
+    </script>
+  </mediaDisplay>
+
+  <item_template>
+    <onClick>
+      print("entryCount3: ",entryCount);
+      entryCount += 1;
+      /* if_password = null segmenation fault tsp */
+      if(userName != null)
+      setReturnString(userName);
+      postMessage("return");
+    </onClick>
+  </item_template>
+
+  <channel>
+    <title>Get user name</title>
+      <!--<link>rss_file://./scripts/setup/usbUpgradeProgress.rss</link>-->
+    <link>http://www.seagate.com/support/software/Theater/Mediafly/v1/mediafly_adduser.rss</link> 
+  </channel>
+</rss>
+
+
+
+
+

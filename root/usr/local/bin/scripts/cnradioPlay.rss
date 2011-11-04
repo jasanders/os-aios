@@ -1,0 +1,179 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+ <!-- copyright: SHENZHEN ZFD ELECTRONIC TECHNOLOGY CO., LTD.  -->
+		
+ 
+<script>
+		startPlay=null;
+		buffing = "0";
+
+		infoArray   = null;
+			path = getStoragePath("tmp");
+			path = path + "cn_info.dat";
+			infoArray = readStringFromFile(path);
+
+
+			path = getStoragePath("tmp");
+			path = path + "cnRadioplay.dat";
+			currentUrl = readStringFromFile(path);
+			content = getStringArrayAt(currentUrl, 0);
+						
+			 
+			print("cn play ",content);			
+		  showLoading = 0;
+</script>
+
+<onEnter>
+  setRefreshTime(500);
+</onEnter>
+
+<onExit>
+      playItemURL(-1, 1);
+	  setRefreshTime(-1);
+</onExit>
+
+
+ 
+<onRefresh>
+	vidProgress = getPlaybackStatus();
+      playElapsed = getStringArrayAt(vidProgress, 0);
+	  isPlaying = getStringArrayAt(vidProgress, 3);
+      
+		print(" !!!!", playElapsed, isPlaying);
+	if (startPlay == null)
+	{
+		 playItemURL(content, 5, "mediaDisplay", "previewWindow");
+		 setRefreshTime(1500);
+		 startPlay="1";
+	} else {
+
+	if (isPlaying == 0) {
+		print("end !!!!");
+		postMessage("return");
+		"true";
+	}
+
+	if (isPlaying == 1) {
+		buffing = "1";
+	} else{
+			if (playElapsed == 0 ) {
+						if (isPlaying == 2) {
+							buffing = "1";
+						} else {
+							buffing = "3";
+							print("stopping");
+						} 
+			} else{
+				buffing = "0";
+			}
+	}
+}
+</onRefresh>
+
+
+<mediaDisplay name=threePartsView 
+	showHeader="no"
+	showDefaultInfo="no"
+		fontSize=24 
+
+fillBackground="yes"
+forceRedrawMenu="yes"
+forceRedrawItems="yes"
+>
+    <text offsetXPC=0 offsetYPC=13 widthPC=100 heightPC=100 fontSize=22 backgroundColor=0:0:0 foregroundColor=0:0:0>
+    </text>
+
+    <previewWindow windowColor=0:0:0 offsetXPC=0 offsetYPC=20 widthPC=1 heightPC=1>
+    </previewWindow>
+
+
+	<text redraw=yes   offsetXPC=10 offsetYPC=15 widthPC=80 heightPC=15 fontSize=24 backgroundColor=8:8:16 foregroundColor=200:200:200>
+	  <script>
+			if ( buffing == "1") {
+				"Buffering.......";
+			} else if ( buffing == "3") {
+				"Stopping.......";
+			} else{
+				" ";
+			}
+	  </script>
+	</text>
+
+	<text redraw=yes  offsetXPC=10 offsetYPC=30 widthPC=80 heightPC=20 fontSize=25 backgroundColor=8:8:16 foregroundColor=200:200:200 lines=2>
+	  <script>
+	  		sctitle =  getStringArrayAt(infoArray, 0);
+			if ( sctitle != null) {
+				"电台名称:  " + sctitle;
+			} else {
+				" ";
+			}
+ 	  </script>
+	</text>
+
+	<text redraw=yes  offsetXPC=10 offsetYPC=55 widthPC=80 heightPC=20 fontSize=25 backgroundColor=8:8:16 foregroundColor=200:200:200 lines=2>
+	  <script>
+	  		sctitle =  getStringArrayAt(infoArray, 1);
+			if ( sctitle != null) {
+				"描述:  " + sctitle;
+			} else {
+				" ";
+			}
+	  </script>
+	 
+	</text>
+
+ 
+
+<!-- top and bottom image -->
+<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=13>
+		<script>
+			"image/main_top.png";
+		</script>
+	</image>
+<image offsetXPC=0  offsetYPC= 87 widthPC=100 heightPC=13>
+		<script>
+			"image/main_bottom.png";
+		</script>
+</image>
+
+<!-- help infomation -->
+<!-- <image offsetXPC=9.5 offsetYPC=92 widthPC=3.5 heightPC=5 fontSize=12 backgroundColor=0:0:0 foregroundColor=255:255:255>
+		<script>
+			"./image/info.png";
+		</script>
+	</image>
+
+<text offsetXPC=13 offsetYPC=92 widthPC=60 heightPC=5 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=174:230:255> 
+	<script>
+	"[杩斿洖]閿洖鍒颁笂涓€椤?;
+	</script>
+</text>  -->
+
+<!-- <onUserInput>
+<script>
+input = currentUserInput();
+idx = getFocusItemIndex();
+print("Got user input: ", input);
+if (input == "enter")
+{
+	
+	"true";
+}
+else
+	"false";
+	
+</script>
+</onUserInput> -->
+
+</mediaDisplay>
+
+
+
+<channel>
+	<title>Thunder play</title>
+	<link>./scripts/thunder_videoPlay.rss</link>
+    <media:thumbnail url="image/rss1.png" width="120" height="90" />	
+
+</channel>
+
+</rss>

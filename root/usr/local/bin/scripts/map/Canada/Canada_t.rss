@@ -1,0 +1,248 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Taber</title>
+<cur>CAXX0490</cur>
+<for>Taber</for>
+</item>
+
+<item>
+<title>Taylor</title>
+<cur>CAXX0491</cur>
+<for>Taylor</for>
+</item>
+
+<item>
+<title>Tecumseh</title>
+<cur>CAXX0492</cur>
+<for>Tecumseh</for>
+</item>
+
+<item>
+<title>Terrace</title>
+<cur>CAXX0493</cur>
+<for>Terrace</for>
+</item>
+
+<item>
+<title>The Pas</title>
+<cur>CAXX0494</cur>
+<for>The Pas</for>
+</item>
+
+<item>
+<title>Thompson</title>
+<cur>CAXX0495</cur>
+<for>Thompson</for>
+</item>
+
+<item>
+<title>Thornbury</title>
+<cur>CAXX0496</cur>
+<for>Thornbury</for>
+</item>
+
+<item>
+<title>Thorold</title>
+<cur>CAXX0497</cur>
+<for>Thorold</for>
+</item>
+
+<item>
+<title>Thunder Bay</title>
+<cur>CAXX0498</cur>
+<for>Thunder Bay</for>
+</item>
+
+<item>
+<title>Tidehead</title>
+<cur>CAXX0499</cur>
+<for>Tidehead</for>
+</item>
+
+<item>
+<title>Tillsonburg</title>
+<cur>CAXX0500</cur>
+<for>Tillsonburg</for>
+</item>
+
+<item>
+<title>Timmins</title>
+<cur>CAXX0501</cur>
+<for>Timmins</for>
+</item>
+
+<item>
+<title>Tofino</title>
+<cur>CAXX0502</cur>
+<for>Tofino</for>
+</item>
+
+<item>
+<title>Torbay</title>
+<cur>CAXX0503</cur>
+<for>Torbay</for>
+</item>
+
+<item>
+<title>Toronto</title>
+<cur>CAXX0504</cur>
+<for>Toronto</for>
+</item>
+
+<item>
+<title>Torquay</title>
+<cur>CAXX0505</cur>
+<for>Torquay</for>
+</item>
+
+<item>
+<title>Tracy</title>
+<cur>CAXX0506</cur>
+<for>Tracy</for>
+</item>
+
+<item>
+<title>Trail</title>
+<cur>CAXX0507</cur>
+<for>Trail</for>
+</item>
+
+<item>
+<title>Trenton</title>
+<cur>CAXX0508</cur>
+<for>Trenton</for>
+</item>
+
+<item>
+<title>Trois-Rivieres</title>
+<cur>CAXX0509</cur>
+<for>Trois-Rivieres</for>
+</item>
+
+<item>
+<title>Truro</title>
+<cur>CAXX0510</cur>
+<for>Truro</for>
+</item>
+
+<item>
+<title>Tusket</title>
+<cur>CAXX0511</cur>
+<for>Tusket</for>
+</item>
+
+<item>
+<title>Tuxford</title>
+<cur>CAXX0512</cur>
+<for>Tuxford</for>
+</item>
+
+<item>
+<title>Tyrone</title>
+<cur>CAXX0513</cur>
+<for>Tyrone</for>
+</item>
+
+</channel></rss>

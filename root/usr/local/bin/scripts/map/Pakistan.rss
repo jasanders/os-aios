@@ -1,0 +1,250 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Pakistan</title>
+<link>./scripts/map/Pakistan.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Chiniot</title>
+<cur>PKXX0001</cur>
+<for>Chiniot</for>
+</item>
+
+<item>
+<title>Faisalabad</title>
+<cur>PKXX0002</cur>
+<for>Faisalabad</for>
+</item>
+
+
+<item>
+<title>Gujranwala</title>
+<cur>PKXX0003</cur>
+<for>Gujranwala</for>
+</item>
+
+
+<item>
+<title>Gujrat</title>
+<cur>PKXX0004</cur>
+<for>Gujrat</for>
+</item>
+
+
+<item>
+<title>Hyderabad</title>
+<cur>PKXX0005</cur>
+<for>Hyderabad</for>
+</item>
+
+
+<item>
+<title>Islamabad</title>
+<cur>PKXX0006</cur>
+<for>Islamabad</for>
+</item>
+
+
+<item>
+<title>Karachi</title>
+<cur>PKXX0008</cur>
+<for>Karachi</for>
+</item>
+
+
+<item>
+<title>Kasur</title>
+<cur>PKXX0009</cur>
+<for>Kasur</for>
+</item>
+
+
+<item>
+<title>Kohat</title>
+<cur>PKXX0010</cur>
+<for>Kohat</for>
+</item>
+
+
+<item>
+<title>Lahore</title>
+<cur>PKXX0011</cur>
+<for>Lahore</for>
+</item>
+
+
+<item>
+<title>Mardan</title>
+<cur>PKXX0012</cur>
+<for>Mardan</for>
+</item>
+
+
+<item>
+<title>Multan</title>
+<cur>PKXX0022</cur>
+<for>Multan</for>
+</item>
+
+
+<item>
+<title>Okara</title>
+<cur>PKXX0013</cur>
+<for>Okara</for>
+</item>
+
+
+<item>
+<title>Peshawar</title>
+<cur>PKXX0014</cur>
+<for>Peshawar</for>
+</item>
+
+
+<item>
+<title>Quetta</title>
+<cur>PKXX0021</cur>
+<for>Quetta</for>
+</item>
+
+
+<item>
+<title>Rawalpindi</title>
+<cur>PKXX0015</cur>
+<for>Rawalpindi</for>
+</item>
+
+
+<item>
+<title>Sahiwal</title>
+<cur>PKXX0016</cur>
+<for>Sahiwal</for>
+</item>
+
+
+<item>
+<title>Sargodha</title>
+<cur>PKXX0017</cur>
+<for>Sargodha</for>
+</item>
+
+
+<item>
+<title>Shekhupura</title>
+<cur>PKXX0018</cur>
+<for>Shekhupura</for>
+</item>
+
+
+<item>
+<title>Sialkot</title>
+<cur>PKXX0019</cur>
+<for>Sialkot</for>
+</item>
+
+
+<item>
+<title>Thatta</title>
+<cur>PKXX0020</cur>
+<for>Thatta</for>
+</item>
+
+
+</channel></rss>

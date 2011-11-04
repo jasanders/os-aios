@@ -1,0 +1,148 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>AutoStandbyWarning</bookmark>
+
+<onEnter>
+	pageTitle = getPageInfo("pageTitle");
+	print("page title is ", pageTitle);
+</onEnter>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=1
+	viewAreaXPC=31.3
+	viewAreaYPC=21.3
+	viewAreaWidthPC=37.3
+	viewAreaHeightPC=57.5
+
+	itemXPC=8.8
+	itemYPC=70.0
+	itemWidthPC=83.5
+	itemHeightPC=12.1
+	itemImageXPC=8.8
+	itemImageYPC=70.0
+	itemImageWidthPC=83.5
+	itemImageHeightPC=12.1
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	rollItems="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/image/setup_popup_bg.fsp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=8.8 offsetYPC=10.1 widthPC=83.5 heightPC=18.4 fontSize=18 align=center backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header = "";
+		header;
+	</script>
+</text>
+
+<text offsetXPC=13.0 offsetYPC=32.4 widthPC=75.1 heightPC=21.7 fontSize=14 align=left backgroundColor=0:0:0 foregroundColor=255:255:255 lines=2 redraw="yes">
+	<script>
+		infoStr = "";
+		infoStr;
+	</script>
+</text>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/image/398_focus.fsp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1>
+		<foregroundColor>
+			<script>
+				fgcolor = "255:255:255";
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+				data = getStringArrayAt(popupOptions, queryIndex);
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:112:166";
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		<script>
+			title = getItemInfo("title");
+			title;
+		</script>
+	</text>
+</itemDisplay>
+
+<onEnter>
+	redrawDisplay("no");
+	postMessage("enter");
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ( "enter" == userInput || "return" == userInput ) {
+		handle = "false";
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>$[AUTO_STANDBY_WARNING]</title>
+	<link>rss_file://./setup_menu/scripts/autoStandbyWarning.rss</link>
+
+
+<item>
+<title></title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[AUTO_STANDBY_WARNING]";
+		popupMessageSize = 1;
+		popupMessages = pushBackStringArray(popupMessages, "$[AUTO_STANDBY_WARNING_MESSAGE]");
+		popupOptionSize = 1;
+		popupOptions = pushBackStringArray(popupOptions, "$[CANCEL]");
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		print("ret = ", ret);
+		postMessage("return");
+		redrawDisplay("no");
+		null;
+	</script>
+</onClick>
+</item>
+
+
+</channel>
+</rss>

@@ -1,0 +1,138 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+	
+	CurrentTypeStr1 = getEnv("EntryStatusString1");
+	CurrentTypeStr2 = getEnv("EntryStatusString2");
+	CurrentTypeStr3 = getEnv("EntryStatusString3");
+	CurrentTypeStr4 = getEnv("EntryStatusString4");
+	CurrentTypeStr5 = getEnv("EntryStatusString5");
+	CurrentTypeStr6 = getEnv("EntryStatusString6");
+	CurrentTypeStr7 = getEnv("EntryStatusString7");
+	print("CurStatus:" , CurrentTypeStr1, CurrentTypeStr2, CurrentTypeStr3, CurrentTypeStr4, CurrentTypeStr5, CurrentTypeStr6, CurrentTypeStr7);
+	
+	ShowFileDisable = "yes";
+	
+	if(CurrentTypeStr3 == "Folder"){
+		ShowFileDisable = "no";
+	}
+	
+	print(ShowFileDisable);
+		
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "DeviceSelects.dat";
+	selectArray = readStringFromFile(storagePath);
+	if (selectArray == null){
+	  selectArray = pushBackStringArray(selectArray, "List");
+	  selectArray = pushBackStringArray(selectArray, "Music");
+	  writeStringToFile(storagePath, selectArray);
+	}
+	ViewSel = getStringArrayAt(selectArray, 0);
+	MMType = getStringArrayAt(selectArray, 1);
+	print("select::", ViewSel);
+</script>
+
+
+<item_template>
+  <onClick>
+    <script>
+	    selected = getItemInfo("selected");
+		StrCmd= getItemInfo("StrCmd");
+		
+		if (selected != "yes") {
+		  group = getItemInfo("group");
+		
+		  if (group=="view") {
+			ViewSel = StrCmd;
+		  }
+		  selectArray = null;
+    	  selectArray = pushBackStringArray(selectArray, ViewSel);
+		  selectArray = pushBackStringArray(selectArray, MMType);
+		  writeStringToFile(storagePath, selectArray);
+	    }
+		else {
+			print("Item already selected");
+		}
+		
+		APName = "GBrowserSelectAP";
+		MMType = "Music";
+		SrcSel = "Dev";
+		selectArray = readStringFromFile(storagePath);
+		ViewSel = getStringArrayAt(selectArray, 0);
+	    pendingMessage = "return";
+
+		ShowType = "Folder";
+		if(StrCmd=="File"){
+			ShowType = StrCmd;
+		}
+
+		if (StrCmd=="BackToPhoto") {
+			menuCmd(APName, StrCmd);	
+		}else{
+			menuCmd(APName, SrcSel, ViewSel, MMType, ShowType);
+		}
+		null;
+		
+    </script>
+  </onClick>
+  <selected>
+    <script>
+    	group = getItemInfo("group");
+		StrCmd= getItemInfo("StrCmd");
+		ret = "no";
+		if (group=="view") {
+			if (StrCmd == ViewSel) {
+			  ret = "yes";
+			}
+		}
+		ret;
+		
+	</script>
+  </selected>
+</item_template>
+
+<channel>
+	<title>Music_sel_dev</title>
+	<link>./scripts/setup/Music_sel_dev.rss</link>
+
+<item>
+<title>$[IMS_VIEW_THUMBNAILS]</title>
+<position> head </position>
+<group> view </group>
+<StrCmd> Grid </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_LIST]</title>
+<position> middle </position>
+<group> view </group>
+<StrCmd> List </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_PREVIEW]</title>
+<position> tail </position>
+<group> view </group>
+<StrCmd> Preview </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_FILES]</title>
+<disable>
+	<script>
+		ShowFileDisable;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> File </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BACK_TO_PHOTO]</title>
+<position> single </position>
+<StrCmd> BackToPhoto </StrCmd>
+</item>
+
+</channel>
+</rss>

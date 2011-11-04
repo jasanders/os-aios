@@ -1,0 +1,212 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>PhotoAlbum</bookmark>
+
+<onExit>
+	Fbw_DeleteDataProvider(provider);
+</onExit>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=3
+	viewAreaXPC=26.8
+	viewAreaYPC=19.0
+	viewAreaWidthPC=46.4
+	viewAreaHeightPC=61.9
+
+	itemXPC=7.1
+	itemYPC=49.8
+	itemWidthPC=85.7
+	itemHeightPC=11.2
+	itemImageXPC=7.1
+	itemImageYPC=49.8
+	itemImageWidthPC=85.7
+	itemImageHeightPC=11.2
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=0:0:0
+
+	showHeader="no"
+	showDefaultInfo="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/skin4/image/setup_popup_bg_edit.fsp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=7.1 offsetYPC=9.4 widthPC=85.7 heightPC=17.0 align=center fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header = getPageInfo("pageTitle");
+		header;
+	</script>
+</text>
+
+<text offsetXPC=11.4 offsetYPC=30.0 widthPC=77.1 heightPC=20.2 align=left fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=255:255:255  lines=2>
+	<script>
+		"Choose one folder from Photo Album.";
+	</script>
+</text>
+
+<image offsetXPC=48.6 offsetYPC=3.6 widthPC=2.7 heightPC=2.9 redraw="yes">
+	<script>
+		icon = "";
+		focusIndex = getFocusItemIndex();
+		if (folderCount &gt; 6) {
+			if (focusIndex == 0) {
+				icon = "./setup_menu/skin4/image/setup_popup_up_unfocus.fsp";
+			}
+			else {
+				icon = "./setup_menu/skin4/image/setup_popup_up_focus.fsp";
+			}
+		}
+		icon;
+	</script>
+</image>
+
+<image offsetXPC=48.6 offsetYPC=93.5 widthPC=2.7 heightPC=2.9 redraw="yes">
+	<script>
+		icon = "";
+		focusIndex = getFocusItemIndex();
+		if (folderCount &gt; 6) {
+			boundary = folderCount - 1;
+			if (focusIndex == boundary) {
+				icon = "./setup_menu/skin4/image/setup_popup_down_unfocus.fsp";
+			}
+			else {
+				icon = "./setup_menu/skin4/image/setup_popup_down_focus.fsp";
+			}
+		}
+		icon;
+	</script>
+</image>
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/skin4/image/509_focus.fsp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1 >
+		<foregroundColor>
+			<script>
+				fgcolor = "255:255:255";
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+
+				db_partId = getFolderPartitionId();
+				print("database, db_partId = ", db_partId);
+				db_fieldId = getFolderFieldId();
+				print("database, db_fieldId = ", db_fieldId);
+				db_dataPath = getFolderDataPath();
+				print("database, db_dataPath = ", db_dataPath);
+
+				partId = Fbw_GetPartitionIdAt(provider, queryIndex);
+				print("partId = ", partId);
+				fieldId = Fbw_GetFileIdAt(provider, queryIndex);
+				print("fieldId = ", fieldId);
+				dataPath = Fbw_GetDataAt(provider, queryIndex);
+				print("dataPath = ", dataPath);
+
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:153:255";
+				}
+				else {
+					if (db_partId == partId) {
+						if (db_fieldId == fieldId) {
+							if (db_dataPath == dataPath) {
+								fgcolor = "253:184:50";
+							}
+						}
+					}
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		<script>
+			queryIndex = getQueryItemIndex();
+			title = Fbw_GetTitleAt(provider, queryIndex);
+			print("title = ", title);
+			title;
+		</script>
+	</text>
+</itemDisplay>
+
+<onEnter>
+	setFullScreenFade(64);
+
+	provider = Fbw_GetDbDataProvider("Photo","PhotoLeafFolder","Alpha");
+	print("provider = ", provider);
+
+	folderCount = Fbw_GetSize(provider);
+	print("folderCount = ", folderCount);
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	focusIndex = getFocusItemIndex();
+	if ("return" == userInput) {
+		setReturnString("");
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<item_template>
+	<onClick>
+		<script>
+			if (folderCount &gt; 0) {
+				queryIndex = getQueryItemIndex();
+				partId = Fbw_GetPartitionIdAt(provider, queryIndex);
+				print("partId = ", partId);
+				setFolderPartitionId(partId);
+				fieldId = Fbw_GetFileIdAt(provider, queryIndex);
+				print("fieldId = ", fieldId);
+				setFolderFieldId(fieldId);
+				dataPath = Fbw_GetDataAt(provider, queryIndex);
+				print("dataPath = ", dataPath);
+				setFolderDataPath(dataPath);
+			}
+			postMessage("return");
+			null;
+		</script>
+	</onClick>
+</item_template>
+
+
+<channel>
+	<title>$[PHOTO_ALBUM]</title>
+	<link>rss_file://./setup_menu/skin4/scripts/photoAlbum.rss</link>
+
+
+<itemSize>
+	<script>
+		folderCount;
+	</script>
+</itemSize>
+
+
+</channel>
+</rss>

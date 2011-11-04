@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>汽車類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>2201 裕隆</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2201.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2201" />
+        </item>
+        <item>
+            <title>2204 中華</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2204.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2204" />
+        </item>
+        <item>
+            <title>2206 三陽</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2206.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2206" />
+        </item>
+        <item>
+            <title>2207 和泰車</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2207.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2207" />
+        </item>
+        <item>
+            <title>2227 裕日車</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2227.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2227" />
+        </item>
+    </channel>
+</rss>
+        

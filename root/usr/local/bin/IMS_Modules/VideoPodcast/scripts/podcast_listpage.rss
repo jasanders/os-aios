@@ -1,0 +1,336 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+print("in script0");
+URL=getEnv("myURL");
+myThumnail=getEnv("myThumnail");
+print("link to myURL:", URL);
+print("thumbnail :", myThumnail);
+</script>
+
+<onRefresh>
+print("i am in onRefresh");
+</onRefresh>
+
+<onEnter>
+print("i am in onEnter");
+</onEnter>
+
+<script>
+print("in script1");
+setRefreshTime(-1);
+result = loadXMLFile(URL);
+print("load result:",result);
+if (result != null)
+{
+  itemSize = getXMLElementCount("rss","channel","item");
+  print("Item Size = ", itemSize);
+
+  if (itemSize &gt; 0)
+  {
+ 	  count=0;
+	  title = null;
+	  pubDate = null;
+	  description = null;
+	  podcastURL = null;
+	  pic = null;
+	  titleArray = null;
+	  pubDateArray = null;
+	  descriptionArray = null;
+	  picArray = null;
+	  podcastURLArray = null;
+
+	  while(1)
+	  {	
+	  	  podcastURL = null;
+	  	  pic = null;
+	  	  
+		  title = getXMLText("rss", "channel", "item", count, "title");
+		  pubDate = getXMLText("rss", "channel", "item", count, "pubDate");
+		  description = getXMLText("rss", "channel", "item", count, "description");
+		  description = filterHTMLTag(description);
+		  podcastURL = getXMLAttribute("rss", "channel", "item", count, "enclosure", "url");
+		  if (podcastURL == null)
+		  {
+		  	podcastURL = getXMLText("rss", "channel", "item", count, "link");
+	  	  }
+	  	  pic = getXMLAttribute("rss", "channel", "item", count, "media:thumbnail", "url");
+	  	  if (pic == null)
+	  	  {
+	  	  	pic = getXMLText("rss", "channel", "item", count, "media:thumnail");
+	  	  }
+		  
+		  if (title == null)
+		  	title = "no title";
+		  titleArray     = pushBackStringArray(titleArray, title);
+		  pubDateArray = pushBackStringArray(pubDateArray,pubDate);
+		  descriptionArray = pushBackStringArray(descriptionArray,description);		        	     
+		  podcastURLArray = pushBackStringArray(podcastURLArray,podcastURL);
+		  if (pic == null)
+		  	pic = myThumnail;
+		  picArray = pushBackStringArray(picArray,pic);   
+		  
+		  count += 1;
+		  if ((count == itemSize) || (count &gt; 199))
+		  {
+		  		print("Item count = ", count);
+		  		itemSize = count;
+			   	break;
+	      }
+	  } /* end while */
+  }
+  else
+	  print("element count is 0");
+}
+else
+{
+  itemSize = 0;
+  print("load xml fail");
+}
+</script>
+
+<onExit>
+ 	  tearDownPlaybackFlow();
+      playItemURL(-1, 1);
+      setRefreshTime(-1);
+	  print("====== bye bye bye, sina music playback ======");
+</onExit>
+
+<bookmark> Last Page </bookmark>
+
+  <mediaDisplay
+  name="threePartView"
+  itemPerPage="5"
+  imageFocus ="./IMS_Modules/VideoPodcast/image/podcast_list_focus.fsp"
+  forceFocusOnItem="yes"
+  sideColorLeft="33:69:107"
+  sideColorRight="33:69:107"
+  sideColorTop="33:69:107"
+  sideColorBottom="33:69:107"
+  backgroundColor="33:69:107"
+	
+	
+  sideLeftWidthPC= "0"
+  sideRightWidthPC="100"
+  sideTopHeightPC= "0"
+  sideBottomHeightPC= "0"
+
+
+  itemXPC = "17"
+  itemYPC = "20"
+  itemWidthPC = "74.8"
+  itemHeightPC = "9"
+
+  itemImageXPC = "7.8"
+  itemImageYPC = "20"
+  itemImageWidthPC = "7.0"
+  itemImageHeightPC = "8.6"
+  slidingItemText= "yes"
+  focusBorderColor="33:69:107"
+  unFocusBorderColor="33:69:107"
+  itemBackgroundColor="33:69:107"
+
+  capWidthPC = "0"
+  headerCapWidthPC="0"
+  headerWidthPC="0"
+
+  idleImageXPC="83.12"
+  idleImageYPC="89.58"
+  idleImageWidthPC="3.1"
+  idleImageHeightPC="5.5"
+
+  showHeader = "no"
+  showDefaultInfo = "no">
+
+      <idleImage> image/POPUP_LOADING_01.png </idleImage>
+      <idleImage> image/POPUP_LOADING_02.png </idleImage>
+      <idleImage> image/POPUP_LOADING_03.png </idleImage>
+      <idleImage> image/POPUP_LOADING_04.png </idleImage>
+      <idleImage> image/POPUP_LOADING_05.png </idleImage>
+      <idleImage> image/POPUP_LOADING_06.png </idleImage>
+      
+	<backgroundDisplay  name=podcast_episode_background>
+			<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100>
+				<script>
+					"./IMS_Modules/VideoPodcast/image/podcast_bg_16bit.fsp";
+				</script>
+			</image>
+	</backgroundDisplay>
+       
+
+    <image offsetXPC="35" offsetYPC="18" widthPC="30" heightPC="1.5" redraw="yes" useBackgroundSurface=yes>
+      <script>
+        index = getFocusItemIndex();
+        itemCount = getPageInfo("itemCount");
+        print("itemCount", itemCount);
+        print("focusIndex", index);
+        if (itemCount &lt; 5) {
+     	"null";
+        }
+        else {
+        if (index &gt; 2) {
+        "./IMS_Modules/VideoPodcast/image/arrow_up.png";
+        }else
+        {
+       "null";
+        }
+        }
+      </script>
+    </image>
+
+    <!-- bottom indicator -->
+    <image offsetXPC="35" offsetYPC="68" widthPC="30" heightPC="1.5" redraw="yes" useBackgroundSurface=yes>
+      <script>
+        index = getFocusItemIndex();
+        itemCount = getPageInfo("itemCount");
+        if (itemCount &lt; 5) {
+       null;
+        }
+        else {
+        if (index &gt; (itemCount-3))
+        {
+       		null;
+        }
+        else
+        {
+       		 "./IMS_Modules/VideoPodcast/image/arrow_down.png";
+        }
+        }
+      </script>
+    </image>  
+    
+	<text offsetXPC= "7.8"  offsetYPC= "74" widthPC="73" heightPC="11" fontSize="10" lines="4" backgroundColor="-1:-1:-1" foregroundColor="200:200:200" useBackgroundSurface=yes redraw=yes>
+      <script>
+      			desc = getStringArrayAt(pubDateArray , -1);
+      			desc = desc + "&#xA;";
+				desc = desc + getStringArrayAt(descriptionArray , -1);
+				desc;
+	  </script>
+    </text>
+    
+	<image offsetXPC= "84.5"  offsetYPC= "73" widthPC="8" heightPC="12" redraw="yes" useBackgroundSurface=yes>
+        <script>
+          thum = getStringArrayAt(picArray , -1);
+          thum;
+        </script>
+      </image>    
+       
+	<itemDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+			index1 = getQueryItemIndex();
+			index2 =getFocusItemIndex ();
+			if (index1 == index2)
+			{
+				if (getDrawingItemState() == "focus")
+				{
+					"./IMS_Modules/VideoPodcast/image/podcast_list_focus.png";
+				}
+				else
+				{
+					"./IMS_Modules/VideoPodcast/image/podcast_list_unfocus.png";
+				}
+			}
+			else
+			{
+				"./IMS_Modules/VideoPodcast/image/podcast_list_unfocus.png";
+			}
+			
+			</script>
+		</image>		
+		
+		<text offsetXPC=5 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor="-1:-1:-1"  fontSize=17>
+			<foregroundColor>
+				<script>
+					fgcolor = "249:249:237";
+					queryIndex = getQueryItemIndex();
+					focusIndex = getFocusItemIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "38:22:93";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				str =  getStringArrayAt(titleArray , -1);
+				str;
+			</script>
+			
+			<rolling>
+	        <script>
+	        if (getDrawingItemState() == "focus")
+	        {
+	              "yes";
+	        }
+	        else
+	        {
+	              "no";
+	        }
+	        </script>
+	        </rolling>
+
+		</text>
+			
+	</itemDisplay>	  
+      
+      <onUserInput>
+        currentUserInput = currentUserInput();
+        ret = "false";
+        
+        index = getFocusItemIndex();
+        print("focusindex:", index);
+        print("2 user input:",currentUserInput); 
+
+        if (currentUserInput == "right") {
+        ret = "true";
+        }
+        else if(currentUserInput == "return")
+        {
+        	ret = "false";
+        	print("video playback completed!!");
+        }
+        ret;
+      </onUserInput>
+
+    </mediaDisplay>
+
+  <item_template>
+    <media:thumbnail>
+      <script>
+        thum = getStringArrayAt(picArray , -1);
+        thum;
+      </script>
+    </media:thumbnail>
+
+    <onClick>
+     <script>
+     	link = null;
+        print("VideoOnClick");
+        path = getStoragePath("tmp");
+		path = path + "podcast_video.dat";
+		podUrl = getStringArrayAt(podcastURLArray , -1);		
+		print("link to :", podUrl);
+		writeStringToFile(path,podUrl);
+		link = "http://dmp.realtek.com/VideoPodcast2/scripts/podcast_videoplay.rss";    	
+     	link;
+     </script>
+    </onClick>
+  </item_template>
+
+    
+<channel>
+	<title>podcast list page</title>
+	<link>podcast_listpage.rss</link>
+    <media:thumbnail url="image/rss1.png" width="120" height="90" />
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+
+</rss>

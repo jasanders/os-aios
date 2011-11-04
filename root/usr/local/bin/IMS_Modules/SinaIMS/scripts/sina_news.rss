@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="GB2312"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay name=threePartsView
+	itemGap=0
+	sideRightWidthPC = 28 
+	sideBottomHeightPC = 0
+	idleImageWidthPC=3.1
+	idleImageHeightPC=5.5
+	rollItems=yes
+	selectMenuOnRight=no
+	itemPerPage=9
+	fontSize = 18
+	forceFocusOnItem=no
+	forceFocusOnMenu=yes
+	autoSelectMenu=yes
+	autoSelectItem=no
+
+	imageFocus = null
+	
+	sideTopHeightPC = 0
+	sideColorLeft=0:0:0 
+	sideColorRight=0:0:0 
+	sideColorTop=0:0:0
+	backgroundColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1 
+
+	focusBorderColor=0:0:0 
+	focusFontColor=255:255:0 
+
+	menuXPC = 5.5
+	menuYPC = 16
+	menuWidthPC = 13.55
+	menuHeightPC = 7.92
+	menuImageXPC = 3.6
+	menuImageYPC = 16
+	menuImageWidthPC = 0
+	menuImageHeightPC = 0
+
+	sideLeftWidthPC = 19
+
+	itemImageXPC = 24.5
+	itemImageYPC = 18
+	itemImageWidthPC = 0
+	itemImageHeightPC =0
+
+	itemXPC = 24.5
+	itemYPC = 18
+	itemWidthPC = 45
+	itemHeightPC = 7
+
+	capXPC = 70
+	capYPC = 0
+	capWidthPC = 0
+	capHeightPC = 0
+
+	infoYPC = 92
+
+	newsTextBgColor=0:0:0 
+	helpTextColor=0:255:0
+
+	showHeader="no"
+	showDefaultInfo="no"
+	showHelpInfo=no
+
+>
+
+<image redraw=yes offsetXPC=3 offsetYPC=91 widthPC=96.88 heightPC=5.97>
+<script>
+	"../image/bestv_info1.bmp";
+</script>
+</image>
+
+<image offsetXPC=39.37 offsetYPC=4.02 widthPC=21.01 heightPC=6.67>
+../image/sina_news_title.bmp
+</image>
+
+<image redraw=yes offsetXPC=71 offsetYPC=20 widthPC=1.6 heightPC=59>
+../image/sina_music_scrollingbar_bg.bmp
+</image>
+
+<image redraw=yes offsetXPC=11.6 offsetYPC=13.7 widthPC=1.72 heightPC=2.36>
+<script>
+index = getFocusMenuIndex();
+if (index == 0)
+    "../image/arrow_up_unfocus.bmp";
+else
+    "../image/arrow_up.bmp";
+</script>
+</image>
+
+<image redraw=yes offsetXPC=11.6 offsetYPC=79 widthPC=1.72 heightPC=2.36>
+<script>
+index = getFocusMenuIndex();
+if (index == (menuSize-1))
+    "../image/arrow_down_unfocus.bmp";
+else
+    "../image/arrow_down.bmp";
+</script>
+</image>
+
+<image redraw=yes offsetXPC=71 widthPC=1.6>
+<heightPC>
+<script>
+if (itemSize &gt; 0)
+{
+	unitH = 59/itemSize;
+}
+else
+{
+	"0";
+}
+</script>
+</heightPC>
+<offsetYPC>
+<script>
+focusIndex = getFocusItemIndex();
+if (itemSize &gt; 0)
+{
+	unitH = 59/itemSize;
+	offset = Add(20, focusIndex*unitH);
+}
+else
+{
+	"20";
+}
+</script>
+</offsetYPC>
+<script>
+"../image/sina_music_scrollingbar_focusbg.bmp";
+</script>
+</image>
+<image offsetXPC=79 offsetYPC=25 widthPC=16 heightPC=12>
+<script>
+	ADImageDisplay;
+</script>
+</image>
+<image offsetXPC=79 offsetYPC=50 widthPC=16 heightPC=12>
+<script>
+	sinaADImageDisplay;
+</script>
+</image>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+	<idleImage> image/POPUP_LOADING_07.png </idleImage>
+	<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+	<backgroundDisplay name=sina_news_bg>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+		if (drawBgImage == 1)
+		{
+			drawBgImage = 0;
+			"IMS_Modules/SinaIMS/image/sina_news_bg.bmp";
+		}
+		else
+		{
+			null;
+		}
+		</script>
+		</image>
+	</backgroundDisplay>
+	
+	<onUserInput>
+		input = currentUserInput();
+		print("Got user input: ", input);
+		pageInfo = getPageInfo("majorContext");
+		if (input == "setup" || input == "guide")
+		{
+			drawBgImage = 1;
+		}
+		ret = "false";
+	</onUserInput>
+
+	<menuDisplay>
+		<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+		index1 = getQueryMenuIndex();
+		index2 = getFocusMenuIndex();
+		if (index1 == index2)
+		{
+			if (getDrawingItemState() != "focus")
+			{
+				"./IMS_Modules/SinaIMS/image/sina_focus_bg.bmp";
+			}
+			else
+			{
+				"./IMS_Modules/SinaIMS/image/sina_focus_bg_dark.bmp";
+			}
+		}
+		else
+		{
+			null;
+		}
+		</script>
+		</image>
+		<text offsetXPC=0 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=17 align=center>
+		<script>
+		index = getQueryMenuIndex();
+		str = getStringArrayAt(menuTitleArray, index);
+		str;
+		</script>
+		</text>
+	</menuDisplay>
+
+	<itemDisplay>
+		<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			status = getDrawingItemState();
+			if (status == "focus")
+				"./IMS_Modules/SinaIMS/image/sina_news_focus_long_bg.bmp";
+			else
+				null;
+		</script>
+		</image>
+		<text offsetXPC=5 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=15>
+		<script>
+			getStringArrayAt(titleArray , -1);
+		</script>
+		</text>
+	</itemDisplay>
+
+<text redraw=yes offsetXPC=65 offsetYPC=80 widthPC=10 heightPC=5 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=14 useBackgroundSurface=yes>
+<script>
+focusIndex = getFocusItemIndex();
+focusIndex = Add(1, focusIndex);
+str = focusIndex + " / " + itemSize;
+str;
+</script>
+</text>
+
+</mediaDisplay>
+
+
+<bookmark> sina_news </bookmark>
+
+<script>
+	sinaNewsInit("http://news.sina.com.cn/hisense/news.xml");
+	news_url = "http://news.sina.com.cn/hisense/news.xml";
+	sports_url = "http://news.sina.com.cn/hisense/sports.xml";
+	finance_url = "http://news.sina.com.cn/hisense/finance.xml";
+	eladies_url = "http://news.sina.com.cn/hisense/eladies.xml";
+	health_url = "http://news.sina.com.cn/hisense/health.xml";
+	baby_url = "http://news.sina.com.cn/hisense/baby.xml";
+	ent_url = "http://news.sina.com.cn/hisense/ent.xml";	
+
+	menuUrlArray = null;
+	menuUrlArray = pushBackStringArray(menuUrlArray, news_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, sports_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, finance_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, eladies_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, health_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, baby_url);
+	menuUrlArray = pushBackStringArray(menuUrlArray, ent_url);
+
+	menuTitleArray = null;
+	menuTitleArray = pushBackStringArray(menuTitleArray, "新闻");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "体育");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "财经");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "时尚");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "健康");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "亲子");
+	menuTitleArray = pushBackStringArray(menuTitleArray, "娱乐");
+
+	menuSize = 7;
+	itemSize  = 0;
+
+	selectMenu(0);
+
+</script>
+
+<onEnter>
+	drawBgImage = 1;
+	ADImageUrlArray = null;
+	ADDurationArray = null;
+	ADSize = null;
+	ADUrl = "http://tv2.dnethome.net/nettv/adsource/hisense_adv_source.xml";
+
+	dlok = sina_loadXMLFile(ADUrl);
+
+	ADIndex = 0;
+	if (dlok != null)
+	{
+		ADSize = getXMLElementCount("advertisement", "ad_list","ad");
+		ADImageUrlArray = null;
+		ADDurationArray = null;
+		while (1 &amp;&amp; ADSize &gt; 0)
+		{
+			ADImageUrl = getXMLText("advertisement", "ad_list", "ad", ADIndex, "url");
+			ADDuration = getXMLAttribute("advertisement", "ad_list", "ad", ADIndex, "duration");
+
+			print("ADImageUrl= ", ADImageUrl);
+			print("ADDuration= ", ADDuration);
+
+			ADImageUrlArray = pushBackStringArray(ADImageUrlArray, ADImageUrl);
+			ADDurationArray = pushBackStringArray(ADDurationArray, ADDuration);
+
+			ADIndex = ADIndex + 1;
+			if (ADIndex == ADSize)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		print("download AD url fail: ", ADUrl);
+	}
+	ADImageDisplay = null;
+	ADImageTimeout = 0;
+	ADImageIndex = 0;
+	ADImageDisplay = getStringArrayAt(ADImageUrlArray, ADImageIndex);
+	ADImageTimeout = getStringArrayAt(ADDurationArray, ADImageIndex);
+	ADImageTrigger = 0;
+
+	sinaADImageUrlArray = null;
+	sinaADDurationArray = null;
+	sinaADSize = null;
+	sinaADUrl = "http://beta.v.sina.com.cn/sina_adv_source.xml";
+
+	dlok = sina_loadXMLFile(sinaADUrl);
+
+	sinaADIndex = 0;
+	if (dlok != null)
+	{
+		sinaADSize = getXMLElementCount("advertisement", "ad_list","ad");
+		sinaADImageUrlArray = null;
+		sinaADDurationArray = null;
+		while (1 &amp;&amp; sinaADSize &gt; 0)
+		{
+			sinaADImageUrl = getXMLText("advertisement", "ad_list", "ad", sinaADIndex, "url");
+			sinaADDuration = getXMLAttribute("advertisement", "ad_list", "ad", sinaADIndex, "duration");
+
+			print("sinaADImageUrl= ", sinaADImageUrl);
+			print("sinaADDuration= ", sinaADDuration);
+
+			sinaADImageUrlArray = pushBackStringArray(sinaADImageUrlArray, sinaADImageUrl);
+			sinaADDurationArray = pushBackStringArray(sinaADDurationArray, sinaADDuration);
+
+			sinaADIndex = sinaADIndex + 1;
+			if (sinaADIndex == sinaADSize)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		print("download sinaAD url fail: ", sinaADUrl);
+	}
+	sinaADImageDisplay = null;
+	sinaADImageTimeout = 0;
+	sinaADImageIndex = 0;
+	sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, sinaADImageIndex);
+	sinaADImageTimeout = getStringArrayAt(sinaADDurationArray, sinaADImageIndex);
+	sinaADImageTrigger = 0;
+
+	setRefreshTime(10000);
+</onEnter> 
+
+<onRefresh>
+	print("Response to refresh timer");
+	if(ADImageTimeout != 0)
+	{
+		ADImageTrigger = 10 + ADImageTrigger;
+	}
+	if(sinaADImageTimeout != 0)
+	{
+		sinaADImageTrigger = 10 + sinaADImageTrigger;
+	}
+
+	if(ADImageTimeout != 0 &amp;&amp; ((ADImageTrigger == ADImageTimeout) || (ADImageTrigger &gt; ADImageTimeout)))
+	{
+		ADImageUrlArray = null;
+		ADDurationArray = null;
+		ADSize = null;
+		ADUrl = "http://tv2.dnethome.net/nettv/adsource/hisense_adv_source.xml";
+
+		dlok = sina_loadXMLFile(ADUrl);
+
+		ADIndex = 0;
+		if (dlok != null)
+		{
+			ADSize = getXMLElementCount("advertisement", "ad_list","ad");
+			ADImageUrlArray = null;
+			ADDurationArray = null;
+			while (1 &amp;&amp; ADSize &gt; 0)
+			{
+				ADImageUrl = getXMLText("advertisement", "ad_list", "ad", ADIndex, "url");
+				ADDuration = getXMLAttribute("advertisement", "ad_list", "ad", ADIndex, "duration");
+
+				ADImageUrlArray = pushBackStringArray(ADImageUrlArray, ADImageUrl);
+				ADDurationArray = pushBackStringArray(ADDurationArray, ADDuration);
+
+				ADIndex = ADIndex + 1;
+				if (ADIndex == ADSize)
+				{
+					break;
+				}
+			}
+		}
+		else
+		{
+			print("download AD url fail: ", ADUrl);
+		}
+		ADImageDisplay = null;
+		ADImageTimeout = 0;
+		ADImageIndex = 1 + ADImageIndex;
+		if(ADImageIndex == ADSize)
+		{
+			ADImageIndex = 0;
+		}
+		ADImageDisplay = getStringArrayAt(ADImageUrlArray, ADImageIndex);
+		ADImageTimeout = getStringArrayAt(ADDurationArray, ADImageIndex);
+		ADImageTrigger = 0;
+		redrawDisplay("widget");
+	}
+
+	if(sinaADImageTimeout != 0 &amp;&amp; ((sinaADImageTrigger == sinaADImageTimeout) || (sinaADImageTrigger &gt; sinaADImageTimeout)))
+	{
+		sinaADImageUrlArray = null;
+		sinaADDurationArray = null;
+		sinaADSize = null;
+		sinaADUrl = "http://beta.v.sina.com.cn/sina_adv_source.xml";
+
+		dlok = sina_loadXMLFile(sinaADUrl);
+
+		sinaADIndex = 0;
+		sinaADImageDisplay = null;
+		sinaADImageTimeout = 0;
+		if (dlok != null)
+		{
+			sinaADSize = getXMLElementCount("advertisement", "ad_list","ad");
+			sinaADImageUrlArray = null;
+			sinaADDurationArray = null;
+			while (1 &amp;&amp; sinaADSize &gt; 0)
+			{
+				sinaADImageUrl = getXMLText("advertisement", "ad_list", "ad", sinaADIndex, "url");
+				sinaADDuration = getXMLAttribute("advertisement", "ad_list", "ad", sinaADIndex, "duration");
+
+				sinaADImageUrlArray = pushBackStringArray(sinaADImageUrlArray, sinaADImageUrl);
+				sinaADDurationArray = pushBackStringArray(sinaADDurationArray, sinaADDuration);
+
+				sinaADIndex = sinaADIndex + 1;
+				if (sinaADIndex == sinaADSize)
+				{
+					break;
+				}
+			}
+			sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, 0);
+			sinaDImageyTimeout = getStringArrayAt(sinaADDurationArray, 0);
+		}
+		else
+		{
+			print("download sinaAD url fail: ", sinaADUrl);
+		}
+		sinaADImageDisplay = null;
+		sinaADImageTimeout = 0;
+		sinaADImageIndex = 1 + sinaADImageIndex;
+		if(sinaADImageIndex == sinaADSize)
+		{
+			sinaADImageIndex = 0;
+		}
+		sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, sinaADImageIndex);
+		sinaADImageTimeout = getStringArrayAt(sinaADDurationArray, sinaADImageIndex);
+		sinaADImageTrigger = 0;
+		redrawDisplay("widget");
+	}
+	null;
+</onRefresh>
+
+<menu_template>
+	<onClick>
+	menuFocusIndex = getFocusMenuIndex();
+	titleArray = null;
+	url = getStringArrayAt(menuUrlArray , menuFocusIndex);
+	dlok = loadXMLFile(url);
+	if(dlok != null)
+	{
+		itemSize = getXMLElementCount("channel", "title");
+		if (itemSize &gt; 0)
+		{
+			index = 0;
+			while(1)
+			{
+				if(index == itemSize)
+				{
+					break;
+				}
+				str = getXMLText("channel", "title", index);
+				titleArray = pushBackStringArray(titleArray, str);
+				index = index + 1;
+			}
+			setItemFocus(0);
+			setFocusItemIndex(0);
+			redrawDisplay();
+		}
+		else
+		{
+			print("No item found!");
+		}
+	}
+	else
+	{
+		print("Get xml failed!", news_url);
+	}
+	null;
+	</onClick>
+</menu_template>
+
+<item_template>
+	<onClick>
+	fullnews = null;
+	itemIndex = getFocusItemIndex();
+	if(itemIndex != null)
+	{
+		path = getStoragePath("tmp") + "newsItemIndex.dat";
+		writeStringToFile(path, itemIndex);
+		"fullnews.rss";
+	}
+	else
+	{
+		null;
+	}
+	</onClick>
+</item_template>
+
+<channel>
+	<title>$[SINA_NEWS]</title>
+	<link>./sina_news.rss</link>
+	<media:thumbnail url="../image/sinanews.bmp" width="120" height="90" />
+	<itemSize>
+		<script>
+			itemSize;
+		</script>
+	</itemSize>
+	<menuSize>
+		<script>
+			menuSize;
+		</script>
+	</menuSize>
+</channel>
+
+<onExit>
+setRefreshTime(-1);
+print("exit new");
+</onExit>
+
+</rss>

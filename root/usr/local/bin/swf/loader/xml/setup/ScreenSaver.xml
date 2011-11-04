@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[SCREEN_SAVER_TIMING]" >
+				<submenu dialog="popupListDlg" type="$[SCREEN_SAVER_TIMING]" data_path="setup/ScreenSaverTime.xml" onSelect="setScreenSaverTiming"/>
+		</item>
+		<item label="$[SCREEN_SAVER_OPTION]" >
+				<submenu dialog="popupListDlg" type="$[SCREEN_SAVER_OPTION]" data_path="setup/ScreenSaverOption.xml" onSelect="setScreenSaverOption">
+					<next dialog="MiniFbw_LeafFolder" type="$[PHOTO_ALBUM]"/>
+				</submenu>				
+		</item>
+</menu>

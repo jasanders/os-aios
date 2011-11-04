@@ -1,0 +1,36 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>China</title>
+<link>./scripts/map/Australia/Australia.rss</link>
+<media:thumbnail url="image/weather.jpg" />
+<zoom>country</zoom>
+<Latitude>36.894451</Latitude>
+<Longitude>104.165649</Longitude>
+
+<item>
+<title>Gulf</title>
+<link>rss_file://./scripts/map/Australia/Gulf.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Milne Bay</title>
+<link>rss_file://./scripts/map/Australia/MilneBay.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Morobe</title>
+<link>rss_file://./scripts/map/Australia/Morobe.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>National Capital</title>
+<link>rss_file://./scripts/map/Australia/NationalCapital.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+</channel>
+</rss>

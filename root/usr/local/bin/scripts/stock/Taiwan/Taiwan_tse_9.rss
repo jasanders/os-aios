@@ -1,0 +1,44 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>玻璃類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>1802 台玻</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1802.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1802" />
+        </item>
+        <item>
+            <title>1805 凱聚</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1805.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1805" />
+        </item>
+        <item>
+            <title>1806 冠軍</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1806.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1806" />
+        </item>
+        <item>
+            <title>1809 中釉</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1809.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1809" />
+        </item>
+        <item>
+            <title>1810 和成</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1810.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1810" />
+        </item>
+    </channel>
+</rss>
+                

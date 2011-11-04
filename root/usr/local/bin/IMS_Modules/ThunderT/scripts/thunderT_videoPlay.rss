@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+	path = getStoragePath("tmp");
+	path = path + "thundervodplay.m3u";
+
+	content = path;
+	print("play ",content);
+
+	showLoading = 0;
+	showProgressBar = 0;
+
+</script>
+
+<onEnter>
+	Thunder_adjustSpeed("max");
+     setRefreshTime(100);
+     startVideo = 1;
+</onEnter>
+
+<onExit>
+      playItemURL(-1, 1);
+      setRefreshTime(-1);
+
+	  Thunder_vodUninit();
+</onExit>
+
+<onRefresh>
+      vidProgress = getPlaybackStatus();
+      bufProgress = Thunder_getCachedStreamDataSize(0, 262144);
+      playElapsed = getStringArrayAt(vidProgress, 0);
+      playStatus = getStringArrayAt(vidProgress, 3);
+      print("Video status !!!!", vidProgress);
+
+      if (startVideo == 1)
+	  {
+          print("I am moviePlayback onEnter !! startVideo: ", startVideo);
+          playItemURL(content, 0, "mediaDisplay", "previewWindow");
+          setRefreshTime(1000);
+          showLoading = 1;
+          startVideo = 0;
+          updatePlaybackProgress(bufProgress, "mediaDisplay", "progressBar");
+      }
+	  else
+	  {
+          if (playElapsed != 0)
+		  {
+              if (startVideo == 0)
+			  {
+                  updatePlaybackProgress("delete", "mediaDisplay", "progressBar");
+                  startVideo = 2;
+              }
+			  if (playStatus == 2)
+			  {
+				if (showProgressBar == 1 &amp;&amp; timeTick &lt; 10)
+				{
+					timeTick = Add(timeTick, 1);
+					print("...... thunder vod playing, update progress ......");
+					updatePlaybackProgress(vidProgress, "mediaDisplay", "progressBar");
+				}
+				else if (deleteProgressBar == 1)
+				{
+					print("...... delete progress bar ......");
+					updatePlaybackProgress("delete", "mediaDisplay", "progressBar");
+					deleteProgressBar = 0;
+				}
+				else if (timeTick &gt;= 10)
+				{
+					deleteProgressBar = 1;
+					showProgressBar = 0;
+					timeTick = 0;
+				}
+			  }
+          }
+		  else if (playStatus == 0)
+		  {
+              print("!!!!!! Video quit, return !!!!!!");
+              postMessage("return");
+          }
+          else
+		  {
+              print("...... no playing yet, update buffer progress ......", bufProgress);
+              updatePlaybackProgress(bufProgress, "mediaDisplay", "progressBar");
+          }
+       }
+</onRefresh>
+
+<mediaDisplay name=threePartsView >
+    <text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 fontSize=22 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+    </text>
+
+<previewWindow windowColor=0:0:0 offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+</previewWindow>
+
+<progressBar offsetXPC=0 offsetYPC=80 widthPC=100 heightPC=18.75>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+../image/fullscreen_bottom.fsp
+</image>
+<image offsetXPC=6 offsetYPC=12 widthPC=2.58 heightPC=20>
+<script>
+if (playStatus == 1)
+{
+	null;
+}
+else
+{
+	"../image/fullscreen_playicon.png";
+}
+</script>
+</image>
+
+
+<image offsetXPC=38 offsetYPC=59.12 widthPC=59.45 heightPC=31.66>
+../image/display_info.fsp
+</image>
+
+<text offsetXPC=10 offsetYPC=47.66 widthPC=50 heightPC=50 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=17>
+<script>
+playTitle;
+</script>
+</text>
+
+<image offsetXPC=19 offsetYPC=12.9 widthPC=62 heightPC=20>
+<script>
+"../image/fullscreen_bar_bg.png";
+</script>
+</image>
+<image offsetXPC=19 offsetYPC=12.9 heightPC=20>
+<widthPC>
+<script>
+vidProgress = getPlaybackStatus();
+playElapsed = getStringArrayAt(vidProgress, 0); 
+playStatus = getStringArrayAt(vidProgress, 3); 
+playTotal = getStringArrayAt(vidProgress, 1);
+if (playStatus == 1)
+{
+	playElapsed = getStringArrayAt(bufProgress, 0);
+	playTotal = getStringArrayAt(bufProgress, 1);
+}
+width = (playElapsed/playTotal*62);
+if (width &gt;= 62)
+{
+	width = 62;
+}
+width;
+</script>
+</widthPC>
+<script>
+"../image/fullscreen_bar_focus.fsp";
+</script>
+</image>
+
+<text widthPC=22 offsetXPC=7.6 offsetYPC=9 heightPC=30 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=11.2>
+<script>
+if (playStatus == 1)
+{
+	playElapsed = getStringArrayAt(bufProgress, 0);
+	playTotal = getStringArrayAt(bufProgress, 1);
+	ratio = playElapsed/playTotal*100;
+	"Buffering: " + Integer(ratio) + "%";
+}
+else
+{
+	null;
+}
+</script>
+</text>
+
+<bar offsetXPC=0 offsetYPC=0 widthPC=0 heightPC=0/>
+
+<currentTime offsetXPC=8.7 offsetYPC=9 heightPC=30 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=16.2>
+<widthPC>
+<script>
+if (playElapsed == 0 || playStatus == 1)
+{
+	"0";
+}
+else
+{
+	"10";
+}
+</script>
+</widthPC>
+</currentTime>
+
+<totalTime offsetXPC=85 offsetYPC=9 heightPC=30 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=16.2>
+<widthPC>
+<script>
+if (playElapsed == 0 || playStatus == 1)
+{
+	"0";
+}
+else
+{
+	"10";
+}
+</script>
+</widthPC>
+</totalTime>
+
+<destructor offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 Color=-1:-1:-1>
+</destructor>
+</progressBar>
+
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+print("Got input: ", input);
+if (input == "setup" || input == "guide")
+{
+    playItemURL(-1, 1);
+    setRefreshTime(-1);
+	postMessage("return");
+	if (input == "setup")
+		postMessage("setup");
+	else
+		postMessage("guide");
+	ret = "true";
+}
+else if (input == "video_stop")
+{
+	print("------ quick stop thunder vod ------");
+	Thunder_vodQuickStop();
+}
+else if (input == "left")
+{
+	ret = "true";
+}
+else if (input == "display")
+{
+	if (showProgressBar == 1)
+	{
+		showProgressBar = 0;
+		deleteProgressBar = 1;
+	}
+	else
+	{
+		showProgressBar = 1;
+	}
+	timeTick = 0;
+	ret = "true";
+}
+ret;
+</onUserInput>
+
+</mediaDisplay>
+
+<channel>
+	<title>Thunder</title>
+	<link>thunderT_videoPlay.rss</link>
+
+</channel>
+
+</rss>

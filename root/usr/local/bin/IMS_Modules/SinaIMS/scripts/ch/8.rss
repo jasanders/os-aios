@@ -1,0 +1,91 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "Weather_favorites.dat";
+	favoriteLocationArray = readStringFromFile(storagePath);
+</script>
+
+	<onUserInput>
+		userInput = currentUserInput();
+		print(userInput);
+	   if ("edit" == userInput){
+				LocationID = getItemInfo("title");
+				print("add ", LocationID, " to favorite");
+				favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+				writeStringToFile(storagePath, favoriteLocationArray);	
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+						postMessage("return");		
+								postMessage("return");	
+	   }
+	</onUserInput>
+	
+<item_template>
+       <onClick>
+	   
+						LocationID = getItemInfo("title");
+						print("add ", LocationID, " to favorite");
+						retstr = SetIMSParam("is_str_exist",favoriteLocationArray,LocationID);
+						if(retstr != "yes")
+						{
+							favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+							writeStringToFile(storagePath, favoriteLocationArray);	
+						}
+						else
+						{
+								msgBox("EXIST_INFO");
+						}	 
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+								postMessage("return");	
+										postMessage("return");	
+			}
+	    </onClick>
+</item_template>
+<channel>
+<title>浙江省</title>
+<link>./scripts/hisense/ch/8.rss</link>
+<!--<media:thumbnail url="image/weather.jpg"/>-->
+
+<item>
+<title>杭州</title>
+</item>
+<item>
+<title>宁波</title>
+</item>
+<item>
+<title>温州</title>
+</item>
+<item>
+<title>嘉兴</title>
+</item>
+<item>
+<title>湖州</title>
+</item>
+<item>
+<title>绍兴</title>
+</item>
+<item>
+<title>金华</title>
+</item>
+<item>
+<title>衢州</title>
+</item>
+<item>
+<title>舟山</title>
+</item>
+<item>
+<title>台州</title>
+</item>
+<item>
+<title>丽水</title>
+</item>
+
+</channel></rss>

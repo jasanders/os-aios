@@ -1,0 +1,3410 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> GTALK </bookmark>
+
+<onEnter>
+	setRefreshTime(400000);
+
+	
+	path = getStoragePath("tmp") + "gtalk_showoffline.dat";
+	ifshow= readStringFromFile(path);
+	if(ifshow==null)
+		showOffline="1";
+	else if(ifshow=="yes")
+		showOffline="1";
+	else
+		showOffline="0";
+	
+	print("-=-=-=-= Enter gtalk -=-=-=-=");
+
+
+	  xmlFile = gtalk_getUsers();
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		self_status=getXMLText("report","self","status");
+		self_display=getXMLText("report","self","display");
+		self_id=getXMLText("report","self","id");
+
+		self_show=getXMLText("report","self","show");
+		self_statusString=getXMLText("report","self","statusString");
+
+	 print("showOffline===",showOffline);
+
+		if(showOffline=="1")
+			{
+	 				rosterCount=getXMLElementCount("report","roster","item");
+					subCount=getXMLElementCount("report","subscription","jid");
+					friendCount=Add(rosterCount,subCount);
+					print("show offline friends--friendCount :: ",friendCount);
+						if (friendCount &gt; 0)
+						{
+							
+							
+							statusArray=null;
+							fileshareArray=null;
+							displayArray=null;
+							idArray=null;	
+							imageArray = null;
+							statusStringArray=null;
+							fileSharingArray=null;
+
+							newmsgArray=null;
+
+							subCount=getXMLElementCount("report","subscription","jid");
+							index = 0;
+							while (1)
+							{
+								if (index == subCount)
+									break;
+
+								display=getXMLText("report","subscription","jid",index);
+
+								status="invite you";
+
+								image = "../image/offline.fsp";
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray,"no");
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, display);					
+								imageArray = pushBackStringArray(imageArray, image);
+								statusStringArray=pushBackStringArray(statusStringArray," ");
+								fileSharingArray=pushBackStringArray(fileSharingArray,"no")
+
+								newmsgArray = pushBackStringArray(newmsgArray, "no");
+								
+			                               print("get invite friend status:",status,fileshare,display);
+
+								index = index + 1;
+							}
+						
+							
+							onlineFriendCount=getXMLElementCount("report","friend");
+							index = 0;
+							while (1)
+							{
+								if (index == onlineFriendCount)
+									break;
+
+								status=getXMLText("report","friend",index,"status");
+								if(status=="5") status="Available";
+								if(status=="4") status="busy";
+								if(status=="3") status="idle";
+								
+								fileshare=getXMLText("report","friend",index,"fileshare");
+								display=getXMLText("report","friend",index,"display");
+								id=getXMLText("report","friend",index,"id");
+								image = "../image/gtalker_default.jpg";
+								statusString=getXMLText("report","friend",index,"statusString");
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, id);					
+								imageArray = pushBackStringArray(imageArray, image);
+
+								fileCount=getXMLElementCount("report","file");
+								if(fileCount &gt; 0)
+									{
+									   fileIndex=0;
+									   while(1)
+									   	{
+									   	  if(fileIndex ==fileCount)
+									   	  	{
+									   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+											break;
+										  	}
+
+										  fileid=getXMLText("report","file",fileIndex,"id");
+
+										  if(fileid==id)
+										  	{
+										  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+											break;
+										  	}
+										  fileIndex=Add(fileIndex,1);
+
+
+									   	}
+
+
+									}else
+										{
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+										}
+								
+									
+								statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+								
+								msgjidCount=getXMLElementCount("report","message","jid");
+								if(msgjidCount &gt; 0)
+									{
+										msgjidIndex=0;
+										while(1)
+										{
+										    if(msgjidIndex==msgjidCount)
+										    	{
+			 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+												break;
+										    	}
+
+										    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+										     if(display==gtalk_getMsgJidName(msgjid))
+										     	{
+												newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+
+												gtalk_getCliMsgByJid(display);
+												pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+												if (pRet != null)
+												{ 
+												cliindex=0;
+												clicount=getXMLElementCount("report","cli:message");
+													if(clicount &gt; 0)
+														{
+														  while(1)
+															{
+															if(cliindex==clicount)
+																break;
+															climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+															ret=gtalk_addMsgToDb(display,self_display,gtalk_getCurrTime(),climsg);
+															
+															print("============climsg=",climsg);
+															cliindex=cliindex+1;
+														  	}
+														}
+
+
+												}
+												else{
+												print("************no climsg");
+
+												}
+												
+												break;
+											 }
+
+			   							    msgjidIndex=msgjidIndex+1;
+										}
+
+										
+									}
+								else
+									newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+								parseResult = gtalk_parseXMLFile(xmlFile);
+								
+			                               print("get 111friend status:",status,fileshare,display,id);
+
+								index = index + 1;
+							}
+
+							offlineFriendCount=Minus(friendCount,onlineFriendCount);
+							offlineFriendCount=Minus(offlineFriendCount,subCount);
+
+							index = 0;
+							while(1)
+							{
+								if (index == friendCount)
+									break;	
+
+								jid=getXMLText("report","roster","item",index,"jid");
+								subscription=getXMLText("report","roster","item",index,"subscription");
+								print("jid===========",jid);
+								onlineIndex=0;
+								while(1)
+									{
+										if (onlineIndex == onlineFriendCount)
+											break;
+
+										status=getXMLText("report","friend",onlineIndex,"status");
+										if(status=="5") status="Available";
+										if(status=="4") status="busy";
+										if(status=="3") status="idle";
+										
+										fileshare=getXMLText("report","friend",onlineIndex,"fileshare");
+										display=getXMLText("report","friend",onlineIndex,"display");
+										id=getXMLText("report","friend",onlineIndex,"id");
+										image = "../image/gtalker_default.jpg";
+
+										if(jid==display)
+											{
+											print("jid==display=============",display);
+												break;
+											}
+										
+
+										
+					                               print("get 222friend status:",status,fileshare,display,id);
+
+										onlineIndex = onlineIndex + 1;
+
+
+									}
+
+								if(onlineIndex == onlineFriendCount)
+									{
+										if(subscription=="none")
+											statusArray=pushBackStringArray(statusArray, "Invited");
+										else
+											statusArray=pushBackStringArray(statusArray, "Offline");
+										fileshareArray=pushBackStringArray(fileshareArray, "no");
+										displayArray=pushBackStringArray(displayArray, jid);
+										idArray=pushBackStringArray(idArray, id);					
+										imageArray = pushBackStringArray(imageArray, "../image/offline.fsp");									
+
+										statusStringArray=pushBackStringArray(statusStringArray," ");
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+
+
+										msgjidCount=getXMLElementCount("report","message","jid");
+										if(msgjidCount &gt; 0)
+											{
+												msgjidIndex=0;
+												while(1)
+												{
+												    if(msgjidIndex==msgjidCount)
+												    	{
+					 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+														break;
+												    	}
+
+												    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+												     if(jid==gtalk_getMsgJidName(msgjid))
+												     	
+													{
+		newmsgArray = pushBackStringArray(newmsgArray, "yes");
+
+															gtalk_getCliMsgByJid(jid);
+															pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+															if (pRet != null)
+															{ 
+															cliindex=0;
+															clicount=getXMLElementCount("report","cli:message");
+																if(clicount &gt; 0)
+																	{
+																	  while(1)
+																		{
+																		if(cliindex==clicount)
+																			break;
+																		climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+																		ret=gtalk_addMsgToDb(jid,self_display,gtalk_getCurrTime(),climsg);
+																		print("============climsg=",climsg);
+																		cliindex=cliindex+1;
+																	  	}
+																	}
+
+
+															}
+															else{
+															print("************no climsg");
+
+															}
+													 
+	
+														break;
+													 
+													}
+
+
+					   							    msgjidIndex=msgjidIndex+1;
+												
+												}
+
+
+												
+																						}else
+	
+												newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+										parseResult = gtalk_parseXMLFile(xmlFile);
+											}
+
+									
+								index=index+1;
+								
+							}
+							
+						}
+
+			}
+			else
+			{
+			onlinefriendCount=getXMLElementCount("report","friend");
+			subCount=getXMLElementCount("report","subscription","jid");
+			friendCount=Add(onlinefriendCount,subCount);
+			print("friendCount :: ",friendCount);
+			if (friendCount &gt; 0)
+			{
+
+				
+				statusArray=null;
+				fileshareArray=null;
+				displayArray=null;
+				idArray=null;	
+				imageArray = null;
+				statusString=null;
+				fileSharingArray=null;
+				
+				newmsgArray=null;
+
+				subCount=getXMLElementCount("report","subscription","jid");
+				index = 0;
+				while (1)
+				{
+					if (index == subCount)
+						break;
+
+					display=getXMLText("report","subscription","jid",index);
+
+					status="invite you";
+
+					image = "../image/offline.fsp";
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray,"no");
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, display);					
+					imageArray = pushBackStringArray(imageArray, image);
+					statusStringArray=pushBackStringArray(statusStringArray," ");
+					fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+					
+					newmsgArray = pushBackStringArray(newmsgArray, "no");
+					
+                               print("get invite friend status:",status,fileshare,display);
+
+					index = index + 1;
+				}
+			
+
+				onlinefriendCount=getXMLElementCount("report","friend");
+				index = 0;
+				while (1)
+				{
+					if (index == onlinefriendCount)
+						break;
+
+
+
+					status=getXMLText("report","friend",index,"status");
+					if(status=="5") status="Available";
+					if(status=="4") status="busy";
+					if(status=="3") status="idle";
+					
+					fileshare=getXMLText("report","friend",index,"fileshare");
+					display=getXMLText("report","friend",index,"display");
+					id=getXMLText("report","friend",index,"id");
+					image = "../image/gtalker_default.jpg";
+					statusString=getXMLText("report","friend",index,"statusString");
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, id);					
+					imageArray = pushBackStringArray(imageArray, image);
+					
+					fileCount=getXMLElementCount("report","file");
+					if(fileCount &gt; 0)
+						{
+						   fileIndex=0;
+						   while(1)
+						   	{
+						   	  if(fileIndex ==fileCount)
+						   	  	{
+						   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+								break;
+							  	}
+
+							  fileid=getXMLText("report","file",fileIndex,"id");
+
+							  if(fileid==id)
+							  	{
+							  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+								break;
+							  	}
+							  fileIndex=Add(fileIndex,1);
+
+
+						   	}
+
+
+						}else
+							{
+							fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+							}
+					
+					statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+					msgjidCount=getXMLElementCount("report","message","jid");
+					if(msgjidCount &gt; 0)
+						{
+							msgjidIndex=0;
+							while(1)
+							{
+							    if(msgjidIndex==msgjidCount)
+							    	{
+ 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+									break;
+							    	}
+
+							    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+							     if(display==gtalk_getMsgJidName(msgjid))
+							     	{
+									newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+									break;
+								 }
+
+   							    msgjidIndex=msgjidIndex+1;
+							}
+
+							
+						}
+					else
+						newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+					parseResult = gtalk_parseXMLFile(xmlFile);
+					
+                               print("get friend status:",status,fileshare,display,id);
+
+					index = index + 1;
+				}
+
+
+				setFocusItemIndex(0);
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No friend found !!!!!!");
+				setFocusItemIndex(0);
+				null;
+				}
+
+
+			}
+					
+		}
+
+	}
+	setFocusItemIndex(0);
+	redrawDisplay();
+	
+</onEnter>
+<onRefresh>
+  print("-=-=-=-= Enter gtalk -=-=-=-=");
+
+	path = getStoragePath("tmp") + "gtalk_showoffline.dat";
+	ifshow= readStringFromFile(path);
+	if(ifshow==null)
+		showOffline="1";
+	else if(ifshow=="yes")
+		showOffline="1";
+	else
+		showOffline="0";
+
+	  xmlFile = gtalk_getUsers();
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		self_status=getXMLText("report","self","status");
+		self_display=getXMLText("report","self","display");
+		self_id=getXMLText("report","self","id");
+
+		self_show=getXMLText("report","self","show");
+		self_statusString=getXMLText("report","self","statusString");
+
+	 print("showOffline===",showOffline);
+
+		if(showOffline=="1")
+			{
+	 				rosterCount=getXMLElementCount("report","roster","item");
+					subCount=getXMLElementCount("report","subscription","jid");
+					friendCount=Add(rosterCount,subCount);
+					print("show offline friends--friendCount :: ",friendCount);
+						if (friendCount &gt; 0)
+						{
+							
+							
+							statusArray=null;
+							fileshareArray=null;
+							displayArray=null;
+							idArray=null;	
+							imageArray = null;
+							statusStringArray=null;
+							fileSharingArray=null;
+
+							newmsgArray=null;
+
+							subCount=getXMLElementCount("report","subscription","jid");
+							index = 0;
+							while (1)
+							{
+								if (index == subCount)
+									break;
+
+								display=getXMLText("report","subscription","jid",index);
+
+								status="invite you";
+
+								image = "../image/offline.fsp";
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray,"no");
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, display);					
+								imageArray = pushBackStringArray(imageArray, image);
+								statusStringArray=pushBackStringArray(statusStringArray," ");
+								fileSharingArray=pushBackStringArray(fileSharingArray,"no")
+
+								newmsgArray = pushBackStringArray(newmsgArray, "no");
+								
+			                               print("get invite friend status:",status,fileshare,display);
+
+								index = index + 1;
+							}
+						
+							
+							onlineFriendCount=getXMLElementCount("report","friend");
+							index = 0;
+							while (1)
+							{
+								if (index == onlineFriendCount)
+									break;
+
+								status=getXMLText("report","friend",index,"status");
+								if(status=="5") status="Available";
+								if(status=="4") status="busy";
+								if(status=="3") status="idle";
+								
+								fileshare=getXMLText("report","friend",index,"fileshare");
+								display=getXMLText("report","friend",index,"display");
+								id=getXMLText("report","friend",index,"id");
+								image = "../image/gtalker_default.jpg";
+								statusString=getXMLText("report","friend",index,"statusString");
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, id);					
+								imageArray = pushBackStringArray(imageArray, image);
+
+								fileCount=getXMLElementCount("report","file");
+								if(fileCount &gt; 0)
+									{
+									   fileIndex=0;
+									   while(1)
+									   	{
+									   	  if(fileIndex ==fileCount)
+									   	  	{
+									   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+											break;
+										  	}
+
+										  fileid=getXMLText("report","file",fileIndex,"id");
+
+										  if(fileid==id)
+										  	{
+										  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+											break;
+										  	}
+										  fileIndex=Add(fileIndex,1);
+
+
+									   	}
+
+
+									}else
+										{
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+										}
+								
+									
+								statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+								
+								msgjidCount=getXMLElementCount("report","message","jid");
+								if(msgjidCount &gt; 0)
+									{
+										msgjidIndex=0;
+										while(1)
+										{
+										    if(msgjidIndex==msgjidCount)
+										    	{
+			 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+												break;
+										    	}
+
+										    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+										     if(display==gtalk_getMsgJidName(msgjid))
+										     	{
+												newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+
+												gtalk_getCliMsgByJid(display);
+												pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+												if (pRet != null)
+												{ 
+												cliindex=0;
+												clicount=getXMLElementCount("report","cli:message");
+													if(clicount &gt; 0)
+														{
+														  while(1)
+															{
+															if(cliindex==clicount)
+																break;
+															climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+															ret=gtalk_addMsgToDb(display,self_display,gtalk_getCurrTime(),climsg);
+															
+															print("============climsg=",climsg);
+															cliindex=cliindex+1;
+														  	}
+														}
+
+
+												}
+												else{
+												print("************no climsg");
+
+												}
+												
+												break;
+											 }
+
+			   							    msgjidIndex=msgjidIndex+1;
+										}
+
+										
+									}
+								else
+									newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+								parseResult = gtalk_parseXMLFile(xmlFile);
+								
+			                               print("get 111friend status:",status,fileshare,display,id);
+
+								index = index + 1;
+							}
+
+							offlineFriendCount=Minus(friendCount,onlineFriendCount);
+							offlineFriendCount=Minus(offlineFriendCount,subCount);
+
+							index = 0;
+							while(1)
+							{
+								if (index == friendCount)
+									break;	
+
+								jid=getXMLText("report","roster","item",index,"jid");
+								subscription=getXMLText("report","roster","item",index,"subscription");
+								print("jid===========",jid);
+								onlineIndex=0;
+								while(1)
+									{
+										if (onlineIndex == onlineFriendCount)
+											break;
+
+										status=getXMLText("report","friend",onlineIndex,"status");
+										if(status=="5") status="Available";
+										if(status=="4") status="busy";
+										if(status=="3") status="idle";
+										
+										fileshare=getXMLText("report","friend",onlineIndex,"fileshare");
+										display=getXMLText("report","friend",onlineIndex,"display");
+										id=getXMLText("report","friend",onlineIndex,"id");
+										image = "../image/gtalker_default.jpg";
+
+										if(jid==display)
+											{
+											print("jid==display=============",display);
+												break;
+											}
+										
+
+										
+					                               print("get 222friend status:",status,fileshare,display,id);
+
+										onlineIndex = onlineIndex + 1;
+
+
+									}
+
+								if(onlineIndex == onlineFriendCount)
+									{
+										if(subscription=="none")
+											statusArray=pushBackStringArray(statusArray, "Invited");
+										else
+											statusArray=pushBackStringArray(statusArray, "Offline");
+										fileshareArray=pushBackStringArray(fileshareArray, "no");
+										displayArray=pushBackStringArray(displayArray, jid);
+										idArray=pushBackStringArray(idArray, id);					
+										imageArray = pushBackStringArray(imageArray, "../image/offline.fsp");									
+
+										statusStringArray=pushBackStringArray(statusStringArray," ");
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+
+
+										msgjidCount=getXMLElementCount("report","message","jid");
+										if(msgjidCount &gt; 0)
+											{
+												msgjidIndex=0;
+												while(1)
+												{
+												    if(msgjidIndex==msgjidCount)
+												    	{
+					 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+														break;
+												    	}
+
+												    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+												     if(jid==gtalk_getMsgJidName(msgjid))
+												     	
+													{
+		newmsgArray = pushBackStringArray(newmsgArray, "yes");
+
+															gtalk_getCliMsgByJid(jid);
+															pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+															if (pRet != null)
+															{ 
+															cliindex=0;
+															clicount=getXMLElementCount("report","cli:message");
+																if(clicount &gt; 0)
+																	{
+																	  while(1)
+																		{
+																		if(cliindex==clicount)
+																			break;
+																		climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+																		ret=gtalk_addMsgToDb(jid,self_display,gtalk_getCurrTime(),climsg);
+																		print("============climsg=",climsg);
+																		cliindex=cliindex+1;
+																	  	}
+																	}
+
+
+															}
+															else{
+															print("************no climsg");
+
+															}
+													 
+	
+														break;
+													 
+													}
+
+
+					   							    msgjidIndex=msgjidIndex+1;
+												
+												}
+
+
+												
+																						}else
+	
+												newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+										parseResult = gtalk_parseXMLFile(xmlFile);
+											}
+
+									
+								index=index+1;
+								
+							}
+							
+						}
+
+			}
+			else
+			{
+			onlinefriendCount=getXMLElementCount("report","friend");
+			subCount=getXMLElementCount("report","subscription","jid");
+			friendCount=Add(onlinefriendCount,subCount);
+			print("friendCount :: ",friendCount);
+			if (friendCount &gt; 0)
+			{
+
+				
+				statusArray=null;
+				fileshareArray=null;
+				displayArray=null;
+				idArray=null;	
+				imageArray = null;
+				statusString=null;
+				fileSharingArray=null;
+				
+				newmsgArray=null;
+
+				subCount=getXMLElementCount("report","subscription","jid");
+				index = 0;
+				while (1)
+				{
+					if (index == subCount)
+						break;
+
+					display=getXMLText("report","subscription","jid",index);
+
+					status="invite you";
+
+					image = "../image/offline.fsp";
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray,"no");
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, display);					
+					imageArray = pushBackStringArray(imageArray, image);
+					statusStringArray=pushBackStringArray(statusStringArray," ");
+					fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+					
+					newmsgArray = pushBackStringArray(newmsgArray, "no");
+					
+                               print("get invite friend status:",status,fileshare,display);
+
+					index = index + 1;
+				}
+			
+
+				onlinefriendCount=getXMLElementCount("report","friend");
+				index = 0;
+				while (1)
+				{
+					if (index == onlinefriendCount)
+						break;
+
+
+
+					status=getXMLText("report","friend",index,"status");
+					if(status=="5") status="Available";
+					if(status=="4") status="busy";
+					if(status=="3") status="idle";
+					
+					fileshare=getXMLText("report","friend",index,"fileshare");
+					display=getXMLText("report","friend",index,"display");
+					id=getXMLText("report","friend",index,"id");
+					image = "../image/gtalker_default.jpg";
+					statusString=getXMLText("report","friend",index,"statusString");
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, id);					
+					imageArray = pushBackStringArray(imageArray, image);
+					
+					fileCount=getXMLElementCount("report","file");
+					if(fileCount &gt; 0)
+						{
+						   fileIndex=0;
+						   while(1)
+						   	{
+						   	  if(fileIndex ==fileCount)
+						   	  	{
+						   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+								break;
+							  	}
+
+							  fileid=getXMLText("report","file",fileIndex,"id");
+
+							  if(fileid==id)
+							  	{
+							  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+								break;
+							  	}
+							  fileIndex=Add(fileIndex,1);
+
+
+						   	}
+
+
+						}else
+							{
+							fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+							}
+					
+					statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+					msgjidCount=getXMLElementCount("report","message","jid");
+					if(msgjidCount &gt; 0)
+						{
+							msgjidIndex=0;
+							while(1)
+							{
+							    if(msgjidIndex==msgjidCount)
+							    	{
+ 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+									break;
+							    	}
+
+							    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+							     if(display==gtalk_getMsgJidName(msgjid))
+							     	{
+									newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+									break;
+								 }
+
+   							    msgjidIndex=msgjidIndex+1;
+							}
+
+							
+						}
+					else
+						newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+					parseResult = gtalk_parseXMLFile(xmlFile);
+					
+                               print("get friend status:",status,fileshare,display,id);
+
+					index = index + 1;
+				}
+
+
+				setFocusItemIndex(0);
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No friend found !!!!!!");
+				setFocusItemIndex(0);
+				null;
+				}
+
+
+			}
+					
+		}
+
+	}
+	setFocusItemIndex(0);
+	redrawDisplay();
+</onRefresh>
+
+<mediaDisplay name=threePartsView
+
+showHeader=no
+showDefaultInfo=no
+
+sideLeftWidthPC = 35
+sideRightWidthPC = 65
+
+imageFocus = "../image/gtalk_list_select_bar.fsp"
+
+imageLeftSide="../image/gtalk_leftbg_image.jpg"
+imageRightSide="../image/gtalk_rightbg_image.jpg"
+
+backgroundColor = 28:35:51
+
+menuXPC = 10
+menuYPC = 15
+menuWidthPC = 25
+menuHeightPC = 9.6
+menuPerPage=7
+selectMenuOnRight=no
+autoSelectMenu=no
+autoSelectItem=no
+
+
+forceFocusOnItem=yes
+
+itemImageXPC = 40
+itemImageYPC = 25
+
+
+itemXPC = 40
+itemYPC = 25
+itemWidthPC = 50
+itemHeightPC =10
+itemGap = 0
+itemBackgroundColor = 0:0:0
+sideColorLeft = 6:6:6
+
+capWidthPC = 0
+capHeightPC = 0
+
+slidingMenuText = yes
+slidingItemText = no
+rollMenu = yes
+
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+>
+
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[CONFIRM]";
+			message = "Sorry,Receive Dir not exist or not set";
+			btnSize = 1;
+			btnString = pushBackStringArray(btnString, "$[OK]");
+			
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+
+<miniPopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[STATUS]";
+			message = "GTALK IM STATUS";
+			btnSize = 0;
+
+			
+		</onEnter>
+	</mediaDisplay>
+</miniPopupDialog>
+
+
+<statpopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[SET STATUS]";
+
+			btnSize = 3;
+			btnString = pushBackStringArray(btnString, "$[Available]");
+			btnString = pushBackStringArray(btnString, "$[Busy]");
+			btnString = pushBackStringArray(btnString, "$[Idle]");
+		</onEnter>
+	</mediaDisplay>
+</statpopupDialog>
+
+
+<viewpopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[view options]";
+
+			btnSize = 3;
+			btnString = pushBackStringArray(btnString, "$[view recv dir]");
+			btnString = pushBackStringArray(btnString, "$[view save list]");
+			btnString = pushBackStringArray(btnString, "$[view share list]");
+		</onEnter>
+	</mediaDisplay>
+</viewpopupDialog>
+
+<deletepopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[CONFIRM]";
+			message = "Are you sure to remove selected friend?";
+			btnSize = 2;
+			btnString = pushBackStringArray(btnString, "$[YES]");
+			btnString = pushBackStringArray(btnString, "$[NO]");
+		</onEnter>
+	</mediaDisplay>
+</deletepopupDialog>
+
+<acceptpopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[CONFIRM]";
+			message = "This friend wants to add you as a friend .Do you accept ?";
+			btnSize = 2;
+			btnString = pushBackStringArray(btnString, "$[YES]");
+			btnString = pushBackStringArray(btnString, "$[NO]");
+		</onEnter>
+	</mediaDisplay>
+</acceptpopupDialog>
+
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_01.fsp </idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_02.fsp </idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_03.fsp </idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_04.fsp </idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_05.fsp </idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/gtalk_loading_06.fsp </idleImage>
+
+<image redraw=no offsetXPC=8 offsetYPC=3 widthPC=17 heightPC=10>
+../image/gtalk.jpg
+</image>
+
+<image redraw=no offsetXPC=25 offsetYPC=3.2 widthPC=69.5 heightPC=10>
+../image/12.fsp
+</image>
+
+<image redraw=no offsetXPC=40 offsetYPC=77 widthPC=50 heightPC=7>
+../image/jieshao.fsp
+</image>
+
+
+
+<image  offsetXPC=26 offsetYPC=4 widthPC=4 heightPC=4>
+<script>
+if(self_show=="Available")
+	self_status_image="../image/gtalk_available.fsp";
+if(self_show=="Busy")
+	self_status_image="../image/gtalk_busy.fsp";
+if(self_show=="Idle")
+	self_status_image="../image/gtalk_idle.fsp";
+
+self_status_image;
+
+</script>
+</image>
+
+
+<text offsetXPC="28" offsetYPC="0.5" widthPC="100" heightPC="10" fontSize=20 >
+<script>
+self_display;
+</script>
+</text>
+
+<text offsetXPC="28" offsetYPC="6" widthPC="100" heightPC="10" fontSize=15 >
+<script>
+self_statusString;
+</script>
+</text>
+
+<text offsetXPC=35 offsetYPC=14 widthPC=65 heightPC=15 fontSize=15 >
+Friends View:</text>
+
+
+<itemDisplay>
+<text offsetXPC=25 offsetYPC=0 widthPC=100 heightPC=50 fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+getStringArrayAt(displayArray , -1);
+</script>
+</text>
+<text redraw=yes offsetXPC=20 offsetYPC=50 widthPC=100 heightPC=50 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+status_str=getStringArrayAt(statusStringArray , -1);
+status_str;
+</script>
+</text>
+
+<image redraw=yes offsetXPC=5 offsetYPC=10 widthPC=15 heightPC=80>
+<script>
+	face = getStringArrayAt(imageArray, -1);
+	if(face == "")
+	{
+		face = "../image/gtalker_default.jpg";
+	}
+	face;
+</script>
+	
+</image>
+
+<image redraw=yes offsetXPC=22 offsetYPC=10 widthPC=5 heightPC=33>
+<script>
+	status_str=getStringArrayAt(statusArray , -1);
+	if(status_str == "Available")
+	{
+		face = "../image/available.fsp";
+	}else
+		if(status_str == "busy")
+	{
+		face = "../image/busy.fsp";
+	}else
+		if(status_str == "idle")
+	{
+		face = "../image/idle.fsp";
+	}else
+		if(status_str == "Offline")
+	{
+		face = "../image/offline1.fsp";
+	}else
+		if(status_str == "Invited")
+	{
+		face = "../image/question.fsp";
+	}else
+		if(status_str == "invite you")
+	{
+		face = "../image/question.fsp";
+	}else
+		face = "../image/offline1.fsp";		
+
+	face;
+</script>
+	
+</image>
+
+
+<image redraw=yes offsetXPC=86 offsetYPC=58 widthPC=5 heightPC=33>
+<script>
+	fileshare=getStringArrayAt(fileshareArray , -1);
+	if(fileshare == "yes")
+	{
+		face = "../image/file.fsp";
+	}else
+		face =null;		
+
+	face;
+</script>
+	
+</image>
+
+
+<image redraw=yes offsetXPC=79 offsetYPC=58 widthPC=6 heightPC=33>
+<script>
+	newmsg=getStringArrayAt(newmsgArray , -1);
+	if(newmsg == "yes")
+	{
+		face = "../image/newmsg.fsp";
+	}else
+		face =null;		
+
+	face;
+</script>
+	
+</image>
+
+<image redraw=yes offsetXPC=92 offsetYPC=58 widthPC=6 heightPC=33>
+<script>
+	sharing=getStringArrayAt(fileSharingArray , -1);
+	if(sharing == "yes")
+	{
+		face = "../image/sharingfile.fsp";
+	}else
+		face =null;		
+
+	face;
+</script>
+	
+</image>
+
+</itemDisplay>
+
+
+
+
+
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("Catch input: ", userInput);
+focusCtx = getPageInfo("majorContext");
+if (focusCtx == "items" &amp;&amp; userInput == "right")
+{
+	print("Ignore right key");
+	"true";
+}else
+if (focusCtx == "items" &amp;&amp; userInput == "edit")
+{
+  	 print("enter edit key,delet focus  friend !!!",getFocusItemIndex());
+
+	itemFocusIndex=getFocusItemIndex();
+	print("itemFocusIndex==",itemFocusIndex);
+	status=getStringArrayAt(statusArray,itemFocusIndex);
+	jid=getStringArrayAt(displayArray,itemFocusIndex);
+	print("FocusFriend status==",status);
+	
+ 	if(status!="invite you")
+ 		{
+		   rss = "./IMS_Modules/gtalk/scripts/popupDialog.rss";
+		   confirm = doModalRss(rss, "mediaDisplay", "deletepopupDialog", 0);
+   
+  		   if (confirm == "$[YES]")
+			  {
+				print("****enter  YES  ***********");
+				
+				ret=gtalk_rosterCmd("remove",jid);
+				print("gtalk_rosterCmd--remove-----ret=",ret);				
+
+				imArray=null;
+				imArray=pushBackStringArray(imArray, "roster");
+				imArray=pushBackStringArray(imArray, jid);
+				imArray=pushBackStringArray(imArray,"remove");
+									
+				path = getStoragePath("tmp") + "im_status.dat";
+				writeStringToFile(path, imArray);
+				PostMessage("im_status");
+				
+
+
+					
+				}  
+ 		}
+	       else
+		   	if(status=="invite you")
+			{
+
+			   rss = "./IMS_Modules/gtalk/scripts/popupDialog.rss";
+			   confirm = doModalRss(rss, "mediaDisplay", "acceptpopupDialog", 0);
+   
+	  		   if (confirm == "$[YES]")
+				  {
+					print("****enter  YES  ***********");
+					ret=gtalk_rosterCmd("accept",jid);
+					print("gtalk_rosterCmd--accept-----ret=",ret);
+
+					imArray=null;
+					imArray=pushBackStringArray(imArray, "roster");
+					imArray=pushBackStringArray(imArray, jid);
+					imArray=pushBackStringArray(imArray,"accept");
+										
+					path = getStoragePath("tmp") + "im_status.dat";
+					writeStringToFile(path, imArray);
+					
+					PostMessage("im_status");
+
+
+	  		   	  }else
+	  		   	   	if (confirm == "$[NO]")
+	  		   	   		{
+							print("****enter  NO  ***********");
+							ret=gtalk_rosterCmd("decline",jid);
+							print("gtalk_rosterCmd-decline------ret=",ret);
+
+							imArray=null;
+							imArray=pushBackStringArray(imArray, "roster");
+							imArray=pushBackStringArray(imArray,jid);
+							imArray=pushBackStringArray(imArray,"decline");
+												
+							path = getStoragePath("tmp") + "im_status.dat";
+							writeStringToFile(path, imArray);
+							
+							PostMessage("im_status");
+
+						}
+			   
+		   	}
+
+ 		
+   "true";
+
+}
+else if(userInput == "im_status")
+{
+	print("get im_status");
+
+	path = getStoragePath("tmp") + "im_status.dat";
+      im_status = readStringFromFile(path);
+
+	 friendid = getStringArrayAt(im_status, 1);
+	 changestat=getStringArrayAt(im_status, 2);
+	 print("im_status friendid===========",friendid);
+	 print("im_status changestat===========",changestat);
+
+	if(changestat=="3")  changestat="idle";
+	if(changestat=="4")  changestat="busy";
+	if(changestat=="5")  changestat="available";
+	if(changestat=="0")  changestat="offline";
+	if(changestat=="10")  changestat="invite you as a friend";
+
+	if(changestat=="decline")
+		imstatus_str="you have decline to add "+friendid+" as your friend!";
+	else
+		if(changestat=="accept")
+			imstatus_str="you have accept to add "+friendid+" as your friend!";	
+	else
+		if(changestat=="remove")
+			imstatus_str="you have remove  "+friendid+" from your friend list!";
+	else
+		if(changestat=="invite")
+			imstatus_str="you have invited  "+friendid+" as  your friend!";
+	else
+		imstatus_str=friendid+" changes to "+changestat;
+	
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+	print("-=-=-=-= Enter gtalk -=-=-=-=");
+
+	path = getStoragePath("tmp") + "gtalk_showoffline.dat";
+	ifshow= readStringFromFile(path);
+	if(ifshow==null)
+		showOffline="1";
+	else if(ifshow=="yes")
+		showOffline="1";
+	else
+		showOffline="0";
+
+	  xmlFile = gtalk_getUsers();
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		self_status=getXMLText("report","self","status");
+		self_display=getXMLText("report","self","display");
+		self_id=getXMLText("report","self","id");
+
+		self_show=getXMLText("report","self","show");
+		self_statusString=getXMLText("report","self","statusString");
+
+	 print("showOffline===",showOffline);
+
+		if(showOffline=="1")
+			{
+	 				rosterCount=getXMLElementCount("report","roster","item");
+					subCount=getXMLElementCount("report","subscription","jid");
+					friendCount=Add(rosterCount,subCount);
+					print("show offline friends--friendCount :: ",friendCount);
+						if (friendCount &gt; 0)
+						{
+							
+							
+							statusArray=null;
+							fileshareArray=null;
+							displayArray=null;
+							idArray=null;	
+							imageArray = null;
+							statusStringArray=null;
+							fileSharingArray=null;
+
+							newmsgArray=null;
+
+							subCount=getXMLElementCount("report","subscription","jid");
+							index = 0;
+							while (1)
+							{
+								if (index == subCount)
+									break;
+
+								display=getXMLText("report","subscription","jid",index);
+
+								status="invite you";
+
+								image = "../image/offline.fsp";
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray,"no");
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, display);					
+								imageArray = pushBackStringArray(imageArray, image);
+								statusStringArray=pushBackStringArray(statusStringArray," ");
+								fileSharingArray=pushBackStringArray(fileSharingArray,"no")
+
+								newmsgArray = pushBackStringArray(newmsgArray, "no");
+								
+			                               print("get invite friend status:",status,fileshare,display);
+
+								index = index + 1;
+							}
+						
+							
+							onlineFriendCount=getXMLElementCount("report","friend");
+							index = 0;
+							while (1)
+							{
+								if (index == onlineFriendCount)
+									break;
+
+								status=getXMLText("report","friend",index,"status");
+								if(status=="5") status="Available";
+								if(status=="4") status="busy";
+								if(status=="3") status="idle";
+								
+								fileshare=getXMLText("report","friend",index,"fileshare");
+								display=getXMLText("report","friend",index,"display");
+								id=getXMLText("report","friend",index,"id");
+								image = "../image/gtalker_default.jpg";
+								statusString=getXMLText("report","friend",index,"statusString");
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, id);					
+								imageArray = pushBackStringArray(imageArray, image);
+
+								fileCount=getXMLElementCount("report","file");
+								if(fileCount &gt; 0)
+									{
+									   fileIndex=0;
+									   while(1)
+									   	{
+									   	  if(fileIndex ==fileCount)
+									   	  	{
+									   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+											break;
+										  	}
+
+										  fileid=getXMLText("report","file",fileIndex,"id");
+
+										  if(fileid==id)
+										  	{
+										  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+											break;
+										  	}
+										  fileIndex=Add(fileIndex,1);
+
+
+									   	}
+
+
+									}else
+										{
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+										}
+								
+									
+								statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+								
+								msgjidCount=getXMLElementCount("report","message","jid");
+								if(msgjidCount &gt; 0)
+									{
+										msgjidIndex=0;
+										while(1)
+										{
+										    if(msgjidIndex==msgjidCount)
+										    	{
+			 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+												break;
+										    	}
+
+										    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+										     if(display==gtalk_getMsgJidName(msgjid))
+										     	{
+												newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+
+												gtalk_getCliMsgByJid(display);
+												pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+												if (pRet != null)
+												{ 
+												cliindex=0;
+												clicount=getXMLElementCount("report","cli:message");
+													if(clicount &gt; 0)
+														{
+														  while(1)
+															{
+															if(cliindex==clicount)
+																break;
+															climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+															ret=gtalk_addMsgToDb(display,self_display,gtalk_getCurrTime(),climsg);
+															
+															print("============climsg=",climsg);
+															cliindex=cliindex+1;
+														  	}
+														}
+
+
+												}
+												else{
+												print("************no climsg");
+
+												}
+												
+												break;
+											 }
+
+			   							    msgjidIndex=msgjidIndex+1;
+										}
+
+										
+									}
+								else
+									newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+								parseResult = gtalk_parseXMLFile(xmlFile);
+								
+			                               print("get 111friend status:",status,fileshare,display,id);
+
+								index = index + 1;
+							}
+
+							offlineFriendCount=Minus(friendCount,onlineFriendCount);
+							offlineFriendCount=Minus(offlineFriendCount,subCount);
+
+							index = 0;
+							while(1)
+							{
+								if (index == friendCount)
+									break;	
+
+								jid=getXMLText("report","roster","item",index,"jid");
+								subscription=getXMLText("report","roster","item",index,"subscription");
+								print("jid===========",jid);
+								onlineIndex=0;
+								while(1)
+									{
+										if (onlineIndex == onlineFriendCount)
+											break;
+
+										status=getXMLText("report","friend",onlineIndex,"status");
+										if(status=="5") status="Available";
+										if(status=="4") status="busy";
+										if(status=="3") status="idle";
+										
+										fileshare=getXMLText("report","friend",onlineIndex,"fileshare");
+										display=getXMLText("report","friend",onlineIndex,"display");
+										id=getXMLText("report","friend",onlineIndex,"id");
+										image = "../image/gtalker_default.jpg";
+
+										if(jid==display)
+											{
+											print("jid==display=============",display);
+												break;
+											}
+										
+
+										
+					                               print("get 222friend status:",status,fileshare,display,id);
+
+										onlineIndex = onlineIndex + 1;
+
+
+									}
+
+								if(onlineIndex == onlineFriendCount)
+									{
+										if(subscription=="none")
+											statusArray=pushBackStringArray(statusArray, "Invited");
+										else
+											statusArray=pushBackStringArray(statusArray, "Offline");
+										fileshareArray=pushBackStringArray(fileshareArray, "no");
+										displayArray=pushBackStringArray(displayArray, jid);
+										idArray=pushBackStringArray(idArray, id);					
+										imageArray = pushBackStringArray(imageArray, "../image/offline.fsp");									
+
+										statusStringArray=pushBackStringArray(statusStringArray," ");
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+
+
+										msgjidCount=getXMLElementCount("report","message","jid");
+										if(msgjidCount &gt; 0)
+											{
+												msgjidIndex=0;
+												while(1)
+												{
+												    if(msgjidIndex==msgjidCount)
+												    	{
+					 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+														break;
+												    	}
+
+												    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+												     if(jid==gtalk_getMsgJidName(msgjid))
+												     	
+													{
+		newmsgArray = pushBackStringArray(newmsgArray, "yes");
+
+															gtalk_getCliMsgByJid(jid);
+															pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+															if (pRet != null)
+															{ 
+															cliindex=0;
+															clicount=getXMLElementCount("report","cli:message");
+																if(clicount &gt; 0)
+																	{
+																	  while(1)
+																		{
+																		if(cliindex==clicount)
+																			break;
+																		climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+																		ret=gtalk_addMsgToDb(jid,self_display,gtalk_getCurrTime(),climsg);
+																		print("============climsg=",climsg);
+																		cliindex=cliindex+1;
+																	  	}
+																	}
+
+
+															}
+															else{
+															print("************no climsg");
+
+															}
+													 
+	
+														break;
+													 
+													}
+
+
+					   							    msgjidIndex=msgjidIndex+1;
+												
+												}
+
+
+												
+																						}else
+	
+												newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+										parseResult = gtalk_parseXMLFile(xmlFile);
+											}
+
+									
+								index=index+1;
+								
+							}
+							
+						}
+
+			}
+			else
+			{
+			onlinefriendCount=getXMLElementCount("report","friend");
+			subCount=getXMLElementCount("report","subscription","jid");
+			friendCount=Add(onlinefriendCount,subCount);
+			print("friendCount :: ",friendCount);
+			if (friendCount &gt; 0)
+			{
+
+				
+				statusArray=null;
+				fileshareArray=null;
+				displayArray=null;
+				idArray=null;	
+				imageArray = null;
+				statusString=null;
+				fileSharingArray=null;
+				
+				newmsgArray=null;
+
+				subCount=getXMLElementCount("report","subscription","jid");
+				index = 0;
+				while (1)
+				{
+					if (index == subCount)
+						break;
+
+					display=getXMLText("report","subscription","jid",index);
+
+					status="invite you";
+
+					image = "../image/offline.fsp";
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray,"no");
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, display);					
+					imageArray = pushBackStringArray(imageArray, image);
+					statusStringArray=pushBackStringArray(statusStringArray," ");
+					fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+					
+					newmsgArray = pushBackStringArray(newmsgArray, "no");
+					
+                               print("get invite friend status:",status,fileshare,display);
+
+					index = index + 1;
+				}
+			
+
+				onlinefriendCount=getXMLElementCount("report","friend");
+				index = 0;
+				while (1)
+				{
+					if (index == onlinefriendCount)
+						break;
+
+
+
+					status=getXMLText("report","friend",index,"status");
+					if(status=="5") status="Available";
+					if(status=="4") status="busy";
+					if(status=="3") status="idle";
+					
+					fileshare=getXMLText("report","friend",index,"fileshare");
+					display=getXMLText("report","friend",index,"display");
+					id=getXMLText("report","friend",index,"id");
+					image = "../image/gtalker_default.jpg";
+					statusString=getXMLText("report","friend",index,"statusString");
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, id);					
+					imageArray = pushBackStringArray(imageArray, image);
+					
+					fileCount=getXMLElementCount("report","file");
+					if(fileCount &gt; 0)
+						{
+						   fileIndex=0;
+						   while(1)
+						   	{
+						   	  if(fileIndex ==fileCount)
+						   	  	{
+						   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+								break;
+							  	}
+
+							  fileid=getXMLText("report","file",fileIndex,"id");
+
+							  if(fileid==id)
+							  	{
+							  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+								break;
+							  	}
+							  fileIndex=Add(fileIndex,1);
+
+
+						   	}
+
+
+						}else
+							{
+							fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+							}
+					
+					statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+					msgjidCount=getXMLElementCount("report","message","jid");
+					if(msgjidCount &gt; 0)
+						{
+							msgjidIndex=0;
+							while(1)
+							{
+							    if(msgjidIndex==msgjidCount)
+							    	{
+ 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+									break;
+							    	}
+
+							    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+							     if(display==gtalk_getMsgJidName(msgjid))
+							     	{
+									newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+									break;
+								 }
+
+   							    msgjidIndex=msgjidIndex+1;
+							}
+
+							
+						}
+					else
+						newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+					parseResult = gtalk_parseXMLFile(xmlFile);
+					
+                               print("get friend status:",status,fileshare,display,id);
+
+					index = index + 1;
+				}
+
+
+				setFocusItemIndex(0);
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No friend found !!!!!!");
+				setFocusItemIndex(0);
+				null;
+				}
+
+
+			}
+					
+		}
+
+	}
+	setFocusItemIndex(0);
+	redrawDisplay();
+	"true";
+}
+else if(userInput == "im_file_status")
+{
+	print("get im_file_status");
+	
+	path = getStoragePath("tmp") + "im_file_status.dat";
+      im_file_status = readStringFromFile(path);
+
+	 file_action = getStringArrayAt(im_file_status, 1);
+	 action_id=getStringArrayAt(im_file_status, 2);
+
+	 if(file_action=="start") 		imstatus_str="a file share receiving action has started, initiated by "+action_id;
+	 if(file_action=="cancelrcv") imstatus_str="a receiving fileshare has aborted, from "+action_id; 
+	 if(file_action=="cancelsnd") imstatus_str="a sending fileshare has aborted, to "+action_id;
+	 if(file_action=="donesnd") 	imstatus_str="a sending fileshare is done, to "+action_id;
+	 if(file_action=="donercv") 	
+	 	{
+
+		action_dir=getStringArrayAt(im_file_status, 3);
+	 	imstatus_str="a receiving fileshare is done ,saved in "+gtalk_getDiskString(action_dir);
+
+		print("1111111111-----ret=gtalk_addRecvToDb\n");
+		
+		action_time=gtalk_getRecvTime(action_dir);
+		print("action_time============",action_time);
+		ret=gtalk_addRecvToDb(action_id,action_dir,action_time);
+		print("222222222-----ret=gtalk_addRecvToDb\n");
+	 	}
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+
+
+
+
+
+
+
+
+	"true";
+}
+else if(userInput == "im_msg_txt")
+{
+	print("get im_msg_txt");
+	
+	path = getStoragePath("tmp") + "im_msg_txt.dat";
+      im_msg_txt = readStringFromFile(path);
+
+	 im_jid = getStringArrayAt(im_msg_txt, 1);
+	 
+	 im_msg=null;
+	 index=2;
+	 while(1)
+	 {
+		str=getStringArrayAt(im_msg_txt, index);
+		if(str==null)
+			break;
+		
+		index=Add(index,1);		
+
+		tmpstr=getStringArrayAt(im_msg_txt, index);
+		if(tmpstr==null)
+		{
+		im_msg=im_msg+str;
+		break;
+		}
+		else
+		{
+		print("str=========",str);
+		 im_msg=pushBackStringArray(im_msg,str);
+		 print("im_msg=========",im_msg);
+		}
+
+
+
+	 }
+
+	  
+	 print("==============im_msg=",im_msg);
+	 
+	imstatus_str="new msg (from "+im_jid+") --[ \""+im_msg+"\"]";
+		
+	 path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+
+	path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+      friendDisplay = readStringFromFile(path);
+	  
+	ret=gtalk_addMsgToDb(im_jid,self_display,gtalk_getCurrTime(),im_msg);
+	print("222222222-----ret=gtalk_addMsgToDb,time====",gtalk_getCurrTime());	
+
+
+	showMsgArray=null;
+	showMsgArray=pushBackStringArray(showMsgArray,gtalk_getShortName(im_jid)+"("+gtalk_getShortTime(gtalk_getCurrTime())+")"+": "+im_msg);
+	if(tmpShowMsgArray!=null)
+		showMsgArray=pushBackStringArray(showMsgArray,tmpShowMsgArray);
+	index=0;
+	tmpShowMsgArray=null;
+	while(1)
+		{
+		  str=getStringArrayAt(showMsgArray, index);
+		  if(str==null)
+		  	break;
+		  
+		tmpShowMsgArray=pushBackStringArray(tmpShowMsgArray,str);
+		  
+		index=Add(index,1);
+		
+		if(index &gt; 20)
+			break;
+		}
+	
+
+	gtalk_setMultiPageReachEnd("0");	
+
+	gtalk_getMsgFromDb();
+
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+	PostMessage("im_status");
+	
+	"true";
+}
+else
+	"false";
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+
+
+<submenu>
+<title> 
+<script>
+ "Change my status";
+</script>
+</title>
+
+
+<onClick>
+
+  
+  "gtalk_changestatus.rss";
+
+	
+</onClick>
+</submenu>
+
+
+<submenu>
+<title> 
+<script>
+"Options";
+</script>
+</title>
+
+
+<onClick>
+"gtalk_showoptions.rss";
+</onClick>
+
+</submenu>
+
+
+<submenu>
+<title> 
+<script>
+ "Buddy list";
+</script>
+</title>
+
+
+<onClick>
+
+"gtalk_buddylist.rss";
+</onClick>
+</submenu>
+
+
+<submenu>
+<title>Logout</title>
+<onClick>
+ result = googleServiceLogin("logout","gtalk");
+
+rss = "./IMS/Rebecca/scripts/menu.rss";
+
+</onClick>
+</submenu>
+
+<submenu>
+
+</submenu>
+
+<submenu>
+
+</submenu>
+
+<submenu>
+
+</submenu>
+
+
+<submenu>
+<title> 
+<script>
+  str=">> set status :"+self_show;
+</script>
+</title>
+
+
+<onClick>
+
+			 rss = "./IMS_Modules/gtalk/scripts/statpopDialog.rss";
+		   confirm = doModalRss(rss, "mediaDisplay", "statpopupDialog", 0);
+		   print("confirm-============",confirm);
+		   
+		   if(confirm=="$[Available]")
+		   	self_show="Available";
+		   if(confirm=="$[Busy]")
+		   	self_show="Busy";
+		   if(confirm=="$[Idle]")
+		   	self_show="Idle";
+		   
+		   	gtalk_setMyStatus(self_show,NULL);
+
+
+	redrawDisplay();
+</onClick>
+</submenu>
+
+
+
+<submenu>
+<title> 
+
+<script>
+str=">> set info :"+self_statusString;
+</script>
+
+
+</title>
+
+
+<onClick>
+		inputInfo = getInput("userName");
+		if (inputInfo != null)
+		{
+		   self_statusString = inputInfo;
+		 print("===========self_info====",self_statusString);
+		gtalk_setMyStatus(NULL,self_statusString);
+		redrawDisplay();
+		}
+
+
+</onClick>
+</submenu>
+
+<submenu>
+<title>
+<script>
+if(showOffline=="1")
+	ifshow="yes";
+else
+	ifshow="no";
+
+str=">show offline friends:"+ifshow;
+</script></title>
+<onClick>	
+
+	path = getStoragePath("tmp") + "gtalk_showoffline.dat";
+	ifshow= readStringFromFile(path);
+	if(ifshow==null)
+		showOffline="1";
+	else if(ifshow=="yes")
+		showOffline="1";
+	else
+		showOffline="0";
+
+  if(showOffline=="1") 
+  	{
+  	showOffline="0";
+	ifshow="no";
+
+	writeStringToFile(path,ifshow);
+  	}
+	else
+		{
+		showOffline="1";
+		ifshow="yes";
+		
+		writeStringToFile(path,ifshow);
+		}
+	  xmlFile = gtalk_getUsers();
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		self_status=getXMLText("report","self","status");
+		self_display=getXMLText("report","self","display");
+		self_id=getXMLText("report","self","id");
+
+		self_show=getXMLText("report","self","show");
+		self_statusString=getXMLText("report","self","statusString");
+
+	 print("showOffline===",showOffline);
+
+		if(showOffline=="1")
+			{
+	 				rosterCount=getXMLElementCount("report","roster","item");
+					subCount=getXMLElementCount("report","subscription","jid");
+					friendCount=Add(rosterCount,subCount);
+					print("show offline friends--friendCount :: ",friendCount);
+						if (friendCount &gt; 0)
+						{
+							
+							
+							statusArray=null;
+							fileshareArray=null;
+							displayArray=null;
+							idArray=null;	
+							imageArray = null;
+							statusStringArray=null;
+							fileSharingArray=null;
+
+							newmsgArray=null;
+
+							subCount=getXMLElementCount("report","subscription","jid");
+							index = 0;
+							while (1)
+							{
+								if (index == subCount)
+									break;
+
+								display=getXMLText("report","subscription","jid",index);
+
+								status="invite you";
+
+								image = "../image/offline.fsp";
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray,"no");
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, display);					
+								imageArray = pushBackStringArray(imageArray, image);
+								statusStringArray=pushBackStringArray(statusStringArray," ");
+								fileSharingArray=pushBackStringArray(fileSharingArray,"no")
+
+								newmsgArray = pushBackStringArray(newmsgArray, "no");
+								
+			                               print("get invite friend status:",status,fileshare,display);
+
+								index = index + 1;
+							}
+						
+							
+							onlineFriendCount=getXMLElementCount("report","friend");
+							index = 0;
+							while (1)
+							{
+								if (index == onlineFriendCount)
+									break;
+
+								status=getXMLText("report","friend",index,"status");
+								if(status=="5") status="Available";
+								if(status=="4") status="busy";
+								if(status=="3") status="idle";
+								
+								fileshare=getXMLText("report","friend",index,"fileshare");
+								display=getXMLText("report","friend",index,"display");
+								id=getXMLText("report","friend",index,"id");
+								image = "../image/gtalker_default.jpg";
+								statusString=getXMLText("report","friend",index,"statusString");
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, id);					
+								imageArray = pushBackStringArray(imageArray, image);
+
+								fileCount=getXMLElementCount("report","file");
+								if(fileCount &gt; 0)
+									{
+									   fileIndex=0;
+									   while(1)
+									   	{
+									   	  if(fileIndex ==fileCount)
+									   	  	{
+									   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+											break;
+										  	}
+
+										  fileid=getXMLText("report","file",fileIndex,"id");
+
+										  if(fileid==id)
+										  	{
+										  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+											break;
+										  	}
+										  fileIndex=Add(fileIndex,1);
+
+
+									   	}
+
+
+									}else
+										{
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+										}
+								
+									
+								statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+								
+								msgjidCount=getXMLElementCount("report","message","jid");
+								if(msgjidCount &gt; 0)
+									{
+										msgjidIndex=0;
+										while(1)
+										{
+										    if(msgjidIndex==msgjidCount)
+										    	{
+			 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+												break;
+										    	}
+
+										    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+										     if(display==gtalk_getMsgJidName(msgjid))
+										     	{
+												newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+
+												gtalk_getCliMsgByJid(display);
+												pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+												if (pRet != null)
+												{ 
+												cliindex=0;
+												clicount=getXMLElementCount("report","cli:message");
+													if(clicount &gt; 0)
+														{
+														  while(1)
+															{
+															if(cliindex==clicount)
+																break;
+															climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+															ret=gtalk_addMsgToDb(display,self_display,gtalk_getCurrTime(),climsg);
+															
+															print("============climsg=",climsg);
+															cliindex=cliindex+1;
+														  	}
+														}
+
+
+												}
+												else{
+												print("************no climsg");
+
+												}
+												
+												break;
+											 }
+
+			   							    msgjidIndex=msgjidIndex+1;
+										}
+
+										
+									}
+								else
+									newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+								parseResult = gtalk_parseXMLFile(xmlFile);
+								
+			                               print("get 111friend status:",status,fileshare,display,id);
+
+								index = index + 1;
+							}
+
+							offlineFriendCount=Minus(friendCount,onlineFriendCount);
+							offlineFriendCount=Minus(offlineFriendCount,subCount);
+
+							index = 0;
+							while(1)
+							{
+								if (index == friendCount)
+									break;	
+
+								jid=getXMLText("report","roster","item",index,"jid");
+								subscription=getXMLText("report","roster","item",index,"subscription");
+								print("jid===========",jid);
+								onlineIndex=0;
+								while(1)
+									{
+										if (onlineIndex == onlineFriendCount)
+											break;
+
+										status=getXMLText("report","friend",onlineIndex,"status");
+										if(status=="5") status="Available";
+										if(status=="4") status="busy";
+										if(status=="3") status="idle";
+										
+										fileshare=getXMLText("report","friend",onlineIndex,"fileshare");
+										display=getXMLText("report","friend",onlineIndex,"display");
+										id=getXMLText("report","friend",onlineIndex,"id");
+										image = "../image/gtalker_default.jpg";
+
+										if(jid==display)
+											{
+											print("jid==display=============",display);
+												break;
+											}
+										
+
+										
+					                               print("get 222friend status:",status,fileshare,display,id);
+
+										onlineIndex = onlineIndex + 1;
+
+
+									}
+
+								if(onlineIndex == onlineFriendCount)
+									{
+										if(subscription=="none")
+											statusArray=pushBackStringArray(statusArray, "Invited");
+										else
+											statusArray=pushBackStringArray(statusArray, "Offline");
+										fileshareArray=pushBackStringArray(fileshareArray, "no");
+										displayArray=pushBackStringArray(displayArray, jid);
+										idArray=pushBackStringArray(idArray, id);					
+										imageArray = pushBackStringArray(imageArray, "../image/offline.fsp");									
+
+										statusStringArray=pushBackStringArray(statusStringArray," ");
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+
+
+										msgjidCount=getXMLElementCount("report","message","jid");
+										if(msgjidCount &gt; 0)
+											{
+												msgjidIndex=0;
+												while(1)
+												{
+												    if(msgjidIndex==msgjidCount)
+												    	{
+					 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+														break;
+												    	}
+
+												    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+												     if(jid==gtalk_getMsgJidName(msgjid))
+												     	
+													{
+		newmsgArray = pushBackStringArray(newmsgArray, "yes");
+
+															gtalk_getCliMsgByJid(jid);
+															pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+															if (pRet != null)
+															{ 
+															cliindex=0;
+															clicount=getXMLElementCount("report","cli:message");
+																if(clicount &gt; 0)
+																	{
+																	  while(1)
+																		{
+																		if(cliindex==clicount)
+																			break;
+																		climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+																		ret=gtalk_addMsgToDb(jid,self_display,gtalk_getCurrTime(),climsg);
+																		print("============climsg=",climsg);
+																		cliindex=cliindex+1;
+																	  	}
+																	}
+
+
+															}
+															else{
+															print("************no climsg");
+
+															}
+													 
+	
+														break;
+													 
+													}
+
+
+					   							    msgjidIndex=msgjidIndex+1;
+												
+												}
+
+
+												
+																						}else
+	
+												newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+										parseResult = gtalk_parseXMLFile(xmlFile);
+											}
+
+									
+								index=index+1;
+								
+							}
+							
+						}
+
+			}
+			else
+			{
+			onlinefriendCount=getXMLElementCount("report","friend");
+			subCount=getXMLElementCount("report","subscription","jid");
+			friendCount=Add(onlinefriendCount,subCount);
+			print("friendCount :: ",friendCount);
+			if (friendCount &gt; 0)
+			{
+
+				
+				statusArray=null;
+				fileshareArray=null;
+				displayArray=null;
+				idArray=null;	
+				imageArray = null;
+				statusString=null;
+				fileSharingArray=null;
+				
+				newmsgArray=null;
+
+				subCount=getXMLElementCount("report","subscription","jid");
+				index = 0;
+				while (1)
+				{
+					if (index == subCount)
+						break;
+
+					display=getXMLText("report","subscription","jid",index);
+
+					status="invite you";
+
+					image = "../image/offline.fsp";
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray,"no");
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, display);					
+					imageArray = pushBackStringArray(imageArray, image);
+					statusStringArray=pushBackStringArray(statusStringArray," ");
+					fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+					
+					newmsgArray = pushBackStringArray(newmsgArray, "no");
+					
+                               print("get invite friend status:",status,fileshare,display);
+
+					index = index + 1;
+				}
+			
+
+				onlinefriendCount=getXMLElementCount("report","friend");
+				index = 0;
+				while (1)
+				{
+					if (index == onlinefriendCount)
+						break;
+
+
+
+					status=getXMLText("report","friend",index,"status");
+					if(status=="5") status="Available";
+					if(status=="4") status="busy";
+					if(status=="3") status="idle";
+					
+					fileshare=getXMLText("report","friend",index,"fileshare");
+					display=getXMLText("report","friend",index,"display");
+					id=getXMLText("report","friend",index,"id");
+					image = "../image/gtalker_default.jpg";
+					statusString=getXMLText("report","friend",index,"statusString");
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, id);					
+					imageArray = pushBackStringArray(imageArray, image);
+					
+					fileCount=getXMLElementCount("report","file");
+					if(fileCount &gt; 0)
+						{
+						   fileIndex=0;
+						   while(1)
+						   	{
+						   	  if(fileIndex ==fileCount)
+						   	  	{
+						   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+								break;
+							  	}
+
+							  fileid=getXMLText("report","file",fileIndex,"id");
+
+							  if(fileid==id)
+							  	{
+							  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+								break;
+							  	}
+							  fileIndex=Add(fileIndex,1);
+
+
+						   	}
+
+
+						}else
+							{
+							fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+							}
+					
+					statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+					msgjidCount=getXMLElementCount("report","message","jid");
+					if(msgjidCount &gt; 0)
+						{
+							msgjidIndex=0;
+							while(1)
+							{
+							    if(msgjidIndex==msgjidCount)
+							    	{
+ 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+									break;
+							    	}
+
+							    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+							     if(display==gtalk_getMsgJidName(msgjid))
+							     	{
+									newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+									break;
+								 }
+
+   							    msgjidIndex=msgjidIndex+1;
+							}
+
+							
+						}
+					else
+						newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+					parseResult = gtalk_parseXMLFile(xmlFile);
+					
+                               print("get friend status:",status,fileshare,display,id);
+
+					index = index + 1;
+				}
+
+
+				setFocusItemIndex(0);
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No friend found !!!!!!");
+				setFocusItemIndex(0);
+				null;
+				}
+
+
+			}
+					
+		}
+
+	}
+	setFocusItemIndex(0);
+	redrawDisplay();
+  null;
+</onClick>
+</submenu>
+
+<submenu>
+<title>>> set recv dir</title>
+<onClick>		
+  retString = doModalRss("./IMS_Modules/gtalk/scripts/gtalk_setdir.rss");
+  null;
+</onClick>
+</submenu>
+
+
+
+
+<submenu>
+<title>>> view savelist</title>
+<onClick>
+gtalk_getInfoFromDb();
+		"gtalk_savelist.rss";
+</onClick>			
+</submenu>
+
+<submenu>
+<title>>> view sharelist</title>
+<onClick>
+gtalk_getInfoFromDb();
+		"gtalk_sharelist.rss";
+</onClick>			
+</submenu>
+
+<submenu>
+<title>>> view recvdir</title>
+<onClick>
+	       saveDir=gtalk_getSaveDir();
+	if(saveDir!=null&amp;&amp;saveDir!="NODIR"&amp;&amp;saveDir!="fail")
+	{
+		path = getStoragePath("tmp");
+		path = path + "gtalk_savedir.dat";
+		writeStringToFile(path,saveDir);
+		
+		"gtalk_viewdir.rss";
+	}else
+	{
+		print("Save Dir is not set yet~");
+		
+		 rss = "./IMS_Modules/gtalk/scripts/popupDialog.rss";
+	   confirm = doModalRss(rss, "mediaDisplay", "popupDialog", 0);
+	   null;
+	}
+</onClick>			
+</submenu>
+
+<submenu>
+<title>>> Add new friend</title>
+<onClick>
+		inputInfo = getInput("userName");
+		if (inputInfo != null)
+		{
+		   addFriendName = inputInfo;
+		 print("===========add friend ====",addFriendName);
+
+		 jid=addFriendName+"@gmail.com";
+		 ret=gtalk_rosterCmd("invite",jid);
+		 print("===gtalk_rosterCmd===invite======ret==",ret);
+
+		imArray=null;
+		imArray=pushBackStringArray(imArray, "roster");
+		imArray=pushBackStringArray(imArray, jid);
+		imArray=pushBackStringArray(imArray,"invite");
+							
+		path = getStoragePath("tmp") + "im_status.dat";
+		writeStringToFile(path, imArray);
+		PostMessage("im_status");		 
+		
+		redrawDisplay();
+		}
+
+</onClick>
+</submenu>
+
+
+<submenu>
+<title> 
+<script>
+  str=">> View options";
+</script>
+</title>
+
+
+<onClick>
+			 rss = "./IMS_Modules/gtalk/scripts/gtalk_viewpage.rss";
+		   confirm = doModalRss(rss, "mediaDisplay", "viewpopupDialog", 0);
+		   print("confirm-============",confirm);
+		   
+		if(confirm=="$[view recv dir]")
+			{
+
+		   	       saveDir=gtalk_getSaveDir();
+				if(saveDir!=null&amp;&amp;saveDir!="NODIR"&amp;&amp;saveDir!="fail")
+				{
+					path = getStoragePath("tmp");
+					path = path + "gtalk_savedir.dat";
+					writeStringToFile(path,saveDir);
+					
+					doModalRss("./IMS_Modules/gtalk/scripts/gtalk_viewdir.rss");
+				}else
+				{
+					print("Save Dir is not set yet~");
+					
+					 rss = "./IMS_Modules/gtalk/scripts/popupDialog.rss";
+				   confirm = doModalRss(rss, "mediaDisplay", "popupDialog", 0);
+				   null;
+				}
+			}
+		else
+		if(confirm=="$[view save list]")
+			{
+			gtalk_getInfoFromDb();
+			doModalRss("./IMS_Modules/gtalk/scripts/gtalk_savelist.rss");
+			}
+		else
+		if(confirm=="$[view share list]")
+			"gtalk_sharelist.rss";
+		else
+			{
+			  null;
+			}
+</onClick>
+</submenu>
+
+
+<submenu>
+
+</submenu>
+
+<submenu>
+<title>---------->>Logout</title>
+<onClick>
+ result = googleServiceLogin("logout","gtalk");
+
+rss = "./IMS/Rebecca/scripts/menu.rss";
+
+</onClick>
+</submenu>
+
+
+
+<onExit>
+print("-=-=-=-= Exit from gtalk -=-=-=-=");
+
+</onExit>
+
+<script>
+
+	path = getStoragePath("tmp") + "gtalk_showoffline.dat";
+	ifshow= readStringFromFile(path);
+	if(ifshow==null)
+		showOffline="1";
+	else if(ifshow=="yes")
+		showOffline="1";
+	else
+		showOffline="0";
+
+
+
+	print("-=-=-=-= Enter gtalk -=-=-=-=");
+
+
+	  xmlFile = gtalk_getUsers();
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		self_status=getXMLText("report","self","status");
+		self_display=getXMLText("report","self","display");
+		self_id=getXMLText("report","self","id");
+
+		self_show=getXMLText("report","self","show");
+		self_statusString=getXMLText("report","self","statusString");
+
+	 print("showOffline===",showOffline);
+
+		if(showOffline=="1")
+			{
+	 				rosterCount=getXMLElementCount("report","roster","item");
+					subCount=getXMLElementCount("report","subscription","jid");
+					friendCount=Add(rosterCount,subCount);
+					print("show offline friends--friendCount :: ",friendCount);
+						if (friendCount &gt; 0)
+						{
+							
+							
+							statusArray=null;
+							fileshareArray=null;
+							displayArray=null;
+							idArray=null;	
+							imageArray = null;
+							statusStringArray=null;
+							fileSharingArray=null;
+
+							newmsgArray=null;
+
+							subCount=getXMLElementCount("report","subscription","jid");
+							index = 0;
+							while (1)
+							{
+								if (index == subCount)
+									break;
+
+								display=getXMLText("report","subscription","jid",index);
+
+								status="invite you";
+
+								image = "../image/offline.fsp";
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray,"no");
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, display);					
+								imageArray = pushBackStringArray(imageArray, image);
+								statusStringArray=pushBackStringArray(statusStringArray," ");
+								fileSharingArray=pushBackStringArray(fileSharingArray,"no")
+
+								newmsgArray = pushBackStringArray(newmsgArray, "no");
+								
+			                               print("get invite friend status:",status,fileshare,display);
+
+								index = index + 1;
+							}
+						
+							
+							onlineFriendCount=getXMLElementCount("report","friend");
+							index = 0;
+							while (1)
+							{
+								if (index == onlineFriendCount)
+									break;
+
+								status=getXMLText("report","friend",index,"status");
+								if(status=="5") status="Available";
+								if(status=="4") status="busy";
+								if(status=="3") status="idle";
+								
+								fileshare=getXMLText("report","friend",index,"fileshare");
+								display=getXMLText("report","friend",index,"display");
+								id=getXMLText("report","friend",index,"id");
+								image = "../image/gtalker_default.jpg";
+								statusString=getXMLText("report","friend",index,"statusString");
+				
+					
+								statusArray=pushBackStringArray(statusArray, status);
+								fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+								displayArray=pushBackStringArray(displayArray, display);
+								idArray=pushBackStringArray(idArray, id);					
+								imageArray = pushBackStringArray(imageArray, image);
+
+								fileCount=getXMLElementCount("report","file");
+								if(fileCount &gt; 0)
+									{
+									   fileIndex=0;
+									   while(1)
+									   	{
+									   	  if(fileIndex ==fileCount)
+									   	  	{
+									   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+											break;
+										  	}
+
+										  fileid=getXMLText("report","file",fileIndex,"id");
+
+										  if(fileid==id)
+										  	{
+										  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+											break;
+										  	}
+										  fileIndex=Add(fileIndex,1);
+
+
+									   	}
+
+
+									}else
+										{
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+										}
+								
+									
+								statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+								
+								msgjidCount=getXMLElementCount("report","message","jid");
+								if(msgjidCount &gt; 0)
+									{
+										msgjidIndex=0;
+										while(1)
+										{
+										    if(msgjidIndex==msgjidCount)
+										    	{
+			 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+												break;
+										    	}
+
+										    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+										     if(display==gtalk_getMsgJidName(msgjid))
+										     	{
+												newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+
+												gtalk_getCliMsgByJid(display);
+												pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+												if (pRet != null)
+												{ 
+												cliindex=0;
+												clicount=getXMLElementCount("report","cli:message");
+													if(clicount &gt; 0)
+														{
+														  while(1)
+															{
+															if(cliindex==clicount)
+																break;
+															climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+															ret=gtalk_addMsgToDb(display,self_display,gtalk_getCurrTime(),climsg);
+															
+															print("============climsg=",climsg);
+															cliindex=cliindex+1;
+														  	}
+														}
+
+
+												}
+												else{
+												print("************no climsg");
+
+												}
+												
+												break;
+											 }
+
+			   							    msgjidIndex=msgjidIndex+1;
+										}
+
+										
+									}
+								else
+									newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+								parseResult = gtalk_parseXMLFile(xmlFile);
+								
+			                               print("get 111friend status:",status,fileshare,display,id);
+
+								index = index + 1;
+							}
+
+							offlineFriendCount=Minus(friendCount,onlineFriendCount);
+							offlineFriendCount=Minus(offlineFriendCount,subCount);
+
+							index = 0;
+							while(1)
+							{
+								if (index == friendCount)
+									break;	
+
+								jid=getXMLText("report","roster","item",index,"jid");
+								subscription=getXMLText("report","roster","item",index,"subscription");
+								print("jid===========",jid);
+								onlineIndex=0;
+								while(1)
+									{
+										if (onlineIndex == onlineFriendCount)
+											break;
+
+										status=getXMLText("report","friend",onlineIndex,"status");
+										if(status=="5") status="Available";
+										if(status=="4") status="busy";
+										if(status=="3") status="idle";
+										
+										fileshare=getXMLText("report","friend",onlineIndex,"fileshare");
+										display=getXMLText("report","friend",onlineIndex,"display");
+										id=getXMLText("report","friend",onlineIndex,"id");
+										image = "../image/gtalker_default.jpg";
+
+										if(jid==display)
+											{
+											print("jid==display=============",display);
+												break;
+											}
+										
+
+										
+					                               print("get 222friend status:",status,fileshare,display,id);
+
+										onlineIndex = onlineIndex + 1;
+
+
+									}
+
+								if(onlineIndex == onlineFriendCount)
+									{
+										if(subscription=="none")
+											statusArray=pushBackStringArray(statusArray, "Invited");
+										else
+											statusArray=pushBackStringArray(statusArray, "Offline");
+										fileshareArray=pushBackStringArray(fileshareArray, "no");
+										displayArray=pushBackStringArray(displayArray, jid);
+										idArray=pushBackStringArray(idArray, id);					
+										imageArray = pushBackStringArray(imageArray, "../image/offline.fsp");									
+
+										statusStringArray=pushBackStringArray(statusStringArray," ");
+										fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+
+
+										msgjidCount=getXMLElementCount("report","message","jid");
+										if(msgjidCount &gt; 0)
+											{
+												msgjidIndex=0;
+												while(1)
+												{
+												    if(msgjidIndex==msgjidCount)
+												    	{
+					 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+														break;
+												    	}
+
+												    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+												     if(jid==gtalk_getMsgJidName(msgjid))
+												     	
+													{
+		newmsgArray = pushBackStringArray(newmsgArray, "yes");
+
+															gtalk_getCliMsgByJid(jid);
+															pRet = gtalk_parseXMLFile("/tmp/cached/gtalk_client_msg.xml");
+															if (pRet != null)
+															{ 
+															cliindex=0;
+															clicount=getXMLElementCount("report","cli:message");
+																if(clicount &gt; 0)
+																	{
+																	  while(1)
+																		{
+																		if(cliindex==clicount)
+																			break;
+																		climsg=getXMLText("report","cli:message",cliindex,"cli:body");
+																		ret=gtalk_addMsgToDb(jid,self_display,gtalk_getCurrTime(),climsg);
+																		print("============climsg=",climsg);
+																		cliindex=cliindex+1;
+																	  	}
+																	}
+
+
+															}
+															else{
+															print("************no climsg");
+
+															}
+													 
+	
+														break;
+													 
+													}
+
+
+					   							    msgjidIndex=msgjidIndex+1;
+												
+												}
+
+
+												
+																						}else
+	
+												newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+										parseResult = gtalk_parseXMLFile(xmlFile);
+											}
+
+									
+								index=index+1;
+								
+							}
+							
+						}
+
+			}
+			else
+			{
+			onlinefriendCount=getXMLElementCount("report","friend");
+			subCount=getXMLElementCount("report","subscription","jid");
+			friendCount=Add(onlinefriendCount,subCount);
+			print("friendCount :: ",friendCount);
+			if (friendCount &gt; 0)
+			{
+
+				
+				statusArray=null;
+				fileshareArray=null;
+				displayArray=null;
+				idArray=null;	
+				imageArray = null;
+				statusString=null;
+				fileSharingArray=null;
+				
+				newmsgArray=null;
+
+				subCount=getXMLElementCount("report","subscription","jid");
+				index = 0;
+				while (1)
+				{
+					if (index == subCount)
+						break;
+
+					display=getXMLText("report","subscription","jid",index);
+
+					status="invite you";
+
+					image = "../image/offline.fsp";
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray,"no");
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, display);					
+					imageArray = pushBackStringArray(imageArray, image);
+					statusStringArray=pushBackStringArray(statusStringArray," ");
+					fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+					
+					newmsgArray = pushBackStringArray(newmsgArray, "no");
+					
+                               print("get invite friend status:",status,fileshare,display);
+
+					index = index + 1;
+				}
+			
+
+				onlinefriendCount=getXMLElementCount("report","friend");
+				index = 0;
+				while (1)
+				{
+					if (index == onlinefriendCount)
+						break;
+
+
+
+					status=getXMLText("report","friend",index,"status");
+					if(status=="5") status="Available";
+					if(status=="4") status="busy";
+					if(status=="3") status="idle";
+					
+					fileshare=getXMLText("report","friend",index,"fileshare");
+					display=getXMLText("report","friend",index,"display");
+					id=getXMLText("report","friend",index,"id");
+					image = "../image/gtalker_default.jpg";
+					statusString=getXMLText("report","friend",index,"statusString");
+	
+		
+					statusArray=pushBackStringArray(statusArray, status);
+					fileshareArray=pushBackStringArray(fileshareArray, fileshare);
+					displayArray=pushBackStringArray(displayArray, display);
+					idArray=pushBackStringArray(idArray, id);					
+					imageArray = pushBackStringArray(imageArray, image);
+					
+					fileCount=getXMLElementCount("report","file");
+					if(fileCount &gt; 0)
+						{
+						   fileIndex=0;
+						   while(1)
+						   	{
+						   	  if(fileIndex ==fileCount)
+						   	  	{
+						   	  	fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+								break;
+							  	}
+
+							  fileid=getXMLText("report","file",fileIndex,"id");
+
+							  if(fileid==id)
+							  	{
+							  	fileSharingArray=pushBackStringArray(fileSharingArray,"yes");
+								break;
+							  	}
+							  fileIndex=Add(fileIndex,1);
+
+
+						   	}
+
+
+						}else
+							{
+							fileSharingArray=pushBackStringArray(fileSharingArray,"no");
+							}
+					
+					statusStringArray=pushBackStringArray(statusStringArray,statusString);
+
+					msgjidCount=getXMLElementCount("report","message","jid");
+					if(msgjidCount &gt; 0)
+						{
+							msgjidIndex=0;
+							while(1)
+							{
+							    if(msgjidIndex==msgjidCount)
+							    	{
+ 								    	newmsgArray = pushBackStringArray(newmsgArray, "no");
+									break;
+							    	}
+
+							    msgjid=getXMLText("report","message","jid",msgjidIndex);
+
+							     if(display==gtalk_getMsgJidName(msgjid))
+							     	{
+									newmsgArray = pushBackStringArray(newmsgArray, "yes");	
+									break;
+								 }
+
+   							    msgjidIndex=msgjidIndex+1;
+							}
+
+							
+						}
+					else
+						newmsgArray = pushBackStringArray(newmsgArray, "no");
+
+					parseResult = gtalk_parseXMLFile(xmlFile);
+					
+                               print("get friend status:",status,fileshare,display,id);
+
+					index = index + 1;
+				}
+
+
+				setFocusItemIndex(0);
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No friend found !!!!!!");
+				setFocusItemIndex(0);
+				null;
+				}
+
+
+			}
+					
+		}
+
+	}
+	setFocusItemIndex(0);
+	redrawDisplay();
+</script>
+
+
+<item_template>
+<displayTitle>
+<script>
+friendDisplay=getStringArrayAt(displayArray , -1);
+idDisplay=getStringArrayAt(idArray , -1);
+newmsg=getStringArrayAt(newmsgArray , -1);
+</script>
+</displayTitle>
+<onClick>
+path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+writeStringToFile(path, friendDisplay);
+path = getStoragePath("tmp") + "gtalk_to_friendid.dat";
+writeStringToFile(path, idDisplay);
+
+if(newmsg=="yes")
+	"gtalk_friend4.rss";
+else
+		"gtalk_friend.rss";
+</onClick>
+</item_template>
+
+
+<channel>
+<title>Gtalk Guide</title>
+<link>gtalk_guide.rss</link>
+
+
+<itemSize>
+<script>
+friendCount;
+</script>
+</itemSize>
+
+</channel>
+</rss>

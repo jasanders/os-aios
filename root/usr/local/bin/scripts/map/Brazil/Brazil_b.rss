@@ -1,0 +1,437 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_b.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Bage</title>
+<cur>BRXX0022</cur>
+<for>Bage</for>
+</item>
+
+<item>
+<title>Baixo Guandu</title>
+<cur>BRXX0494</cur>
+<for>Baixo Guandu</for>
+</item>
+
+<item>
+<title>Balsamo</title>
+<cur>BRXX0023</cur>
+<for>Balsamo</for>
+</item>
+
+<item>
+<title>Balsas</title>
+<cur>BRXX0024</cur>
+<for>Balsas</for>
+</item>
+
+<item>
+<title>Bambui</title>
+<cur>BRXX0359</cur>
+<for>Bambui</for>
+</item>
+
+<item>
+<title>Bandeirantes</title>
+<cur>BRXX0025</cur>
+<for>Bandeirantes</for>
+</item>
+
+<item>
+<title>Barbacena</title>
+<cur>BRXX0026</cur>
+<for>Barbacena</for>
+</item>
+
+<item>
+<title>Barcelos</title>
+<cur>BRXX0027</cur>
+<for>Barcelos</for>
+</item>
+
+<item>
+<title>Barra Mansa</title>
+<cur>BRXX0029</cur>
+<for>Barra Mansa</for>
+</item>
+
+<item>
+<title>Barra de Macae</title>
+<cur>BRXX0141</cur>
+<for>Barra de Macae</for>
+</item>
+
+<item>
+<title>Barra de Sao Francisco</title>
+<cur>BRXX0360</cur>
+<for>Barra de Sao Francisco</for>
+</item>
+
+<item>
+<title>Barra do Corda</title>
+<cur>BRXX0495</cur>
+<for>Barra do Corda</for>
+</item>
+
+<item>
+<title>Barra do Garcas</title>
+<cur>BRXX0028</cur>
+<for>Barra do Garcas</for>
+</item>
+
+<item>
+<title>Barra do Pirai</title>
+<cur>BRXX0361</cur>
+<for>Barra do Pirai</for>
+</item>
+
+<item>
+<title>Barreiras</title>
+<cur>BRXX0030</cur>
+<for>Barreiras</for>
+</item>
+
+<item>
+<title>Barretos</title>
+<cur>BRXX0496</cur>
+<for>Barretos</for>
+</item>
+
+<item>
+<title>Barueri</title>
+<cur>BRXX0497</cur>
+<for>Barueri</for>
+</item>
+
+<item>
+<title>Bauru</title>
+<cur>BRXX0031</cur>
+<for>Bauru</for>
+</item>
+
+<item>
+<title>Bebedouro</title>
+<cur>BRXX0498</cur>
+<for>Bebedouro</for>
+</item>
+
+<item>
+<title>Belem</title>
+<cur>BRXX0032</cur>
+<for>Belem</for>
+</item>
+
+<item>
+<title>Belford Roxo</title>
+<cur>BRXX0499</cur>
+<for>Belford Roxo</for>
+</item>
+
+<item>
+<title>Belo Horizonte</title>
+<cur>BRXX0033</cur>
+<for>Belo Horizonte</for>
+</item>
+
+<item>
+<title>Belo Monte</title>
+<cur>BRXX0500</cur>
+<for>Belo Monte</for>
+</item>
+
+<item>
+<title>Belterra</title>
+<cur>BRXX0501</cur>
+<for>Belterra</for>
+</item>
+
+<item>
+<title>Benjamin Constant</title>
+<cur>BRXX0502</cur>
+<for>Benjamin Constant</for>
+</item>
+
+<item>
+<title>Bento Goncalves</title>
+<cur>BRXX0034</cur>
+<for>Bento Goncalves</for>
+</item>
+
+<item>
+<title>Bertioga</title>
+<cur>BRXX0268</cur>
+<for>Bertioga</for>
+</item>
+
+<item>
+<title>Betim</title>
+<cur>BRXX0503</cur>
+<for>Betim</for>
+</item>
+
+<item>
+<title>Biguacu</title>
+<cur>BRXX0035</cur>
+<for>Biguacu</for>
+</item>
+
+<item>
+<title>Birigui</title>
+<cur>BRXX0036</cur>
+<for>Birigui</for>
+</item>
+
+<item>
+<title>Blumenau</title>
+<cur>BRXX0037</cur>
+<for>Blumenau</for>
+</item>
+
+<item>
+<title>Boa Esperanca</title>
+<cur>BRXX0362</cur>
+<for>Boa Esperanca</for>
+</item>
+
+<item>
+<title>Boa Vista</title>
+<cur>BRXX0038</cur>
+<for>Boa Vista</for>
+</item>
+
+<item>
+<title>Boca do Acre</title>
+<cur>BRXX0504</cur>
+<for>Boca do Acre</for>
+</item>
+
+<item>
+<title>Bocaiuva</title>
+<cur>BRXX0363</cur>
+<for>Bocaiuva</for>
+</item>
+
+<item>
+<title>Boituva</title>
+<cur>BRXX0505</cur>
+<for>Boituva</for>
+</item>
+
+<item>
+<title>Bom Despacho</title>
+<cur>BRXX0039</cur>
+<for>Bom Despacho</for>
+</item>
+
+<item>
+<title>Bom Jardim</title>
+<cur>BRXX0506</cur>
+<for>Bom Jardim</for>
+</item>
+
+<item>
+<title>Bom Jesus</title>
+<cur>BRXX0509</cur>
+<for>Bom Jesus</for>
+</item>
+
+<item>
+<title>Bom Jesus</title>
+<cur>BRXX0508</cur>
+<for>Bom Jesus</for>
+</item>
+
+<item>
+<title>Bom Jesus</title>
+<cur>BRXX1222</cur>
+<for>Bom Jesus</for>
+</item>
+
+<item>
+<title>Bom Jesus da Lapa</title>
+<cur>BRXX0040</cur>
+<for>Bom Jesus da Lapa</for>
+</item>
+
+<item>
+<title>Bom Jesus de Itabapoan</title>
+<cur>BRXX0695</cur>
+<for>Bom Jesus de Itabapoan</for>
+</item>
+
+<item>
+<title>Boraciia</title>
+<cur>BRXX0333</cur>
+<for>Boraciia</for>
+</item>
+
+<item>
+<title>Borba</title>
+<cur>BRXX0510</cur>
+<for>Borba</for>
+</item>
+
+<item>
+<title>Botelhos</title>
+<cur>BRXX0511</cur>
+<for>Botelhos</for>
+</item>
+
+<item>
+<title>Botucatu</title>
+<cur>BRXX0041</cur>
+<for>Botucatu</for>
+</item>
+
+<item>
+<title>Braganca Paulista</title>
+<cur>BRXX0042</cur>
+<for>Braganca Paulista</for>
+</item>
+
+<item>
+<title>Brasilia</title>
+<cur>BRXX0043</cur>
+<for>Brasilia</for>
+</item>
+
+<item>
+<title>Brasilia de Minas</title>
+<cur>BRXX0696</cur>
+<for>Brasilia de Minas</for>
+</item>
+
+<item>
+<title>Brotas</title>
+<cur>BRXX0512</cur>
+<for>Brotas</for>
+</item>
+
+<item>
+<title>Brusque</title>
+<cur>BRXX0044</cur>
+<for>Brusque</for>
+</item>
+
+<item>
+<title>Buri</title>
+<cur>BRXX0513</cur>
+<for>Buri</for>
+</item>
+
+<item>
+<title>Buritis</title>
+<cur>BRXX0514</cur>
+<for>Buritis</for>
+</item>
+
+<item>
+<title>Buritizeiro</title>
+<cur>BRXX0515</cur>
+<for>Buritizeiro</for>
+</item>
+
+<item>
+<title>Buzios</title>
+<cur>BRXX0269</cur>
+<for>Buzios</for>
+</item>
+</channel></rss>

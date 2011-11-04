@@ -1,0 +1,218 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Dafoe</title>
+<cur>CAXX0105</cur>
+<for>Dafoe</for>
+</item>
+
+<item>
+<title>Dalhousie</title>
+<cur>CAXX0106</cur>
+<for>Dalhousie</for>
+</item>
+
+<item>
+<title>Dartmouth</title>
+<cur>CAXX0107</cur>
+<for>Dartmouth</for>
+</item>
+
+<item>
+<title>Dauphin</title>
+<cur>CAXX0108</cur>
+<for>Dauphin</for>
+</item>
+
+<item>
+<title>Dawson</title>
+<cur>CAXX0109</cur>
+<for>Dawson</for>
+</item>
+
+<item>
+<title>Dawson Creek</title>
+<cur>CAXX0110</cur>
+<for>Dawson Creek</for>
+</item>
+
+<item>
+<title>Debert</title>
+<cur>CAXX0111</cur>
+<for>Debert</for>
+</item>
+
+<item>
+<title>Deer Lake</title>
+<cur>CAXX0112</cur>
+<for>Deer Lake</for>
+</item>
+
+<item>
+<title>Delhi</title>
+<cur>CAXX0113</cur>
+<for>Delhi</for>
+</item>
+
+<item>
+<title>Denfield</title>
+<cur>CAXX0114</cur>
+<for>Denfield</for>
+</item>
+
+<item>
+<title>Denholm</title>
+<cur>CAXX0115</cur>
+<for>Denholm</for>
+</item>
+
+<item>
+<title>Deroche</title>
+<cur>CAXX0116</cur>
+<for>Deroche</for>
+</item>
+
+<item>
+<title>Devon</title>
+<cur>CAXX0117</cur>
+<for>Devon</for>
+</item>
+
+<item>
+<title>Dieppe</title>
+<cur>CAXX0118</cur>
+<for>Dieppe</for>
+</item>
+
+<item>
+<title>Digges</title>
+<cur>CAXX0119</cur>
+<for>Digges</for>
+</item>
+
+<item>
+<title>Dominion</title>
+<cur>CAXX0120</cur>
+<for>Dominion</for>
+</item>
+
+<item>
+<title>Douglastown</title>
+<cur>CAXX0121</cur>
+<for>Douglastown</for>
+</item>
+
+<item>
+<title>Dundas</title>
+<cur>CAXX0122</cur>
+<for>Dundas</for>
+</item>
+
+<item>
+<title>Dunmore</title>
+<cur>CAXX0123</cur>
+<for>Dunmore</for>
+</item>
+
+</channel></rss>

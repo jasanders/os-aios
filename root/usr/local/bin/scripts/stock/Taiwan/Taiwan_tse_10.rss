@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>造紙類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>1902 台紙</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1902.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1902" />
+        </item>
+        <item>
+            <title>1903 士紙</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1903.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1903" />
+        </item>
+        <item>
+            <title>1904 正隆</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1904.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1904" />
+        </item>
+        <item>
+            <title>1905 華紙</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1905.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1905" />
+        </item>
+        <item>
+            <title>1906 寶隆</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1906.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1906" />
+        </item>
+        <item>
+            <title>1907 永豐餘</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1907.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1907" />
+        </item>
+        <item>
+            <title>1909 榮成</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1909.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1909" />
+        </item>
+    </channel>
+</rss>
+        

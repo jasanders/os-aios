@@ -1,0 +1,1025 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> youtube_personal </bookmark>
+<mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+          autoSelectMenu=no
+	      autoSelectItem=no
+		itemPerPage=5
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 12
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		
+		itemImageXPC = 35
+		itemImageYPC = 21
+		itemImageWidthPC = 10
+		itemImageHeightPC = 13
+		
+		itemXPC = 44.5
+		itemYPC = 22
+		itemWidthPC = 47.6
+		itemHeightPC = 11.5
+		itemBackgroundColor=28:35:51
+
+		showHeader=no
+		
+		>
+<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+
+</mediaDisplay>
+<channel>
+        <title> youtube login </title>
+        <link>./scripts/youtube_login.rss</link>
+
+<item>
+	<title>My Videos</title>
+	<link>http://gdata.youtube.com/feeds/api/users/default/uploads?v=2</link>
+  <mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+		autoSelectMenu=no
+		autoSelectItem=no
+		forceFocusOnItem=yes
+        selectMenuOnRight=no
+		
+		itemPerPage=4
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51 
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 8
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		menuImageXPC = 8
+		rollMenu=no
+
+		itemImageXPC = 35
+		itemImageYPC = 21
+		itemImageCapYPC = 10
+		itemImageWidthPC = 10
+		itemImageHeightPC = 13
+		itemXPC = 49
+		itemYPC = 19.5
+		itemWidthPC = 43
+		itemHeightPC = 15.5
+		itemBackgroundColor=28:35:51
+		
+		popupXPC=7.8
+		popupYPC=33.2
+		popupWidthPC=22.3
+		popupHeightPC=5.5
+		popupFontSize=13
+		popupBorderColor=28:35:51 
+		popupForegroundColor=255:255:255
+		popupBackgroundColor=28:35:51 
+
+        idleImageXPC=83.12
+        idleImageYPC=89.58
+        idleImageWidthPC=3.1
+        idleImageHeightPC=5.5
+		
+		showHeader=no
+  >
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+
+
+	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+  <!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+  <mediaDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:2:255>
+		<script_replace> 
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+</mediaDisplay>
+  <itemDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+		        /* this is ugly, startVideo is used to by infoDisplay, but needs to be initialized before getting into infoDisplay */
+		        startVideo = 1;
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+
+	<text offsetXPC=3 offsetYPC=67 widthPC=35 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("durationHHMMSS");
+			if (tmp!= null) {
+				tmp;
+			}
+			else {
+				"";	
+			}
+		</script_replace>
+	</text>
+
+	<text offsetXPC=37 offsetYPC=67 widthPC=38 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("viewcount");
+			if (tmp!= null) {
+				"viewed:" +  tmp;
+			}
+			else {
+				"";
+			}
+		</script_replace>
+	</text>
+
+  <text offsetXPC=75 offsetYPC=67 widthPC=25 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+
+</itemDisplay>
+
+<infoDisplay>
+
+  <onEnter>
+    setRefreshTime(250);
+    toggle = 0;
+  </onEnter>
+
+  <onRefresh>
+    if (startVideo == 1) {
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       setRefreshTime(1000);
+       startVideo = 0;
+    }
+    progress = getPlaybackStatus();
+    playStatus = getStringArrayAt(progress, 3);
+    if (playStatus == 0) {
+         /* video stopped! try to move onto the next youtube vid! */
+         totalItemCount = getPageInfo("itemCount");
+         totalItemCount = totalItemCount - 1;
+         currentFocus = getSelectedItemIndex();
+         if (currentFocus &lt; totalItemCount) {
+               setcurrentFocus = 1 + currentFocus;
+               setFocusItemIndex(setcurrentFocus);
+               startVideo = 1;
+               redrawDisplay();
+         }
+    }
+
+    updatePlaybackProgress(progress, "mediaDisplay", "infoDisplay", "progressBar");
+    null;
+  </onRefresh>
+
+  <onExit>
+    playItemURL(-1, 1);
+    setRefreshTime(-1);
+    startVideo = 1;
+  </onExit>
+
+  <text offsetXPC=60 offsetYPC=27 widthPC=32 heightPC=8 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=2>
+    <script_replace> 
+      getItemInfo("title");
+    </script_replace>
+  </text>
+<text offsetXPC=82 offsetYPC=35 widthPC=10 heightPC=4 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+<text offsetXPC=60 offsetYPC=35 widthPC=22 heightPC=4 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("pubDate");
+    </script_replace>
+  </text>
+
+  <text offsetXPC=60 offsetYPC=40 widthPC=32 heightPC=31 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=8>
+    <script_replace> 
+      getItemInfo("description");
+    </script_replace>
+  </text>
+
+
+  <text offsetXPC=34 offsetYPC=75 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		Copyright Infringement Notification
+  </text>
+  <text offsetXPC=34 offsetYPC=78 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		http://www.youtube.com/t/copyright_notice
+  </text>
+
+
+  <previewWindow windowColor=227:227:227 offsetXPC=34 offsetYPC=27 widthPC=25 heightPC=30>
+  </previewWindow>
+  
+  <progressBar backgroundColor=100:100:100, offsetXPC=34, offsetYPC=57, widthPC=25, heightPC=5>
+
+    <bar offsetXPC=5, offsetYPC=40, widthPC=60, heightPC=20, bufferColor=250:250:250, barColor=250:250:250, progressColor=30:100:10 />
+
+    <text offsetXPC=70 offsetYPC=0 widthPC=30 heightPC=100 fontSize=10 backgroundColor=100:100:100 foregroundColor=200:200:0>
+      <script_replace> 
+	       getItemInfo("durationHHMMSS");
+      </script_replace>
+    </text>
+
+  </progressBar>
+  	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+ 
+
+</infoDisplay>
+  <onUserInput>
+    ret = "false";
+    majorContext = getPageInfo("majorContext");
+    currentUserInput = currentUserInput();
+    print(majorContext, "  ", currentUserInput);
+    if (majorContext == "items") {
+        print("caught a input item!!!");
+
+        if (currentUserInput == "enter") {
+            if (getItemInfo("canPlay") == "true") {
+                postMessage("right");
+                ret = "true";
+            }
+        }
+    }
+    ret;
+  </onUserInput>
+
+</mediaDisplay>
+
+
+</item>
+
+<item>
+	<title>Favorites</title>
+	<link>http://gdata.youtube.com/feeds/api/users/default/favorites?v=2</link>
+  <mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+		autoSelectMenu=no
+		autoSelectItem=no
+		forceFocusOnItem=yes
+        selectMenuOnRight=no
+		
+		itemPerPage=4
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51 
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 8
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		menuImageXPC = 8
+		rollMenu=no
+
+		itemImageXPC = 35
+		itemImageYPC = 21
+		itemImageCapYPC = 10
+		itemImageWidthPC = 10
+		itemImageHeightPC = 13
+		itemXPC = 49
+		itemYPC = 19.5
+		itemWidthPC = 43
+		itemHeightPC = 15.5
+		itemBackgroundColor=28:35:51
+		
+		popupXPC=7.8
+		popupYPC=33.2
+		popupWidthPC=22.3
+		popupHeightPC=5.5
+		popupFontSize=13
+		popupBorderColor=28:35:51 
+		popupForegroundColor=255:255:255
+		popupBackgroundColor=28:35:51 
+
+        idleImageXPC=83.12
+        idleImageYPC=89.58
+        idleImageWidthPC=3.1
+        idleImageHeightPC=5.5
+		
+		showHeader=no
+  >
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+
+
+	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+  <!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+  <mediaDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:2:255>
+		<script_replace> 
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+</mediaDisplay>
+
+  <itemDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+
+	<text offsetXPC=3 offsetYPC=67 widthPC=35 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+		        /* this is ugly, startVideo is used to by infoDisplay, but needs to be initialized before getting into infoDisplay */
+		        startVideo = 1;
+			tmp = getItemInfo("durationHHMMSS");
+			if (tmp!= null) {
+				tmp;
+			}
+			else {
+				"";	
+			}
+		</script_replace>
+	</text>
+
+	<text offsetXPC=37 offsetYPC=67 widthPC=38 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("viewcount");
+			if (tmp!= null) {
+				"viewed:" +  tmp;
+			}
+			else {
+				"";
+			}
+		</script_replace>
+	</text>
+
+  <text offsetXPC=75 offsetYPC=67 widthPC=25 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+
+</itemDisplay>
+
+<infoDisplay>
+
+  <onEnter>
+    setRefreshTime(250);
+    toggle = 0;
+  </onEnter>
+
+  <onRefresh>
+    if (startVideo == 1) {
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       setRefreshTime(1000);
+       startVideo = 0;
+    }
+    progress = getPlaybackStatus();
+    playStatus = getStringArrayAt(progress, 3);
+    if (playStatus == 0) {
+         /* video stopped! try to move onto the next youtube vid! */
+         totalItemCount = getPageInfo("itemCount");
+         totalItemCount = totalItemCount - 1;
+         currentFocus = getSelectedItemIndex();
+         if (currentFocus &lt; totalItemCount) {
+               setcurrentFocus = 1 + currentFocus;
+               setFocusItemIndex(setcurrentFocus);
+               startVideo = 1;
+               redrawDisplay();
+         }
+    }
+
+    updatePlaybackProgress(progress, "mediaDisplay", "infoDisplay", "progressBar");
+    null;
+  </onRefresh>
+
+  <onExit>
+    playItemURL(-1, 1);
+    setRefreshTime(-1);
+    startVideo = 1;
+  </onExit>
+
+  <text offsetXPC=60 offsetYPC=27 widthPC=32 heightPC=8 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=2>
+    <script_replace> 
+      getItemInfo("title");
+    </script_replace>
+  </text>
+<text offsetXPC=82 offsetYPC=35 widthPC=10 heightPC=4 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+<text offsetXPC=60 offsetYPC=35 widthPC=22 heightPC=4 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("pubDate");
+    </script_replace>
+  </text>
+
+  <text offsetXPC=60 offsetYPC=40 widthPC=32 heightPC=31 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=8>
+    <script_replace> 
+      getItemInfo("description");
+    </script_replace>
+  </text>
+
+
+  <text offsetXPC=34 offsetYPC=75 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		Copyright Infringement Notification
+  </text>
+  <text offsetXPC=34 offsetYPC=78 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		http://www.youtube.com/t/copyright_notice
+  </text>
+
+
+  <previewWindow windowColor=227:227:227 offsetXPC=34 offsetYPC=27 widthPC=25 heightPC=30>
+  </previewWindow>
+  
+  <progressBar backgroundColor=100:100:100, offsetXPC=34, offsetYPC=54, widthPC=25, heightPC=5>
+
+    <bar offsetXPC=5, offsetYPC=20, widthPC=60, heightPC=60, barColor=250:250:250, progressColor=30:100:10 />
+
+    <text offsetXPC=70 offsetYPC=0 widthPC=30 heightPC=100 fontSize=10 backgroundColor=100:100:100 foregroundColor=200:200:0>
+      <script_replace> 
+	       getItemInfo("durationHHMMSS");
+      </script_replace>
+    </text>
+
+  </progressBar>
+  	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+ 
+
+</infoDisplay>
+
+  <onUserInput>
+    ret = "false";
+    majorContext = getPageInfo("majorContext");
+    currentUserInput = currentUserInput();
+    print(majorContext, "  ", currentUserInput);
+    if (majorContext == "items") {
+        print("caught a input item!!!");
+
+        if (currentUserInput == "enter") {
+            if (getItemInfo("canPlay") == "true") {
+                postMessage("right");
+                ret = "true";
+            }
+        }
+    }
+    ret;
+  </onUserInput>
+</mediaDisplay>
+</item>
+
+<item>
+	<title>Recommended</title>
+	<link>http://gdata.youtube.com/feeds/api/users/default/recommendations?v=2</link>
+  <mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+		autoSelectMenu=no
+		autoSelectItem=no
+		forceFocusOnItem=yes
+        selectMenuOnRight=no
+		
+		itemPerPage=4
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51 
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 8
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		menuImageXPC = 8
+		rollMenu=no
+
+		itemImageXPC = 35
+		itemImageYPC = 21
+		itemImageCapYPC = 10
+		itemImageWidthPC = 10
+		itemImageHeightPC = 13
+		itemXPC = 49
+		itemYPC = 19.5
+		itemWidthPC = 43
+		itemHeightPC = 15.5
+		itemBackgroundColor=28:35:51
+		
+		popupXPC=7.8
+		popupYPC=33.2
+		popupWidthPC=22.3
+		popupHeightPC=5.5
+		popupFontSize=13
+		popupBorderColor=28:35:51 
+		popupForegroundColor=255:255:255
+		popupBackgroundColor=28:35:51 
+
+        idleImageXPC=83.12
+        idleImageYPC=89.58
+        idleImageWidthPC=3.1
+        idleImageHeightPC=5.5
+		
+		showHeader=no
+  >
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+
+
+	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+  <!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+  <mediaDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:2:255>
+		<script_replace> 
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+</mediaDisplay>
+  <itemDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+		       /* this is ugly, startVideo is used to by infoDisplay, but needs to be initialized before getting into infoDisplay */
+		        startVideo = 1;
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+
+	<text offsetXPC=3 offsetYPC=67 widthPC=35 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("durationHHMMSS");
+			if (tmp!= null) {
+				tmp;
+			}
+			else {
+				"";	
+			}
+		</script_replace>
+	</text>
+
+	<text offsetXPC=37 offsetYPC=67 widthPC=38 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("viewcount");
+			if (tmp!= null) {
+				"viewed:" +  tmp;
+			}
+			else {
+				"";
+			}
+		</script_replace>
+	</text>
+
+  <text offsetXPC=75 offsetYPC=67 widthPC=25 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+
+</itemDisplay>
+
+<infoDisplay>
+
+  <onEnter>
+    setRefreshTime(250);
+    toggle = 0;
+  </onEnter>
+
+  <onRefresh>
+    if (startVideo == 1) {
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       setRefreshTime(1000);
+       startVideo = 0;
+    }
+    progress = getPlaybackStatus();
+    playStatus = getStringArrayAt(progress, 3);
+    if (playStatus == 0) {
+         /* video stopped! try to move onto the next youtube vid! */
+         totalItemCount = getPageInfo("itemCount");
+         totalItemCount = totalItemCount - 1;
+         currentFocus = getSelectedItemIndex();
+         if (currentFocus &lt; totalItemCount) {
+               setcurrentFocus = 1 + currentFocus;
+               setFocusItemIndex(setcurrentFocus);
+               startVideo = 1;
+               redrawDisplay();
+         }
+    }
+    updatePlaybackProgress(progress, "mediaDisplay", "infoDisplay", "progressBar");
+    null;
+  </onRefresh>
+
+  <onExit>
+    playItemURL(-1, 1);
+    setRefreshTime(-1);
+    startVideo = 1;
+  </onExit>
+
+  <text offsetXPC=60 offsetYPC=27 widthPC=32 heightPC=8 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=2>
+    <script_replace> 
+      getItemInfo("title");
+    </script_replace>
+  </text>
+<text offsetXPC=82 offsetYPC=35 widthPC=10 heightPC=4 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+<text offsetXPC=60 offsetYPC=35 widthPC=16 heightPC=4 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("pubDate");
+    </script_replace>
+  </text>
+
+  <text offsetXPC=60 offsetYPC=40 widthPC=32 heightPC=31 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=8>
+    <script_replace> 
+      getItemInfo("description");
+    </script_replace>
+  </text>
+
+
+  <text offsetXPC=34 offsetYPC=75 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		Copyright Infringement Notification
+  </text>
+  <text offsetXPC=34 offsetYPC=78 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		http://www.youtube.com/t/copyright_notice
+  </text>
+
+
+  <previewWindow windowColor=227:227:227 offsetXPC=34 offsetYPC=27 widthPC=25 heightPC=30>
+  </previewWindow>
+  
+  <progressBar backgroundColor=100:100:100, offsetXPC=34, offsetYPC=54, widthPC=25, heightPC=5>
+
+    <bar offsetXPC=5, offsetYPC=20, widthPC=60, heightPC=60, barColor=250:250:250, progressColor=30:100:10 />
+
+    <text offsetXPC=70 offsetYPC=0 widthPC=30 heightPC=100 fontSize=10 backgroundColor=100:100:100 foregroundColor=200:200:0>
+      <script_replace> 
+	       getItemInfo("durationHHMMSS");
+      </script_replace>
+    </text>
+
+  </progressBar>
+  	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+ 
+
+</infoDisplay>
+
+  <onUserInput>
+    ret = "false";
+    majorContext = getPageInfo("majorContext");
+    currentUserInput = currentUserInput();
+    print(majorContext, "  ", currentUserInput);
+    if (majorContext == "items") {
+        print("caught a input item!!!");
+
+        if (currentUserInput == "enter") {
+            if (getItemInfo("canPlay") == "true") {
+                postMessage("right");
+                ret = "true";
+            }
+        }
+    }
+    ret;
+  </onUserInput>
+
+</mediaDisplay>
+
+</item>
+
+
+
+
+
+
+
+
+
+
+
+<item>
+	<title>My Playlists</title>
+	<link>http://gdata.youtube.com/feeds/api/users/default/playlists?v=2</link>
+  <mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+		autoSelectMenu=no
+		autoSelectItem=no
+		forceFocusOnItem=yes
+        selectMenuOnRight=no
+		
+		itemPerPage=4
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51 
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 8
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		menuImageXPC = 8
+		rollMenu=no
+
+		itemImageXPC = 35
+		itemImageYPC = 21
+		itemImageCapYPC = 10
+		itemImageWidthPC = 10
+		itemImageHeightPC = 13
+		itemXPC = 49
+		itemYPC = 19.5
+		itemWidthPC = 43
+		itemHeightPC = 15.5
+		itemBackgroundColor=28:35:51
+		
+		popupXPC=7.8
+		popupYPC=33.2
+		popupWidthPC=22.3
+		popupHeightPC=5.5
+		popupFontSize=13
+		popupBorderColor=28:35:51 
+		popupForegroundColor=255:255:255
+		popupBackgroundColor=28:35:51 
+
+        idleImageXPC=83.12
+        idleImageYPC=89.58
+        idleImageWidthPC=3.1
+        idleImageHeightPC=5.5
+		
+		showHeader=no
+  >
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+
+
+	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+  <!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+  <mediaDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:2:255>
+		<script_replace> 
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+</mediaDisplay>
+  <itemDisplay>
+	<text offsetXPC=0.5 offsetYPC=0 widthPC=90 heightPC=30 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+		        /* this is ugly, startVideo is used to by infoDisplay, but needs to be initialized before getting into infoDisplay */
+		        startVideo = 1;
+			title = getItemInfo("title");			
+		</script_replace>
+	</text>
+
+	<text offsetXPC=3 offsetYPC=67 widthPC=35 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("durationHHMMSS");
+			if (tmp!= null) {
+				tmp;
+			}
+			else {
+				"";	
+			}
+		</script_replace>
+	</text>
+
+	<text offsetXPC=37 offsetYPC=67 widthPC=38 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script_replace> 
+			tmp = getItemInfo("viewcount");
+			if (tmp!= null) {
+				"viewed:" +  tmp;
+			}
+			else {
+				"";
+			}
+		</script_replace>
+	</text>
+
+  <text offsetXPC=75 offsetYPC=67 widthPC=25 heightPC=20 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+
+</itemDisplay>
+
+<infoDisplay>
+
+  <onEnter>
+    setRefreshTime(250);
+    toggle = 0;
+  </onEnter>
+
+  <onRefresh>
+    if (startVideo == 1) {
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       setRefreshTime(1000);
+       startVideo = 0;
+    }
+    progress = getPlaybackStatus();
+    playStatus = getStringArrayAt(progress, 3);
+    if (playStatus == 0) {
+         /* video stopped! try to move onto the next youtube vid! */
+         totalItemCount = getPageInfo("itemCount");
+         totalItemCount = totalItemCount - 1;
+         currentFocus = getSelectedItemIndex();
+         if (currentFocus &lt; totalItemCount) {
+               setcurrentFocus = 1 + currentFocus;
+               setFocusItemIndex(setcurrentFocus);
+               startVideo = 1;
+               redrawDisplay();
+         }
+    }
+    updatePlaybackProgress(progress, "mediaDisplay", "infoDisplay", "progressBar");
+    null;
+  </onRefresh>
+
+  <onExit>
+    playItemURL(-1, 1);
+    setRefreshTime(-1);
+    startVideo = 1;
+  </onExit>
+
+  <text offsetXPC=60 offsetYPC=27 widthPC=32 heightPC=8 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=2>
+    <script_replace> 
+      getItemInfo("title");
+    </script_replace>
+  </text>
+<text offsetXPC=82 offsetYPC=35 widthPC=10 heightPC=4 fontSize=12 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("rating");
+    </script_replace>
+  </text>
+<text offsetXPC=60 offsetYPC=35 widthPC=16 heightPC=4 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255>
+    <script_replace> 
+    	getItemInfo("pubDate");
+    </script_replace>
+  </text>
+
+  <text offsetXPC=60 offsetYPC=40 widthPC=32 heightPC=31 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255 lines=8>
+    <script_replace> 
+      getItemInfo("description");
+    </script_replace>
+  </text>
+
+
+  <text offsetXPC=34 offsetYPC=75 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		Copyright Infringement Notification
+  </text>
+  <text offsetXPC=34 offsetYPC=78 widthPC=35 heightPC=3 fontSize=10 backgroundColor=28:35:51 foregroundColor=255:255:255> 
+		http://www.youtube.com/t/copyright_notice
+  </text>
+
+
+  <previewWindow windowColor=227:227:227 offsetXPC=34 offsetYPC=27 widthPC=25 heightPC=30>
+  </previewWindow>
+  
+  <progressBar backgroundColor=100:100:100, offsetXPC=34, offsetYPC=54, widthPC=25, heightPC=5>
+
+    <bar offsetXPC=5, offsetYPC=20, widthPC=60, heightPC=60, barColor=250:250:250, progressColor=30:100:10 />
+
+    <text offsetXPC=70 offsetYPC=0 widthPC=30 heightPC=100 fontSize=10 backgroundColor=100:100:100 foregroundColor=200:200:0>
+      <script_replace> 
+	       getItemInfo("durationHHMMSS");
+      </script_replace>
+    </text>
+
+  </progressBar>
+  	<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+ 
+
+</infoDisplay>
+
+  <onUserInput>
+    ret = "false";
+    majorContext = getPageInfo("majorContext");
+    currentUserInput = currentUserInput();
+    print(majorContext, "  ", currentUserInput);
+    if (majorContext == "items") {
+        print("caught a input item!!!");
+
+        if (currentUserInput == "enter") {
+            if (getItemInfo("canPlay") == "true") {
+                postMessage("right");
+                ret = "true";
+            }
+        }
+    }
+    ret;
+  </onUserInput>
+</mediaDisplay>
+
+
+</item>
+
+
+
+
+
+
+<item>
+	<title>Log out</title>
+	<onClick>
+		googleServiceLogin("logout", "youtube", "me");
+		postMessage("return");
+		null;
+	</onClick>
+
+</item>
+
+</channel>
+</rss>

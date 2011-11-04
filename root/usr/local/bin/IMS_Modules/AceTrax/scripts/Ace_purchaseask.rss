@@ -1,0 +1,312 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>purchase ask</bookmark>
+
+
+
+<mediaDisplay
+		name=photoView
+	viewAreaXPC=32.81
+	viewAreaYPC=24.31
+	viewAreaWidthPC=35.78
+	viewAreaHeightPC=53.75
+	showDefaultInfo=no
+	drawItemBorder=no
+	autoSelectMenu=no
+	autoSelectItem=no
+	showHeader=no
+	centerXPC=25.57
+	centerYPC=40.23
+	itemPerPage = 4
+	fontSize = 18
+
+	itemXPC = 25.57
+	itemYPC = 40.23
+	itemWidthPC = 48.42
+	itemHeightPC = 11.82
+	itemGapYPC = 1.36
+	rowCount=4
+	columnCount=1
+
+	itemBackgroundColor = -1:-1:-1
+
+	verticalMenu=no
+	menuColumnCount=4
+	menuOffsetYPC = 21.59
+	menuGapXPC = 3
+	menuItemHeightPC = 8.01
+	menuItemWidthPC = 9.17
+	menuBorderColor = -1:-1:-1
+	menuFontColor = 250:250:250
+	drawMenuText=no
+	idleImageXPC=0
+	idleImageYPC=85.56
+	idleImageWidthPC=100
+	idleImageHeightPC=14.44
+	>
+<menuOffsetXPC>
+<script>
+	languagelist = getEnv("movieLanguage");
+	index = 0;
+	menuImageFocusArray = null;
+	menuImageSelectedArray = null;
+	menuImageUnfocusArray = null;
+	while (1) 
+	{
+		lang = getStringArrayAt(languagelist, index);
+		if (lang != null)
+		{   
+			if(lang == "English"){
+				menuImageFocusArray = pushBackStringArray(menuImageFocusArray, "../image/United_Kingdom_focus.fsp");
+				menuImageSelectedArray = pushBackStringArray(menuImageSelectedArray, "../image/United_Kingdom_selected.fsp");
+				menuImageUnfocusArray = pushBackStringArray(menuImageUnfocusArray, "../image/United_Kingdom_unfocus.fsp");
+			}
+			else if((lang == "France")||(lang == "French")){
+				menuImageFocusArray = pushBackStringArray(menuImageFocusArray, "../image/France_focus.fsp");
+				menuImageSelectedArray = pushBackStringArray(menuImageSelectedArray, "../image/France_selected.fsp");
+				menuImageUnfocusArray = pushBackStringArray(menuImageUnfocusArray, "../image/France_unfocus.fsp");
+			}
+			else if(lang == "German"){
+				menuImageFocusArray = pushBackStringArray(menuImageFocusArray, "../image/Germany_focus.fsp");
+				menuImageSelectedArray = pushBackStringArray(menuImageSelectedArray, "../image/Germany_selected.fsp");
+				menuImageUnfocusArray = pushBackStringArray(menuImageUnfocusArray, "../image/Germany_unfocus.fsp");
+			}
+			else if(lang == "Italy"){
+				menuImageFocusArray = pushBackStringArray(menuImageFocusArray, "../image/Italy_focus.fsp");
+				menuImageSelectedArray = pushBackStringArray(menuImageSelectedArray, "../image/Italy_selected.fsp");
+				menuImageUnfocusArray = pushBackStringArray(menuImageUnfocusArray, "../image/Italy_unfocus.fsp");
+			}
+			index = Add(index, 1); 
+		}   
+		else
+			break;
+	}
+	menuSize = index;
+	(100 - 12.17 * menuSize) / 2 -1.5;
+</script>
+</menuOffsetXPC>
+<backgroundDisplay name=askBackground>
+                <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+				<script>
+                        "../image/popup_bg.fsp";
+				</script>
+                </image>
+</backgroundDisplay>
+
+<text align=center offsetXPC=2.5 offsetYPC=13.64 widthPC=95 heightPC=10 fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = getEnv("movieTitle");
+	if(message == null){
+		message = "An unexpected error occurred, please try again later.";
+	}
+    message;
+  </script>
+</text>
+<text offsetXPC=11 offsetYPC=0 widthPC=0 heightPC=10 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_LANGUAGE]";
+    message;
+  </script>
+</text>
+
+<text offsetXPC=11 offsetYPC=32 widthPC=0 heightPC=10 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_FILESIZE]";
+    message;
+  </script>
+</text>
+<text offsetXPC=40 offsetYPC=32 widthPC=0 heightPC=10 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = getEnv("moveSize");
+	if(message == null){
+		message = "An unexpected error occurred, please try again later.";
+	}
+    message;
+  </script>
+</text>
+<text offsetXPC=11 offsetYPC=40 widthPC=0 heightPC=10 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_PRICE]";
+    message;
+  </script>
+</text>
+<text offsetXPC=2.5 offsetYPC=31.82 widthPC=95 heightPC=10 align=center fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    price = getEnv("movePrice");
+	symbol = getEnv("symbol");
+	if(symbol == "CHF")
+		text = price +" "+ symbol;
+	else
+		text = symbol +" "+ price;
+    text;
+  </script>
+</text>
+<text offsetXPC=2.5 offsetYPC=2.27 widthPC=95 heightPC=10 align=center fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_PLEASE_ENTER_PIN_NUMBER]";
+    message;
+  </script>
+</text>
+
+<onEnter>
+	setParentFade(128);
+</onEnter>
+
+<onUserInput>
+userInput = currentUserInput();
+ret = "false";
+if (userInput == "right" &amp;&amp; getPageInfo("majorContext")=="items")
+	ret = "true";
+ret;
+</onUserInput>
+<menuDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			index1 = getFocusMenuIndex();
+			index2 = getQueryMenuIndex();
+			context = getPageInfo("majorContext");
+			if (context == "menu"){
+				if(index1 == index2)
+					image = getStringArrayAt(menuImageFocusArray, index2);
+				else
+					image = getStringArrayAt(menuImageUnfocusArray, index2);
+			}
+			else{
+				if(index1 == index2)
+					image = getStringArrayAt(menuImageSelectedArray, index2);
+				else
+					image = getStringArrayAt(menuImageUnfocusArray, index2);
+			}
+			image;
+		</script>
+	</image>
+</menuDisplay>
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 backgroundColor=117:117:117 useBackgroundSurface=no>
+	<script>
+		status = getDrawingItemState();
+		index = getQueryItemIndex();
+		context = getPageInfo("majorContext");
+		if ((context == "items") &amp;&amp; (status == "focus"))
+		{			
+			if(index == 0)
+			{
+				"../image/popup_text_focus.fsp";
+			}
+			else
+			{
+				if(index ==1)
+					"../image/popup_focus.fsp";
+				else
+					"../image/popup_grey_focus.fsp";
+			}
+		}
+		else
+		{
+			if(index == 0)
+			{
+				"../image/popup_text_unfocus.fsp";
+			}
+			else
+			{
+				if(index ==1)
+					"../image/popup_unfocus.fsp";
+				else
+					"../image/popup_grey_unfocus.fsp";
+			}
+		}
+
+	</script>
+	</image>
+	<text align=center offsetXPC=5 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor=-1:-1:-1 fontSize=14 useBackgroundSurface=no>
+	<script>
+		getStringArrayAt(itemtitleArray, -1);
+	</script>
+	</text>
+</itemDisplay>
+</mediaDisplay>
+
+
+<onEnter>
+returnFromSpeedTest = getEnv("returnFromSpeedTest");
+if (returnFromSpeedTest == "yes")
+{
+	unsetEnv("returnFromSpeedTest");
+	unsetEnv("speedTest");
+	restoreOsdArea();
+}
+</onEnter>
+
+<script>	
+ispurchase = 0;
+itemtitleArray = pushBackStringArray(itemtitleArray, " ");
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CONFIRM]");
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_NETWORK_SPEED]");
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_BACK]");
+itemSize = 4;
+
+postMessage("down");
+</script>
+<onExit>
+if(ispurchase == 1)
+	setEnv("IsPurchase","true");
+else
+	setEnv("IsPurchase","false");
+langidx = getFocusMenuIndex();
+setEnv("languageidx",langidx);
+
+</onExit>
+
+<item_template>
+<onClick>
+url = null;
+index = getFocusItemIndex();
+if(index == 0){
+	/* treat pin number as password */
+	pinnumber= getInput("password, acetrax", "doModal");
+	if(pinnumber != null){
+		setEnv("pinnumber",pinnumber);
+		setFocusItemIndex(1);
+		setItemFocus(1);
+		itemtitleArray = null;
+		itemtitleArray = pushBackStringArray(itemtitleArray, "******");
+		itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CONFIRM]");
+		itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_NETWORK_SPEED]");
+		itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_BACK]");
+		redrawDisplay("items");
+	}
+}
+else if(index == 1){
+	ispurchase = 1;
+	postMessage("return");
+}
+else if(index == 3){
+	ispurchase = 0;
+	postMessage("return");
+}
+else{
+	print("speed test, goto confirm page ......");
+	saveOsdArea();
+	url = "Ace_confirm.rss";
+}
+url;
+</onClick>
+</item_template>
+
+<channel>
+	<title>Purchase ask</title>
+	<link>Ace_purchaseask.rss</link>
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+<menuSize>
+<script>
+menuSize;
+</script>
+</menuSize>
+</channel>
+</rss>

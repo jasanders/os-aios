@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[ARGENTINA]" disable="isSettingInactive" />
+		<item label="$[AUSTRALIA]" disable="isSettingInactive" />
+		<item label="$[AUSTRIA]" disable="isSettingInactive" />
+		<item label="$[BELGIUM]" disable="isSettingInactive" />
+		<item label="$[BRAZIL]" disable="isSettingInactive" />
+		<item label="$[CHINA]" disable="isSettingInactive" />
+		<item label="$[CZECH_REPUBLIC]" disable="isSettingInactive" />
+		<item label="$[DENMARK]" disable="isSettingInactive" />
+		<item label="$[FINLAND]" disable="isSettingInactive" />
+		<item label="$[FRANCE]" disable="isSettingInactive" />
+		<item label="$[GERMANY]" disable="isSettingInactive" />
+		<item label="$[GREECE]" disable="isSettingInactive" />
+		<item label="$[HUNGARY]" disable="isSettingInactive" />
+		<item label="$[IRELAND]" disable="isSettingInactive" />
+		<item label="$[ITALY]" disable="isSettingInactive" />
+		<item label="$[JAPAN]" disable="isSettingInactive" />
+		<item label="$[KOREA]" disable="isSettingInactive" />
+		<item label="$[LUXEMBOURG]" disable="isSettingInactive" />
+		<item label="$[NETHERLANDS]" disable="isSettingInactive" />
+		<item label="$[NORWAY]" disable="isSettingInactive" />
+		<item label="$[POLAND]" disable="isSettingInactive" />
+		<item label="$[PORTUGAL]" disable="isSettingInactive" />
+		<item label="$[RUSSIA]" disable="isSettingInactive" />
+		<item label="$[SLOVAKIA]" disable="isSettingInactive" />
+		<item label="$[SLOVENIA]" disable="isSettingInactive" />
+		<item label="$[SPAIN]" disable="isSettingInactive" />
+		<item label="$[SWEDEN]" disable="isSettingInactive" />
+		<item label="$[SWITZERLAND]" disable="isSettingInactive" />
+		<item label="$[TAIWAN]" disable="isSettingInactive" />
+		<item label="$[TURKEY]" disable="isSettingInactive" />
+		<item label="$[UNITED_KINGDOM]" disable="isSettingInactive" />
+		<item label="$[USA]" disable="isSettingInactive" />
+</menu>

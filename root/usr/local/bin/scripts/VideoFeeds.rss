@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+ <onEnter>
+	showIdle();
+	prepareAnimation();
+ </onEnter>
+
+	    <mediaDisplay 
+		name=threePartView
+		itemPerPage=7
+    		imageFocus ="image/list_select_bar.bmp"
+    		imageRightSide="image/RSS/RSS_first_bg.jpg"
+    		forceFocusOnItem=yes
+		sideColorLeft=28:35:51
+		sideColorRight=28:35:51
+		sideColorTop=28:35:51
+		sideColorBottom=28:35:51 
+		backgroundColor=28:35:51
+	
+	
+		sideLeftWidthPC= 0
+		sideRightWidthPC=100
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+		
+		itemXPC = 17	
+		itemYPC = 15.7
+		itemWidthPC = 74.8
+		itemHeightPC = 7
+
+  	  	itemImageXPC = 7.8
+    		itemImageYPC = 15.7
+		itemImageWidthPC = 7.79
+		itemImageHeightPC = 7
+		slidingItemText= yes
+		focusBorderColor=28:35:51
+		unFocusBorderColor=28:35:51
+		itemBackgroundColor=28:35:51
+
+		capXPC = 91.8
+		capWidthPC = 0
+
+    	  	idleImageXPC=83.12
+    	    	idleImageYPC=89.58
+     		idleImageWidthPC=3.1
+        	idleImageHeightPC=5.5
+
+		showHeader = "no"
+		showDefaultInfo = "no">
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+		<image offsetXPC= 7.8  offsetYPC= 3 widthPC=10.55 heightPC=7.5 >
+			image/RSS/VideoFeeds_small_logo.jpg
+		</image>
+	<!-- title of this page 
+		<text offsetXPC= 7.8  offsetYPC= 7.8 widthPC=15 heightPC=5  fontSize=12 lines=1 
+		foregroundColor=255:255:255
+		backgroundColor=28:35:51>
+			<script>
+				getPageInfo("pageTitle");
+			</script>
+		</text>			
+	-->
+	<!-- background color of short story section -->
+		<text offsetXPC= 7.8  offsetYPC= 72.5 widthPC=81 heightPC=12  backgroundColor=28:35:51 redraw=yes />
+	<!-- the short story -->	
+		<text offsetXPC= 7.8  offsetYPC= 73 widthPC=73 heightPC=11  fontSize=10 lines=4 
+		foregroundColor=255:255:255
+		backgroundColor=28:35:51
+		redraw=yes>
+			<script>
+				getItemInfo("description");
+			</script>
+		</text>		
+	<!-- image of the story -->
+		<image offsetXPC= 81  offsetYPC= 73 widthPC=12 heightPC=12 redraw=yes>
+			<script>
+				getItemInfo("media:thumbnail");
+			</script>
+		</image>		
+		
+	<onUserInput>       
+          currentUserInput = currentUserInput();
+          ret = "false";
+    
+             if (currentUserInput == "right") {
+                  ret = "true";
+             } 
+
+          ret;
+        </onUserInput> 	
+        	
+	</mediaDisplay>
+
+    <channel>
+        <title>RSS News</title>
+        <link>news/menu.rss</link>
+        <media:thumbnail url="image/rss.png" width="120" height="90" />
+        <menu>main menu</menu>
+        <item>
+            <title>Add URL - Click to add RSS URL</title>
+            <link>rss_command://addItem</link>
+            <media:thumbnail url="image/RSS/RSS_LOGO.jpg" width="120" height="90" />
+        </item>
+        <item>
+	    <title>Anderson Cooper 360° Daily</title>
+	    <link>http://rss.cnn.com/services/podcasting/ac360/rss.xml</link>
+	    <media:thumbnail url="http://i.a.cnn.net/cnn/.element/img/1.5/ceiling/logo_cnn.gif" width="120" height="90" />
+	</item>
+	
+	<item>
+	    <title>The Larry King Podcast</title>
+	    <link>http://rss.cnn.com/services/podcasting/lkl/rss.xml</link>
+	    <media:thumbnail url="http://i.a.cnn.net/cnn/.element/img/1.5/ceiling/logo_cnn.gif" width="120" height="90" />
+	</item>
+
+        <item>
+        <title>CNN Daily podcast</title>
+        <link>http://rss.cnn.com/services/podcasting/cnnnewsroom/rss</link>
+        <media:thumbnail url="http://i.a.cnn.net/cnn/.element/img/1.5/ceiling/logo_cnn.gif" width="120" height="90" />
+        </item>
+
+	<item>
+	    <title>CNN In Case You Missed It</title>
+	    <link>http://rss.cnn.com/services/podcasting/incaseyoumissed/rss.xml</link>
+	    <media:thumbnail url="http://i.a.cnn.net/cnn/.element/img/1.5/ceiling/logo_cnn.gif" width="120" height="90" />
+	</item>
+
+	<item>
+	    <title>CNN=Politics Daily </title>
+	    <link>http://rss.cnn.com/services/podcasting/bestpolitics/rss.xml </link>
+	    <media:thumbnail url="http://i.a.cnn.net/cnn/.element/img/1.5/ceiling/logo_cnn.gif" width="120" height="90" />
+	</item>
+
+	<item>
+	    <title>ESPN - PTI:big finish </title>
+	    <link>http://sports.espn.go.com/espnradio/podcast/feeds/itunes/podCast?id=2843027</link>
+	    <media:thumbnail url="http://assets.espn.go.com/i/espnradio/podcast/images/pti_video_300.jpg" width="120" height="90" />
+	</item>
+
+	<item>
+	    <title>ESPN - Around the Horn</title>
+	    <link>http://sports.espn.go.com/espnradio/podcast/feeds/itunes/podCast?id=2870570</link>
+	    <media:thumbnail url="http://assets.espn.go.com/i/espnradio/podcast/images/pti_video_300.jpg" width="120" height="90" />
+	</item>
+
+	<item>
+	    <title>ESPN - Mike and Mike Moment</title>
+	    <link>http://sports.espn.go.com/espnradio/podcast/feeds/itunes/podCast?id=2869921</link>
+	    <media:thumbnail url="http://assets.espn.go.com/i/espnradio/podcast/images/pti_video_300.jpg" width="120" height="90" />
+	</item>
+	
+	<item>
+	    <title>ESPN - Best Ranger Competition: 2009</title>
+	    <link>http://sports.espn.go.com/espnradio/podcast/feeds/itunes/podCast?id=4392073 </link>
+	    <media:thumbnail url="http://assets.espn.go.com/i/espnradio/podcast/images/pti_video_300.jpg" width="120" height="90" />
+	</item>
+	
+
+    </channel>
+</rss>

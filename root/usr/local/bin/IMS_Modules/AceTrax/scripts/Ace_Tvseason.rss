@@ -1,0 +1,1452 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>PopupConfirm</bookmark>
+
+ 
+<!-- mediaDisplay of parent will be merged into the mediaDisplay here, include all child elements, ex: onEnter, text, image, etc. -->
+<mediaDisplay
+		name=photoView 
+	viewAreaXPC=8.59
+	viewAreaYPC=24.17
+	viewAreaWidthPC=82.89
+	viewAreaHeightPC=71.25
+		showDefaultInfo=no
+		drawItemBorder=no
+		forceFocusOnItem=yes
+		autoSelectMenu=no
+		autoSelectItem=no
+		showHeader=no
+		centerXPC=2.64
+		centerYPC=22.32
+		fontSize = 18
+		rowCount = 8
+		itemPerPage = 8
+
+		itemXPC = 2.64
+		itemYPC = 22.32
+		itemWidthPC = 14.89
+		itemHeightPC = 7.8
+		itemGapYPC = 1.2
+		columnCount=1
+
+		itemBackgroundColor = -1:-1:-1
+
+		itemImageXPC = 35
+		itemImageWidthPC = 0
+		itemImageHeightPC = 0
+	verticalMenu=no
+	menuColumnCount=3
+	menuOffsetXPC = 25
+	menuOffsetYPC = 84.99
+	menuGapXPC = 1
+	menuItemHeightPC = 10.14
+	menuItemWidthPC = 20.17
+	menuBorderColor = -1:-1:-1
+	menuFontColor = 250:250:250
+	bottomYPC = 100
+	drawMenuText=no
+	idleImageXPC=44.68
+	idleImageYPC=91.38
+	idleImageWidthPC=12.5
+	idleImageHeightPC=2.08
+	>
+
+<backgroundDisplay name=tvseasonBackground>
+                <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+				<script>
+                        "../image/EpisodesSelected_popup_bg.fsp";
+				</script>
+                </image>
+</backgroundDisplay>
+
+<text align=left redraw=yes useBackgroundSurface=yes offsetXPC=26 offsetYPC=6.04 widthPC=68 heightPC=8 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+	idx = getFocusItemIndex();
+	idx = Add(idx,itempage);
+	if(idx &gt; 1){
+		idx = idx -2;
+	}
+	else
+		idx = 0;
+    message = AceTrax_getMovieInfo("Episode", "0", "title");
+	if(message == null){
+		message = "0";
+	}
+    message;
+  </script>
+</text>
+<text align=left redraw=yes useBackgroundSurface=yes offsetXPC=26 offsetYPC=15.98 widthPC=68 heightPC=5 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=182:182:182>
+  <script>
+	"$[ACE_SYNOPSIS]:";
+  </script>
+</text>
+<text align=left redraw=yes useBackgroundSurface=yes offsetXPC=4.64 offsetYPC=15.92 widthPC=15 heightPC=5 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=182:182:182>
+  <script>
+	"$[ACE_EPISODES]";
+  </script>
+</text>
+<text offsetXPC=71.44 offsetYPC=15.79 widthPC=0 heightPC=6 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_RATING]"+":";
+    message;
+  </script>
+</text>
+
+<text redraw=yes useBackgroundSurface=yes offsetXPC=71.44 offsetYPC=15.79 widthPC=28 heightPC=6 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+	idx = getFocusItemIndex();
+	idx = Add(idx,itempage);
+	if(idx &gt; 1){
+		idx = idx -2;
+	}
+	else
+		idx = 0;
+    message = "$[ACE_RATING]: "+AceTrax_getMovieInfo("Episode", "0", "rating");
+	if(message == null){
+		message = "0";
+	}
+    message;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=29.72 widthPC=0 heightPC=6 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_RUNTIME]" + ":";
+    message;
+  </script>
+</text>
+
+<text redraw=yes useBackgroundSurface=yes offsetXPC=71.44 offsetYPC=22.32 widthPC=25 heightPC=6 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+	idx = getFocusItemIndex();
+	idx = Add(idx,itempage);
+	if(idx &gt; 1){
+		idx = idx -2;
+	}
+	else
+		idx = 0;
+    message = "$[ACE_RUNTIME]: " + AceTrax_getMovieInfo("Episode", "0", "runtime");
+	if(message == null){
+		message = "0";
+	}
+    message;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=28.85 widthPC=25 heightPC=6 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_RELEASED]" + ": " + EpisodeRelease;
+    message;
+  </script>
+</text>
+
+<text offsetXPC=80.5 offsetYPC=34.72 widthPC=0 heightPC=6 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    EpisodeRelease;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=39.72 widthPC=0 heightPC=6 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_FILESIZE]" +":";
+    message;
+  </script>
+</text>
+
+<text redraw=yes useBackgroundSurface=yes offsetXPC=71.44 offsetYPC=35.38 widthPC=25 heightPC=6 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+	idx = getFocusItemIndex();
+	idx = Add(idx,itempage);
+	if(idx &gt; 1){
+		idx = idx -2;
+	}
+	else
+		idx = 0;
+    message = AceTrax_getMovieResourceEpisodesInfo(idx, "channel_id");
+    message = "$[ACE_FILESIZE]" +": " + AceTrax_getMovieInfo("Episode", "0", "filesize");
+	if(message == null){
+		message = "0";
+	}
+    message;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=41.91 widthPC=15 heightPC=6 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_LANGUAGE]" + ":";
+    message;
+  </script>
+</text>
+
+<!-- display language image, assume at most 4 languages -->
+<image offsetXPC=81.5 offsetYPC=41.91 widthPC=3.86 heightPC=4.87 redraw=yes useBackgroundSurface=yes>
+	<script>
+		if (languageSize &gt; 0 &amp;&amp; languageInfo != null)
+		{
+			lang = getStringArrayAt(languageInfo, 0);
+			if(lang == "French")
+				lang = "France";
+			languageSize = Add(languageSize, -1);
+			"../image/" + lang + ".fsp";
+		}
+		else
+		{
+			null;
+		}
+	</script>
+</image>
+<image offsetXPC=88.5 offsetYPC=41.91 widthPC=3.86 heightPC=4.87 redraw=yes useBackgroundSurface=yes>
+	<script>
+		if (languageSize &gt; 0 &amp;&amp; languageInfo != null)
+		{
+			lang = getStringArrayAt(languageInfo, 1);
+			if(lang == "French")
+				lang = "France";
+			languageSize = Add(languageSize, -1);
+			"../image/" + lang + ".fsp";
+		}
+		else
+		{
+			null;
+		}
+	</script>
+</image>
+<image offsetXPC=90.5 offsetYPC=41.91 widthPC=3.86 heightPC=4.87 redraw=yes useBackgroundSurface=yes>
+	<script>
+		if (languageSize &gt; 0 &amp;&amp; languageInfo != null)
+		{
+			lang = getStringArrayAt(languageInfo, 2);
+			if(lang == "French")
+				lang = "France";
+			languageSize = Add(languageSize, -1);
+			"../image/" + lang + ".fsp";
+		}
+		else
+		{
+			null;
+		}
+	</script>
+</image>
+<image offsetXPC=92.5 offsetYPC=41.91 widthPC=3.86 heightPC=4.87 redraw=yes useBackgroundSurface=yes>
+	<script>
+		if (languageSize &gt; 0 &amp;&amp; languageInfo != null)
+		{
+			lang = getStringArrayAt(languageInfo, 3);
+			if(lang == "French")
+				lang = "France";
+			languageSize = languageSize_backup;
+			"../image/" + lang + ".fsp";
+		}
+		else
+		{
+			languageSize = languageSize_backup;
+			null;
+		}
+	</script>
+</image>
+
+<text offsetXPC=71.44 offsetYPC=52.05 widthPC=25 heightPC=10 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_DIRECTOR]: " + EpisodeDirector;
+    message;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=56.56 widthPC=15 heightPC=0 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    EpisodeDirector;
+  </script>
+</text>
+
+<text offsetXPC=70.7 offsetYPC=61.79 widthPC=29 lines=3 heightPC=15.98 align=left fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+  <script>
+    message = "$[ACE_ACTORS]: "+ EpisodeActor;
+    message;
+  </script>
+</text>
+
+<text offsetXPC=71.44 offsetYPC=68 widthPC=25 heightPC=0 align=left fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 lines=2>
+  <script>
+    EpisodeActor;
+  </script>
+</text>
+
+<image redraw=yes offsetXPC=21 offsetYPC=84.99 heightPC=3.9 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+<widthPC>
+<script>
+	if(itempage == 0)
+		"0";
+	else
+		"2.64";
+</script>
+</widthPC>
+	<script>
+		"../image/up.fsp";	
+	</script>
+</image>
+
+<image redraw=yes offsetXPC=21 offsetYPC=90.6 heightPC=3.9 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+<widthPC>
+<script>
+	if(itempage &gt; (totalsize-9))
+		"0";
+	else
+		"2.64";
+</script>
+</widthPC>
+	<script>
+		"../image/down.fsp";	
+	</script>
+</image>
+
+<image offsetXPC=27.77 offsetYPC=22.76 widthPC=15.38 heightPC=0 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+	<script>
+		url = null;
+		thumbnail = getEnv("EpisodeThumbnail");
+		if(thumbnail!=null){
+			url = convertSpaceInUrl(thumbnail);
+		}
+		url;	
+	</script>
+</image>
+<text multiPage=yes redraw=yes useBackgroundSurface=yes offsetXPC=24.88 offsetYPC=22.32 heightPC=46 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=13 lines=7>
+<widthPC>
+<script>
+	if(showsynopsis == "true"){
+		"42.41";
+	}
+	else
+		"0";
+</script>
+</widthPC>
+	<script>
+		fullnews;
+	</script>
+</text>
+<text offsetXPC=44.15 offsetYPC=72 heightPC=6 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=12>
+<widthPC>
+<script>
+	if(showsynopsis == "true"){
+		"27.78";
+	}
+	else
+		"0";
+</script>
+</widthPC>
+	<script>
+		fin = "";
+		ret = isMultiPageReachEnd();
+		if(ret == "1")
+		{
+			textReachEnd = 1;
+		}
+		if(textReachEnd == 1)
+		{
+			fin = "  (end)";
+		}
+		pageNum = Add(pageindex1, 1);
+		"$[ACE_PAGE]" + pageNum  + fin;
+	</script>
+</text>
+<text offsetXPC=28.8 offsetYPC=72 widthPC=8 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=13>
+	<heightPC>
+	<script>
+		height = 0;
+		if(showsynopsis == "true"){
+			if(pageNum &gt; 1){
+				height = "6";
+			}
+		}
+		height;
+	</script>
+	</heightPC> 
+	<script>
+		"$[ACE_PREVIOUS]";
+	</script>
+</text>
+<text offsetYPC=72 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=13>
+	<offsetXPC>
+	<script>
+		nextwidth = getTextWidth("$[ACE_NEXT]",14)/1061 * 100;
+		64.84 - nextwidth;
+	</script>
+	</offsetXPC>
+	<widthPC>
+	<script>
+		nextwidth;
+	</script>
+	</widthPC>
+	<heightPC>
+	<script>
+		height = 0;
+		if(showsynopsis == "true"){
+			if(textReachEnd != 1){
+				height = "6";
+			}
+		}
+		height;
+	</script>
+	</heightPC> 
+	<script>
+		"$[ACE_NEXT]";
+	</script>
+</text>
+<image offsetXPC=26 offsetYPC=73.29 widthPC=2.45 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+	<heightPC>
+	<script>
+		height = 0;
+		if(showsynopsis == "true"){
+			if(pageNum &gt; 1){
+				height = "4.48";
+			}
+		}
+		height;
+	</script>
+	</heightPC> 
+	<script>
+		"../image/p2_Previous.fsp";
+	</script>
+</image>
+<image offsetXPC=64.84 offsetYPC=73.29 widthPC=2.45 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+	<heightPC>
+	<script>
+		height = 0;
+		if(showsynopsis == "true"){
+			if(textReachEnd != 1){
+				height = "4.48";
+			}
+		}
+		height;
+	</script>
+	</heightPC> 
+	<script>
+		"../image/p2_next.fsp";
+	</script>
+</image>
+<!--
+<text offsetXPC=46.23 offsetYPC=16.56 widthPC=26 heightPC =5 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=14>
+	<script>
+		"Synopsis";
+	</script>
+</text>
+-->
+<previewWindow offsetXPC=26 offsetYPC=16 widthPC=43 heightPC=53>
+<windowColor>
+<script>
+print("==============================previewWindow");
+if (showPreviewWindow == "yes")
+{
+	showPreviewWindow = "no";
+	"0:0:0";
+}
+else
+{
+	null;
+}
+</script>
+</windowColor>
+</previewWindow>
+
+<progressBar offsetXPC=36.5 offsetYPC=104.1 widthPC=42.58 heightPC=12.89 useBackgroundSurface=yes>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=20>
+<script>
+"../image/AceTrax_preview_bar_bg.fsp";
+</script>
+</image>
+<image offsetXPC=1.6 offsetYPC=3 heightPC=16>
+<widthPC>
+<script>
+vidProgress = getPlaybackStatus();
+playElapsed = getStringArrayAt(vidProgress, 0);
+playStatus = getStringArrayAt(vidProgress, 3);
+playTotal = getStringArrayAt(vidProgress, 1);
+if (playStatus == "2")
+{
+	width = (playElapsed/playTotal*96.8);
+	if (width &gt;= 96.8)
+		width = 96.8;
+	width;
+}
+else
+	"0";
+</script>
+</widthPC>
+<script>
+"../image/AceTrax_preview_bar_focus.fsp";
+</script>
+</image>
+</progressBar>
+
+<menuDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			index1 = getFocusMenuIndex();
+			index = getQueryMenuIndex();
+			context = getPageInfo("majorContext");
+			if(context == "menu"){
+				if(index == 0){
+					if(index1 == 0)
+						image = "../image/acetrax_trailer_button_focus.fsp";
+					else
+						image = "../image/acetrax_trailer_button_unfocus.fsp";
+				}
+				else if(index == index1){
+					image = "../image/acetrax_buy_rent_button_focus.fsp";
+				}
+				else{
+					image = "../image/acetrax_buy_rent_button_unfocus.fsp";
+				}
+			}
+			else{
+				if(index == 0)
+					image = "../image/acetrax_trailer_button_unfocus.fsp";
+				else
+					image = "../image/acetrax_buy_rent_button_unfocus.fsp";
+			}
+			image;
+		</script>
+	</image>
+	<text align=center fontSize=13 offsetXPC=10 offsetYPC=10 widthPC=80 heightPC=80>
+		<script>
+			index = getQueryMenuIndex();
+			text = null;
+			if(currency == "GBP")
+				pricetext = "$[ACE_GBP]" + " "+RentPrice;
+			else if(currency == "EUR")
+				pricetext = "$[ACE_EURO]" + " "+RentPrice;
+			else
+				pricetext = RentPrice +" "+ currency;
+				if(index == "0"){
+					if(showsynopsis == "false"){
+						text = "$[ACE_SYNOPSIS]";
+				}
+				else
+					text = "$[ACE_TRAILER]";
+			}
+			else if(index == "1"){
+				if(buynumber &gt; 0)
+					text = "$[ACE_BUY]";
+				else if(rentnumber &gt; 0){
+					text = "$[ACE_RENT]" +" "+ pricetext;
+				}
+			}
+			else if(index == "2"){
+				if(rentnumber &gt; 0)
+					text = "$[ACE_RENT]" +" "+ pricetext;
+			}
+			text;
+		</script>
+	</text>
+</menuDisplay>
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 backgroundColor=117:117:117 useBackgroundSurface=yes>
+	<script>
+		status = getDrawingItemState();
+		index1 = getQueryItemIndex();
+		context = getPageInfo("majorContext");
+		if(context == "items"){
+			if (status == "focus")
+			{
+				if(index1 == 0){
+					if(itempage == 0)
+						"../image/selectall_focus.fsp";
+					else if(itempage == 1)
+						"../image/clear_focus.fsp";
+					else{
+						index1 = Add(index1,itempage);
+						selected = getStringArrayAt(selectionArray, index1-2);
+						if(selected == "1"){
+							"../image/select_focus.fsp";
+						}
+						else{
+							"../image/cancel_focus.fsp";
+						}
+					}		
+				}
+				else if(index1 == 1){
+					if(itempage == 0)
+						"../image/clear_focus.fsp";
+					else{
+						index1 = Add(index1,itempage);
+						selected = getStringArrayAt(selectionArray, index1-2);
+						if(selected == "1"){
+							"../image/select_focus.fsp";
+						}
+						else{
+							"../image/cancel_focus.fsp";
+						}
+					}	
+					
+				}else{
+					index1 = Add(index1,itempage);
+					selected = getStringArrayAt(selectionArray, index1-2);
+					if(selected == "1"){
+						"../image/select_focus.fsp";
+					}
+					else{
+						"../image/cancel_focus.fsp";
+					}
+				}
+			}
+			else
+			{
+				if(index1 == 0){
+					if(itempage == 0)
+						"../image/selectall_unfocus.fsp";
+					else if(itempage == 1)
+						"../image/clear_unfocus.fsp";
+					else{
+						index1 = Add(index1,itempage);
+						selected = getStringArrayAt(selectionArray, index1-2);
+						if(selected == "1"){
+							"../image/select_unfocus.fsp";
+						}
+						else{
+							"../image/cancel_unfocus.fsp";
+						}
+					}		
+				}
+				else if(index1 == 1){
+					if(itempage == 0)
+						"../image/clear_unfocus.fsp";
+					else{
+						index1 = Add(index1,itempage);
+						selected = getStringArrayAt(selectionArray, index1-2);
+						if(selected == "1"){
+							"../image/select_unfocus.fsp";
+						}
+						else{
+							"../image/cancel_unfocus.fsp";
+						}
+					}	
+					
+				}else{
+					index1 = Add(index1,itempage);
+					selected = getStringArrayAt(selectionArray, index1-2);
+					if(selected == "1"){
+						"../image/select_unfocus.fsp";
+					}
+					else{
+						"../image/cancel_unfocus.fsp";
+					}
+				}
+			}
+		}
+		else
+		{
+			if(index1 == 0){
+				if(itempage == 0)
+					"../image/selectall_unfocus.fsp";
+				else if(itempage == 1)
+					"../image/clear_unfocus.fsp";
+				else{
+					index1 = Add(index1,itempage);
+					selected = getStringArrayAt(selectionArray, index1-2);
+					if(selected == "1"){
+						"../image/select_unfocus.fsp";
+					}
+					else{
+						"../image/cancel_unfocus.fsp";
+					}
+				}		
+			}
+			else if(index1 == 1){
+				if(itempage == 0)
+					"../image/clear_unfocus.fsp";
+				else{
+					index1 = Add(index1,itempage);
+					selected = getStringArrayAt(selectionArray, index1-2);
+					if(selected == "1"){
+						"../image/select_unfocus.fsp";
+					}
+					else{
+						"../image/cancel_unfocus.fsp";
+					}
+				}	
+				
+			}else{
+				index1 = Add(index1,itempage);
+				selected = getStringArrayAt(selectionArray, index1-2);
+				if(selected == "1"){
+					"../image/select_unfocus.fsp";
+				}
+				else{
+					"../image/cancel_unfocus.fsp";
+				}
+			}
+		}
+	</script>
+	</image>
+	<text align=left offsetXPC=18 offsetYPC=12 widthPC=80 heightPC=80 fontSize=12 backgroundColor=-1:-1:-1 useBackgroundSurface=no>
+	<script>
+		getStringArrayAt(itemtitleArray, -1);
+	</script>
+	</text>
+</itemDisplay>
+
+	<idleImage> ../image/laoding0001.fsp </idleImage>
+	<idleImage> ../image/laoding0002.fsp </idleImage>
+	<idleImage> ../image/laoding0003.fsp </idleImage>
+	<idleImage> ../image/laoding0004.fsp </idleImage>
+	<idleImage> ../image/laoding0005.fsp </idleImage>
+	<idleImage> ../image/laoding0006.fsp </idleImage>
+	<idleImage> ../image/laoding0007.fsp </idleImage>
+	<idleImage> ../image/laoding0008.fsp </idleImage>
+	<idleImage> ../image/laoding0009.fsp </idleImage>
+
+<onUserInput>
+userInput = currentUserInput();
+focusIndex = getFocusItemIndex();
+status = getPageInfo("majorContext");
+ret = "false";
+if (userInput == "pageup"){
+	print("textPageIndex , pageindex1 , imgCount , imgPageIndex  ", textPageIndex, pageindex1, imgCount, imgPageIndex);
+	prePage = 0;
+	showIdle();
+	if(textPageIndex == pageindex1)
+	{
+		if(textPageIndex &gt; 0)
+		{
+			ret = preMultiPage();
+			printf("ret : ", ret);
+			if(ret == "1")
+			{
+				textPageIndex = Minus(textPageIndex, 1);
+				prePage = 1;
+				textReachEnd = 0;
+			}
+		}
+	}
+	pageindex1 = Minus(pageindex1, prePage);
+	redrawDisplay();
+	ret = "true";
+}
+else if (userInput == "pagedown"){
+	nextPage = 0;
+	showIdle();
+	ret = nextMultiPage();
+	if(ret == "1")
+	{
+		textPageIndex = Add(textPageIndex, 1);
+		nextPage = 1;
+	}
+	pageindex1 = Add(pageindex1, nextPage);
+	redrawDisplay();
+	ret = "true";
+}
+else if (userInput == "down"){
+	if (status == "items"){
+		setRefreshTime(-1);
+		playItemURL(-1, 8193);
+		showsynopsis = "true";
+		if(focusIndex == 7){
+			realidx = Add(focusIndex,itempage);
+			print("******,",realidx,itempage,focusIndex);
+			predictidx = Add(realidx,1);
+			if(predictidx &lt; totalsize){
+				if(itempage == 0){
+					itempage = 1;
+					itemtitleArray = null;
+					itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CLEAR]");
+					ii = realidx -7;
+					while(ii &lt; 7){
+						/*etitle = getStringArrayAt(titles, ii);*/
+						etitle = "Episode " + Add(ii,1);
+						itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+						ii = Add(1 , ii);
+					}
+				}
+				else{
+					itempage = Add(itempage,1);
+					itemtitleArray = null;
+					ii = realidx -8;
+					while(ii &lt; realidx){
+						/*etitle = getStringArrayAt(titles, ii);*/
+						etitle = "Episode " + Add(ii,1);
+						itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+						ii = Add(1 , ii);
+					}
+				}
+			}
+			redrawDisplay("item");
+			ret = "true";
+		}
+		/*index = Add(focusIndex,itempage);
+		print("==================,",index);
+		if(focusIndex &lt; 7)
+			index = 1 + index;
+		if(index &gt; 1){
+			index = Minus(index,2);
+			channelid = getStringArrayAt(channelidlist, index);
+			contentid = getStringArrayAt(contentidlist, index);
+			AceTrax_updateDetail("Episode", channelid, contentid);
+		}
+		redrawDisplay();*/
+	}
+}
+else if (userInput == "up"){
+	if(status == "items"){
+		cnt=0;
+		setRefreshTime(-1);
+		playItemURL(-1, 8193);
+		showsynopsis = "true";
+		if(focusIndex == 0){
+			print(",,,,,,,,,",itempage);
+			if(itempage &gt; 0){
+				if(itempage == 1){
+					itempage = 0;
+					itemtitleArray = null;
+					itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_SELECT_ALL]");
+					itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CLEAR]");
+					ii = 0;
+					while(ii &lt; 6){
+						/*etitle = getStringArrayAt(titles, ii);*/
+						etitle = "Episode " + Add(ii,1);
+						itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+						ii = Add(1 , ii);
+					}
+				}
+				else if(itempage == 2){
+					itempage = 1;
+					itemtitleArray = null;
+					itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CLEAR]");
+					ii = 0;
+					while(ii &lt; 7){
+						/*etitle = getStringArrayAt(titles, ii);*/
+						etitle = "Episode " + Add(ii,1);
+						itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+						ii = Add(1 , ii);
+					}
+				}
+				else{
+					itemtitleArray = null;
+					ii = itempage -3;
+					cnt = Add(itempage,5);
+					itempage = itempage-1;
+					while(ii &lt; cnt){
+						/*etitle = getStringArrayAt(titles, ii);*/
+						etitle = "Episode " + Add(ii,1);
+						itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+						ii = Add(1 , ii);
+					}
+				}
+				redrawDisplay("item");
+				ret = "true";
+			}
+		}
+		/*index = Add(focusIndex,itempage);
+		if(focusIndex &gt; 0)
+			index = index - 1;
+		print("000000000000",index,itempage);
+		if(index &gt; 1){
+			index = index - 2;
+			channelid = getStringArrayAt(channelidlist, index);
+			contentid = getStringArrayAt(contentidlist, index);
+			AceTrax_updateDetail("Episode", channelid, contentid);
+		}
+		redrawDisplay();*/
+	}
+}
+else if ((userInput == "left")&amp;&amp;(status == "menu") &amp;&amp; getFocusMenuIndex()==0){
+	setRefreshTime(-1);
+	playItemURL(-1, 8193);
+	showsynopsis = "true";
+	redrawDisplay();
+}
+else if (userInput == "video_completed" || userInput == "video_stop" || userInput == "video_load_error")
+{
+	playItemURL(-1, 8193);
+	setFocusItemIndex(savedIndex);
+	setRefreshTime(-1);
+	showsynopsis = "true";
+	redrawDisplay();
+	resetMultiPage();
+	
+	pageindex1 = 0;
+	textPageIndex = 0;
+	textPageCount = 0;
+	textReachEnd = 0;
+}
+else if (userInput == "display")
+{
+	playItemURL(-1, 8193);
+	setRefreshTime(-1);
+	showIdle();
+	index = Add(focusIndex,itempage);
+	print("==================,",index);
+	if(index &gt; 1){
+		index = Minus(index,2);
+		channelid = getStringArrayAt(channelidlist, index);
+		contentid = getStringArrayAt(contentidlist, index);
+		AceTrax_updateDetail("Episode", channelid, contentid);
+	}
+	redrawDisplay();
+}
+ret;
+</onUserInput>
+</mediaDisplay>
+<onExit>
+	setRefreshTime(-1);
+	playItemURL(-1, 8193);
+</onExit>
+<script>
+ispurchase = 0;
+index = 0;
+pageindex1 = 0;
+textPageIndex = 0;
+textPageCount = 0;
+textReachEnd = 0;
+itempage = 0;
+totalsize = 0;
+switchfocus="false";
+showsynopsis = "true";
+EpisodeRelease = getEnv("EpisodeRelease");
+EpisodeDirector = getEnv("EpisodeDirector");
+EpisodeActor = getEnv("EpisodeActor");
+languageInfo = getEnv("EpisodeLang");
+languageSize = getEnv("EpisodeLangsize");
+languageSize_backup = languageSize;
+buynumber = getEnv("EpisodeBuy");
+rentnumber = getEnv("EpisodeRent");
+menusize = 1;
+if(buynumber &gt; 0)
+	menusize = 1 + menusize;
+if(rentnumber &gt; 0)
+	menusize = 1 + menusize;
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_SELECT_ALL]");
+itemtitleArray = pushBackStringArray(itemtitleArray, "$[ACE_CLEAR]");
+EpisodeNum = AceTrax_getMovieResourceEpisodesSize();
+titles = AceTrax_getMovieResourceEpisodesInfoList("title");
+channelidlist = AceTrax_getMovieResourceEpisodesInfoList("channel_id");
+contentidlist = AceTrax_getMovieResourceEpisodesInfoList("content_id");
+if(EpisodeNum == 0){
+	EpisodeNum = getEnv("EpisodeNum");
+	titles = getEnv("Episodetitles");
+	channelidlist = getEnv("Episodechannelidlist");
+	contentidlist = getEnv("Episodecontentidlist");
+}
+else{
+	setEnv("EpisodeNum",EpisodeNum);
+	setEnv("Episodetitles",titles);
+	setEnv("Episodechannelidlist",channelidlist);
+	setEnv("Episodecontentidlist",contentidlist);
+}
+ii = "0";
+totalsize = Add(EpisodeNum,2);
+if(EpisodeNum &gt; 6){
+	itemSize = 8;
+	while(ii &lt; EpisodeNum){
+		/*etitle = getStringArrayAt(titles, ii);*/
+		etitle = "Episode "+Add(ii,1);
+		itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+		ii = Add(1 , ii);
+	}
+}
+else{
+	itemSize = Add(EpisodeNum,2);
+	while(ii &lt; EpisodeNum){
+		/*etitle = getStringArrayAt(titles, ii);*/
+		etitle = "Episode "+Add(ii,1);
+		itemtitleArray = pushBackStringArray(itemtitleArray, etitle);
+		ii = Add(1 , ii);
+	}
+}
+ii = "0";
+episodeselected = 0;
+while(ii &lt; EpisodeNum){
+	selectionArray = pushBackStringArray(selectionArray, "0");
+	ii=Add(ii,1);
+}
+if(EpisodeNum &gt; 0){
+	setFocusItemIndex(2);
+	savedIndex = 2;
+	channelid = getStringArrayAt(channelidlist, 0);
+	contentid = getStringArrayAt(contentidlist, 0);
+	AceTrax_updateDetail("Episode", channelid, contentid);
+	fullnews = AceTrax_getMovieInfo("Episode", "0", "synopsis");
+	RentPrice = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, 0, "rent", "price");
+	currency  = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, 0, "rent", "currency");
+	print("....................,",fullnews,RentPrice);
+	fullnews = getEnv("EpisodeSynop");
+}
+else
+{
+	setFocusItemIndex(0);
+	savedIndex = 0;
+}
+</script>
+<onRefresh>
+	vidProgress = getPlaybackStatus();
+	pstatus = getStringArrayAt(vidProgress, 3);
+	print("status.................,",pstatus);
+	if(pstatus == 2 || pstatus == 1)
+	{
+		print("------------try to update progress...................");
+		updatePlaybackProgress(vidProgress, "mediaDisplay", "progressBar");
+	}
+</onRefresh>
+<onExit>
+if(ispurchase == 1)
+	setEnv("IsPurchase","true");
+else
+	setEnv("IsPurchase","false");
+langidx = getFocusMenuIndex();
+setEnv("languageidx",langidx);
+
+</onExit>
+<item_template>
+<onClick>
+index = getFocusItemIndex();
+index = Add(index,itempage);
+if(index == 0){
+	ii = "0";
+	selectionArray = null;
+	while(ii &lt; EpisodeNum){
+		selectionArray = pushBackStringArray(selectionArray, "1");
+		ii=Add(ii,1);
+	}
+	episodeselected = EpisodeNum;
+	redrawDisplay();
+}
+else if(index == 1){
+	ii = "0";
+	selectionArray = null;
+	while(ii &lt; EpisodeNum){
+		selectionArray = pushBackStringArray(selectionArray, "0");
+		ii=Add(ii,1);
+	}
+	episodeselected = 0;
+	redrawDisplay();
+}
+else{
+	ii = "0";
+	newselection = null;
+	while(ii &lt; EpisodeNum){
+		itemstate = getStringArrayAt(selectionArray, ii);
+		if(ii == Minus(index,2)){
+			if(itemstate == "0"){
+				itemstate = "1";
+				episodeselected = Add(episodeselected,1);
+			}
+			else{
+				itemstate = "0";
+				episodeselected = Minus(episodeselected,1);
+			}
+		}
+		newselection = pushBackStringArray(newselection, itemstate);
+		ii=Add(ii,1);
+	}
+	selectionArray = newselection;
+	print("new selection array,",selectionArray,episodeselected);
+	redrawDisplay();
+}
+ret = true;
+</onClick>
+</item_template>
+
+<submenu name="$[ACE_TRAILER]">
+        <onClick>
+            <script>
+				setRefreshTime(-1);
+				playItemURL(-1, 8193);
+				index = getFocusItemIndex();
+				movieindex = Add(index,itempage);
+				print("trailer movieindex..............",index,itempage,movieindex);
+				if(movieindex &gt; 1){
+					episodeindex = movieindex - 2;
+					if(showsynopsis == "false"){
+						print("show synopsis..............",fullnews);
+						showsynopsis = "true";
+						resetMultiPage();	
+						pageindex1 = 0;
+						textPageIndex = 0;
+						textPageCount = 0;
+						textReachEnd = 0;
+						redrawDisplay();
+					}else{
+						showsynopsis = "false";
+						savedIndex = index;
+						trailer = AceTrax_getMovieInfo("Episode", "0", "trailer");
+						print("trailer:",trailer);
+						showIdle();
+						redrawDisplay();
+						playItemURL(trailer, 0, "mediaDisplay", "previewWindow");
+						setRefreshTime(1000);
+						showPreviewWindow = "yes";
+					}
+				}
+
+				null;
+            </script>
+        </onClick>
+</submenu>
+<submenu name="$[ACE_BUY]">
+        <onClick>
+            <script>
+				if(buynumber &gt; 0){
+					print("try to buy..............",episodeselected);
+					if(episodeselected &gt; 0){
+						setRefreshTime(-1);
+						playItemURL(-1, 8193);
+						/*buy*/
+						nexturl = null;
+						
+						setEnv("movieLanguage",languageInfo);
+						buyprice = 0;
+						ii = 0;
+						while(ii &lt; EpisodeNum){
+							itemstate = getStringArrayAt(selectionArray, ii);
+							if(itemstate == "1"){
+								Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, 0, "buy", "price");
+								buyprice = Add(buyprice,Price);
+							}
+							ii = Add(ii,1);
+						}
+						currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, 0, "buy", "currency");
+						setEnv("moviecurrency",currency);
+						setEnv("moviePrice",buyprice);
+						setEnv("movienumber",episodeselected);
+						doModalRss("Ace_purchaseasktvseason.rss");
+						Ispurchase = getEnv("IsPurchase");
+						if(Ispurchase == "true")
+						{
+							pinnumber = getEnv("pinnumber");
+							print("==================buy movie,",pinnumber);
+							if(pinnumber != null){
+								showIdle();
+								languechosen = getEnv("languageidx");
+								ii = 0;
+								totalprice = 0;
+								offerContentIDList = null;
+								assetContentIDList = null;
+								priceList          = null;
+								assetNameList = null;
+								while(ii &lt; EpisodeNum){
+									itemstate = getStringArrayAt(selectionArray, ii);
+									if(itemstate == "1"){
+										offerContentID = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "buy", "offer_id");
+										assetContentID = AceTrax_getMovieResourceEpisodesInfo(ii, content_id");
+										assetName = AceTrax_getMovieResourceEpisodesInfo(ii,"title");
+										Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "buy", "price");
+										offerContentIDList = pushBackStringArray(offerContentIDList, offerContentID);
+										assetContentIDList = pushBackStringArray(assetContentIDList, assetContentID);
+										priceList          = pushBackStringArray(priceList, Price);
+										assetNameList = pushBackStringArray(assetNameList, assetName);
+										totalprice = Add(totalprice,Price);
+									}
+									ii = Add(ii,1);
+								}
+								currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, languechosen, "buy", "currency");
+print("currency", currency);
+								purchaseID = AceTrax_doPayment(pinnumber, offerContentIDList, priceList, assetContentIDList, assetNameList, currency, "buy", "1");
+								if(purchaseID != "false"){
+									AceTrax_updateGetMovieNoRH(purchaseID);
+									playurl = AceTrax_getFilename();
+									doModalRss("Ace_purchasefinish.rss");
+									Action = getEnv("Action");
+									if(Action == "Play"){
+										setEnv("playmovie",playurl);
+										nexturl = "Ace_playmovie.rss";
+									}
+									if(Action == "Download"){
+										print("download...............start........");
+									}
+								}
+								else{
+									setEnv("errormsg","$[ACE_PURCHASE_FAIL]");
+									setEnv("showTitle","yes");
+									setEnv("showIcon","yes");
+									doModalRss("Ace_genericError.rss");
+									redrawDisplay();
+								}
+							}
+							else{
+								setEnv("errormsg","$[ACE_INVALID_PIN]");
+								setEnv("showTitle","yes");
+								setEnv("showIcon","yes");
+								doModalRss("Ace_genericError.rss");
+								redrawDisplay();
+							}
+						}
+						else{
+							setEnv("errormsg","$[ACE_PAYMENT_CANCELED]");
+							setEnv("showTitle","yes");
+							setEnv("showIcon","yes");
+							doModalRss("Ace_genericError.rss");
+							redrawDisplay();
+						}
+						redrawDisplay();
+					}
+				}
+				else{
+					print("try to rent..............",episodeselected);
+					registered = AceTrax_IsRegister();
+					if (registered != "true")
+					{
+						doModalRss("Ace_purchasenodevice.rss");
+						if(getEnv("Action") == "Register"){
+							unsetEnv("categoryType");
+							setEnv("redirect","yes");
+							setEnv("redirecturl","Ace_myaccount.rss");
+							postmessage("return");
+						}
+						showsynopsis = "true";
+					}
+					else if(episodeselected &gt; 0){
+						setRefreshTime(-1);
+						showsynopsis = "true";
+						playItemURL(-1, 8193);
+						/*rent*/
+						nexturl = null;
+						setEnv("movieLanguage",languageInfo);
+						rentprice = 0;
+						ii = 0;
+						while(ii &lt; EpisodeNum){
+							itemstate = getStringArrayAt(selectionArray, ii);
+							if(itemstate == "1"){
+								Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, 0, "rent", "price");
+								rentprice = Add(rentprice,Price,"float","2");
+							}
+							ii = Add(ii,1);
+						}
+						currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, 0, "rent", "currency");
+						setEnv("moviecurrency",currency);
+						setEnv("moviePrice",rentprice);
+						if(episodeselected == "1"){
+							ii = 0;
+							while(ii &lt; EpisodeNum){
+								itemstate = getStringArrayAt(selectionArray, ii);
+								if(itemstate == "1")
+									break;
+								ii = Add(ii,1);
+							}
+							channelid = getStringArrayAt(channelidlist, ii);
+							contentid = getStringArrayAt(contentidlist, ii);
+							AceTrax_updateDetail("Episode", channelid, contentid);
+							movietitle = AceTrax_getMovieInfo("Episode", "0", "title");
+							setEnv("movieTitle",movietitle);
+							setEnv("browseepisode","no");
+						}
+						else
+							setEnv("browseepisode","yes");
+						setEnv("movienumber",episodeselected);
+						doModalRss("Ace_purchaseasktvseason.rss");
+						Ispurchase = getEnv("IsPurchase");
+						if(Ispurchase == "true")
+						{
+							pinnumber = getEnv("pinnumber");
+							print("==================rent movie,",pinnumber);
+							if(pinnumber != null){
+								showIdle();
+								languechosen = getEnv("languageidx");
+								ii = 0;
+								totalprice = 0;
+								offerContentIDList = null;
+								assetContentIDList = null;
+								priceList          = null;
+								assetNameList = null;
+								while(ii &lt; EpisodeNum){
+									itemstate = getStringArrayAt(selectionArray, ii);
+									if(itemstate == "1"){
+										offerContentID = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "rent", "offer_id");
+										assetContentID = AceTrax_getMovieResourceEpisodesInfo(ii, content_id");
+										assetName = AceTrax_getMovieResourceEpisodesInfo(ii,"title");
+										Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "rent", "price");
+										offerContentIDList = pushBackStringArray(offerContentIDList, offerContentID);
+										assetContentIDList = pushBackStringArray(assetContentIDList, assetContentID);
+										priceList          = pushBackStringArray(priceList, Price);
+										totalprice = Add(totalprice,Price);
+										assetNameList = pushBackStringArray(assetNameList, assetName);
+									}
+									ii = Add(ii,1);
+								}
+print("totalPrice", totalPrice);
+								currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, languechosen, "rent", "currency");
+print("currency", currency);
+								purchaseID = AceTrax_doPayment(pinnumber, offerContentIDList, priceList, assetContentIDList, assetNameList, currency, "rent", "1");
+								if(getStringArrayAt(purchaseID,0) != "false"){
+									doModalRss("Ace_purchasefinish.rss");
+									purchaseIDlist = AceTrax_getPaymentPurchaseInfoList("purchase_id");
+									Action = getEnv("Action");
+									if(Action == "Play"){
+										if(episodeselected &gt; "1"){
+											/*setEnv("tobrowseepisode","yes");
+											postmessage("return");*/
+											setEnv("episodelist",assetNameList);
+											setEnv("episodenumber",episodeselected);
+											setEnv("purchaseIDlist",purchaseIDlist);
+											unsetEnv("Acetion");
+											doModalRss("Ace_episodelist.rss");
+										}
+										else{
+											AceTrax_updateGetMovieNoRH(getStringArrayAt(purchaseIDlist,0));
+											playurl = AceTrax_getFilename();
+											setEnv("playmovie",playurl);
+											nexturl = "Ace_playmovie.rss";
+										}
+									}
+									if(Action == "Download"){
+										print("download...............start........");
+									}
+								}
+								else{
+									print("===========,",getStringArrayAt(purchaseID,1));
+									if(getStringArrayAt(purchaseID,1)!=null)
+										setEnv("errormsg",getStringArrayAt(purchaseID,1));
+									else
+										setEnv("errormsg","$[ACE_PURCHASE_FAIL]");
+									setEnv("showTitle","yes");
+									doModalRss("Ace_genericError.rss");
+									redrawDisplay();
+								}
+							}
+							else{
+								setEnv("errormsg","$[ACE_INVALID_PIN]");
+								setEnv("showTitle","yes");
+								doModalRss("Ace_genericError.rss");
+								redrawDisplay();
+							}
+						}
+						else{
+							setEnv("errormsg","$[ACE_PAYMENT_CANCELED]");
+							setEnv("showTitle","yes");
+							doModalRss("Ace_genericError.rss");
+							redrawDisplay();
+						}
+						redrawDisplay();
+					}
+				}
+				nexturl;
+            </script>
+        </onClick>
+</submenu>
+<submenu name="$[ACE_RENT]">
+        <onClick>
+            <script>
+				if(episodeselected &gt; 0){
+					setRefreshTime(-1);
+					playItemURL(-1, 8193);
+					/*rent*/
+					nexturl = null;
+					setEnv("movieLanguage",languageInfo);
+					rentprice = 0;
+					ii = 0;
+					while(ii &lt; EpisodeNum){
+						itemstate = getStringArrayAt(selectionArray, ii);
+						if(itemstate == "1"){
+							Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, 0, "rent", "price");
+							rentprice = Add(rentprice,Price);
+						}
+						ii = Add(ii,1);
+					}
+					currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, 0, "rent", "currency");
+					setEnv("moviecurrency",currency);
+					setEnv("moviePrice",rentprice);
+					if(episodeselected == "1"){
+						ii = 0;
+						while(ii &lt; EpisodeNum){
+							itemstate = getStringArrayAt(selectionArray, ii);
+							if(itemstate == "1")
+								break;
+							ii = Add(ii,1);
+						}
+						channelid = getStringArrayAt(channelidlist, ii);
+						contentid = getStringArrayAt(contentidlist, ii);
+						AceTrax_updateDetail("Episode", channelid, contentid);
+						movietitle = AceTrax_getMovieInfo("Episode", "0", "title");
+						setEnv("movieTitle",movietitle);
+					}
+					else
+						setEnv("browseepisode","yes");
+					setEnv("movienumber",episodeselected);
+					doModalRss("Ace_purchaseasktvseason.rss");
+					Ispurchase = getEnv("IsPurchase");
+					if(Ispurchase == "true")
+					{
+						pinnumber = getEnv("pinnumber");
+						print("==================rent movie,",pinnumber);
+						if(pinnumber != null){
+							showIdle();
+							languechosen = getEnv("languageidx");
+							ii = 0;
+							totalprice = 0;
+							offerContentIDList = null;
+							assetContentIDList = null;
+							priceList          = null;
+							assetNameList = null;
+							while(ii &lt; EpisodeNum){
+								itemstate = getStringArrayAt(selectionArray, ii);
+								if(itemstate == "1"){
+									offerContentID = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "rent", "offer_id");
+									assetContentID = AceTrax_getMovieResourceEpisodesInfo(ii, content_id");
+									assetName = AceTrax_getMovieResourceEpisodesInfo(ii,"title");
+									Price = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(ii, languechosen, "rent", "price");
+									offerContentIDList = pushBackStringArray(offerContentIDList, offerContentID);
+									assetContentIDList = pushBackStringArray(assetContentIDList, assetContentID);
+									priceList          = pushBackStringArray(priceList, Price);
+									totalprice = Add(totalprice,Price);
+									assetNameList = pushBackStringArray(assetNameList, assetName);
+								}
+								ii = Add(ii,1);
+							}
+print("totalPrice", totalPrice);
+								currency = AceTrax_getMovieResourceEpisodesResourceBuyorRentInfo(0, languechosen, "rent", "currency");
+print("currency", currency);
+							purchaseID = AceTrax_doPayment(pinnumber, offerContentIDList, priceList, assetContentIDList, assetNameList, currency, "rent", "1");
+							if(purchaseID != "false"){
+								AceTrax_updateGetMovieNoRH(purchaseID);
+								playurl = AceTrax_getFilename();
+								doModalRss("Ace_purchasefinish.rss");
+								Action = getEnv("Action");
+								if(Action == "Play"){
+									setEnv("playmovie",playurl);
+									nexturl = "Ace_playmovie.rss";
+								}
+								if(Action == "Download"){
+									print("download...............start........");
+								}
+							}
+							else{
+								setEnv("errormsg","$[ACE_PURCHASE_FAIL]");
+								setEnv("showTitle","yes");
+								doModalRss("Ace_genericError.rss");
+								redrawDisplay();
+							}
+						}
+						else{
+							setEnv("errormsg","$[ACE_INVALID_PIN]");
+							setEnv("showTitle","yes");
+							doModalRss("Ace_genericError.rss");
+							redrawDisplay();
+						}
+					}
+					else{
+						setEnv("errormsg","$[ACE_PAYMENT_CANCELED]");
+						setEnv("showTitle","yes");
+						doModalRss("Ace_genericError.rss");
+						redrawDisplay();
+					}
+					redrawDisplay();
+				}
+				null;
+            </script>
+        </onClick>
+</submenu>
+
+<channel>
+	<title>Popup Confirm</title>
+	<link>rss_file://./scripts/setup/popupConfirm.rss</link>
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+<menuSize>
+<script>
+menusize;
+</script>
+</menuSize>
+</channel>
+</rss>

@@ -1,0 +1,401 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> Thunder search result </bookmark>
+
+
+<onEnter>
+pageIndex = 1;
+</onEnter>
+
+<mediaDisplay name=threePartsView
+showHeader=no
+showDefaultInfo=no
+
+bottomYPC=100
+sideTopHeightPC=0
+
+autoSelectMenu=no
+autoSelectItem=no
+
+sideLeftWidthPC = 100
+sideRightWidthPC = 0
+imageFocus = null
+
+itemPerPage = 5
+itemImageXPC = 21.2
+itemImageYPC = 22
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+itemXPC = 21.2
+itemYPC = 22
+itemWidthPC = 70
+itemHeightPC = 10
+itemGap = 0
+capWidthPC = 0
+capHeightPC = 0
+sideColorLeft=0:0:0
+itemBackgroundColor = -1:-1:-1
+
+idleImageWidthPC=8.43
+idleImageHeightPC=14.29
+>
+
+<backgroundDisplay name=download_menu>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			"../image/thunder_dl_bg.fsp";
+		</script>
+	</image>
+</backgroundDisplay>
+
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading1.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading2.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading3.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading4.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading5.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading6.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading7.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading8.png </idleImage>
+
+<text offsetXPC=0 offsetYPC=8 heightPC=8 widthPC=100 fontSize=12 backgroundColor=-1:-1:-1 useBackgroundSurface=yes foregroundColor=250:250:250 lines=2>
+  如果您认为搜索引擎系统自动搜索到并提供的链接所指向的第三方网页的内容侵犯了您的著作权，请通知我司客服，我们会要求合作方移除相关内容或屏蔽相关链接的处理措施
+</text>
+
+<text redraw=yes offsetXPC=22.2 offsetYPC=83 heightPC=5 widthPC=90 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 useBackgroundSurface=yes>
+<script>
+getStringArrayAt(titleArray , -1);
+</script>
+</text>
+
+<text redraw=yes offsetXPC=0 offsetYPC=91.2 heightPC=8 widthPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 lines=2 useBackgroundSurface=yes>
+<script>
+cidInfo = getStringArrayAt(cidInfoArray, -1);
+if (cidInfo != null)
+	cidInfo;
+else
+	"CID information is not applicable";
+</script>
+</text>
+
+	<image useBackgroundSurface=yes offsetXPC=47 offsetYPC=18 widthPC=3.83 heightPC=3.47>
+		<script>
+			if( pageIndex &gt; 1 ){
+				"IMS_Modules/ThunderT/image/left_arrow_up_focus.png";
+			}else{
+				null;
+			}
+		</script>
+	</image>
+
+	<image useBackgroundSurface=yes offsetXPC=47 offsetYPC=73 widthPC=3.83 heightPC=3.47>
+		<script>
+			if( pageIndex &lt; pageCount ){
+				"IMS_Modules/ThunderT/image/left_arrow_down_focus.png";
+			}else{
+				null;
+			}
+		</script>
+	</image>
+
+<itemDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	 <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+        <script>
+      idx1 = getFocusItemIndex();
+      idx2 = getQueryItemIndex();
+      if (idx1 == idx2)
+      {   
+        "../image/thunder_dl_focus.png";
+      }   
+      else
+        ""; 
+    </script>
+    </image>
+	
+	<text offsetXPC=0 offsetYPC=0 widthPC=70 heightPC=100 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+		<script>
+			getStringArrayAt(titleArray , -1);
+		</script>
+	</text>
+	<text offsetXPC=72 offsetYPC=0 widthPC=12 heightPC=100 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+		getstringArrayAt(sizeArray,-1);
+		</script>
+	</text>
+	<text offsetXPC=85 offsetYPC=0 widthPC=12 heightPC=100 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+			getStringArrayAt(formatArray , -1);
+		</script>
+	</text>
+</itemDisplay>
+
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("Got input: ", userInput);
+itemFocus = getFocusItemIndex();
+quit = 0;
+if (userInput == "pagedown" &amp;&amp; pageIndex == pageCount)
+{
+	print("Hit bottom");
+	quit = 1;
+}
+else if (userInput == "pageup" &amp;&amp; pageIndex == 1)
+{
+	print("Hit top");
+	quit = 1;
+}
+else if (userInput == "down" &amp;&amp; pageIndex == pageCount &amp;&amp; itemFocus == 4)
+{
+	print("Hit bottom");
+	quit = 1;
+}
+else if (userInput == "up" &amp;&amp; pageIndex == 1 &amp;&amp; itemFocus == 0)
+{
+	print("Hit top");
+	quit = 1;
+}
+
+if (quit == 0)
+{
+	newXML = 0;
+	if (userInput == "pagedown" || (userInput == "down" &amp;&amp; itemFocus == 4))
+	{
+		pageIndex = Add(pageIndex, 1);
+		newXML = 1;
+	}
+	if (userInput == "pageup" || (userInput == "up" &amp;&amp; itemFocus == 0))
+	{
+		pageIndex = Add(pageIndex, -1);
+		newXML = 1;
+	}
+
+	if (newXML == 1)
+	{
+		searchUrl = rootUrl + "&amp;num=5&amp;page=" + pageIndex + "&amp;en=utf-8";
+		print("Got search url: ", searchUrl);
+
+		dlok = loadXMLFile(searchUrl);
+
+		if (dlok != null)
+		{
+			itemSize = getXMLElementCount("SearchResult", "ResultSet", "FileInfo");
+			errCode = getXMLAttribute("SearchResult", "Query", "ErrorCode");
+			ResType = getXMLAttribute("SearchResult", "Query", "ResType");
+			if (errCode == "0" &amp;&amp; itemSize &gt; 0)
+			{
+				count = 0;
+				titleArray = null;
+				sizeArray = null;
+				formatArray = null;
+				torrentArray = null;
+				picArray = null;
+				cidArray = null;
+				cidInfoArray = null;
+				while(1)
+				{
+					title  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Title");
+					titleArray  = pushBackStringArray(titleArray, title);
+
+					size = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Size");
+					sizeArray  = pushBackStringArray(sizeArray, size);
+
+					format  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Format");
+					formatArray  = pushBackStringArray(formatArray, format);
+
+					torrent  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Torrent");
+					torrentArray  = pushBackStringArray(torrentArray, torrent);
+
+					pic  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "PreviewInfo", "PicUrl");
+					picArray  = pushBackStringArray(picArray, pic);
+
+					cid  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Cid");
+					cidArray  = pushBackStringArray(cidArray, cid);
+
+					cidUrl = "http://3p.gougou.com/furl?cid=" + cid;
+					cidInfo = Thunder_extractCIDInfo(cidUrl);
+					cidInfoArray = pushBackStringArray(cidInfoArray, cidInfo);
+
+					count += 1;
+					if (count == itemSize)
+					{
+						break;
+					}
+				}
+
+				setFocusItemIndex(0);
+				setItemFocus(0);
+				redrawDisplay();
+			}
+			else
+			{
+				print("No item found");
+				redrawDisplay();
+			}
+		}
+		else
+		{
+			redrawDisplay();
+			print("load xml file fail");
+		}
+		"true";
+	}
+	else
+	{
+		"false";
+	}
+}
+else
+	"false";
+
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+
+<onExit>
+print("-=-=-=-=-=-= Bye bye, thunder search result -=-=-=-=-=-=");
+setEnv("returnFrom", "movieInfoPage");
+</onExit>
+
+<script>
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "thunder_searchUrl.dat";
+	rootUrl = readStringFromFile(storagePath);
+
+	searchUrl = rootUrl + "&amp;num=5&amp;page=1&amp;en=utf-8";
+	print("Got search url: ", searchUrl);
+
+	dlok = loadXMLFile(searchUrl);
+
+	if (dlok != null)
+	{
+		itemSize = getXMLElementCount("SearchResult", "ResultSet", "FileInfo");
+		totalSize = getXMLAttribute("SearchResult", "Query", "Count");
+		errCode = getXMLAttribute("SearchResult", "Query", "ErrorCode");
+		ResType = getXMLAttribute("SearchResult", "Query", "ResType");
+		if (errCode == "0" &amp;&amp; itemSize &gt; 0)
+		{
+			pageCount = totalSize/5;
+			pageCount = Integer(pageCount);
+			if ((totalSize%5) != "0")
+				pageCount = Add(pageCount, 1);
+
+			print("Total result: ", totalSize);
+			print("Page count: ", pageCount);
+
+			count = 0;
+			titleArray = null;
+			sizeArray = null;
+			formatArray = null;
+			torrentArray = null;
+			picArray = null;
+			cidArray = null;
+			cidInfoArray = null;
+			while(1)
+			{
+				title  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Title");
+				titleArray  = pushBackStringArray(titleArray, title);
+
+				size = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Size");
+				sizeArray  = pushBackStringArray(sizeArray, size);
+
+				format  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Format");
+				formatArray  = pushBackStringArray(formatArray, format);
+
+				torrent  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Torrent");
+				torrentArray  = pushBackStringArray(torrentArray, torrent);
+
+				pic  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "PreviewInfo", "PicUrl");
+				picArray  = pushBackStringArray(picArray, pic);
+
+				cid  = getXMLText("SearchResult", "ResultSet", "FileInfo", count, "Cid");
+				cidArray  = pushBackStringArray(cidArray, cid);
+					
+				cidUrl = "http://3p.gougou.com/furl?cid=" + cid;
+				cidInfo = Thunder_extractCIDInfo(cidUrl);
+				cidInfoArray = pushBackStringArray(cidInfoArray, cidInfo);
+
+				count += 1;
+				if (count == itemSize)
+				{
+					break;
+				}
+			}
+
+			setFocusItemIndex(0);
+			setItemFocus(0);
+			redrawDisplay();
+		}
+		else
+		{
+			print("no item found");
+		}
+	}
+	else
+		print("load xml file fail");
+</script>
+
+
+<item_template>
+
+<onClick>
+	itemIndex = getFocusItemIndex();
+	title = getStringArrayAt(titleArray, itemIndex);
+	pic = getStringArrayAt(picArray, itemIndex);
+	format = getStringArrayAt(formatArray, itemIndex);
+	size = getStringArrayAt(sizeArray, itemIndex);
+	showIdle();
+	/* torrent or cid, title, thumbnail, restype, format */
+	if (ResType == "BT")
+	{
+		torrent = getStringArrayAt(torrentArray, itemIndex);
+		Thunder_download(torrent, title, pic, "BT", format, size);
+	}
+	else
+	{
+		if (Thunder_deviceReadyForDownload() == null)
+		{
+			jumpToLink("jumpLink");
+		}
+		else
+		{
+			cid = getStringArrayAt(cidArray, itemIndex);
+			print("Arguments for Thunder_download: ");
+			print("cid--> ", cid);
+			print("title--> ", title);
+			print("thumbnail--> ", pic);
+			print("format--> ", format);
+			print("size--> ", size);
+			Thunder_download(cid, title, pic, "HTTP", format, size);
+		}
+	}
+	null;
+</onClick>
+
+</item_template>
+
+<jumpLink>
+<link>
+thunderT_deviceSelect.rss
+</link>
+</jumpLink>
+
+
+<channel>
+<title>Thunder Search</title>
+<link>thunderT_searchResult.rss</link>
+
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>

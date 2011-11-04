@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+ <mediaDisplay name=photoView 
+        rowCount=4 
+        columnCount=3
+        drawItemText="yes"
+        sliding="no"
+        sideTopHeightPC=10
+        bottomYPC=100 
+        showDefaultInfo="no" 
+        centerYPC="17.5" 
+        centerHeightPC="65.52" 
+        centerWidthPC="85.52" 
+        itemImageWidthPC="30" 
+
+        imageFocus="image/list_select_bar.bmp"
+        imageParentFocus=null
+        backgroundColor="27:35:51" 
+        sideColorTop="33:40:58" 
+        sideColorBottom="33:40:58" 
+        imageBorderColor="255:255:255" 
+        imageBorderPC="0.75"
+        
+        centerColor="28:35:51" 
+        itemOffsetXPC="9.6" 
+        itemGapXPC="1" 
+        itemGapYPC="1.75"  
+
+        idleImageXPC=83.12
+        idleImageYPC=89.58
+        idleImageWidthPC=3.1
+        idleImageHeightPC=5.5
+        
+        viewAreaXPC=0 
+        viewAreaYPC=0
+        viewAreaWidthPC=100 
+        viewAreaHeightPC=100 
+
+	topArea.xPC=0
+	topArea.yPC=0
+        topArea.widthPC=30
+        topArea.heightPC=12
+
+        menuOffsetXPC = 6
+        menuOffsetYPC = 4
+        menuItemHeightPC = 6
+        menuItemWidthPC = 15
+        >
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+	<backgroundDisplay name=HomeMenuBackground>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			./home_menu/image/HomeMenu_BG.fsp
+		</image>
+	</backgroundDisplay>
+
+	<text offsetXPC=9 offsetYPC=75 widthPC=100 heightPC=25  fontSize=15>
+                press "Info" key to add/delete the favorites
+        </text>
+
+	<onUserInput>
+		input=currentUserInput ();
+		ret="false";
+		if (input=="display"){
+        		postMessage("edit");
+         		ret="true";
+		}
+		ret;
+</onUserInput>
+
+  </mediaDisplay>
+
+
+    <channel>
+        <title>World Weather Forecast Service</title>
+        <link>./scripts/map/myfavorites.rss</link>
+        <media:thumbnail url="image/weather.jpg" />
+        <!-- favorite element indicate this document will collect the links from its child documents when child element throw link to favorite list -->
+        <favorite list="weather" />
+	<allowMulti>no</allowMulti>
+        <item>
+            <title>$[ADD_FAVORITE]</title>
+            <link>rss_file://./scripts/map/world.rss</link>
+            <media:thumbnail url="image/search.jpg" width="120" height="90" />
+	<text offsetXPC=7  offsetYPC= 3 widthPC=20 heightPC=10  fontSize=17 lines=1 
+		foregroundColor=255:250:255 backgroundColor = 33:40:58>
+	My Favorites
+	</text>	
+        </item>
+    </channel>
+
+</rss>

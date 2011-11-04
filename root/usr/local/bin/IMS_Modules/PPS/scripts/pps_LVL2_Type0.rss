@@ -1,0 +1,609 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> PPS_LVL2 </bookmark>
+<script>
+	startState=0;
+</script>
+<onEnter>
+	if (startState==0){
+	/* always select the first one, and the focus in on menu by set forceFocusOnMenu at mediaDisplay */
+		selectMenu(0); 
+		startState=1;
+	}
+</onEnter>
+
+<mediaDisplay name=threePartsView
+		
+showHeader=no
+showDefaultInfo=no
+
+sideLeftWidthPC = 35
+sideRightWidthPC = 65
+imageFocus= null
+imageLeftSide = "../image/PPS_level2_Type0_bg2_lft.fsp"
+imageRightSide = "../image/PPS_level2_Type0_bg2_right.fsp"
+imageParentFocus= null
+
+menuXPC = 8
+menuYPC = 14.5
+menuWidthPC = 27
+menuHeightPC = 9.6
+selectMenuOnRight=no
+autoSelectMenu=no
+autoSelectItem=no
+forceFocusOnMenu=yes
+
+
+itemImageXPC = "40"
+itemImageYPC = "14"
+itemImageWidthPC = "5"
+itemImageHeightPC = "11.8"
+itemXPC = 46
+itemYPC = 14
+itemWidthPC = 40
+itemHeightPC = 14
+itemGap = 0
+itemBackgroundColor = 0:0:0
+parentFocusFontColor = 254:254:0
+backgroundColor = 0:0:0
+leftSideColor=0:0:0
+
+capWidthPC = 0
+capHeightPC = 0
+
+slidingMenuText="yes"
+slidingItemText="no"
+rollMenu="yes"
+>
+
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading1.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading2.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading3.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading4.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading5.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading6.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading7.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading8.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading9.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading10.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading11.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading12.png </idleImage>
+	
+<!--	
+<backgroundDisplay>
+	<image redraw=yes offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			"../image/PPS_level2_Type0_bg2.fsp";
+		</script>
+	</image>
+</backgroundDisplay>
+-->
+
+<text redraw=yes offsetXPC=14 offsetYPC=3 widthPC=20 heightPC=8 fontSize=18 backgroundColor=0:0:0 foregroundColor=200:200:200>
+<script>
+header = TITLE_LVL2;
+</script>
+</text>
+
+<text redraw=yes offsetXPC=26 offsetYPC=83.5 widthPC=15 heightPC=4 fontSize=12 backgroundColor=8:8:8 foregroundColor=200:200:200>
+<script>
+menuFocus = 0.0;
+menuFocus = getFocusMenuIndex();
+print("menuFocus = ",menuFocus);
+menuFocus = Add(menuFocus, 1);
+str = sprintf("%s", menuFocus) + &quot;/&quot; + contextCount;
+</script>
+</text>
+
+<text redraw=yes offsetXPC=80 offsetYPC=83.5 widthPC=16 heightPC=4 fontSize=12 backgroundColor=0:0:0 foregroundColor=200:200:200>
+<script>
+str = sprintf("%s", itemPageIndex) + &quot;/&quot; + totalItemPage + "页";
+</script>
+</text>
+
+
+<image redraw=no offsetXPC=80 offsetYPC=4 widthPC=8 heightPC=8>
+<script>
+if (accountType == "1")
+	"../image/pps_vip.jpg";
+else
+	"../image/pps_nonvip.jpg";
+</script>
+</image>
+
+<menuDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			majorContext = getPageInfo("majorContext");
+			idx1 = getFocusMenuIndex();
+			idx2 = getQueryMenuIndex();
+			if (idx1 == idx2)
+			{
+				if(majorContext == "items")
+				{
+					"";
+				}
+				else
+				{
+					"../image/pps_level2_type0_item_focus_bar.png";					
+				}
+			}
+			else
+				"";
+		</script>
+	</image>
+	
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 fontSize=18 backgroundColor=-1:-1:-1>
+		<script>
+			menuIndex = getQueryMenuIndex();
+			getStringArrayAt(menuTitleArray, menuIndex);
+		</script>
+		<foregroundColor>
+			<script>
+				majorContext = getPageInfo("majorContext");
+				if( majorContext == "items")
+				{
+					idx1 = getFocusMenuIndex();
+					idx2 = getQueryMenuIndex();
+					if (idx1 == idx2){
+						ret = "200:200:0";
+					}
+					else {
+						ret = "200:200:200";
+					}
+				}
+				else
+				{
+					ret = "200:200:200";				
+				}	
+			</script>
+		</foregroundColor>
+	</text>	
+</menuDisplay>
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=80>
+		<script>
+			majorContext = getPageInfo("majorContext");
+			idx1 = getFocusItemIndex();
+			idx2 = getQueryItemIndex();
+			if (idx1 == idx2)
+			{
+				if(majorContext == "items")
+				{
+					"../image/pps_level2_type0_item_focus_bar.png";
+				}
+				else
+				{
+					"";
+				}
+			}
+			else
+				"";
+		</script>
+	</image>
+	
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=50 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+		<script>
+			getStringArrayAt(itemTitleArray , -1);
+		</script>
+	</text>
+	<text offsetXPC=0 offsetYPC=50 widthPC=100 heightPC=30 fontSize=10 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+			str = "人气: " + getstringArrayAt(itemScoreArray,-1);
+		</script>
+	</text>
+	<text offsetXPC=75 offsetYPC=50 widthPC=25 heightPC=40 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+			vip = getStringArrayAt(itemVFArray , -1);
+			if (vip != "0")
+				"VIP";
+			else
+				null;
+		</script>
+	</text>
+</itemDisplay>
+
+
+<onUserInput>
+	<script>
+		majorContext = getPageInfo("majorContext");
+		userInput = currentUserInput();
+		tmpMenuID = getStringArrayAt(menuIdArray , menuFocusIndex);
+
+		if (userInput == "edit")
+		{
+			PackType = PPS_setPackType("1");
+			print("PPS_PackType",PackType);
+			redrawDisplay();
+			"true";
+		}
+		else if(majorContext == "items")
+		{
+			if (userInput == "down")
+			{
+				if ((getFocusItemIndex()%5) == 4)
+				{
+					userInput = "pagedown";
+					print("Treat down as pagedown");
+				}
+			}
+			else if (userInput == "up")
+			{
+				if (getFocusItemIndex() == 0)
+				{
+					userInput = "pageup";
+					print("Treat up as pageup");
+				}
+			}
+
+			if (userInput == "pagedown" || userInput == "pageup")
+			{
+				oldItemPageIndex = itemPageIndex;
+				quit = 0;
+
+				if (userInput == "pagedown")
+				{
+					itemPageIndex = Add(itemPageIndex, 1);
+				}
+				else
+				{
+					itemPageIndex = Add(itemPageIndex, -1);
+				}
+					
+				if (itemPageIndex &lt; 1)
+				{
+					itemPageIndex = 1;
+					quit = 1;
+				}
+				if (itemPageIndex &gt; totalItemPage)
+				{
+					itemPageIndex = totalItemPage;
+					quit = 1;
+				}
+
+				/* quit=1 indicate no need to update */
+				if (quit == 0)
+				{
+					
+					itemUrl = "http://tv.ppstream.com/channelsfortv.php?oem=realtek&amp;class=" + parentID;
+					itemUrl = itemUrl + "&amp;subclass=" + tmpMenuID;
+					itemUrl = itemUrl + "&amp;pagesize=5&amp;page=" + itemPageIndex;
+					itemUrl = itemUrl + "&amp;order=4";
+					print("itemUrl: ", itemUrl);
+					showIdle();
+					itemlok = PPS_loadXMLFile(itemUrl);
+					cancelIdle();
+					if(itemlok != null)
+					{
+						itemTitleArray = null;
+						itemThumbnailArray= null;
+						itemBigThumbnailArray = null;
+						itemDirtArray = null;
+						itemActorArray = null;
+						itemScoreArray = null;
+						itemCNArray = null;
+						itemVFArray = null;
+					
+						itemSize = getXMLElementCount("FilmData", "Film");
+						print("itemSize2 = ",itemSize);
+						if(itemSize &gt; 0)
+						{
+							itemCount = 0;
+						
+							while(1)
+							{
+								itemTitle  = getXMLText("FilmData", "Film", itemCount, "Title");
+								itemTitleArray  = pushBackStringArray(itemTitleArray, itemTitle);
+							
+								itemThumbnail = getXMLText("FilmData", "Film", itemCount, "SIUrl");
+								itemThumbnail = convertSpaceInUrl(itemThumbnail);
+								itemThumbnailArray = pushBackStringArray(itemThumbnailArray, itemThumbnail);
+							
+								itemBigThumbnail = getXMLText("FilmData", "Film", itemCount, "BIUrl");
+								itemBigThumbnail = convertSpaceInUrl(itemBigThumbnail);
+								itemBigThumbnailArray = pushBackStringArray(itemBigThumbnailArray, itemBigThumbnail);		
+							
+								itemDirt = getXMLText("FilmData","Film",itemCount,"Dirt");
+								itemDirtArray = pushBackStringArray(itemDirtArray,itemDirt);
+							
+								itemActor = getXMLText("FilmData","Film",itemCount,"Actor");
+								itemActorArray = pushBackStringArray(itemActorArray,itemActor);
+							
+								itemScore = getXMLText("FilmData","Film",itemCount,"Score");
+								itemScoreArray = pushBackStringArray(itemScoreArray,itemScore);
+							
+								itemCN = getXMLText("FilmData","Film",itemCount,"CN");
+								itemCNArray = pushBackStringArray(itemCNArray,itemCN);
+							
+								itemVF = getXMLText("FilmData", "Film", itemCount, "Down", "Url", "VF");
+								itemVFArray  = pushBackStringArray(itemVFArray, itemVF);								
+							
+								itemCount += 1;
+								if(itemCount == itemSize)
+								{
+									break;
+								}				
+							}
+						}
+						setFocusItemIndex(0);
+						setItemFocus(0);
+						redrawDisplay();				
+					}
+					else
+					{
+						print("I can not load this XML file!!!");
+						itemPageIndex = oldItemPageIndex;
+					}
+				}
+				"true";
+			}
+			else
+				"false";
+		}
+		else
+			"false";
+	</script>
+</onUserInput>
+
+</mediaDisplay>
+
+
+
+<script>
+
+PageIndex_LVL2 = 1;
+itemPageIndex = 1;
+menuTitleArray  = null;
+menuIdArray     = null;
+menuContentArray = null;
+itemTitleArray = null;
+itemThumbnailArray = null;
+			
+enterLevel = 2;
+accountType = PPS_getAccountType();
+
+urlFile = getStoragePath("tmp");
+urlFile = urlFile + "ppsUrl.dat";
+string = readStringFromFile(urlFile);
+
+rootUrl = getStringArrayAt(string, 0);
+parentID = getStringArrayAt(string, 1);
+parentType = getStringArrayAt(string, 2);
+contextCount = getStringArrayAt(string, 3);
+print("ContentNum: ", contextCount);
+TITLE_LVL2 = getStringArrayAt(string, 4);
+
+topUrl = rootUrl + "&amp;subclasssize=500&amp;page=1&amp;lang=cn";
+
+print("In level 2: ", topUrl);
+dlok = PPS_loadXMLFile(topUrl);
+if (dlok != null &amp;&amp; parentType == "0")
+{
+		menuSize = getXMLElementCount("PPSSClasses", "SubClass");
+
+		if (menuSize &gt; 0)
+		{
+			count = 0;
+
+			while(1)
+			{
+				menuTitle  = getXMLText("PPSSClasses", "SubClass", count, "Title");
+				menuId     = getXMLText("PPSSClasses", "SubClass", count, "SubID");
+				menuContent = getXMLText("PPSSClasses", "SubClass", count, "ContentNum");
+				
+				menuTitleArray  = pushBackStringArray(menuTitleArray, menuTitle);
+				menuIdArray     = pushBackStringArray(menuIdArray, menuId);
+				menuContentArray = pushBackStringArray(menuContentArray, menuContent);
+
+				count += 1;
+				if (count == menuSize)
+				{
+					break;
+				}
+			}
+
+			menuFocusIndex = getFocusMenuIndex();
+			totalItemCount = getStringArrayAt(menuContentArray , menuFocusIndex);
+			totalItemPage = totalItemCount/5;
+			totalItemPage = Integer(totalItemPage);
+			if ((totalItemCount%5) != "0")
+			{
+				totalItemPage = Add(totalItemPage, 1);
+			}
+
+			setFocusItemIndex(0);
+			setItemFocus(0);
+			redrawDisplay();
+		}
+		
+}
+
+</script>
+
+<menu_template>
+
+	<onClick>
+		<script>
+			menuFocusIndex = getFocusMenuIndex();
+			tmpMenuID = getStringArrayAt(menuIdArray , menuFocusIndex);
+			
+			itemUrl = "http://plist.lettv.com/channelsfortv.php?oem=realtek&amp;class=" + parentID;
+			itemUrl = itemUrl + "&amp;subclass=" + tmpMenuID;
+			itemUrl = itemUrl + "&amp;pagesize=5&amp;page=1";
+			itemUrl = itemUrl + "&amp;order=4";
+			print("itemUrl: ", itemUrl);
+			showIdle();
+			itemlok = PPS_loadXMLFile(itemUrl);
+			cancelIdle();
+			if (itemlok != null)
+			{
+				totalItemCount = getStringArrayAt(menuContentArray , menuFocusIndex);
+				print("totalItemCount is: ", totalItemCount);
+				totalItemPage = totalItemCount/5;
+				totalItemPage = Integer(totalItemPage);
+				if ((totalItemCount%5) != "0")
+				{
+					totalItemPage = Add(totalItemPage, 1);
+				}
+				print("totalItemPage is: ", totalItemPage);
+			
+				itemTitleArray = null;
+				itemThumbnailArray= null;
+				itemBigThumbnailArray = null;
+				itemDirtArray = null;
+				itemActorArray = null;
+				itemScoreArray = null;
+				itemCNArray = null;
+				itemVFArray = null;
+				itemPageIndex = 1;
+				
+				itemSize = getXMLElementCount("FilmData", "Film");
+				print("itemSize1 = ",itemSize);
+				if(itemSize &gt; 0)
+				{
+					itemCount = 0;
+					
+					while(1)
+					{						
+						itemTitle  = getXMLText("FilmData", "Film", itemCount, "Title");
+						itemTitleArray  = pushBackStringArray(itemTitleArray, itemTitle);
+						
+						itemThumbnail = getXMLText("FilmData", "Film", itemCount, "SIUrl");
+						itemThumbnail = convertSpaceInUrl(itemThumbnail);
+						itemThumbnailArray = pushBackStringArray(itemThumbnailArray, itemThumbnail);
+						
+						itemBigThumbnail = getXMLText("FilmData", "Film", itemCount, "BIUrl");
+						itemBigThumbnail = convertSpaceInUrl(itemBigThumbnail);
+						itemBigThumbnailArray = pushBackStringArray(itemBigThumbnailArray, itemBigThumbnail);		
+						
+						itemDirt = getXMLText("FilmData","Film",itemCount,"Dirt");
+						itemDirtArray = pushBackStringArray(itemDirtArray,itemDirt);
+						
+						itemActor = getXMLText("FilmData","Film",itemCount,"Actor");
+						itemActorArray = pushBackStringArray(itemActorArray,itemActor);
+						
+						itemScore = getXMLText("FilmData","Film",itemCount,"Score");
+						itemScoreArray = pushBackStringArray(itemScoreArray,itemScore);
+						
+						itemCN = getXMLText("FilmData","Film",itemCount,"CN");
+						itemCNArray = pushBackStringArray(itemCNArray,itemCN);
+						
+						itemVF = getXMLText("FilmData", "Film", itemCount, "Down", "Url", "VF");
+						itemVFArray  = pushBackStringArray(itemVFArray, itemVF);						
+						
+						itemCount += 1;
+						if(itemCount == itemSize)
+						{
+							break;
+						}				
+					}
+				}
+			}
+			else
+			{
+				print("I can not load this XML file!!!");
+			}
+
+			setFocusItemIndex(0);
+			setItemFocus(0);
+			redrawDisplay();
+		</script>
+	</onClick>
+</menu_template>
+
+<item_template>
+
+<displayTitle>
+<script>
+getStringArrayAt(itemTitleArray , -1);
+</script>
+</displayTitle>
+
+<media:thumbnail>
+	<script>
+		url = getStringArrayAt(itemThumbnailArray, -1);
+		print("thumbnail url =====================> ", url);
+		url;
+	</script>
+</media:thumbnail>
+
+<onClick>
+	menuFocusIndex = getFocusMenuIndex();
+	tmpMenuID = getStringArrayAt(menuIdArray , menuFocusIndex);
+	itemIndex = getFocusItemIndex();
+	print("I want to go to Enter Level 3-1");
+	Url = "http://plist.lettv.com/channelsfortv.php?oem=realtek&amp;class=" + parentID;
+	Url = Url + "&amp;subclass=" + tmpMenuID + "&amp;pagesize=5&amp;page=" + itemPageIndex;
+	
+	Url = Url + "&#x000a;" + getStringArrayAt(itemTitleArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemDirtArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemActorArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemScoreArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemCNArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemAreaArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(itemBigThumbnailArray , -1);
+	
+	
+	tmpCN = getStringArrayAt(itemCNArray , -1);
+	
+	if (tmpCN &gt; 0)
+	{
+		CICount = 0;
+
+		while(1)
+  		{
+			CI = getXMLText("FilmData", "Film", itemIndex, "Down", "Url", CICount, "CI");
+			CI = "第" + CI + "集";
+			Url = Url + "&#x000a;" + CI;
+			Url = Url + "&#x000a;" + getXMLText("FilmData", "Film", itemIndex, "Down", "Url", CICount, "DUrl");
+
+			CICount += 1;
+			if (CICount == tmpCN)
+			{
+				break;
+			}
+		}
+	}
+	
+	urlFile = getStoragePath("tmp");
+	urlFile = urlFile + "ppsUrl.dat";
+	writeStringToFile(urlFile, Url);
+	
+	Url_Ldesc = getXMLText("FilmData", "Film", itemIndex, "Ldesc");
+	urlFile = getStoragePath("tmp");
+	urlFile = urlFile + "ppsUrl_Ldesc.dat";
+	writeStringToFile(urlFile, Url_Ldesc);
+	
+	Url_FilmID = getXMLText("FilmData", "Film", itemIndex, "Down", "Url", "ID");
+	urlFile = getStoragePath("tmp");
+	urlFile = urlFile + "ppsFilmid.dat";
+	writeStringToFile(urlFile, Url_FilmID);
+	
+</onClick>
+
+<link>pps_LVL3.rss</link>
+
+</item_template>
+
+
+
+<channel>
+<title>PPS</title>
+<link>./scripts/pps_LVL2_Type0.rss</link>
+<media:thumbnail url="../image/pps.jpg" width="120" height="90" />
+
+<menuSize>
+	<script>
+		menuSize;
+	</script>
+</menuSize>
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>

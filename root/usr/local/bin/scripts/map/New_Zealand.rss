@@ -1,0 +1,688 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+
+<channel>
+<title>New Zealand</title>
+<link>./scripts/map/New_Zealand.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Alexandra</title>
+<cur>NZXX0095</cur>
+<for>Alexandra</for>
+</item>
+
+<item>
+<title>Allanton</title>
+<cur>NZXX0001</cur>
+<for>Allanton</for>
+</item>
+
+<item>
+<title>Arrowtown</title>
+<cur>NZXX0002</cur>
+<for>Arrowtown</for>
+</item>
+
+<item>
+<title>Ashburton</title>
+<cur>NZXX0091</cur>
+<for>Ashburton</for>
+</item>
+
+<item>
+<title>Auckland</title>
+<cur>NZXX0003</cur>
+<for>Auckland</for>
+</item>
+
+<item>
+<title>Auckland City</title>
+<cur>NZXX0053</cur>
+<for>Auckland City</for>
+</item>
+
+<item>
+<title>Bay View</title>
+<cur>NZXX0004</cur>
+<for>Bay View</for>
+</item>
+
+<item>
+<title>Blenheim</title>
+<cur>NZXX0005</cur>
+<for>Blenheim</for>
+</item>
+
+<item>
+<title>Campbell Island</title>
+<cur>NZXX0076</cur>
+<for>Campbell Island</for>
+</item>
+
+<item>
+<title>Cape Campbell</title>
+<cur>NZXX0066</cur>
+<for>Cape Campbell</for>
+</item>
+
+<item>
+<title>Cape Reinga</title>
+<cur>NZXX0051</cur>
+<for>Cape Reinga</for>
+</item>
+
+<item>
+<title>Castlepoint</title>
+<cur>NZXX0063</cur>
+<for>Castlepoint</for>
+</item>
+
+<item>
+<title>Chatham Islands</title>
+<cur>NZXX0077</cur>
+<for>Chatham Islands</for>
+</item>
+
+<item>
+<title>Christchurch</title>
+<cur>NZXX0006</cur>
+<for>Christchurch</for>
+</item>
+
+<item>
+<title>Clive</title>
+<cur>NZXX0007</cur>
+<for>Clive</for>
+</item>
+
+<item>
+<title>Cromwell</title>
+<cur>NZXX0008</cur>
+<for>Cromwell</for>
+</item>
+
+<item>
+<title>Culverden</title>
+<cur>NZXX0088</cur>
+<for>Culverden</for>
+</item>
+
+<item>
+<title>Darfield</title>
+<cur>NZXX0090</cur>
+<for>Darfield</for>
+</item>
+
+<item>
+<title>Dunedin</title>
+<cur>NZXX0009</cur>
+<for>Dunedin</for>
+</item>
+
+<item>
+<title>Eastbourne</title>
+<cur>NZXX0010</cur>
+<for>Eastbourne</for>
+</item>
+
+<item>
+<title>Enderby Island</title>
+<cur>NZXX0075</cur>
+<for>Enderby Island</for>
+</item>
+
+<item>
+<title>Eskdale</title>
+<cur>NZXX0011</cur>
+<for>Eskdale</for>
+</item>
+
+<item>
+<title>Farewell Spit</title>
+<cur>NZXX0065</cur>
+<for>Farewell Spit</for>
+</item>
+
+<item>
+<title>Gisborne</title>
+<cur>NZXX0057</cur>
+<for>Gisborne</for>
+</item>
+
+<item>
+<title>Glenavy</title>
+<cur>NZXX0092</cur>
+<for>Glenavy</for>
+</item>
+
+<item>
+<title>Gore</title>
+<cur>NZXX0093</cur>
+<for>Gore</for>
+</item>
+
+<item>
+<title>Greymouth</title>
+<cur>NZXX0012</cur>
+<for>Greymouth</for>
+</item>
+
+<item>
+<title>Haast</title>
+<cur>NZXX0068</cur>
+<for>Haast</for>
+</item>
+
+<item>
+<title>Hamilton</title>
+<cur>NZXX0013</cur>
+<for>Hamilton</for>
+</item>
+
+<item>
+<title>Hastings</title>
+<cur>NZXX0014</cur>
+<for>Hastings</for>
+</item>
+
+<item>
+<title>Hawera</title>
+<cur>NZXX0087</cur>
+<for>Hawera</for>
+</item>
+
+<item>
+<title>Hawkes Bay Airport</title>
+<cur>NZXX0060</cur>
+<for>Hawkes Bay Airport</for>
+</item>
+
+<item>
+<title>Hicks Bay</title>
+<cur>NZXX0055</cur>
+<for>Hicks Bay</for>
+</item>
+
+<item>
+<title>Hokitika</title>
+<cur>NZXX0015</cur>
+<for>Hokitika</for>
+</item>
+
+<item>
+<title>Invercargill</title>
+<cur>NZXX0016</cur>
+<for>Invercargill</for>
+</item>
+
+<item>
+<title>Kaiapoi</title>
+<cur>NZXX0017</cur>
+<for>Kaiapoi</for>
+</item>
+
+<item>
+<title>Kaikoura</title>
+<cur>NZXX0067</cur>
+<for>Kaikoura</for>
+</item>
+
+<item>
+<title>Kaitaia</title>
+<cur>NZXX0080</cur>
+<for>Kaitaia</for>
+</item>
+
+<item>
+<title>Kaniere</title>
+<cur>NZXX0018</cur>
+<for>Kaniere</for>
+</item>
+
+<item>
+<title>Kawhia</title>
+<cur>NZXX0085</cur>
+<for>Kawhia</for>
+</item>
+
+<item>
+<title>Levin</title>
+<cur>NZXX0098</cur>
+<for>Levin</for>
+</item>
+
+<item>
+<title>Lower Hutt</title>
+<cur>NZXX0019</cur>
+<for>Lower Hutt</for>
+</item>
+
+<item>
+<title>Lyttelton</title>
+<cur>NZXX0020</cur>
+<for>Lyttelton</for>
+</item>
+
+<item>
+<title>Makarewa</title>
+<cur>NZXX0021</cur>
+<for>Makarewa</for>
+</item>
+
+<item>
+<title>Manukau City</title>
+<cur>NZXX0022</cur>
+<for>Manukau City</for>
+</item>
+
+<item>
+<title>Martinborough</title>
+<cur>NZXX0099</cur>
+<for>Martinborough</for>
+</item>
+
+<item>
+<title>Marton</title>
+<cur>NZXX0097</cur>
+<for>Marton</for>
+</item>
+
+<item>
+<title>Masterton</title>
+<cur>NZXX0084</cur>
+<for>Masterton</for>
+</item>
+
+<item>
+<title>Mosgiel</title>
+<cur>NZXX0023</cur>
+<for>Mosgiel</for>
+</item>
+
+<item>
+<title>Mount Roskill</title>
+<cur>NZXX0024</cur>
+<for>Mount Roskill</for>
+</item>
+
+<item>
+<title>Murchison</title>
+<cur>NZXX0089</cur>
+<for>Murchison</for>
+</item>
+
+<item>
+<title>Napier</title>
+<cur>NZXX0025</cur>
+<for>Napier</for>
+</item>
+
+<item>
+<title>Nelson</title>
+<cur>NZXX0026</cur>
+<for>Nelson</for>
+</item>
+
+<item>
+<title>New Brighton</title>
+<cur>NZXX0027</cur>
+<for>New Brighton</for>
+</item>
+
+<item>
+<title>New Plymouth</title>
+<cur>NZXX0058</cur>
+<for>New Plymouth</for>
+</item>
+
+<item>
+<title>North Shore</title>
+<cur>NZXX0028</cur>
+<for>North Shore</for>
+</item>
+
+<item>
+<title>Okarito</title>
+<cur>NZXX0029</cur>
+<for>Okarito</for>
+</item>
+
+<item>
+<title>Palmerston North</title>
+<cur>NZXX0061</cur>
+<for>Palmerston North</for>
+</item>
+
+<item>
+<title>Papakura</title>
+<cur>NZXX0030</cur>
+<for>Papakura</for>
+</item>
+
+<item>
+<title>Papatoetoe</title>
+<cur>NZXX0031</cur>
+<for>Papatoetoe</for>
+</item>
+
+<item>
+<title>Paraparaumu</title>
+<cur>NZXX0062</cur>
+<for>Paraparaumu</for>
+</item>
+
+<item>
+<title>Petone</title>
+<cur>NZXX0032</cur>
+<for>Petone</for>
+</item>
+
+<item>
+<title>Picton</title>
+<cur>NZXX0096</cur>
+<for>Picton</for>
+</item>
+
+<item>
+<title>Porirua</title>
+<cur>NZXX0033</cur>
+<for>Porirua</for>
+</item>
+
+<item>
+<title>Port Chalmers</title>
+<cur>NZXX0034</cur>
+<for>Port Chalmers</for>
+</item>
+
+<item>
+<title>Purerua</title>
+<cur>NZXX0052</cur>
+<for>Purerua</for>
+</item>
+
+<item>
+<title>Puysegur Point</title>
+<cur>NZXX0071</cur>
+<for>Puysegur Point</for>
+</item>
+
+<item>
+<title>Queenstown</title>
+<cur>NZXX0035</cur>
+<for>Queenstown</for>
+</item>
+
+<item>
+<title>Queenstown Aerodrome</title>
+<cur>NZXX0072</cur>
+<for>Queenstown Aerodrome</for>
+</item>
+
+<item>
+<title>Raoul Island</title>
+<cur>NZXX0078</cur>
+<for>Raoul Island</for>
+</item>
+
+<item>
+<title>Riccarton</title>
+<cur>NZXX0036</cur>
+<for>Riccarton</for>
+</item>
+
+<item>
+<title>Richmond</title>
+<cur>NZXX0037</cur>
+<for>Richmond</for>
+</item>
+
+<item>
+<title>Riverton</title>
+<cur>NZXX0038</cur>
+<for>Riverton</for>
+</item>
+
+<item>
+<title>Secretary Island</title>
+<cur>NZXX0070</cur>
+<for>Secretary Island</for>
+</item>
+
+<item>
+<title>Sefton</title>
+<cur>NZXX0040</cur>
+<for>Sefton</for>
+</item>
+
+<item>
+<title>South West Cape</title>
+<cur>NZXX0074</cur>
+<for>South West Cape</for>
+</item>
+
+<item>
+<title>St Kilda</title>
+<cur>NZXX0039</cur>
+<for>St Kilda</for>
+</item>
+
+<item>
+<title>Taiaroa Head</title>
+<cur>NZXX0073</cur>
+<for>Taiaroa Head</for>
+</item>
+
+<item>
+<title>Takapuna</title>
+<cur>NZXX0041</cur>
+<for>Takapuna</for>
+</item>
+
+<item>
+<title>Taradale</title>
+<cur>NZXX0042</cur>
+<for>Taradale</for>
+</item>
+
+<item>
+<title>Taumarunui</title>
+<cur>NZXX0086</cur>
+<for>Taumarunui</for>
+</item>
+
+<item>
+<title>Taupo</title>
+<cur>NZXX0056</cur>
+<for>Taupo</for>
+</item>
+
+<item>
+<title>Tauranga</title>
+<cur>NZXX0054</cur>
+<for>Tauranga</for>
+</item>
+
+<item>
+<title>Te Atatu Peninsula</title>
+<cur>NZXX0048</cur>
+<for>Te Atatu Peninsula</for>
+</item>
+
+<item>
+<title>Timaru</title>
+<cur>NZXX0069</cur>
+<for>Timaru</for>
+</item>
+
+<item>
+<title>Tuturumuri</title>
+<cur>NZXX0079</cur>
+<for>Tuturumuri</for>
+</item>
+
+<item>
+<title>Upper Hutt</title>
+<cur>NZXX0043</cur>
+<for>Upper Hutt</for>
+</item>
+
+<item>
+<title>Waihola</title>
+<cur>NZXX0044</cur>
+<for>Waihola</for>
+</item>
+
+<item>
+<title>Wainuiomata</title>
+<cur>NZXX0045</cur>
+<for>Wainuiomata</for>
+</item>
+
+<item>
+<title>Waiouru</title>
+<cur>NZXX0059</cur>
+<for>Waiouru</for>
+</item>
+
+<item>
+<title>Waipara</title>
+<cur>NZXX0046</cur>
+<for>Waipara</for>
+</item>
+
+<item>
+<title>Waitati</title>
+<cur>NZXX0047</cur>
+<for>Waitati</for>
+</item>
+
+<item>
+<title>Wanganui</title>
+<cur>NZXX0083</cur>
+<for>Wanganui</for>
+</item>
+
+<item>
+<title>Wellington</title>
+<cur>NZXX0049</cur>
+<for>Wellington</for>
+</item>
+
+<item>
+<title>Westport</title>
+<cur>NZXX0064</cur>
+<for>Westport</for>
+</item>
+
+<item>
+<title>Whangarei</title>
+<cur>NZXX0081</cur>
+<for>Whangarei</for>
+</item>
+
+<item>
+<title>Woodlands</title>
+<cur>NZXX0050</cur>
+<for>Woodlands</for>
+</item>
+
+</channel></rss>

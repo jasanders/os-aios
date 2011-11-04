@@ -1,0 +1,344 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Parksville</title>
+<cur>CAXX0347</cur>
+<for>Parksville</for>
+</item>
+
+<item>
+<title>Parry Sound</title>
+<cur>CAXX0348</cur>
+<for>Parry Sound</for>
+</item>
+
+<item>
+<title>Parson</title>
+<cur>CAXX0349</cur>
+<for>Parson</for>
+</item>
+
+<item>
+<title>Pasqua</title>
+<cur>CAXX0350</cur>
+<for>Pasqua</for>
+</item>
+
+<item>
+<title>Peace River</title>
+<cur>CAXX0631</cur>
+<for>Peace River</for>
+</item>
+
+<item>
+<title>Peachland</title>
+<cur>CAXX0351</cur>
+<for>Peachland</for>
+</item>
+
+<item>
+<title>Peers</title>
+<cur>CAXX0352</cur>
+<for>Peers</for>
+</item>
+
+<item>
+<title>Pemberton</title>
+<cur>CAXX0353</cur>
+<for>Pemberton</for>
+</item>
+
+<item>
+<title>Pembroke</title>
+<cur>CAXX0354</cur>
+<for>Pembroke</for>
+</item>
+
+<item>
+<title>Penticton</title>
+<cur>CAXX0355</cur>
+<for>Penticton</for>
+</item>
+
+<item>
+<title>Petawawa</title>
+<cur>CAXX0356</cur>
+<for>Petawawa</for>
+</item>
+
+<item>
+<title>Peterborough</title>
+<cur>CAXX0357</cur>
+<for>Peterborough</for>
+</item>
+
+<item>
+<title>Pickering</title>
+<cur>CAXX0358</cur>
+<for>Pickering</for>
+</item>
+
+<item>
+<title>Pilot Butte</title>
+<cur>CAXX0359</cur>
+<for>Pilot Butte</for>
+</item>
+
+<item>
+<title>Point Edward</title>
+<cur>CAXX0360</cur>
+<for>Point Edward</for>
+</item>
+
+<item>
+<title>Pointe-Lebel</title>
+<cur>CAXX0361</cur>
+<for>Pointe-Lebel</for>
+</item>
+
+<item>
+<title>Port Alberni</title>
+<cur>CAXX0362</cur>
+<for>Port Alberni</for>
+</item>
+
+<item>
+<title>Port Colborne</title>
+<cur>CAXX0363</cur>
+<for>Port Colborne</for>
+</item>
+
+<item>
+<title>Port Coquitlam</title>
+<cur>CAXX0364</cur>
+<for>Port Coquitlam</for>
+</item>
+
+<item>
+<title>Port Dover</title>
+<cur>CAXX0365</cur>
+<for>Port Dover</for>
+</item>
+
+<item>
+<title>Port Edward</title>
+<cur>CAXX0366</cur>
+<for>Port Edward</for>
+</item>
+
+<item>
+<title>Port Essington</title>
+<cur>CAXX0367</cur>
+<for>Port Essington</for>
+</item>
+
+<item>
+<title>Port Hardy</title>
+<cur>CAXX0368</cur>
+<for>Port Hardy</for>
+</item>
+
+<item>
+<title>Port McNeill</title>
+<cur>CAXX0369</cur>
+<for>Port McNeill</for>
+</item>
+
+<item>
+<title>Port Moody</title>
+<cur>CAXX0370</cur>
+<for>Port Moody</for>
+</item>
+
+<item>
+<title>Port Simpson</title>
+<cur>CAXX0371</cur>
+<for>Port Simpson</for>
+</item>
+
+<item>
+<title>Port Weller</title>
+<cur>CAXX0582</cur>
+<for>Port Weller</for>
+</item>
+
+<item>
+<title>Port-Cartier</title>
+<cur>CAXX0373</cur>
+<for>Port-Cartier</for>
+</item>
+
+<item>
+<title>Port-aux-Basques</title>
+<cur>CAXX0372</cur>
+<for>Port-aux-Basques</for>
+</item>
+
+<item>
+<title>Pouch Cove</title>
+<cur>CAXX0374</cur>
+<for>Pouch Cove</for>
+</item>
+
+<item>
+<title>Powassan</title>
+<cur>CAXX0375</cur>
+<for>Powassan</for>
+</item>
+
+<item>
+<title>Powell River</title>
+<cur>CAXX0376</cur>
+<for>Powell River</for>
+</item>
+
+<item>
+<title>Preston</title>
+<cur>CAXX0377</cur>
+<for>Preston</for>
+</item>
+
+<item>
+<title>Price</title>
+<cur>CAXX0378</cur>
+<for>Price</for>
+</item>
+
+<item>
+<title>Prince</title>
+<cur>CAXX0379</cur>
+<for>Prince</for>
+</item>
+
+<item>
+<title>Prince Albert</title>
+<cur>CAXX0380</cur>
+<for>Prince Albert</for>
+</item>
+
+<item>
+<title>Prince George</title>
+<cur>CAXX0381</cur>
+<for>Prince George</for>
+</item>
+
+<item>
+<title>Prince Rupert</title>
+<cur>CAXX0382</cur>
+<for>Prince Rupert</for>
+</item>
+
+<item>
+<title>Prospector</title>
+<cur>CAXX0383</cur>
+<for>Prospector</for>
+</item>
+
+<item>
+<title>Puntzi Mountain</title>
+<cur>CAXX0629</cur>
+<for>Puntzi Mountain</for>
+</item>
+
+</channel></rss>

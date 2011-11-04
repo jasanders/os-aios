@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[HQ]"/>
+		<item label="$[SP]"/>
+		<item label="$[LP]"/>
+		<item label="$[EP]"/>
+		<item label="$[SLP]"/>
+</menu>

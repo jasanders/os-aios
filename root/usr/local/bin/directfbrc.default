@@ -1,0 +1,118 @@
+#
+# WM/System
+wm           = default
+#system       = fbdev
+system       = devmem
+#video-phys   = 87000000
+video-length = 0x01000000
+#video-length = 0x00C00000
+#video-length = 0x00800000
+#video-length = 0x00400000
+
+#
+# Use 640x480 by default (all visible)
+#mode = 720x576
+#mode = 720x480
+mode = 1280x720
+
+#----pixel format for primary layer
+#pixelformat = RGB16
+pixelformat = ARGB
+
+#
+# Shared Memory Mount Point
+tmpfs = /tmp
+
+#
+# Disable Cursor
+#no-cursor
+cursor
+cursor-updates
+
+#---Desktop
+#desktop-buffer-mode = backvideo
+
+#
+# Disable Layer Initialization
+#no-init-layer = 0
+
+#
+# Graphics Layer
+#init-layer        = 0
+#layer-size        = 720x576
+#layer-format      = RGB16
+#layer-stacking    = middle,upper
+#layer-bg-color    = 000000
+#layer-src-key     = 000000
+#layer-buffer-mode = backvideo
+
+#
+# Video Layer
+#init-layer        = 1
+#layer-size        = 720x576
+#layer-format      = UYVY
+#layer-stacking    = lower
+#layer-bg-color    = 0000ff
+#layer-buffer-mode = frontonly
+#layer-bg-image    = /usr/local/share/images/bg_flower.jpg
+
+#add for background 
+bg-color=FF000000
+#bg-image=/tmp/home1_server_27/branch/Ati_Software_DTV_DirectFB/system/branch_src_sharedMemory_integration/Unit_test/graphic-test/test565.png
+#bg-none
+#translucent-windows
+
+
+# Scaling
+smooth-upscale
+smooth-downscale
+
+#
+# Debug domains
+#debug = Davinci/OSD
+#debug = LiTE/Window
+#debug = SaWMan/Auto
+#debug = Core/GraphicsOps
+#debug = Core/Layers
+#debug = Core/Surface
+
+#debug = RTMM/JTDM
+#debug = RTMM/SEDG
+#debug = FBDev/Primary
+
+#debug = DevMem/SurfLock
+#debug = DevMem/Surfaces
+#debug = Core/SurfBuffer
+#debug = Direct/Main
+#debug = DirectFB/Core
+#debug = Core/Input
+
+#+JT - quiet all first, then turn on/off what we want
+quiet
+
+#message 
+#no-quiet = info
+#no-quiet = once
+#no-quiet = warning
+#no-quiet = error
+#no-quiet = unimplemented
+
+#+JT - 20100312
+#no-quiet = state
+#no-quiet = blit
+#no-quiet = stretch
+#no-quiet = draw
+#-JT
+
+#quiet = error
+
+#software-trace
+
+#----accelerator selection
+accelerator = 32 	#FB_ACCEL_ATI_RAGE128
+
+#no-hardware
+software
+
+module-dir=$(DFB_PATH)/bin/lib/directfb-1.4-0
+

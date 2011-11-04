@@ -1,0 +1,123 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+</onEnter>
+
+<mediaDisplay
+	name=photoView
+	viewAreaXPC=34.4
+	viewAreaYPC=33.3
+	viewAreaWidthPC=31.1
+	viewAreaHeightPC=33.3
+	rowCount = 1
+	columnCount = 2
+
+	topArea.heightPC=0
+	topArea.yPC=100
+	bottomYPC=100
+
+	drawItemBorder=no
+
+	itemOffsetXPC=2
+	itemOffsetYPC=70
+	itemHeightPC=12
+	itemGapXPC = 6
+
+	imageFocus=null
+
+	showHeader=no
+	showDefaultInfo=no
+
+	backgroundColor=-1:-1:-1
+	itemBackgroundColor =-1:-1:-1
+	itemGrid.elementBackground = -1:-1:-1
+>
+
+<backgroundDisplay name=filesystem_check_bg>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	"image/setup/setup_popup_bg_simple.fsp";
+	</script>
+	</image>
+</backgroundDisplay>
+
+<onUserInput>
+index = getFocusItemIndex();
+input = currentUserInput();
+ret = "false";
+
+	if ("enter" == input) {
+		if(index==0)
+			data="$[Retry]";
+		else
+			data="$[Stop]";
+		setReturnString(data);
+		postMessage("return");
+		ret = "true";
+	}
+
+ret;
+</onUserInput>
+
+
+<text offsetXPC=15 offsetYPC=10 widthPC=80 heightPC=15 align=left fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+		$[THUNDER_TASK_START_LINKDOWN]
+</text>
+
+<text offsetXPC=0 offsetYPC=35 widthPC=95  heightPC=12 align=center  fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 lines=1 >
+		$[RETRY_OR_STOP]
+</text>
+
+
+<itemDisplay>
+	<text offsetXPC=0 backgroundColor=-1:-1:-1 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	if (getDrawingItemState() == "focus")
+	{
+		"image/setup/setup_popup_bar_focus.fsp";
+	}
+	else
+	{
+		null;
+	}
+	</script>
+	</image>
+
+	<text foregroundColor=250:250:250 offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 fontSize=15 align=center backgroundColor=-1:-1:-1>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+</itemDisplay>
+
+</mediaDisplay>
+
+
+<channel>
+
+<item>
+<title>
+$[Retry]
+</title>
+</item>
+
+<item>
+<title>
+$[Stop]
+</title>
+</item>
+
+</channel>
+
+<onExit>
+if(click_button == 1)
+{
+	skipDBCorrupt();
+}
+print("====== exit from filesystemcheck.rss ======");
+</onExit>
+
+</rss>

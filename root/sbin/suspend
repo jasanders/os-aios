@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [ -n "$CUSTOMER_SUSPEND" ] 
+then
+	echo "Use Customer Suspend"
+	$CUSTOMER_SUSPEND
+else
+	pci remove_modules
+	echo mem > /sys/power/state
+	pci rescan &
+fi
+

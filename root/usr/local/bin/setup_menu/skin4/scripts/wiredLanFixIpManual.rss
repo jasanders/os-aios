@@ -1,0 +1,381 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>FixIpManual</bookmark>
+
+<onEnter>
+	pageTitle = getPageInfo("pageTitle");
+	print("page title is ", pageTitle);
+</onEnter>
+
+<mediaDisplay
+	name=photoView
+	columnCount=4
+	rowCount=4
+	viewAreaXPC=26.8
+	viewAreaYPC=9.6
+	viewAreaWidthPC=46.4
+	viewAreaHeightPC=80.8
+
+	itemOffsetXPC=14.3
+	itemOffsetYPC=23.4
+	itemGapXPC=0
+	itemGapYPC=6.2
+	itemWidthPC=17.8
+	itemHeightPC=10.5
+	imageBorderPC=0
+
+	sideTopHeightPC=0
+	sideBottomHeightPC=0
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	drawItemText="no"
+	drawItemBorder="no"
+	sliding="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/skin4/image/setup_ip_bg.fsp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=7.1 offsetYPC=7.2 widthPC=85.7 heightPC=13.1 align=center fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header = getPageInfo("pageTitle");
+		header;
+	</script>
+</text>
+
+<text offsetXPC=14.3 offsetYPC=23.4 widthPC=70 heightPC=6.2 fontSize=16 align=left backgroundColor=-1:-1:-1>
+$[NET_IP_ADDR]
+</text>
+
+<text offsetXPC=14.3 offsetYPC=40.1 widthPC=70 heightPC=6.2 fontSize=16 align=left backgroundColor=-1:-1:-1>
+$[NET_SUB_MASK]
+</text>
+
+<text offsetXPC=14.3 offsetYPC=56.7 widthPC=70 heightPC=6.2 fontSize=16 align=left backgroundColor=-1:-1:-1>
+$[NET_DEF_GATEWAY]
+</text>
+
+<text offsetXPC=14.3 offsetYPC=73.4 widthPC=70 heightPC=6.2 fontSize=16 align=left backgroundColor=-1:-1:-1>
+$[NET_DNS_SERVER_IP]
+</text>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "./setup_menu/skin4/image/setup_input_unfoucs_bg.fsp";
+		</script>
+	</image>
+	<editbox offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1 >
+		<foregroundColor>
+			<script>
+				fgcolor = "0:0:0";
+			</script>
+		</foregroundColor>
+		<script>
+			getItemInfo("title");
+		</script>
+	</editbox>
+</itemDisplay>
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			popupHeader = "$[CONFIRM]";
+			popupMessageSize = 1;
+			popupMessages = "$[NET_CONFIRM_SETTING]";
+			popupOptionSize = 2;
+			popupOptions = pushBackStringArray(popupOptions, "$[YES]");
+			popupOptions = pushBackStringArray(popupOptions, "$[NO]");
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+<onEnter>
+	setFullScreenFade(64);
+
+	ip_0      = 192;
+	ip_1      = 168;
+	ip_2      = 0;
+	ip_3      = 2;
+	submask_0 = 255;
+	submask_1 = 255;
+	submask_2 = 255;
+	submask_3 = 0;
+	gateway_0 = 192;
+	gateway_1 = 168;
+	gateway_2 = 0;
+	gateway_3 = 1;
+	dns_0     = 192;
+	dns_1     = 168;
+	dns_2     = 0;
+	dns_3     = 1;
+
+	ip        = getWiredLanIpAddr("IP", "", "DATABASE");
+	submask   = getWiredLanIpAddr("SUBMASK", "", "DATABASE");
+	gateway   = getWiredLanIpAddr("GATEWAY", "", "DATABASE");
+	dns       = getWiredLanIpAddr("DNS", "", "DATABASE");
+
+	if (ip != NULL) {
+		ip_0      = getStringArrayAt(ip, 0);
+		ip_1      = getStringArrayAt(ip, 1);
+		ip_2      = getStringArrayAt(ip, 2);
+		ip_3      = getStringArrayAt(ip, 3);
+	}
+	if (submask != NULL) {
+		submask_0 = getStringArrayAt(submask, 0);
+		submask_1 = getStringArrayAt(submask, 1);
+		submask_2 = getStringArrayAt(submask, 2);
+		submask_3 = getStringArrayAt(submask, 3);
+	}
+	if (gateway != NULL) {
+		gateway_0 = getStringArrayAt(gateway, 0);
+		gateway_1 = getStringArrayAt(gateway, 1);
+		gateway_2 = getStringArrayAt(gateway, 2);
+		gateway_3 = getStringArrayAt(gateway, 3);
+	}
+	if (dns != NULL) {
+		dns_0     = getStringArrayAt(dns, 0);
+		dns_1     = getStringArrayAt(dns, 1);
+		dns_2     = getStringArrayAt(dns, 2);
+		dns_3     = getStringArrayAt(dns, 3);
+	}
+
+	setFocusItemIndex(0);
+	setItemFocus(0);
+	redrawDisplay("item", 0);
+	postMessage("enter");
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ("enter" == userInput) {
+		rss = "rss_file://./setup_menu/skin4/scripts/widget.rss";
+		ret = doModalRss(rss);
+		redrawDisplay("no");
+		redrawDisplay("clear");
+		if (ret != null) {
+			inputKey = getStringArrayAt(ret, 0);
+			returnVal = 0 + getStringArrayAt(ret, 1);
+			queryIndex = getQueryItemIndex();
+			if (queryIndex == 0) {
+				ip_0 = returnVal;
+			}
+			else if (queryIndex == 1) {
+				submask_0 = returnVal;
+			}
+			else if (queryIndex == 2) {
+				gateway_0 = returnVal;
+			}
+			else if (queryIndex == 3) {
+				dns_0 = returnVal;
+			}
+			else if (queryIndex == 4) {
+				ip_1 = returnVal;
+			}
+			else if (queryIndex == 5) {
+				submask_1 = returnVal;
+			}
+			else if (queryIndex == 6) {
+				gateway_1 = returnVal;
+			}
+			else if (queryIndex == 7) {
+				dns_1 = returnVal;
+			}
+			else if (queryIndex == 8) {
+				ip_2 = returnVal;
+			}
+			else if (queryIndex == 9) {
+				submask_2 = returnVal;
+			}
+			else if (queryIndex == 10) {
+				gateway_2 = returnVal;
+			}
+			else if (queryIndex == 11) {
+				dns_2 = returnVal;
+			}
+			else if (queryIndex == 12) {
+				ip_3 = returnVal;
+			}
+			else if (queryIndex == 13) {
+				submask_3 = returnVal;
+			}
+			else if (queryIndex == 14) {
+				gateway_3 = returnVal;
+			}
+			else if (queryIndex == 15) {
+				dns_3 = returnVal;
+			}
+
+			target = queryIndex;
+			if (inputKey == "left") {
+				if (queryIndex &gt; 3) {
+					target = 0 + queryIndex - 4;
+				}
+				else if (queryIndex == 1 || queryIndex == 2 || queryIndex == 3) {
+					target = 0 + queryIndex + 11;
+				}
+			}
+			else if (inputKey == "right") {
+				if (queryIndex &lt; 12) {
+					target = 0 + queryIndex + 4;
+				}
+				else if (queryIndex == 12 || queryIndex == 13 || queryIndex == 14) {
+					target = queryIndex - 11;
+				}
+			}
+
+			if (inputKey == "enter") {
+				rss = "rss_file://./setup_menu/skin4/scripts/dynamicPopup.rss";
+				confirm = doModalRss(rss, "mediaDisplay", "popupDialog", 0);
+				if (confirm == "$[YES]") {
+					setWiredLanManualInit();
+					setWiredLanIpAddr("IP",           ip_0,      ip_1,      ip_2,      ip_3);
+					setWiredLanIpAddr("SUBMASK", submask_0, submask_1, submask_2, submask_3);
+					setWiredLanIpAddr("GATEWAY", gateway_0, gateway_1, gateway_2, gateway_3);
+					setWiredLanIpAddr("DNS",         dns_0,     dns_1,     dns_2,     dns_3);
+					setWiredLanManualIp();
+
+					setReturnString(confirm);
+					redrawDisplay("no");
+					handle = "return";
+				}
+				else {
+					redrawDisplay("item", target);
+					postMessage("enter");
+					handle = "true";
+				}
+			}
+			else if (inputKey == "return") {
+				setReturnString("");
+				redrawDisplay("no");
+				handle = "return";
+			}
+			else {
+				if (target == queryIndex) {
+					redrawDisplay("no");
+				}
+				else {
+					setFocusItemIndex(target);
+					setItemFocus(target);
+					redrawDisplay("item", queryIndex);
+					redrawDisplay("item", target);
+				}
+				postMessage("enter");
+				handle = "true";
+			}
+		}
+	}
+	else if ("left" == userInput || "right" == userInput) {
+		handle = "true";
+	}
+	else if ("up" == userInput || "down" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<item_template>
+	<title>
+		<script>
+			data = "";
+			queryIndex = getQueryItemIndex();
+			if (queryIndex == 0) {
+				data = ip_0;
+			}
+			else if (queryIndex == 1) {
+				data = submask_0;
+			}
+			else if (queryIndex == 2) {
+				data = gateway_0;
+			}
+			else if (queryIndex == 3) {
+				data = dns_0;
+			}
+			else if (queryIndex == 4) {
+				data = ip_1;
+			}
+			else if (queryIndex == 5) {
+				data = submask_1;
+			}
+			else if (queryIndex == 6) {
+				data = gateway_1;
+			}
+			else if (queryIndex == 7) {
+				data = dns_1;
+			}
+			else if (queryIndex == 8) {
+				data = ip_2;
+			}
+			else if (queryIndex == 9) {
+				data = submask_2;
+			}
+			else if (queryIndex == 10) {
+				data = gateway_2;
+			}
+			else if (queryIndex == 11) {
+				data = dns_2;
+			}
+			else if (queryIndex == 12) {
+				data = ip_3;
+			}
+			else if (queryIndex == 13) {
+				data = submask_3;
+			}
+			else if (queryIndex == 14) {
+				data = gateway_3;
+			}
+			else if (queryIndex == 15) {
+				data = dns_3;
+			}
+			data;
+		</script>
+	</title>
+
+	<mediaDisplay>
+		<itemDisplay>
+			<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+				./setup_menu/skin4/image/setup_input_foucs_bg.fsp
+			</image>
+			<editbox offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=0:153:255 widgetFormat=numeric widgetMin=0 widgetMax=255 widgetOffset=0 widgetDigit=3 >
+				0
+			</editbox>
+		</itemDisplay>
+	</mediaDisplay>
+</item_template>
+
+
+<channel>
+	<title>$[NET_MENU_IP]</title>
+	<link>rss_file://./setup_menu/skin4/scripts/wiredLanFixIpManual.rss</link>
+
+
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+	16
+</itemSize>
+
+
+</channel>
+</rss>

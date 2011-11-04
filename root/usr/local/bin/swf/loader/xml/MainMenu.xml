@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+        <item label="$[IMS_DTV]" image="image_home_AVin" disable="IsAVinDisable" action="homeMenu.switchAP" parameters="gotoRoot">
+        </item>
+        <item label="$[IMS_FILE_MANAGER]" image="image_home_File" action="homeMenu.switchAP" parameters="gotoFileManager">
+        </item>
+        <item label="$[GBROWSER_MOVIE]" image="image_home_Movie" action="homeMenu.switchAP" parameters="gotoMovie">
+        </item>
+        <item label="$[GBROWSER_MUSIC]" image="image_home_Music" action="homeMenu.switchAP" parameters="gotoMusic">
+        </item>
+        <item label="$[GBROWSER_PICTURE]" image="image_home_Photo" action="homeMenu.switchAP" parameters="gotoPhoto">
+        </item>
+        <item label="$[ims_vt_FAV]" image="image_home_Favorites" disable="IsFavoritesDisable" action="homeMenu.switchAP" parameters="gotoFavorites">
+        </item>
+        <item label="$[IMS_APP]" image="image_home_IMS" disable="NetworkDisable" action="homeMenu.switchAP" parameters="gotoIMS">
+			<submenu>
+				<item label="Netflix" type="NETFLIX" disable="NetflixDisable" />
+				<item label="$[WEBKIT_YOUTUBE_XL]" type="YouTubeXL" disable="YoutubeXLAPDisable" />
+				<item label="Acetrax" type="acetrax" disable="acetraxDisable" />
+				<item label="YouTube" type="YouTube" disable="YoutubeDisable" />
+				<item label="RT VOD" type="VOD" disable="WebKitDisable" />
+				<item label="Dailymotion" type="dailymotion" disable="WebKitDisable" />
+				<item label="Mediafly" type="Mediafly" disable="mediaflyDisable" />
+				<item label="RT Video Podcast" type="Video Podcast" disable="PodcastDisable" />
+				<item label="Pandora" type="PANDORA" disable="pandoraDisable" />
+				<item label="Last.fm" type="Last.fm" disable="lastfmDisable" />
+				<item label="vTuner" type="vTuner" disable="vtunerDisable" />
+				<item label="RT Audio Podcast" type="Audio Podcast" disable="AudioPodcastDisable" />
+				<item label="Flickr" type="Flickr" disable="flickrDisable" />
+				<item label="Picasa" type="Picasa" disable="picasaDisable" />
+				<item label="Weather" type="Weather" disable="weatherDisable" />
+				<item label="Finance" type="Finance" disable="financeDisable" />
+				<item label="$[WEBKIT]" type="Webkit" disable="WebKitDisable" />
+				<item label="BuddyLink" type="Google Talk" disable="gtalkDisable" />
+				<item label="Voole" type="Voole" disable="vooleDisable" />
+				<item label="BBTV" type="BBTV" disable="bestvDisable" />
+				<item label="Thunder" type="thunder" disable="ThunderDisable" />
+				<item label="Sina" type="sina" disable="sinaDisable" />
+				<item label="Skype" type="skype" disable="SkypeDisable" />				
+			</submenu>
+            
+        </item>
+		<item label="$[IMS_MARKET]" image="image_home_Market" disable="flashMarketDisable" action="homeMenu.switchAP" parameters="gotoMarket">
+        </item>
+		<item label="$[SETUP_MENU]" image="image_home_Setup" action="homeMenu.switchAP" parameters="gotoSetup">
+			<submenu>
+				<item label="$[SYSTEM]"/>
+				<item label="$[AUDIO]"/>
+				<item label="$[VIDEO]"/>
+				<item label="$[NETWORK]" disable="NetworkDisable"/>
+				<item label="$[TV_AND_RECORD]" disable="IsAVinDisable"/>
+				<item label="$[MISC]"/>
+			</submenu>
+           
+        </item>
+		
+        <!--item label="$[IMS_WEB_BROWSER]" image="image_home_Web" disable="WebBrowserDisable" action="homeMenu.switchAP" parameters="gotoWebBrowser">
+        </item>
+		<item label="$[Cinema_Now]" image="image_home_Others" action="homeMenu.switchAP" parameters="gotoCinemaNow">
+        </item-->
+
+</menu>

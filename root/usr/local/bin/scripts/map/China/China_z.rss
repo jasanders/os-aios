@@ -1,0 +1,244 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>China</title>
+<link>./scripts/map/China_z.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Zadoi</title>
+<cur>CHXX0332</cur>
+<for>Zadoi</for>
+</item>
+
+
+<item>
+<title>Zaoyang</title>
+<cur>CHXX0397</cur>
+<for>Zaoyang</for>
+</item>
+
+
+<item>
+<title>Zhang Ping</title>
+<cur>CHXX0474</cur>
+<for>Zhang%20Ping</for>
+</item>
+
+
+<item>
+<title>Zhangjiakou</title>
+<cur>CHXX0300</cur>
+<for>Zhangjiakou</for>
+</item>
+
+
+<item>
+<title>Zhangwu</title>
+<cur>CHXX0288</cur>
+<for>Zhangwu</for>
+</item>
+
+
+<item>
+<title>Zhangye</title>
+<cur>CHXX0228</cur>
+<for>Zhangye</for>
+</item>
+
+
+<item>
+<title>Zhangzhou</title>
+<cur>CHXX0162</cur>
+<for>Zhangzhou</for>
+</item>
+
+
+<item>
+<title>Zhanjiang</title>
+<cur>CHXX0163</cur>
+<for>Zhanjiang</for>
+</item>
+
+
+<item>
+<title>Zhanyi</title>
+<cur>CHXX0374</cur>
+<for>Zhanyi</for>
+</item>
+
+
+<item>
+<title>Zhaotong</title>
+<cur>CHXX0364</cur>
+<for>Zhaotong</for>
+</item>
+
+
+<item>
+<title>Zhengding</title>
+<cur>CHXX0164</cur>
+<for>Zhengding</for>
+</item>
+
+
+<item>
+<title>Zhengzhou</title>
+<cur>CHXX0165</cur>
+<for>Zhengzhou</for>
+</item>
+
+
+<item>
+<title>Zhenjiang</title>
+<cur>CHXX0166</cur>
+<for>Zhenjiang</for>
+</item>
+
+
+<item>
+<title>Zhijiang</title>
+<cur>CHXX0421</cur>
+<for>Zhijiang</for>
+</item>
+
+
+<item>
+<title>Zhongning</title>
+<cur>CHXX0262</cur>
+<for>Zhongning</for>
+</item>
+
+
+<item>
+<title>Zhongxiang</title>
+<cur>CHXX0402</cur>
+<for>Zhongxiang</for>
+</item>
+
+
+<item>
+<title>Zhoucun</title>
+<cur>CHXX0167</cur>
+<for>Zhoucun</for>
+</item>
+
+
+<item>
+<title>Zhumadian</title>
+<cur>CHXX0398</cur>
+<for>Zhumadian</for>
+</item>
+
+
+<item>
+<title>Zibo</title>
+<cur>CHXX0169</cur>
+<for>Zibo</for>
+</item>
+
+
+<item>
+<title>Zunyi</title>
+<cur>CHXX0419</cur>
+<for>Zunyi</for>
+</item>
+
+
+</channel></rss>

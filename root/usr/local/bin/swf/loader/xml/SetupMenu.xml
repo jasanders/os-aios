@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+        <item label="$[SYSTEM]" image="image_setup_System" >
+			<submenu>
+					<!--item label="$[LANG_OSD]" onSelect="setOSDLang">
+							<submenu list="setup/Language.xml" /-->
+					<item label="$[LANG_OSD]" >
+							<submenu dialog="popupListDlg" type="$[LANG_OSD]" data_path="setup/Language.xml" onSelect="setOSDLang"/>
+					</item>
+					<item label="$[TEXT_ENCODING]">
+							<submenu dialog="popupListDlg" type="$[TEXT_ENCODING]" data_path="setup/TextEncoding.xml"  onSelect="setTextEncoding"/>
+					</item>
+					<item label="$[TIME]">
+							<submenu list="setup/Time.xml"/>
+					</item>
+					<item label="$[AUTOPLAY]" >
+							<submenu dialog="popupListDlg" type="$[AUTOPLAY]" data_path="setup/onOffMenu.xml" onSelect="setAutoPlay"/>
+					</item>
+					<item label="$[SCREEN_SAVER]" >
+							<submenu list="setup/ScreenSaver.xml" />
+					</item>
+					<item label="$[DLNA_DMR]" disable="NetworkDisable">
+							<submenu dialog="popupListDlg" type="$[DLNA_DMR]" data_path="setup/onOffMenu.xml" onSelect="setDlnaRenderer" />
+					</item>
+					<item label="$[DEVICE_NAME]" >
+							<submenu dialog="popupKBD" type="$[DEVICE_NAME]" />
+					</item>
+					<item label="$[LANG_MINIKBD]" >
+							<submenu dialog="popupListDlg" type="$[LANG_MINIKBD]" data_path="setup/miniKB.xml" onSelect="setMiniKBDLang"/>
+					</item>
+					<item label="$[SCAN_STORAGE]" >
+							<submenu dialog="popupListDlg" type="$[SCAN_STORAGE]" data_path="setup/scanStorage.xml" onSelect="setScanStorage"/>
+					</item>
+					<item label="$[RESUMEPLAY]" >
+							<submenu dialog="popupListDlg" type="$[RESUMEPLAY]" data_path="setup/onOffMenu.xml" onSelect="setResumePlay"/>
+					</item>
+					<item label="$[HDD_FORMAT]" >
+							<!--submenu dialog="popupCheckDlg" type="$[HDD_FORMAT]" /-->	
+							<submenu dialog="popupCheckDlg" type="$[HDD_FORMAT]">
+								<next dialog="popupCheckDlg" type="$[HDD_FORMAT]" content="{ 'title':'$[FORBIDDEN_OPERATION]','description':'$[FORMAT_HDD_WARNING_1]', 'buttons': ['$[OK]']}"/>
+							</submenu>	
+					</item>	
+					<item label="$[HDMV]" disable="HDMVDisable">
+							<submenu dialog="popupListDlg" type="$[HDMV]" data_path="setup/onOffMenu.xml" onSelect="setHdmvNavigation" />
+					</item>				
+					<item label="$[RESTORE_DEFAULT]" >
+							<submenu dialog="popupCheckDlg" type="$[RESTORE_DEFAULT]">								
+							</submenu>							
+					</item>
+					<item label="$[SKIN_SEL]" >
+							<submenu dialog="popupListDlg" type="$[SKIN_SEL]" data_path="../../skins/skin_path.xml" onSelect="setSkinName"/>
+					</item>
+				
+			</submenu>			
+        </item>
+		
+        <item label="$[AUDIO]" image="image_setup_Audio" >
+			<submenu>
+					<item label="$[DRC]" >
+							<submenu dialog="popupListDlg" type="$[DRC]" data_path="setup/DRC.xml" onSelect="setNightMode"/>
+					</item>
+					<!--item label="$[DIGITAL_OUT]" onSelect="setAudioSpdifOutput">
+							<submenu list="setup/digitalOut.xml" />
+					</item-->
+					<item label="$[HDMI_OUTPUT]" disable="isHDMIDisable">
+							<submenu dialog="popupListDlg" type="$[HDMI_OUTPUT]" data_path="setup/HDMIOutput.xml" onSelect="setAudioHdmiOutput">
+								<next dialog="popupCheckDlg" type="HDMI_OUTPUT_WARNING"/>
+							</submenu>	
+					</item> 
+					<item label="$[SPDIF_OUTPUT]" >
+							<submenu dialog="popupListDlg" type="$[SPDIF_OUTPUT]" data_path="setup/SPDIFOutput.xml" onSelect="setAudioSpdifOutput">
+								<next dialog="popupCheckDlg" type="SPDIF_OUTPUT_WARNING"/>
+							</submenu>	
+					</item>
+					<item label="$[SURROUND_SOUND]" >
+							<submenu dialog="popupListDlg" type="$[SURROUND_SOUND]" data_path="setup/SurroundSound.xml" onSelect="setSurroundSound" onSelectType="$[SURROUND_SOUND]"/>
+					</item>
+					<item label="$[AUDIO_DEFAULT]" disable="AudioDefaultDisable">
+							<submenu dialog="popupCheckDlg" type="$[AUDIO_DEFAULT]">
+							</submenu>	
+					</item> 
+			</submenu>           
+        </item>
+		
+        <item label="$[VIDEO]" image="image_setup_Video">
+            <submenu>
+					<item label="$[ASPECT_RATIO]" >
+							<submenu dialog="popupListDlg" type="$[ASPECT_RATIO]" data_path="setup/AspectRadio.xml" onSelect="setAspectRatio"/>
+					</item>
+					<item label="$[TV_SYSTEM]" >
+							<submenu dialog="TvSystemDlg" type="$[TV_SYSTEM]"/>
+					</item>
+					<item label="$[VIDEO_ZOOM]" >
+							<submenu dialog="popupListDlg" type="$[VIDEO_ZOOM]" data_path="setup/onOffMenu.xml" onSelect="setZoomOut"/>
+					</item>
+					<!--tem label="$[DNR]"  >
+							<submenu dialog="popupListDlg" type="$[DNR]" data_path="setup/DNR.xml" onSelect="setDNR"/>
+					</item-->
+					<item label="$[1080P_24HZ]" >
+							<submenu dialog="popupListDlg" type="$[1080P_24HZ]" data_path="setup/onOffMenu.xml" onSelect="set1080P24Hz" />
+					</item>
+					<item label="$[DEEP_COLOR]" disable="DeepColorDisable">
+							<submenu dialog="popupListDlg" type="$[DEEP_COLOR]" data_path="setup/HDMIDeepColor.xml" onSelect="setHdmiDeepColor" />
+					</item>
+					<item label="$[CVBS_YPBPR_SWITCH]" disable="TveDecDisable">
+							<submenu dialog="popupListDlg" type="$[CVBS_YPBPR_SWITCH]" data_path="setup/CvbsYpbprSwitch.xml" onSelect="setCvbsYpbprSwitch" />
+					</item>
+			</submenu>           
+        </item>
+		
+        <item label="$[NETWORK]" image="image_setup_Network" disable="NetworkDisable">
+            <submenu>
+					<item label="$[NET_SETUP]" disable="WiredNetDisable">
+							<submenu list="setup/WiredNet.xml" />
+					</item>
+					<item label="$[NETWL_SETUP]" disable="WirelessNetDisable">
+							<submenu dialog="WirelessSetting" type="$[NETWL_SETUP]" />
+					</item>
+					<item label="$[NET3POE_SETUP]" disable="NetworkDisable">
+							<submenu list="setup/PPPoEInterface.xml" />
+					</item>
+					<item label="$[BT_PROCESS]" disable="SambaDisable">
+							<submenu dialog="popupListDlg" type="$[BT_PROCESS]" data_path="setup/onOffMenu.xml" onSelect="setBtProcess" />
+					</item>
+					<item label="$[SAMBA_PROCESS]" disable="SambaDisable">
+							<submenu dialog="popupListDlg" type="$[SAMBA_PROCESS]" data_path="setup/onOffMenu.xml" onSelect="setSambaProcess" />
+					</item>
+					<item label="$[LOGIN_CONTROL]" disable="SambaDisable">
+							<submenu dialog="popupListDlg" type="$[LOGIN_CONTROL]" data_path="setup/onOffMenu.xml" onSelect="setNeighborSecurity" />
+					</item>					
+			</submenu>            
+        </item>
+		
+		 <item label="$[TV_AND_RECORD]" image="image_setup_TvRec" disable="IsAVinDisable">
+			<submenu>
+					<item label="$[TV_REGION]" disable="IsTVScanDisable">
+							<submenu dialog="popupListDlg" type="$[TV_REGION]" data_path="setup/TVRegion.xml" onSelect="setTvRegion" />
+					</item>
+					<!--item label="$[TV_INPUT]" onSelect="setTvInput">
+							<submenu list="setup/TVInput.xml" />
+					</item-->
+					<item label="$[CHANNEL_SCAN]" disable="IsTVScanDisable">
+							<submenu list="setup/ChannelScan.xml" />
+					</item>
+					<!--item label="$[CHANNEL_SET]" >
+							<submenu dialog="flowChannelSet" type="$[CHANNEL_SET]"/>
+					</item-->
+					<item label="$[AV_IN_REC_QUALITY]" disable="AVinRecDisable">
+							<submenu dialog="popupListDlg" type="$[AV_IN_REC_QUALITY]" data_path="setup/ScanQuality.xml" onSelect="setRecQuality" />
+					</item>
+					<!--item label="$[PERMANENT_TIMESHIFT]" >
+							<submenu dialog="popupListDlg" type="$[PERMANENT_TIMESHIFT]" data_path="setup/onOffMenu.xml" onSelect="setPermanentTimeShift"/>
+					</item-->
+					<item label="$[REC_DEVICE]" >
+							<submenu dialog="popupListDlg" type="$[REC_DEVICE]" data_path="setup/RecDevice.xml" onSelect="setRecDevice"/>
+					</item>
+					<item label="$[REC_PRIORITY]" >
+							<submenu dialog="popupListDlg" type="$[REC_PRIORITY]" data_path="setup/RecPiority.xml" onSelect="setRecPriority"/>
+					</item>
+			</submenu>           
+        </item>
+		
+        <item label="$[MISC]" image="image_setup_Misc">
+            <submenu>
+					<item label="$[VERSION_INFO]" >
+							<submenu dialog="DisplayInfoDlg" type="$[VERSION_INFO]" />							
+					</item>
+					<item label="$[IP_CONFIG]" disable="NetworkDisable">
+							<submenu dialog="DisplayInfoDlg" type="$[IP_CONFIG]"/>
+					</item>
+					<item label="$[DIVX_REGISTER]" disable="DivxDisable">
+							<submenu dialog="popupCheckDlg" type="$[DIVX_REGISTER]" />
+					</item>
+					<item label="$[DIVX_DEACTIVATE]" disable="DivxDisable">
+							<submenu dialog="popupCheckDlg" type="$[DIVX_DEACTIVATE]">
+								<next dialog="popupCheckDlg" type="$[DIVX_DEACTIVATE_ACTION]"/>
+							</submenu>
+					</item>
+					<item label="$[NETFLIX_DEACTIVATE]" disable="NetflixDisable" >
+							<submenu dialog="popupCheckDlg" type="$[NETFLIX_DEACTIVATE]"/>															
+					</item>
+					<item label="$[PARENTAL_CONTROL]" disable="ParentalCtrlDisable">
+							<submenu dialog="DigitalPwdCheck" type="$[PARENTAL_CONTROL]" label="$[PARENTAL_CONTROL]" >
+								<next list="setup/ParentalControl.xml" />
+							</submenu>							
+					</item>					
+					<!--item label="$[SLIDE_SHOW_TIME]" onSelect="setSlideShowTime">
+							<submenu list="setup/SlideShowTime.xml" />
+					</item>
+					<item label="$[KEN_BURNS]" onSelect="setKenBurns">
+							<submenu list="setup/onOffMenu.xml" />
+					</item>
+					<item label="$[SEAMLESS_PLAYBACK]" onSelect="setSeamlessPlayback">
+							<submenu list="setup/onOffMenu.xml" />
+					</item>
+					<item label="$[PICTURE_MUSIC]" onSelect="setBackgroundMusic">
+							<submenu list="setup/PictureMusic.xml" />
+					</item-->
+					<item label="$[UPGRADE_ONLINE]" disable="NetworkDisable">
+							<submenu dialog="NetUpgradeDlg" type="$[UPGRADE_ONLINE]" />
+					</item>
+					<item label="$[UPGRADE_USB]" >
+							<submenu dialog="popupCheckDlg" type="$[UPGRADE_USB]" />
+					</item>
+			</submenu>           
+        </item>
+</menu>

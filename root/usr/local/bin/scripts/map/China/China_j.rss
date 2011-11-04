@@ -1,0 +1,273 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>China</title>
+<link>./scripts/map/China_j.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Jartai</title>
+<cur>CHXX0252</cur>
+<for>Jartai</for>
+</item>
+
+
+<item>
+<title>Jarud Qi</title>
+<cur>CHXX0275</cur>
+<for>Jarud%20Qi</for>
+</item>
+
+
+<item>
+<title>Ji'An</title>
+<cur>CHXX0425</cur>
+<for>Ji%27An</for>
+</item>
+
+
+<item>
+<title>Jiangcheng</title>
+<cur>CHXX0384</cur>
+<for>Jiangcheng</for>
+</item>
+
+
+<item>
+<title>Jiangjin</title>
+<cur>CHXX0057</cur>
+<for>Jiangjin</for>
+</item>
+
+
+<item>
+<title>Jiangling</title>
+<cur>CHXX0408</cur>
+<for>Jiangling</for>
+</item>
+
+
+
+<item>
+<title>Jiangmen</title>
+<cur>CHXX0058</cur>
+<for>Jiangmen</for>
+</item>
+
+
+<item>
+<title>Jiaonan</title>
+<cur>CHXX0060</cur>
+<for>Jiaonan</for>
+</item>
+
+
+<item>
+<title>Jiaxing</title>
+<cur>CHXX0062</cur>
+<for>Jiaxing</for>
+</item>
+
+
+<item>
+<title>Jiexiu</title>
+<cur>CHXX0268</cur>
+<for>Jiexiu</for>
+</item>
+
+
+<item>
+<title>Jinan</title>
+<cur>CHXX0064</cur>
+<for>Jinan</for>
+</item>
+
+
+<item>
+<title>Jingdezhen</title>
+<cur>CHXX0457</cur>
+<for>Jingdezhen</for>
+</item>
+
+
+<item>
+<title>Jinghe</title>
+<cur>CHXX0202</cur>
+<for>Jinghe</for>
+</item>
+
+
+<item>
+<title>Jinghong</title>
+<cur>CHXX0380</cur>
+<for>Jinghong</for>
+</item>
+
+
+<item>
+<title>Jingyuan</title>
+<cur>CHXX0066</cur>
+<for>Jingyuan</for>
+</item>
+
+
+<item>
+<title>Jining</title>
+<cur>CHXX0250</cur>
+<for>Jining</for>
+</item>
+
+
+<item>
+<title>Jinzhou</title>
+<cur>CHXX0067</cur>
+<for>Jinzhou</for>
+</item>
+
+
+<item>
+<title>Jiujiang</title>
+<cur>CHXX0068</cur>
+<for>Jiujiang</for>
+</item>
+
+
+<item>
+<title>Jiulong</title>
+<cur>CHXX0361</cur>
+<for>Jiulong</for>
+</item>
+
+
+<item>
+<title>Jiuquan</title>
+<cur>CHXX0226</cur>
+<for>Jiuquan</for>
+</item>
+
+
+<item>
+<title>Jiutai</title>
+<cur>CHXX0069</cur>
+<for>Jiutai</for>
+</item>
+
+
+<item>
+<title>Jiuxian Shan</title>
+<cur>CHXX0475</cur>
+<for>Jiuxian%20Shan</for>
+</item>
+
+
+<item>
+<title>Jixi</title>
+<cur>CHXX0193</cur>
+<for>Jixi</for>
+</item>
+
+
+<item>
+<title>Jurh</title>
+<cur>CHXX0245</cur>
+<for>Jurh</for>
+</item>
+
+
+</channel></rss>

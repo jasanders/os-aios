@@ -1,0 +1,195 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Taiwan Stock Lists</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>上市大盤</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=%5ETWII&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/url/d/e/N1.html" />
+        </item>
+        <item>
+            <title>水泥</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_1.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>食品</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_2.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>塑膠</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_3.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>紡織</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_4.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>電機</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_5.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>電器電纜</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_6.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>化學</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_7.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>生技醫療</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_8.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>玻璃</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_9.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>造紙</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_10.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>鋼鐵</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_11.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>橡膠</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_12.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>汽車</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_13.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>半導體</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_14.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>電腦週邊</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_15.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>光電</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_16.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>通信網路</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_17.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>電子零組件</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_18.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>電子通路</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_19.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>資訊服務</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_20.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>其它電子</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_21.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>營建</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_22.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>航運</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_23.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>觀光</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_24.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>金融</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_25.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>貿易百貨</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_26.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>油電燃氣</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_27.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>憑證</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_28.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>        
+        <item>
+            <title>綜合</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_29.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>其他</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse_30.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+    </channel>
+</rss>

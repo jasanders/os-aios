@@ -1,0 +1,324 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+	
+	CurrentTypeStr1 = getEnv("EntryStatusString1");
+	CurrentTypeStr2 = getEnv("EntryStatusString2");
+	CurrentTypeStr3 = getEnv("EntryStatusString3");
+	CurrentTypeStr4 = getEnv("EntryStatusString4");
+	CurrentTypeStr5 = getEnv("EntryStatusString5");
+	CurrentTypeStr6 = getEnv("EntryStatusString6");
+	CurrentTypeStr7 = getEnv("EntryStatusString7");
+	print("CurStatus:" , CurrentTypeStr1, CurrentTypeStr2, CurrentTypeStr3, CurrentTypeStr4, CurrentTypeStr5, CurrentTypeStr6, CurrentTypeStr7);
+	
+	SearchDisable = "no";
+	BrowseFolder = "yes";
+	
+	BGMusicDisable = "yes";
+	BackToPhotoDisable = "yes";
+	
+	SortingDisable = "no";
+	
+	if(CurrentTypeStr1 == "GBrowserSelectAP"){
+		SearchDisable = "yes";
+		BackToPhotoDisable = "no";
+	}
+	
+	if(CurrentTypeStr1 == "GBrowserGridViewAP"){
+		if(CurrentTypeStr3 == "PlayMusic"){
+			BGMusicDisable = "no";
+		}
+		if(CurrentTypeStr4 == "BrwsFolder"){
+			BrowseFolder = "no";
+		}	
+	}
+	
+	if(CurrentTypeStr5 != "All"){
+		SortingDisable = "yes";
+	}
+	
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "MusicSelects.dat";
+	selectArray = readStringFromFile(storagePath);
+	if (selectArray == null){
+	  selectArray = pushBackStringArray(selectArray, "List");
+	  selectArray = pushBackStringArray(selectArray, "ByRectPlay");
+	  selectArray = pushBackStringArray(selectArray, "All");
+	  writeStringToFile(storagePath, selectArray);
+	}
+	ViewSel = getStringArrayAt(selectArray, 0);
+	SortSel = getStringArrayAt(selectArray, 1);
+	ShowSel = getStringArrayAt(selectArray, 2);
+	
+	if(ShowSel != "All"){
+		SortingDisable = "yes";
+	}
+	print(SearchDisable, BrowseFolder, BGMusicDisable, BackToPhotoDisable, SortingDisable);
+	
+	print("select::", ViewSel, SortSel, ShowSel);
+</script>
+
+
+<item_template>
+  <onClick>
+    <script>
+	    selected = getItemInfo("selected");
+		StrCmd= getItemInfo("StrCmd");
+		
+		if (selected != "yes") {
+		  group = getItemInfo("group");
+		
+		  if (group=="view") {
+			ViewSel = StrCmd;
+		  }
+          else if (group=="sort") {
+			SortSel = StrCmd;
+		  }
+		  else if (group=="show") {
+			ShowSel = StrCmd;			
+		  }
+		 		  
+		  selectArray = null;
+    	  selectArray = pushBackStringArray(selectArray, ViewSel);
+	      selectArray = pushBackStringArray(selectArray, SortSel);
+	      selectArray = pushBackStringArray(selectArray, ShowSel);
+		  writeStringToFile(storagePath, selectArray);
+	    }
+		else {
+			print("Item already selected");
+		}
+		
+		
+		if(CurrentTypeStr1 == "GBrowserSelectAP"){
+			APName = CurrentTypeStr1;
+		}else{
+			APName = "GBrowserGridViewAP";
+		}
+		MMType = "Music";
+		SrcSel = "DB";
+		selectArray = readStringFromFile(storagePath);
+		ViewSel = getStringArrayAt(selectArray, 0);
+		SortSel = getStringArrayAt(selectArray, 1);
+		ShowSel = getStringArrayAt(selectArray, 2);
+		if(ShowSel != "All"){
+			SortSel = "None";
+		}
+		if(CurrentTypeStr7 == "Search"){
+			if(group != "show"){
+				ShowSel = CurrentTypeStr7;
+			}
+		}
+		pendingMessage = "return";
+	
+		if (StrCmd == "Search") {
+			APName = "SearchViewAP";
+			menuCmd(APName, ViewSel, MMType, "AZ");
+		}
+		else if (StrCmd=="BackToPhoto") {
+			menuCmd(APName, StrCmd);	
+		}
+		else if (StrCmd == "BackToAudioPlaybackAP") {
+			menuCmd(APName, StrCmd);
+		}
+		else if (StrCmd == "BrowseFolder") {
+			DevStoragePath = getStoragePath("key");
+			DevStoragePath = DevStoragePath + "DeviceSelects.dat";
+			selectArray = readStringFromFile(DevStoragePath);
+			if (selectArray != null){
+			  ViewSel = getStringArrayAt(selectArray, 0);
+			}
+			
+			selectArray = null;
+    	    selectArray = pushBackStringArray(selectArray, ViewSel);
+	        selectArray = pushBackStringArray(selectArray, MMType);
+		    writeStringToFile(DevStoragePath, selectArray);
+		    
+			ViewSel = getStringArrayAt(selectArray, 0);
+			MMType = getStringArrayAt(selectArray, 1);
+			SrcSel = StrCmd;
+			menuCmd(APName, SrcSel, ViewSel, MMType);
+		}
+		else {
+			menuCmd(APName, SrcSel, ViewSel, MMType, ShowSel, SortSel);
+		}
+		null;
+		
+    </script>
+  </onClick>
+  <selected>
+    <script>
+    	group = getItemInfo("group");
+		StrCmd= getItemInfo("StrCmd");
+		ret = "no";
+		if (group=="view") {
+			if (StrCmd == ViewSel) {
+			  ret = "yes";
+			}
+		}
+        else if (group=="sort") {
+			if (StrCmd == SortSel) {
+			  ret = "yes";
+			}
+		}
+		else if (group=="show") {
+			if (StrCmd == ShowSel) {
+			  ret = "yes";
+			}
+		}
+		ret;
+		
+	</script>
+  </selected>
+</item_template>
+
+<channel>
+	<title>Music</title>
+	<link>./scripts/setup/Music.rss</link>
+
+<item>
+<title>$[SEARCHCH]</title>
+<disable>
+	<script>
+		SearchDisable;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> Search </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_NOW_PLAYING]</title>
+<disable>
+	<script>
+		BGMusicDisable;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> BackToAudioPlaybackAP </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_THUMBNAILS]</title>
+<position> head </position>
+<group> view </group>
+<StrCmd> Grid </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_LIST]</title>
+<position> middle </position>
+<group> view </group>
+<StrCmd> List </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_PREVIEW]</title>
+<position> tail </position>
+<group> view </group>
+<StrCmd> Preview </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BROWSE_FOLDERS]</title>
+<disable>
+	<script>
+		BrowseFolder;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> BrowseFolder </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_ALL_SONGS]</title>
+<position> head </position>
+<group> show </group>
+<StrCmd> All </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_ALBUMS]</title>
+<position> middle </position>
+<group> show </group>
+<StrCmd> Albums </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_ARTISTS]</title>
+<position> middle </position>
+<group> show </group>
+<StrCmd> Artists </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_GENRES]</title>
+<position> middle </position>
+<group> show </group>
+<StrCmd> Genres </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_YEARS]</title>
+<position> middle </position>
+<group> show </group>
+<StrCmd> Years </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_MUSIC_SHOW_PLAYLISTS]</title>
+<position> tail </position>
+<group> show </group>
+<StrCmd> PL </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BY_RECENTLY_PLAYED]</title>
+<disable>
+	<script>
+		SortingDisable;
+	</script>
+</disable>
+<position> head </position>
+<group> sort </group>
+<StrCmd> ByRectPlay </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BY_RECENTLY_ADDED]</title>
+<disable>
+	<script>
+		SortingDisable;
+	</script>
+</disable>
+<position> middle </position>
+<group> sort </group>
+<StrCmd> ByRectAdd </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BY_NAME]</title>
+<disable>
+	<script>
+		SortingDisable;
+	</script>
+</disable>
+<position> tail </position>
+<group> sort </group>
+<StrCmd> ByName </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_BACK_TO_PHOTO]</title>
+<disable>
+	<script>
+		BackToPhotoDisable;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> BackToPhoto </StrCmd>
+</item>
+
+
+</channel>
+</rss>

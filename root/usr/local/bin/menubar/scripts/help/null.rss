@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+print(" --->> Enter null.rss");
+setRefreshTime(1000);
+count = 0;
+</onEnter>
+
+<onRefresh>
+print("Counting ....", count);
+count = count + 1;
+if (count &gt; 5) {
+  print("Return");
+  postMessage("return");
+}
+</onRefresh>
+
+<onExit>
+print(" --->> Leave null.rss");
+</onExit>
+
+<channel>
+	<title>Home Menu</title>
+	<link>./scripts/help/help.rss</link>
+
+</channel>
+</rss>

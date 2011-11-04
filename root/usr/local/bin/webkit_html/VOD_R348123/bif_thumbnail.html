@@ -1,0 +1,1484 @@
+<html>
+<head>
+<style>
+
+body{
+    background-attachment:fixed;
+    background-color:black;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.class0{
+    position: absolute;
+    top:0px;
+    left:0px;
+    z-index:-1;
+}
+
+.class1{
+    position: absolute;
+    background:url(0902/web_movie_bg.png) repeat;
+    left:0px;
+    top:460px; 
+    width:1280px;
+    height:260px;
+}
+
+a{
+    font-size:20px;
+    position: relative;
+    margin-right:auto;
+    margin-left:auto;
+    z-index:3;
+}
+
+img.percentImage1 {
+    background: black url(0902/web_movie_progress_bar.png) top left no-repeat;
+    padding: 0;
+    margin: 5px 0 0 0;
+    background-position: 1px 0;
+    width: 935px;
+    height: 8px;
+}
+</style>
+
+<script type="text/javascript" src="./webtoolkit.sprintf.js"></script>
+<script type="text/javascript" src="./progress.js"></script>
+
+<script> 
+
+var subtitleItemNum = 1;
+var subtitleArray = new Array();
+var subSelectIndex =0;
+var subHasSelectIndex =0;
+
+var trackSelectIndex = 0;
+var TrackMenuSelectItem = 0;
+var trackAudioItemNum = 1;
+var audioArray = new Array();
+var audioHasSelectIndex =0;
+
+var thumbnails_host_path = './thumbnails';
+var thumbnails_server_path= './thumbnails';;
+var curImgNum;
+var imgNumMax = 1;
+var vdoMap2ImgNum;	//video frame current time
+var state = 'inPlay';
+var timeInterval = 500;
+
+var bufferingCatchedPercentage = 0;
+var videoObj = new CommonUtil;
+var volumeValue;
+var isDownLoadOver = false;
+
+
+var per_tar_thumbnail_num;
+var currentTar = -1;
+//var isClosed = false;
+var inTmp = new Array();
+var hasDownloadSuccess = new Array();
+
+var loadMediaFail = 2;
+var loadMediaSuccess =3;
+var playCompleted = 7;
+var networkDiscontinue = 8;
+var notResponseButton = true;
+var buffering_detect_time = 0;
+var bufferStreamSize_old = 0;
+var seek_buffering_detect_time = 0;
+var bufferingTime_old = 0;
+
+var buffering_detect_max_time = 50;
+var presentBufferStreamSize =0;
+var optionSelectIndex = 0;
+var optionItemNum = 2;
+var showMenuItemNum = 6;
+
+var isM3u8File = false;
+var segmentInterval = 10;
+
+var CMD_LEFT  = 37
+var CMD_RIGHT = 39
+var CMD_UP    = 38 
+var CMD_DOWN  = 40
+var CMD_MENU  = 77
+var CMD_OK    = 13
+var CMD_FBW   = 66
+var CMD_FFW   = 70
+
+var IntervalLoopID = 0;
+
+function showPluginTime(imgNum)
+{
+    var array = new Array();
+    array[0] = 180+Math.floor(935*imgNum/imgNumMax);
+    array[1] = 460;
+    trr = document.getElementById("myvideoObj");
+    array[2] = GetCurTime((imgNum-1)*segmentInterval);
+    var mmm = trr.showSelectMenu(array);
+}
+
+
+function showImg(imgNum)
+{
+    setProgress("element1", (imgNum/imgNumMax)*100);   
+    showPluginTime(imgNum);
+  
+   // var thumbnails_path = thumbnails_server_path;
+    
+    var thumbnails_path1 = thumbnails_server_path;
+    var thumbnails_path2 = thumbnails_server_path;
+    var thumbnails_path3 = thumbnails_server_path;
+    var thumbnails_path4 = thumbnails_server_path;
+    var thumbnails_path5 = thumbnails_server_path;
+
+    if(isM3u8File == false){   
+        if((imgNum-3)>0){
+             var tarIndex = Math.floor((imgNum-3)/per_tar_thumbnail_num);
+             if(tarIndex>9)
+             tarIndex = 9;
+         
+             if(inTmp[tarIndex] == 0)
+             {
+                  thumbnails_path1 = thumbnails_host_path + tarIndex;
+             }
+         }
+    
+        if((imgNum-2)>0){
+             var tarIndex = Math.floor((imgNum-2)/per_tar_thumbnail_num);
+             if(tarIndex>9)
+                  tarIndex = 9;
+         
+             if(inTmp[tarIndex] == 0)
+             {
+                thumbnails_path2 = thumbnails_host_path + tarIndex;
+             }
+         }
+         
+        var tarIndex = Math.floor((imgNum-1)/per_tar_thumbnail_num);
+        if(tarIndex>9)
+            tarIndex = 9;
+         
+        if(inTmp[tarIndex] == 0)
+        {
+            thumbnails_path3 = thumbnails_host_path + tarIndex;
+        }
+        
+        if((imgNum)<imgNumMax ){
+            var tarIndex = Math.floor((imgNum)/per_tar_thumbnail_num);
+            if(tarIndex>9)
+                 tarIndex = 9;
+         
+            if(inTmp[tarIndex] == 0)
+            {
+                 thumbnails_path4 = thumbnails_host_path + tarIndex;
+            }
+        }
+    
+        if((imgNum+1)<imgNumMax ){
+            var tarIndex = Math.floor((imgNum+1)/per_tar_thumbnail_num);
+            if(tarIndex>9)
+                 tarIndex = 9;
+         
+            if(inTmp[tarIndex] == 0)
+            {
+                 thumbnails_path5 = thumbnails_host_path + tarIndex;
+            }
+        }
+    }
+   
+    if(imgNum == 1)
+    {
+        document.getElementById('img1').style.visibility = 'hidden';
+        document.getElementById('bg1').style.visibility = 'hidden';
+	  
+        document.getElementById('img2').style.visibility = 'hidden';
+        document.getElementById('bg2').style.visibility = 'hidden';
+	  
+        document.getElementById('img3').style.visibility = 'visible';
+        document.getElementById('bg3').style.visibility = 'visible';
+        document.getElementById('img3').src = thumbnails_path3 + '/image_' + imgNumShow(imgNum);
+	  
+        document.getElementById('img4').style.visibility = 'visible';
+        document.getElementById('bg4').style.visibility = 'visible';
+        document.getElementById('img4').src = thumbnails_path4 + '/image_' + imgNumShow(imgNum+1);
+	  
+        document.getElementById('img5').style.visibility = 'visible';
+        document.getElementById('bg5').style.visibility = 'visible';
+        document.getElementById('img5').src = thumbnails_path5 + '/image_' + imgNumShow(imgNum+2);
+    }
+    
+    else if(imgNum == 2)
+    {
+        document.getElementById('img1').style.visibility = 'hidden';
+        document.getElementById('bg1').style.visibility = 'hidden';
+	  
+        document.getElementById('img2').style.visibility = 'visible';
+        document.getElementById('bg2').style.visibility = 'visible';
+        document.getElementById('img2').src = thumbnails_path2 + '/image_' + imgNumShow(imgNum-1);
+	  
+        document.getElementById('img3').style.visibility = 'visible';
+        document.getElementById('bg3').style.visibility = 'visible';
+        document.getElementById('img3').src = thumbnails_path3 + '/image_' + imgNumShow(imgNum);
+	  
+        document.getElementById('img4').style.visibility = 'visible';
+        document.getElementById('bg4').style.visibility = 'visible';
+        document.getElementById('img4').src = thumbnails_path4 + '/image_' + imgNumShow(imgNum+1);
+	  
+        document.getElementById('img5').style.visibility = 'visible';
+        document.getElementById('bg5').style.visibility = 'visible';
+        document.getElementById('img5').src = thumbnails_path5 + '/image_' + imgNumShow(imgNum+2);
+    }
+    
+    else if(imgNum == imgNumMax-1){
+        document.getElementById('img1').style.visibility = 'visible';
+        document.getElementById('bg1').style.visibility = 'visible';
+        document.getElementById('img1').src = thumbnails_path1 + '/image_' + imgNumShow(imgNum-2);
+	  	  
+        document.getElementById('img2').style.visibility = 'visible';
+        document.getElementById('bg2').style.visibility = 'visible';
+        document.getElementById('img2').src = thumbnails_path2 + '/image_' + imgNumShow(imgNum-1);
+	  
+        document.getElementById('img3').style.visibility = 'visible';
+        document.getElementById('bg3').style.visibility = 'visible';
+        document.getElementById('img3').src = thumbnails_path3 + '/image_' + imgNumShow(imgNum);
+	  
+        document.getElementById('img4').style.visibility = 'visible';
+        document.getElementById('bg4').style.visibility = 'visible';
+        document.getElementById('img4').src = thumbnails_path4 + '/image_' + imgNumShow(imgNum+1);
+	  
+        document.getElementById('img5').style.visibility = 'hidden';
+        document.getElementById('bg5').style.visibility = 'hidden';
+    }
+	
+    else if(imgNum == imgNumMax){
+        document.getElementById('img1').style.visibility = 'visible';
+        document.getElementById('bg1').style.visibility = 'visible';
+        document.getElementById('img1').src = thumbnails_path1 + '/image_' + imgNumShow(imgNum-2);
+	  	  
+        document.getElementById('img2').style.visibility = 'visible';
+        document.getElementById('bg2').style.visibility = 'visible';
+        document.getElementById('img2').src = thumbnails_path2 + '/image_' + imgNumShow(imgNum-1);
+	  
+        document.getElementById('img3').style.visibility = 'visible';
+        document.getElementById('bg3').style.visibility = 'visible';
+        document.getElementById('img3').src = thumbnails_path3 + '/image_' + imgNumShow(imgNum);
+	  
+        document.getElementById('img4').style.visibility = 'hidden';
+        document.getElementById('bg4').style.visibility = 'hidden';
+	  
+        document.getElementById('img5').style.visibility = 'hidden';
+        document.getElementById('bg5').style.visibility = 'hidden';
+    }
+    
+    else{
+        document.getElementById('img1').style.visibility = 'visible';
+        document.getElementById('bg1').style.visibility = 'visible';
+        document.getElementById('img1').src = thumbnails_path1 + '/image_' + imgNumShow(imgNum-2);
+	  	  
+        document.getElementById('img2').style.visibility = 'visible';
+        document.getElementById('bg2').style.visibility = 'visible';
+        document.getElementById('img2').src = thumbnails_path2 + '/image_' + imgNumShow(imgNum-1);
+	  
+        document.getElementById('img3').style.visibility = 'visible';
+        document.getElementById('bg3').style.visibility = 'visible';
+        document.getElementById('img3').src = thumbnails_path3 + '/image_' + imgNumShow(imgNum);
+	  
+        document.getElementById('img4').style.visibility = 'visible';
+        document.getElementById('bg4').style.visibility = 'visible';
+        document.getElementById('img4').src = thumbnails_path4 + '/image_' + imgNumShow(imgNum+1);
+	  
+        document.getElementById('img5').style.visibility = 'visible';
+        document.getElementById('bg5').style.visibility = 'visible';
+        document.getElementById('img5').src = thumbnails_path5 + '/image_' + imgNumShow(imgNum+2);
+    }
+}
+
+function imgNumShow(imgNum){
+     if(isM3u8File == false){
+           return sprintf("%03d.jpg",(imgNum));
+	   }
+	   else{
+           return imgNum;
+	  }
+}
+
+function buffering()
+{
+   // var bufferStreamSize = videoObj.execCmd("playback_getCachedStreamSize");
+   // window.console.debug("bufferStreamSize:" + bufferStreamSize);
+ //   bufferingCatchedPercentage =bufferStreamSize/(1024*5);
+    var getPTSString = videoObj.execCmd("playback_getPTS");
+    var param = getPTSString.split("\n");
+    var bufferStreamSize = param[3];
+    window.console.debug("#############++++++======" + bufferStreamSize + "==========++++++++++############");
+    bufferingCatchedPercentage =bufferStreamSize/9000;
+    if(bufferingCatchedPercentage > 100)
+    {
+        hideOSD();
+ //       resumePlay();
+        startPlay();
+        bufferingCatchedPercentage = 0;
+        notResponseButton = false;
+    } 
+    else 
+    {
+        setProgress("element1", bufferingCatchedPercentage);
+
+        if(bufferStreamSize_old >= bufferStreamSize)
+                buffering_detect_time++;
+        else{
+		bufferStreamSize_old = bufferStreamSize;
+                buffering_detect_time = 0;
+	}
+        	     
+        if(buffering_detect_time >=buffering_detect_max_time)
+        {
+            window.console.debug("#####################################################");
+            setProgress("element1", 100);
+            hideOSD();
+            startPlay();
+            bufferingCatchedPercentage = 0;
+            notResponseButton = false;
+        }
+        else
+            setTimeout("buffering()", 200);
+    }
+}
+
+
+
+function hasDownLoadOver()
+{
+    if(videoObj.isDownloadOver())
+    {
+        isDownLoadOver = true;
+        for(var i =0;i<10;i++)
+        {
+            hasDownloadSuccess[i] = videoObj.hasDownloadSuccess(i);
+        }
+    }
+    else
+    {
+        setTimeout("hasDownLoadOver()", 10000);
+    }
+  	
+}
+
+function IntervalLoopFunc()
+{
+    //if(isClosed)
+     //   return;
+
+    var loadStatus = videoObj.execCmd("playback_getStatus");
+    window.console.debug("#############++++++======" + loadStatus+ "==========++++++++++############");
+    window.console.debug(loadStatus);
+    
+    if(loadStatus == playCompleted)
+        history.back();
+        
+    if(loadStatus == networkDiscontinue)
+        history.back();
+        
+    var i;
+   // setTimeout("changeTarfile()", 10000);
+    if(isM3u8File == true)
+    {
+    	   return;
+    }
+    
+    if(isDownLoadOver == false)
+    {     
+	
+          return;
+    }
+    
+    var curTar = Math.floor(curImgNum/per_tar_thumbnail_num);
+    if(curTar > 9)
+        curTar = 9;
+    if(currentTar !=curTar)
+    {
+        currentTar = curTar;
+        for(i = 0; i<(curTar-1);i++)
+        {
+            if(inTmp[i] == 0)
+            {
+                inTmp[i] = -1;
+                videoObj.delTar(i);
+            }
+        }
+		
+        for(i = currentTar+2; i < 10;i++)
+        {
+            if(inTmp[i] == 0)
+            {
+                inTmp[i] = -1;
+                videoObj.delTar(i);
+            }
+        }
+       
+        if((hasDownloadSuccess[curTar]==true) &&(inTmp[curTar] == -1))
+        {
+            videoObj.addTar(curTar);
+            inTmp[curTar] = 0;
+        }
+      
+        if((hasDownloadSuccess[curTar-1]==true) && ((curTar-1) > -1)&&(inTmp[curTar-1] == -1))
+        {
+            videoObj.addTar(curTar-1);
+            inTmp[curTar-1] = 0;
+        }
+            
+        if((hasDownloadSuccess[curTar+1]==true) && ((curTar+1) < 10)&&(inTmp[curTar+1] == -1))
+        {
+            videoObj.addTar(curTar+1);
+            inTmp[curTar+1] = 0;
+        }
+    }
+}
+
+
+function init()
+{
+    for(var array_index =0;array_index<10;array_index++)
+    {
+        inTmp[array_index]= -1;
+        hasDownloadSuccess[array_index] = false;
+    }
+    isDownLoadOver = false;
+    var param = window.name.split(":::");
+    var video_file = param[0];
+    imgNumMax = eval(param[1]);
+    per_tar_thumbnail_num = Math.floor(imgNumMax/10);
+	
+    var url_path = video_file.substring(0, video_file.lastIndexOf('/'));
+    
+    var fileType = video_file.substring(video_file.lastIndexOf('.')+1,video_file.lastIndex);
+    if(fileType == "m3u8")
+        isM3u8File = true;
+    window.console.debug("!@##$%^^&&&***********************************************************************"+fileType);
+   // window.console.debug("url_path=" + url_path);
+   // window.console.debug("length=" + imgNumMax);	
+   if(isM3u8File == false){
+    var subtitleURL = url_path + "/subtitle.tar";
+	
+    videoObj.downLoadSubtitleFiles(subtitleURL);
+  
+  
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth();
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var dateString = year + '_' + month + '_' + day + '_' + hour + '_' + minute + '_' + second;
+   
+    var imgUrl = url_path + "/thumbnail_tar/";
+    videoObj.downLoadThumbnailsFiles(imgUrl,dateString);
+	
+    thumbnails_host_path = "file:///tmp/" + dateString + "/thumbnail_";   
+    thumbnails_server_path = url_path + '/thumbnails';
+    curImgNum=1;
+	
+    document.getElementById('img1').style.visibility = 'hidden';
+    document.getElementById('bg1').style.visibility = 'hidden';
+	  
+    document.getElementById('img2').style.visibility = 'hidden';
+    document.getElementById('bg2').style.visibility = 'hidden';
+	  
+    document.getElementById('img3').src = url_path + '/thumbnails/image_001.jpg';
+    document.getElementById('img4').src = url_path + '/thumbnails/image_002.jpg';
+    document.getElementById('img5').src = url_path + '/thumbnails/image_003.jpg';
+
+    hasDownLoadOver();
+    }
+    
+    videoObj.execCmd("playback_loadMedia",video_file);   
+    if(isM3u8File == true)
+    {
+    	 var thumbInfo = videoObj.execCmd("playback_getThumbInfo").split("/n");
+    	 imgNumMax = thumbInfo[0];
+    	 segmentInterval = thumbInfo[1];
+    	 thumbnails_server_path = thumbInfo[2].video_file.substring(0, video_file.lastIndexOf('/')-1);
+       window.console.debug("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"+thumbInfo);
+
+       document.getElementById('img1').style.visibility = 'hidden';
+       document.getElementById('bg1').style.visibility = 'hidden';  
+       document.getElementById('img2').style.visibility = 'hidden';
+       document.getElementById('bg2').style.visibility = 'hidden';
+       
+       document.getElementById('img3').src = thumbnails_server_path + '/image_1.jpg';
+       document.getElementById('img4').src = thumbnails_server_path + '/image_2.jpg';
+       document.getElementById('img5').src = thumbnails_server_path + '/image_3.jpg';
+    }
+   //  
+   // startPlay();
+    //pausePlay();
+
+    hasLoadedMediaSuccess();
+   // var totaltime = videoObj.execCmd("playback_getTotalTime");
+   // showTotleTime(totaltime);
+   // setTimeout("buffering()", 200);   
+   IntervalLoopID = setInterval("IntervalLoopFunc()",1000);
+}
+
+function hasLoadedMediaSuccess()
+{
+    var loadStatus = videoObj.execCmd("playback_getStatus");
+    if(loadStatus == loadMediaFail){
+        history.back();
+    }
+
+    else if(loadStatus == loadMediaSuccess){
+        videoObj.execCmd("playback_pauseVideo");
+        var totaltime = videoObj.execCmd("playback_getTotalTime");
+        showTotleTime(totaltime);
+        setTimeout("buffering()", 200);
+    }
+
+    else{
+        setTimeout("hasLoadedMediaSuccess()", 200);
+    }
+}
+
+
+function timer_start()
+{
+    var thumbnails_path = thumbnails_server_path;
+  
+    var nextTime = 'yes';
+    if(state == 'inBackward')
+    {
+        if(curImgNum > 10)
+            curImgNum -= 10;
+        else
+        {
+            nextTime = 'no';
+            curImgNum = 1;
+        }
+    }
+    else
+    {
+        if(curImgNum < imgNumMax - 10)
+            curImgNum += 10;
+        else
+        {
+            nextTime = 'no';
+            curImgNum = imgNumMax;
+        }
+    }
+	
+    hideSmallthumbs();
+    
+    var tarIndex = Math.floor((curImgNum-1)/per_tar_thumbnail_num);
+    if(tarIndex>9)
+        tarIndex = 9;
+         
+    if(isM3u8File == false){
+       if(inTmp[tarIndex] == 0)
+       {
+          thumbnails_path = thumbnails_host_path + tarIndex;
+       }
+    }
+    
+    document.getElementById('img3').src = thumbnails_path + '/image_' + imgNumShow(curImgNum);
+    
+    	
+    setProgress("element1", (curImgNum/imgNumMax)*100);
+    showPluginTime(curImgNum);
+	
+    if(nextTime == 'no')
+    {
+        clearTimeout(ttt);
+        state = 'inPause';
+        showSmallthumbs();
+        //window.console.debug("state=" + state);
+    }
+    else
+    {
+        ttt = setTimeout("timer_start()", timeInterval);
+    }
+}
+
+
+function hideSmallthumbs()
+{
+    document.getElementById('img1').style.visibility = 'hidden';
+    document.getElementById('bg1').style.visibility = 'hidden';
+	  
+    document.getElementById('img2').style.visibility = 'hidden';
+    document.getElementById('bg2').style.visibility = 'hidden';
+	  
+    document.getElementById('img4').style.visibility = 'hidden';
+    document.getElementById('bg4').style.visibility = 'hidden';
+	  
+    document.getElementById('img5').style.visibility = 'hidden';
+    document.getElementById('bg5').style.visibility = 'hidden';
+}
+
+
+function showSmallthumbs()
+{
+    document.getElementById('img1').style.visibility = 'visible';
+    document.getElementById('bg1').style.visibility = 'visible';
+	  
+    document.getElementById('img2').style.visibility = 'visible';
+    document.getElementById('bg2').style.visibility = 'visible';
+	  
+    document.getElementById('img4').style.visibility = 'visible';
+    document.getElementById('bg4').style.visibility = 'visible';
+	  
+    document.getElementById('img5').style.visibility = 'visible';
+    document.getElementById('bg5').style.visibility = 'visible';
+    showImg(curImgNum);
+    setProgress("element1", (curImgNum/length)*100);
+}
+
+
+function whichButton(event)
+{
+    if(notResponseButton)
+        return;
+		
+    window.console.debug("keycode=" + event.keyCode);
+    window.console.debug("state=" + state);
+    switch(state)
+    {
+        case 'inPlay':
+            if( event.keyCode == CMD_OK)
+            {
+                pausePlay();
+                var curTime = videoObj.execCmd("playback_getCurTime");
+                curImgNum = Math.floor(curTime/segmentInterval)+2;   
+                     
+                if(curImgNum>imgNumMax)
+                {
+                    curImgNum = imgNumMax;
+                }
+                      
+                vdoMap2ImgNum = curImgNum;
+                showImg(curImgNum);
+                state = 'inPause';
+            }
+            
+            else if( event.keyCode == CMD_MENU) //M
+            {
+                optionSelectIndex = 0;
+                showOptionMenu();
+                trr = document.getElementById("myvideoObj");
+                var array = new Array();    
+                array[0] = 900;
+                array[1] = 250;
+                array[2] = 168;
+                array[3] = 305;
+		            array[4] = 13;
+                trr.creatScriptMenu(array);             
+                trr.showScriptMenu(0); 
+                state = 'inOptionMenu';
+            }
+	    break;
+	 
+        case 'inPause':
+            if (event.keyCode == CMD_LEFT)	// left 
+            {//¡û
+                if(curImgNum==1)
+                    break;
+                else 
+                {
+                    curImgNum = curImgNum -1 ;
+                    showImg(curImgNum);
+                }
+            }
+	  
+            else if (event.keyCode == CMD_RIGHT)	  // right 
+            {//¡ú
+                if(curImgNum == imgNumMax)
+                {
+                    break;
+                }
+                else
+                {
+                curImgNum = curImgNum + 1 ;
+                showImg(curImgNum);
+                }	
+            }
+	  
+            else if( event.keyCode == CMD_UP) //up
+	        {
+                state = 'inPlay';
+                resumePlay();
+                hideOSD();
+	        }
+  
+            else if( event.keyCode == CMD_OK)
+            {
+                document.getElementById('myvideoObj').style.visibility = 'visible';
+                state = 'inPlay';
+                if(vdoMap2ImgNum == curImgNum)	//video frame not changed
+                {
+                    resumePlay();
+                    hideOSD();
+                    trr = document.getElementById("myvideoObj");
+                    trr.returnPlaySurface(0); 
+    		     
+                }
+                else
+                {
+                    setProgress("element1",0);
+                    trr = document.getElementById("myvideoObj");
+                    trr.returnPlaySurface(0);
+                    showOSD();
+                    seekPlay();
+                } 
+                
+               // hideOSD();
+               // trr = document.getElementById("myvideoObj");
+               // trr.returnPlaySurface(0); 
+            }	
+	  
+            else if(event.keyCode == CMD_FBW) //backward
+            {
+                hideSmallthumbs();
+                state = 'inBackward';
+                ttt = setTimeout("timer_start()", timeInterval);
+            }
+	  
+            else if(event.keyCode == CMD_FFW) //forward
+            {
+                hideSmallthumbs();
+                state = 'inForward';
+                ttt = setTimeout("timer_start()", timeInterval);
+            }
+	  
+            break;
+	   
+    case 'inBackward':	
+    case 'inForward':
+        if(event.keyCode == CMD_FFW) //forward
+        {
+            state = 'inForward';
+        }
+	      
+        else if(event.keyCode == CMD_FBW) //backward
+        {
+            state = 'inBackward';
+        }
+	      
+        else if( event.keyCode == CMD_OK)
+        {
+            clearTimeout(ttt);
+            showSmallthumbs(); 
+            state = 'inPause';
+        }
+		
+		 break;
+	
+	case 'inOptionMenu':
+	     if(event.keyCode == CMD_UP){
+            if(optionSelectIndex == 0)
+                optionSelectIndex = 0;
+            else{
+			     optionSelectIndex -= 1;
+				 optionMenuItemSelect(optionSelectIndex);
+			}
+	   		   
+        }
+	   	
+        else if(event.keyCode == CMD_DOWN)
+        {
+            if(optionSelectIndex >= optionItemNum-1)
+                optionSelectIndex = optionItemNum-1;
+            else
+            {
+                optionSelectIndex += 1;
+                optionMenuItemSelect(optionSelectIndex);
+            }
+        }
+	       
+       else if(event.keyCode == CMD_OK)
+        {
+            selectOptionMenuSurface(optionSelectIndex); 
+        }
+        
+       else if( event.keyCode == CMD_RIGHT) //
+        {
+             state = 'inPlay';
+             trr = document.getElementById("myvideoObj");
+             var mmm = trr.returnPlaySurface(0);
+        }
+		
+        break;
+		
+    case 'inSubMenu':
+        if(event.keyCode == CMD_UP){
+            if(subSelectIndex <= 0)
+                subSelectIndex = 0;
+            else
+                subSelectIndex -= 1;
+	   		   
+            subtitleMenuItemSelect(subSelectIndex);
+        }
+	   	
+        else if(event.keyCode == CMD_DOWN)
+        {
+            if(subSelectIndex >= subtitleItemNum-1)
+                subSelectIndex = subtitleItemNum-1;
+            else
+                subSelectIndex += 1;
+
+            subtitleMenuItemSelect(subSelectIndex);
+        }
+	       
+        else if(event.keyCode == CMD_OK)
+        {
+            trr = document.getElementById("myvideoObj");
+            var mmm = trr.returnPlaySurface(0);
+            if(subSelectIndex <= 0)
+                videoObj.execCmd("playback_showSub","false");
+            else
+                videoObj.execCmd("playback_switchSubTo",subSelectIndex-1);        	  
+            subHasSelectIndex = subSelectIndex;
+            subSelectIndex = 0;
+            state = 'inPlay';
+        }
+        
+	else if( event.keyCode == CMD_RIGHT) //
+        {
+             state = 'inPlay';
+             trr = document.getElementById("myvideoObj");
+             var mmm = trr.returnPlaySurface(0);
+             subSelectIndex = 0;
+        }
+
+        break;
+	         
+    case 'inTrackMenu':
+        if(event.keyCode == CMD_UP){
+            if(trackSelectIndex <= 0)
+                trackSelectIndex = 0;
+            else
+                trackSelectIndex -= 1;
+	   		   
+            trackAudioMenuItemSelect(trackSelectIndex);
+        }
+	   	
+        else if(event.keyCode == CMD_DOWN)
+        {
+            if(trackSelectIndex >=trackAudioItemNum-1)
+                trackSelectIndex = trackAudioItemNum-1;
+            else
+                trackSelectIndex += 1;
+
+            trackAudioMenuItemSelect(trackSelectIndex);
+        }
+	       
+        else if(event.keyCode == CMD_OK)
+        {   
+            trr = document.getElementById("myvideoObj");
+            var mmm = trr.returnPlaySurface(0);
+           /* if(trackSelectIndex <= 0)
+            {
+            	videoObj.execCmd("playback_switchAudio","false");
+            }
+            else{
+                videoObj.execCmd("playback_loadAudio",trackSelectIndex-1);  
+            }
+             */
+            videoObj.execCmd("playback_loadAudio",trackSelectIndex);  //   	  
+            audioHasSelectIndex = trackSelectIndex;
+            trackSelectIndex = 0;
+            state = 'inPlay';
+        }
+
+	      else if( event.keyCode == CMD_RIGHT) //up
+         {
+              state = 'inPlay';
+              trr = document.getElementById("myvideoObj");
+              var mmm = trr.returnPlaySurface(0);
+              trackSelectIndex = 0;
+         }
+
+        break;
+
+
+	case 'inNoSelect':
+	    if(event.keyCode == CMD_OK)
+        { 
+            trr = document.getElementById("myvideoObj");
+            var mmm = trr.returnPlaySurface(0); 
+            state = 'inPlay';
+        }
+	    break;
+	default:
+		  return;
+	}
+}
+
+
+var trr;
+var ttt=0;
+var ttt_h=0 ;
+var ttt_m=0;
+var ttt_s=0 ;
+var tmp ;
+
+
+function GetCurTime(v)
+{
+    ttt_h =  Math.floor(v / 3600) ; 
+    ttt_m =  Math.floor((v % 3600) / 60)  ; 
+    ttt_s = v % 60 ;
+        
+    if(ttt_m < 10)
+    {
+    if(ttt_s < 10)
+        tmp = ttt_h + ":0" + ttt_m + ":0" + ttt_s ;
+    else
+        tmp = ttt_h + ":0" + ttt_m + ":" + ttt_s ;      
+    }
+    else
+    {
+        if(ttt_s < 10)
+            tmp = ttt_h + ":" + ttt_m + ":0" + ttt_s ;
+        else
+            tmp = ttt_h + ":" + ttt_m + ":" + ttt_s ;               
+    }
+    return tmp;
+}
+
+
+function showTotleTime(v)
+{
+    ttt_h =  Math.floor(v / 3600) ; 
+    ttt_m =  Math.floor((v % 3600) / 60)  ; 
+    ttt_s = v % 60 ;
+        
+    if(ttt_m < 10)
+    {
+        if(ttt_s < 10)
+            tmp = ttt_h + ":0" + ttt_m + ":0" + ttt_s ;
+        else
+            tmp = ttt_h + ":0" + ttt_m + ":" + ttt_s ;      
+    }
+    else
+    {
+        if(ttt_s < 10)
+            tmp = ttt_h + ":" + ttt_m + ":0" + ttt_s ;
+        else
+            tmp = ttt_h + ":" + ttt_m + ":" + ttt_s ;               
+    }
+    document.getElementById("timer").innerHTML = tmp;
+}
+
+
+function onexit()
+{
+    clearInterval(IntervalLoopID);
+    
+    videoObj.execCmd("playback_quitPlay");
+    videoObj.systemClose();
+    
+}				     
+
+
+function startPlay()
+{ 
+    videoObj.execCmd("playback_setScreen",0,0,1280,720);
+    videoObj.execCmd("playback_play");
+    videoObj.execCmd("playback_showSub","false");
+	
+}
+
+
+function pausePlay()
+{
+    videoObj.execCmd("playback_pauseVideo");
+    showOSD();
+}
+
+
+function seekBuffering()
+{
+	var getPTSString = videoObj.execCmd("playback_getPTS");
+	var param = getPTSString.split("\n");
+	var bufferStreamSize = param[3];
+	window.console.debug("#############++++++======" + bufferStreamSize + "==========++++++++++############");
+	var bufferingTime = bufferStreamSize-presentBufferStreamSize;
+	if(bufferingTime < 0)
+	      bufferingTime = 0;
+	bufferingCatchedPercentage =bufferingTime/3600;
+	if(bufferingCatchedPercentage > 100)
+	{
+	       setProgress("element1",100);
+	       hideOSD();
+	       resumePlay();
+           bufferingCatchedPercentage = 0;
+	       notResponseButton = false;
+	}
+	else{
+		    setProgress("element1", bufferingCatchedPercentage);
+
+        if(bufferingTime_old >= bufferingTime)
+                seek_buffering_detect_time++;
+        else{
+                bufferingTime_old = bufferingTime;
+                seek_buffering_detect_time = 0;
+	}
+        	     
+        if(seek_buffering_detect_time >=50)
+        {
+            setProgress("element1", 100);
+            hideOSD();
+            resumePlay();
+            bufferingCatchedPercentage = 0;
+            notResponseButton = false;
+            bufferingTime_old = 0;
+        }
+        else
+            setTimeout("seekBuffering()", 200);
+   }
+    
+}
+
+
+function seekPlay()
+{
+    var time = (curImgNum-2) * segmentInterval; 
+    if(time<0) time = 0;  	
+    videoObj.execCmd("playback_seek", time);
+  //  videoObj.execCmd("playback_pause");
+    
+    presentBufferStreamSize = time * 90000;
+    seekBuffering();   
+}
+
+
+function resumePlay()
+{
+    videoObj.execCmd("playback_continuePlay");
+}
+
+
+function noSubtitleMenu()
+{	
+    
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    htmlString +=  "<span style='position:absolute;z-index:5;background-image: url(0902/no_subtitle.png);left:0;top:0;width:1280px;height:138px;visibility:visible'></span>";
+    document.getElementById("div1").innerHTML = htmlString;
+    	  
+}
+
+
+function noTrackAudioMenu()
+{	
+    
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    htmlString += "<span  id = 'trackAudioMenu0' style='position:absolute;z-index:5;left:100px;top:250px;width:380;height:48;color:#ffffff;font-size:40px;font-family:Arial;visibility:visible'>No Audio Track</span>";
+
+    document.getElementById("div1").innerHTML = htmlString;
+    document.getElementById("trackAudioMenu0").style.backgroundColor = "#780850"; 
+  
+  }
+
+function selectOptionMenuSurface(selectMenuIndex )
+{
+   if (selectMenuIndex == 0){
+            	  subtitleItemNum = videoObj.execCmd("playback_getSubNum");
+            	  if(subtitleItemNum > 0)
+            	  { 
+            	  	      subtitleItemNum++;
+			                  subtitleArray[0] ="Off";
+            	  	      for(var i = 1;i<subtitleItemNum;i++)
+            	  	      {
+            	  	      	  subtitleArray[i] = videoObj.execCmd("playback_getSubInfo",i-1);
+            	  	      }
+            	  	      
+                        if(subSelectIndex >= subtitleItemNum)
+                             subSelectIndex = 0;
+                             
+                        showSubtitleMenu(subSelectIndex);
+                        trr = document.getElementById("myvideoObj");
+                        
+                        var array = new Array();    
+                        array[0] = 1080;
+                        array[1] = 125;
+                        array[2] = 300;
+                        array[3] = 115;
+                        array[4] = 15;
+                        
+                        trr.creatScriptMenu(array);             
+                        trr.showScriptMenu(0); 
+                        state = 'inSubMenu';
+            	  }
+            	  else{
+                        noSubtitleMenu();
+                        trr = document.getElementById("myvideoObj");
+                        var array = new Array();    
+                        array[0] = 0;
+                        array[1] = 0;
+                        array[2] = 138;
+                        array[3] = 1280;
+                        trr.creatScriptMenu(array);             
+                        trr.showScriptMenu(0); 
+                        state = 'inNoSelect';
+            	  }    
+                
+            }
+	            
+            else if (selectMenuIndex == 1)	
+            {
+                trackAudioItemNum = videoObj.execCmd("playback_getAudioNum");      
+                if(trackAudioItemNum > 0)
+            	  { 
+            	  	     // trackAudioItemNum++;
+            	  	      //audioArray[0] = "Off";
+            	  	      for(var i = 0;i<trackAudioItemNum;i++)
+            	  	      {
+            	  	      	  audioArray[i] = videoObj.execCmd("playback_getAudioInfo",i);
+            	  	      }
+                        if(trackSelectIndex >= trackAudioItemNum)
+				                       trackSelectIndex = 0;     
+                        showTrackAudioMenu(trackSelectIndex);
+                        trr = document.getElementById("myvideoObj");
+                        var array = new Array();    
+                        array[0] = 1080;
+                        array[1] = 125;
+                        array[2] = 300;
+                        array[3] = 115;
+                        array[4] = 15;
+                        trr.creatScriptMenu(array);             
+                        trr.showScriptMenu(0); 
+                        state = 'inTrackMenu';        
+            	  }
+            	  else{
+            	  	noTrackAudioMenu();
+                        trr = document.getElementById("myvideoObj");
+                        var array = new Array();    
+                        array[0] = 100;
+                        array[1] = 250;
+                        array[2] = 50;
+                        array[3] = 380;
+                        trr.creatScriptMenu(array);             
+                        trr.showScriptMenu(0); 
+                        state = 'inNoSelect';
+            	  }
+            }
+}
+
+function showOptionMenu()
+{
+    
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/option_menu_top_bg.png);left:900px;top:250px;width:305px;height:45px;visibility:visible'></span>";
+    htmlString += "<span id = 'optionMenu0' style='position:absolute;z-index:5;background-image: url(0902/option_menu_middle_focus_bg.png);left:900px;top:295px;width:305px;height:55px;visibility:visible'><span style='position:absolute;left:20px;top:15px;width:280px;height:20px;font-size:24px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>Subtitle   </span></span>";
+    htmlString += "<span id = 'optionMenu1' style='position:absolute;z-index:5;background-image: url(0902/option_menu_middle_unfocus_bg.png);left:900px;top:350px;width:305px;height:55px;visibility:visible'><span style='position:absolute;left:20px;top:15px;width:280px;height:20px;font-size:24px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>Audio track</span></span>";
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/option_menu_bottom_bg.png);left:900px;top:405px;width:304px;height:15px;visibility:visible'></span>";
+    
+    document.getElementById("div1").innerHTML = htmlString;
+ 	  
+}
+
+
+function optionMenuItemSelect(selectMenuIndex){
+    for(var i=0;i<optionItemNum;i++)
+    {
+        var itemIndex = "optionMenu" + i;
+        if(selectMenuIndex == i)
+            document.getElementById(itemIndex).style.backgroundImage ='url(0902/option_menu_middle_focus_bg.png)'; 
+        else
+        	  document.getElementById(itemIndex).style.backgroundImage = 'url(0902/option_menu_middle_unfocus_bg.png)'; 
+    }   	  
+}
+
+
+function showSubtitleMenu(selectMenuIndex)
+{
+      
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_bg.png);left:1080px;top:125px;width:115px;height:300px;visibility:visible'>";
+    htmlString += "<span style='position:absolute;left:10px;top:10px;width:96px;height:14px;font-size:14px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>Subtitle</span>";
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_up.png);left:44px;top:30px; width:28px;height:20px;visibility:visible'></span>";
+    htmlString += "<span id = 'subtitleMenu0' style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_focus.png);left:5;top:50px;width:104px;height:38px;visibility:visible'><span id = 'subtitleText0' style='position:absolute;left:6px;top:10px;width:100px;height:20px;font-size:14px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>Off</span></span>";
+    
+    var subtitleShowNum =subtitleItemNum;
+    if(subtitleShowNum>showMenuItemNum)
+         subtitleShowNum = showMenuItemNum;
+    for(var i=1;i<subtitleShowNum;i++)
+    {
+    	htmlString += "<span id = 'subtitleMenu" + i +"' style='position:absolute;z-index:5;left:5;top:"+(50+38*i) + "px;width:104px;height:38px;visibility:visible'><span id = 'subtitleText" + i + "' style='position:absolute;left:6px;top:10px;width:100px;height:20px;font-size:14px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>"+ subtitleArray[i] + "</span></span>";  
+    }
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_down.png);left:44px;top:280px;width:28px;height:20px;visibility:visible'></span></span>";
+    
+    document.getElementById("div1").innerHTML = htmlString;
+    
+    if(subHasSelectIndex<showMenuItemNum){
+          var itemIndex = "subtitleText" + subHasSelectIndex;
+          document.getElementById(itemIndex).style.color = "#F8B830"; 
+          document.getElementById(itemIndex).style.fontSize = '12px'; 
+    }
+}
+
+
+function showTrackAudioMenu(selectMenuIndex)
+{   
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_bg.png);left:1080px;top:125px;width:115px;height:300px;visibility:visible'>";
+    htmlString += "<span style='position:absolute;left:10px;top:10px;width:96px;height:14px;font-size:14px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>Audio</span>";
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_up.png);left:44px;top:30px; width:28px;height:20px;visibility:visible'></span>";
+    htmlString += "<span id = 'audioMenu0' style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_focus.png);left:5;top:50px;width:104px;height:38px;visibility:visible'><span id = 'audioText0' style='position:absolute;left:6px;top:10px;width:100px;height:20px;font-size:12px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>"+ audioArray[0] + "</span></span>";
+    
+    var audioShowNum =trackAudioItemNum;
+    if(audioShowNum>showMenuItemNum)
+         audioShowNum = showMenuItemNum;
+    for(var i=1;i<audioShowNum;i++)
+    {
+    	htmlString += "<span id = 'audioMenu" + i +"' style='position:absolute;z-index:5;left:5;top:"+(50+38*i) + "px;width:104px;height:38px;visibility:visible'><span id = 'audioText" + i + "' style='position:absolute;left:6px;top:10px;width:100px;height:20px;font-size:12px;text-align:center;color:#ffffff;font-family:Arial;visibility:visible'>"+ audioArray[i] + "</span></span>";  
+    }
+    htmlString += "<span style='position:absolute;z-index:5;background-image: url(0902/VOD_audio_subtitle_down.png);left:44px;top:280px;width:28px;height:20px;visibility:visible'></span></span>";
+    
+    document.getElementById("div1").innerHTML = htmlString;
+    
+    if(audioHasSelectIndex<showMenuItemNum){
+          var itemIndex = "audioText" + audioHasSelectIndex;
+          document.getElementById(itemIndex).style.color = "#F8B830"; 
+          document.getElementById(itemIndex).style.fontSize = '12px'; 
+    }  
+}
+
+function hideOSD()
+{
+    document.getElementById('img1').style.visibility = 'hidden';
+    document.getElementById('bg1').style.visibility = 'hidden';
+	  
+    document.getElementById('img2').style.visibility = 'hidden';
+    document.getElementById('bg2').style.visibility = 'hidden';
+	  
+    document.getElementById('img3').style.visibility = 'hidden';
+    document.getElementById('bg3').style.visibility = 'hidden';
+	  
+	  
+    document.getElementById('img4').style.visibility = 'hidden';
+    document.getElementById('bg4').style.visibility = 'hidden';
+	  
+    document.getElementById('img5').style.visibility = 'hidden';
+    document.getElementById('bg5').style.visibility = 'hidden';
+	  
+    document.getElementById('id2').style.visibility = 'hidden';
+
+    document.getElementById('idspan').style.visibility = 'hidden';
+
+    document.getElementById('id2').style.backgroundImage ='';
+	  
+    var htmlString = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="720"></object>';
+    document.getElementById("div1").innerHTML = htmlString;
+}	
+
+
+function showOSD()
+{
+    document.getElementById('img1').style.visibility = 'visible';
+    document.getElementById('bg1').style.visibility = 'visible';
+	  
+    document.getElementById('img2').style.visibility = 'visible';
+    document.getElementById('bg2').style.visibility = 'visible';
+    document.getElementById('img3').style.visibility = 'visible';
+    document.getElementById('bg3').style.visibility = 'visible';
+	  
+	  
+    document.getElementById('img4').style.visibility = 'visible';
+    document.getElementById('bg4').style.visibility = 'visible';
+	  
+    document.getElementById('img5').style.visibility = 'visible';
+    document.getElementById('bg5').style.visibility = 'visible';
+	  
+    document.getElementById('id2').style.visibility = 'visible';
+
+    document.getElementById('idspan').style.visibility = 'visible';
+    document.getElementById('id2').style.backgroundImage = 'url(0902/web_movie_bg.png)';
+    document.getElementById("div1").innerHTML = '<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="462"></object>';
+  
+}
+
+
+function subtitleMenuItemSelect(selectMenuIndex){
+//	var subMenuList = Math.floor(selectMenuIndex/showMenuItemNum);
+	if(subtitleItemNum <=showMenuItemNum)
+	{
+		for(var i = 0;i<subtitleItemNum;i++)
+		{
+			var itemIndex = "subtitleMenu" + i;
+			if(selectMenuIndex == i)
+           document.getElementById(itemIndex).style.backgroundImage = 'url(0902/VOD_audio_subtitle_focus.png)'; 
+      else
+           document.getElementById(itemIndex).style.backgroundImage = ''; 
+		}
+	}
+	else
+	{
+		var subMenuList = Math.floor(selectMenuIndex/showMenuItemNum);
+		var itemNum = subtitleItemNum - subMenuList*showMenuItemNum;
+		if(itemNum > showMenuItemNum)
+			itemNum = showMenuItemNum;
+		for(var i=0;i<itemNum;i++)
+    {
+        var itemIndex = "subtitleMenu" + i;
+        if((selectMenuIndex-showMenuItemNum*subMenuList) == i)
+           document.getElementById(itemIndex).style.backgroundImage = 'url(0902/VOD_audio_subtitle_focus.png)'; 
+        else
+           document.getElementById(itemIndex).style.backgroundImage = ''; 
+        
+        if((showMenuItemNum*subMenuList+i)<subtitleItemNum)
+        {
+        	      var textString = subtitleArray[showMenuItemNum*subMenuList+i];
+                document.getElementById("subtitleText"+i).innerHTML = textString;
+        }
+        else
+        {
+                document.getElementById("subtitleText"+i).innerHTML = "";	
+        }
+
+	if((subHasSelectIndex - showMenuItemNum*subMenuList) == i)
+	{
+                document.getElementById("subtitleText"+i).style.color = "#F8B830"; 
+	        document.getElementById("subtitleText"+i).style.fontSize = '12px';
+        }
+        else
+        {
+                document.getElementById("subtitleText"+i).style.color = "#ffffff"; 
+                document.getElementById("subtitleText"+i).style.fontSize = '14px';
+        }
+    } 
+  }
+    
+}
+
+
+function trackAudioMenuItemSelect(selectMenuIndex){
+    if(trackAudioItemNum <=showMenuItemNum)
+	{
+		for(var i = 0;i<trackAudioItemNum;i++)
+		{
+			var itemIndex = "audioMenu" + i;
+			if(selectMenuIndex == i)
+           document.getElementById(itemIndex).style.backgroundImage = 'url(0902/VOD_audio_subtitle_focus.png)'; 
+      else
+           document.getElementById(itemIndex).style.backgroundImage = ''; 
+		}
+	}
+	else
+	{
+		var audioMenuList = Math.floor(selectMenuIndex/showMenuItemNum);
+		var subMenuList = Math.floor(selectMenuIndex/showMenuItemNum);
+                 var itemNum = trackAudioItemNum - audioMenuList*showMenuItemNum;
+                 if(itemNum > showMenuItemNum)
+                         itemNum = showMenuItemNum;
+		for(var i=0;i<itemNum;i++)
+    {
+        var itemIndex = "audioMenu" + i;
+        if((selectMenuIndex-showMenuItemNum*audioMenuList) == i)
+           document.getElementById(itemIndex).style.backgroundImage = 'url(0902/VOD_audio_subtitle_focus.png)'; 
+        else
+           document.getElementById(itemIndex).style.backgroundImage = ''; 
+        
+        if((showMenuItemNum*audioMenuList+i)<trackAudioItemNum)
+        {
+        	      var textString = audioArray[showMenuItemNum*audioMenuList+i];
+                document.getElementById("audioText"+i).innerHTML = textString;
+        }
+        else
+        {
+                document.getElementById("audioText"+i).innerHTML = "";	
+        }
+
+	if((audioHasSelectIndex - showMenuItemNum*audioMenuList) == i)
+	{
+                 document.getElementById("audioText"+i).style.color = "#F8B830"; 
+                 document.getElementById("audioText"+i).style.fontSize = '12px';
+         }
+         else
+         {
+                 document.getElementById("audioText"+i).style.color = "#ffffff"; 
+                 document.getElementById("audioText"+i).style.fontSize = '12px';
+         }
+        
+    } 
+  }
+}
+
+
+</script>
+
+</head>
+
+<body width='100%' height='100%' onkeydown="whichButton(event)" onload="init()" onunload="onexit()">
+	
+
+<div id ='div1' style='position:absolute;z-index:-1;left:0px;top:0px;width:1280px;height:462px'>
+<object class="class0" type="application/video"   id="myvideoObj" url="aaa" x=0 y=0 width="1280" height="462"></object>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/option_menu_top_bg.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/option_menu_middle_unfocus_bg.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/option_menu_middle_focus_bg.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/option_menu_bottom_bg.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/VOD_audio_subtitle_bg.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/VOD_audio_subtitle_up.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/VOD_audio_subtitle_focus.png"></span>
+<span style='position:absolute;z-index:-1;left:0px;top:0px;visibility:hidden'><img lock="true" src="0902/VOD_audio_subtitle_down.png"></span>
+</div>
+
+<div class='class1' id = 'id2' style='position:absolute;z-index:4'>
+
+<span id = 'idspan' style='z-index:5;position:absolute;left:180px;top:2px;border:1px;visibility:visible'>
+<script>display('element1',0,1);</script>
+</span>
+
+<span id='timer' style='position:absolute;z-index:5;left:1124px;top:0px;'>
+<p style='color:#000000;font-size:16px;font-family:Arial'></p>
+</span>	
+
+<span  style='position:absolute;z-index:5;left:180px;top:54px;visibility:visible'>
+<a><img id='bg1' border=0 src="0902/web_movie_icon_left_.png" v:shapes="_x0000_s1043"></a>
+</span>
+
+<span  style='position:absolute;z-index:9;left:185px;top:73px;width:150px;height:85px;visibility:visible'>
+<a><img id='img1' src="0902/loading.jpg" border=0  style='width:150px;height:85px;' v:shapes="_x0000_s1047"></a>
+</span>
+
+<span  style='position:absolute;z-index:5;left:351px;top:54px;visibility:visible'>
+<a ><img id='bg2' border=0 src="0902/web_movie_icon_left_.png"  v:shapes="_x0000_s1044"></a>
+</span>
+
+<span  style='position:absolute;z-index:9;left:356px;top:73px;width:150px;height:85px;visibility:visible'>
+<a><img id='img2' src="0902/loading.jpg" border=0  style='width:150px;height:85px;' v:shapes="_x0000_s1047"></a>
+</span>
+
+<span  style='position:absolute;z-index:5;left:522px;top:40px;visibility:visible'>
+<a><img id='bg3' border=0 src="0902/web_movie_icon_focus_.png" v:shapes="_x0000_s1045"></a>
+</span>
+
+<span  style='position:absolute;z-index:9;left:546px;top:65px;width:200px;height:115px;visibility:visible'>
+<a><img id='img3' src="0902/loading.jpg" border=0  style='width:200px;height:115px;' v:shapes="_x0000_s1047" ></a>
+</span>
+
+<span  style='position:absolute;z-index:5;left:781px;top:54px;visibility:visible'>
+<a><img id='bg4' border=0 src="0902/web_movie_icon_right_.png" v:shapes="_x0000_s1046"></a>
+</span>
+
+<span  style='position:absolute;z-index:9;left:786px;top:73px;width:150px;height:85px;visibility:visible'>
+<a><img id='img4' src="0902/loading.jpg" border=0  style='width:150px;height:85px;' v:shapes="_x0000_s1047"></a>
+</span>
+
+<span  style='position:absolute;z-index:5;left:953px;top:54px;visibility:visible'>
+<a><img id='bg5' border=0  src="0902/web_movie_icon_right_.png" v:shapes="_x0000_s1047"></a>
+</span>
+
+<span  style='position:absolute;z-index:9;left:959px;top:73px;width:150px;height:85px;visibility:visible'>
+<a><img id='img5' src="0902/loading.jpg" border=0  style='width:150px;height:85px;' v:shapes="_x0000_s1047"></a>
+</span>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,242 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Kakabeka Falls</title>
+<cur>CAXX0209</cur>
+<for>Kakabeka Falls</for>
+</item>
+
+<item>
+<title>Kakawis</title>
+<cur>CAXX0210</cur>
+<for>Kakawis</for>
+</item>
+
+<item>
+<title>Kamloops</title>
+<cur>CAXX0211</cur>
+<for>Kamloops</for>
+</item>
+
+<item>
+<title>Kanata</title>
+<cur>CAXX0212</cur>
+<for>Kanata</for>
+</item>
+
+<item>
+<title>Kapuskasing</title>
+<cur>CAXX0213</cur>
+<for>Kapuskasing</for>
+</item>
+
+<item>
+<title>Keene</title>
+<cur>CAXX0214</cur>
+<for>Keene</for>
+</item>
+
+<item>
+<title>Keewatin</title>
+<cur>CAXX0215</cur>
+<for>Keewatin</for>
+</item>
+
+<item>
+<title>Kelowna</title>
+<cur>CAXX0216</cur>
+<for>Kelowna</for>
+</item>
+
+<item>
+<title>Kemnay</title>
+<cur>CAXX0217</cur>
+<for>Kemnay</for>
+</item>
+
+<item>
+<title>Kenora</title>
+<cur>CAXX0218</cur>
+<for>Kenora</for>
+</item>
+
+<item>
+<title>Kentville</title>
+<cur>CAXX0219</cur>
+<for>Kentville</for>
+</item>
+
+<item>
+<title>Keswick</title>
+<cur>CAXX0220</cur>
+<for>Keswick</for>
+</item>
+
+<item>
+<title>Kildonan</title>
+<cur>CAXX0221</cur>
+<for>Kildonan</for>
+</item>
+
+<item>
+<title>Kimberley</title>
+<cur>CAXX0222</cur>
+<for>Kimberley</for>
+</item>
+
+<item>
+<title>Kincardine</title>
+<cur>CAXX0223</cur>
+<for>Kincardine</for>
+</item>
+
+<item>
+<title>Kindakun Rocks</title>
+<cur>CAXX0587</cur>
+<for>Kindakun Rocks</for>
+</item>
+
+<item>
+<title>Kindersley</title>
+<cur>CAXX0224</cur>
+<for>Kindersley</for>
+</item>
+
+<item>
+<title>Kingston</title>
+<cur>CAXX0225</cur>
+<for>Kingston</for>
+</item>
+
+<item>
+<title>Kinuso</title>
+<cur>CAXX0226</cur>
+<for>Kinuso</for>
+</item>
+
+<item>
+<title>Kitchener</title>
+<cur>CAXX0227</cur>
+<for>Kitchener</for>
+</item>
+
+<item>
+<title>Kitscoty</title>
+<cur>CAXX0228</cur>
+<for>Kitscoty</for>
+</item>
+
+<item>
+<title>Kuujjuaq</title>
+<cur>CAXX0615</cur>
+<for>Kuujjuaq</for>
+</item>
+
+<item>
+<title>Kuujjuarapik</title>
+<cur>CAXX0614</cur>
+<for>Kuujjuarapik</for>
+</item>
+
+</channel></rss>

@@ -1,0 +1,749 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_c.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Caapiranga</title>
+<cur>BRXX0516</cur>
+<for>Caapiranga</for>
+</item>
+
+<item>
+<title>Cabo Frio</title>
+<cur>BRXX0045</cur>
+<for>Cabo Frio</for>
+</item>
+
+<item>
+<title>Cabreuva</title>
+<cur>BRXX0345</cur>
+<for>Cabreuva</for>
+</item>
+
+<item>
+<title>Cacapava</title>
+<cur>BRXX0270</cur>
+<for>Cacapava</for>
+</item>
+
+<item>
+<title>Caceres</title>
+<cur>BRXX0046</cur>
+<for>Caceres</for>
+</item>
+
+<item>
+<title>Cachoeiro de Itapemirim</title>
+<cur>BRXX0048</cur>
+<for>Cachoeiro de Itapemirim</for>
+</item>
+
+<item>
+<title>Cacoal</title>
+<cur>BRXX0517</cur>
+<for>Cacoal</for>
+</item>
+
+<item>
+<title>Caete</title>
+<cur>BRXX0365</cur>
+<for>Caete</for>
+</item>
+
+<item>
+<title>Caetite</title>
+<cur>BRXX0518</cur>
+<for>Caetite</for>
+</item>
+
+<item>
+<title>Caieiras</title>
+<cur>BRXX0519</cur>
+<for>Caieiras</for>
+</item>
+
+<item>
+<title>Calcoene</title>
+<cur>BRXX0697</cur>
+<for>Calcoene</for>
+</item>
+
+<item>
+<title>Camaragibe</title>
+<cur>BRXX0736</cur>
+<for>Camaragibe</for>
+</item>
+
+<item>
+<title>Camboriu</title>
+<cur>BRXX0271</cur>
+<for>Camboriu</for>
+</item>
+
+<item>
+<title>Campestre</title>
+<cur>BRXX0520</cur>
+<for>Campestre</for>
+</item>
+
+<item>
+<title>Campina Grande</title>
+<cur>BRXX0049</cur>
+<for>Campina Grande</for>
+</item>
+
+<item>
+<title>Campina do Monte Alegre</title>
+<cur>BRXX0698</cur>
+<for>Campina do Monte Alegre</for>
+</item>
+
+<item>
+<title>Campinas</title>
+<cur>BRXX0050</cur>
+<for>Campinas</for>
+</item>
+
+<item>
+<title>Campo Belo</title>
+<cur>BRXX0521</cur>
+<for>Campo Belo</for>
+</item>
+
+<item>
+<title>Campo Grande</title>
+<cur>BRXX0051</cur>
+<for>Campo Grande</for>
+</item>
+
+<item>
+<title>Campo Largo</title>
+<cur>BRXX0052</cur>
+<for>Campo Largo</for>
+</item>
+
+<item>
+<title>Campo Limpo Paulista</title>
+<cur>BRXX0699</cur>
+<for>Campo Limpo Paulista</for>
+</item>
+
+<item>
+<title>Campo Mourao</title>
+<cur>BRXX0053</cur>
+<for>Campo Mourao</for>
+</item>
+
+<item>
+<title>Campos</title>
+<cur>BRXX0054</cur>
+<for>Campos</for>
+</item>
+
+<item>
+<title>Campos Novos</title>
+<cur>BRXX0522</cur>
+<for>Campos Novos</for>
+</item>
+
+<item>
+<title>Campos do Jordao</title>
+<cur>BRXX0055</cur>
+<for>Campos do Jordao</for>
+</item>
+
+<item>
+<title>Canavieiras</title>
+<cur>BRXX0523</cur>
+<for>Canavieiras</for>
+</item>
+
+<item>
+<title>Canoas</title>
+<cur>BRXX0056</cur>
+<for>Canoas</for>
+</item>
+
+<item>
+<title>Canoinhas</title>
+<cur>BRXX0057</cur>
+<for>Canoinhas</for>
+</item>
+
+<item>
+<title>Cantagalo</title>
+<cur>BRXX0524</cur>
+<for>Cantagalo</for>
+</item>
+
+<item>
+<title>Canto do Buriti</title>
+<cur>BRXX0058</cur>
+<for>Canto do Buriti</for>
+</item>
+
+<item>
+<title>Canutama</title>
+<cur>BRXX0525</cur>
+<for>Canutama</for>
+</item>
+
+<item>
+<title>Capanema</title>
+<cur>BRXX0526</cur>
+<for>Capanema</for>
+</item>
+
+<item>
+<title>Capao Bonito</title>
+<cur>BRXX0366</cur>
+<for>Capao Bonito</for>
+</item>
+
+<item>
+<title>Capao da Canoa</title>
+<cur>BRXX0367</cur>
+<for>Capao da Canoa</for>
+</item>
+
+<item>
+<title>Caparao</title>
+<cur>BRXX0368</cur>
+<for>Caparao</for>
+</item>
+
+<item>
+<title>Capela do Alto</title>
+<cur>BRXX0527</cur>
+<for>Capela do Alto</for>
+</item>
+
+<item>
+<title>Capelinha</title>
+<cur>BRXX0528</cur>
+<for>Capelinha</for>
+</item>
+
+<item>
+<title>Capivari</title>
+<cur>BRXX0529</cur>
+<for>Capivari</for>
+</item>
+
+<item>
+<title>Caracarai</title>
+<cur>BRXX0369</cur>
+<for>Caracarai</for>
+</item>
+
+<item>
+<title>Caraguatatuba</title>
+<cur>BRXX0059</cur>
+<for>Caraguatatuba</for>
+</item>
+
+<item>
+<title>Carandam</title>
+<cur>BRXX3880</cur>
+<for>Carandam</for>
+</item>
+
+<item>
+<title>Carangola</title>
+<cur>BRXX0530</cur>
+<for>Carangola</for>
+</item>
+
+<item>
+<title>Carapicuiba</title>
+<cur>BRXX0272</cur>
+<for>Carapicuiba</for>
+</item>
+
+<item>
+<title>Carapina</title>
+<cur>BRXX0060</cur>
+<for>Carapina</for>
+</item>
+
+<item>
+<title>Caratinga</title>
+<cur>BRXX0061</cur>
+<for>Caratinga</for>
+</item>
+
+<item>
+<title>Caravelas</title>
+<cur>BRXX0062</cur>
+<for>Caravelas</for>
+</item>
+
+<item>
+<title>Carbonita</title>
+<cur>BRXX0531</cur>
+<for>Carbonita</for>
+</item>
+
+<item>
+<title>Cariacica</title>
+<cur>BRXX0727</cur>
+<for>Cariacica</for>
+</item>
+
+<item>
+<title>Carinhanha</title>
+<cur>BRXX0532</cur>
+<for>Carinhanha</for>
+</item>
+
+<item>
+<title>Carmo da Cachoeira</title>
+<cur>BRXX0533</cur>
+<for>Carmo da Cachoeira</for>
+</item>
+
+<item>
+<title>Carmo do Rio Claro</title>
+<cur>BRXX0534</cur>
+<for>Carmo do Rio Claro</for>
+</item>
+
+<item>
+<title>Carolina</title>
+<cur>BRXX0535</cur>
+<for>Carolina</for>
+</item>
+
+<item>
+<title>Caruaru</title>
+<cur>BRXX0273</cur>
+<for>Caruaru</for>
+</item>
+
+<item>
+<title>Carvoeiro</title>
+<cur>BRXX0536</cur>
+<for>Carvoeiro</for>
+</item>
+
+<item>
+<title>Casa Branca</title>
+<cur>BRXX0537</cur>
+<for>Casa Branca</for>
+</item>
+
+<item>
+<title>Cascavel</title>
+<cur>BRXX0063</cur>
+<for>Cascavel</for>
+</item>
+
+<item>
+<title>Cascavel</title>
+<cur>BRXX3881</cur>
+<for>Cascavel</for>
+</item>
+
+<item>
+<title>Castanhal</title>
+<cur>BRXX0274</cur>
+<for>Castanhal</for>
+</item>
+
+<item>
+<title>Castelo</title>
+<cur>BRXX0538</cur>
+<for>Castelo</for>
+</item>
+
+<item>
+<title>Castro</title>
+<cur>BRXX0064</cur>
+<for>Castro</for>
+</item>
+
+<item>
+<title>Cataguases</title>
+<cur>BRXX0539</cur>
+<for>Cataguases</for>
+</item>
+
+<item>
+<title>Catalao</title>
+<cur>BRXX0065</cur>
+<for>Catalao</for>
+</item>
+
+<item>
+<title>Catanduva</title>
+<cur>BRXX0066</cur>
+<for>Catanduva</for>
+</item>
+
+<item>
+<title>Caucaia</title>
+<cur>BRXX3882</cur>
+<for>Caucaia</for>
+</item>
+
+<item>
+<title>Caxias</title>
+<cur>BRXX0067</cur>
+<for>Caxias</for>
+</item>
+
+<item>
+<title>Caxias do Sul</title>
+<cur>BRXX0068</cur>
+<for>Caxias do Sul</for>
+</item>
+
+<item>
+<title>Cerqueira Cesar</title>
+<cur>BRXX0370</cur>
+<for>Cerqueira Cesar</for>
+</item>
+
+<item>
+<title>Cerquilho</title>
+<cur>BRXX0540</cur>
+<for>Cerquilho</for>
+</item>
+
+<item>
+<title>Cesario Lange</title>
+<cur>BRXX0371</cur>
+<for>Cesario Lange</for>
+</item>
+
+<item>
+<title>Chapada Diamantina</title>
+<cur>BRXX3883</cur>
+<for>Chapada Diamantina</for>
+</item>
+
+<item>
+<title>Chapada dos Guimaraes</title>
+<cur>BRXX3884</cur>
+<for>Chapada dos Guimaraes</for>
+</item>
+
+<item>
+<title>Chapada dos Veadeiros</title>
+<cur>BRXX3885</cur>
+<for>Chapada dos Veadeiros</for>
+</item>
+
+<item>
+<title>Chapeco</title>
+<cur>BRXX0069</cur>
+<for>Chapeco</for>
+</item>
+
+<item>
+<title>Cianorte</title>
+<cur>BRXX0275</cur>
+<for>Cianorte</for>
+</item>
+
+<item>
+<title>Cipo</title>
+<cur>BRXX0372</cur>
+<for>Cipo</for>
+</item>
+
+<item>
+<title>Codajas</title>
+<cur>BRXX0373</cur>
+<for>Codajas</for>
+</item>
+
+<item>
+<title>Codisburgo</title>
+<cur>BRXX0700</cur>
+<for>Codisburgo</for>
+</item>
+
+<item>
+<title>Coelho da Rocha</title>
+<cur>BRXX0541</cur>
+<for>Coelho da Rocha</for>
+</item>
+
+<item>
+<title>Colatina</title>
+<cur>BRXX0070</cur>
+<for>Colatina</for>
+</item>
+
+<item>
+<title>Colombo</title>
+<cur>BRXX0071</cur>
+<for>Colombo</for>
+</item>
+
+<item>
+<title>Colorado do Oeste</title>
+<cur>BRXX0701</cur>
+<for>Colorado do Oeste</for>
+</item>
+
+<item>
+<title>Conceicao do Araguaia</title>
+<cur>BRXX0702</cur>
+<for>Conceicao do Araguaia</for>
+</item>
+
+<item>
+<title>Concordia</title>
+<cur>BRXX0276</cur>
+<for>Concordia</for>
+</item>
+
+<item>
+<title>Congonhas</title>
+<cur>BRXX0542</cur>
+<for>Congonhas</for>
+</item>
+
+<item>
+<title>Conselheiro Lafaiete</title>
+<cur>BRXX0072</cur>
+<for>Conselheiro Lafaiete</for>
+</item>
+
+<item>
+<title>Contagem</title>
+<cur>BRXX0543</cur>
+<for>Contagem</for>
+</item>
+
+<item>
+<title>Coracao de Jesus</title>
+<cur>BRXX0703</cur>
+<for>Coracao de Jesus</for>
+</item>
+
+<item>
+<title>Cordeiro</title>
+<cur>BRXX0544</cur>
+<for>Cordeiro</for>
+</item>
+
+<item>
+<title>Corinto</title>
+<cur>BRXX0545</cur>
+<for>Corinto</for>
+</item>
+
+<item>
+<title>Cornelio Procopio</title>
+<cur>BRXX0073</cur>
+<for>Cornelio Procopio</for>
+</item>
+
+<item>
+<title>Coronel Fabriciano</title>
+<cur>BRXX0546</cur>
+<for>Coronel Fabriciano</for>
+</item>
+
+<item>
+<title>Corumba</title>
+<cur>BRXX0074</cur>
+<for>Corumba</for>
+</item>
+
+<item>
+<title>Costa do Saumpe</title>
+<cur>BRXX3886</cur>
+<for>Costa do Saumpe</for>
+</item>
+
+<item>
+<title>Cotia</title>
+<cur>BRXX0547</cur>
+<for>Cotia</for>
+</item>
+
+<item>
+<title>Coxim</title>
+<cur>BRXX0075</cur>
+<for>Coxim</for>
+</item>
+
+<item>
+<title>Criciuma</title>
+<cur>BRXX0076</cur>
+<for>Criciuma</for>
+</item>
+
+<item>
+<title>Cristalandia</title>
+<cur>BRXX0374</cur>
+<for>Cristalandia</for>
+</item>
+
+<item>
+<title>Cruz Alta</title>
+<cur>BRXX0277</cur>
+<for>Cruz Alta</for>
+</item>
+
+<item>
+<title>Cruzeiro</title>
+<cur>BRXX0548</cur>
+<for>Cruzeiro</for>
+</item>
+
+<item>
+<title>Cruzeiro do Sul</title>
+<cur>BRXX0549</cur>
+<for>Cruzeiro do Sul</for>
+</item>
+
+<item>
+<title>Cruzeta</title>
+<cur>BRXX0077</cur>
+<for>Cruzeta</for>
+</item>
+
+<item>
+<title>Cubatao</title>
+<cur>BRXX0375</cur>
+<for>Cubatao</for>
+</item>
+
+<item>
+<title>Cuiaba</title>
+<cur>BRXX0078</cur>
+<for>Cuiaba</for>
+</item>
+
+<item>
+<title>Curitiba</title>
+<cur>BRXX0079</cur>
+<for>Curitiba</for>
+</item>
+
+<item>
+<title>Curitibanos</title>
+<cur>BRXX0080</cur>
+<for>Curitibanos</for>
+</item>
+
+<item>
+<title>Currais Novos</title>
+<cur>BRXX0278</cur>
+<for>Currais Novos</for>
+</item>
+
+<item>
+<title>Curuca</title>
+<cur>BRXX0376</cur>
+<for>Curuca</for>
+</item>
+
+<item>
+<title>Curvelo</title>
+<cur>BRXX0081</cur>
+<for>Curvelo</for>
+</item>
+</channel></rss>

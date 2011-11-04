@@ -1,0 +1,135 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> youtube_login </bookmark>
+
+<onEnter>
+  userName = null;
+  passWord = null;
+  titleString = "Use Youtube username and password";
+</onEnter>
+
+<mediaDisplay name=threePartsView 
+		showDefaultInfo=no
+          autoSelectMenu=no
+	      autoSelectItem=no
+		itemPerPage=5
+		
+		imageLeftSide="image/LeftBack_image.jpg"
+		imageRightSide="image/RightBack_image.jpg"
+		imageFocus="image/list_select_bar.bmp"
+		
+		sideLeftWidthPC= 29.5
+		sideRightWidthPC= 70.7
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=28:35:51
+		sideColorLeft=28:35:51
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 12
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = 8
+		menuYPC = 35.1
+		menuWidthPC = 18
+		menuHeightPC = 6
+		
+		itemImageXPC = 33.7
+		itemImageYPC = 22
+		itemImageWidthPC = 8
+		itemImageHeightPC = 11
+		
+		itemXPC = 44.5
+		itemYPC = 22
+		itemWidthPC = 47.6
+		itemHeightPC = 11.5
+		itemBackgroundColor=28:35:51
+
+		showHeader=no
+		
+		>
+<image offsetXPC="10" offsetYPC="7.5" widthPC="14" heightPC="24">image/YouTube_focus.jpg</image>
+
+<text offsetXPC="40" offsetYPC="58" widthPC="30" heightPC="14" fontSize=13 >
+<script>
+	titleString;
+</script>
+</text>
+			
+</mediaDisplay>
+
+
+
+<channel>
+        <title> youtube login </title>
+        <link>./scripts/youtube_login.rss</link>
+
+<item>
+	<title>
+		<script>
+			displayName = "$[ENTER_USERNAME]";
+			if (userName != null) {
+			   displayName = userName;
+			}
+			displayName;
+		</script>
+	</title>
+
+	<onClick>
+		inputUser = getInput("userName", "doModal");
+		if (inputUser != null) {
+		   userName = inputUser;
+		}
+		redrawDisplay();
+		null;
+	</onClick>
+</item>
+
+<item>
+	<title>
+		<script>
+			displayTitle = "$[ENTER_PASSWORD]";
+			if (passWord != null) {
+			   displayTitle = "**********";
+			}
+			displayTitle;
+		</script>
+	</title>
+	<onClick>
+		inputPass = getInput("passWord", "doModal");
+		if (inputPass != NULL) {
+		   passWord = inputPass;
+		}
+		redrawDisplay();
+		null;
+	</onClick>
+</item>
+
+<item>
+	<title>$[SIGN_IN]</title>
+	<onClick>
+		if (passWord == null || userName == null) {
+		   titleString = "Invalid username or password";
+		   redrawDisplay();
+		} else {
+		   result = googleServiceLogin("youtube", userName, passWord);
+		   if (result != "success") {
+		      titleString = "Sign in failed!";
+		      redrawDisplay();
+		   } else {
+		      postMessage("return");
+		   }
+		}
+		null;
+	</onClick>
+</item>
+
+</channel>
+</rss>

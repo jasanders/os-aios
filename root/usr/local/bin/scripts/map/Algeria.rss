@@ -1,0 +1,333 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Algeria</title>
+<link>./scripts/map/Algeria.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Adrar</title>
+<cur>AGXX0034</cur>
+<for>Adrar</for>
+</item>
+
+<item>
+<title>Algiers</title>
+<cur>AGXX0001</cur>
+<for>Algiers</for>
+</item>
+
+<item>
+<title>Amsel</title>
+<cur>AGXX0002</cur>
+<for>Amsel</for>
+</item>
+
+<item>
+<title>Annaba</title>
+<cur>AGXX0012</cur>
+<for>Annaba</for>
+</item>
+
+<item>
+<title>Batna</title>
+<cur>AGXX0017</cur>
+<for>Batna</for>
+</item>
+
+<item>
+<title>Bechar</title>
+<cur>AGXX0028</cur>
+<for>Bechar</for>
+</item>
+
+<item>
+<title>Bejaia</title>
+<cur>AGXX0003</cur>
+<for>Bejaia</for>
+</item>
+
+<item>
+<title>Beni Abbes</title>
+<cur>AGXX0038</cur>
+<for>Beni Abbes</for>
+</item>
+
+<item>
+<title>Biskra</title>
+<cur>AGXX0022</cur>
+<for>Biskra</for>
+</item>
+
+<item>
+<title>Bordj Bou Arreridj</title>
+<cur>AGXX0015</cur>
+<for>Bordj Bou Arreridj</for>
+</item>
+
+<item>
+<title>Bou-Saada</title>
+<cur>AGXX0021</cur>
+<for>Bou-Saada</for>
+</item>
+
+<item>
+<title>Chlef</title>
+<cur>AGXX0014</cur>
+<for>Chlef</for>
+</item>
+
+<item>
+<title>Constantine</title>
+<cur>AGXX0013</cur>
+<for>Constantine</for>
+</item>
+
+<item>
+<title>Djanet</title>
+<cur>AGXX0037</cur>
+<for>Djanet</for>
+</item>
+
+<item>
+<title>El Golea</title>
+<cur>AGXX0031</cur>
+<for>El Golea</for>
+</item>
+
+<item>
+<title>El Oued</title>
+<cur>AGXX0026</cur>
+<for>El Oued</for>
+</item>
+
+<item>
+<title>Ghardaia</title>
+<cur>AGXX0027</cur>
+<for>Ghardaia</for>
+</item>
+
+<item>
+<title>Hassi-Messaoud</title>
+<cur>AGXX0030</cur>
+<for>Hassi-Messaoud</for>
+</item>
+
+<item>
+<title>Illizi</title>
+<cur>AGXX0036</cur>
+<for>Illizi</for>
+</item>
+
+<item>
+<title>In Amenas</title>
+<cur>AGXX0033</cur>
+<for>In Amenas</for>
+</item>
+
+<item>
+<title>In Salah</title>
+<cur>AGXX0035</cur>
+<for>In Salah</for>
+</item>
+
+<item>
+<title>Jijel Achouat</title>
+<cur>AGXX0040</cur>
+<for>Jijel Achouat</for>
+</item>
+
+<item>
+<title>Mascara Metmore</title>
+<cur>AGXX0019</cur>
+<for>Mascara Metmore</for>
+</item>
+
+<item>
+<title>Mecheria</title>
+<cur>AGXX0024</cur>
+<for>Mecheria</for>
+</item>
+
+<item>
+<title>Mostaganem</title>
+<cur>AGXX0005</cur>
+<for>Mostaganem</for>
+</item>
+
+<item>
+<title>Oran</title>
+<cur>AGXX0006</cur>
+<for>Oran</for>
+</item>
+
+<item>
+<title>Ouargla</title>
+<cur>AGXX0029</cur>
+<for>Ouargla</for>
+</item>
+
+<item>
+<title>Setif</title>
+<cur>AGXX0016</cur>
+<for>Setif</for>
+</item>
+
+<item>
+<title>Skikda</title>
+<cur>AGXX0011</cur>
+<for>Skikda</for>
+</item>
+
+<item>
+<title>Tahifet</title>
+<cur>AGXX0007</cur>
+<for>Tahifet</for>
+</item>
+
+<item>
+<title>Tamanrasset</title>
+<cur>AGXX0008</cur>
+<for>Tamanrasset</for>
+</item>
+
+<item>
+<title>Tebessa</title>
+<cur>AGXX0018</cur>
+<for>Tebessa</for>
+</item>
+
+<item>
+<title>Tenes</title>
+<cur>AGXX0009</cur>
+<for>Tenes</for>
+</item>
+
+<item>
+<title>Tiaret</title>
+<cur>AGXX0020</cur>
+<for>Tiaret</for>
+</item>
+
+<item>
+<title>Timimoun</title>
+<cur>AGXX0032</cur>
+<for>Timimoun</for>
+</item>
+
+<item>
+<title>Tindouf</title>
+<cur>AGXX0010</cur>
+<for>Tindouf</for>
+</item>
+
+<item>
+<title>Tlemcen Zenata</title>
+<cur>AGXX0023</cur>
+<for>Tlemcen Zenata</for>
+</item>
+
+<item>
+<title>Touggourt</title>
+<cur>AGXX0025</cur>
+<for>Touggourt</for>
+</item>
+
+</channel></rss>
+

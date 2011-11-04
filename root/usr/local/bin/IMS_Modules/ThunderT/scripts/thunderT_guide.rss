@@ -1,0 +1,463 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark>Thunder</bookmark>
+
+<script>
+	print("...... Start to init thunder ......");
+	showIdle();
+	if (Thunder_deviceReadyForDownload() != null)
+	{
+		print("download device found, init thunder library");
+		/* remote task will start in Thunder_init */
+		ret = Thunder_init();
+		if (ret != null)
+		{
+			ret = Thunder_loadTasks();
+			if (ret == null)
+			{
+				Thunder_deInit();
+				postMessage("return");
+				unsetenv("thunderInit");
+			}
+		}
+		else
+		{
+			Thunder_deInit();
+			postMessage("return"); 
+			unsetenv("thunderInit");
+		}
+	}
+	else
+	{
+		jumpToLink("jumpLink");
+		redrawDisplay();
+	}
+	cancelIdle();
+</script>
+
+<onEnter>
+ready = getEnv("thunderDevReady");
+fromDeviceSelect = getEnv("fromDeviceSelect");
+if (fromDeviceSelect == "yes")
+{
+	if (ready != "yes")
+	{
+		print("!!!!!! download device NOT found, init thunder library with vod only !!!!!!");
+		ret = Thunder_init("vod");
+		if (ret == null)
+		{
+			Thunder_deInit();
+			unsetenv("thunderInit");
+			postMessage("return");
+		}
+	}
+	else
+	{
+		/* remote task will start in Thunder_init */
+		ret = Thunder_init();
+		if (ret != null)
+		{
+			ret = Thunder_loadTasks();
+			if (ret == null)
+			{
+				Thunder_deInit();
+				postMessage("return");
+				unsetenv("thunderInit");
+			}
+		}
+		else
+		{
+			Thunder_deInit();
+			postMessage("return");
+			unsetenv("thunderInit");
+		}
+	}
+}
+unsetEnv("thunderDevReady");
+unsetEnv("fromDeviceSelect");
+</onEnter>
+
+<jumpLink>
+<link>
+thunderT_deviceSelect.rss
+</link>
+</jumpLink>
+
+
+<mediaDisplay name=photoView
+bottomYPC=100
+sideTopHeightPC=0
+itemGapXPC=2.18
+itemGapYPC=2
+showDefaultInfo=no
+centerXPC=28.10
+centerYPC=35.97
+itemWidthPC=8.75
+itemHeightPC=23.20
+centerHeightPC=100
+itemBackgroundColor=0:0:0
+backgroundColor=-1:-1:-1
+drawItemBorder=no
+imageBorderPC=1
+rowCount=1
+columnCount=5
+idleImageWidthPC=8.43
+idleImageHeightPC=14.29
+>
+
+<backgroundDisplay name=guide_menu>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			"../image/guide_bg.fsp";
+		</script>
+	</image>
+</backgroundDisplay>
+
+<itemDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image>
+	<offsetXPC>
+	<script>
+		status = getDrawingItemState();
+		if (status == "focus")
+			"0";
+		else
+			"0";
+	</script>
+	</offsetXPC>
+	<offsetYPC>
+	<script>
+		status = getDrawingItemState();
+		if (status == "focus")
+			"0";
+		else
+			"0";
+	</script>
+	</offsetYPC>
+	<widthPC>
+	<script>
+		status = getDrawingItemState();
+		if (status == "focus")
+			"100";
+		else
+			"100";
+	</script>
+	</widthPC>
+	<heightPC>
+	<script>
+		status = getDrawingItemState();
+		if (status == "focus")
+			"85";
+		else
+			"85";
+	</script>
+	</heightPC>
+	<script>
+	status = getDrawingItemState();
+	if (status == "focus")
+	{
+		getStringArrayAt(cateFocusIconArray, -1);
+	}
+	else
+	{
+		getStringArrayAt(cateUnfocusIconArray, -1);
+	}
+	</script>
+	</image>
+	
+	<text align=center offsetXPC=0 offsetYPC=86 widthPC=100 heightPC=13.9 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+		<fontSize>
+		<script>
+		if (getDrawingItemState() == "focus")
+			"12";
+		else
+			"12";
+		</script>
+		</fontSize>
+		<script>
+			str = getStringArrayAt(cateNameArray , -1);
+			str;
+		</script>
+	</text>
+
+</itemDisplay>
+
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading1.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading2.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading3.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading4.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading5.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading6.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading7.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading8.png </idleImage>
+
+<onUserInput>
+<script>
+result = "false";
+userInput = currentUserInput();
+print("currentUserInput",userInput);
+if (userInput == "video_stop")
+{
+	postMessage("return");
+	result = "true";
+}else if( "display" == userInput ){
+		rss = "rss_file://./IMS_Modules/ThunderT/scripts/thunderT_confirm.rss";
+		ret = doModalRss(rss);
+		
+		if( "yes" == ret ){
+			ret  = Thunder_stopRemoteTask();
+				if( null != ret ){
+								print("Thunder_stopRemoteTask,the ret is ::",ret);
+				}
+		}
+		
+		result = "true";
+}
+else if (userInput == "enter")
+{
+	index = getFocusItemIndex();
+	code = getStringArrayAt(cateCodeArray, index);
+	if (code == "01" || code == "03")
+	{
+		if (Thunder_vodEnabled() == null)
+		{
+			print("!!!!!! thunder vod not enabled !!!!!!");
+			result = "true";
+		}
+	}
+	
+}
+result;
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+<onEnter>
+	stopBgMusic();
+	unsetEnv("returnFrom");
+	unsetEnv("pageIndexHistory");
+	unsetEnv("focusItemIndexHistory");
+
+	cateCodeArray = null;
+	cateNameArray = null;
+	templateCodeArray = null;
+	cateFocusIconArray = null;
+	cateUnfocusIconArray = null;
+
+	cateCode = "01";
+	cateCodeArray = pushBackStringArray(cateCodeArray, cateCode);
+	cateName = "影视点播";
+	cateNameArray = pushBackStringArray(cateNameArray, cateName);
+	templateCode = "MOVIE";
+	templateCodeArray = pushBackStringArray(templateCodeArray, templateCode);
+	cateFocusIconArray = pushBackStringArray(cateFocusIconArray, "../image/movie_focus.fsp");
+	cateUnfocusIconArray = pushBackStringArray(cateUnfocusIconArray, "../image/movie_unfocus.fsp");
+
+	cateCode = "02";
+	cateCodeArray = pushBackStringArray(cateCodeArray, cateCode);
+	cateName = "影视下载";
+	cateNameArray = pushBackStringArray(cateNameArray, cateName);	
+	templateCode = "RANK";
+	templateCodeArray = pushBackStringArray(templateCodeArray, templateCode);
+	cateFocusIconArray = pushBackStringArray(cateFocusIconArray, "../image/thunderdl_focus.fsp");
+	cateUnfocusIconArray = pushBackStringArray(cateUnfocusIconArray, "../image/thunderdl_unfocus.fsp");
+
+	cateCode = "03";
+	cateCodeArray = pushBackStringArray(cateCodeArray, cateCode);
+	cateName = "下载管理";
+	cateNameArray = pushBackStringArray(cateNameArray, cateName);
+	templateCode = "DLM";
+	templateCodeArray = pushBackStringArray(templateCodeArray, templateCode);
+	cateFocusIconArray = pushBackStringArray(cateFocusIconArray, "../image/dlm_focus.fsp");
+	cateUnfocusIconArray = pushBackStringArray(cateUnfocusIconArray, "../image/dlm_unfocus.fsp");
+
+	cateCode = "04";
+	cateCodeArray = pushBackStringArray(cateCodeArray, cateCode);
+	cateName = "已下载视频";
+	cateNameArray = pushBackStringArray(cateNameArray, cateName);
+	templateCode = "DL";
+	templateCodeArray = pushBackStringArray(templateCodeArray, templateCode);
+	cateFocusIconArray = pushBackStringArray(cateFocusIconArray, "../image/dl_focus.fsp");
+	cateUnfocusIconArray = pushBackStringArray(cateUnfocusIconArray, "../image/dl_unfocus.fsp");
+	
+	cateCode = "05";
+	cateCodeArray = pushBackStringArray(cateCodeArray, cateCode);
+	cateName = "远程下载";
+	cateNameArray = pushBackStringArray(cateNameArray, cateName);
+	templateCode = "ANI";
+	templateCodeArray = pushBackStringArray(templateCodeArray, templateCode);
+	cateFocusIconArray = pushBackStringArray(cateFocusIconArray, "../image/anime_focus.fsp");
+	cateUnfocusIconArray = pushBackStringArray(cateUnfocusIconArray, "../image/anime_unfocus.fsp");
+	
+	itemSize = 5;
+</onEnter>
+
+<script>
+	showIdle();
+	setFocusItemIndex(0);
+	cancelIdle();
+</script>
+
+<item_template>
+	<mediaDisplay>
+		<onEnter>
+			rTask = Thunder_remoteTaskRunning();
+			focus = getFocusItemIndex();
+			popupHeader = "远程下载";
+
+			popupOptionWide = 3;
+
+			if( "done" == rTask ){
+				popupOptionSize = 2;
+				popupOptions = pushBackStringArray(popupOptions, "停止");
+				popupOptions = pushBackStringArray(popupOptions, "返回");
+				popupOptionFocus = "停止";
+
+				popupMessageSize = 6;
+				popupMessages = pushBackStringArray(popupMessages, "该设备的远程控制状态是: 开启");
+
+				remoteCode = "你此次的激活码为:";
+				remoteCode1 = Thunder_getRemoteTaskCode();
+				if( null != remoteCode1 ){
+					remoteCode = remoteCode + remoteCode1;
+				}else{
+					remoteCode = remoteCode + "服务器尚未回传!";
+				}
+				popupMessages = pushBackStringArray(popupMessages, remoteCode);
+
+				popupMessages = pushBackStringArray(popupMessages, "开启远程下载控制，您可以通过PC、Ipad或手机等终端控制该设备进行下载，请您通过PC、Ipad或手机等终端登陆http://home.xunlei.com，并按提示输入以上激活码绑定该设备，完成操作。");		
+				
+				popupMessages = pushBackStringArray(popupMessages, "如要停止该设备的远程控制功能，请点击“停止”按钮，则该设备的远程控制功能失效，同时解除PC、Ipad或手机等终端与该设备的绑定。");
+				popupMessages = pushBackStringArray(popupMessages, "激活码实效为2小时，请您尽快完成设备绑定");
+
+				popupMessages = pushBackStringArray(popupMessages, "如有疑问，请登陆http://home.xunlei.com的帮助页面查询。");
+			}else if( "binded" == rTask ){
+				popupOptionSize = 2;
+				popupOptions = pushBackStringArray(popupOptions, "停止");
+				popupOptions = pushBackStringArray(popupOptions, "返回");
+				popupOptionFocus = "停止";
+
+				popupMessageSize = 4;
+				popupMessages = pushBackStringArray(popupMessages, "该设备的远程控制状态是: 已经绑定成功.");
+
+				popupMessages = pushBackStringArray(popupMessages, "开启远程下载控制，您可以通过PC、Ipad或手机等终端控制该设备进行下载，请您通过PC、Ipad或手机等终端登陆http://home.xunlei.com，并按提示输入以上激活码绑定该设备，完成操作。");		
+				
+				popupMessages = pushBackStringArray(popupMessages, "如要停止该设备的远程控制功能，请点击“停止”按钮，则该设备的远程控制功能失效，同时解除PC、Ipad或手机等终端与该设备的绑定。");
+
+				popupMessages = pushBackStringArray(popupMessages, "如有疑问，请登陆http://home.xunlei.com的帮助页面查询。");
+			}else if( "halt" == rTask ){
+				popupOptionSize = 2;
+				popupOptions = pushBackStringArray(popupOptions, "开启");
+				popupOptions = pushBackStringArray(popupOptions, "返回");
+				popupOptionFocus = "开启";
+
+				popupMessageSize = 4;
+				popupMessages = pushBackStringArray(popupMessages, "该设备的远程控制状态是: 关闭");
+				popupMessages = pushBackStringArray(popupMessages, "激活码实效为2小时，请您尽快完成设备绑定");
+				popupMessages = pushBackStringArray(popupMessages, "该设备的远程控制功能未开启，如需启用远程控制请点击“开启”，并通过PC、Ipad或手机等终端登陆http://home.xunlei.com设置远程控制，即可通过PC、Ipad或手机等终端控制该设备进行下载。");
+				popupMessages = pushBackStringArray(popupMessages, "如有疑问，请登陆http://home.xunlei.com的帮助页面查询。");
+			}else{
+				popupOptionSize = 1;
+				popupOptions = pushBackStringArray(popupOptions, "返回");
+				popupOptionFocus = "返回";
+
+				popupMessageSize = 3;
+				popupMessages = pushBackStringArray(popupMessages, "该设备的远程控制状态是: 正在处理");
+				popupMessages = pushBackStringArray(popupMessages, "服务器正在处理用户请求，请返回，稍后重新进入,谢谢!");
+				popupMessages = pushBackStringArray(popupMessages, "如有疑问，请登陆http://home.xunlei.com的帮助页面查询。");
+			}
+		</onEnter>
+	</mediaDisplay>
+
+<displayTitle>
+<script>
+name = getStringArrayAt(cateNameArray , -1);
+print("name is : ", name);
+</script>
+</displayTitle>
+
+<onClick>
+showIdle();
+focus = getFocusItemIndex();
+categoryCode = getStringArrayAt(cateCodeArray, focus);
+categoryName = getStringArrayAt(cateNameArray, focus);
+path = getStoragePath("tmp");
+path = path + "cateStatus.dat";
+string = categoryCode + "&#x000a;" + categoryName;
+writeStringToFile(path, string);
+templateCode = getStringArrayAt(templateCodeArray, focus);
+setEnv("templateCode", templateCode);
+
+if( "远程下载" == categoryName ){
+		rss = "rss_file://./IMS_Modules/ThunderT/scripts/RControlPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			print("the ret is ::",ret);
+			if( "开启" == ret ){
+				ret = Thunder_startRemoteTask();
+				if( null != ret ){
+								print("Thunder_startRemoteTask,the ret is ::",ret);
+
+								postMessage("enter");
+				}
+			}else if( "停止" == ret ){
+					postMessage("display");
+
+					print("the postMessage is ::","option_red");
+			}
+		}
+}
+null;
+</onClick>
+
+<link>
+<script>
+focus = getFocusItemIndex();
+if(focus == 2)
+{
+	if (Thunder_deviceReadyForDownload() != null)
+	{
+		link = "thunderT_dlm.rss";
+	}
+	else
+	{
+		link = "thunderT_deviceSelect.rss";
+	}
+}
+else if(focus == 3)
+{
+	if (Thunder_deviceReadyForDownload() != null)
+	{
+		link = "thunderT_dl.rss";
+	}
+	else
+	{
+		link = "thunderT_deviceSelect.rss";
+	}
+}
+else if (focus == 4)
+{
+	link = null;
+}
+else 
+{
+	link = "thunderT_program.rss";
+}
+
+link;
+</script>
+</link>
+</item_template>
+
+<channel>
+<title>Thunder</title>
+<link>thunderT_guide.rss</link>
+<media:thumbnail url="../image/logo.png" />
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+</channel>
+</rss>

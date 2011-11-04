@@ -1,0 +1,65 @@
+#!/bin/sh
+# This script will parse the kernel command line like this one: rootfstype=yaffs2 root=31:01 mtdparts=rtk_nand:993024k,28672k(/),16384k(/usr/local/etc),10496k
+# The fields that have meta information, embraced by "( )" and meaning the mount point, give us the information to mount the partitions.
+# The mount point of "/" will be skipped.
+# If /usr/local/etc is not mounted, it will return 1.
+# For the command like this, mount.rcS will only try to see if "/usr/local/etc" can be mounted:
+#	> mount.rcS /usr/local/etc
+
+# If /usr/local/etc is found.
+USR_LOCAL_ETC=0
+
+read CMDLINE < /proc/cmdline
+for FIELD in $CMDLINE;
+do
+	FIELD_1_2=`echo $FIELD | cut -d = -f 2`
+	FIELD_1_3=`echo $FIELD | cut -d = -f 3`
+
+	if [ `echo $FIELD | cut -d = -f 1` = "mtdparts" ] && [ "$FIELD_1_2" != "" ] && [ "$FIELD_1_3" = "" ]; then
+		# Looking for ":"
+		FIELD_2_2=`echo $FIELD_1_2 | cut -d : -f 2`
+		FIELD_2_3=`echo $FIELD_1_2 | cut -d : -f 3`
+		if [ "$FIELD_2_2" != "" ] && [ "$FIELD_2_3" = "" ]; then
+			INDEX=1
+			while [ $INDEX != 0 ]; do
+				# Looking for ","
+				FIELD_3_I=`echo $FIELD_2_2 | cut -d , -f $INDEX`;
+				if [ "$FIELD_3_I" != "" ]; then
+					# Looking for "("
+					FIELD_4_2_A=`echo $FIELD_3_I | cut -d "(" -f 2`
+					FIELD_4_3_A=`echo $FIELD_3_I | cut -d "(" -f 3`
+					if [ "$FIELD_4_2_A" != "/)" ] && [ "$FIELD_4_2_A" != "" ] && [ "$FIELD_4_3_A" = "" ]; then
+						# Make sure it has ")"
+						FIELD_4_1_B=`echo $FIELD_4_2_A | cut -d ")" -f 1`
+						FIELD_4_2_B=`echo $FIELD_4_2_A | cut -d ")" -f 2`
+						if [ "$FIELD_4_1_B" != "" ] && [ "$FIELD_4_2_B" = "" ]; then
+							if [ "$1" = "" ] || [ "$1" = "$FIELD_4_1_B" ]; then
+								let POS=INDEX-1
+								if [ ! -d $FIELD_4_1_B ]; then
+									mkdir -p $FIELD_4_1_B
+								fi
+								if [ -d $FIELD_4_1_B ]; then
+									mount /dev/mtdblock/$POS $FIELD_4_1_B
+									if [ "$FIELD_4_1_B" = "/usr/local/etc" ]; then
+										USR_LOCAL_ETC=1
+									fi
+								else
+									echo "Mount point not found and cannot be created!"
+								fi
+							fi
+						fi
+					fi
+					let INDEX=INDEX+1
+				else
+					INDEX=0
+				fi
+			done
+		fi
+		break
+	fi
+done
+
+if [ "$USR_LOCAL_ETC" = 0 ]; then
+	exit 1
+fi
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<!--item label="$[NETWL_INFRASTRUCTURE]">
+				<submenu dialog="setup/WirelessAPListDlg.swf" type="$[NETWL_INFRASTRUCTURE]"/>
+		</item-->
+		<item label="$[NETWL_P2P]" >
+				<submenu dialog="P2PSetting" type="$[NETWL_P2P]" />
+		</item>
+		<item label="$[NETWL_WPS]" >
+				<submenu list="setup/WirelessModeWPS.xml" />
+		</item>
+		
+		<!--item label="$[NETWL_WCN]" onSelect="" onSelectParams="" >
+				<submenu path="" />
+		</item-->
+		
+</menu>
