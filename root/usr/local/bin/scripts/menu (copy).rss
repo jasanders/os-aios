@@ -335,14 +335,6 @@ else
 	else if (title == "SQA_test_page")
 	{
 		"http://172.21.98.57/menu.rss";
-	}
-         else if (title == "meta_feeds")
-	{
-		"http://www.metafeeds.com/channel/main/rss";
-	}
-        else if (title == "meta_favs")
-	{
-		"http://www.metafeeds.com/channel/fav_aios/rss";
 	}	
 	else
 	{
@@ -391,8 +383,7 @@ service_blueberry = null;
 video_podcast_EN = "1" ;
 video_podcast_CN = null;
 
-meta_feeds = "1";
-meta_favs = "1";
+
 
  
 {
@@ -712,23 +703,6 @@ if (serviceEnabled("facebook") != null)
 	itemTitleArray = pushBackStringArray(itemTitleArray, "facebook");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/IMS_Icon_FB_focus.png");
 	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/IMS_Icon_FB_unfocus.png");
-	itemSize = Add(itemSize, 1);
-}
-
-
-if (meta_feeds != null)
-{
-	itemTitleArray = pushBackStringArray(itemTitleArray, "meta_feeds");
-	focusiconArray = pushBackStringArray(focusiconArray, "image/mfeeds_focus.png");
-	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/mfeeds_unfocus.png");
-	itemSize = Add(itemSize, 1);
-}
-
-if (meta_favs != null)
-{
-	itemTitleArray = pushBackStringArray(itemTitleArray, "meta_favs");
-	focusiconArray = pushBackStringArray(focusiconArray, "image/mfavs_focus.png");
-	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/mfavs_unfocus.png");
 	itemSize = Add(itemSize, 1);
 }
 
