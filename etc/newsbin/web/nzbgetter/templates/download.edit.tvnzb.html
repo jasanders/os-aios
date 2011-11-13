@@ -1,0 +1,96 @@
+<h3>Edit entry</h3>
+<div class="div_block">
+<blockquote id="edit_done" style="display:none;">
+   <p>
+   <b>Edit download list entry</b>
+   <br /><br />
+   <div id="edit_done_msg"></div><br /><br />
+   <a href="?a=nzbd"><img src="images/back.png" border="0"></a>
+   </p>
+   <br />
+</blockquote>
+<div id="edit_form">
+<form method="POST" name="frmEditDownload">
+<input type="hidden" name="intID" value="%%-ID-%%">
+<input type="hidden" name="strType" value="tvnzb">
+<input type="hidden" name="strOldTitle" value="%%-ENTRYTITLE-%%">
+   <blockquote class="blockquote_grey">
+   <p>
+   <b>Title</b>
+   <br /><br />
+   Give the entry a usefull name. In case of NZBINDEX.nl matches and with Twitter support enabled it will 'tweet' this title.<br /><br />
+   <b>Note: The title is <font color="red">not needed</font> to identify releases in NZB feeds. It's just to show a fancy name in the download list.</b>
+   </p>
+   <br />
+   <div class="frm_element">
+       <input type="text" name="strDLTitle" value="%%-ENTRYTITLE-%%">
+   </div>
+   </blockquote>
+   <blockquote class="blockquote_grey">
+   <p>
+   <b>Match pattern</b>
+   <br /><br />
+   The records found in the NZB RSS feeds should match this pattern. If it matches, it will download the attached NZB file.<br /><br />
+   - For TVNZB.com records you <font color="red">CAN NOT</font> combine phrases. Only exact matches will be found.
+   <br /><br />For example:<br /><br />
+   TVNZB:<br />
+   If you want to download The.Office.US.S06E04.720p.HDTV.x264-GROUP you can use the pattern "the.office" and it will match. But "the office" (mind the missing dot) will not.
+   </p>
+   <br />
+   <div class="frm_element">
+       <input type="text" name="strDLMatch" value="%%-ENTRYPATTERN-%%">
+   </div>
+   </blockquote>
+   <blockquote class="blockquote_grey">
+   <p>
+   <b>Download to NZB incoming folder or add to verification queue first?</b>
+   <br /><br />
+   If a NZB file is found you can choose if you want tot move it to the incoming folder for immediate download, or you can move it to the NZB verification queue. If you choose to move files to this queue you can verify the matches first and decide whether to download them or not.
+   </p>
+   <br />
+   <div class="frm_element">
+       <select name="strDLHow">
+           <option value="auto"%%-DL_AUTO-%%>download to nzb incoming folder</option>
+           <option value="queue"%%-DL_QUEUE-%%>add to nzb verification queue first</option>
+       </select>
+   </div>
+   </blockquote>
+   <div id="fixedfilename">
+   <blockquote class="blockquote_grey">
+   <p>
+   <b>NZB filename</b>
+   <br /><br />
+   This field is optional.<br /><br />
+   You can give NZB files matching this entry a static filename. (only available in auto download to nzb folder mode)<br /><br />
+   Use this option with <font color="red"><b>caution!</b></font> If multiple matches are found within the same run they will all get the same NZB filename (which means some files will be <u>overwritten</u>)
+   </p>
+   <br />
+   <div class="frm_element">
+       <input type="text" name="strDLFixedFileName" value="%%-FIXEDNZBNAME-%%"><b>.nzb</b>
+   </div>
+   </blockquote>
+   </div>
+   <blockquote class="blockquote_orange">
+   <p>
+   <b>TV Series quality</b>
+   <br /><br />
+   Choose the quality you want.<br /><br />
+   <b>Note: some series are never released in HD so you will never get a match</b>
+   </p>
+   <br />
+   <div class="frm_element">
+       <select name="strQuality">
+           <option value="HD"%%-QUALITY_HD-%%>HD (mostly 720p)</option>
+           <option value="SD"%%-QUALITY_SD-%%>SD (mostly xvid)</option>
+       </select>
+   </div>
+   </blockquote>
+   <div>
+       <input type="submit" id="submit" value="Edit this entry"/>
+       <div class="loading"></div>
+   </div>
+</form>
+</div>
+<br />
+</div>
+<br />

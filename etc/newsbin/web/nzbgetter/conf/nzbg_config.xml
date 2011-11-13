@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+  <nzbfolder></nzbfolder>
+  <tvnzbfeed>http://www.tvnzb.com/tvnzb_new.rss</tvnzbfeed>
+  <nzbindexfeed>http://www.nzbindex.nl/rss/?q=%q&amp;amp;age=%a&amp;amp;minsize=%s&amp;amp;max=%m</nzbindexfeed>
+  <maxloglines>500</maxloglines>
+  <logfilename>nzbg.log</logfilename>
+  <tvnzbhd>720p</tvnzbhd>
+  <tvnzbsd>XviD</tvnzbsd>
+  <nzbindexdays>7</nzbindexdays>
+  <nzbindexresults>20</nzbindexresults>
+  <wgetpath>wget</wgetpath>
+  <twitterenabled>no</twitterenabled>
+  <twitteruser></twitteruser>
+  <twitterpass>=</twitterpass>
+  <twittermessage>%nzbgetter is downloading %download</twittermessage>
+</config>

@@ -1,0 +1,102 @@
+/* before settings form shows up, check if twitter is enabled */
+if($('select[name=strTwitterEnabled]').val() == "yes"){$('#twitter_settings').show();}else{$('#twitter_settings').hide();}
+
+/* depending on value of twitter enabled dropdown show the twitter settings or not */    
+$("select[name=strTwitterEnabled]").change( function() {if($('select[name=strTwitterEnabled]').val() == "yes"){$('#twitter_settings').show();}else{$('#twitter_settings').hide();}});
+
+/* check support for cURL and/or try to receive wget path */
+$('#check_download_setting').click(function () {$.get("lib/ajax/ajax_check_download_settings.php", function(data){alert(data);});return false;});
+
+/* if submit button is clicked do some checks*/
+$('#submit').click(function () {		
+
+  /*Get the data from all the fields */
+  var strWgetFolder      = $('input[name=strWgetFolder]');
+  var strNZBFolder       = $('input[name=strNZBFolder]');
+  var strRSSTvNZB        = $('input[name=strRSSTvNZB]');
+  var strTvNZBHD         = $('input[name=strTvNZBHD]');
+  var strTvNZBSD         = $('input[name=strTvNZBSD]');
+  var strNZBIndex        = $('input[name=strNZBIndex]');
+  var strNZBIndexDays    = $('input[name=strNZBIndexDays]');
+  var strNZBIndexResults = $('input[name=strNZBIndexResults]');
+  var strLogFile         = $('input[name=strLogFile]');
+  var intLogLines        = $('input[name=intMaxLogLines]');
+  var strTwitterEnabled  = $('select[name=strTwitterEnabled]');
+  var strTwitterUser     = $('input[name=strTwitterUser]');
+  var strTwitterPass     = $('input[name=strTwitterPass]');
+  var strTwitterMessage  = $('input[name=strTwitterMessage]');
+
+  /* validation of form fields */
+  if (strWgetFolder.val()==''){strWgetFolder.addClass('hightlight');alert('No value for WGET Path');return false;} else strWgetFolder.removeClass('hightlight');
+  if (strNZBFolder.val()==''){strNZBFolder.addClass('hightlight');alert('No value for Incoming NZB Folder');return false;} else strNZBFolder.removeClass('hightlight');
+  if (strRSSTvNZB.val()==''){strRSSTvNZB.addClass('hightlight');alert('No value for TVNZB.com RSS feed');return false;} else strRSSTvNZB.removeClass('hightlight');
+  if (strNZBIndex.val()==''){strNZBIndex.addClass('hightlight');alert('No value for NZBINDEX.nl RSS feed');return false;} else strNZBIndex.removeClass('hightlight');
+  if (strNZBIndexDays.val()==''){strNZBIndexDays.addClass('hightlight');alert('No value for NZBINDEX.nl maximum days');return false;} else strNZBIndexDays.removeClass('hightlight');
+  if (strNZBIndexResults.val()==''){strNZBIndexResults.addClass('hightlight');alert('No value for NZBINDEX.nl maximum results');return false;} else strNZBIndexResults.removeClass('hightlight');
+  if (strTvNZBHD.val()==''){strTvNZBHD.addClass('hightlight');alert('No value for TVNZB.com HD identifier');return false;} else strTvNZBHD.removeClass('hightlight');
+  if (strTvNZBSD.val()==''){strTvNZBSD.addClass('hightlight');alert('No value for TVNZB.com SD identifier');return false;} else strTvNZBSD.removeClass('hightlight');
+  if (strLogFile.val()==''){strLogFile.addClass('hightlight');alert('No value for Logfile name');return false;} else strLogFile.removeClass('hightlight');
+  if (intLogLines.val()=='') {intLogLines.addClass('hightlight');alert('No value for maximum loglines');return false;} else intLogLines.removeClass('hightlight');
+  
+  /* Twitter fields need check when enabled */
+  if(strTwitterEnabled.val() == "yes"){
+	  if (strTwitterUser.val()==''){strTwitterUser.addClass('hightlight');alert('No value for Twitter Username');return false;} else strTwitterUser.removeClass('hightlight');
+	  if (strTwitterPass.val()==''){strTwitterPass.addClass('hightlight');alert('No value for Twitter Password');return false;} else strTwitterPass.removeClass('hightlight');
+	  if (strTwitterMessage.val()==''){strTwitterMessage.addClass('hightlight');alert('No value for Twitter Message');return false;} else strTwitterMessage.removeClass('hightlight');
+  }
+
+  /* build querystring */
+  var data = 'strWgetFolder=' + strWgetFolder.val() + '&strNZBFolder=' + strNZBFolder.val() + '&strRSSTvNZB=' + strRSSTvNZB.val() + '&strTvNZBHD=' + escape(strTvNZBHD.val())
+  + '&strTvNZBSD=' + escape(strTvNZBSD.val()) + '&strNZBIndex=' + escape(strNZBIndex.val()) + '&strNZBIndexDays=' + escape(strNZBIndexDays.val())
+  + '&strNZBIndexResults=' + escape(strNZBIndexResults.val()) + '&strLogFile=' + strLogFile.val() + '&intMaxLogLines=' + intLogLines.val()
+  + '&strTwitterEnabled=' + strTwitterEnabled.val() + '&strTwitterUser=' + strTwitterUser.val() + '&strTwitterPass=' + strTwitterPass.val()
+  + '&strTwitterMessage=' + strTwitterMessage.val();
+
+  /* disable the submit button while processing */
+  $('#submit').attr('disabled','true');
+
+  /* show the loading sign */
+  $('.loading').show();
+
+  /* start asynchronous processing */
+  $.ajax({
+    url: "lib/ajax/ajax_settings.php",
+    type: "GET",
+    data: data,
+    cache: false,
+    success: function (html) {
+
+      /* result status 1 => form has been processed */
+      if (html==1) {					
+        $('.div_block').fadeOut('slow');
+        $('.frm_done').fadeIn('slow');
+      /* result status 2 => no numeric value specified for max log lines field */
+      }else if(html==2){
+        $('#submit').removeAttr("disabled");
+        intLogLines.addClass('hightlight');
+        $('.loading').hide();
+        alert('Please only enter an integer value for max log lines');
+      /* result status 3 => no numeric value specified for max days */
+      } else if(html==3){
+        $('#submit').removeAttr("disabled");
+        strNZBIndexDays.addClass('hightlight');
+        $('.loading').hide();
+        alert('Please only enter an integer value for max days');
+      /* result status 4 => no numeric value specified for max results */
+      } else if(html==4){
+        $('#submit').removeAttr("disabled");
+        strNZBIndexResults.addClass('hightlight');
+        $('.loading').hide();
+        alert('Please only enter an integer value for max results');
+      /* NZB folder does nog exist */
+      } else if(html==0) {
+        $('#submit').removeAttr("disabled");
+        strNZBFolder.addClass('hightlight');
+        $('.loading').hide();
+        alert('Please verify if the incoming NZB folder is correct!');
+      }
+    }
+  });
+  /* return false to avoid page reload */
+  return false;
+});
