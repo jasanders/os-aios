@@ -312,14 +312,14 @@
 </itemDisplay>
 
 <onEnter>
-	hintIconX = 11.4;
-	hintIconY = 84.7;
+	hintIconX = 7.4;
+	hintIconY = 87.7;
 	hintIconWidth = 2.0;
 	hintIconHeight = 3.6;
 	hintGap = 0.9;
-	hintMsgY = 85.6;
+	hintMsgY = 87.7;
 	hintMsgWidth = 17.2;
-	hintMsgHeight = 2.8;
+	hintMsgHeight = 3.8;
 
 	isExist = "false";
 	WLAN0_PROFILE_NUM = getWlProfileInfo("TOTAL_NUM");

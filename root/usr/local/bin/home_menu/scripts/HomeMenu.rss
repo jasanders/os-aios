@@ -724,27 +724,17 @@ redrawState = "no";
 				"./home_menu/image/" + currImg + "UNFOCUS.fsp";
 		</script>
 	</image>
-
-	
-	
-	
- 
-<!-- 		<image offsetXPC=38 offsetYPC=50 widthPC=3.6 heightPC=6.9 useBackgroundSurface=yes redraw=yes >	
-		<script>
-			"./home_menu/image/HDD.fsp";
-		</script>
-	</image>	
-  	<text offsetXPC=42 offsetYPC=50 widthPC=20 heightPC=6.9 useBackgroundSurface=yes redraw=yes>
+<!-- 
+  	<text offsetXPC=66 offsetYPC=42.7 widthPC=20 heightPC=6.9 useBackgroundSurface=yes redraw=yes>
 		<script>
 			if (hddFree == null)
 				hddFree = hddFreeSize();
-				
-			hddFree;	
+				hddFree;	
 		</script>
-	</text> -->
+	</text> 
+-->	
 	
-	
-	<text offsetXPC=30 offsetYPC=83 widthPC=40 heightPC=5.5 fontSize=20 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=center tailDots=yes useBackgroundSurface=yes redraw=yes>
+	<text offsetXPC=30 offsetYPC=85 widthPC=40 heightPC=6.5 fontSize=20 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=center tailDots=yes useBackgroundSurface=yes redraw=yes>
 		<script>
 			focusIndex = getFocusItemIndex();			 			 		
 			
@@ -753,12 +743,11 @@ redrawState = "no";
 		</script>
 	</text>
 	
-<!--   	<text offsetXPC=23.9 offsetYPC=42.7 widthPC=20 heightPC=6.9 useBackgroundSurface=yes redraw=yes>
+   	<text offsetXPC=83 offsetYPC=0 widthPC=20 heightPC=6.9 useBackgroundSurface=yes redraw=yes>
 		<script>
 			currTime();
 		</script>
 	</text>
-	 -->
 	 
 </mediaDisplay>
 
