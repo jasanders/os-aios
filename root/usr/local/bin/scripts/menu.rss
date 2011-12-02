@@ -159,7 +159,7 @@ else
 	
 	else if (title == "cn_video")
 	{
-		"rss_file://./scripts/menu_video.rss";
+		"rss_file://./scripts/menu_cn.rss";
 	}	
 	
 	else if (title == "bestv")
