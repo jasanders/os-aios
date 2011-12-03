@@ -381,8 +381,8 @@ service_bestv = "1";
 service_pps = "1";
 service_voole = "1";
 service_videoaddon = "1";
-service_blueberry = "1";
 
+service_blueberry = null;
 video_podcast_CN = null;
 service_mediafly = null;
 service_youtube = null;
