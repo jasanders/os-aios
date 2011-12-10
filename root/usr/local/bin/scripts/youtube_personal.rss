@@ -1,6 +1,13 @@
 <?xml version="1.0"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
 
+<script>
+ storagePath = getStoragePath("tmp");
+ storagePath = storagePath + "ytData.dat";
+ arr = readStringFromFile(storagePath);
+ username = getStringArrayAt(arr, 0);
+</script>
+
 <bookmark> youtube_personal </bookmark>
 <mediaDisplay name=threePartsView 
 		showDefaultInfo=no
@@ -57,7 +64,17 @@
 
 <item>
 	<title>My Videos</title>
-	<link>http://gdata.youtube.com/feeds/api/users/default/uploads?v=2</link>
+	<script>
+	       url = username+"'s Videos";
+	       url;
+	</script>
+	</title>
+	<link>
+	<script>
+	       url = "http://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2";
+	       url;
+	</script>
+	</link>
   <mediaDisplay name=threePartsView 
 		showDefaultInfo=no
 		autoSelectMenu=no
@@ -293,7 +310,17 @@
 
 <item>
 	<title>Favorites</title>
-	<link>http://gdata.youtube.com/feeds/api/users/default/favorites?v=2</link>
+        <script>
+	       url = username+"'s Favorites";
+	       url;
+	</script>
+	</title>
+	<link>
+	<script>
+	       url = "http://gdata.youtube.com/feeds/api/users/"+username+"/favorites?v=2";
+	       url;
+	</script>
+	</link>
   <mediaDisplay name=threePartsView 
 		showDefaultInfo=no
 		autoSelectMenu=no
@@ -526,6 +553,8 @@
 </mediaDisplay>
 </item>
 
+<!-- Recommended and Playlists are not working due to authentication issues 
+  
 <item>
 	<title>Recommended</title>
 	<link>http://gdata.youtube.com/feeds/api/users/default/recommendations?v=2</link>
@@ -1006,7 +1035,7 @@
 
 </item>
 
-
+-->
 
 
 

@@ -124,6 +124,9 @@
 		      titleString = "Sign in failed!";
 		      redrawDisplay();
 		   } else {
+		      storagePath = getStoragePath("tmp");
+		      storagePath = storagePath + "ytData.dat";
+		      writeStringToFile(storagePath,userName);
 		      postMessage("return");
 		   }
 		}
