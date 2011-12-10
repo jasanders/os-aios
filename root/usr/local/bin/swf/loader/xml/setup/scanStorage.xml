@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<menu>
-		<item label="$[AUTO_SCAN_ON]"/>
-		<item label="$[AUTO_SCAN_OFF]"/>
-		<item label="$[RESUME_SCANNING_STORAGE]"/>
-</menu>
