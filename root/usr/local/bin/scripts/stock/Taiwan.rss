@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>Taiwan Stock Lists</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>集中市場</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_tse.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+        <item>
+            <title>櫃檯買賣市場</title>
+            <link>rss_file://./scripts/stock/Taiwan/Taiwan_otc.rss</link>
+            <media:thumbnail url="image/country/stock.jpg" />
+            <showRootMenu>no</showRootMenu>
+        </item>
+    </channel>
+</rss>

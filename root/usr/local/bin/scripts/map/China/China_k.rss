@@ -1,0 +1,195 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>China</title>
+<link>./scripts/map/China_k.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Kaba He</title>
+<cur>CHXX0195</cur>
+<for>Kaba%20He</for>
+</item>
+
+
+<item>
+<title>Kaifeng</title>
+<cur>CHXX0072</cur>
+<for>Kaifeng</for>
+</item>
+
+
+<item>
+<title>Kangding</title>
+<cur>CHXX0358</cur>
+<for>Kangding</for>
+</item>
+
+
+<item>
+<title>Karamay</title>
+<cur>CHXX0200</cur>
+<for>Karamay</for>
+</item>
+
+
+<item>
+<title>Kashi</title>
+<cur>CHXX0074</cur>
+<for>Kashi</for>
+</item>
+
+
+<item>
+<title>Keshan</title>
+<cur>CHXX0181</cur>
+<for>Keshan</for>
+</item>
+
+
+<item>
+<title>King's Park</title>
+<cur>CHXX0170</cur>
+<for>King%27s%20Park</for>
+</item>
+
+
+<item>
+<title>Korla</title>
+<cur>CHXX0209</cur>
+<for>Korla</for>
+</item>
+
+
+<item>
+<title>Kowloon</title>
+<cur>CHXX0075</cur>
+<for>Kowloon</for>
+</item>
+
+
+<item>
+<title>Kuandian</title>
+<cur>CHXX0305</cur>
+<for>Kuandian</for>
+</item>
+
+
+<item>
+<title>Kunming</title>
+<cur>CHXX0076</cur>
+<for>Kunming</for>
+</item>
+
+
+<item>
+<title>Kunyang</title>
+<cur>CHXX0077</cur>
+<for>Kunyang</for>
+</item>
+
+
+<item>
+<title>Kuqa</title>
+<cur>CHXX0208</cur>
+<for>Kuqa</for>
+</item>
+
+
+</channel></rss>

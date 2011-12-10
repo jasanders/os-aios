@@ -1,0 +1,602 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Saanich</title>
+<cur>CAXX0412</cur>
+<for>Saanich</for>
+</item>
+
+<item>
+<title>Sable Island</title>
+<cur>CAXX0591</cur>
+<for>Sable Island</for>
+</item>
+
+<item>
+<title>Sackville</title>
+<cur>CAXX0413</cur>
+<for>Sackville</for>
+</item>
+
+<item>
+<title>Saint Albert</title>
+<cur>CAXX0414</cur>
+<for>Saint Albert</for>
+</item>
+
+<item>
+<title>Saint Anthony</title>
+<cur>CAXX0415</cur>
+<for>Saint Anthony</for>
+</item>
+
+<item>
+<title>Saint Catharines</title>
+<cur>CAXX0416</cur>
+<for>Saint Catharines</for>
+</item>
+
+<item>
+<title>Saint Catharines Arpt</title>
+<cur>CAXX0417</cur>
+<for>Saint Catharines Arpt</for>
+</item>
+
+<item>
+<title>Saint Eleanors</title>
+<cur>CAXX0418</cur>
+<for>Saint Eleanors</for>
+</item>
+
+<item>
+<title>Saint John</title>
+<cur>CAXX0419</cur>
+<for>Saint John</for>
+</item>
+
+<item>
+<title>Saint Lawrence</title>
+<cur>CAXX0421</cur>
+<for>Saint Lawrence</for>
+</item>
+
+<item>
+<title>Saint Leonard</title>
+<cur>CAXX0422</cur>
+<for>Saint Leonard</for>
+</item>
+
+<item>
+<title>Saint Louis</title>
+<cur>CAXX0423</cur>
+<for>Saint Louis</for>
+</item>
+
+<item>
+<title>Saint Marys</title>
+<cur>CAXX0424</cur>
+<for>Saint Marys</for>
+</item>
+
+<item>
+<title>Saint-Eustache</title>
+<cur>CAXX0428</cur>
+<for>Saint-Eustache</for>
+</item>
+
+<item>
+<title>Saint-Felicien</title>
+<cur>CAXX0429</cur>
+<for>Saint-Felicien</for>
+</item>
+
+<item>
+<title>Saint-Hubert</title>
+<cur>CAXX0430</cur>
+<for>Saint-Hubert</for>
+</item>
+
+<item>
+<title>Saint-Irenee</title>
+<cur>CAXX0431</cur>
+<for>Saint-Irenee</for>
+</item>
+
+<item>
+<title>Saint-Jacques</title>
+<cur>CAXX0432</cur>
+<for>Saint-Jacques</for>
+</item>
+
+<item>
+<title>Saint-Jovite</title>
+<cur>CAXX0433</cur>
+<for>Saint-Jovite</for>
+</item>
+
+<item>
+<title>Saint-Prime</title>
+<cur>CAXX0434</cur>
+<for>Saint-Prime</for>
+</item>
+
+<item>
+<title>Saint-Simeon</title>
+<cur>CAXX0435</cur>
+<for>Saint-Simeon</for>
+</item>
+
+<item>
+<title>Sainte-Catherine</title>
+<cur>CAXX0425</cur>
+<for>Sainte-Catherine</for>
+</item>
+
+<item>
+<title>Sainte-Felicite</title>
+<cur>CAXX0426</cur>
+<for>Sainte-Felicite</for>
+</item>
+
+<item>
+<title>Sainte-Foy</title>
+<cur>CAXX0427</cur>
+<for>Sainte-Foy</for>
+</item>
+
+<item>
+<title>Salmon Arm</title>
+<cur>CAXX0437</cur>
+<for>Salmon Arm</for>
+</item>
+
+<item>
+<title>Salmon Valley</title>
+<cur>CAXX0438</cur>
+<for>Salmon Valley</for>
+</item>
+
+<item>
+<title>Saltcoats</title>
+<cur>CAXX0439</cur>
+<for>Saltcoats</for>
+</item>
+
+<item>
+<title>Sandspit</title>
+<cur>CAXX0440</cur>
+<for>Sandspit</for>
+</item>
+
+<item>
+<title>Sarnia</title>
+<cur>CAXX0441</cur>
+<for>Sarnia</for>
+</item>
+
+<item>
+<title>Saskatoon</title>
+<cur>CAXX0442</cur>
+<for>Saskatoon</for>
+</item>
+
+<item>
+<title>Sault Ste Marie</title>
+<cur>CAXX0443</cur>
+<for>Sault Ste Marie</for>
+</item>
+
+<item>
+<title>Savona</title>
+<cur>CAXX0444</cur>
+<for>Savona</for>
+</item>
+
+<item>
+<title>Scarborough</title>
+<cur>CAXX0445</cur>
+<for>Scarborough</for>
+</item>
+
+<item>
+<title>Schefferville</title>
+<cur>CAXX0446</cur>
+<for>Schefferville</for>
+</item>
+
+<item>
+<title>Schumacher</title>
+<cur>CAXX0447</cur>
+<for>Schumacher</for>
+</item>
+
+<item>
+<title>Selkirk</title>
+<cur>CAXX0448</cur>
+<for>Selkirk</for>
+</item>
+
+<item>
+<title>Sept-Iles</title>
+<cur>CAXX0449</cur>
+<for>Sept-Iles</for>
+</item>
+
+<item>
+<title>Sevenpersons</title>
+<cur>CAXX0450</cur>
+<for>Sevenpersons</for>
+</item>
+
+<item>
+<title>Sexsmith</title>
+<cur>CAXX0451</cur>
+<for>Sexsmith</for>
+</item>
+
+<item>
+<title>Shawanga</title>
+<cur>CAXX0452</cur>
+<for>Shawanga</for>
+</item>
+
+<item>
+<title>Shearwater</title>
+<cur>CAXX0592</cur>
+<for>Shearwater</for>
+</item>
+
+<item>
+<title>Shediac</title>
+<cur>CAXX0453</cur>
+<for>Shediac</for>
+</item>
+
+<item>
+<title>Sherbrooke</title>
+<cur>CAXX0454</cur>
+<for>Sherbrooke</for>
+</item>
+
+<item>
+<title>Sidney</title>
+<cur>CAXX0455</cur>
+<for>Sidney</for>
+</item>
+
+<item>
+<title>Sillery</title>
+<cur>CAXX0456</cur>
+<for>Sillery</for>
+</item>
+
+<item>
+<title>Simcoe</title>
+<cur>CAXX0457</cur>
+<for>Simcoe</for>
+</item>
+
+<item>
+<title>Sioux Lookout</title>
+<cur>CAXX0603</cur>
+<for>Sioux Lookout</for>
+</item>
+
+<item>
+<title>Sipiwesk</title>
+<cur>CAXX0458</cur>
+<for>Sipiwesk</for>
+</item>
+
+<item>
+<title>Skidegate</title>
+<cur>CAXX0459</cur>
+<for>Skidegate</for>
+</item>
+
+<item>
+<title>Slave Lake</title>
+<cur>CAXX0460</cur>
+<for>Slave Lake</for>
+</item>
+
+<item>
+<title>Smithers</title>
+<cur>CAXX0461</cur>
+<for>Smithers</for>
+</item>
+
+<item>
+<title>Snake River</title>
+<cur>CAXX0462</cur>
+<for>Snake River</for>
+</item>
+
+<item>
+<title>Soda Creek</title>
+<cur>CAXX0463</cur>
+<for>Soda Creek</for>
+</item>
+
+<item>
+<title>Sorel</title>
+<cur>CAXX0464</cur>
+<for>Sorel</for>
+</item>
+
+<item>
+<title>Sorrento</title>
+<cur>CAXX0465</cur>
+<for>Sorrento</for>
+</item>
+
+<item>
+<title>Souris</title>
+<cur>CAXX0466</cur>
+<for>Souris</for>
+</item>
+
+<item>
+<title>South Porcupine</title>
+<cur>CAXX0467</cur>
+<for>South Porcupine</for>
+</item>
+
+<item>
+<title>Spanish</title>
+<cur>CAXX0468</cur>
+<for>Spanish</for>
+</item>
+
+<item>
+<title>Spragge</title>
+<cur>CAXX0469</cur>
+<for>Spragge</for>
+</item>
+
+<item>
+<title>Springhill</title>
+<cur>CAXX0470</cur>
+<for>Springhill</for>
+</item>
+
+<item>
+<title>Spruce Grove</title>
+<cur>CAXX0471</cur>
+<for>Spruce Grove</for>
+</item>
+
+<item>
+<title>Spurfield</title>
+<cur>CAXX0472</cur>
+<for>Spurfield</for>
+</item>
+
+<item>
+<title>Squamish Airport</title>
+<cur>CAXX0579</cur>
+<for>Squamish Airport</for>
+</item>
+
+<item>
+<title>St. John's</title>
+<cur>CAXX0420</cur>
+<for>St. John's</for>
+</item>
+
+<item>
+<title>St. Stephen</title>
+<cur>CAXX0593</cur>
+<for>St. Stephen</for>
+</item>
+
+<item>
+<title>Stanley Mission</title>
+<cur>CAXX0473</cur>
+<for>Stanley Mission</for>
+</item>
+
+<item>
+<title>Stayner</title>
+<cur>CAXX0474</cur>
+<for>Stayner</for>
+</item>
+
+<item>
+<title>Stephenville</title>
+<cur>CAXX0475</cur>
+<for>Stephenville</for>
+</item>
+
+<item>
+<title>Stillwater</title>
+<cur>CAXX0476</cur>
+<for>Stillwater</for>
+</item>
+
+<item>
+<title>Stonewall</title>
+<cur>CAXX0477</cur>
+<for>Stonewall</for>
+</item>
+
+<item>
+<title>Stoney Creek</title>
+<cur>CAXX0478</cur>
+<for>Stoney Creek</for>
+</item>
+
+<item>
+<title>Stony Plain</title>
+<cur>CAXX0479</cur>
+<for>Stony Plain</for>
+</item>
+
+<item>
+<title>Strathroy</title>
+<cur>CAXX0480</cur>
+<for>Strathroy</for>
+</item>
+
+<item>
+<title>Sturgeon Falls</title>
+<cur>CAXX0481</cur>
+<for>Sturgeon Falls</for>
+</item>
+
+<item>
+<title>Sudbury</title>
+<cur>CAXX0482</cur>
+<for>Sudbury</for>
+</item>
+
+<item>
+<title>Summerland</title>
+<cur>CAXX0483</cur>
+<for>Summerland</for>
+</item>
+
+<item>
+<title>Summerside</title>
+<cur>CAXX0484</cur>
+<for>Summerside</for>
+</item>
+
+<item>
+<title>Surrey</title>
+<cur>CAXX0485</cur>
+<for>Surrey</for>
+</item>
+
+<item>
+<title>Swan River</title>
+<cur>CAXX0584</cur>
+<for>Swan River</for>
+</item>
+
+<item>
+<title>Swift Current</title>
+<cur>CAXX0486</cur>
+<for>Swift Current</for>
+</item>
+
+<item>
+<title>Sydney</title>
+<cur>CAXX0487</cur>
+<for>Sydney</for>
+</item>
+
+<item>
+<title>Sydney Mines</title>
+<cur>CAXX0488</cur>
+<for>Sydney Mines</for>
+</item>
+
+<item>
+<title>Sylvan Lake</title>
+<cur>CAXX0489</cur>
+<for>Sylvan Lake</for>
+</item>
+
+</channel></rss>

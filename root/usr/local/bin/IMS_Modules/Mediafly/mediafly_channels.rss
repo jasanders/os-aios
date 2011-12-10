@@ -1,0 +1,228 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <onEnter>
+    print("-----------mediafly_channels.rss");
+  </onEnter>
+  <script>
+
+    storagePathdefaultUserName = getStoragePath("key");
+    storagePathdefaultUserName = storagePathdefaultUserName + "mdfly_defaultusername.dat";
+    defaultUserName = readStringFromFile(storagePathdefaultUserName);
+    if(defaultUserName == null || defaultUserName == "")
+      defaultUserName = VtunergetMACaddress(); /* get some info */;
+    if(defaultUserName == null || defaultUserName == "")
+      defaultUserName = "001075FF0090"; /* use to get tokenId only */
+      
+    url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Authentication.GetToken?app_id=7230c938be8341bd800df007c066f90d";
+    url = url + "&amp;thirdPartyUserID=" + defaultUserName;
+    print("url", url);
+    print("3");
+    file = loadXMLFile(url);
+    print("4");
+
+    if (file == null) {
+    print("failed to load ", url);
+    titleString = "Sign in failed!";
+    redrawDisplay();
+    }
+    else {
+    valtoken  = getXMLText("response","token");
+    tokenId   = getXMLAttribute("response","token","id");
+    print("token = ", valtoken);
+    print("token id = ", tokenId);
+
+    if ( valtoken != null )
+    {
+    storagePathMediaflyToken = getStoragePath("tmp");
+    storagePathMediaflyToken = storagePathMediaflyToken + "mediaflyToken.dat";
+    tokenArray = pushBackStringArray(tokenArray, valtoken);
+    tokenArray = pushBackStringArray(tokenArray, tokenId);
+
+    writeStringToFile(storagePathMediaflyToken, tokenArray);
+    print("token", tokenArray);
+    print("write to file ", storagePathMediaflyToken);
+    }
+    }
+
+		md5_string = MD5(valtoken, "true", "Strip", "app_context_system");
+		print("md5 string", md5_string);
+    url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetChannels?app_id=7230c938be8341bd800df007c066f90d&amp;token=";
+    url = url + valtoken;
+    url = url + "&amp;capitalizeChannelNames=true";
+    url = url + "&amp;newlineFormat=Strip";
+    url = url + "&amp;user_context=app_context_system";
+    url = url + "&amp;call_sig=";
+    url = url + md5_string;
+
+    file = loadXMLFile(url);
+    if (file == null) {
+    itemSize = 0;
+    print("Load URL fail ", url);
+    }
+    else {
+    itemSize = getXMLElementCount("response", "channels", "channel");
+    print("Item Size = ", itemSize);
+    }
+    if (itemSize &gt; 0) {
+    count=0;
+    
+    while(1){
+      title       = getXMLAttribute("response", "channels", "channel", count, "name");
+      slug        = getXMLAttribute("response", "channels", "channel", count, "slug");
+      imageUrl    = getXMLAttribute("response", "channels", "channel", count, "imageUrl");
+      episodeCount= getXMLAttribute("response", "channels", "channel", count, "episodeCount");
+
+      titleArray  = pushBackStringArray(titleArray, title);
+      slugArray     = pushBackStringArray(slugArray, slug);
+      imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+      episodeCountArray   = pushBackStringArray(episodeCountArray, episodeCount);
+
+      count += 1;
+      if (count &gt; itemSize){
+        break;
+      }
+    }
+    
+    }
+  </script>
+  <mediaDisplay
+  name="photoView"
+  sideTopHeightPC="17.24"
+  bottomYPC="82.76"
+  showDefaultInfo="no"
+  showHeader="no"
+  centerYPC="17.5"
+  centerHeightPC="65.52"
+  centerWidthPC="85.52"
+  itemImageWidthPC = "12"
+
+   imageTopSide="./IMS_Modules/Mediafly/image/picasa_top_bg_2.jpg"
+  imageBottomSide="./IMS_Modules/Mediafly/image/picasa_bottom_bg.fsp"
+  imageFocus="image/list_select_bar.fsp"
+  imageParentFocus ="image/list_select_bar.fsp"
+
+  
+  backgroundColor="28:35:51"
+  sideColorTop="28:35:51"
+  sideColorBottom="28:35:51"
+  imageBorderColor="255:255:255"
+  imageBorderPC="0.75"
+  centerColor="28:35:51"
+  itemOffsetXPC="9.6"
+  itemGapXPC="1"
+  itemGapYPC="1.75"
+  rowCount="3"
+  columnCount="6"
+
+  idleImageXPC="83.12"
+  idleImageYPC="89.58"
+  idleImageWidthPC="3.1"
+  idleImageHeightPC="5.5"
+
+>
+
+    <onUserInput>
+
+      userInput = currentUserInput();
+      print("^^^^^^^^^^^ Input", userInput);
+
+      if (userInput == "enter") 
+      {
+        EntryTimes = EntryTimes + 1;
+        print(" ************* EntryTimes = ", EntryTimes);
+        focusIndex = getFocusItemIndex();
+        lastSelectedIndex = getSelectedItemIndex();
+        slugCh = getStringArrayAt(slugArray, focusIndex);
+        storagePathMediaflyChannel = getStoragePath("tmp");
+        storagePathMediaflyChannel = storagePathMediaflyChannel + "mediaflyChannel.dat";
+        writeStringToFile(storagePathMediaflyChannel, slugCh);
+        print("selected channel slug", slugCh);
+        "false";
+      } 
+      else 
+      {
+      "false";
+      }
+
+    </onUserInput>
+      
+
+    <idleImage> image/POPUP_LOADING_01.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_02.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_03.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_04.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_05.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_06.fsp </idleImage>
+
+    <script>
+      curIndex = getFocusItemIndex();
+      if(curIndex &lt; 0)
+      {curIndex = 0;}
+      print("Episode count: : ",userInput,"channel name: ", getStringArrayAt(episodeCountArray,curIndex));
+      channelName = "$[MF_CHANNEL]" + " " + getStringArrayAt(titleArray ,curIndex);
+      print("channel name: ", channelName);
+      if(getPageInfo("itemCount") &lt; 1)
+      {
+      curChannel = "$[MF_NO_EPISODE_FOUND]";
+      datePub = "";
+      }
+    </script>
+
+    
+    <text offsetXPC= "10"  offsetYPC= "14.3" widthPC="73" heightPC="4.5"  fontSize="12" lines="1"
+       foregroundColor="255:255:255"
+       backgroundColor="28:35:51"
+             redraw="yes">
+      <script>
+        channelName;
+      </script>
+
+    </text>
+      <text offsetXPC= "10"  offsetYPC= "14.3" widthPC="73" heightPC="4.5"  fontSize="12" lines="1"
+       foregroundColor="255:255:255"
+       backgroundColor="-1:-1:-1"
+             redraw="yes">
+      <script>
+        channelName;
+      </script>
+    </text>
+
+
+    <image offsetXPC="91.04" offsetYPC="17.14" widthPC="9.04" heightPC="65.9">
+    	./IMS_Modules/Mediafly/image/picasa_right_bg.fsp
+    </image>
+    <image offsetXPC="0.15" offsetYPC="17.14" widthPC="8.9" heightPC="65.9">
+    	./IMS_Modules/Mediafly/image/picasa_left_bg.fsp
+    </image>
+    <image offsetXPC= "6.3"  offsetYPC= "4.2" widthPC="10.66" heightPC="7.5" >
+    	./IMS_Modules/Mediafly/image/MEDIAFLY_UPLEFT_LOGO.jpg
+    </image>
+   </mediaDisplay>
+
+  <item_template>
+    <displayTitle>
+      <script>
+        getStringArrayAt(titleArray , -1);
+      </script>
+    </displayTitle>
+    <media:thumbnail>
+      <script>
+        getStringArrayAt(imageUrlArray , -1);
+      </script>
+    </media:thumbnail>
+
+    <link>rss_file://./IMS_Modules/Mediafly/mediafly_channel.rss</link>
+  </item_template>
+  <channel>
+       <title></title>
+      <link>rss_file://./IMS_Modules/Mediafly/mediafly_channels.rss</link>
+        <!--<media:thumbnail url="image/rss.fsp" width="120" height="90" />-->
+    <itemSize>
+      <script>
+        itemSize;
+      </script>
+    </itemSize>
+ 
+  </channel>
+
+  </rss>

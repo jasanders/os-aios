@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+
+<genrelist ver="0" last_update="20100106" author="" update_url="" >
+
+<genre name="中国" url="" >
+<!-- http://list.mp3.baidu.com/radio/		 -->
+<station name=" HIT FM"   desc="同步世界流行,Playing The Hottest Hits!hot!" addr="mms://live.hitfm.cn/fm887"  />
+<station name="都市流行频道 "   desc="音乐不顾一切" addr="mms://live.cri.cn/pop/"  />
+<station name="怀旧金曲频道"   desc="品味老歌,感动生活" addr="mms://live.cri.cn/oldies/"  />
+<station name="写意民谣频道"   desc="音乐在路上,风景在耳边h" addr="mms://live.cri.cn/country/"  />
+<station name="office radio频道"   desc="优乐你的办公生活" addr="mms://live.cri.cn/office"  />
+
+<station name="中华之声"   desc="" addr="mms://radio.am765.com/cnrtw5"  />
+<station name="神州之声"   desc="" addr="mms://radio.am765.com/cnrtw6"  />
+<station name="第一套:中国之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr1"  />
+<station name="第二套:经济之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr2"  />
+<station name="第三套:音乐之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr3"  />
+<station name="第四套:都市之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr4"  />
+<station name="第六套:华夏之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr7_p"  />
+<station name="第九套：文艺之声"   desc="" addr="mms://cdnmms.cnr.cn/cnr9"  />
+<station name="银河台长篇评书"   desc="" addr="mms://media.radio.cn/radio3"  />
+<station name="银河台古典音乐"   desc="" addr="mms://media.radio.cn/radio4"  />
+<station name="银河台相声小品"   desc="" addr="mms://media.radio.cn/radio2"  />
+<station name="国际台(HIT FM)"   desc="" addr="mms://live.hitfm.cn/fm887"  />
+<station name="青岛人民广播电台新闻频道"   desc="" addr="mms://down.qingdaomedia.com/qdgb"  />
+<station name="青岛人民广播电台经济频道"   desc="" addr="mms://down.qingdaomedia.com/jjgb"  />
+<station name="山东广播新闻频道"   desc="" addr="mms://media.sdgb.cn/xinwen"  />
+<station name="山东广播经济频道"   desc="" addr="mms://media.sdgb.cn/jingji"  />
+<station name="山东广播文艺频道"   desc="" addr="mms://media.sdgb.cn/wenyi"  />
+<station name="山东广播生活频道"   desc="" addr="mms://media.sdgb.cn/shenghuo"  />
+<station name="山东广播交通频道"   desc="" addr="mms://media.sdgb.cn/jiaotong"  />
+<station name="山东广播乡村频道"  desc="" addr="mms://media.sdgb.cn/gushixiangcun"  />
+<station name="山东广播音乐频道"   desc="" addr="mms://media.sdgb.cn/yinyue"  />
+<station name="山东广播体育休闲频道"   desc="" addr="mms://media.sdgb.cn/tiyuxiuxian"  />
+<station name="山东广播数字休闲音乐频道"  desc="" addr="mms://media.sdgb.cn/shuzixiuxian"  />
+<station name="经济频道FM96"   desc="" addr="mms://media.sdgb.cn/jingji96"  />
+<station name="四川人民广播新闻"   desc="" addr="mms://61.139.64.189:8004/"  />
+<station name="四川人民广播交通"   desc="" addr="mms://61.139.64.189:8002/"  />
+<station name="四川人民广播经济"   desc="" addr="mms://218.6.172.53/fm1"  />
+<station name="四川人民广播旅游生活"   desc="" addr="mms://61.139.64.189:8003/"  />
+<station name="北京新闻广播"   desc="" addr="mms://alive.bjradio.com.cn/fm1006"  />
+<station name="北京交通广播"   desc="" addr="mms://alive.bjradio.com.cn/fm1039"  />
+<station name="北京文艺广播"   desc="" addr="mms://alive.bjradio.com.cn/fm876"  />
+<station name="北京体育广播"   desc="" addr="mms://alive.bjradio.com.cn/am927"  />
+<station name="北京音乐广播"   desc="" addr="mms://alive.bjradio.com.cn/fm974"  />
+<station name="北京生活广播"   desc="" addr="mms://alive.bjradio.com.cn/am603"  />
+<station name="北京外语广播"   desc="" addr="mms://alive.bjradio.com.cn/am774"  />
+<station name="古典音乐广播"   desc="" addr="mms://alive.bjradio.com.cn/cfm986"  />
+<station name="通俗音乐广播"   desc="" addr="mms://alive.bjradio.com.cn/cfm970"  />
+<station name="文学影视广播"   desc="" addr="mms://alive.bjradio.com.cn/cfm1043"  />
+<station name="戏曲综艺广播"   desc="" addr="mms://alive.bjradio.com.cn/cfm1051"  />
+<station name="西安音乐台"   desc="" addr="mms://219.144.186.196/yy"  />
+<station name="郑州新闻广播"   desc="" addr="mms://218.28.9.116/新闻广播"  />
+<station name="郑州经济广播"   desc="" addr="mms://218.28.9.116/经济广播"  />
+<station name="郑州文艺广播"   desc="" addr="mms://218.28.9.116/文艺广播"  />
+<station name="郑州城市广播"   desc="" addr="mms://218.28.9.116/城市广播"  />
+<station name="郑州都市广播"   desc="" addr="mms://218.28.9.116/都市广播"  />
+<station name="郑州音乐广播"   desc="" addr="mms://218.28.9.116/音乐广播"  />
+<station name="晋城新闻综合台"   desc="" addr="mms://219.147.36.250/live4"  />
+<station name="晋城交通健康台"   desc="" addr="mms://219.147.36.250/live5"  />
+<station name="商丘电台新闻频道"   desc="" addr="mms://www.sqradio.com/"  />
+<station name="青岛新闻广播"   desc="" addr="mms://221.0.171.202/qdgb"  />
+<station name="商丘电台新闻频道729KHz"   desc="" addr="mms://movie.top86.com/qdgb"  />
+<station name="安徽经济广播"   desc="" addr="mms://live.ahradio.com.cn/jjgb"  />
+<station name="安徽音乐广播"   desc="" addr="mms://live.ahradio.com.cn/yygb"  />
+<station name="安徽生活广播"   desc="" addr="mms://live.ahradio.com.cn/shgb"  />
+<station name="安徽交通广播"   desc="" addr="mms://live.ahradio.com.cn/jtgb"  />
+<station name="安徽农村广播"   desc="" addr="mms://live.ahradio.com.cn/ncgb"  />
+<station name="烟台新闻频道"   desc="" addr="mms://av1.jiaodong.net/radio1"  />
+<station name="烟台交通频道"   desc="" addr="mms://av1.jiaodong.net/radio3"  />
+<station name="烟台音乐频道"   desc="" addr="mms://av1.jiaodong.net/radio4"  />
+<station name="烟台休闲娱乐频道"   desc="" addr="mms://av1.jiaodong.net/radio5"  />
+<station name="西安交通旅游台"   desc="" addr="mms://219.144.186.196/jtly"  />
+<station name="抚顺新闻广播"   desc="" addr="mms://219.149.28.13:559/live7"  />
+<station name="抚顺交通广播"   desc="" addr="mms://219.149.28.13:559/live5"  />
+<station name="抚顺音乐广播"   desc="" addr="mms://219.149.28.13:559/live5"  />
+<station name="江苏新闻频率"   desc="" addr="mms://vod2.jsbc.com/audio1.jsgd"  />
+<station name="江苏经济频率"   desc="" addr="mms://vod2.jsbc.com/audio2.jsgd"  />
+<station name="银河流行音乐台"   desc="" addr="mms://media.iwant-in.net/class"  />
+<station name="昆明人民广播电台阳光调频"   desc="" addr="mms://www.radiokm.com/live1"  />
+<station name="昆明人民广播电台都市调频"   desc="" addr="mms://www.radiokm.com/live2"  />
+<station name="江西人民广播电台新闻综合频率"   desc="" addr="mms://movie.jxgdw.com/jswjxdt"  />
+<station name="江西人民广播电台生活经济频率"   desc="" addr="mms://movie.jxgdw.com/jswjjsh"  />
+<station name="江西人民广播电台文艺音乐频率"   desc="" addr="mms://movie.jxgdw.com/jswwyyy"  />
+<station name="青檬音乐台"   desc="" addr="mms://pub1.qmoon.net/911pop"  />
+<station name="湖北楚天音乐广播"   desc="" addr="mms://58.48.156.93/1058"  />
+<station name="湖北文广快乐975"   desc="" addr="mms://202.103.67.185/文艺"  />
+<station name="湖南交通广播"   desc="" addr="mms://202.103.67.185/交通"  />
+<station name="湖南金鹰955电台"   desc="" addr="mms://real.rednet.cn/955"  />
+<station name="CITYFM城市之音-长沙"   desc="" addr="mms://real.rednet.cn/1017"  />
+<station name="CITYFM城市之音-江苏"   desc="" addr="mms://vod2.jsbc.com/audio4.jsgd"  />
+<station name="苏州生活广播"   desc="" addr="mms://58.211.0.53/fm"  />
+<station name="厦门音乐广播"   desc="" addr="mms://mediasrv2.iptv.xmg.com.cn/yinyue"  />
+<station name="河南音乐广播"   desc="" addr="mms://vod.hndt.com/yygb"  />
+<station name="哈尔滨交通广播"   desc="" addr="mms://221.212.91.236/FM925"  />
+<station name="哈尔滨音乐广播"   desc="" addr="mms://221.212.91.236/FM909"  />
+<station name="沈阳文艺台"   desc="" addr="mms://218.24.104.71/wy"  />
+<station name="汉中音乐广播"   desc="" addr="mms://www.fm971.net/net971"  />
+<station name="德宏人民广播电台孔雀之声"   desc="" addr="mms://222.219.29.252:1173"  />
+<station name="安广音乐台FM897"   desc="" addr="mms://221.11.107.243:1101"  />
+<station name="安广音乐台FM959"   desc="" addr="mms://221.11.107.242:1100"  />
+
+<station name="天津新闻广播"   desc="" addr="mms://61.136.19.228/live1"  />
+<station name="天津音乐广播"   desc="" addr="mms://61.136.19.228/live2"  />
+<station name="天津经济广播"   desc="" addr="mms://61.136.19.228/live3"  />
+<station name="天津文艺广播"   desc="" addr="mms://61.136.19.228/live4"  />
+<station name="天津交通广播"   desc="" addr="mms://61.136.19.228/live5"  />
+<station name="天津生活广播"   desc="" addr="mms://61.136.19.228/live6"  />
+<station name="天津滨海广播"   desc="" addr="mms://61.136.19.228/live7"  />
+<station name="天津小说广播"   desc="" addr="mms://61.136.19.228/live8"  />
+<station name="天津娱乐广播"   desc="" addr="mms://61.136.19.228/live9"  />
+<station name="烟台经济生活频道"   desc="" addr="mms://av1.jiaodong.net/radio2"  />
+<station name="南昌电台交通音乐之声"   desc="" addr="mms://www.jxjt.gov.cn/jxjtzhibo_xxzx"  />
+
+
+</genre>
+
+<genre name="台湾" >
+ 
+<station name="台湾银河流行音乐台"   desc="" addr="mms://media.iwant-in.net/pop"  />
+<station name="ASIAFM衛星音樂台 321"   desc="" addr="mms://bcr.media.hinet.net/RA000004"  />
+<station name="Apple line 蘋果線上 248"   desc="" addr="mms://bcr.media.hinet.net/RA000001"  />
+<station name="BestRadio 台中好事903 211"   desc="" addr="mms://bcr.media.hinet.net/RA000010"  />
+<station name="BestRadio 台北好事989 212"   desc="" addr="mms://bcr.media.hinet.net/RA000013"  />
+<station name="BestRadio 花蓮好事935 303"   desc="" addr="mms://bcr.media.hinet.net/RA000011"  />
+<station name="BestRadio 高雄港都983 213"   desc="" addr="mms://bcr.media.hinet.net/RA000012"  />
+<station name="Flyradio飛揚調頻895 357"   desc="" addr="mms://bcr.media.hinet.net/RA000019"  />
+<station name="KISS RADIO 南投廣播 258"   desc="" addr="mms://bcr.media.hinet.net/RA000043"  />
+<station name="KISS RADIO 台南知音廣播 255"   desc="" addr="mms://bcr.media.hinet.net/RA000044"  />
+<station name="KISS RADIO 大苗栗廣播 256"   desc="" addr="mms://bcr.media.hinet.net/RA000041"  />
+<station name="KISS RADIO大眾廣播電台 156"   desc="" addr="mms://bcr.media.hinet.net/RA000040"  />
+<station name="KISSRadio 網路音樂台 308"   desc="" addr="mms://bcr.media.hinet.net/RA000042"  />
+<station name="POP Radio 370"   desc="" addr="mms://bcr.media.hinet.net/RA000080"  />
+<station name="中廣古典網 162"   desc="" addr="mms://bcr.media.hinet.net/RA000005"  />
+<station name="中廣流行網 205"   desc="" addr="mms://bcr.media.hinet.net/RA000009"  />
+<station name="中廣音樂網i radio 206"   desc="" addr="mms://bcr.media.hinet.net/RA000007"  />
+<station name="佳音CCM 340"   desc="" addr="mms://bcr.media.hinet.net/RA000031"  />
+<station name="全國廣播音樂網 338"   desc="" addr="mms://bcr.media.hinet.net/RA000047"  />
+<station name="台北之音HitFM聯播網 台中 88"   desc="" addr="mms://bcr.media.hinet.net/RA000035"  />
+<station name="台北之音HitFM聯播網 台北 222"   desc="" addr="mms://bcr.media.hinet.net/RA000036"  />
+<station name="台北之音HitFM聯播網 高雄 90"   desc="" addr="mms://bcr.media.hinet.net/RA000034"  />
+<station name="台北愛樂 228"   desc="" addr="mms://bcr.media.hinet.net/RA000018"  />
+<station name="台灣之音-音樂 313"   desc="" addr="mms://bcr.media.hinet.net/RA000061"  />
+<station name="太陽電台 289"   desc="" addr="mms://bcr.media.hinet.net/RA000064"  />
+<station name="奇美古典音樂網 294"   desc="" addr="mms://bcr.media.hinet.net/RA000014"  />
+<station name="寶島新聲廣播電台 259"   desc="" addr="mms://bcr.media.hinet.net/RA000066"  />
+
+</genre>
+
+
+<genre  name="生活資訊" url="">
+<station name="ASIA FM92.3亞太電台 295"   desc="" addr="mms://bcr.media.hinet.net/RA000002"  />
+<station name="ASIA FM92.7亞州電台 210"   desc="" addr="mms://bcr.media.hinet.net/RA000003"  />
+<station name="GOLD FM-台中城市廣播 226"   desc="" addr="mms://bcr.media.hinet.net/RA000028"  />
+<station name="GOLD FM-台北健康電台 229"   desc="" addr="mms://bcr.media.hinet.net/RA000027"  />
+<station name="IC之音 148"   desc="" addr="mms://bcr.media.hinet.net/RA000037"  />
+<station name="佳音廣播電台 201"   desc="" addr="mms://bcr.media.hinet.net/RA000029"  />
+<station name="佳音電台2台 250"   desc="" addr="mms://bcr.media.hinet.net/RA000030"  />
+<station name="全國廣播 202"   desc="" addr="mms://bcr.media.hinet.net/RA000068"  />
+<station name="台中廣播 230"   desc="" addr="mms://bcr.media.hinet.net/RA000046"  />
+<station name="台北廣播電台- 都會資訊頻道 208"   desc="" addr="mms://bcr.media.hinet.net/RA000070"  />
+<station name="台北廣播電台喔海洋頻道 238"   desc="" addr="mms://bcr.media.hinet.net/RA000069"  />
+<station name="大千電台 109"   desc="" addr="mms://bcr.media.hinet.net/RA000067"  />
+<station name="大愛網路電台 325"   desc="" addr="mms://bcr.media.hinet.net/RA000017"  />
+<station name="宜蘭中山電台 301"   desc="" addr="mms://bcr.media.hinet.net/RA000065"  />
+<station name="環宇廣播 282"   desc="" addr="mms://bcr.media.hinet.net/RA000020"  />
+<station name="真心之音廣播電台 217"   desc="" addr="mms://bcr.media.hinet.net/RA000033"  />
+<station name="青春線上 356"   desc="" addr="mms://bcr.media.hinet.net/RA000079"  />
+<station name="飛碟電台 232"   desc="" addr="mms://bcr.media.hinet.net/RA000072"  />
+
+</genre>
+
+
+
+<genre  name="新聞" url="">
+<station name="NEWS98新聞網 187"   desc="" addr="mms://bcr.media.hinet.net/RA000073"  />
+<station name="中廣新聞網 207"   desc="" addr="mms://bcr.media.hinet.net/RA000008"  />
+
+</genre>
+
+
+
+<genre  name="綜合" url="">
+<station name="台灣之音-華語 315"   desc="" addr="mms://bcr.media.hinet.net/RA000063"  />
+<station name="復興廣播電台 短波網 288"   desc="" addr="mms://bcr.media.hinet.net/RA000026"  />
+<station name="復興廣播電台 第一網 286"   desc="" addr="mms://bcr.media.hinet.net/RA000024"  />
+<station name="復興廣播電台 第二網 287"   desc="" addr="mms://bcr.media.hinet.net/RA000025"  />
+<station name="正聲台北調幅台 317"   desc="" addr="mms://bcr.media.hinet.net/RA000015"  />
+<station name="正聲台北調頻台 198"   desc="" addr="mms://bcr.media.hinet.net/RA000016"  />
+<station name="漢聲光華網-中波 281"   desc="" addr="mms://bcr.media.hinet.net/RA000075"  />
+<station name="漢聲光華網-短波 309"   desc="" addr="mms://bcr.media.hinet.net/RA000077"  />
+<station name="漢聲廣播電台 215"   desc="" addr="mms://bcr.media.hinet.net/RA000074"  />
+<station name="漢聲廣播電台全國調頻網 216"   desc="" addr="mms://bcr.media.hinet.net/RA000076"  />
+<station name="音乐澳洲广播电台"   desc="" addr="mms://media4.abc.net.au/raflp"  />
+<station name="加拿大温哥华AM1470"   desc="" addr="mms://216.18.70.242/AM1470N"  />
+<station name="加拿大中文电台AM889"   desc="" addr="mms://stream.eseenet.com/fm889"  />
+<station name="温哥华fm96.1"   desc="" addr="mms://216.18.70.242/fm961n"  />
+
+</genre>
+
+
+
+<genre  name="外語" url="">
+<station name="ICRT 177"   desc="" addr="mms://bcr.media.hinet.net/RA000038"  />
+<station name="台灣之音-FM 312"   desc="" addr="mms://bcr.media.hinet.net/RA000060"  />
+<station name="台灣之音-亞洲 311"   desc="" addr="mms://bcr.media.hinet.net/RA000059"  />
+<station name="台灣之音-歐美及方言 314"   desc="" addr="mms://bcr.media.hinet.net/RA000062"  />
+
+</genre>
+
+
+
+<genre  name="多元文化" url="">
+<station name="中廣客家頻道 160"   desc="" addr="mms://bcr.media.hinet.net/RA000006"  />
+<station name="大漢之音 300"   desc="" addr="mms://bcr.media.hinet.net/RA000021"  />
+<station name="寶島客家 241"   desc="" addr="mms://bcr.media.hinet.net/RA000023"  />
+<station name="新客家廣播電台 254"   desc="" addr="mms://bcr.media.hinet.net/RA000048"  />
+<station name="高屏溪客家電台 298"   desc="" addr="mms://bcr.media.hinet.net/RA000045"  />
+
+</genre>
+
+
+
+<genre  name="韩国" url="">
+<station name="韩国"   desc="" addr="mms://218.37.19.236/live"  />
+<station name="韩国 MBC"   desc="" addr="mms://210.114.220.120/masanmbctv"  />
+
+</genre>
+
+
+
+<genre  name="日本" url="">
+<station name="日本"   desc="" addr="mms://dca.live.pod.tv/tandm500"  />
+<station name="日本"   desc="" addr="mms://dca.live.pod.tv/tandm56-2"  />
+<station name="日本NHK国际广播电台"   desc="" addr="mms://rj-wmt-m.gekimedia.net/rj28"  />
+
+</genre>
+
+
+
+<genre  name="香港" url="">
+<station name="香港电台第一台(WMP)"   desc="" addr="mms://202.177.192.111/radio1"  />
+<station name="香港电台第二台(WMP)"   desc="" addr="mms://202.177.192.111/radio2"  />
+<station name="香港电台第三台(WMP)"   desc="" addr="mms://202.177.192.111/radio3"  />
+<station name="香港电台第四台(WMP)"   desc="" addr="mms://202.177.192.111/radio4"  />
+<station name="香港电台第五台(WMP)"   desc="" addr="mms://202.177.192.111/radio5"  />
+<station name="香港电台普通话台(WMP)"   desc="" addr="mms://202.177.192.111/ptc"  />
+
+</genre>
+
+
+
+
+
+</genrelist>

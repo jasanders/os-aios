@@ -1,0 +1,527 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>Time</bookmark>
+
+<onExit>
+	if (userPressLeftRight == null)
+	{
+		print("maybe RETURN");
+		setEnv("exitFromSubSetup", 2);
+	}
+</onExit>
+
+<onEnter>
+	pageTitle = getPageInfo("pageTitle");
+	print("page title is ", pageTitle);
+
+	initFlag = getCurrentSetting("$[INIT_SETUP]");
+	if (initFlag == "$[OFF]") {
+		changeCategory = getEnv("changeCategory");
+		if (changeCategory == "previous" || changeCategory == "next") {
+			postMessage("return");
+			autoSelect = "false";
+		}
+	}
+	else if (initFlag == "$[ON]") {
+		if (autoSelect == "true") {
+			redrawDisplay("no");
+			postMessage("return");
+			autoSelect = "false";
+		}
+		else {
+			autoSelect = "true";
+		}
+	}
+
+	disableDrawBackBuffer = getEnv("disableDrawBackBuffer");
+	if (disableDrawBackBuffer == "true") {
+		redrawDisplay("no");
+		if (changeCategory == "") {
+			setEnv("disableDrawBackBuffer", "false");
+		}
+	}
+
+	targetTitle = "$[SYSTEM]";
+	if (initFlag == "$[ON]") {
+		targetTitle = "$[INIT_SETUP]";
+	}
+	itemTitleCount = getEnv("itemTitleCount");
+	itemTitleList = getEnv("itemTitleList");
+	itemTitleIndex = 0;
+	checkIndex = 0;
+	while (1) {
+		checkTitle = getStringArrayAt(itemTitleList, checkIndex);
+		if (checkTitle == targetTitle) {
+			itemTitleIndex = checkIndex;
+		}
+		checkIndex += 1;
+  		if (checkIndex == itemTitleCount){
+			break;
+  		}
+	}
+</onEnter>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=7
+	viewAreaXPC=0
+	viewAreaYPC=0
+	viewAreaWidthPC=100
+	viewAreaHeightPC=100
+
+	itemXPC=24
+	itemYPC=37.5
+	itemWidthPC=60.8
+	itemHeightPC=6.3
+	itemImageXPC=27.4
+	itemImageYPC=37.5
+	itemImageWidthPC=60.8
+	itemImageHeightPC=6.3
+
+	imageFocus=""
+	imageUnFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	rollItems="no"
+	forceRedrawItems="yes"
+>
+
+<backgroundDisplay name="SetupMenuChild">
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/image/setup_bg.fsp
+	</image>
+	<text offsetXPC=23.5 offsetYPC=17.8 widthPC=20.9 heightPC=6.0 fontSize=20 align=left>
+		$[SETUP]
+	</text>
+	<image offsetXPC=10.1 offsetYPC=26.5 widthPC=80.5 heightPC=16.4>
+		<script>
+			if (initFlag == "$[ON]") {
+				"./setup_menu/image/setup_p2_box_top_1.fsp";
+			}
+			else if (itemTitleCount == 4) {
+				"./setup_menu/image/setup_p2_box_top_4.fsp";
+			}
+			else if (itemTitleCount == 5) {
+				"./setup_menu/image/setup_p2_box_top_5.fsp";
+			}
+			else {
+				"./setup_menu/image/setup_p2_box_top_6.fsp";
+			}
+		</script>
+	</image>
+	<image offsetXPC=10.1 offsetYPC=42.8 widthPC=80.5 heightPC=42.2>
+		./setup_menu/image/setup_p2_box_bottom.fsp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=22.6 offsetYPC=25.6 widthPC=12 heightPC=10  fontSize=17 align=center backgroundColor=-1:-1:-1 foregroundColor=114:112:112 useBackgroundSurface="yes">
+	<script>
+		index = itemTitleIndex;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<!-- 
+<text offsetXPC=27.9 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 1) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=42.9 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 2) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=57.6 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 3) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=72.3 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		if (itemTitleCount &gt; 4) {
+			index = (itemTitleIndex + 4) % itemTitleCount;
+			title = getStringArrayAt(itemTitleList, index);
+		}
+		else {
+			title = "";
+		}
+	</script>
+</text>
+ -->
+<image offsetXPC=12.1 offsetYPC=37.2 widthPC=15.1 heightPC=44.3>
+	./setup_menu/image/system_focus.bmp
+</image>
+
+<image offsetXPC=11.4 offsetYPC=84.7 widthPC=79.1 heightPC=7.6 useBackgroundSurface="yes">
+</image>
+
+<image>
+	<offsetXPC>
+		<script>
+			nextPos = hintIconX;
+			currPos = nextPos;
+			nextPos += hintIconWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintIconY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintIconWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintIconHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/image/hint_left.fsp";
+		}
+	</script>
+</image>
+<image>
+	<offsetXPC>
+		<script>
+			currPos = nextPos;
+			nextPos += hintIconWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintIconY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintIconWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintIconHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/image/hint_right.fsp";
+		}
+	</script>
+</image>
+<text fontSize=12 align=left useBackgroundSurface="yes">
+	<offsetXPC>
+		<script>
+			currPos = nextPos;
+			nextPos += hintMsgWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintMsgY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintMsgWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintMsgHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			nextPos = hintIconX;
+			currPos = nextPos;
+			"";
+		}
+		else {
+			"$[CHANGE_CATEGORY]";
+		}
+	</script>
+</text>
+
+<image offsetXPC=11.4 offsetYPC=89.4 widthPC=1.3 heightPC=2.2>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/image/setup_p2_point.fsp";
+		}
+	</script>
+</image>
+<text offsetXPC=13.7 offsetYPC=88.8 widthPC=70.4 heightPC=3.6 fontSize=12 align=left useBackgroundSurface="yes">
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			getPageInfo("pageTitle");
+		}
+	</script>
+</text>
+
+<scrollbar offsetXPC=90.2 offsetYPC=36.9 widthPC=0.4 heightPC=45.0 backgroundImage="./setup_menu/image/scroll_bar_01.fsp" foregroundImage="./setup_menu/image/scroll_bar_02.fsp" border=0 offset=0 direction="vertical" redraw="yes">
+	<totalSize>
+		<script>
+			getPageInfo("itemCount");
+		</script>
+	</totalSize>
+	<startIndex>
+		<script>
+			getFocusItemIndex();
+		</script>
+	</startIndex>
+</scrollbar>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<!-- clear background -->
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface="yes"/>
+	<!-- draw foreground -->
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/image/setup_p2_list_focus.fsp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=45 heightPC=90 align=left fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+	<text offsetXPC=50 offsetYPC=5 widthPC=45 heightPC=90 align=right fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script>
+			title = getItemInfo("title");
+			getCurrentSetting(title);
+		</script>
+	</text>
+</itemDisplay>
+
+<onEnter>
+	hintIconX = 11.4;
+	hintIconY = 84.7;
+	hintIconWidth = 2.0;
+	hintIconHeight = 3.6;
+	hintGap = 0.9;
+	hintMsgY = 85.6;
+	hintMsgWidth = 17.2;
+	hintMsgHeight = 2.8;
+
+	initFlag = getCurrentSetting("$[INIT_SETUP]");
+	if (initFlag == "$[ON]") {
+		print("initFlag = ", initFlag);
+
+		targetIndex = 0;
+		setFocusItemIndex(targetIndex);
+		setItemFocus(targetIndex);
+		redrawDisplay("no");
+		postMessage("enter");
+	}
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ("left" == userInput) {
+		redrawDisplay("no");
+		setEnv("disableDrawBackBuffer", "true");
+		setEnv("changeCategory", "previous");
+		handle = "return";
+	}
+	else if ("right" == userInput) {
+		redrawDisplay("no");
+		setEnv("disableDrawBackBuffer", "true");
+		setEnv("changeCategory", "next");
+		handle = "return";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>$[SYSTEM] > $[TIME]</title>
+	<link>rss_file://./setup_menu/scripts/time.rss</link>
+
+
+<item>
+<title>$[MANUAL]</title>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/timeManual.rss";
+		ret = doModalRss(rss);
+
+		initFlag = getCurrentSetting("$[INIT_SETUP]");
+		if (initFlag == "$[ON]") {
+			if (autoSelect == "true") {
+				redrawDisplay("no");
+				postMessage("return");
+				autoSelect = "false";
+			}
+			else {
+				autoSelect = "true";
+			}
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[AUTO_VIA_DTV]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("DtvDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[AUTO_VIA_DTV]";
+		popupMessageSize = 1;
+		popupMessages = pushBackStringArray(popupMessages, "$[TIME_ZONE_INVALID]");
+		popupOptionSize = 1;
+		popupOptions = pushBackStringArray(popupOptions, "$[OK]");
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		timeZone = getCurrentSetting("$[TIME_ZONE]");
+		if (timeZone == NULL) {
+			rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+			ret = doModalRss(rss);
+		}
+		else {
+			rss = "rss_file://./setup_menu/scripts/timeAutoDtv.rss";
+			ret = doModalRss(rss);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[TIME_ZONE]</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[TIME_ZONE]";
+		popupOptionSize = 49;
+		popupOptions = pushBackStringArray(popupOptions, "+12 $[WELLINGTON]");
+		popupOptions = pushBackStringArray(popupOptions, "+11.5");
+		popupOptions = pushBackStringArray(popupOptions, "+11 $[MELBOWRNE]");
+		popupOptions = pushBackStringArray(popupOptions, "+10.5");
+		popupOptions = pushBackStringArray(popupOptions, "+10 $[SYDNEY]");
+		popupOptions = pushBackStringArray(popupOptions, "+9.5");
+		popupOptions = pushBackStringArray(popupOptions, "+9 $[TOKEY]");
+		popupOptions = pushBackStringArray(popupOptions, "+8.5");
+		popupOptions = pushBackStringArray(popupOptions, "+8 $[TAIPEI]");
+		popupOptions = pushBackStringArray(popupOptions, "+7.5");
+		popupOptions = pushBackStringArray(popupOptions, "+7 $[BANGKOK]");
+		popupOptions = pushBackStringArray(popupOptions, "+6.5");
+		popupOptions = pushBackStringArray(popupOptions, "+6 $[BANGLADESH]");
+		popupOptions = pushBackStringArray(popupOptions, "+5.5");
+		popupOptions = pushBackStringArray(popupOptions, "+5 $[NEW_DELHI]");
+		popupOptions = pushBackStringArray(popupOptions, "+4.5");
+		popupOptions = pushBackStringArray(popupOptions, "+4 $[DUBAI]");
+		popupOptions = pushBackStringArray(popupOptions, "+3.5");
+		popupOptions = pushBackStringArray(popupOptions, "+3 $[RIYADH]");
+		popupOptions = pushBackStringArray(popupOptions, "+2.5");
+		popupOptions = pushBackStringArray(popupOptions, "+2 $[CAIRO]");
+		popupOptions = pushBackStringArray(popupOptions, "+1.5");
+		popupOptions = pushBackStringArray(popupOptions, "+1 $[ROME]");
+		popupOptions = pushBackStringArray(popupOptions, "+0.5");
+		popupOptions = pushBackStringArray(popupOptions, "GMT $[LONDOM]");
+		popupOptions = pushBackStringArray(popupOptions, "-0.5");
+		popupOptions = pushBackStringArray(popupOptions, "-1 $[AZONES]");
+		popupOptions = pushBackStringArray(popupOptions, "-1.5");
+		popupOptions = pushBackStringArray(popupOptions, "-2 $[MID_ATLANTIC]");
+		popupOptions = pushBackStringArray(popupOptions, "-2.5");
+		popupOptions = pushBackStringArray(popupOptions, "-3 $[BRAZILIA]");
+		popupOptions = pushBackStringArray(popupOptions, "-3.5");
+		popupOptions = pushBackStringArray(popupOptions, "-4 $[NEW_YORK]");
+		popupOptions = pushBackStringArray(popupOptions, "-4.5");
+		popupOptions = pushBackStringArray(popupOptions, "-5 $[CHICAGO]");
+		popupOptions = pushBackStringArray(popupOptions, "-5.5");
+		popupOptions = pushBackStringArray(popupOptions, "-6 $[SALT_LAKE_CITY]");
+		popupOptions = pushBackStringArray(popupOptions, "-6.5");
+		popupOptions = pushBackStringArray(popupOptions, "-7 $[LOS_ANGELES]");
+		popupOptions = pushBackStringArray(popupOptions, "-7.5");
+		popupOptions = pushBackStringArray(popupOptions, "-8 $[PACIFIC_TIME]");
+		popupOptions = pushBackStringArray(popupOptions, "-8.5");
+		popupOptions = pushBackStringArray(popupOptions, "-9 $[HONOLULU]");
+		popupOptions = pushBackStringArray(popupOptions, "-9.5");
+		popupOptions = pushBackStringArray(popupOptions, "-10 $[HAWAII]");
+		popupOptions = pushBackStringArray(popupOptions, "-10.5");
+		popupOptions = pushBackStringArray(popupOptions, "-11 $[SAMOA]");
+		popupOptions = pushBackStringArray(popupOptions, "-11.5");
+		popupOptions = pushBackStringArray(popupOptions, "-12 $[ENIWETOK]");
+		popupOptionFocus = getCurrentSetting("$[TIME_ZONE]");
+		popupOptionWide = 0;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setTimeZone(ret);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+<!--
+<item>
+<title>$[NTP]</title>
+<onClick>
+	<script>
+		NULL;
+	</script>
+</onClick>
+</item>
+-->
+
+
+</channel>
+</rss>

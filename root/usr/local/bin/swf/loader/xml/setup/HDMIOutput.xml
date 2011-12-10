@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="LPCM" disable="isSettingInactive" />
+		<item label="LPCM Multi-Ch" disable="isSettingInactive" />
+		<item label="RAW" disable="isSettingInactive" />
+</menu>

@@ -1,0 +1,296 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> PPS </bookmark>
+
+
+<mediaDisplay name=threePartsView
+
+showHeader=no
+autoSelectItem=no
+forceFocusOnItem=no
+showDefaultInfo=no
+
+itemXPC = 34.6
+itemYPC = 17
+itemWidthPC = 29.3
+itemHeightPC = 13
+itemGap = 0
+
+sideLeftWidthPC = 100
+sideRightWidthPC = 0
+imageLeftSide = "../image/pps_main_bg.jpg"
+
+itemBackgroundColor = 0:0:0
+
+itemImageXPC = 34.6
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+
+popupXPC = 5
+popupYPC = 22
+popupFontSize = 17
+popupWidthPC = 10
+popupBorderColor = 0:0:0
+>
+
+<!--
+<backgroundDisplay>
+	<image redraw=yes offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			"../image/pps_main_bg.jpg";
+		</script>
+	</image>
+</backgroundDisplay>
+-->
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			idx1 = getFocusItemIndex();
+			idx2 = getQueryItemIndex();
+			if (idx1 == idx2)
+				"../image/pps_main_focus.png";
+			else
+				"";
+		</script>
+	</image>
+	
+	<text offsetXPC=22 offsetYPC=0 widthPC=56 heightPC=100 fontSize=20 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+		<script>
+			getStringArrayAt(titleArray , -1);
+		</script>
+	</text>
+
+</itemDisplay>
+
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading1.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading2.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading3.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading4.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading5.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading6.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading7.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading8.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading9.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading10.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading11.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading12.png </idleImage>
+
+<!--
+<text redraw=yes offsetXPC=46 offsetYPC=89 widthPC=6 heightPC=4.3 fontSize=12 backgroundColor=20:20:20 foregroundColor=200:200:200>
+<script>
+str = sprintf("%s", PageIndex_LVL1) + &quot;/&quot; + PageCount + "页";
+</script>
+</text>
+-->
+
+<!--
+<text offsetXPC=30 offsetYPC=90 widthPC=25 heightPC=6 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+Press "EDIT" for VIP registration
+</text>
+-->
+
+<!--
+<text offsetXPC=56 offsetYPC=90 widthPC=40 heightPC=6 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+"NEXT/PREV" for pagedown/pageup
+</text>
+-->
+
+<image redraw=no offsetXPC=80 offsetYPC=6 widthPC=10 heightPC=10>
+<script>
+if (accountType == "1")
+	"../image/pps_vip.jpg";
+else
+	"../image/pps_nonvip.jpg";
+</script>
+</image>
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+
+if (userInput == "edit")
+{
+		paycode = getInput("doModal");
+		if( null == paycode )
+		{
+			print("enter nothing");
+		  null;
+		}
+		else
+		{
+			print("Your paycode is: ", paycode);
+	    password = getInput("doModal");
+			if (password == NULL)
+			{
+		  print("enter nothing");
+		  null;
+			}
+			else
+			{
+				print("Your password is: ", password);
+				ret = pps_payment(paycode,password);
+				print("-=-=-=-= pps payment -=-=-=-=",ret);
+			}
+		}
+	redrawDisplay();
+	"true";
+}
+else
+{
+	"false";
+}
+</script>
+</onUserInput>
+
+
+</mediaDisplay>
+
+<onExit>
+print("-=-=-=-= Exit from pps -=-=-=-=");
+
+if (PPS_initResult == "true")
+{	
+	PPS_deInit();
+}
+
+</onExit>
+
+<script>
+	showIdle();
+	PPS_initResult = "false";
+	initRet = PPS_init();
+	cancelIdle();
+	if (initRet == "done")
+	{
+		PPS_initResult = "true";
+		print("-=-=-=-= pps init done -=-=-=-=");
+	}	
+	else
+	{
+		print("-=-=-=-= pps init fail -=-=-=-=");
+		postMessage("return");
+	}
+	
+	
+	if (initRet == "done")
+	{
+		PageIndex_LVL1 = 1;
+		titleArray  = null;
+		idArray     = null;
+		enterLevel = 1;
+		accountType = 1;
+		topUrl = "http://plist.lettv.com/classfortv.php?oem=realtek&amp;classsize=13&amp;page=1&amp;lang=cn";
+		print("topUrl",topUrl);
+		dlok = PPS_loadXMLFile(topUrl);
+		if (dlok != null)
+		{
+			itemSize = getXMLElementCount("PPSChannels", "Class");
+			if (itemSize &gt; 0)
+			{
+				count = 0;
+				while(1)
+				{
+					title  = getXMLText("PPSChannels", "Class", count, "Title");
+					id     = getXMLText("PPSChannels", "Class", count, "ID");
+	
+					titleArray  = pushBackStringArray(titleArray, title);
+					idArray     = pushBackStringArray(idArray, id);
+	
+					count += 1;
+					if (count == itemSize)
+					{
+						break;
+					}
+				}
+				PageCount = 4;
+				setFocusItemIndex(0);
+				setItemFocus(0);
+			}
+		}
+		else
+		{
+			print("download url fail:", topUrl);
+		}
+	}
+	Validpoint = PPS_getAccountInfo("Validpoint");
+	print("-------Validpoint:------", Validpoint);
+	
+	Validdate = PPS_getAccountInfo("Validdate");
+	print("-------Validdate:-------", Validdate);
+	
+	PackageInfo = PPS_getPackageInfo();
+	print("-------PackageInfo:-----", PackageInfo);
+</script>
+
+
+
+<item_template>
+
+<displayTitle>
+<script>
+getStringArrayAt(titleArray , -1);
+</script>
+</displayTitle>
+
+
+<onClick>
+showIdle();
+itemIndex = getFocusItemIndex();
+parentType = getXMLText("PPSChannels", "Class", itemIndex, "Type");
+parentID = getXMLText("PPSChannels", "Class", itemIndex, "ID");
+
+if (parentType == "0")
+{
+		Url = "http://plist.lettv.com/subclassfortv.php?oem=realtek&amp;class=" + parentID;
+}
+else
+{
+		Url = "http://plist.lettv.com/channelsfortv.php?oem=realtek&amp;class=" + parentID;
+}
+
+
+Url = Url + "&#x000a;" + parentID + "&#x000a;" + parentType + "&#x000a;" + getXMLText("PPSChannels", "Class", itemIndex, "ContentNum");
+entryName = getXMLText("PPSChannels", "Class", itemIndex, "Title");
+Url = Url + "&#x000a;" + entryName;
+
+urlFile = getStoragePath("tmp");
+urlFile = urlFile + "ppsUrl.dat";
+writeStringToFile(urlFile, Url);
+
+</onClick>
+
+
+<link>
+	<script>
+		if(parentType == "0")
+		{
+			"pps_LVL2_Type0.rss";
+		}
+		else
+		{
+			"pps_LVL2_Type1.rss";
+		}
+	</script>
+</link>
+
+
+
+</item_template>
+
+
+
+<channel>
+<title>PPS</title>
+<link>pps.rss</link>
+<media:thumbnail url="../image/pps.jpg" width="120" height="90" />
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>

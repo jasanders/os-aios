@@ -1,0 +1,406 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+
+<channel>
+<title>Chile</title>
+<link>./scripts/map/Chile.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Antofagasta</title>
+<cur>CIXX0001</cur>
+<for>Antofagasta</for>
+</item>
+
+<item>
+<title>Arica</title>
+<cur>CIXX0002</cur>
+<for>Arica</for>
+</item>
+
+<item>
+<title>Balmaceda</title>
+<cur>CIXX0003</cur>
+<for>Balmaceda</for>
+</item>
+
+<item>
+<title>Baquedano</title>
+<cur>CIXX0004</cur>
+<for>Baquedano</for>
+</item>
+
+<item>
+<title>Calama</title>
+<cur>CIXX0033</cur>
+<for>Calama</for>
+</item>
+
+<item>
+<title>Caldera</title>
+<cur>CIXX0005</cur>
+<for>Caldera</for>
+</item>
+
+<item>
+<title>Cerro Blanco</title>
+<cur>CIXX0051</cur>
+<for>Cerro Blanco</for>
+</item>
+
+<item>
+<title>Cerro Canasta</title>
+<cur>CIXX0046</cur>
+<for>Cerro Canasta</for>
+</item>
+
+<item>
+<title>Chaiten</title>
+<cur>CIXX0029</cur>
+<for>Chaiten</for>
+</item>
+
+<item>
+<title>Chillan</title>
+<cur>CIXX0006</cur>
+<for>Chillan</for>
+</item>
+
+<item>
+<title>Colina</title>
+<cur>CIXX0049</cur>
+<for>Colina</for>
+</item>
+
+<item>
+<title>Concepcion</title>
+<cur>CIXX0007</cur>
+<for>Concepcion</for>
+</item>
+
+<item>
+<title>Copiapo</title>
+<cur>CIXX0030</cur>
+<for>Copiapo</for>
+</item>
+
+<item>
+<title>Coquimbo</title>
+<cur>CIXX0008</cur>
+<for>Coquimbo</for>
+</item>
+
+<item>
+<title>Curacavi</title>
+<cur>CIXX0054</cur>
+<for>Curacavi</for>
+</item>
+
+<item>
+<title>Curico</title>
+<cur>CIXX0031</cur>
+<for>Curico</for>
+</item>
+
+<item>
+<title>Iquique</title>
+<cur>CIXX0009</cur>
+<for>Iquique</for>
+</item>
+
+<item>
+<title>Isla Diego Ramirez</title>
+<cur>CIXX0035</cur>
+<for>Isla Diego Ramirez</for>
+</item>
+
+<item>
+<title>Islotes Evangelistas</title>
+<cur>CIXX0034</cur>
+<for>Islotes Evangelistas</for>
+</item>
+
+<item>
+<title>La Serena</title>
+<cur>CIXX0010</cur>
+<for>La Serena</for>
+</item>
+
+<item>
+<title>Los Cuartitos</title>
+<cur>CIXX0042</cur>
+<for>Los Cuartitos</for>
+</item>
+
+<item>
+<title>Monturaque</title>
+<cur>CIXX0045</cur>
+<for>Monturaque</for>
+</item>
+
+<item>
+<title>Morro de La Bandera</title>
+<cur>CIXX0050</cur>
+<for>Morro de La Bandera</for>
+</item>
+
+<item>
+<title>Nunoa</title>
+<cur>CIXX0011</cur>
+<for>Nunoa</for>
+</item>
+
+<item>
+<title>Osorno</title>
+<cur>CIXX0012</cur>
+<for>Osorno</for>
+</item>
+
+<item>
+<title>Ovalle</title>
+<cur>CIXX0013</cur>
+<for>Ovalle</for>
+</item>
+
+<item>
+<title>Palena</title>
+<cur>CIXX0032</cur>
+<for>Palena</for>
+</item>
+
+<item>
+<title>Portillo</title>
+<cur>CIXX0044</cur>
+<for>Portillo</for>
+</item>
+
+<item>
+<title>Pucon</title>
+<cur>CIXX0040</cur>
+<for>Pucon</for>
+</item>
+
+<item>
+<title>Puerto Aisen</title>
+<cur>CIXX0014</cur>
+<for>Puerto Aisen</for>
+</item>
+
+<item>
+<title>Puerto Montt</title>
+<cur>CIXX0015</cur>
+<for>Puerto Montt</for>
+</item>
+
+<item>
+<title>Puerto Natales</title>
+<cur>CIXX0016</cur>
+<for>Puerto Natales</for>
+</item>
+
+<item>
+<title>Punta Arenas</title>
+<cur>CIXX0017</cur>
+<for>Punta Arenas</for>
+</item>
+
+<item>
+<title>Rancagua</title>
+<cur>CIXX0018</cur>
+<for>Rancagua</for>
+</item>
+
+<item>
+<title>Rocas de Santo Domingo</title>
+<cur>CIXX0052</cur>
+<for>Rocas de Santo Domingo</for>
+</item>
+
+<item>
+<title>San Antonio</title>
+<cur>CIXX0047</cur>
+<for>San Antonio</for>
+</item>
+
+<item>
+<title>San Bernardo</title>
+<cur>CIXX0019</cur>
+<for>San Bernardo</for>
+</item>
+
+<item>
+<title>Santiago</title>
+<cur>CIXX0020</cur>
+<for>Santiago</for>
+</item>
+
+<item>
+<title>Talagante</title>
+<cur>CIXX0053</cur>
+<for>Talagante</for>
+</item>
+
+<item>
+<title>Talca</title>
+<cur>CIXX0021</cur>
+<for>Talca</for>
+</item>
+
+<item>
+<title>Talcahuano</title>
+<cur>CIXX0022</cur>
+<for>Talcahuano</for>
+</item>
+
+<item>
+<title>Temuco</title>
+<cur>CIXX0023</cur>
+<for>Temuco</for>
+</item>
+
+<item>
+<title>Termas de Chillan</title>
+<cur>CIXX0041</cur>
+<for>Termas de Chillan</for>
+</item>
+
+<item>
+<title>Toco</title>
+<cur>CIXX0024</cur>
+<for>Toco</for>
+</item>
+
+<item>
+<title>Valdivia</title>
+<cur>CIXX0025</cur>
+<for>Valdivia</for>
+</item>
+
+<item>
+<title>Valparaiso</title>
+<cur>CIXX0026</cur>
+<for>Valparaiso</for>
+</item>
+
+<item>
+<title>Villa Alemana</title>
+<cur>CIXX0048</cur>
+<for>Villa Alemana</for>
+</item>
+
+<item>
+<title>Villarrica</title>
+<cur>CIXX0038</cur>
+<for>Villarrica</for>
+</item>
+
+<item>
+<title>Vina del Mar</title>
+<cur>CIXX0027</cur>
+<for>Vina del Mar</for>
+</item>
+
+<item>
+<title>Vitacura</title>
+<cur>CIXX0028</cur>
+<for>Vitacura</for>
+</item>
+
+</channel></rss>

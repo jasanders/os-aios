@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="$[ID]" >
+				<submenu dialog="popupKBD" type="ID" mode="normal" />
+		</item>		
+		<item label="$[PASSWORD]">
+				<submenu dialog="popupKBD" type="Password" mode="password"/>
+		</item>		
+		
+</menu>

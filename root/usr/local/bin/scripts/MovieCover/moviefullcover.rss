@@ -1,0 +1,261 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> MovieCover </bookmark>
+
+<mediaDisplay name=photoFocusView 
+	viewAreaXPC=0
+	viewAreaYPC=0
+	viewAreaWidthPC=100
+	viewAreaHeightPC=100
+	
+	itemGapXPC=0
+	itemGapYPC=0 
+    idleImageXPC=83.12
+    idleImageYPC=89.58
+    idleImageWidthPC=3.1
+    idleImageHeightPC=5.5
+		
+	imageFocus =null
+	imageParentFocus=null
+	backgroundColor=0:0:0
+		
+	itemGrid.focusElementBackground.image=null
+	itemGrid.elementBackground.image=null
+
+	imageFocusItemBackground=null
+	imageItemBackground=null
+	
+	rowCount=1
+	columnCount=1
+	fontSize = 12
+	
+	sideTopHeightPC = 0
+	sideColorTop = 0:0:0
+	menuBorderColor = 0:0:0
+	menuFontColor = 255:255:255
+		
+	menuGapXPC=0		
+	menuOffsetXPC =0
+	menuOffsetYPC =0
+	menuItemHeightPC = 0
+	menuItemWidthPC = 0
+	
+	centerXPC =0
+	
+	itemOffsetXPC = 0
+	
+
+	itemGrid.element.xPC = 0
+	itemGrid.element.yPC = 0
+	
+	itemGrid.element.widthPC=100
+	itemGrid.element.heightPC=100
+	itemGrid.elementBackground.widthPC=100
+	itemGrid.elementBackground.heightPC=100
+	
+	itemGrid.gapXPC=0
+		
+	itemGrid.focusElement.xPC=0
+	itemGrid.focusElement.yPC = 0
+	itemGrid.heightPC = 100
+	
+	itemGrid.focusElement.widthPC=100
+	itemGrid.focusElement.heightPC=100
+	itemGrid.focusElementBackground.widthPC=0
+	itemGrid.focusElementBackground.heightPC=0
+	itemBackgroundColor = 210:210:210
+	
+
+	
+	bottomArea.yPC=100
+	blitBackground=no
+	showHeader=no
+	showDefaultInfo=yes
+
+    fadeInFocus=yes
+>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+<slideItems>
+<script>
+pageInfo = getPageInfo("majorContext");
+print("----------------------", pageInfo);
+if (pageInfo == "items")
+{
+	"yes";
+}
+else
+{
+	"no";
+}
+</script>
+</slideItems>
+
+<itemDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=0 heightPC=100 align=center useBackgroundSurface=no/>
+<image redraw=no offsetXPC=1 offsetYPC=0 widthPC=98 heightPC=100 scale=yes>
+<script>
+	state = getDrawingItemState();
+	print("image state===>",state);
+	url = getStringArrayAt(idArray , -1) ;
+
+	url;
+</script>
+</image>
+</itemDisplay>
+
+	<onUserInput>
+		<script>
+     		userInput = currentUserInput();
+			ret = "false";
+			if (userInput=="edit"){
+				ret = "true";
+			}
+
+	
+				if (userInput == "up") {
+					postMessage("left");
+					ret = "true";
+				}
+
+				if (userInput == "down") {
+					postMessage("right");
+					ret = "true";
+				}
+	
+			ret;
+		</script>	
+	</onUserInput>
+
+	<!--
+	<backgroundDisplay  name=flickrBackground>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	 ./home_menu/image/HomeMenu_BG.fsp
+	 </image>
+	</backgroundDisplay>
+	-->
+	
+	<!--
+    <text offsetXPC="46" offsetYPC="85.3" widthPC="20" heightPC="6" 
+		fontSize="16" backgroundColor="230:230:230" foregroundColor="20:20:20"
+		redraw=yes>
+        <script>
+			str = getPageInfo("focusItemIndex") + "/" + getPageInfo("itemCount"); 
+			page = getItemInfo("pageNumber"); 
+			if (page != null) { 
+				str = str + ", Page:" + page; 
+			} 
+			else { 
+				str; 
+			}
+		</script>
+    </text>			
+	-->
+
+	<!-- the entry point of the view, you can set the initial focus here -->
+	<!-- you can also use postMessage to do the initial operation on the focus item -->
+	<onEnter>
+			redrawDisplay();
+	</onEnter>
+</mediaDisplay>
+
+<script>
+	header = "MovieCover";
+	page = 1;
+	type = "mostInterested";
+	firstEnter = "yes";
+
+ 
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "movieFullThunb.dat";
+	idArray = readStringFromFile(storagePath);
+	print(storagePath, "symbolArray = ", idArray);	
+
+	itemSize = 0;
+	querySymbols = "";
+	symbol = getStringArrayAt(idArray, itemSize);	
+	while (  symbol != null) {
+		itemSize = itemSize + 1;
+		symbol = getStringArrayAt(idArray, itemSize);
+	}	
+
+	print("itemp size=**=>",itemSize);
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "movieDir.dat";
+	folderArray = readStringFromFile(storagePath);
+</script>
+	
+<onRefresh>
+
+</onRefresh>
+
+<item_template>
+		<onClick>
+			url = getStringArrayAt(folderArray , -1) ;
+			print("onClick |*****|",url);
+			
+			APName = "GBrowserGridViewAP";
+			menuCmd(APName, "StartPlayVideoFolder", url);
+			null;
+		</onClick>
+</item_template>
+
+
+<!--
+<submenu name=$[IMS_SEARCH_PHOTO]>
+        <onClick>
+            <script>
+				keyword= getInput(); 
+				type = "search";
+				page = 1;
+				if (keyword!=null) { 
+					setRefreshTime(1);
+				}
+				else {
+				  url = null;
+				}
+				
+            </script>
+        </onClick>
+</submenu>	
+
+
+<submenu name=$[IMS_PREVIOUS_PAGE]>
+	<script>
+		if (page &gt; 1) {
+			page = page - 1;
+			setRefreshTime(1);
+		}				
+	</script>	
+</submenu>
+
+<submenu name=$[IMS_NEXT_PAGE]>
+	<script>
+		page = page + 1;
+		setRefreshTime(1);
+	</script>	
+</submenu>
+-->
+
+
+<channel>
+	<title> <script> header; </script> </title>
+	<link>./scripts/MovieCover/moviefullcover.rss</link>
+
+<itemSize>
+	<script>
+		itemSize;
+	</script>
+</itemSize>
+
+</channel>
+</rss>

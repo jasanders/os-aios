@@ -1,0 +1,317 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_t.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Tabatinga</title>
+<cur>BRXX0238</cur>
+<for>Tabatinga</for>
+</item>
+
+<item>
+<title>Taboao da Serra</title>
+<cur>BRXX0463</cur>
+<for>Taboao da Serra</for>
+</item>
+
+<item>
+<title>Taguatinga</title>
+<cur>BRXX0671</cur>
+<for>Taguatinga</for>
+</item>
+
+<item>
+<title>Tangara</title>
+<cur>BRXX0239</cur>
+<for>Tangara</for>
+</item>
+
+<item>
+<title>Tangara da Serra</title>
+<cur>BRXX0724</cur>
+<for>Tangara da Serra</for>
+</item>
+
+<item>
+<title>Tapaua</title>
+<cur>BRXX0464</cur>
+<for>Tapaua</for>
+</item>
+
+<item>
+<title>Tapirai</title>
+<cur>BRXX0465</cur>
+<for>Tapirai</for>
+</item>
+
+<item>
+<title>Taquarituba</title>
+<cur>BRXX0672</cur>
+<for>Taquarituba</for>
+</item>
+
+<item>
+<title>Tarauaca</title>
+<cur>BRXX0240</cur>
+<for>Tarauaca</for>
+</item>
+
+<item>
+<title>Tatui</title>
+<cur>BRXX0241</cur>
+<for>Tatui</for>
+</item>
+
+<item>
+<title>Taubate</title>
+<cur>BRXX0242</cur>
+<for>Taubate</for>
+</item>
+
+<item>
+<title>Tefe</title>
+<cur>BRXX0243</cur>
+<for>Tefe</for>
+</item>
+
+<item>
+<title>Teodoro Sampaio</title>
+<cur>BRXX0673</cur>
+<for>Teodoro Sampaio</for>
+</item>
+
+<item>
+<title>Teofilo Otoni</title>
+<cur>BRXX0314</cur>
+<for>Teofilo Otoni</for>
+</item>
+
+<item>
+<title>Terenos</title>
+<cur>BRXX0244</cur>
+<for>Terenos</for>
+</item>
+
+<item>
+<title>Teresina</title>
+<cur>BRXX0245</cur>
+<for>Teresina</for>
+</item>
+
+<item>
+<title>Teresopolis</title>
+<cur>BRXX0315</cur>
+<for>Teresopolis</for>
+</item>
+
+<item>
+<title>Tibau do Sul</title>
+<cur>BRXX3910</cur>
+<for>Tibau do Sul</for>
+</item>
+
+<item>
+<title>Tiete</title>
+<cur>BRXX0466</cur>
+<for>Tiete</for>
+</item>
+
+<item>
+<title>Tijucas</title>
+<cur>BRXX0246</cur>
+<for>Tijucas</for>
+</item>
+
+<item>
+<title>Timon</title>
+<cur>BRXX0316</cur>
+<for>Timon</for>
+</item>
+
+<item>
+<title>Timoteo</title>
+<cur>BRXX0467</cur>
+<for>Timoteo</for>
+</item>
+
+<item>
+<title>Tiradentes</title>
+<cur>BRXX0674</cur>
+<for>Tiradentes</for>
+</item>
+
+<item>
+<title>Tocantinopolis</title>
+<cur>BRXX0468</cur>
+<for>Tocantinopolis</for>
+</item>
+
+<item>
+<title>Torres</title>
+<cur>BRXX0675</cur>
+<for>Torres</for>
+</item>
+
+<item>
+<title>Tracuateua</title>
+<cur>BRXX0676</cur>
+<for>Tracuateua</for>
+</item>
+
+<item>
+<title>Trancoso</title>
+<cur>BRXX0677</cur>
+<for>Trancoso</for>
+</item>
+
+<item>
+<title>Tres Coracoes</title>
+<cur>BRXX0725</cur>
+<for>Tres Coracoes</for>
+</item>
+
+<item>
+<title>Tres Lagoas</title>
+<cur>BRXX0247</cur>
+<for>Tres Lagoas</for>
+</item>
+
+<item>
+<title>Tres Marias</title>
+<cur>BRXX0469</cur>
+<for>Tres Marias</for>
+</item>
+
+<item>
+<title>Tres Pontas</title>
+<cur>BRXX0470</cur>
+<for>Tres Pontas</for>
+</item>
+
+<item>
+<title>Tres Rios</title>
+<cur>BRXX0471</cur>
+<for>Tres Rios</for>
+</item>
+
+<item>
+<title>Trindade</title>
+<cur>BRXX0248</cur>
+<for>Trindade</for>
+</item>
+
+<item>
+<title>Tubarao</title>
+<cur>BRXX0249</cur>
+<for>Tubarao</for>
+</item>
+
+<item>
+<title>Tupa</title>
+<cur>BRXX0250</cur>
+<for>Tupa</for>
+</item>
+
+<item>
+<title>Turmalina</title>
+<cur>BRXX0678</cur>
+<for>Turmalina</for>
+</item>
+</channel></rss>

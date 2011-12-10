@@ -1,0 +1,631 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Menu_Bar </bookmark>
+
+	<mediaDisplay name=photoView
+
+		viewAreaXPC=0
+		viewAreaYPC=0
+		viewAreaWidthPC=0
+		viewAreaHeightPC=0
+
+		columnCount=6
+
+	>
+
+		<!-- the entry point of the view, you can set the initial focus here -->
+		<!-- you can also use postMessage to do the initial operation on the focus item -->]
+
+		<!--
+			titleHeightPixel = 35;
+			BottomHeightPixel = 8;
+			LeftWidthPixel = 10;
+			RightWidthPixel = 10;
+			Maxheight = 90;
+			MaxitemPerPage = 16;
+			titleHeightF = titleHeightPixel*100/720;	= 4.8611
+			BottomHeightF = BottomHeightPixel*100/720;	= 1.1111
+			LeftWidthF =  LeftWidthPixel*100/1280; 		= 0.7813
+			RightWidthF =  RightWidthPixel*100/1280; 	= 0.7813
+			EachItemheight = (Maxheight-titleHeightF-BottomHeightF)/MaxitemPerPage;	= 4.3904
+		 -->
+
+		<onEnter>
+
+			print("01Sel: ",CurrentSel, CurrentAP, CurrentType);
+
+			IsLastCmdDown = 1;
+			EnterByDown = 1;
+
+			CurrentSel = 0;
+			NumberOfItem = 0;
+
+			titleHeightF = 5;
+			BottomHeightF = 1;
+			EachItemheight = 5.2517;
+			LeftWidthF = 0.8;
+			RightWidthF = 0.8;
+
+			itemWidthPCF = 22.5;
+			CurLanguage = getCurrentSetting("$[LANG_OSD]");
+			if(CurLanguage=="$[OSD_ENGLISH]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_CHINESE]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_JAPANESE]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_SPANISH]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_FRENCH]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_GERMAN]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_ITALIAN]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_KOREAN]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_DUTCH]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_RUSSIAN]"){
+				itemWidthPCF = 22.5;
+			}else if(CurLanguage=="$[OSD_SCHINESE]"){
+				itemWidthPCF = 22.5;
+			}
+
+			CurrentAP = getEnv("EntryStatusString1");
+			CurrentType = getEnv("EntryStatusString2");
+			PlayMusic = getEnv("EntryStatusString3");
+			CurrentSubType = getEnv("EntryStatusString4");
+			CurrentSubType5 = getEnv("EntryStatusString5");
+			CurrentSubType6 = getEnv("EntryStatusString6");
+			CurrentSubType7 = getEnv("EntryStatusString7");
+			print("CurStatus:" , CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+			if(CurrentAP == "IMSAP"){
+				CurrentSel = 3;
+				if(CurrentType == "Photo"){
+					NumberOfItem = 3;
+				}
+			}else if(CurrentAP == "VideoPlayback"){
+				CurrentSel = 0;
+				NumberOfItem = 6;
+				if (CurrentType == "DVD" || CurrentType == "BD") {
+					NumberOfItem = Add(NumberOfItem, 2);
+				}
+				RPTTitle = getRPTTitleCap();
+				if (RPTTitle == "no") {
+					NumberOfItem = Add(NumberOfItem, 1);
+				}
+				RPTChapter = getRPTChapterCap();
+				if (RPTChapter == "no") {
+					NumberOfItem = Add(NumberOfItem, 1);
+				}
+			}else if(CurrentAP == "PhotoPlaybackAP"){
+				CurrentSel = 1;
+				NumberOfItem = 7;
+			}else if(CurrentAP == "AudioPlaybackAP"){
+				setParentFade(128);
+				CurrentSel = 2;
+				NumberOfItem = 4;
+			}else if(CurrentAP == "SearchViewAP"){
+				setParentFade(128);
+				if(CurrentType == "Video"){
+					CurrentSel = 0;
+					NumberOfItem = 11;
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+				}else if(CurrentType == "Photo"){
+					CurrentSel = 1;
+					NumberOfItem = 9;
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+				}else if(CurrentType == "Music"){
+					CurrentSel = 2;
+					NumberOfItem = 14;
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+				}else{
+					CurrentSel = 4;
+					NumberOfItem = 6;
+				}
+			}else if(CurrentAP == "GBrowserSelectAP"){
+				setParentFade(128);
+				CurrentSel = 2;
+				if (CurrentType == "Dev"){
+					if(PlayMusic == "Folder"){
+						NumberOfItem = 5;
+					}else{
+						NumberOfItem = 4;
+					}
+				}else{
+
+					if(CurrentSubType6 == "All"){
+						NumberOfItem = 12;
+						if(CurrentSubType5 != "All"){
+							NumberOfItem = NumberOfItem-3;
+						}
+					}else{
+						if(CurrentSubType7 != "Enter"){
+							NumberOfItem = 6;
+							if(CurrentSubType5 == "Artists"){
+								NumberOfItem = 7;
+							}else if(CurrentSubType5 == "Genres"){
+								NumberOfItem = 8;
+							}
+						}else{
+							NumberOfItem = 3;
+						}
+					}
+				}
+			}else if(CurrentAP == "GBrowserGridViewAP"){
+				setParentFade(128);
+				if(CurrentType == "Video"){
+					CurrentSel = 0;
+					NumberOfItem = 13;
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+					if(IsRecordable() == "false"){
+						NumberOfItem = NumberOfItem-1;
+					}
+					if(IsUseSWF() == "false"){
+						NumberOfItem = NumberOfItem-1;
+					}
+
+					storagePath = getStoragePath("key");
+					storagePath = storagePath + "MoviesSelects.dat";
+					selectArray = readStringFromFile(storagePath);
+					if (selectArray != null){
+						ViewSel = getStringArrayAt(selectArray, 0);
+						SortSel = getStringArrayAt(selectArray, 1);
+						ShowSel = getStringArrayAt(selectArray, 2);
+						if(ShowSel != "All"){
+							NumberOfItem = NumberOfItem-1;
+						}
+					}
+				}else if(CurrentType == "Photo"){
+					CurrentSel = 1;
+					NumberOfItem = 13;
+					if(PlayMusic == "InDir"){
+						NumberOfItem = NumberOfItem-1;
+					}
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+
+					storagePath = getStoragePath("key");
+					storagePath = storagePath + "PictureSelects.dat";
+					selectArray = readStringFromFile(storagePath);
+					if (selectArray != null){
+						ViewSel = getStringArrayAt(selectArray, 0);
+						SortSel = getStringArrayAt(selectArray, 1);
+						ShowSel = getStringArrayAt(selectArray, 2);
+						if(ShowSel == "LeafFolder"){
+							NumberOfItem -= 3;
+						}
+						if(ShowSel == "Date"){
+							NumberOfItem -= 3;
+						}
+					}
+				}else if(CurrentType == "Music"){
+					CurrentSel = 2;
+
+					if(CurrentSubType6 == "All"){
+						NumberOfItem = 15;
+						if(CurrentSubType5 != "All"){
+							NumberOfItem = NumberOfItem-3;
+						}
+					}else{
+						if(CurrentSubType7 != "Enter"){
+							NumberOfItem = 8;
+							if(CurrentSubType5 == "Artists"){
+								NumberOfItem = 9;
+							}else if(CurrentSubType5 == "Genres"){
+								NumberOfItem = 10;
+							}
+						}else{
+							NumberOfItem = 5;
+						}
+					}
+
+					if(PlayMusic == "PlayNone"){
+						NumberOfItem = NumberOfItem-1;
+					}
+					if(CurrentSubType != "BrwsFolder"){
+						NumberOfItem = NumberOfItem-1;
+					}
+
+				}else{
+					CurrentSel = 4;
+
+					NumberOfItem = 8;
+
+					if(PlayMusic != "DevFolder"){
+						NumberOfItem = NumberOfItem - 1;
+					}
+				}
+
+			}else if(CurrentAP == "RootAP"){
+				CurrentSel = 6;
+				NumberOfItem = 5;
+				if (IsItemDisasble("IsAnalogInputDisable") == "false") {
+					NumberOfItem = Add(NumberOfItem, 1);
+				}
+				if (IsSourceOnDtv() == "true") {
+					NumberOfItem = Add(NumberOfItem, 4);
+				}
+				if (IsParentalCtrlBlock() == "true") {
+					NumberOfItem = NumberOfItem - 7;
+				}
+			}
+			print("02Sel: ",CurrentSel, NumberOfItem, CurrentAP, CurrentType);
+
+			setItemFocus(CurrentSel);
+			redrawDisplay();
+			print("CurrentSel = ", CurrentSel);
+			if(CurrentSel != 3){
+				postMessage("enter");
+			}else{
+				if(CurrentType=="Photo"){
+					postMessage("enter");
+				}else{
+					postMessage("return");
+				}
+			}
+			EntryTimes = 1;
+			print(" *******************************************************");
+		</onEnter>
+
+		<!-- over write user key mapping here -->
+		<!-- return true means the event has been handled -->
+		<!-- return false means the View will continue to handle the event -->
+
+		<onUserInput>
+			userInput = currentUserInput();
+			print("userInput:", userInput);
+			if(userInput != "enter"){
+				if(userInput != "return"){
+					postMessage(userInput);
+					"true";
+				}
+			}
+		</onUserInput>
+	</mediaDisplay>
+
+
+	<item_template>
+
+		<mediaDisplay name=onePartView
+
+			backgroundColor=-1:-1:-1
+
+			sideLeftWidthPC=100
+			sideColorLeft=-1:-1:-1
+			imageLeftSide="menubar/image/option_menu_bg.png"
+			sideRightWidthPC=0
+			sideColorRight=-1:-1:-1
+			imageRightSide=""
+
+			showHeader="no"
+			showDefaultInfo="no"
+			rollItems="no"
+
+			imageFocus="menubar/image/popmunu_focus.png"
+			itemBackgroundColor=-1:-1:-1
+		>
+
+			<script>
+				RightBottomOffsetX = 95;
+				RightBottomOffsetY = 92;
+			</script>
+
+			<onEnter>
+				pendingMessage = null;
+				print(" *******************************************************");
+			</onEnter>
+
+			<itemPerPage>
+				<script>
+					itemPerPage = NumberOfItem;
+				</script>
+			</itemPerPage>
+
+			<!-- Display View Area -------------------------------->
+				<viewAreaWidthPC>
+					<script>
+						viewAreaWidthPC = itemWidthPCF + LeftWidthF + RightWidthF;
+					</script>
+				</viewAreaWidthPC>
+				<viewAreaHeightPC>
+					<script>
+						viewAreaHeightPC = EachItemheight * itemPerPage + titleHeightF + BottomHeightF;
+					</script>
+				</viewAreaHeightPC>
+				<viewAreaXPC>
+					<script>
+						viewAreaXPC = RightBottomOffsetX-viewAreaWidthPC;
+					</script>
+				</viewAreaXPC>
+				<viewAreaYPC>
+					<script>
+						viewAreaYPC = RightBottomOffsetY-viewAreaHeightPC;
+					</script>
+				</viewAreaYPC>
+			<!----------------------------------------------------->
+			<!-- Item Display Parameter --------------------------->
+				<itemXPC>
+						3;
+				</itemXPC>
+				<itemWidthPC>
+						94;
+				</itemWidthPC>
+				<itemYPC>
+					<script>
+						itemYPC = (titleHeightF*100/viewAreaHeightPC);
+					</script>
+				</itemYPC>
+				<itemHeightPC>
+					<script>
+						itemHeightPC = EachItemheight*100/viewAreaHeightPC;
+					</script>
+				</itemHeightPC>
+			<!----------------------------------------------------->
+
+			<DoAnimation>
+				<script>
+					print(" ************* EntryTimes = ", EntryTimes);
+					if (EntryTimes &gt; 2){
+						"no";
+					}else{
+						"yes";
+					}
+				</script>
+			</DoAnimation>
+			<!---------------------------------------------------
+			<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			-->
+			<itemDisplay>
+				<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>				
+					<script_replace>
+						queryIndex = getQueryItemIndex();
+						focusIndex = getFocusItemIndex();
+						lastSelectedIndex = getSelectedItemIndex();
+						state = getDrawingItemState();
+						if (queryIndex == focusIndex) {
+							thumbnail = "menubar/image/popmunu_focus.png";
+						}else {
+							position = getItemInfo("position");
+							if (position == "single"){
+								thumbnail = "menubar/image/item_normal_bar_single.png";
+							}else if (position == "head"){
+								thumbnail = "menubar/image/item_normal_bar_head.png";
+							}else if (position == "tail"){
+								thumbnail = "menubar/image/item_normal_bar_tail.png";
+							}else{
+								thumbnail = "menubar/image/item_normal_bar.png";
+							}
+
+						}
+					</script_replace>
+				</image>
+
+				<text offsetXPC=5.0 offsetYPC=15 widthPC=90 heightPC=85 fontSize=15 backgroundColor=-1:-1:-1>
+					<script_replace>
+						title = getItemInfo("title");
+					</script_replace>
+
+					<foregroundColor>
+						<script_replace>
+							selected = getItemInfo("selected");
+							state = getDrawingItemState();
+							if (state == "focus") {
+								color="255:255:255";
+							}
+							else {
+								if (selected == "yes") {
+									color="253:184:50";
+								}else {
+									color="172:172:172";
+								}
+							}
+						</script_replace>
+					</foregroundColor>
+				</text>
+
+			</itemDisplay>
+
+			<onUserInput>
+				if (checkTimer &gt; 0) {
+					print("checkTimer = ", checkTimer);
+					setRefreshTime(-1);
+					setRefreshTime(checkTimer * 1000);
+				}
+
+				handled = "false";
+				userInput = currentUserInput();
+				print(userInput);
+				if ("right"== userInput){
+					handled = "true";
+				}else if ("left"== userInput){
+					handled = "true";
+				}else if ("return" == userInput){
+					if (pendingMessage == null) {
+						postMessage("return");
+					}
+				}
+				handled;
+			</onUserInput>
+
+			<!-- mask out some part of empty areas -->
+
+		</mediaDisplay>
+	</item_template>
+
+<channel>
+	<title> MenuBar </title>
+	<link>./menubar/scripts/menubar.rss</link>
+
+
+<item>
+<title>$[GBROWSER_MOVIE]</title>
+<media:thumbnail> menubar/image/Movie.jpg </media:thumbnail>
+<onClick>
+	<script>
+		print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+		CurrentLink = null;
+		if(EnterByDown==0){
+			print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+		}else if (CurrentAP=="VideoPlayback"){
+			CurrentLink = "rss_file://./menubar/scripts/setup/Movies_playing.rss";
+		}else{
+			CurrentLink = "rss_file://./menubar/scripts/setup/Movies.rss";
+		}
+
+		CurrentLink;
+	</script>
+</onClick>
+
+</item>
+
+<item>
+<title>$[GBROWSER_PICTURE]</title>
+<media:thumbnail> menubar/image/Picture.jpg </media:thumbnail>
+	<onClick>
+		<script>
+			print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+			CurrentLink = null;
+			if(EnterByDown==0){
+				print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+			}else if (CurrentAP=="PhotoPlaybackAP"){
+				CurrentLink = "rss_file://./menubar/scripts/setup/Picture_playing.rss";
+			}else {
+				CurrentLink = "rss_file://./menubar/scripts/setup/Picture.rss";
+			}
+
+			CurrentLink;
+		</script>
+	</onClick>
+</item>
+
+<item>
+<title>$[GBROWSER_MUSIC]</title>
+<media:thumbnail> menubar/image/Music.jpg </media:thumbnail>
+	<onClick>
+		<script>
+			print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+			CurrentLink = null;
+			if(EnterByDown==0){
+				print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+			}else if (CurrentAP=="AudioPlaybackAP"){
+				CurrentLink = "rss_file://./menubar/scripts/setup/Music_playing.rss";
+			}else if(CurrentAP=="GBrowserSelectAP"){
+				if(CurrentType=="Dev"){
+					CurrentLink = "rss_file://./menubar/scripts/setup/Music_sel_dev.rss";
+	            }else{
+					if(CurrentSubType6 == "All"){
+						CurrentLink = "rss_file://./menubar/scripts/setup/Music.rss";
+					}else{
+						CurrentLink = "rss_file://./menubar/scripts/setup/Music_Level2.rss";
+					}
+	            }
+			}else{
+				if(CurrentType=="Music"){
+					if(CurrentSubType6 == "All"){
+						CurrentLink = "rss_file://./menubar/scripts/setup/Music.rss";
+					}else{
+						CurrentLink = "rss_file://./menubar/scripts/setup/Music_Level2.rss";
+					}
+				}
+			}
+
+			CurrentLink;
+		</script>
+	</onClick>
+</item>
+
+<item>
+<title>$[IMS]</title>
+<media:thumbnail> menubar/image/Internet.jpg </media:thumbnail>
+	<onClick>
+		<script>
+			print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+			CurrentLink = null;
+
+			if(EnterByDown==0){
+				print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+			}else if(CurrentType=="Photo"){
+				CurrentLink = "rss_file://./menubar/scripts/setup/Picasa_playing.rss";
+			}
+
+			CurrentLink;
+		</script>
+	</onClick>
+</item>
+
+<item>
+<title>$[DEVICES]</title>
+<media:thumbnail> menubar/image/Device.jpg </media:thumbnail>
+	<onClick>
+		<script>
+			print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+			CurrentLink = null;
+			if(EnterByDown==0){
+				print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+			}else if(CurrentAP == "GBrowserGridViewAP"){
+				if(CurrentType == "Dev"){
+					CurrentLink = "rss_file://./menubar/scripts/setup/Device.rss";
+				}
+			}
+
+			CurrentLink;
+		</script>
+	</onClick>
+</item>
+
+<item>
+<title>$[IMS_HELP]</title>
+<media:thumbnail> menubar/image/Help.jpg </media:thumbnail>
+	<link>rss_file://./menubar/scripts/help/help.rss</link>
+	<!-- the detailed description of mediaDisplay will be inside home.rss -->
+	<!-- We need to write the mediaDisplay here in order to force system use this mediaDisplay here, instead of
+	     the mediaDisplay inside the item_template -->
+	<mediaDisplay name=onePartView
+
+		itemXPC = 2.5
+		itemYPC = 5
+		itemWidthPC = 90
+		itemHeightPC = 6.5
+	/>
+</item>
+
+<item>
+<title>Option Menu</title>
+<media:thumbnail> menubar/image/TV_AV_option.jpg </media:thumbnail>
+<onClick>
+	<script>
+		print(CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
+
+		CurrentLink = null;
+		if(EnterByDown==0){
+			print("Do not enter onePartView menu - EnterByDown: ", EnterByDown);
+		}else{
+			CurrentLink = "rss_file://./menubar/scripts/setup/TV_AV_option.rss";
+		}
+
+		CurrentLink;
+	</script>
+</onClick>
+</item>
+
+
+</channel>
+</rss>

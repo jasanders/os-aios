@@ -1,0 +1,629 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_s.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Sabara</title>
+<cur>BRXX0211</cur>
+<for>Sabara</for>
+</item>
+
+<item>
+<title>Salesopolis</title>
+<cur>BRXX0442</cur>
+<for>Salesopolis</for>
+</item>
+
+<item>
+<title>Salinas</title>
+<cur>BRXX0660</cur>
+<for>Salinas</for>
+</item>
+
+<item>
+<title>Salto</title>
+<cur>BRXX0661</cur>
+<for>Salto</for>
+</item>
+
+<item>
+<title>Salto de Pirapora</title>
+<cur>BRXX0662</cur>
+<for>Salto de Pirapora</for>
+</item>
+
+<item>
+<title>Salto do Urubupunga</title>
+<cur>BRXX0212</cur>
+<for>Salto do Urubupunga</for>
+</item>
+
+<item>
+<title>Salvador</title>
+<cur>BRXX3272</cur>
+<for>Salvador</for>
+</item>
+
+<item>
+<title>Salvaterra</title>
+<cur>BRXX0663</cur>
+<for>Salvaterra</for>
+</item>
+
+<item>
+<title>Santa Barbara d'Oeste</title>
+<cur>BRXX0443</cur>
+<for>Santa Barbara d'Oeste</for>
+</item>
+
+<item>
+<title>Santa Branca</title>
+<cur>BRXX0307</cur>
+<for>Santa Branca</for>
+</item>
+
+<item>
+<title>Santa Cruz</title>
+<cur>BRXX0664</cur>
+<for>Santa Cruz</for>
+</item>
+
+<item>
+<title>Santa Cruz Cabralia</title>
+<cur>BRXX0734</cur>
+<for>Santa Cruz Cabralia</for>
+</item>
+
+<item>
+<title>Santa Cruz do Sul</title>
+<cur>BRXX0308</cur>
+<for>Santa Cruz do Sul</for>
+</item>
+
+<item>
+<title>Santa Isabel</title>
+<cur>BRXX0214</cur>
+<for>Santa Isabel</for>
+</item>
+
+<item>
+<title>Santa Leopoldina</title>
+<cur>BRXX0665</cur>
+<for>Santa Leopoldina</for>
+</item>
+
+<item>
+<title>Santa Luzia</title>
+<cur>BRXX0666</cur>
+<for>Santa Luzia</for>
+</item>
+
+<item>
+<title>Santa Maria</title>
+<cur>BRXX0215</cur>
+<for>Santa Maria</for>
+</item>
+
+<item>
+<title>Santa Marta</title>
+<cur>BRXX0327</cur>
+<for>Santa Marta</for>
+</item>
+
+<item>
+<title>Santa Teresa</title>
+<cur>BRXX0729</cur>
+<for>Santa Teresa</for>
+</item>
+
+<item>
+<title>Santa Vitoria do Palmar</title>
+<cur>BRXX0719</cur>
+<for>Santa Vitoria do Palmar</for>
+</item>
+
+<item>
+<title>Santana do Livramento</title>
+<cur>BRXX0136</cur>
+<for>Santana do Livramento</for>
+</item>
+
+<item>
+<title>Santana do Parnaiba</title>
+<cur>BRXX0720</cur>
+<for>Santana do Parnaiba</for>
+</item>
+
+<item>
+<title>Santana do Piraguara</title>
+<cur>BRXX0341</cur>
+<for>Santana do Piraguara</for>
+</item>
+
+<item>
+<title>Santarem</title>
+<cur>BRXX0216</cur>
+<for>Santarem</for>
+</item>
+
+<item>
+<title>Santo Amaro da Imperatriz</title>
+<cur>BRXX3904</cur>
+<for>Santo Amaro da Imperatriz</for>
+</item>
+
+<item>
+<title>Santo Anastacio</title>
+<cur>BRXX0444</cur>
+<for>Santo Anastacio</for>
+</item>
+
+<item>
+<title>Santo Andre</title>
+<cur>BRXX0217</cur>
+<for>Santo Andre</for>
+</item>
+
+<item>
+<title>Santo Antonio da Platina</title>
+<cur>BRXX0462</cur>
+<for>Santo Antonio da Platina</for>
+</item>
+
+<item>
+<title>Santo Antonio de Padua</title>
+<cur>BRXX0437</cur>
+<for>Santo Antonio de Padua</for>
+</item>
+
+<item>
+<title>Santos</title>
+<cur>BRXX3386</cur>
+<for>Santos</for>
+</item>
+
+<item>
+<title>Santos Dumont</title>
+<cur>BRXX0219</cur>
+<for>Santos Dumont</for>
+</item>
+
+<item>
+<title>Sao Bernardo do Campo</title>
+<cur>BRXX0220</cur>
+<for>Sao Bernardo do Campo</for>
+</item>
+
+<item>
+<title>Sao Caetano</title>
+<cur>BRXX0221</cur>
+<for>Sao Caetano</for>
+</item>
+
+<item>
+<title>Sao Caetano de Odivelas</title>
+<cur>BRXX0438</cur>
+<for>Sao Caetano de Odivelas</for>
+</item>
+
+<item>
+<title>Sao Carlos</title>
+<cur>BRXX0222</cur>
+<for>Sao Carlos</for>
+</item>
+
+<item>
+<title>Sao Felix do Xingu</title>
+<cur>BRXX0223</cur>
+<for>Sao Felix do Xingu</for>
+</item>
+
+<item>
+<title>Sao Fidelis</title>
+<cur>BRXX0445</cur>
+<for>Sao Fidelis</for>
+</item>
+
+<item>
+<title>Sao Francisco</title>
+<cur>BRXX0446</cur>
+<for>Sao Francisco</for>
+</item>
+
+<item>
+<title>Sao Gabriel da Cachoeira</title>
+<cur>BRXX0224</cur>
+<for>Sao Gabriel da Cachoeira</for>
+</item>
+
+<item>
+<title>Sao Gabriel da Palha</title>
+<cur>BRXX0721</cur>
+<for>Sao Gabriel da Palha</for>
+</item>
+
+<item>
+<title>Sao Goncalo</title>
+<cur>BRXX0447</cur>
+<for>Sao Goncalo</for>
+</item>
+
+<item>
+<title>Sao Joao da Barra</title>
+<cur>BRXX0448</cur>
+<for>Sao Joao da Barra</for>
+</item>
+
+<item>
+<title>Sao Joao da Boa Vista</title>
+<cur>BRXX0441</cur>
+<for>Sao Joao da Boa Vista</for>
+</item>
+
+<item>
+<title>Sao Joao da Ponte</title>
+<cur>BRXX0449</cur>
+<for>Sao Joao da Ponte</for>
+</item>
+
+<item>
+<title>Sao Joao de Barra</title>
+<cur>BRXX0225</cur>
+<for>Sao Joao de Barra</for>
+</item>
+
+<item>
+<title>Sao Joao de Meriti</title>
+<cur>BRXX0722</cur>
+<for>Sao Joao de Meriti</for>
+</item>
+
+<item>
+<title>Sao Joao del Rei</title>
+<cur>BRXX0309</cur>
+<for>Sao Joao del Rei</for>
+</item>
+
+<item>
+<title>Sao Joaquim</title>
+<cur>BRXX0226</cur>
+<for>Sao Joaquim</for>
+</item>
+
+<item>
+<title>Sao Joaquim da Barra</title>
+<cur>BRXX0450</cur>
+<for>Sao Joaquim da Barra</for>
+</item>
+
+<item>
+<title>Sao Jose Dos Campos</title>
+<cur>BRXX0228</cur>
+<for>Sao Jose Dos Campos</for>
+</item>
+
+<item>
+<title>Sao Jose do Rio Pardo</title>
+<cur>BRXX0440</cur>
+<for>Sao Jose do Rio Pardo</for>
+</item>
+
+<item>
+<title>Sao Jose do Rio Preto</title>
+<cur>BRXX0227</cur>
+<for>Sao Jose do Rio Preto</for>
+</item>
+
+<item>
+<title>Sao Jose dos Pinhais</title>
+<cur>BRXX0229</cur>
+<for>Sao Jose dos Pinhais</for>
+</item>
+
+<item>
+<title>Sao Leopoldo</title>
+<cur>BRXX0230</cur>
+<for>Sao Leopoldo</for>
+</item>
+
+<item>
+<title>Sao Lourenco</title>
+<cur>BRXX3905</cur>
+<for>Sao Lourenco</for>
+</item>
+
+<item>
+<title>Sao Lourenco da Serra</title>
+<cur>BRXX0723</cur>
+<for>Sao Lourenco da Serra</for>
+</item>
+
+<item>
+<title>Sao Luis</title>
+<cur>BRXX0231</cur>
+<for>Sao Luis</for>
+</item>
+
+<item>
+<title>Sao Luis do Paraitinga</title>
+<cur>BRXX0451</cur>
+<for>Sao Luis do Paraitinga</for>
+</item>
+
+<item>
+<title>Sao Luiz Gonzaga</title>
+<cur>BRXX0439</cur>
+<for>Sao Luiz Gonzaga</for>
+</item>
+
+<item>
+<title>Sao Mateus</title>
+<cur>BRXX0310</cur>
+<for>Sao Mateus</for>
+</item>
+
+<item>
+<title>Sao Miguel Arcanjo</title>
+<cur>BRXX0452</cur>
+<for>Sao Miguel Arcanjo</for>
+</item>
+
+<item>
+<title>Sao Paulo</title>
+<cur>BRXX0232</cur>
+<for>Sao Paulo</for>
+</item>
+
+<item>
+<title>Sao Pedro da Aldeia</title>
+<cur>BRXX0453</cur>
+<for>Sao Pedro da Aldeia</for>
+</item>
+
+<item>
+<title>Sao Romao</title>
+<cur>BRXX0454</cur>
+<for>Sao Romao</for>
+</item>
+
+<item>
+<title>Sao Roque</title>
+<cur>BRXX0455</cur>
+<for>Sao Roque</for>
+</item>
+
+<item>
+<title>Sao Roque</title>
+<cur>BRXX0344</cur>
+<for>Sao Roque</for>
+</item>
+
+<item>
+<title>Sao Sebastiao</title>
+<cur>BRXX0311</cur>
+<for>Sao Sebastiao</for>
+</item>
+
+<item>
+<title>Sao Simao</title>
+<cur>BRXX0456</cur>
+<for>Sao Simao</for>
+</item>
+
+<item>
+<title>Sao Vicente</title>
+<cur>BRXX0233</cur>
+<for>Sao Vicente</for>
+</item>
+
+<item>
+<title>Saquarema</title>
+<cur>BRXX0667</cur>
+<for>Saquarema</for>
+</item>
+
+<item>
+<title>Sarapui</title>
+<cur>BRXX0457</cur>
+<for>Sarapui</for>
+</item>
+
+<item>
+<title>Senador Jose Porfirio</title>
+<cur>BRXX0458</cur>
+<for>Senador Jose Porfirio</for>
+</item>
+
+<item>
+<title>Senhor do Bonfim</title>
+<cur>BRXX0461</cur>
+<for>Senhor do Bonfim</for>
+</item>
+
+<item>
+<title>Serra</title>
+<cur>BRXX0234</cur>
+<for>Serra</for>
+</item>
+
+<item>
+<title>Serra Negra</title>
+<cur>BRXX0668</cur>
+<for>Serra Negra</for>
+</item>
+
+<item>
+<title>Serra da Bocamna</title>
+<cur>BRXX3906</cur>
+<for>Serra da Bocamna</for>
+</item>
+
+<item>
+<title>Serra da Canastra</title>
+<cur>BRXX3907</cur>
+<for>Serra da Canastra</for>
+</item>
+
+<item>
+<title>Serra da Mantiqueira</title>
+<cur>BRXX3908</cur>
+<for>Serra da Mantiqueira</for>
+</item>
+
+<item>
+<title>Serra dos Orgaos Teresopo</title>
+<cur>BRXX3909</cur>
+<for>Serra dos Orgaos Teresopo</for>
+</item>
+
+<item>
+<title>Sertaozinho</title>
+<cur>BRXX0459</cur>
+<for>Sertaozinho</for>
+</item>
+
+<item>
+<title>Sete Lagoas</title>
+<cur>BRXX0235</cur>
+<for>Sete Lagoas</for>
+</item>
+
+<item>
+<title>Silvianopolis</title>
+<cur>BRXX0460</cur>
+<for>Silvianopolis</for>
+</item>
+
+<item>
+<title>Sinop</title>
+<cur>BRXX0236</cur>
+<for>Sinop</for>
+</item>
+
+<item>
+<title>Sobral</title>
+<cur>BRXX0312</cur>
+<for>Sobral</for>
+</item>
+
+<item>
+<title>Sorocaba</title>
+<cur>BRXX0237</cur>
+<for>Sorocaba</for>
+</item>
+
+<item>
+<title>Soure</title>
+<cur>BRXX0669</cur>
+<for>Soure</for>
+</item>
+
+<item>
+<title>Sumare</title>
+<cur>BRXX0313</cur>
+<for>Sumare</for>
+</item>
+
+<item>
+<title>Suzano</title>
+<cur>BRXX0670</cur>
+<for>Suzano</for>
+</item>
+</channel></rss>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="$[NET3POE_WIRED_INTERFACE]" >
+				<submenu dialog="InputIdPwd" type="$[NET3POE_WIRED_INTERFACE]" >
+					<next dialog="NetworkConnect" type="$[NET3POE_WIRED_INTERFACE]" />
+				</submenu>
+		</item>
+		<item label="$[NET3POE_WIFI_INTERFACE]" >
+				<submenu dialog="InputIdPwd" type="$[NET3POE_WIFI_INTERFACE]" >	
+					<next dialog="NetworkConnect" type="$[NET3POE_WIFI_INTERFACE]" />
+				</submenu>
+		</item>
+</menu>

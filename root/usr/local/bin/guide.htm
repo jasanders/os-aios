@@ -1,0 +1,266 @@
+<html>
+<head>
+<style>
+h1
+{
+	color:cyan;
+	font-size:50px;
+}
+img
+{
+border:10;
+width:200;
+height:120;
+}
+body {
+background-attachment:fixed;
+background-color:#080c19;
+background-image:url(./home_menu/image/HomeMenu_BG.fsp);
+background-position:center;
+background-repeat:no-repeat;
+}
+</style>
+<script> 
+var index = -1; 
+var index_prev = -1;
+var length = 6 ;
+var row = 2 ;
+var tableId = 'tb'; 
+var selectedColor = "#40FFFF" 
+var backgroundColor = "#080c19" 
+var timer;
+var timer_cnt = 0;
+var bg_val = 0;
+function timer_start()
+{
+	
+	switch(timer_cnt)
+	{
+	case 0:
+		bg_val = "#001111";
+		timer_cnt = 5;
+		break;
+	case 1:
+		bg_val = "#003333";
+		timer_cnt--;
+		break;
+	case 2:
+		bg_val = "#00ffff";
+		timer_cnt--;
+		break;
+	case 3:
+		bg_val = "#00FFFF";
+		timer_cnt--;
+		break;
+	case 4:
+		bg_val = "#00FFFF";
+		timer_cnt--;
+		break;
+	case 5:
+		bg_val = "#00FFFF";
+		timer_cnt--;
+		break;	
+	case 6:
+		bg_val = "#70FFFF";
+		timer_cnt--;
+		break;
+	case 7:
+		bg_val = "#90FFFF";
+		timer_cnt--;
+		break;
+	case 8:
+		bg_val = "#c0FFFF";
+		timer_cnt--;
+		break;		
+	case 9:
+		bg_val = "#e0FFFF";
+		timer_cnt--;
+		break;
+	case 10:
+		bg_val = "#FFFFFF";
+		timer_cnt--;
+		break;		
+	}			
+//	alert(bg_val);
+	document.getElementById('td'+index).bgColor = bg_val;
+	timer = setTimeout("timer_start()", 200);
+	
+}
+function init()
+{
+	index = 0;	
+	index_prev = 0;
+//	alert(index) ;
+	draw();
+	timer_start();
+}
+function draw()
+{
+//	alert(index);
+/*
+	document.getElementById(tableId).rows(0+1).cells(0+1).bgColor=backgroundColor ; 
+	document.getElementById(tableId).rows(0+1).cells(1+1).bgColor=backgroundColor ; 
+	document.getElementById(tableId).rows(0+1).cells(2+1).bgColor=backgroundColor ; 
+	document.getElementById(tableId).rows(1+1).cells(0+1).bgColor=backgroundColor ; 
+	document.getElementById(tableId).rows(1+1).cells(1+1).bgColor=backgroundColor ; 
+	document.getElementById(tableId).rows(1+1).cells(2+1).bgColor=backgroundColor ; 
+*/	
+	for(var i=0; i<row ; i++)
+	{
+		for(var j=0; j<3 ; j++)
+		{
+			document.getElementById(tableId).rows(i).cells(j).bgColor=backgroundColor ; 
+		}
+	}
+	switch(index)
+	{
+		case 0 :
+		default:
+			document.getElementById('pic0').focus();
+			document.getElementById(tableId).rows(0).cells(0).bgColor=selectedColor ;
+		break ;
+		case 1 :
+			document.getElementById('pic1').focus();
+			document.getElementById(tableId).rows(0).cells(1).bgColor=selectedColor ;
+			break ;		
+		case 2 :
+			document.getElementById('pic2').focus();
+			document.getElementById(tableId).rows(0).cells(2).bgColor=selectedColor ;
+		break ;
+		case 3 :
+			document.getElementById('pic3').focus();
+			document.getElementById(tableId).rows(1).cells(0).bgColor=selectedColor ;
+		break ;
+		case 4 :
+			document.getElementById('pic4').focus();
+			document.getElementById(tableId).rows(1).cells(1).bgColor=selectedColor ;
+		break ;
+		case 5 :
+			document.getElementById('pic5').focus();
+			document.getElementById(tableId).rows(1).cells(2).bgColor=selectedColor ;
+		break ;		
+	}
+	
+	
+}
+
+
+function whichButton(event)
+{ 	
+	if (event.keyCode == 38)   ///  up 
+	{ 	
+		//alert(111);
+		if( index >= 0 &&  index <= (length/row -1 ))
+			index  = index + length/row ;
+		else
+			index = index - length/row ;
+		//alert(index );	
+	} 
+
+	else if ( event.keyCode== 40)   //down 
+	{ 
+		//alert(2222);		
+		if( index >= 0 &&  index <= (length/row -1 ))
+			index  = index + length/row ;
+		else
+			index = index - length/row ;	
+		//alert(index );
+	}
+	
+	else if (event.keyCode == 37)	// left 
+	{//¡û
+		//alert(3333);
+		if(index==0)
+			index = length -1 ;
+		else 
+			index = index -1 ;
+		//alert(index );	
+	}
+	
+	else if (event.keyCode == 39)	  // right 
+	{//¡ú
+		//alert(4444);
+		//alert(index) ;
+		//alert(length);	
+		if(Number(index)==Number(Number(length) -1 ))
+		{
+			//alert(5555);
+			index = 0  ;
+		}
+		else
+		{
+			//alert(66666);
+			index = index + 1 ;
+		}
+		//alert(index );
+	}	
+	draw() ;
+	timer_cnt = 5;		
+} 
+</script> 
+
+</head>
+
+<body onkeydown="whichButton(event)" onload="init()">
+
+<span style='mso-spacerun:yes'>&nbsp;</span> 
+<span style='mso-spacerun:yes'>&nbsp;</span>
+
+<table id="tb" width="80%" border="0" cellspacing="30" cellpadding="60" align="center">
+	<!--tr>
+		<td colSpan="3" height="200">
+		</td>
+	</tr-->
+<tr>
+	<!--td rowSpan="2" width="10">
+	</td-->
+	<td id="td0"> 
+<a id = "pic0" href="http://api.video.sina.com.cn/interface/" align="middle" >
+<img src="http://api.video.sina.com.cn/lg/images/logo.png" 
+alt="sina" title="sina" id="logo_0" align="middle">
+</a>	
+	</td>
+
+	<td id="td1"> 
+<a id = "pic1" href="http://www.facebook.com/mobile/" >
+<img src="http://t1.gstatic.com/images?q=tbn:b_65DXkKSdvnIM:/url?source=imgres&ct=tbn&q=http://images.thecarconnection.com/sml/facebook-logo_100182759_s.png&sa=X&ei=AXxOTIbsMYOwvgP1oLkP&ved=0CAUQ8wc&usg=AFQjCNFJvIa-U6W6KsDuXKNRwqlWkU66Rg" 
+alt="facebook mobile" title="facebook mobile" id="logo_1">
+</a>	
+	</td>
+
+	<td id="td2"> 
+<a id = "pic2" href="http://www.netflix.com/" >
+<img src="http://cdn-0.nflximg.com/us/layout/signup/950/header/netflix_logo.gif" 
+alt="netflix" title="netflix" id="logo_2">
+</a>
+	</td>	
+</tr>
+
+<tr>
+	<td id="td3">	
+<a id = "pic3" href="http://www.google.com/" >
+<img src="http://www.google.com/intl/en_ALL/images/srpr/logo1w.png"
+alt="Google" title="Google" id="logo_3">
+</a>	
+	</td>		
+
+	<td id="td4">	
+<a id = "pic4" href="http://m.mlb.com/" >
+<img src="http://raphaellowe.com/portal/wp-content/uploads/2008/10/1986.gif"  
+alt="yahoo" title="yahoo" id="logo_4">
+</a>	
+	</td>	
+	
+	<td id="td5">	
+<a id = "pic5" href="http://m.discovery.com/" >
+<img src="http://t3.gstatic.com/images?q=tbn:RFjrknbkqPtw1M:http://photocdn.sohu.com/20060715/Img244267581.jpg" 
+alt="" title="ni" id="logo_5">
+	</td>	
+
+	
+</tr>
+</table>
+
+
+</body>
+</html>

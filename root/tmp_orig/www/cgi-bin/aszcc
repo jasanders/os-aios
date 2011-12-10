@@ -1,0 +1,13 @@
+#!/bin/sh
+# http://127.0.0.1/cgi-bin/aszcc?url,mime-type
+# 範本
+# http://127.0.0.1/cgi-bin/aszcc?mms://218.94.122.203/njtvsh,video/x-ms-wmv
+URL=`echo "$QUERY_STRING" | sed 's/,.*//g'`
+MIME=`echo "$QUERY_STRING" | sed 's/.*,//g'`
+echo "Content-type: ${MIME}"
+echo
+if [ "$MIME" = audio/mpeg ] || [ "$MIME" = audio/x-ms-wma ]; then
+        /tmp_orig/www/cgi-bin/msdl -b 65536 -q -o - $URL
+elif [ "$MIME" = video/x-ms-wmv ]; then
+        /tmp_orig/www/cgi-bin/msdl -b 260000 -q -o - $URL
+fi

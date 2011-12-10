@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>水泥類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>1101 台泥</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1101.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1101" />
+        </item>        
+        <item>
+            <title>1102 亞泥</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1102.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1102" />
+        </item>
+        <item>
+            <title>1103 嘉泥</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1103.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1103" />
+        </item>
+        <item>
+            <title>1104 環泥</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1104.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1104" />
+        </item>
+        <item>
+            <title>1108 幸福</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1108.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1108" />
+        </item>
+        <item>
+            <title>1109 信大</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1109.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1109" />
+        </item>
+        <item>
+            <title>1110 東泥</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1110.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1110" />
+        </item>
+    </channel>
+</rss>
+        

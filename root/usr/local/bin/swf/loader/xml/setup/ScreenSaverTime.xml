@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[OFF]"/>
+		<item label="$[2_MIN]"/>
+		<item label="$[5_MIN]"/>
+		<item label="$[10_MIN]"/>		
+</menu>

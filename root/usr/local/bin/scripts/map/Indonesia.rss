@@ -1,0 +1,504 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Indonesia</title>
+<link>./scripts/map/Indonesia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Amahai</title>
+<cur>IDXX0001</cur>
+<for>Amahai</for>
+</item>
+
+
+<item>
+<title>Ambon</title>
+<cur>IDXX0002</cur>
+<for>Ambon</for>
+</item>
+
+<item>
+<title>Baa</title>
+<cur>IDXX0004</cur>
+<for>Baa</for>
+</item>
+
+
+<item>
+<title>Bali</title>
+<cur>IDXX0005</cur>
+<for>Bali</for>
+</item>
+
+
+<item>
+<title>Balikpapan</title>
+<cur>IDXX0006</cur>
+<for>Balikpapan</for>
+</item>
+
+
+<item>
+<title>Bandung</title>
+<cur>IDXX0007</cur>
+<for>Bandung</for>
+</item>
+
+
+<item>
+<title>Bangil</title>
+<cur>IDXX0008</cur>
+<for>Bangil</for>
+</item>
+
+
+<item>
+<title>Banjarmasin</title>
+<cur>IDXX0009</cur>
+<for>Banjarmasin</for>
+</item>
+
+
+<item>
+<title>Banyuwangi</title>
+<cur>IDXX0010</cur>
+<for>Banyuwangi</for>
+</item>
+
+
+<item>
+<title>Batang</title>
+<cur>IDXX0011</cur>
+<for>Batang</for>
+</item>
+
+
+<item>
+<title>Bengkulu</title>
+<cur>IDXX0012</cur>
+<for>Bengkulu</for>
+</item>
+
+
+<item>
+<title>Bima</title>
+<cur>IDXX0082</cur>
+<for>Bima</for>
+</item>
+
+
+<item>
+<title>Binjai</title>
+<cur>IDXX0013</cur>
+<for>Binjai</for>
+</item>
+
+
+<item>
+<title>Bogor</title>
+<cur>IDXX0014</cur>
+<for>Bogor</for>
+</item>
+
+
+<item>
+<title>Cikampek</title>
+<cur>IDXX0016</cur>
+<for>Cikampek</for>
+</item>
+
+
+<item>
+<title>Cilacap</title>
+<cur>IDXX0072</cur>
+<for>Cilacap</for>
+</item>
+
+
+<item>
+<title>Cirebon</title>
+<cur>IDXX0017</cur>
+<for>Cirebon</for>
+</item>
+
+
+<item>
+<title>Delitua</title>
+<cur>IDXX0018</cur>
+<for>Delitua</for>
+</item>
+
+
+<item>
+<title>Denpasar</title>
+<cur>IDXX0019</cur>
+<for>Denpasar</for>
+</item>
+
+
+<item>
+<title>Gresik</title>
+<cur>IDXX0020</cur>
+<for>Gresik</for>
+</item>
+
+
+<item>
+<title>Indramayu</title>
+<cur>IDXX0021</cur>
+<for>Indramayu</for>
+</item>
+
+
+<item>
+<title>Jakarta</title>
+<cur>IDXX0022</cur>
+<for>Jakarta</for>
+</item>
+
+
+<item>
+<title>Kalianget Madura Island</title>
+<cur>IDXX0075</cur>
+<for>Kalianget%20Madura%20Island</for>
+</item>
+
+
+<item>
+<title>Klaten</title>
+<cur>IDXX0026</cur>
+<for>Klaten</for>
+</item>
+
+
+<item>
+<title>Kotabaru</title>
+<cur>IDXX0067</cur>
+<for>Kotabaru</for>
+</item>
+
+
+<item>
+<title>Kupang</title>
+<cur>IDXX0028</cur>
+<for>Kupang</for>
+</item>
+
+
+<item>
+<title>Lais</title>
+<cur>IDXX0029</cur>
+<for>Lais</for>
+</item>
+
+
+<item>
+<title>Langsa</title>
+<cur>IDXX0030</cur>
+<for>Langsa</for>
+</item>
+
+
+<item>
+<title>Manado</title>
+<cur>IDXX0031</cur>
+<for>Manado</for>
+</item>
+
+
+<item>
+<title>Mataram</title>
+<cur>IDXX0032</cur>
+<for>Mataram</for>
+</item>
+
+
+<item>
+<title>Medan</title>
+<cur>IDXX0033</cur>
+<for>Medan</for>
+</item>
+
+
+<item>
+<title>Nabire</title>
+<cur>IDXX0087</cur>
+<for>Nabire</for>
+</item>
+
+
+<item>
+<title>Natal</title>
+<cur>IDXX0034</cur>
+<for>Natal</for>
+</item>
+
+
+<item>
+<title>Padang</title>
+<cur>IDXX0035</cur>
+<for>Padang</for>
+</item>
+
+
+<item>
+<title>Palembang</title>
+<cur>IDXX0036</cur>
+<for>Palembang</for>
+</item>
+
+
+<item>
+<title>Pamekasan</title>
+<cur>IDXX0037</cur>
+<for>Pamekasan</for>
+</item>
+
+
+<item>
+<title>Pangkalpinang</title>
+<cur>IDXX0062</cur>
+<for>Pangkalpinang</for>
+</item>
+
+
+<item>
+<title>Pasuruan</title>
+<cur>IDXX0038</cur>
+<for>Pasuruan</for>
+</item>
+
+
+<item>
+<title>Pekalongan</title>
+<cur>IDXX0040</cur>
+<for>Pekalongan</for>
+</item>
+
+
+<item>
+<title>Piru</title>
+<cur>IDXX0041</cur>
+<for>Piru</for>
+</item>
+
+
+<item>
+<title>Probolinggo</title>
+<cur>IDXX0042</cur>
+<for>Probolinggo</for>
+</item>
+
+
+<item>
+<title>Purwakarta</title>
+<cur>IDXX0043</cur>
+<for>Purwakarta</for>
+</item>
+
+
+<item>
+<title>Rangkasbitung</title>
+<cur>IDXX0044</cur>
+<for>Rangkasbitung</for>
+</item>
+
+
+<item>
+<title>Samarinda</title>
+<cur>IDXX0045</cur>
+<for>Samarinda</for>
+</item>
+
+
+<item>
+<title>Sangkapura Bawean Island</title>
+<cur>IDXX0073</cur>
+<for>Sangkapura%20Bawean%20Island</for>
+</item>
+
+
+<item>
+<title>Semarang</title>
+<cur>IDXX0046</cur>
+<for>Semarang</for>
+</item>
+
+
+<item>
+<title>Serang</title>
+<cur>IDXX0046</cur>
+<for>Serang</for>
+</item>
+
+
+<item>
+<title>Singaraja</title>
+<cur>IDXX0048</cur>
+<for>Singaraja</for>
+</item>
+
+
+<item>
+<title>Sumbawa Besar</title>
+<cur>IDXX0081</cur>
+<for>Sumbawa%20Besar</for>
+</item>
+
+
+<item>
+<title>Surabaya</title>
+<cur>IDXX0052</cur>
+<for>Surabaya</for>
+</item>
+
+
+<item>
+<title>Tanjungbalai</title>
+<cur>IDXX0053</cur>
+<for>Tanjungbalai</for>
+</item>
+
+
+<item>
+<title>Tanjungkarang-Telukbetung</title>
+<cur>IDXX0054</cur>
+<for>Tanjungkarang%2dTelukbetung</for>
+</item>
+
+
+<item>
+<title>Tanjungpinang</title>
+<cur>IDXX0055</cur>
+<for>Tanjungpinang</for>
+</item>
+
+
+<item>
+<title>Tarempa</title>
+<cur>IDXX0060</cur>
+<for>Tarempa</for>
+</item>
+
+
+<item>
+<title>Tebingtinggi</title>
+<cur>IDXX0056</cur>
+<for>Tebingtinggi</for>
+</item>
+
+
+<item>
+<title>Tegal</title>
+<cur>IDXX0057</cur>
+<for>Tegal</for>
+</item>
+
+
+<item>
+<title>Yogyakarta</title>
+<cur>IDXX0058</cur>
+<for>Yogyakarta</for>
+</item>
+
+
+
+</channel></rss>

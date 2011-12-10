@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="SELECT">
+				<submenu dialog="DtvChannelEditDlg" type="$[CHANNEL_SET]" />
+		</item>		
+		<item label="FAILED">
+				<submenu dialog="popupCheckDlg" type="$[CHANNEL_SET]" content="{ 'title':'$[CHANNEL_SET]','description':'No channel available!', 'buttons': ['$[OK]']}" />		
+		</item>				
+</menu>

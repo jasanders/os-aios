@@ -1,0 +1,1224 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <onEnter>
+      print("onEnter>>>>>>>>>>>-----Mediafly_ContentSource_ShowEpisodes.rss");
+
+      episodeLink = "rss_file://./IMS_Modules/Mediafly/mediafly_contentsource_episode.rss";
+      print("episodeLink: " , episodeLink);
+      
+      curChannel = "$[Channel - ]" + " " + getStringArrayAt(defaultChannelTitleArray, 0 );
+       if(getPageInfo("itemCount") &lt; 1)
+      {
+	      showTitle = "$[No Episode Found]";
+	    
+      }
+  </onEnter>
+  
+    <onExit>
+		storagePathMediaflyShowOrChannel = getStoragePath("tmp");
+	 	storagePathMediaflyShowOrChannel = storagePathMediaflyShowOrChannel +"mediaflyInWhich.dat";
+	 	writeStringToFile(storagePathMediaflyShowOrChannel, "Channel");
+  </onExit>
+  
+  <script>
+
+    menuArray = null;
+    menuArray  = null;
+    menuSize = 0;
+
+    communityRatingArray = null;
+    userRatingArray = null;
+
+    supportsFavorites = null;
+    supportsRating = null;
+
+    /* read saved token - tp*/
+    fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+    tokenArray = readStringFromFile(fileName);
+    valtoken = getStringArrayAt(tokenArray, 0);
+    tokenId = getStringArrayAt(tokenArray, 1);
+    tokenTime = getStringArrayAt(tokenArray, 2);
+    print("tokenTime: ",tokenTime);
+
+      keyFilePath = getStoragePath("key") + "__mdfly_key.dat";
+  decryptionKeyArray = decFile(keyFilePath);
+   
+    sharedKey = getStringArrayAt(decryptionKeyArray,0);
+    app_id =getStringArrayAt(decryptionKeyArray,1);
+  
+    print("KeyArray =",decryptionKeyArray);
+    print("SharedKey= ", sharedKey);
+    print("app_id= ",app_id);
+
+  if(valtoken == null || tokenTime == null || (getSystemTime() - 3300) &gt; tokenTime)
+  {
+	    if(tokenArray != null)
+	    {
+	       /* delete all elements - tp */
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	    }
+	      url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Authentication.GetToken?app_id="+app_id;
+	      url = url + "&amp;thirdPartyUserID=" + VtunergetMACaddress();
+	      print("url", url);
+	      print("3");
+	      file = loadXMLFile(url);
+	      print("4");
+
+	      if (file == null)
+	      {
+		        print("failed to load ", url);
+		        titleString = "Sign in failed!";
+		        redrawDisplay();
+	      }
+	      else
+	      {
+		        valtoken  = getXMLText("response","token");
+		        tokenId   = getXMLAttribute("response","token","id");
+		        print("token = ", valtoken);
+		        print("token id = ", tokenId);
+
+		        if ( valtoken != null )
+		        {
+		          tokenArray = pushBackStringArray(tokenArray, valtoken);
+		          tokenArray = pushBackStringArray(tokenArray, tokenId);
+		          tokenArray = pushBackStringArray(tokenArray, getSystemTime());
+
+		          storagePathMediaflyToken = getStoragePath("tmp")  + "mediaflyToken.dat";
+		          writeStringToFile(storagePathMediaflyToken, tokenArray);
+		          print("token", tokenArray);
+		          print("write to file ", storagePathMediaflyToken);
+		        }
+	      }
+    }
+
+    current_contentsource_file = getStoragePath("key")+"mdfly_tmpContentSource.dat";
+    infoArray = readStringFromFile(current_contentsource_file);
+    contentSourceTitle = getStringArrayAt(infoArray,0);
+    contentSourceSlug = getStringArrayAt(infoArray,1);
+    linkedUserName = getStringArrayAt(infoArray,2);
+    contentSourceLogoUrl = "http://csassets.mediafly.com/" +contentSourceSlug+"/appThumb-114x114.png";
+    print("contentSourceLogoUrl=",contentSourceLogoUrl);
+    /* start read showSlug */
+    fileName = getStoragePath("tmp") + "mediaflyshowSlug.dat";;
+    showSlug = readStringFromFile(fileName);
+    print("showSlug: ",showSlug);
+
+
+    includeAttributes = "title,description,imageUrl,channel,published,url,mediaType";
+    if (linkedUserName!=null)
+    {
+
+    	md5_string = MD5(sharedKey,tokenId,"20",showSlug,contentSourceSlug,linkedUserName);
+	url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.GetShowInfo?app_id="+app_id+"&amp;token=";
+        url = url + valtoken;
+        url = url + "&amp;showSlug=" + showSlug;
+        url = url + "&amp;recentEpisodes=20";
+        url = url +"&amp;source="+contentSourceSlug;
+        url = url + "&amp;user_context="+linkedUserName;
+        url = url + "&amp;call_sig=";
+	url = url + md5_string;
+    }
+    else
+    {
+
+    	md5_string = MD5(sharedKey,tokenId,"20",showSlug,contentSourceSlug,"app_context_system");
+	url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.GetShowInfo?app_id="+app_id+"&amp;token=";
+        url = url + valtoken;
+        url = url + "&amp;showSlug=" + showSlug;
+        url = url + "&amp;recentEpisodes=20";
+        url = url +"&amp;source="+contentSourceSlug;
+        url = url + "&amp;user_context=app_context_system";
+        url = url + "&amp;call_sig=";
+	url = url + md5_string;
+    }
+    print("url= ",url);
+    
+    file = loadXMLFile(url);
+    
+    if (file == null)
+    {
+	    itemSize = 0;
+	    print("Load URL fail ", url);
+    }
+    status = getXMLAttribute("response", "status");
+    
+    if(status == "fail")
+    {
+    	print("error: ", getXMLAttribute("response", "err", "message"));
+    }
+    else
+    {
+	    itemSize = getXMLElementCount("response","showResponse","show","episode");
+	    print("Item Size = ", itemSize);
+	    showTitle = getXMLAttribute("response", "showResponse","show","title");
+	     favoriteType = getXMLAttribute("response", "showResponse","show","favoriteType");
+	     communityRating = getXMLAttribute("response", "showResponse","show","averageRating");
+	     totalRatings = getXMLAttribute("response", "showResponse","show","totalRatings");
+	     userRating = getXMLAttribute("response", "showResponse","show","userRating");
+	     
+	    print("The Show Title is ",showTitle);
+	    print("Item Size = ", itemSize);
+	    print("The favoriteType is ",favoriteType);
+	    print("The communityRating is ",communityRating);
+	    print("totalRatings is ",totalRatings);
+	    print("userRating is ", userRating);
+    }
+    
+     if (itemSize &gt; 0) 
+	    {
+	        count=0;
+	        itemCnt = 0;
+	        while(1)
+	        {
+		          title         = getXMLAttribute("response", "showResponse","show","episode", count, "title");
+		          slug          = getXMLAttribute("response", "showResponse","show","episode",  count, "slug");
+		          description   = getXMLAttribute("response", "showResponse","show","episode",  count, "description");
+		          imageUrl      = getXMLAttribute("response", "showResponse","show","episode", count, "imageUrl");
+		          episodeUrl      = getXMLAttribute("response", "showResponse","show","episode", count, "url");
+		          mediaType     = getXMLAttribute("response", "showResponse","show","episode", count, "mediaType");
+		          published     = getXMLAttribute("response", "showResponse","show","episode", count, "published");
+		         
+
+		          if(title != null &amp;&amp; title != "" &amp;&amp; episodeUrl != null &amp;&amp; episodeUrl != "")
+		          {
+		            titleArray  = pushBackStringArray(titleArray, title);
+		            slugArray     = pushBackStringArray(slugArray, slug);
+		            imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+		            episodeUrlArray = pushBackStringArray(episodeUrlArray, episodeUrl);
+		            descriptionArray   = pushBackStringArray(descriptionArray, description);
+		            mediaTypeArray   = pushBackStringArray(mediaTypeArray, mediaType);
+		            publishedArray   = pushBackStringArray(publishedArray, published);
+
+		            itemCnt += 1;
+		          }
+		          count += 1;
+		          if (count &gt; itemSize)
+		          {
+		              print("itemCnt2: ", itemCnt);
+		              break;
+		          }
+	        } 
+    }
+
+
+    if (communityRating==null&amp;&amp;totalRatings==null&amp;&amp;userRating==null)
+   {
+   	supportsRating = "no";
+   }
+   else
+   {
+   	supportsRating = "yes";
+   	menuArray  = pushBackStringArray(menuArray, "$[Rate Show]");
+   	menuSize = menuSize +1 ;
+   }	   
+
+      if (favoriteType==null)
+    {
+    	supportsFavorites = "no";
+    	
+    }
+    else
+    {
+    	supportsFavorites = "yes";
+    }
+    
+    if (supportsFavorites =="yes")
+    {
+	    	  if (favoriteType=="None")
+	    	{
+	    		    menuArray  = pushBackStringArray(menuArray, "$[Add to Favorite]");
+			
+	   
+	    	}
+	    else
+	    	{
+	    		 menuArray  = pushBackStringArray(menuArray, "$[Remove Favorite]");
+	    	}
+	    	menuSize = menuSize +1 ;
+    }
+   
+   if (supportsRating=="yes")
+   {
+   		
+	   if (communityRating==NULL||communityRating==0)
+	    {
+	    	has_communityRating = "no";
+	   	communityRating = 0;
+	   	totalRatings = 0;
+	    }
+	    else
+	    {
+	    	has_communityRating = "yes";
+	    	
+		i = 5;
+		
+		tmp = communityRating;
+		
+		while (i &gt; "0")
+		{
+			if (tmp &gt; "0")
+			{
+				if (tmp &gt; "0.9")
+				{
+					communityRatingArray = pushBackStringArray(communityRatingArray,"Full");
+					tmp = tmp -1.;
+				}
+				else
+				{
+					tmp = tmp *10;
+					tmp = Integer1(tmp);
+					communityRatingArray = pushBackStringArray(communityRatingArray,tmp);
+					tmp = 0;
+				}
+				
+			}
+			else
+			{
+				communityRatingArray = pushBackStringArray(communityRatingArray,"Empty");
+			}
+			
+			i = i -1;
+		}
+		
+	    }
+	    
+	    if (userRating==NULL||userRating==0)
+	    	{
+	    		userRating = 0;
+	    		has_userRating = "no";
+	    	}
+	    else
+	    	{
+	    		has_userRating = "yes";
+			
+	    		i = 5;
+	    		tmp = userRating;
+	    		
+	    		while (i &gt; "0")
+			{
+				if (tmp &gt; "0")
+				{
+					userRatingArray = pushBackStringArray(	userRatingArray, "Full");
+					tmp = tmp -1;
+				}
+				else
+				{
+					userRatingArray = pushBackStringArray(	userRatingArray, "Empty");
+				}
+				
+				i = i -1;
+			}
+		
+	      }
+   	
+   }
+   
+
+    print("Menu Size = ",menuSize);
+    print("community Rating",communityRating);
+    print("totalRatings:",totalRatings);
+    print("userRating",userRating);
+    print("community RatingArray",communityRatingArray);
+    print("User RatingArray",userRatingArray);
+  </script>
+  <mediaDisplay name="threePartsView" selectMenuOnRight="no"
+    		showDefaultInfo="no"
+		autoSelectMenu=no
+		autoSelectItem=no
+		forceFocusOnItem=yes
+    
+		
+	        itemPerPage="4"
+	     
+       	        imageFocus=" "
+	        imageParentFocus ="null"
+	        parentFocusFontColor="255:255:0"
+  
+
+		sideLeftWidthPC= 0
+		sideRightWidthPC= 100
+		sideTopHeightPC= 0
+		sideBottomHeightPC= 0
+		
+		backgroundColor=-1:-1:-1
+		sideColorLeft=28:35:51 
+		sideColorRight=28:35:51
+		
+		headerImageXPC = 11.1
+		headerImageYPC = 8
+		headerImageWidthPC = 11
+		headerImageHightPC = 10
+		headerCapWidthPC = 0
+		headerWidthPC = 0
+
+		menuXPC = "72"
+     		menuYPC = "26.4"
+     		menuWidthPC = "31.72"
+     		menuHeightPC = "10.56"
+     		menuPerPage = "5"
+
+   	        menuImageXPC = "8"
+                menuImageYPC = "25.7"
+                menuImageWidthPC ="0"
+                menuImageHeightPC="0"
+		
+		itemImageXPC = 13.7
+		itemImageYPC = 32
+		itemImageCapYPC = 3.5
+		itemImageWidthPC = 5.58
+		itemImageHeightPC = 9.9
+		
+		itemXPC = 22
+		itemYPC = 31.5
+		itemWidthPC = 45
+		itemHeightPC =10.8
+               showHeader = "no"
+		itemBackgroundColor="-1:-1:-1"
+		itemGap = "1.8"
+
+		
+		popupXPC=8
+		popupYPC=15
+		popupWidthPC=22.3
+		popupHeightPC=5.5
+		popupFontSize=13
+		popupBorderColor=28:35:51 
+		popupForegroundColor=255:255:255
+		popupBackgroundColor=28:35:51 
+
+	       idleImageXPC=83.12
+	       idleImageYPC=89.58
+	       idleImageWidthPC=3.1
+	       idleImageHeightPC=5.5
+
+    >
+
+    <idleImage> image/POPUP_LOADING_01.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_02.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_03.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_04.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_05.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_06.fsp </idleImage>
+
+  	<backgroundDisplay  name=mediafly_channel_episodes_background>
+		<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100>
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly_bg_02-01.fsp";
+			</script>
+		</image>
+	</backgroundDisplay>
+
+	<image offsetXPC=68.59  offsetYPC= 26.11 widthPC=3.52 heightPC=74.03 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly_bg_line02.fsp";
+			</script>
+		</image>
+		
+			<!--ContentSource Logo-->
+    <image offsetXPC=6.8  offsetYPC= 2.64 widthPC=26.56 heightPC=15.69 redraw="no">
+      <script>
+   		contentSourceLogoUrl;
+      </script>
+    </image>
+
+    <menuDisplay>
+			<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes>
+			<script>
+			index1 = getQueryMenuIndex();
+			index2 = getFocusMenuIndex();
+			if (index1 == index2)
+			{
+				print(getDrawingItemState() );
+				if (getDrawingItemState() == "inactive")
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menu_focus.fsp";
+				}
+				else
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menu_inactive.fsp";
+				}
+			}
+			else
+			{
+				null;
+			}
+			</script>
+			</image>
+			<text offsetXPC=8 offsetYPC=10 widthPC=84  heightPC=80 backgroundColor=-1:-1:-1  fontSize=17 >
+			<foregroundColor>
+				<script>
+					fgcolor = "102:102:102";
+					queryIndex = getQueryMenuIndex();
+					focusIndex = getFocusMenuIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "0:148:13";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryMenuIndex();
+				str = getStringArrayAt(menuArray,index);
+				str;
+			</script>
+			</text>
+	</menuDisplay>
+	
+
+
+    <onUserInput>
+      <script>
+        currentUserInput = currentUserInput();
+        print("user input: ", currentUserInput);
+        majorContext = getPageInfo("majorContext");
+        itemFocusState = getDrawingItemState();
+        ret = "false";
+        
+	if (majorContext=="items")
+	{
+		 if(currentUserInput == "right" &amp;&amp; itemFocusState == "focus")
+		{
+			postMessage("left");
+			ret = "true";
+				      		
+		}
+		if (currentUserInput == "enter")
+	        {
+		          EntryTimes = EntryTimes + 1;
+		          focusIndex = getFocusItemIndex();
+		          print(" ************* EntryTimes = ", EntryTimes, "focusIndex:", focusIndex);
+		          print("focusIndex: ", focusIndex);
+		          episodeSlug = getStringArrayAt(slugArray, focusIndex);
+		          storagePathMediaflyEpisode = getStoragePath("tmp");
+		          storagePathMediaflyEpisode = storagePathMediaflyEpisode + "mediaflyEpisode.dat";
+		          writeStringToFile(storagePathMediaflyEpisode, episodeSlug);
+		          print("selected episode slug: ", episodeSlug);
+
+         		storagePathMediaflyShowOrChannel = getStoragePath("tmp");
+	 		storagePathMediaflyShowOrChannel = storagePathMediaflyShowOrChannel +"mediaflyInWhich.dat";
+			 writeStringToFile(storagePathMediaflyShowOrChannel, "Show");
+	        }     
+	}
+	else 
+	{
+		 if(currentUserInput == "left"&amp;&amp; itemFocusState == "inactive")
+		{
+			postMessage("right");
+			ret = "true";
+			      		
+		}
+		
+		if (getPageInfo("majorContext") == "menu" &amp;&amp; currentUserInput == "down")
+		  {
+	  		focusIndex = getFocusMenuIndex();
+	  		print("focusIndex: ", focusIndex);
+	  		menuTitle = getStringArrayAt(menuArray, Add(focusIndex,1));
+	  		if (menuTitle == null || menuTitle == "")
+	  		{
+	  			ret = "true";
+	  		}
+		  }
+		
+	}
+
+           
+        ret;
+      </script>
+    </onUserInput>
+
+
+
+      <!-- background color of short story section -->
+    <!-- display additional for current focus show on the bottom row -->
+    <!-- the short story -->
+  <text offsetXPC="18.2" offsetYPC="20" widthPC="40" heightPC="5"  fontSize="18" foregroundColor="255:255:255"
+    backgroundColor="-1:-1:-1" align="left"
+   >
+      <script>
+        showTitle;
+      </script>
+    </text>
+
+<!--
+    <text offsetXPC= "7.8"  offsetYPC= "72" widthPC="73" heightPC="2.5"  fontSize="10"
+    foregroundColor="38:22:93"
+    redraw=yes useBackgroundSurface=yes>
+      <script>
+        datePub;
+      </script>
+    </text>
+-->
+<!--
+
+    <text offsetXPC= "7.8"  offsetYPC= "74.5" widthPC="73" heightPC="11.3"  fontSize="10" lines="4"
+    foregroundColor="38:22:93"
+    redraw=yes useBackgroundSurface=yes>
+      <script>
+        getStringArrayAt(descriptionArray, curIndex );
+      </script>
+    </text>
+    
+-->
+
+    <!-- image of the story -->
+    <!--
+    <image offsetXPC= "85"  offsetYPC= "73" widthPC="8" heightPC="12" redraw="yes" >
+      <script>
+        curIndex = getFocusItemIndex();
+        if(curIndex &lt; 0)
+        {curIndex = 0;}
+        getStringArrayAt(imageUrlArray , curIndex );
+      </script>
+    </image>
+    -->
+
+      <!-- top indicator -->
+    <image offsetXPC="15.5" offsetYPC="29" widthPC="1.41" heightPC="1.94" redraw="yes" useBackgroundSurface=yes>
+      <script>
+        index = getFocusItemIndex();
+        itemCount = getPageInfo("itemCount");
+        print("itemCount", itemCount);
+        print("focusIndex", index);
+        if (itemCount &lt; 5) {
+     	"null";
+        }
+        else {
+        if (index &gt; 2) {
+        "./IMS_Modules/Mediafly/image/arrow_up.fsp";
+        }else
+        {
+       "null";
+        }
+        }
+      </script>
+    </image>
+	<!--bottom indicator-->
+    <image offsetXPC="15.5" offsetYPC="75" widthPC="1.41" heightPC="1.94" redraw="yes" useBackgroundSurface=yes>
+      <script>
+        index = getFocusItemIndex();
+        itemCount = getPageInfo("itemCount");
+        if (itemCount &lt; 5) {
+       null;
+        }
+        else {
+        if (index &gt; (itemCount-3))
+        {
+       		null;
+        }
+        else
+        {
+       		 "./IMS_Modules/Mediafly/image/arrow_down.fsp";
+        }
+        }
+      </script>
+    </image>
+
+    <!--Favorite Icon-->
+    	 <image offsetXPC= "65"  offsetYPC= "19.44" widthPC="4.69" heightPC="7.22"  backgroundColor=-1:-1:-1  redraw = yes  useBackgroundSurface=yes>
+       		 <script>
+        		if (favoriteType=="None")
+        		{
+        			favorite_image = null;
+        		}
+        		else
+        		{
+        			favorite_image =  "./IMS_Modules/Mediafly/image/mediafly_favorite.fsp";
+        		}
+        		favorite_image;
+        	</script>
+         </image>
+
+	<!-- User Rating Information-->
+	   <text offsetXPC="11.95" offsetYPC="77" widthPC="10" heightPC="10" fontSize="12"  backgroundColor="-1:-1:-1" foregroundColor="102:102:102"  
+	   	align=left>
+	      <script>
+	       	"My Rating:";
+	      </script>
+   	 </text>
+   	 
+	<image offsetXPC= "19.92"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+       		 
+       		 if (has_userRating=="yes")
+       		 	{
+       		 		rating = getStringArrayAt(userRatingArray,0);
+       		 		if (rating =="Full")
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+       		 			}
+       		 		else
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 			}
+          			
+          			
+       		 	}
+       		 else
+       		 	{
+       		 		rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 	}
+			
+        	rateurl;
+        	</script>
+         </image>
+         
+	<image offsetXPC= "22.97"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+          		  if (has_userRating=="yes")
+       		 	{
+       		 		rating = getStringArrayAt(userRatingArray,1);
+       		 		if (rating =="Full")
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+       		 			}
+       		 		else
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 			}
+          			
+          			
+       		 	}
+       		 else
+       		 	{
+       		 		rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 	}
+			
+        	rateurl;
+        	</script>
+         </image>
+	<image offsetXPC= "26.02"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		 if (has_userRating=="yes")
+       		 	{
+       		 		rating = getStringArrayAt(userRatingArray,2);
+       		 		if (rating =="Full")
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+       		 			}
+       		 		else
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 			}
+          			
+          			
+       		 	}
+       		 else
+       		 	{
+       		 		rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 	}
+			
+        	rateurl;
+        	</script>
+         </image>
+	<image offsetXPC= "29.07"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+          		 if (has_userRating=="yes")
+       		 	{
+       		 		rating = getStringArrayAt(userRatingArray,3);
+       		 		if (rating =="Full")
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+       		 			}
+       		 		else
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 			}
+          			
+          			
+       		 	}
+       		 else
+       		 	{
+       		 		rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 	}
+			
+        	rateurl;
+        	</script>
+         </image>
+	<image offsetXPC= "32.12"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+          		 if (has_userRating=="yes")
+       		 	{
+       		 		rating = getStringArrayAt(userRatingArray,4);
+       		 		if (rating =="Full")
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+       		 			}
+       		 		else
+       		 			{
+       		 				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 			}
+          			
+          			
+       		 	}
+       		 else
+       		 	{
+       		 		rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+       		 	}
+			
+        	rateurl;
+        	</script>
+         </image>
+	<!-- Community Rating Information-->
+	   <text offsetXPC="38.30" offsetYPC="77" widthPC="15" heightPC="10" fontSize="12"  backgroundColor="-1:-1:-1" foregroundColor="102:102:102" 
+	   	align=left >
+	      <script>
+	       	"Community Rating:";
+	      </script>
+   	 </text>
+   	 
+	<image offsetXPC= "53.13"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		if (has_communityRating=="yes")
+        			{
+        				rating = getStringArrayAt(communityRatingArray,0);
+        				if (rating == "Full")
+        				{
+        					rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+        				}
+        				else if (rating=="Empty")
+        					{
+        						rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        					}
+        					else
+        					{
+        						rateurl = null;
+        					}
+        			}
+        		else
+        			{
+        				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        			}
+        			
+        		rateurl;
+        	</script>
+         </image>
+	<image offsetXPC= "56.18"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		        if (has_communityRating=="yes")
+        			{
+        				rating = getStringArrayAt(communityRatingArray,1);
+        				if (rating == "Full")
+        				{
+        					rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+        				}
+        				else if (rating=="Empty")
+        					{
+        						rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        					}
+        					else
+        					{
+        						rateurl = null;
+        					}
+        			}
+        			else
+        			{
+        				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        			}
+        			
+        		rateurl;
+        	</script>
+         </image>
+	<image offsetXPC= "59.23"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		
+          		        if (has_communityRating=="yes")
+        			{
+        				rating = getStringArrayAt(communityRatingArray,2);
+        				if (rating == "Full")
+        				{
+        					rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+        				}
+        				else if (rating=="Empty")
+        					{
+        						rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        					}
+        					else
+        					{
+        						rateurl = null;
+        					}
+        			}
+        			else
+        			{
+        				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        			}
+        			
+        		rateurl;
+        
+        	</script>
+         </image>
+	<image offsetXPC= "62.28"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		
+          		        if (has_communityRating=="yes")
+        			{
+        				rating = getStringArrayAt(communityRatingArray,3);
+        				if (rating == "Full")
+        				{
+        					rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+        				}
+        				else if (rating=="Empty")
+        					{
+        						rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        					}
+        					else
+        					{
+        						rateurl = null;
+        					}
+        			}
+        			else
+        			{
+        				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        			}
+        			
+        		rateurl;
+        
+        	</script>
+         </image>
+	<image offsetXPC= "65.33"  offsetYPC= "79.7" widthPC="2.34" heightPC="3.89"  backgroundColor=-1:-1:-1 redraw = no>
+       		 <script>
+        		
+          			if (has_communityRating=="yes")
+        			{
+        				rating = getStringArrayAt(communityRatingArray,4);
+        				if (rating == "Full")
+        				{
+        					rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star.fsp";
+        				}
+        				else if (rating=="Empty")
+        					{
+        						rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        					}
+        					else
+        					{
+        						rateurl = null;
+        					}
+        			}
+        			else
+        			{
+        				rateurl = "./IMS_Modules/Mediafly/image/mediafly_rate_star_grey.fsp";
+        			}
+        			
+        		rateurl;
+        
+        	</script>
+         </image>
+
+	<text offsetXPC="68.3" offsetYPC="77" widthPC="10" heightPC="10" fontSize="12"  backgroundColor="-1:-1:-1" foregroundColor="102:102:102"  
+	   	align=left
+	   	redraw = no  
+	   	useBackgroundSurface=no>
+	      <script>
+	       	"("+totalRatings+")";
+	      </script>
+   	 </text>
+    
+    <itemDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+			index1 = getQueryItemIndex();
+			index2 =getFocusItemIndex ();
+			if (index1 == index2)
+			{
+				if (getDrawingItemState() == "focus")
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_channelepisodes_focus.fsp";
+				}
+				else
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_channelepisodes_unfocus.fsp";
+				}
+			}
+			else
+			{
+				"./IMS_Modules/Mediafly/image/mediafly_channelepisodes_unfocus.fsp";
+			}
+			
+			</script>
+		</image>
+		
+		<text offsetXPC= 8 offsetYPC=10 widthPC=86 heightPC=80 backgroundColor=-1:-1:-1  fontSize=16 >
+			<foregroundColor>
+				<script>
+					fgcolor = "102:102:102";
+					queryIndex = getQueryItemIndex();
+					focusIndex = getFocusItemIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "0:148:13";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryItemIndex();
+				str =  getStringArrayAt(titleArray , index);
+				str;
+			</script>
+		</text>
+			
+	</itemDisplay>
+    
+
+
+  
+   </mediaDisplay>
+
+
+   <submenu>
+    <menu>Rate Show</menu>
+    
+    <onClick>
+        print("enter Rate show  submenu");
+        
+
+       tmp_userRating  = userRating;
+       userRating = doModalRss("rss_file://./IMS_Modules/Mediafly/mediafly_RateShow.rss");
+       print("my Rating is ",userRating);
+      
+      if (userRating!=0)
+      {
+      		
+      		if (has_userRating=="no")
+      		{
+      			totalRatings = Add(totalRatings,"1");
+      			has_userRating = "yes";
+      			has_communityRating = "yes";
+      			if (totalRatings &gt; 1)
+      			{
+      				communityRating = communityRating*(totalRatings-1)/totalRatings;
+      				tmp = userRating/totalRatings;
+				tmp = -tmp;
+				communityRating = communityRating-tmp;
+      			}
+      			else
+      			{
+      				communityRating = userRating;
+      			}
+      			
+      		}
+      		else
+      		{
+      			communityRating = communityRating-tmp_userRating/totalRatings;
+      			tmp = userRating/totalRatings;
+			tmp = -tmp;
+			communityRating = communityRating-tmp;
+      			
+      		}
+      		
+    		i = 5;
+    		tmp = userRating;
+    		
+    		userRatingArray = null;
+    		while (i &gt; "0")
+		{
+			if (tmp &gt; "0")
+			{
+				userRatingArray = pushBackStringArray(	userRatingArray, "Full");
+				tmp = tmp -1;
+			}
+			else
+			{
+				userRatingArray = pushBackStringArray(	userRatingArray, "Empty");
+			}
+			
+			i = i -1;
+		}
+		print(userRatingArray);
+		print(totalRatings);
+		
+
+		i = 5;
+	
+		tmp = communityRating;
+		print("communityRating=",communityRating);
+		communityRatingArray = null;
+		while (i &gt; "0")
+		{
+			if (tmp &gt; "0")
+			{
+				if (tmp &gt; "0.9")
+				{
+					communityRatingArray = pushBackStringArray(communityRatingArray,"Full");
+					tmp = tmp -1.;
+				}
+				else
+				{
+					tmp = tmp *10;
+					tmp = Integer1(tmp);
+					communityRatingArray = pushBackStringArray(communityRatingArray,tmp);
+					tmp = 0;
+				}
+				
+			}
+			else
+			{
+				communityRatingArray = pushBackStringArray(communityRatingArray,"Empty");
+			}
+		
+			i = i -1;
+		}
+		print(communityRatingArray);
+		
+       }
+      null;
+     
+    </onClick>
+  </submenu>
+
+<submenu>
+	<onClick>
+		if (favoriteType=="None")
+		{
+			  print("enter Mark as Favorites Show submenu");
+      			md5_string = MD5(sharedKey,tokenId,showSlug);
+      			print("md5 string", md5_string);
+		      urlFav = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.AddFavoriteShow?app_id="+app_id+"&amp;token=";
+		      urlFav = urlFav + valtoken;
+		      urlFav = urlFav + "&amp;showSlug=" + showSlug;
+		      urlFav = urlFav + "&amp;call_sig=";
+		      urlFav = urlFav + md5_string;
+		      
+		      print("url: ", urlFav);
+		      file = loadXMLFile(urlFav);
+		      if (file != null)
+		      {
+		      		status = getXMLAttribute("response", "status");
+		     		 print ("status", status);
+		      		if(status != "ok")	
+		      		{
+		      			err =  getXMLAttribute("response", "err", "message");
+		      			print ("error", err);
+		      		}
+		      		else
+		      		{
+			      		favoriteType = "Show";
+			      		menuArray = deleteStringArrayAt(menuArray,menuSize-1);
+			      		menuArray  = pushBackStringArray(menuArray, "$[Remove Favorite]");
+			      		executeScript("Subscribe");
+		      		}
+		      }
+
+		      cancelIdle();
+		      redrawDisplay();
+		      null;
+		}
+		else
+		{
+		      print("enter Remove from Favorite submenu");
+		      md5_string = MD5(sharedKey,tokenId,showSlug);
+		      print("md5 string", md5_string);
+		      urlFav = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.RemoveFavoriteShow?app_id="+app_id+"&amp;token=";
+		      urlFav = urlFav + valtoken;
+		      urlFav = urlFav + "&amp;showSlug=" + showSlug;
+		      urlFav = urlFav + "&amp;call_sig=";
+		      urlFav = urlFav + md5_string;
+
+		      file = loadXMLFile(urlFav);
+		      if (file != null) 
+		      {
+			      status = getXMLAttribute("response", "status");
+			      print ("status", status);
+			      if(status != "ok")	
+		      		{
+		      			err =  getXMLAttribute("response", "err", "message");
+		      			print ("error", err);
+		      		}
+		      		else
+		      		{
+		      			   favoriteType  = "None";
+			      		   menuArray = deleteStringArrayAt(menuArray,menuSize-1);
+			     		   menuArray  = pushBackStringArray(menuArray, "$[Add Favorite]");
+                			   executeScript("Unsubscribe");
+		      		}
+			   
+      		      }
+      		      
+
+      		     cancelIdle();
+      		     redrawDisplay();
+		}
+		null;
+		</onClick>
+
+</submenu>
+	   	     
+<Subscribe>
+	 	      print("Subscribe");
+		      md5_string = MD5(sharedKey,tokenId,showSlug, "Show");
+		      print("md5 string", md5_string);
+		      urlSubscribe = "http://api.mediafly.com/api/rest/2.0/Mediafly.Subscriptions.Subscribe?app_id="+app_id+"&amp;token=";
+		      urlSubscribe = urlSubscribe + valtoken;
+		      urlSubscribe = urlSubscribe + "&amp;slug="+ showSlug;
+		      urlSubscribe =urlSubscribe +"&amp;subscriptionType=Show";
+		      urlSubscribe = urlSubscribe + "&amp;call_sig=";
+		      urlSubscribe = urlSubscribe + md5_string;
+		       print("url: ", urlSubscribe);
+		       file = loadXMLFile(urlSubscribe);
+		        if (file != null)
+		      {
+		      		status = getXMLAttribute("response", "status");
+		     		 print ("status", status);
+		      		if(status != "ok")	
+		      		{
+		      			err =  getXMLAttribute("response", "err", "message");
+		      			print ("error", err);
+		      		}
+		      }
+
+</Subscribe>
+
+  <Unsubscribe>
+	 	      print("Subscribe");
+		      md5_string = MD5(sharedKey,tokenId,showSlug, "Show");
+		      print("md5 string", md5_string);
+		      urlSubscribe = "http://api.mediafly.com/api/rest/2.0/Mediafly.Subscriptions.Unsubscribe?app_id="+app_id+"&amp;token=";
+		      urlSubscribe = urlSubscribe + valtoken;
+		      urlSubscribe = urlSubscribe + "&amp;slug="+ showSlug;
+		      urlSubscribe =urlSubscribe +"&amp;subscriptionType=Show";
+		      urlSubscribe = urlSubscribe + "&amp;call_sig=";
+		      urlSubscribe = urlSubscribe + md5_string;
+		       print("url: ", urlSubscribe);
+		       file = loadXMLFile(urlSubscribe);
+		        if (file != null)
+		      {
+		      		status = getXMLAttribute("response", "status");
+		     		 print ("status", status);
+		      		if(status != "ok")	
+		      		{
+		      			err =  getXMLAttribute("response", "err", "message");
+		      			print ("error", err);
+		      		}
+		      }
+
+</Unsubscribe>
+   
+
+  <item_template>
+    
+    <media:thumbnail>
+      <script>
+        getStringArrayAt(imageUrlArray , -1);
+      </script>
+    </media:thumbnail>
+      <link>
+        <script>
+          episodeLink;
+        </script>
+    </link>
+  </item_template>
+  <channel>
+       <title></title>
+      <itemSize>
+      <script>
+        itemCnt;
+      </script>
+        null;
+    </itemSize>
+ 
+  </channel>
+
+  </rss>
+

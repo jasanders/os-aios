@@ -1,0 +1,177 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<script>
+searchPageIndex = 1;
+storagePath = getStoragePath("tmp");
+storagePath = storagePath + "ppsSearchUrl.dat";
+string = readStringFromFile(storagePath);
+
+rootUrl = getStringArrayAt(string, 0);
+order = getStringArrayAt(string, 1);
+searchUrl = rootUrl + "&amp;page=" + searchPageIndex;
+searchUrl = searchUrl + "&amp;order=" + order;
+print("I am in ppsHandleSearchResult, got your search result, now display them: ", searchUrl);
+dlok = loadXMLFile(searchUrl);
+if (dlok != null)
+{
+  itemSize = getXMLAttribute("FilmData", "FilmNum");
+  if (itemSize &gt; 0)
+  {
+    itemTitleArray = null;
+    itemThumbnailArray = null;
+    count = 0;
+    while (1)
+    {
+      if (count &gt;= itemSize)
+        break;
+      title = getXMLText("FilmData", "Film", count, "Title");
+      pic = getXMLText("FilmData", "Film", count, "SIUrl");
+      itemTitleArray = pushBackStringArray(itemTitleArray, title);
+      itemThumbnailArray = pushBackStringArray(itemThumbnailArray, pic);
+      count += 1;
+    }
+    setFocusItemIndex(0);
+  }
+}
+</script>
+
+<mediaDisplay
+name=threePartsView
+>
+
+<onUserInput>
+<script>
+ret = "false";
+input = currentUserInput();
+context = getPageInfo("majorContext");
+
+if (context == "items")
+{
+  if (input == "return")
+  {
+    postMessage("return");
+    redrawDisplay("no");
+  }
+  else if (input == "pagedown")
+  {
+    searchPageIndex = searchPageIndex + 1;
+    searchUrl = rootUrl + "&amp;page=" + searchPageIndex;
+    print("User press pagedown, got search result: ", searchUrl);
+    dlok = loadXMLFile(searchUrl);
+    if (dlok != null)
+    {
+      itemSize = getXMLAttribute("FilmData", "FilmNum");
+      if (itemSize &gt; 0)
+      {
+        itemTitleArray = null;
+        itemThumbnailArray = null;
+        count = 0;
+        while (1)
+        {
+          if (count &gt;= itemSize)
+            break;
+          title = getXMLText("FilmData", "Film", count, "Title");
+          pic = getXMLText("FilmData", "Film", count, "SIUrl");
+          itemTitleArray = pushBackStringArray(itemTitleArray, title);
+          itemThumbnailArray = pushBackStringArray(itemThumbnailArray, pic);
+          count += 1;
+        }
+        setFocusItemIndex(0);
+        redrawDisplay();
+        ret = "true";
+      }
+    }
+  }
+  else if (input == "pageup")
+  {
+    searchPageIndex = searchPageIndex - 1;
+    if (searchPageIndex &lt; 1)
+    {
+      searchPageIndex = 1;
+      ret = "true";
+    }
+    else
+    {
+      searchUrl = rootUrl + "&amp;page=" + searchPageIndex;
+      print("User press pagedown, got search result: ", searchUrl);
+      dlok = loadXMLFile(searchUrl);
+      if (dlok != null)
+      {
+        itemSize = getXMLAttribute("FilmData", "FilmNum");
+        if (itemSize &gt; 0)
+        {
+          itemTitleArray = null;
+          itemThumbnailArray = null;
+          count = 0;
+          while (1)
+          {
+            if (count &gt;= itemSize)
+              break;
+            title = getXMLText("FilmData", "Film", count, "Title");
+            pic = getXMLText("FilmData", "Film", count, "SIUrl");
+            itemTitleArray = pushBackStringArray(itemTitleArray, title);
+            itemThumbnailArray = pushBackStringArray(itemThumbnailArray, pic);
+            count += 1;
+          }
+          setFocusItemIndex(0);
+          redrawDisplay();
+          ret = "true";
+        }
+      }
+    }
+  }
+}
+ret;
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+
+<item_template>
+
+<title>
+<script>
+getStringArrayAt(itemTitleArray, -1);
+</script>
+</title>
+
+<media:thumbnail>
+	<script>
+		url = getStringArrayAt(itemThumbnailArray, -1);
+		print("show thumbnail: ", url);
+		url;
+	</script>
+</media:thumbnail>
+
+<onClick>
+<script>
+print("User press enter");
+</script>
+</onClick>
+
+<link>
+<script>
+print("Go go go, we will now switch to another script");
+</script>
+</link>
+
+</item_template>
+
+
+<channel>
+	<title>PPS Search Result</title>
+	<link>./scripts/ppsHandleSearchResult.rss</link>
+  <media:thumbnail url="image/rss1.png" width="120" height="90" />
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+
+</channel>
+</rss>

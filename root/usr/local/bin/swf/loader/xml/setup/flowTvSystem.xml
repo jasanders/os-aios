@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="SELECT">
+				<submenu dialog="popupListDlg" type="$[TV_SYSTEM]" data_path="setup/TvSystem.xml"/>
+		</item>		
+		<item label="WARNING">
+				<submenu dialog="popupCheckDlg" type="$[TV_SYSTEM]" content="{ 'title':'$[FORMAT_HDD_1]','description':'$[TV_SYSTEM_WARNING]', 'buttons': ['$[OK]']}" />		
+		</item>		
+		<item label="CONFIRM">
+				<submenu dialog="popupCheckDlg" type="$[TV_SYSTEM]" content="{ 'title':'$[CONFIRM]','description':'$[APPLY_SETTING]', 'buttons': ['$[OK]', '$[CANCEL]']}" />		
+		</item>		
+</menu>

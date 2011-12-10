@@ -1,0 +1,85 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+
+<script>
+print("-=-=-= Welcome to PPS Search Order -=-=-=");
+setFocusItemIndex(0);
+</script>
+
+
+<item_template>
+<onClick>
+<script>
+keyword = getInput("Enter keyword");
+if (keyword == NULL)
+{
+  print("enter nothing");
+  null;
+}
+else
+{
+  print("Your search Keyword is: ", keyword);
+  url_keyword = urlEncode(keyword);
+  url = "http://so.tv.ppstream.com/search.php?oem=realtek&amp;";
+  
+  storagePath = getStoragePath("tmp");
+  storagePath = storagePath + "ppsParentIndex.dat";
+  parentItemIndex = readStringFromFile(storagePath);
+  
+  if (parentItemIndex == "0")
+    url = url + "name=";
+  else if (parentItemIndex == "1")
+    url = url + "dirt=";
+  else if (parentItemIndex == "2")
+    url = url + "actor=";
+  else
+    url = url + "area=";
+
+  url = url + url_keyword + "&amp;pagesize=10";
+  
+  index = getFocusItemIndex();
+  if (index == "0")
+    order = "1";
+  else if (index == "1")
+    order = "2";
+  else if (index == "2")
+    order = "3";
+  else if (index == "3")
+    order = "4";
+  else if (index == "4")
+    order = "5";
+  else if (index == "5")
+    order = "6";
+  else if (index == "6")
+    order = "7";
+  else
+    order = "8";
+
+  url = url + "&#x000a;" + order;
+  storagePath = getStoragePath("tmp");
+  storagePath = storagePath + "ppsSearchUrl.dat";
+  writeStringToFile(storagePath, url);
+  "rss_file://./scripts/ppsHandleSearchResult.rss";
+}
+
+</script>
+</onClick>
+</item_template>
+
+
+<channel>
+	<title>PPS Search Order</title>
+	<link>./scripts/ppsSearchOrder.rss</link>
+  <media:thumbnail url="image/rss1.png" width="120" height="90" />
+  
+
+<itemSize>
+8
+</itemSize>
+
+
+
+</channel>
+</rss>

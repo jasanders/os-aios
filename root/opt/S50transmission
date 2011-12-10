@@ -1,0 +1,7 @@
+#!/bin/sh
+
+mkdir -p /tmp/hdd/volumes/HDD1/TR_DOWNLOAD/.transmission/resume
+mkdir -p /tmp/hdd/volumes/HDD1/TR_DOWNLOAD/.transmission/torrents
+
+/opt/bin/transmission-daemon --paused -g /opt/etc/transmission
+

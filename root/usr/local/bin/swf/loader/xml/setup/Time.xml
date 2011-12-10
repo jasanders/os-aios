@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="$[MANUAL]" >				
+				<submenu dialog="TimeSetting" type="Time(Manual)" mode="Editing" />
+		</item>
+		<item label="$[AUTO_VIA_DTV]" disable="DtvDisable">				
+				<submenu dialog="DTVTime" type="Time(DTV)" />
+		</item>
+		<item label="$[TIME_ZONE]" >
+				<submenu dialog="popupListDlg" type="$[TIME_ZONE]" data_path="setup/TimeZone.xml" onSelect="setTimeZone" />
+		</item>		
+</menu>

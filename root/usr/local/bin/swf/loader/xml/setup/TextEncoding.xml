@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[TEXT_ENCODING_UNICODE]"/>
+		<item label="$[TEXT_ENCODING_GBK]"/>
+		<item label="$[TEXT_ENCODING_BIG5]"/>
+		<item label="$[TEXT_ENCODING_WESTERN]"/>
+		<item label="$[TEXT_ENCODING_TURKISH]"/>
+		<item label="$[TEXT_ENCODING_CENTRAL_EUROPEAN]"/>
+		<item label="$[TEXT_ENCODING_GREEK]"/>
+		<item label="$[TEXT_ENCODING_CYRILLIC]"/>
+		<item label="$[TEXT_ENCODING_HEBREW]"/>
+		<item label="$[TEXT_ENCODING_SOUTH_EASTERN_EUROPEAN]"/>
+		<item label="$[TEXT_ENCODING_JAPANESE]"/>
+		<item label="$[TEXT_ENCODING_KOREAN]"/>
+		<item label="$[TEXT_ENCODING_THAI]"/>
+		<item label="$[TEXT_ENCODING_ARABIC]"/>
+</menu>

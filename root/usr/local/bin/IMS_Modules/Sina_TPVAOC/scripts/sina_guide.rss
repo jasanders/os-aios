@@ -1,0 +1,125 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> BESTV </bookmark>
+
+
+<mediaDisplay name=photoView
+bottomYPC=100
+sideTopHeightPC=0
+itemGapXPC=2.18
+itemGapYPC=2
+showDefaultInfo=no
+centerXPC=34.10
+centerYPC=35.97
+itemWidthPC=8.75
+itemHeightPC=23.20
+centerHeightPC=100
+itemBackgroundColor=0:0:0
+backgroundColor=-1:-1:-1
+drawItemBorder=no
+imageBorderPC=1
+rowCount=1
+columnCount=3
+idleImageWidthPC=8.43
+idleImageHeightPC=14.29
+>
+
+<backgroundDisplay name=guide_menu>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			"../image/guide_bg.bmp";
+		</script>
+	</image>
+</backgroundDisplay>
+
+<itemDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=85>
+	<script>
+	status = getDrawingItemState();
+	if (status == "focus")
+	{
+		getStringArrayAt(focusIconArray, -1);
+	}
+	else
+	{
+		getStringArrayAt(unfocusIconArray, -1);
+	}
+	</script>
+	</image>
+	
+	<text fontSize=12 align=center offsetXPC=0 offsetYPC=86 widthPC=100 heightPC=13.9 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+		<script>
+			str = getStringArrayAt(nameArray , -1);
+			str;
+		</script>
+	</text>
+
+</itemDisplay>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+	<idleImage> image/POPUP_LOADING_07.png </idleImage>
+	<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+<onUserInput>
+userInput = currentUserInput();
+print("====== sina guide got user input ======: ", userInput);
+</onUserInput>
+</mediaDisplay>
+
+<onExit>
+</onExit>
+
+<onEnter>
+</onEnter>
+
+
+<script>
+nameArray = null;
+nameArray = pushBackStringArray(nameArray, "新浪新闻");
+nameArray = pushBackStringArray(nameArray, "新浪天气");
+nameArray = pushBackStringArray(nameArray, "新闻股票");
+
+focusIconArray = null;
+focusIconArray = pushBackStringArray(focusIconArray, "../image/sinanews_focus.bmp");
+focusIconArray = pushBackStringArray(focusIconArray, "../image/weather_focus.bmp");
+focusIconArray = pushBackStringArray(focusIconArray, "../image/stock_focus.bmp");
+
+unfocusIconArray = null;
+unfocusIconArray = pushBackStringArray(unfocusIconArray, "../image/sinanews_unfocus.bmp");
+unfocusIconArray = pushBackStringArray(unfocusIconArray, "../image/weather_unfocus.bmp");
+unfocusIconArray = pushBackStringArray(unfocusIconArray, "../image/stock_unfocus.bmp");
+
+linkArray = null;
+linkArray = pushBackStringArray(linkArray, "sina_news.rss");
+linkArray = pushBackStringArray(linkArray, "weather.rss");
+linkArray = pushBackStringArray(linkArray, "stock.rss");
+
+itemSize = 3;
+setFocusItemIndex(0);
+</script>
+
+
+<item_template>
+<onClick>
+getStringArrayAt(linkArray, getFocusItemIndex());
+</onClick>
+</item_template>
+
+<channel>
+<title>sina</title>
+<link>sina_guide.rss</link>
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>

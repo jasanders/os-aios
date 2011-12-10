@@ -1,0 +1,434 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>MacAlister</title>
+<cur>CAXX0263</cur>
+<for>MacAlister</for>
+</item>
+
+<item>
+<title>MacCan</title>
+<cur>CAXX0264</cur>
+<for>MacCan</for>
+</item>
+
+<item>
+<title>MacDowall</title>
+<cur>CAXX0265</cur>
+<for>MacDowall</for>
+</item>
+
+<item>
+<title>MacKenzie</title>
+<cur>CAXX0266</cur>
+<for>MacKenzie</for>
+</item>
+
+<item>
+<title>Magog</title>
+<cur>CAXX0267</cur>
+<for>Magog</for>
+</item>
+
+<item>
+<title>Magrath</title>
+<cur>CAXX0268</cur>
+<for>Magrath</for>
+</item>
+
+<item>
+<title>Maitland</title>
+<cur>CAXX0269</cur>
+<for>Maitland</for>
+</item>
+
+<item>
+<title>Malartic</title>
+<cur>CAXX0270</cur>
+<for>Malartic</for>
+</item>
+
+<item>
+<title>Malton</title>
+<cur>CAXX0271</cur>
+<for>Malton</for>
+</item>
+
+<item>
+<title>Maniwaki</title>
+<cur>CAXX0272</cur>
+<for>Maniwaki</for>
+</item>
+
+<item>
+<title>Markham</title>
+<cur>CAXX0273</cur>
+<for>Markham</for>
+</item>
+
+<item>
+<title>Marlboro</title>
+<cur>CAXX0274</cur>
+<for>Marlboro</for>
+</item>
+
+<item>
+<title>Mary's Harbour</title>
+<cur>CAXX0600</cur>
+<for>Mary's Harbour</for>
+</item>
+
+<item>
+<title>Marysville</title>
+<cur>CAXX0275</cur>
+<for>Marysville</for>
+</item>
+
+<item>
+<title>Massey</title>
+<cur>CAXX0276</cur>
+<for>Massey</for>
+</item>
+
+<item>
+<title>Matagami</title>
+<cur>CAXX0602</cur>
+<for>Matagami</for>
+</item>
+
+<item>
+<title>Matane</title>
+<cur>CAXX0277</cur>
+<for>Matane</for>
+</item>
+
+<item>
+<title>Matapedia</title>
+<cur>CAXX0278</cur>
+<for>Matapedia</for>
+</item>
+
+<item>
+<title>Mattice</title>
+<cur>CAXX0279</cur>
+<for>Mattice</for>
+</item>
+
+<item>
+<title>McGregor</title>
+<cur>CAXX0280</cur>
+<for>McGregor</for>
+</item>
+
+<item>
+<title>Meadow Lake</title>
+<cur>CAXX0568</cur>
+<for>Meadow Lake</for>
+</item>
+
+<item>
+<title>Meaford</title>
+<cur>CAXX0281</cur>
+<for>Meaford</for>
+</item>
+
+<item>
+<title>Medicine Hat</title>
+<cur>CAXX0282</cur>
+<for>Medicine Hat</for>
+</item>
+
+<item>
+<title>Melita</title>
+<cur>CAXX0586</cur>
+<for>Melita</for>
+</item>
+
+<item>
+<title>Memramcook</title>
+<cur>CAXX0283</cur>
+<for>Memramcook</for>
+</item>
+
+<item>
+<title>Merville</title>
+<cur>CAXX0284</cur>
+<for>Merville</for>
+</item>
+
+<item>
+<title>Messines</title>
+<cur>CAXX0285</cur>
+<for>Messines</for>
+</item>
+
+<item>
+<title>Midale</title>
+<cur>CAXX0286</cur>
+<for>Midale</for>
+</item>
+
+<item>
+<title>Middleton</title>
+<cur>CAXX0287</cur>
+<for>Middleton</for>
+</item>
+
+<item>
+<title>Midhurst</title>
+<cur>CAXX0288</cur>
+<for>Midhurst</for>
+</item>
+
+<item>
+<title>Milton</title>
+<cur>CAXX0289</cur>
+<for>Milton</for>
+</item>
+
+<item>
+<title>Minaki</title>
+<cur>CAXX0290</cur>
+<for>Minaki</for>
+</item>
+
+<item>
+<title>Mine Centre</title>
+<cur>CAXX0291</cur>
+<for>Mine Centre</for>
+</item>
+
+<item>
+<title>Minnedosa</title>
+<cur>CAXX0292</cur>
+<for>Minnedosa</for>
+</item>
+
+<item>
+<title>Miramichi</title>
+<cur>CAXX0293</cur>
+<for>Miramichi</for>
+</item>
+
+<item>
+<title>Miscou Island</title>
+<cur>CAXX0594</cur>
+<for>Miscou Island</for>
+</item>
+
+<item>
+<title>Mission</title>
+<cur>CAXX0294</cur>
+<for>Mission</for>
+</item>
+
+<item>
+<title>Mississauga</title>
+<cur>CAXX0295</cur>
+<for>Mississauga</for>
+</item>
+
+<item>
+<title>Moisie</title>
+<cur>CAXX0296</cur>
+<for>Moisie</for>
+</item>
+
+<item>
+<title>Moncton</title>
+<cur>CAXX0297</cur>
+<for>Moncton</for>
+</item>
+
+<item>
+<title>Mont-Joli</title>
+<cur>CAXX0299</cur>
+<for>Mont-Joli</for>
+</item>
+
+<item>
+<title>Mont-Laurier</title>
+<cur>CAXX0300</cur>
+<for>Mont-Laurier</for>
+</item>
+
+<item>
+<title>Monte Creek</title>
+<cur>CAXX0298</cur>
+<for>Monte Creek</for>
+</item>
+
+<item>
+<title>Montreal</title>
+<cur>CAXX0301</cur>
+<for>Montreal</for>
+</item>
+
+<item>
+<title>Moonbeam</title>
+<cur>CAXX0302</cur>
+<for>Moonbeam</for>
+</item>
+
+<item>
+<title>Mooretown</title>
+<cur>CAXX0303</cur>
+<for>Mooretown</for>
+</item>
+
+<item>
+<title>Moose Factory</title>
+<cur>CAXX0304</cur>
+<for>Moose Factory</for>
+</item>
+
+<item>
+<title>Moose Jaw</title>
+<cur>CAXX0305</cur>
+<for>Moose Jaw</for>
+</item>
+
+<item>
+<title>Moose Lake</title>
+<cur>CAXX0306</cur>
+<for>Moose Lake</for>
+</item>
+
+<item>
+<title>Moose River</title>
+<cur>CAXX0307</cur>
+<for>Moose River</for>
+</item>
+
+<item>
+<title>Moosonee</title>
+<cur>CAXX0308</cur>
+<for>Moosonee</for>
+</item>
+
+<item>
+<title>Morinville</title>
+<cur>CAXX0309</cur>
+<for>Morinville</for>
+</item>
+
+<item>
+<title>Mount Pearl</title>
+<cur>CAXX0310</cur>
+<for>Mount Pearl</for>
+</item>
+
+<item>
+<title>Mount Stewart</title>
+<cur>CAXX0311</cur>
+<for>Mount Stewart</for>
+</item>
+
+<item>
+<title>Mud River</title>
+<cur>CAXX0312</cur>
+<for>Mud River</for>
+</item>
+
+</channel></rss>

@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>觀光類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>2701 萬企</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2701.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2701" />
+        </item>
+        <item>
+            <title>2702 華園</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2702.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2702" />
+        </item>
+        <item>
+            <title>2704 國賓</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2704.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2704" />
+        </item>
+        <item>
+            <title>2705 六福</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2705.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2705" />
+        </item>
+        <item>
+            <title>2706 第一店</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2706.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2706" />
+        </item>
+        <item>
+            <title>2707 晶華</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2707.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2707" />
+        </item>
+    </channel>
+</rss>

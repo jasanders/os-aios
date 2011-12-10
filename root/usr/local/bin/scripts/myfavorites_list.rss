@@ -1,0 +1,309 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<bookmark> my_favorites </bookmark>
+
+<ReleaseFavList>
+    if (favLinkArray != null)
+    {
+        while(favLinkCount &gt; 0)
+        {
+            favLinkArray = deleteStringArrayAt(favLinkArray, 0);
+            favLinkCount = favLinkCount - 1;
+        }
+        favLinkArray = null;
+    }
+</ReleaseFavList>
+
+<BuildFavList>
+    executeScript("ReleaseFavList");
+    
+    favLinkNewCount = Favorites_GetTotalCount();
+    idx = 0;
+    if (favLinkNewCount &gt; 0)
+    {
+        i = 0;
+        while(1)
+        {
+            favName = Favorites_GetDisplayName(idx);
+            if (favName != null)
+            {
+                favLinkArray = pushBackStringArray(favLinkArray, favName);
+                print ("get fav item:", favName, idx);
+                idx = idx + 1;
+            }
+            
+            i = i + 1;
+            if (i == favLinkNewCount)
+            {
+                break;
+            }
+        }
+    }
+    favLinkCount = idx;
+    print ("[MyFavorites - build list()] count:", favLinkCount);
+    
+    setFocusItemIndex(0);
+    redrawDisplay();
+</BuildFavList>
+
+<onEnter>
+    showIdle();
+    prepareAnimation();
+    image_type = ".fsp";
+    bProcessing = "false";
+    
+    print("[MyFavorites - onEnter()] start init.");
+    favLinkCount = Favorites_Initialize();
+    executeScript("BuildFavList");
+    setRefreshTime(1000);
+</onEnter>
+
+<onExit>
+    cancelIdle();
+    Favorites_Release();
+    executeScript("ReleaseFavList");
+    
+    print("[MyFavorites - onExit()] exit.");
+</onExit>
+
+<onRefresh>
+    if (bProcessing == "false")
+    {
+        bDeviceChanged = Favorites_IsStorageChanged();
+        if (bDeviceChanged == "true")
+        {
+            print("[MyFavorites - onRefresh()] device changed.");
+            bReload = Favorites_Reload();
+            if (bReload == "true")
+            {
+                executeScript("BuildFavList");
+            }
+        }
+    }
+    setRefreshTime(1000);
+</onRefresh>
+
+<item_template>
+    <displayTitle>
+        <script>
+            linkName = getStringArrayAt(favLinkArray , -1);
+            linkName;
+        </script>
+    </displayTitle>
+</item_template>
+
+<mediaDisplay name=onePartView
+    sideColorLeft=0:0:0 
+    sideColorRight=0:0:0 
+    sideColorTop=0:0:0
+    
+    backgroundColor=-1:-1:-1
+    itemBackgroundColor=16:40:66
+    focusBorderColor=-1:-1:-1
+    unFocusBorderColor=-1:-1:-1
+    
+    sideLeftWidthPC=0
+    sideRightWidthPC=0
+    sideBottomHeightPC = 0
+    sideTopHeightPC=0
+    
+    itemXPC = 10
+    itemYPC = 20
+    itemWidthPC = 80
+    itemHeightPC = 10
+    itemGap = 0
+    
+    itemPerPage=6
+    
+    forceFocusOnItem=yes
+
+    showHeader=no
+    showDefaultInfo=no
+    
+    idleImageXPC=48.43
+	idleImageYPC=47.22
+	idleImageWidthPC=3.13
+	idleImageHeightPC=5.56>
+	
+    <idleImage> image/POPUP_LOADING_01.png </idleImage>
+    <idleImage> image/POPUP_LOADING_02.png </idleImage>
+    <idleImage> image/POPUP_LOADING_03.png </idleImage>
+    <idleImage> image/POPUP_LOADING_04.png </idleImage>
+    <idleImage> image/POPUP_LOADING_05.png </idleImage>
+    <idleImage> image/POPUP_LOADING_06.png </idleImage>
+    <idleImage> image/POPUP_LOADING_07.png </idleImage>
+    <idleImage> image/POPUP_LOADING_08.png </idleImage>
+    
+    <image redraw=yes offsetXPC=14.2 offsetYPC=17 widthPC=1.72 heightPC=2.36>
+        <script>
+            idx = getFocusItemIndex();
+            
+            if (idx == 0)
+            	"./IMS_Modules/SinaIMS/image/arrow_up_unfocus.bmp";
+            else
+            	"./IMS_Modules/SinaIMS/image/arrow_up.bmp";
+        </script>
+    </image>
+    
+    <image redraw=yes offsetXPC=14.2 offsetYPC=81 widthPC=1.72 heightPC=2.36>
+        <script>
+            idx = getFocusItemIndex();
+            
+            if (idx == (favLinkCount-1))
+            	"./IMS_Modules/SinaIMS/image/arrow_down_unfocus.bmp";
+            else
+            	"./IMS_Modules/SinaIMS/image/arrow_down.bmp";
+        </script>
+    </image>
+    
+    <text offsetXPC=44 offsetYPC=5 widthPC=20 heightPC=10 fontSize=20>
+        <script>
+            titleStr = "$[ims_vt_FAV]";
+        </script>
+    </text>
+    
+    <itemDisplay>
+        <text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+        <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+            <script>
+                status = getDrawingItemState();
+                if (status == "focus")
+                {
+                	"image/Favorites_item_bar.png";
+                }
+                else
+                	null;
+            </script>
+        </image>
+        <text offsetXPC=2 offsetYPC=4 widthPC=96 heightPC=92 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+            <fontSize>
+                <script>
+                    if ("focus" == getDrawingItemState())
+                    	"18";
+                    else
+                    	"14";
+                </script>
+            </fontSize>
+            <script>
+                itemT = getItemInfo("displayTitle");
+                itemT;
+            </script>
+            <rolling>
+    	        <script>
+        	    if (getDrawingItemState() == "focus")
+        	    {
+        	  	    "yes";
+        	    }
+        	    else
+        	    {
+        	  	    "no";
+        	    }
+        	    </script>
+        	</rolling>
+        </text>
+    </itemDisplay>
+    
+    <!-- background image -->
+    <backgroundDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			image/IMS_bg.fsp
+		</image>
+    </backgroundDisplay>
+    
+    <!-- hint indicator -->
+    <image offsetXPC=13.66 offsetYPC=90.05 widthPC=3.2 heightPC=4.31 useBackgroundSurface=yes redraw=no>
+		<script>
+			icon = null;
+			if(favLinkCount &gt; 0) {
+				icon = "./setup_menu/image/video_setting_red_icon" + image_type;
+			}
+			icon;
+		</script>
+	</image>
+
+	<text offsetXPC=17.3 offsetYPC=89.6 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=255:255:255 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=yes redraw=yes>
+		<script>
+			hint = null;
+			if(favLinkCount &gt; 0) {
+			    hint = "$[Delete]";
+			}
+			hint;
+		</script>
+	</text>
+	
+	<!-- input -->
+	<onUserInput>
+	    userInput = currentUserInput();
+	    print ("[My Favorites - input()] get input:", userInput);
+	    ret = "false";
+	    
+	    if (userInput == "enter")
+        {
+            if (favLinkCount &gt; 0)
+            {
+                focusIndex = getFocusItemIndex();
+                device = Favorites_GetStorageId(focusIndex);
+                idx = Favorites_GetItemIdxOfXml(focusIndex);
+                browsetype = Favorites_GetBrowseType(focusIndex);
+                linkPath = Favorites_GetURL(focusIndex);
+                launchRet = Favorites_LaunchLink(device, idx, browsetype, linkPath);
+                print ("[MyFavorites - click()] launch idx, get ret:", focusIndex, launchRet);
+                
+                if (launchRet != "true")
+                {
+                    Favorites_PromptLaunchErr();
+                }
+                else
+                {
+                    bProcessing = "true";
+                }
+            }
+            ret = "true";
+        }
+	    else if (userInput == "option_red")
+        {
+            if (favLinkCount &gt; 0)
+            {
+                focusIndex = getFocusItemIndex();
+                bDel = Favorites_DelLink(focusIndex);
+                if (bDel == "true")
+                {
+                    favLinkArray = deleteStringArrayAt(favLinkArray, focusIndex);
+                    favLinkCount = favLinkCount - 1;
+                    if ((favLinkCount &gt; 0) &amp;&amp; (focusIndex == favLinkCount))
+                    {
+                        setFocusItemIndex(0);
+                    }
+                    else
+                    {
+                        setFocusItemIndex(focusIndex);
+                    }
+                    redrawDisplay();
+                }
+            }
+        	ret = "true";
+        }
+        else if ((userInput == "left") || (userInput == "right"))
+        {
+            ret = "true";
+        }
+        else if ((userInput == "up") || (userInput == "down") || (userInput == "pageup") || (userInput == "pagedown"))
+        {
+            if (favLinkCount &lt; 1)
+            {
+                ret = "true";
+            }
+        }
+        ret;
+	</onUserInput>
+</mediaDisplay>
+
+<itemSize>
+<script>
+    favLinkCount;
+</script>
+</itemSize>
+
+</rss>

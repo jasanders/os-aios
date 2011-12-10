@@ -1,0 +1,1745 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> mediafly_menu_with_favorite </bookmark>
+
+  <onEnter>
+      print("OnEnter----------------------mediafly_menu_with_favorite.rss");
+
+      bGotChannels = 0;
+      bGotMyChannels = 0;
+
+      bRedraw = 0;
+      currentFocusItem = 0;
+      print("OnEnter bGotChannels: ",bGotChannels);
+
+      entryCount = 1;
+      prepareAnimation();
+      showIdle();
+
+     
+      fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+      tokenArray = readStringFromFile(fileName);
+      
+      valtoken = getStringArrayAt(tokenArray, 0);
+      tokenId = getStringArrayAt(tokenArray, 1);
+      tokenTime = getStringArrayAt(tokenArray, 2);
+      
+      print("tokenTime: ",tokenTime);
+      
+	  /*dynamic menu*/
+      oldDefaultUser = defaultUserName;
+      storagePathdefaultUserName = getStoragePath("key") + "mdfly_defaultusername.dat";
+      defaultUserName = readStringFromFile(storagePathdefaultUserName);
+      
+      print("Another read defaultUserName:",defaultUserName);
+      
+	  /*if ( menuArray == null || oldDefaultUser != defaultUserName)*/
+	  {
+		  print("reload menu");
+
+		  while(menuArray != null &amp;&amp; getStringArrayAt(menuArray,0) != null)
+		  {
+			menuArray = deleteStringArrayAt(menuArray, 0);
+			menuScriptArray = deleteStringArrayAt(menuScriptArray, 0);
+			menuLinkArray = deleteStringArrayAt(menuLinkArray, 0);
+			itemClickArray = deleteStringArrayAt(itemClickArray, 0);
+		  }
+
+		menuCnt = 0;
+		menuIndex = 0;
+		
+		medifalyContentSource_file = getStoragePath("key") + "mdfly_ContentSource.dat";
+		contentSourceArray = readStringFromFile(medifalyContentSource_file);
+
+		if (contentSourceArray!=null)
+		{
+			  menuArray  = pushBackStringArray(menuArray, "$[Content Sources]");
+			  menuScriptArray  = pushBackStringArray(menuScriptArray, "onGetContentSource");
+			  menuLinkArray = pushBackStringArray(menuLinkArray,  "");
+			  itemClickArray = pushBackStringArray(itemClickArray,"onContentSourceItem");
+			  
+	
+			 
+			  contentSourceDisplayArray = null;
+			  contentSourceDisplaySize = 0;
+			  while ( (contentsourceTitle=getStringArrayAt(contentSourceArray,contentSourceDisplaySize))!=null)
+			{
+				 print("Title: ",contentsourceTitle);
+				  contentSourceDisplayArray  = pushBackStringArray(contentSourceDisplayArray, contentsourceTitle);
+				  contentSourceDisplaySize = contentSourceDisplaySize +1;
+			}
+			print("ContentSource:",contentSourceDisplayArray);
+		
+			menuIndex  = menuIndex +1;
+			menuCnt = menuCnt +1;
+			  
+		}
+		print("contentSourceDisplaySize = ",contentSourceDisplaySize);
+		
+
+   	
+		if(defaultUserName != null &amp;&amp; defaultUserName != "")
+		{
+			menuArray  = pushBackStringArray(menuArray, "$[My Shows]");
+			menuScriptArray  = pushBackStringArray(menuScriptArray, "onMyShows");
+			menuLinkArray = pushBackStringArray(menuLinkArray, "");
+			itemClickArray = pushBackStringArray(itemClickArray,"OnMyShowsItem");
+
+			menuCnt = menuCnt +1;
+
+			if ( oldDefaultUser == null || oldDefaultUser == "")
+			{
+				postMessage("down");
+			}
+			
+		}
+		 else if ( oldDefaultUser != null &amp;&amp; oldDefaultUser != "")
+		{
+			postMessage("up");
+	       		print("Manualy Enter UP");
+		}
+
+		menuArray  = pushBackStringArray(menuArray, "$[Popular Video]");
+	     	menuScriptArray  = pushBackStringArray(menuScriptArray, "onPopularVideo");
+	      	menuLinkArray = pushBackStringArray(menuLinkArray, "");
+	      	itemClickArray = pushBackStringArray(itemClickArray,"OnVideoItem");
+	      
+
+		menuArray  = pushBackStringArray(menuArray, "$[Popular Audio]");
+		menuScriptArray  = pushBackStringArray(menuScriptArray, "onPopularAudio");
+		menuLinkArray = pushBackStringArray(menuLinkArray, "");
+		itemClickArray = pushBackStringArray(itemClickArray,"OnAudioItem");
+		
+		
+		menuArray  = pushBackStringArray(menuArray, "$[Search]");
+		menuScriptArray  = pushBackStringArray(menuScriptArray, "onSearch");
+		menuLinkArray = pushBackStringArray(menuLinkArray, "rss_file://./IMS_Modules/Mediafly/mediafly_search.rss");
+		itemClickArray = pushBackStringArray(itemClickArray,"");
+		
+		
+		menuArray  = pushBackStringArray(menuArray, "$[User Management]");
+		menuScriptArray  = pushBackStringArray(menuScriptArray, "onUserAccount");
+		menuLinkArray = pushBackStringArray(menuLinkArray, "rss_file://./IMS_Modules/Mediafly/mediafly_adduser.rss");
+		itemClickArray = pushBackStringArray(itemClickArray,"");
+	
+
+		menuArray  = pushBackStringArray(menuArray, "$[Content Management]");
+		menuScriptArray  = pushBackStringArray(menuScriptArray, "onContent");
+		menuLinkArray = pushBackStringArray(menuLinkArray, "rss_file://./IMS_Modules/Mediafly/mediafly_add_contentsource.rss");
+		itemClickArray = pushBackStringArray(itemClickArray,"");
+		
+ 		menuCnt = menuCnt +5;
+	 	
+	 	print("menuArray: ",menuArray);
+	 	print("meuSize:",menuCnt);
+
+	 	
+
+	 	print("menuIndex=",menuIndex);
+	 	print("menuType=",menuType);
+
+
+
+	  }
+
+	if (reEntry==null)
+	{
+		reEntry = "yes";
+	}
+	else if (reEntry=="yes")
+		{
+			menuIndex = getFocusMenuIndex();
+			if (menuIndex==menuCnt||menuIndex&gt;menuCnt)
+		 	{
+		 		setFocusMenuIndex(menuCnt-1);
+		 	}
+		 	else if (menuType =="ContentSourceManage")
+		 		{
+		 			menuType = null;
+		 			setFocusMenuIndex(menuCnt-1);
+		 		}
+			
+		}
+
+	
+	 
+	  
+	  redrawDisplay();
+
+	 
+  </onEnter>
+
+  <onExit>
+  	current_contentsource_file = getStoragePath("key")+"mdfly_tmpContentSource.dat";
+  	deleteFile(current_contentsource_file);
+  </onExit>
+<!-- get channels -->
+
+  <script>
+    print("-------------------------------entry to script-----------------------");
+    entryCount += 1;
+
+    bGotChannels = 0;
+    channelCnt = 0;
+    displayItemCnt = 0;
+    
+    channelTitleArray = null;
+    channelSlugArray  = null;
+    imageUrlArray 	  = null;
+    
+    episodeCountArray = null;
+    
+    audioChannelTitleArray = null;
+    audioChannelSlugArray  = null;
+    audioImageUrlArray 	  = null;
+    audioEpisodeCountArray = null;
+    
+    mediaTypeFiler = null;
+    valtoken  = null;
+    mylink    = null;
+
+    /* for favorite episode tsp */
+    slugArray             = null;
+    episodeTitleArray     = null;
+    descriptionArray      = null;
+    channelArray          = null;
+    publishedArray        = null;
+    imageUrlArray         = null;
+
+    menuArray = null;
+    menuScriptArray = null;
+    menuLinkArray = null;
+    menuCnt = 0;
+    menuType = null;
+
+   reEntry = null;
+
+    csjump = "fail";
+    requireAuthentication = null;
+    authenticated = null;
+    pinCode = null;
+
+    contentsourceDisplayArray = null;
+    contentsourceDisplaySize = 0;
+
+
+    keyFilePath = getStoragePath("key") + "__mdfly_key.dat";
+    keyArray =    readStringFromFile(keyFilePath);
+    if (keyArray==null)
+    {
+    	print("No Key File !!!!!");
+    	resourceKeyFilePath="./Resource/mdfly_key.dat";
+    	copyFile(resourceKeyFilePath,keyFilePath);
+
+    }
+
+    
+    decryptionKeyArray = decFile(keyFilePath);
+   
+    sharedKey = getStringArrayAt(decryptionKeyArray,0);
+    app_id =getStringArrayAt(decryptionKeyArray,1);
+  
+    print("KeyArray =",decryptionKeyArray);
+    print("SharedKey= ", sharedKey);
+    print("app_id= ",app_id);
+    
+
+    storagePathdefaultUserName = getStoragePath("key") + "mdfly_defaultusername.dat";
+    defaultUserName = readStringFromFile(storagePathdefaultUserName);
+    if(defaultUserName == null || defaultUserName == "")
+    defaultUserName = VtunergetMACaddress(); /* get some info tsp*/
+    
+    print("Default User Name is ",defaultUserName);
+
+
+    print("entryCount: ", entryCount);
+    print("-------------SetRefreshTime-------------");
+    setRefreshTime(200);
+    
+    setFocusItemIndex(0);
+
+  </script>
+  
+   <onRefresh>
+    
+    		 print("----------------------onRefresh-----------------");
+    		setRefreshTime(-1);
+    		 if(defaultUserName != null &amp;&amp; defaultUserName != "")
+		  {
+		  
+			 executeScript("onMyShows");
+			 
+		  }
+		 else
+		 {
+		 	executeScript("onPopularVideo");
+		 } 
+		 setFocusMenuIndex(menuIndex);
+	
+    </onRefresh>
+
+
+<onContentSource>
+	print("Execute onContentSource!>>>>>>>>>>>");
+	itemIndex = getFocusItemIndex();
+	print("The itemIndex is ",itemIndex);
+	contentSource_info_file = getStoragePath("key") + "mdfly_"+itemIndex+".dat";
+	print("contentSource_info_file: ",contentSource_info_file);
+	infoArray = readStringFromFile(contentSource_info_file);
+
+	contentSourceSlug = getStringArrayAt(infoArray,0);
+	contentSourceAllowUnboundUser = getStringArrayAt(infoArray,1);
+	contentSourceMethod = getStringArrayAt(infoArray,2);
+	contentSourceSearchable = getStringArrayAt(infoArray,3);
+	
+	linkedUserName = getStringArrayAt(infoArray,5);
+ 	print("linkedUserName: ",linkedUserName);
+
+	if (contentSourceAllowUnboundUser=="false")
+	{
+		
+		
+		if (linkedUserName==null)
+		{
+			
+			if (contentSourceMethod=="UsernamePasswordPin")
+			{
+				
+				addNewUserPin_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_AddNewUserPin.rss";
+				infoArrayInput = doModalRss(addNewUserPin_rss);
+				
+				userName = getStringArrayAt(infoArrayInput,0);
+				passwd = getStringArrayAt(infoArrayInput,1);
+				pinCode = getStringArrayAt(infoArrayInput,2);
+				
+				  if (userName!=null&amp;&amp;passwd!=null&amp;&amp;pinCode!=null)
+				{
+					print("Ready To Bind User!>>>>>>>>>>>");
+					executeScript("onBindUser");
+					if (csjump=="success")
+					{
+						infoArray = pushBackStringArray(infoArray,userName);
+						writeStringToFile(contentSource_info_file,infoArray);
+						print("Record Information OK!!!!!!!!!!>>>>>>>>>>>");
+					}
+					
+				}
+				else
+				{
+					print("No Information Get input>>>>>>");
+					
+				}
+			
+				
+			}
+			else if (contentSourceMethod=="UsernamePassword")
+				{
+					
+					addNewUser_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_AddNewUser.rss";
+					infoArrayInput = doModalRss(addNewUser_rss);
+					userName = getStringArrayAt(infoArrayInput,0);
+					passwd = getStringArrayAt(infoArrayInput,1);
+					pinCode = null;
+					 if (userName!=null&amp;&amp;passwd!=null)
+					{
+						print("Ready To Bind User!>>>>>>>>>>>");
+						executeScript("onBindUser");
+						if (csjump=="success")
+						{
+							infoArray = pushBackStringArray(infoArray,userName);
+							writeStringToFile(contentSource_info_file,infoArray);
+							print("Record Information OK!!!!!!!!!!>>>>>>>>>>>");
+						}
+					}
+					
+				}
+		}
+		else
+		{
+			
+			print("GetBoundUser>>>>>>>>>>>>");
+			executeScript("onGetBoundUsers");
+			if (requireAuthentication=="true"&amp;&amp;authenticated=="false")
+			{
+				print("Must to be Authenticated First!");
+				pin_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_AuthenticatePin.rss";
+				infoArrayInput = doModalRss(pin_rss);
+				pinCode = getStringArrayAt(infoArrayInput,0);
+				if (pinCode!=null)
+				{
+					executeScript("onAuthenticateUser");
+					print("Read To Get content of the ContentSource!>>>>>>>>>");
+				}
+				
+			}
+			else
+			{
+				print("Read To Get content of the ContentSource!>>>>>>>>>");
+				csjump = "success";
+			}
+			
+		}
+		
+	}
+	else
+	{
+		
+		print("It doesn't need any Bind User>>>>>>>>>");
+		print("Read To Get content of the ContentSource!>>>>>>>>>");
+		csjump = "success";
+	}
+	redrawDisplay();
+	null;
+</onContentSource>
+
+<onAuthenticateUser>
+			   md5_string = MD5( sharedKey, tokenId,linkedUserName,pinCode,contentSourceSlug);
+		            
+		            urlAuthentication = "https://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.AuthenticateUserForSource?app_id="+app_id+"&amp;token=";
+		            urlAuthentication = urlAuthentication + valtoken;
+		            urlAuthentication = urlAuthentication +"&amp;source="+contentSourceSlug;
+		            urlAuthentication = urlAuthentication + "&amp;user_context=" + linkedUserName;
+		            urlAuthentication = urlAuthentication + "&amp;pin=" + pinCode;
+		            urlAuthentication = urlAuthentication +"&amp;call_sig="+md5_string;
+
+		            print("url", urlAuthentication);
+		            file = loadXMLFile(urlAuthentication);
+		            if (file == null)
+		            {
+			              print("failed to load ", url);
+			            
+			              
+		            }
+		            else
+		            {
+			              status = getXMLAttribute("response", "status");
+			    
+			              if ( status == "fail")
+			              {
+			                err =  getXMLAttribute("response", "err", "message");
+			                print ("error", err);
+			          	           
+			              }
+			              else
+			              {
+			              		csjump = "success";
+			              		print("Authenticate Ok>>>>>>>>>>>");
+			              }
+
+		            }
+	null;
+</onAuthenticateUser>
+
+
+<onBindUser>
+
+
+			  urlBind = "https://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.BindUser?app_id="+app_id+"&amp;token=";
+			  urlBind = urlBind + valtoken;
+			  urlBind = urlBind +"&amp;source=";
+			  urlBind = urlBind +contentSourceSlug;
+			  urlBind = urlBind + "&amp;accountName=" + userName;
+			  urlBind = urlBind + "&amp;password=" + passwd;
+		  
+			if (contentSourceMethod=="UsernamePasswordPin")
+			{	
+				md5_string = MD5(sharedKey, tokenId, userName, passwd,pinCode,contentSourceSlug);
+			        encodedP = urlEncode(password);
+			        urlBind = urlBind + "&amp;pin=" + pinCode;
+			        urlBind = urlBind +"&amp;call_sig="+md5_string;
+			}
+			else if (contentSourceMethod=="UsernamePassword")
+			{
+				md5_string = MD5(sharedKey, tokenId, userName, passwd,contentSourceSlug);
+			        encodedP = urlEncode(password);
+			        urlBind = urlBind +"&amp;call_sig="+md5_string;
+
+			}
+	            
+	            print("url", urlBind);
+	            file = loadXMLFile(urlBind);
+	            if (file == null)
+	            {
+		              print("failed to load ", urlBind);
+		          
+		            
+	            }
+	            else
+	            {
+		              status = getXMLAttribute("response", "status");
+		              print ("BindMFUser status: ", status);
+		              if ( status == "fail")
+		              {
+		                err =  getXMLAttribute("response", "err", "message");
+		                print ("error", err);
+		              
+		               
+		              }
+		              else
+		              {
+		              		print("Add User OK!");
+		              		csjump = "success";
+		              		redrawDisplay();
+		              }
+	            }
+
+</onBindUser>
+
+
+<!--need input contentsource_slug-->
+<onGetBoundUsers>
+
+	linkedUserNum = 0;
+	requireAuthentication = null;
+	authenticated = null;
+	
+	  md5_string = MD5(sharedKey, tokenId, contentSourceSlug );
+	  
+	  print("md5_string",md5_string);
+	  urlBound = "http://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.GetBoundUsers?app_id="+app_id+"&amp;token=";
+	  urlBound = urlBound + valtoken;
+	  urlBound = urlBound + "&amp;contentSources=";
+	  urlBound = urlBound + contentSourceSlug;
+	  urlBound = urlBound + "&amp;call_sig=" + md5_string;
+	  
+	  print("urlBound:",urlBound);
+	  
+	  file = loadXMLFile(urlBound);
+	  
+	  if (file == null)
+	  {
+	    print("Load URL fail ", urlBound);
+	  }
+	  else
+	  {
+		    status = getXMLAttribute("response", "status");
+		    print("status: ", status);
+		    if(status == "fail")
+		    {
+		      err =  getXMLAttribute("response", "err", "message");
+		      print ("error", err);
+		    
+		    }
+		    else 
+		     	  linkedUserNum = getXMLElementCount("response", "usersResponse","contentSource","users", "user");
+		    
+	    	     print("linked User Size = ", linkedUserNum);
+	    	     
+		     if (linkedUserNum &gt; 0)
+		     {
+		     	cnt = 0;
+
+		     	while (1)
+		     	{
+		     		default = getXMLAttribute("response", "usersResponse","contentSource","users", "user", cnt, "default");
+		     		linkedUser = getXMLAttribute("response", "usersResponse","contentSource","users", "user", cnt, "accountName");
+
+		     		
+		     		cnt = cnt + 1;
+		     		if (default == "true")
+		     		{
+		     			linkedUserName = linkedUser;
+		     			requireAuthentication = getXMLAttribute("response", "usersResponse","contentSource","users", "user", cnt, "requiresAuthentication");
+		     			authenticated = getXMLAttribute("response", "usersResponse","contentSource","users", "user", cnt, "authenticated");
+		     			break;
+		     		}
+		     		if (cnt==linkedUserNum)
+		     		{
+		     			break;
+		     		}
+		     		
+		     	
+		     	}
+		     	
+		     }
+			
+	   }
+	 
+	   
+	null;
+</onGetBoundUsers>
+    
+  <onMyShows>
+  	print("enter My Shows submenu");
+        executeScript("getToken");
+        print("----------------Have Got Token-----------");
+        bRedraw = 1;
+  	oldDefaultUserName = defaultUserName;
+  	defaultUserName = readStringFromFile(storagePathdefaultUserName);
+  	if ( defaultUserName != oldDefaultUserName)
+  	{
+  		print("default user changed");
+  		bGotMyChannels = 0;
+  	}
+  	if ( defaultUserName == null || defaultUserName == "" )
+  	{
+  		displayItemCnt = 0;
+  		displayTitleArray = null;
+  	}
+  	else
+  	{
+	  	if(bGotMyChannels &lt; 1 || bGotChannels==1)
+	  	{
+	  		mediaTypeFilter = "audio,video";
+	  		executeScript("getMyChannels");
+	  			/*
+		  		channelParam = "__all__";
+		  		executeScript("getChannelInfo");
+	  			*/
+
+	  		channelParam = "__new7d__";
+	  		executeScript("getChannelInfo");
+	  		if ( allCount &gt; 0)
+	  		{
+	  			  channelTitleArray  = pushBackStringArray(channelTitleArray, "All    (" + allCount + ")");
+	  			  channelSlugArray     = pushBackStringArray(channelSlugArray, "__all_2__");
+	  			  imageUrlArray = pushBackStringArray(imageUrlArray, allImageUrl);
+	  			  episodeCountArray   = pushBackStringArray(episodeCountArray, allCount);
+	  			  channelCnt += 1;
+	  		}
+	  		
+	  		
+	  	}
+	  	else 
+	  		executeScript("deleteDisplayArray");
+
+	  	if (bGotChannels==1)
+	  		{
+	  			executeScript("deleteDisplayArray");
+	  			
+	  		}
+  		
+	  	displayTitleArray = channelTitleArray;
+	  	
+	  	if(displayItemCnt != channelCnt)
+	  		bRedraw = 1;
+	  		
+	  	displayItemCnt = channelCnt;
+	  	
+	  	print("displayTitleArray: ",displayTitleArray);
+	  	print("displayItemCnt2: ",displayItemCnt);
+	  	
+	  	if(bRedraw == 1)
+	  	{
+	  		showIdle();
+	        	redrawDisplay();        
+	  		cancelIdle();
+	  	}
+	  	/*save filter base on menu index */
+	  	setEnv("mdflyfilter","audio,video");
+	  
+	  	/*save user_context*/
+	  	writeStringToFile(getStoragePath("tmp") + "mdflyUserContext.dat", defaultUserName);
+	  	if (displayItemCnt&gt;0)
+		  	setFocusItemIndex(0);
+		else
+			postMessage("left");
+  	}
+
+  </onMyShows>
+  
+  <OnMyShowsItem>
+        focusIndex = getFocusItemIndex();
+        print("focusIndex: ", focusIndex);
+        if(focusIndex &gt; -1) 
+        {
+		print("my shows****************************************");
+		slugCh = getStringArrayAt(channelSlugArray, focusIndex);
+        	storagePathMediaflyChannel = getStoragePath("tmp") + "mediaflyChannel.dat";
+                writeStringToFile(storagePathMediaflyChannel, slugCh);
+                
+                pathMediafly = getStoragePath("tmp") +  "mediaflypath.dat";
+                writeStringToFile(pathMediafly,"My Shows");
+                
+                /* link to display channel savd */
+                mylink="rss_file://./IMS_Modules/Mediafly/mediafly_channel.rss";
+        }
+  </OnMyShowsItem>
+
+  
+  
+  <onPopularVideo>
+        print("enter Popular Video submenu");
+        executeScript("getToken");        
+        bRedraw = 1;
+        if(bGotChannels &lt; 1)
+        {
+        	  mediaTypeFilter = "audio";
+	          executeScript("getChannels");
+	          print("bGotChannels:",bGotChannels);
+	          mediaTypeFilter = "video";
+	          executeScript("getChannels");
+        }
+        else 
+          executeScript("deleteDisplayArray");
+        
+        displayTitleArray = channelTitleArray;
+        imageUrlArray =  videoImageUrlArray;
+        
+        if(displayItemCnt != channelCnt)
+            bRedraw = 1;
+
+        displayItemCnt = channelCnt;
+
+        print("displayTitleArray: ",displayTitleArray);
+        print("displayItemCnt2: ",displayItemCnt);
+        if(bRedraw == 1)
+        {
+          showIdle();
+          redrawDisplay();        
+          cancelIdle();
+        }
+        /*save filter base on menu index */
+	setEnv("mdflyfilter","video");
+
+		    /*save user_context*/
+        writeStringToFile(getStoragePath("tmp") + "mdflyUserContext.dat","app_context_system");
+
+      	print("videoChannelTitleArray",channelTitleArray);
+      	print("videoChannelCnt",channelCnt);
+	if (displayItemCnt&gt;0)
+		setFocusItemIndex(0);
+	else
+		postMessage("left");
+  </onPopularVideo>
+  
+  <OnVideoItem>
+        focusIndex = getFocusItemIndex();
+        print("focusIndex: ", focusIndex);
+        if(focusIndex &gt; -1) 
+        {
+            slugCh = getStringArrayAt(channelSlugArray, focusIndex);
+
+            storagePathMediaflyChannel = getStoragePath("tmp");
+            storagePathMediaflyChannel = storagePathMediaflyChannel + "mediaflyChannel.dat";
+            writeStringToFile(storagePathMediaflyChannel, slugCh);
+
+             pathMediafly = getStoragePath("tmp") +  "mediaflypath.dat";
+             writeStringToFile(pathMediafly,"Popular Video");
+            print("channelSlug=",slugCh);
+            /* link to display channel tp */
+            mylink="rss_file://./IMS_Modules/Mediafly/mediafly_channel.rss";
+
+	}
+  </OnVideoItem>
+
+
+  
+  <onPopularAudio>
+      	print("enter Popular audio submenu");
+        executeScript("getToken");        
+        bRedraw = 1;
+        if(bGotChannels &lt; 1)
+        {
+	          mediaTypeFilter = "video";
+	          executeScript("getChannels");
+	          mediaTypeFilter = "audio";
+	          executeScript("getChannels");
+        }
+        else 
+        	executeScript("deleteDisplayArray");
+        	
+        displayTitleArray = audioChannelTitleArray;
+         imageUrlArray =  audioImageUrlArray;
+         
+        if(displayItemCnt != audioChannelCnt)
+          	bRedraw = 1;
+          	
+        displayItemCnt = audioChannelCnt;
+        print("displayTitleArray3: ",displayTitleArray);
+        print("displayItemCnt3: ",displayItemCnt);
+        if(bRedraw == 1)
+        {
+	          showIdle();
+	          redrawDisplay();        
+	          cancelIdle();
+        }
+        /*save filter base on menu index*/
+	setEnv("mdflyfilter","audio");
+
+		/*save user_context*/
+        writeStringToFile(getStoragePath("tmp") + "mdflyUserContext.dat", "app_context_system");
+	
+      	print("audioChannelTitleArray",audioChannelTitleArray);
+      	print("audioChannelCnt",audioChannelCnt);
+      	print("displayTitleArray",displayTitleArray);
+      	print("thumbNail:",audioImageUrlArray);
+	if (displayItemCnt&gt;0)
+		 setFocusItemIndex(0);
+	else
+		postMessage("left");
+  </onPopularAudio>
+  
+  <OnAudioItem>
+        focusIndex = getFocusItemIndex();
+        print("focusIndex: ", focusIndex);
+        if(focusIndex &gt; -1) 
+        {
+            slugCh = getStringArrayAt(audioChannelSlugArray, focusIndex);
+            storagePathMediaflyChannel = getStoragePath("tmp") + "mediaflyChannel.dat";
+            writeStringToFile(storagePathMediaflyChannel, slugCh);
+            pathMediafly = getStoragePath("tmp") +  "mediaflypath.dat";
+            writeStringToFile(pathMediafly,"Popular Audio");
+            /* link to display channel tp */
+            mylink="rss_file://./IMS_Modules/Mediafly/mediafly_channel.rss";
+        }
+  </OnAudioItem>
+
+  
+
+
+
+
+	  <onSearch>
+	        searchlink = null;
+	        keyword= getInput("Enter keyword", "doModal");
+	        if (keyword==null)
+	          print("enter null");
+	        else 
+	        {
+	          print("The search Keyword is>>>>>>>>>>>>>> ", keyword);
+	          storagePathMediaflySearch = getStoragePath("tmp");
+	          storagePathMediaflySearch = storagePathMediaflySearch + "mediaflySearch.dat";
+	          writeStringToFile(storagePathMediaflySearch, keyword);
+	          csjump = "success";
+	          searchlink = "rss_file://./IMS_Modules/Mediafly/mediafly_search.rss";
+	        }
+	        searchlink;
+	  </onSearch>
+
+	  
+
+
+
+  <onUserAccount>
+  	csjump = "success";
+  </onUserAccount>
+
+ 
+    <onContent>
+    	csjump = "success";
+    	menuType = "ContentSourceManage";
+  </onContent>
+
+   <onGetContentSource>
+
+   	print("onGetContentSource>>>>>>>>>>>>>>>>>>>");
+   	executeScript("deleteDisplayArray");
+   	displayTitleArray = contentSourceDisplayArray;
+   	displayItemCnt = contentSourceDisplaySize;
+   	imageUrlArray = null;
+
+	i=0;
+	contentSourceImageUrlArray = null;
+	
+	while (i!=contentSourceDisplaySize)
+	{
+		contentSource_info_file = getStoragePath("key") + "mdfly_"+i+".dat";
+		contentSourceInfoArray = readStringFromFile(contentSource_info_file);
+		contentSourceImageUrl = getStringArrayAt(contentSourceInfoArray,4);
+		contentSourceImageUrlArray = pushBackStringArray(contentSourceImageUrlArray,contentSourceImageUrl);
+		i = i+1;
+	}
+   	imageUrlArray = contentSourceImageUrlArray;
+   	print("displayTitleArray=",displayTitleArray);
+   	print("displayItemCnt=",displayItemCnt);
+   	print("imageUrlArray=",imageUrlArray);
+   	setFocusItemIndex(0);
+   	redrawDisplay();
+   	
+   </onGetContentSource>
+
+  <onContentSourceItem>
+			csjump = "failed";
+			executeScript("onContentSource");
+  			if (csjump=="success")
+  			{	
+  				csjump = "failed";
+  				current_contentsource_file = getStoragePath("key")+"mdfly_tmpContentSource.dat";
+	  			infoArray = null;
+	  			itemIndex = getFocusItemIndex();
+	  			contentSourceTitle = getStringArrayAt(displayTitleArray,itemIndex);
+	  			infoArray = pushBackStringArray(infoArray,contentSourceTitle);
+	  			infoArray = pushBackStringArray(infoArray,contentSourceSlug);
+	  			infoArray = pushBackStringArray(infoArray,contentSourceSearchable);
+	  			
+	  			if (linkedUserName!=null)
+		  			infoArray = pushBackStringArray(infoArray,linkedUserName);
+	  			writeStringToFile(current_contentsource_file,infoArray);
+	  			mylink="rss_file://./IMS_Modules/Mediafly/mediafly_contentsource_menu.rss";
+  				
+  			}
+  			
+  </onContentSourceItem>
+
+  
+
+
+  <!--
+  <submenu>
+    <title>Content Sources</title>
+    <link>http://www.seagate.com/support/software/Theater/Mediafly/v1/mediafly_browsesources.rss</link>
+  </submenu>
+-->
+<!-- the global onEnter element will be executed when enter or re-enter the page -->
+  <mediaDisplay name="threePartsView"
+     showDefaultInfo="no"
+     autoSelectMenu="no"
+     autoSelectItem="no"
+     forceFocusOnItem="yes"
+     selectMenuOnRight="no"
+     
+
+    	
+     itemPerPage = "5"
+     
+     imageParentFocus ="null"
+     parentFocusFontColor="200:200:0"
+     imageFocus=" "
+
+		
+     backgroundColor="28:35:51"
+     sideColorLeft="28:35:51"
+     sideColorRight="28:35:51"
+		
+     headerImageXPC = "11.1"
+     headerImageYPC = "8"
+     headerImageWidthPC = "11"
+     headerImageHightPC = "10"
+		
+     headerCapWidthPC = "0"
+     headerWidthPC = "0"
+
+     menuXPC = "0"
+     menuYPC = "29"
+     menuWidthPC = "31.72"
+     menuHeightPC = "10.56"
+     menuPerPage = "5"
+
+    menuImageXPC = "0"
+    menuImageYPC = "29"
+    menuImageWidthPC ="0"
+    menuImageHeightPC="0"
+    
+           
+     itemXPC = "45"
+     itemYPC = "28"
+     itemWidthPC = "45"
+     itemHeightPC = "11"
+
+     itemImageXPC = "38"
+     itemImageYPC = "29.2"
+     itemImageCapYPC = "2"
+     itemImageWidthPC = "5.58"
+     itemImageHeightPC = "8"
+    
+     
+     itemBackgroundColor="-1:-1:-1"
+
+    
+     
+     popupXPC="8"
+     popupYPC="15"
+     popupWidthPC="22.3"
+     popupHeightPC="5.5"
+     popupFontSize="13"
+     popupBorderColor="28:35:51"
+     popupForegroundColor="255:255:255"
+     popupBackgroundColor="28:35:51"
+
+
+           idleImageXPC="83.12"
+           idleImageYPC="89.58"
+           idleImageWidthPC="3.9"
+           idleImageHeightPC="5.3"
+		
+     showHeader="no"
+  >
+
+
+    <idleImage> image/POPUP_LOADING_01.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_02.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_03.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_04.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_05.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_06.fsp </idleImage>
+    
+   <backgroundDisplay  name=mediafly_background>
+		<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100>
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly_bg_01-01.fsp";
+			</script>
+		</image>
+</backgroundDisplay>
+
+		<image offsetXPC=6.8  offsetYPC= 2.64 widthPC=26.56 heightPC=15.69 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly-logo-and-text-med.fsp";
+			</script>
+		</image>
+
+		<image offsetXPC=31.7  offsetYPC= 26.11 widthPC=3.52 heightPC=74.03 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly_bg_line01.fsp";
+			</script>
+		</image>
+
+<menuDisplay>
+
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes>
+
+		<script>
+		index1 = getQueryMenuIndex();
+		index2 = getFocusMenuIndex();
+		if (index1 == index2)
+		{
+			if (getDrawingItemState() != "focus")
+			{
+				"./IMS_Modules/Mediafly/image/mediafly_menu_focus.fsp";
+			}
+			else
+			{
+				"./IMS_Modules/Mediafly/image/mediafly_menu_inactive.fsp";
+			}
+		}
+		else
+		{
+			null;
+		}
+		</script>
+		</image>
+		<text offsetXPC=28 offsetYPC=10 widthPC=72  heightPC=80 backgroundColor=-1:-1:-1  fontSize=17 >
+		<foregroundColor>
+			<script>
+				fgcolor = "102:102:102";
+				queryIndex = getQueryMenuIndex();
+				focusIndex = getFocusMenuIndex();
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:148:13";
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		
+		<script>
+			index = getQueryMenuIndex();
+			str = getStringArrayAt(menuArray, index);
+			str;
+		</script>
+		</text>
+</menuDisplay>
+
+  <text offsetXPC="53" offsetYPC="14" widthPC="40" heightPC="5"  fontSize="16" foregroundColor="51:51:51" backgroundColor="-1:-1:-1" align="right">
+		      <script>
+		      	if (defaultUserName!=null&amp;&amp;defaultUserName!="")
+		      	{
+		      		 "Welcome!   "+defaultUserName;
+		      	}
+		        else 
+		        {
+		        	null;
+		        }
+		        
+		      </script>
+    	</text>
+	
+    <onUserInput>
+      <script>
+      userInput = currentUserInput();
+      focusMenuIndex = getFocusMenuIndex();
+      focusItemState = getDrawingItemState();
+      print("--------------mediaDisplay-------onUserInput---------");
+      print("Input:", userInput);
+      print("focusMenuIndex: ", focusMenuIndex, "focusItemState: ",focusItemState);
+      focusIndex = getFocusItemIndex();
+      print("Focus Item Index:",focusIndex);
+      print("Display Item Count = ",displayItemCnt);
+      
+	
+      ret = "false";
+
+      if (userInput == "right"  &amp;&amp; focusItemState == "focus")
+        	ret = "true"; /* do nothing here */
+        	
+      /* block left key */
+      if (userInput == "left"  &amp;&amp; focusItemState != "focus")
+        	ret = "true"; /* do nothing here */
+        	
+      if(getPageInfo("majorContext") == "menu"  &amp;&amp; (userInput == "up" || userInput == "down"))
+      {
+	          if(displayItemCnt &gt; 0)
+	          {
+	            displayItemCnt = 0;
+	            showIdle();
+	            redrawDisplay();
+	            cancelIdle();
+	          }
+      }
+	  if (getPageInfo("majorContext") == "menu" &amp;&amp; userInput == "down")
+	  {
+  		focusIndex = getFocusMenuIndex();
+  		print("focusIndex: ", focusIndex);
+  		title = getStringArrayAt(menuArray, Add(focusIndex,1));
+  		print("title=",title);
+  		if (title == null || title == "")
+  		{
+  			ret = "true";
+  		}
+	  }
+
+      print("exit onUserInput ret: ", ret);
+      ret;
+    </script>      
+    </onUserInput>
+    
+    <script>
+      print("------------------MediaDisplay---OnUserInput-----Script--------------");
+      focusItemState = getDrawingItemState();
+      focusMenuIndex = getFocusMenuIndex();
+      print("bGotChannels: ",bGotChannels, "focusItemState :", focusItemState);
+      
+    </script>
+
+  
+    
+
+    
+	    <itemDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+			index1 = getQueryItemIndex();
+			index2 =getFocusItemIndex ();
+			if (index1 == index2)
+			{
+				if (getDrawingItemState() == "focus")
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menuitem_focus.fsp";
+				}
+				else
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menuitem_unfocus.fsp";
+				}
+			}
+			else
+			{
+				"./IMS_Modules/Mediafly/image/mediafly_menuitem_unfocus.fsp";
+			}
+			
+			</script>
+		</image>
+		
+			<text offsetXPC=5 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor=-1:-1:-1  fontSize=16 >
+			<foregroundColor>
+				<script>
+					fgcolor = "102:102:102";
+					queryIndex = getQueryItemIndex();
+					focusIndex = getFocusItemIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "0:148:13";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryItemIndex();
+				str = getStringArrayAt(displayTitleArray , index);
+				str;
+			</script>
+			</text>
+			
+	</itemDisplay>
+	
+	<image  redraw=yes offsetXPC=91.48  offsetYPC=30 widthPC=0.55 heightPC=51>
+		<script>
+			if (getDrawingItemState() =="focus"&amp;&amp;displayItemCnt&gt;0)
+			{
+				"./IMS_Modules/Mediafly/image/sliding_bar.fsp";
+			}
+			else
+			{
+				null;
+			}
+			
+		</script>
+	</image>
+	
+	<image redraw=yes offsetXPC=91.48   widthPC=0.55 >
+		<offsetYPC>
+			<script>
+				focusIndex = getFocusItemIndex();
+				if (displayItemCnt &gt; 0)
+				{
+					unitH = 51/displayItemCnt;
+					offset = Add(30, focusIndex*unitH);
+				}
+			</script>
+		</offsetYPC>
+		<heightPC>
+			<script>
+				
+				if (displayItemCnt &gt; 0)
+				{
+					Height = 51/displayItemCnt;
+					
+				}
+			</script>
+		</heightPC>
+		<script>
+			if (getDrawingItemState() =="focus"&amp;&amp;displayItemCnt&gt;0)
+			{
+				"./IMS_Modules/Mediafly/image/sliding.fsp";;
+			}
+			else
+			{
+				null;
+			}
+		</script>
+	</image>
+    
+ </mediaDisplay>
+
+
+<menu_template>
+	<onClick>
+		 
+		menuIndex = getFocusMenuIndex();
+		print("menuIndex=",menuIndex);
+		 executeScript(getStringArrayAt(menuScriptArray, menuIndex));
+    		mLink = getStringArrayAt(menuLinkArray, menuIndex);
+  		  if ( mLink == "")
+  			mLink = null;
+  		print("My Jump Link is ",mLink); 
+  		
+  		if (mLink!=null)
+  		{
+  			print("Ready To Jump >>>>>>>>>>>>>>>");
+  			jumpToLink("urlSelection");
+  		}
+	 		
+  		 null;
+	</onClick>
+	
+</menu_template>
+
+<urlSelection>
+        <link>
+          <script>
+            mLink;
+          </script>
+        </link>
+ </urlSelection>   
+  
+     <item_template>
+  
+    <onClick>
+      <script>
+        print("---OnClick---");
+	      onClickItemScript = getStringArrayAt(itemClickArray,getFocusMenuIndex());
+    		if ( onClickItemScript != null &amp;&amp; onClickItemScript != "" )
+    		{
+    			print("execute", onClickItemScript);
+    			executeScript(onClickItemScript);
+    			mylink;
+    		}
+      </script>
+    </onClick>
+    
+   
+
+    <media:thumbnail>
+      <script>
+        getStringArrayAt(imageUrlArray , -1);
+      </script>
+    </media:thumbnail>
+    
+    <link>
+      <script>
+        mylink;
+      </script>
+    </link>
+    
+  </item_template>
+  
+ 
+  
+  <channel>
+  
+	<title></title>
+	 <!--<link>rss_file://./IMS_Modules/Mediafly/mediafly_menu.rss</link> -->
+    null;
+    <itemSize>
+      <script>
+        	displayItemCnt;
+      </script>
+    </itemSize>
+    <menuSize>
+	<script>
+		menuCnt;
+	</script>
+     </menuSize>
+
+  </channel>
+
+
+  
+  <deleteDisplayArray>
+    /* delete title display channel or episode name tsp */
+    delCnt= 0;
+    print("----enter deleteDisplayArray----");
+    if(displayTitleArray != null)
+    {
+	      while(displayTitleArray != null &amp;&amp; getStringArrayAt(displayTitleArray,0) != null)
+	      {
+	        displayTitleArray = deleteStringArrayAt(displayTitleArray,0);
+	        delCnt += 1;
+	      } 
+    }
+    print("----displayTitleArray in deleteDisplayArray: ",displayTitleArray, "delCnt:", delCnt);
+  </deleteDisplayArray>
+
+
+    <getChannelInfo>
+  	print("getChannelInfo");
+    	idParam = VtunergetMACaddress();
+	inclAttrParam = "title,description,imageUrl,channel,published";
+	  if (channelParam == "__all__")
+	  {
+		  limit = "1";
+		  md5_string = MD5(sharedKey,tokenId,channelParam, inclAttrParam, limit, idParam, defaultUserName);
+	  }
+	  else
+	  {
+		  md5_string = MD5(sharedKey,tokenId,channelParam, inclAttrParam, idParam, defaultUserName);
+	  }
+    print("md5 string", md5_string);
+    itemCnt = 0;
+
+    url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetChannel?app_id="+app_id+"&amp;token=";
+    url = url + valtoken;
+    url = url + "&amp;channelSlug=" + channelParam;
+    url = url + "&amp;includeAttributes=" + inclAttrParam;
+    
+	  if (channelParam == "__all__")
+	  {
+		url = url + "&amp;limit="  + limit;
+	  }
+    url = url + "&amp;thirdPartyUserID=" + idParam;
+    url = url + "&amp;user_context=" + urlEncode(defaultUserName);
+    url = url + "&amp;call_sig=";
+    url = url + md5_string;
+
+
+    print("url = ", url);
+
+    file = loadXMLFile(url);
+    if (file == null)
+    {
+      itemSize = 0;
+      print("Load URL fail ", url);
+    }
+    else
+    {
+      status = getXMLAttribute("response", "status");
+      print("status = ", status);
+      itemSize = getXMLElementCount("response", "channel", "episode");
+      print("itemSize = ", itemSize);
+    }
+    if(status == "fail")
+    {
+      err =  getXMLAttribute("response", "err", "message");
+      print ("error", err);
+    }
+    else if (itemSize &gt; 0)
+    {
+		title       = getXMLAttribute("response", "channel", "name");
+		slug        = getXMLAttribute("response", "channel", "slug");
+		imageUrl    = getXMLAttribute("response", "channel", "imageUrl");
+		episodeCount= getXMLAttribute("response", "channel", "episodeCount");
+		print("getChannelInfo");
+		print("                 title", title);
+		print("                 slug", slug);
+		print("                 imageUrl", imageUrl);
+		print("                 episodeCount", episodeCount);
+		if(title != null &amp;&amp; episodeCount > 0)
+		{
+			itemSize += 1;
+			if(mediaTypeFilter == "video" || mediaTypeFilter == "audio,video")
+			{
+				  if (channelParam == "__all__")
+				  {
+					  episodeCount = allCount;
+				  }
+				  channelTitleArray  = pushBackStringArray(channelTitleArray, title + "    (" + episodeCount + ")");
+				channelSlugArray     = pushBackStringArray(channelSlugArray, slug);
+				 imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+				
+				episodeCountArray   = pushBackStringArray(episodeCountArray, episodeCount);
+				channelCnt += 1;
+			}
+			  if (mediaTypeFilter == "audio")
+			{
+				  audioChannelTitleArray  = pushBackStringArray(audioChannelTitleArray, title+ "    (" + episodeCount + ")");
+				audioChannelSlugArray     = pushBackStringArray(audioChannelSlugArray, slug);
+				imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+				
+				audioEpisodeCountArray   = pushBackStringArray(audioEpisodeCountArray, episodeCount);
+				audioChannelCnt += 1;
+			}
+		} 
+	}
+
+  </getChannelInfo>
+  
+  <getChannel>
+	inclAttrParam = "title,description,imageUrl,channel,published";
+	idParam = VtunergetMACaddress();
+    md5_string = MD5(sharedKey,tokenId,channelParam, inclAttrParam, idParam, defaultUserName);
+    print("md5 string", md5_string);
+    itemCnt = 0;
+
+    url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetChannel?app_id="+app_id+"&amp;token=";
+    url = url + valtoken;
+    url = url + "&amp;channelSlug=" + channelParam;
+    url = url + "&amp;includeAttributes=" + inclAttrParam;
+    url = url + "&amp;thirdPartyUserID=" + idParam;
+    url = url + "&amp;user_context=" + urlEncode(defaultUserName);
+    url = url + "&amp;call_sig=";
+    url = url + md5_string;
+
+
+    print("url = ", url);
+
+    file = loadXMLFile(url);
+    if (file == null)
+    {
+      itemSize = 0;
+      print("Load URL fail ", url);
+    }
+    else
+    {
+      status = getXMLAttribute("response", "status");
+      print("status = ", status);
+      itemSize = getXMLElementCount("response", "channel", "episode");
+      print("itemSize = ", itemSize);
+    }
+    if(status == "fail")
+    {
+      err =  getXMLAttribute("response", "err", "message");
+      print ("error", err);
+    }
+    else if (itemSize &gt; 0)
+    {
+      /* clean up array if neccessary stx */
+      count = 0;
+      while(episodeTitleArray != null &amp;&amp; getStringArrayAt(episodeTitleArray,0) != null)
+      {
+        slugArray = deleteStringArrayAt(slugArray, 0);
+        episodeTitleArray = deleteStringArrayAt(episodeTitleArray, 0);
+        descriptionArray = deleteStringArrayAt(descriptionArray, 0);
+        channelArray = deleteStringArrayAt(channelArray, 0);
+        publishedArray = deleteStringArrayAt(publishedArray, 0);
+        imageUrlArray = deleteStringArrayAt(imageUrlArray, 0);
+        count += 1;
+      }
+      print("delete count1:  ", count);
+      count=0;
+      while(1)
+      {
+        slug        = getXMLAttribute("response", "channel", "episode", count, "slug");
+        imageUrl = getXMLAttribute("response", "channel", "episode",  count,"imageUrl");
+        episodeTitle = getXMLAttribute("response", "channel", "episode", count, "title");
+        channel      = getXMLAttribute("response", "channel", "episode", count, "channel");
+        published    =  getXMLAttribute("response", "channel", "episode", count,"published");
+        description  =  getXMLAttribute("response", "channel", "episode", count,"description");
+        episodeCount  =  getXMLAttribute("response", "channel", "episode", count,"episodeCount");
+        print("++++++++++++++++++++++++episodeTitle: ",episodeTitle);
+        if(slug != null &amp;&amp; slug != "")
+        {
+            slugArray             = pushBackStringArray(slugArray, slug); /* slug array use for favorite tsp */
+            episodeTitleArray     = pushBackStringArray(episodeTitleArray, episodeTitle);
+            descriptionArray      = pushBackStringArray(descriptionArray, description);
+            channelArray          = pushBackStringArray(channelArray, channel);
+            publishedArray        = pushBackStringArray(publishedArray, published);
+            imageUrlArray         = pushBackStringArray(imageUrlArray, imageUrl); 
+            itemCnt += 1;
+        }
+        count += 1;
+        if (count &gt; itemSize)
+        {
+          break;
+        }
+      } /* end_while tsp*/
+    } /* end if (itemSize > 0) tp*/
+    if(itemCnt == 0)
+    {
+        slugArray             = pushBackStringArray(slugArray, ""); /* slug array use for favorite tsp */
+        temptxt = "$[MF_NO_EPISODE_FOUND]";
+        episodeTitleArray     = pushBackStringArray(episodeTitleArray,temptxt);    
+        descriptionArray      = pushBackStringArray(descriptionArray, "");
+        channelArray          = pushBackStringArray(channelArray, "");
+        publishedArray        = pushBackStringArray(publishedArray, "");
+        imageUrlArray         = pushBackStringArray(imageUrlArray, ""); 
+    }
+    print("episodeTitleArray:",episodeTitleArray);
+    print("itemCnt1:",itemCnt);
+    
+  </getChannel>
+
+  <getChannels>
+          print("++++++++++++++++enter getChannels");
+          print("mediaTypeFilter:",mediaTypeFilter);
+          
+          md5_string = MD5(sharedKey,tokenId, "true", mediaTypeFilter, "Strip", "app_context_system");
+          print("md5 string", md5_string);
+          url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetChannels?app_id="+app_id+"&amp;token=";
+          url = url + valtoken;
+          url = url + "&amp;capitalizeChannelNames=true";
+          url = url + "&amp;mediaType=" + mediaTypeFilter;
+          url = url + "&amp;newlineFormat=Strip";
+          url = url + "&amp;user_context=app_context_system";
+          url = url + "&amp;call_sig=";
+          url = url + md5_string;
+          file = loadXMLFile(url);
+          cancelIdle();
+          if (file == null) 
+          {
+            itemSize = 0;
+            print("Load URL fail ", url);
+          }
+          else 
+          {
+            itemSize = getXMLElementCount("response", "channels", "channel");
+            print("ItemSize1 = ", itemSize);
+          }
+          if (itemSize &gt; 0) 
+          {
+	            count=0;
+	            bGotChannels = 1;
+	            bGotMyChannels = 0;
+	            /* clean up array if need to stx */
+			     if(mediaTypeFilter == "video" || mediaTypeFilter == "audio,video")
+	            {
+	              channelCnt = 0;            
+	              while(channelTitleArray != null &amp;&amp; getStringArrayAt(channelTitleArray,0) != null)
+	              {
+	                  channelTitleArray = deleteStringArrayAt(channelTitleArray, 0);    
+	                  channelSlugArray  = deleteStringArrayAt(channelSlugArray,0);    
+	                  imageUrlArray 	  = deleteStringArrayAt(imageUrlArray ,0);    
+	                  episodeCountArray = deleteStringArrayAt(episodeCountArray,0);         
+	                  count += 1;
+	              }
+             }
+            if (mediaTypeFilter == "audio")
+            {
+	              count = 0;
+	              audioChannelCnt = 0;              
+	              while(audioChannelTitleArray != null &amp;&amp; getStringArrayAt(audioChannelTitleArray,0) != null)
+	              {
+	                  audioChannelTitleArray = deleteStringArrayAt(audioChannelTitleArray, 0);    
+	                  audioChannelSlugArray  = deleteStringArrayAt(audioChannelSlugArray,0);    
+	                  audioImageUrlArray 	  = deleteStringArrayAt(audioImageUrlArray ,0);    
+	                  audioEpisodeCountArray = deleteStringArrayAt(audioEpisodeCountArray,0);         
+	                  count += 1;
+	              }
+            
+            }
+            print("string deleted:",count);
+            count = 0;
+            while(1)
+            {
+              title       = getXMLAttribute("response", "channels", "channel", count, "name");
+              slug        = getXMLAttribute("response", "channels", "channel", count, "slug");
+              imageUrl    = getXMLAttribute("response", "channels", "channel", count, "imageUrl");
+              episodeCount= getXMLAttribute("response", "channels", "channel", count, "episodeCount");
+              
+              if(title != "All (Mix)"  &amp;&amp; title != null &amp;&amp; episodeCount > 0)
+              {
+              
+	                if(mediaTypeFilter == "video" || mediaTypeFilter == "audio,video")
+	                {
+	                  channelTitleArray  = pushBackStringArray(channelTitleArray, title + "    (" + episodeCount + ")" );
+	                  channelSlugArray     = pushBackStringArray(channelSlugArray, slug);
+	                  videoImageUrlArray = pushBackStringArray(videoImageUrlArray, imageUrl);
+	                
+	                  episodeCountArray   = pushBackStringArray(episodeCountArray, episodeCount);
+	                  channelCnt += 1;
+	                }
+			if (mediaTypeFilter == "audio")
+	                {
+	                  audioChannelTitleArray  = pushBackStringArray(audioChannelTitleArray, title + "    (" + episodeCount + ")");
+	                  audioChannelSlugArray     = pushBackStringArray(audioChannelSlugArray, slug);
+	                  audioImageUrlArray = pushBackStringArray(audioImageUrlArray, imageUrl);
+	                  audioEpisodeCountArray   = pushBackStringArray(audioEpisodeCountArray, episodeCount);
+	                  audioChannelCnt += 1;
+	                }
+              } /*end if(title != "All (Mix)"  &amp;&amp; title != null) tsp */
+              
+              count += 1;
+              if (count &gt;itemSize)
+              {
+                break;
+              }
+            } /* end while(1) tsp */
+          } /* end if (itemSize &gt; 0) tsp */
+          
+          print("++++++++++++++++Exit getChannels");
+  </getChannels>
+  
+ <getMyChannels>
+          print("++++++++++++++++enter getMyChannels");
+          md5_string = MD5(sharedKey,tokenId, "true", mediaTypeFilter, "Strip", defaultUserName);
+          print("md5 string", md5_string);
+          url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetChannels?app_id="+app_id+"&amp;token=";
+          url = url + valtoken;
+          url = url + "&amp;capitalizeChannelNames=true";
+          url = url + "&amp;mediaType=" + mediaTypeFilter;
+          url = url + "&amp;newlineFormat=Strip";
+          url = url + "&amp;user_context="  + urlEncode(defaultUserName);
+          url = url + "&amp;call_sig=";
+          url = url + md5_string;
+          
+          print("url=",url);
+          file = loadXMLFile(url);
+          cancelIdle();
+          
+          if (file == null) 
+          {
+	           itemSize = 0;
+	           print("Load URL fail ", url);
+          }
+          else 
+          {
+		   itemSize = getXMLElementCount("response", "channels", "channel");
+		   print("ItemSize1 = ", itemSize);
+          }
+          
+          if (itemSize &gt; 0) 
+          {
+	            count=0;
+	            audioChannelCnt = 0;
+	            bGotMyChannels = 1;
+		    bGotChannels = 0;
+            	/* clean up array if need to stx */
+	            if(mediaTypeFilter == "video" || mediaTypeFilter == "audio,video")
+	            {
+	              	channelCnt = 0;            
+		              while(channelTitleArray != null &amp;&amp; getStringArrayAt(channelTitleArray,0) != null)
+		              {
+		                  channelTitleArray = deleteStringArrayAt(channelTitleArray, 0);    
+		                  channelSlugArray  = deleteStringArrayAt(channelSlugArray,0);    
+		                  imageUrlArray 	  = deleteStringArrayAt(imageUrlArray ,0);    
+		                  episodeCountArray = deleteStringArrayAt(episodeCountArray,0);         
+		                  count += 1;
+		              }
+	             }
+            
+	            print("string deleted:",count);
+	            count = 0;
+	            while(1)
+	            {
+		              title       = getXMLAttribute("response", "channels", "channel", count, "name");
+		              slug        = getXMLAttribute("response", "channels", "channel", count, "slug");
+		              imageUrl    = getXMLAttribute("response", "channels", "channel", count, "imageUrl");
+		              episodeCount= getXMLAttribute("response", "channels", "channel", count, "episodeCount");
+		              if(title != "All (Mix)"  &amp;&amp; title != null &amp;&amp; episodeCount > 0)
+		              {
+		              
+			                if(mediaTypeFilter == "video" || mediaTypeFilter == "audio,video" )
+			                {
+				                  channelTitleArray  = pushBackStringArray(channelTitleArray, title + "    (" + episodeCount + ")");
+				                  channelSlugArray     = pushBackStringArray(channelSlugArray, slug);
+				                  imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+				               
+				                  episodeCountArray   = pushBackStringArray(episodeCountArray, episodeCount);
+				                  channelCnt += 1;
+			                }
+			                
+			                if(mediaTypeFilter == "audio" )
+			                {
+				                  audioChannelTitleArray  = pushBackStringArray(audioChannelTitleArray, title + "    (" + episodeCount + ")");
+				                  audioChannelSlugArray     = pushBackStringArray(audioChannelSlugArray, slug);
+				                  imageUrlArray = pushBackStringArray(imageUrlArray, imageUrl);
+				                  audioEpisodeCountArray   = pushBackStringArray(audioEpisodeCountArray, episodeCount);
+				                  audioChannelCnt += 1;
+			                }
+		              } 
+		              
+			      if (title == "All (Mix)")
+				{
+					 allCount = episodeCount;
+					 allImageUrl = imageUrl;
+				 }
+				 
+		              count += 1;
+		              if (count ==itemSize)
+		              {
+		                	break;
+		              }
+	            } 
+           }
+
+      print("channelCnt: ",channelCnt);
+      print("channelTitleArray: ",channelTitleArray);
+      print("audioChannelCnt: ",audioChannelCnt);
+      print("audioChannelTitleArray: ",audioChannelTitleArray);
+
+  </getMyChannels>
+
+  <getToken>
+    /* read saved token - tp*/
+    fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+    tokenArray = readStringFromFile(fileName);
+    
+    valtoken = getStringArrayAt(tokenArray, 0);
+    tokenId = getStringArrayAt(tokenArray, 1);
+    tokenTime = getStringArrayAt(tokenArray, 2);
+    
+    print("tokenTime: ",tokenTime);
+
+  if(valtoken == null || tokenTime == null || (getSystemTime() - 3300) &gt; tokenTime)
+  {
+  	if(tokenArray != null)
+        {
+          
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+        }
+       url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Authentication.GetToken?app_id="+app_id+"";
+       url = url + "&amp;thirdPartyUserID=" + VtunergetMACaddress();
+       print("url", url);
+      
+      file = loadXMLFile(url);
+
+      if (file == null)
+      {
+  	      print("failed to load ", url);
+  	      titleString = "Sign in failed!";
+  	      print("call redrawDisplay()");
+  	      redrawDisplay();
+      }
+      else
+      {
+		        valtoken  = getXMLText("response","token");
+		        tokenId   = getXMLAttribute("response","token","id");
+		        print("token = ", valtoken);
+		        print("token id = ", tokenId);
+
+	        if ( valtoken != null )
+	        {
+		          storagePathMediaflyToken = getStoragePath("tmp");
+		          storagePathMediaflyToken = storagePathMediaflyToken + "mediaflyToken.dat";
+		          tokenArray = pushBackStringArray(tokenArray, valtoken);
+		          tokenArray = pushBackStringArray(tokenArray, tokenId);
+		          tokenArray = pushBackStringArray(tokenArray, getSystemTime());
+
+		          writeStringToFile(storagePathMediaflyToken, tokenArray);
+		       
+		          print("write to file ", storagePathMediaflyToken);
+	        }
+      }
+   }
+  </getToken> 
+  
+</rss>

@@ -1,0 +1,36 @@
+#!/bin/sh
+#
+# description: modify the samba security level
+
+
+anonymous() {
+	cp -f /tmp/package/samba/lib/smb_anonymous.conf /tmp/package/samba/lib/smb.conf
+	RETVAL=$?
+	echo
+	return $RETVAL
+}	
+
+user() {
+	adduser -DH admin >/dev/null 2>&1
+	echo -e "123\n123" >/usr/local/etc/dvdplayer/tmpfile_samba
+        /tmp/package/samba/sbin/smbpasswd -a admin -s</usr/local/etc/dvdplayer/tmpfile_samba >/dev/null 2>&1
+        rm -f /usr/local/etc/dvdplayer/tmpfile_samba
+	cp -f /tmp/package/samba/lib/smb_user.conf /tmp/package/samba/lib/smb.conf
+        RETVAL=$?
+        echo
+        return $RETVAL
+}	
+
+case "$1" in
+  anonymous)
+  	anonymous
+	;;
+  user)
+  	user
+	;;
+  *)
+	echo $"Usage: $0 {anonymous|user}"
+	exit 1
+esac
+
+exit $?

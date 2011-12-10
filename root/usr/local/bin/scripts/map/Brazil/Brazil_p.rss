@@ -1,0 +1,587 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_p.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Pacajus</title>
+<cur>BRXX0167</cur>
+<for>Pacajus</for>
+</item>
+
+<item>
+<title>Palmares</title>
+<cur>BRXX0168</cur>
+<for>Palmares</for>
+</item>
+
+<item>
+<title>Palmas</title>
+<cur>BRXX0169</cur>
+<for>Palmas</for>
+</item>
+
+<item>
+<title>Para de Minas</title>
+<cur>BRXX0423</cur>
+<for>Para de Minas</for>
+</item>
+
+<item>
+<title>Paracatu</title>
+<cur>BRXX0170</cur>
+<for>Paracatu</for>
+</item>
+
+<item>
+<title>Paraguacu Paulista</title>
+<cur>BRXX0171</cur>
+<for>Paraguacu Paulista</for>
+</item>
+
+<item>
+<title>Paraibuna</title>
+<cur>BRXX0625</cur>
+<for>Paraibuna</for>
+</item>
+
+<item>
+<title>Parana</title>
+<cur>BRXX0424</cur>
+<for>Parana</for>
+</item>
+
+<item>
+<title>Paranagua</title>
+<cur>BRXX0172</cur>
+<for>Paranagua</for>
+</item>
+
+<item>
+<title>Parati</title>
+<cur>BRXX0300</cur>
+<for>Parati</for>
+</item>
+
+<item>
+<title>Paraty</title>
+<cur>BRXX3898</cur>
+<for>Paraty</for>
+</item>
+
+<item>
+<title>Parintins</title>
+<cur>BRXX0173</cur>
+<for>Parintins</for>
+</item>
+
+<item>
+<title>Parnaiba</title>
+<cur>BRXX0301</cur>
+<for>Parnaiba</for>
+</item>
+
+<item>
+<title>Passo Fundo</title>
+<cur>BRXX0174</cur>
+<for>Passo Fundo</for>
+</item>
+
+<item>
+<title>Patos de Minas</title>
+<cur>BRXX0302</cur>
+<for>Patos de Minas</for>
+</item>
+
+<item>
+<title>Patrocinio</title>
+<cur>BRXX0303</cur>
+<for>Patrocinio</for>
+</item>
+
+<item>
+<title>Pauini</title>
+<cur>BRXX0175</cur>
+<for>Pauini</for>
+</item>
+
+<item>
+<title>Paulinia</title>
+<cur>BRXX0425</cur>
+<for>Paulinia</for>
+</item>
+
+<item>
+<title>Paulinia</title>
+<cur>BRXX0343</cur>
+<for>Paulinia</for>
+</item>
+
+<item>
+<title>Paulista</title>
+<cur>BRXX0304</cur>
+<for>Paulista</for>
+</item>
+
+<item>
+<title>Paulistana</title>
+<cur>BRXX0626</cur>
+<for>Paulistana</for>
+</item>
+
+<item>
+<title>Paulo Afonso</title>
+<cur>BRXX0627</cur>
+<for>Paulo Afonso</for>
+</item>
+
+<item>
+<title>Pederneiras</title>
+<cur>BRXX0628</cur>
+<for>Pederneiras</for>
+</item>
+
+<item>
+<title>Pedra Azul</title>
+<cur>BRXX0305</cur>
+<for>Pedra Azul</for>
+</item>
+
+<item>
+<title>Pedro Afonso</title>
+<cur>BRXX0629</cur>
+<for>Pedro Afonso</for>
+</item>
+
+<item>
+<title>Peixe</title>
+<cur>BRXX2930</cur>
+<for>Peixe</for>
+</item>
+
+<item>
+<title>Pelotas</title>
+<cur>BRXX0176</cur>
+<for>Pelotas</for>
+</item>
+
+<item>
+<title>Penapolis</title>
+<cur>BRXX0177</cur>
+<for>Penapolis</for>
+</item>
+
+<item>
+<title>Penedo</title>
+<cur>BRXX0631</cur>
+<for>Penedo</for>
+</item>
+
+<item>
+<title>Pereira Barreto</title>
+<cur>BRXX0632</cur>
+<for>Pereira Barreto</for>
+</item>
+
+<item>
+<title>Peruibe</title>
+<cur>BRXX0178</cur>
+<for>Peruibe</for>
+</item>
+
+<item>
+<title>Perus</title>
+<cur>BRXX0633</cur>
+<for>Perus</for>
+</item>
+
+<item>
+<title>Petrolina</title>
+<cur>BRXX0179</cur>
+<for>Petrolina</for>
+</item>
+
+<item>
+<title>Petropolis</title>
+<cur>BRXX0180</cur>
+<for>Petropolis</for>
+</item>
+
+<item>
+<title>Pico da Bandeira</title>
+<cur>BRXX3899</cur>
+<for>Pico da Bandeira</for>
+</item>
+
+<item>
+<title>Pico dos Marins</title>
+<cur>BRXX3900</cur>
+<for>Pico dos Marins</for>
+</item>
+
+<item>
+<title>Pico dos Marins</title>
+<cur>BRXX3901</cur>
+<for>Pico dos Marins</for>
+</item>
+
+<item>
+<title>Picos</title>
+<cur>BRXX0634</cur>
+<for>Picos</for>
+</item>
+
+<item>
+<title>Piedade</title>
+<cur>BRXX0635</cur>
+<for>Piedade</for>
+</item>
+
+<item>
+<title>Piedade do Rio Grande</title>
+<cur>BRXX0636</cur>
+<for>Piedade do Rio Grande</for>
+</item>
+
+<item>
+<title>Pilar do Sul</title>
+<cur>BRXX0637</cur>
+<for>Pilar do Sul</for>
+</item>
+
+<item>
+<title>Pimenta Bueno</title>
+<cur>BRXX0638</cur>
+<for>Pimenta Bueno</for>
+</item>
+
+<item>
+<title>Pindamonhangaba</title>
+<cur>BRXX0639</cur>
+<for>Pindamonhangaba</for>
+</item>
+
+<item>
+<title>Pinhais</title>
+<cur>BRXX3902</cur>
+<for>Pinhais</for>
+</item>
+
+<item>
+<title>Piracicaba</title>
+<cur>BRXX0181</cur>
+<for>Piracicaba</for>
+</item>
+
+<item>
+<title>Pirajai</title>
+<cur>BRXX0426</cur>
+<for>Pirajai</for>
+</item>
+
+<item>
+<title>Pirajui</title>
+<cur>BRXX0427</cur>
+<for>Pirajui</for>
+</item>
+
+<item>
+<title>Pirapora</title>
+<cur>BRXX0182</cur>
+<for>Pirapora</for>
+</item>
+
+<item>
+<title>Pirapozinho</title>
+<cur>BRXX0640</cur>
+<for>Pirapozinho</for>
+</item>
+
+<item>
+<title>Pirassununga</title>
+<cur>BRXX0641</cur>
+<for>Pirassununga</for>
+</item>
+
+<item>
+<title>Pirituba</title>
+<cur>BRXX0642</cur>
+<for>Pirituba</for>
+</item>
+
+<item>
+<title>Pitangui</title>
+<cur>BRXX0643</cur>
+<for>Pitangui</for>
+</item>
+
+<item>
+<title>Placido Castro</title>
+<cur>BRXX0718</cur>
+<for>Placido Castro</for>
+</item>
+
+<item>
+<title>Poa</title>
+<cur>BRXX0342</cur>
+<for>Poa</for>
+</item>
+
+<item>
+<title>Poco Fundo</title>
+<cur>BRXX0428</cur>
+<for>Poco Fundo</for>
+</item>
+
+<item>
+<title>Pocos de Caldas</title>
+<cur>BRXX0183</cur>
+<for>Pocos de Caldas</for>
+</item>
+
+<item>
+<title>Pompeia</title>
+<cur>BRXX0429</cur>
+<for>Pompeia</for>
+</item>
+
+<item>
+<title>Pompeu</title>
+<cur>BRXX0430</cur>
+<for>Pompeu</for>
+</item>
+
+<item>
+<title>Ponta Grossa</title>
+<cur>BRXX0184</cur>
+<for>Ponta Grossa</for>
+</item>
+
+<item>
+<title>Ponta Pora</title>
+<cur>BRXX0185</cur>
+<for>Ponta Pora</for>
+</item>
+
+<item>
+<title>Ponte Alta do Bom Jesus</title>
+<cur>BRXX0431</cur>
+<for>Ponte Alta do Bom Jesus</for>
+</item>
+
+<item>
+<title>Ponte Nova</title>
+<cur>BRXX0644</cur>
+<for>Ponte Nova</for>
+</item>
+
+<item>
+<title>Porangaba</title>
+<cur>BRXX0645</cur>
+<for>Porangaba</for>
+</item>
+
+<item>
+<title>Porteirinha</title>
+<cur>BRXX0646</cur>
+<for>Porteirinha</for>
+</item>
+
+<item>
+<title>Porto Acre</title>
+<cur>BRXX0647</cur>
+<for>Porto Acre</for>
+</item>
+
+<item>
+<title>Porto Alegre</title>
+<cur>BRXX0186</cur>
+<for>Porto Alegre</for>
+</item>
+
+<item>
+<title>Porto Artur</title>
+<cur>BRXX0187</cur>
+<for>Porto Artur</for>
+</item>
+
+<item>
+<title>Porto Feliz</title>
+<cur>BRXX0188</cur>
+<for>Porto Feliz</for>
+</item>
+
+<item>
+<title>Porto Ferreira</title>
+<cur>BRXX0649</cur>
+<for>Porto Ferreira</for>
+</item>
+
+<item>
+<title>Porto Nacional</title>
+<cur>BRXX0189</cur>
+<for>Porto Nacional</for>
+</item>
+
+<item>
+<title>Porto Seguro</title>
+<cur>BRXX0306</cur>
+<for>Porto Seguro</for>
+</item>
+
+<item>
+<title>Porto Velho</title>
+<cur>BRXX0190</cur>
+<for>Porto Velho</for>
+</item>
+
+<item>
+<title>Porto de Moz</title>
+<cur>BRXX0648</cur>
+<for>Porto de Moz</for>
+</item>
+
+<item>
+<title>Praia Grande</title>
+<cur>BRXX3088</cur>
+<for>Praia Grande</for>
+</item>
+
+<item>
+<title>Praia da Pipa</title>
+<cur>BRXX3903</cur>
+<for>Praia da Pipa</for>
+</item>
+
+<item>
+<title>Prainha</title>
+<cur>BRXX0650</cur>
+<for>Prainha</for>
+</item>
+
+<item>
+<title>Presidente Medici</title>
+<cur>BRXX0432</cur>
+<for>Presidente Medici</for>
+</item>
+
+<item>
+<title>Presidente Prudente</title>
+<cur>BRXX0192</cur>
+<for>Presidente Prudente</for>
+</item>
+
+<item>
+<title>Presidente Venceslau</title>
+<cur>BRXX0651</cur>
+<for>Presidente Venceslau</for>
+</item>
+
+<item>
+<title>Primavera do Leste</title>
+<cur>BRXX0193</cur>
+<for>Primavera do Leste</for>
+</item>
+
+<item>
+<title>Propria</title>
+<cur>BRXX0433</cur>
+<for>Propria</for>
+</item>
+</channel></rss>

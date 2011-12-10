@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[SKIN_1]" path="../../skins/skin1/dialogPath.xml" type="flash" />
+		<item label="$[SKIN_2]" path="../../skins/skin2/dialogPath.xml" type="flash"/>
+		<item label="$[SKIN_3]" path="rss_file://./home_menu/scripts/HomeMenu.rss" type="IMS"/>
+		<item label="$[SKIN_4]" path="rss_file://./home_menu/skin4/scripts/HomeMenu.rss" type="IMS"/>
+</menu>
+

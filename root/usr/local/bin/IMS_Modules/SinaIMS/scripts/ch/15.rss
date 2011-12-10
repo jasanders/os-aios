@@ -1,0 +1,96 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "Weather_favorites.dat";
+	favoriteLocationArray = readStringFromFile(storagePath);
+</script>
+
+	<onUserInput>
+		userInput = currentUserInput();
+		print(userInput);
+	   if ("edit" == userInput){
+				LocationID = getItemInfo("title");
+				print("add ", LocationID, " to favorite");
+				favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+				writeStringToFile(storagePath, favoriteLocationArray);		
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+						postMessage("return");	
+						postMessage("return");	
+	   }
+	</onUserInput>
+	
+<item_template>
+       <onClick>
+	   
+						LocationID = getItemInfo("title");
+						print("add ", LocationID, " to favorite");
+						retstr = SetIMSParam("is_str_exist",favoriteLocationArray,LocationID);
+						if(retstr != "yes")
+						{
+							favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+							writeStringToFile(storagePath, favoriteLocationArray);	
+						}
+						else
+						{
+								msgBox("EXIST_INFO");
+						}
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+								postMessage("return");	
+								postMessage("return");		 
+			}
+	    </onClick>
+</item_template>
+<channel>
+<title>湖南省</title>
+<link>./scripts/hisense/ch/15.rss</link>
+<!--<media:thumbnail url="image/weather.jpg"/>-->
+<item>
+<title>长沙</title>
+</item>
+<item>
+<title>株洲</title>
+</item>
+<item>
+<title>湘潭</title>
+</item>
+<item>
+<title>衡阳</title>
+</item>
+<item>
+<title>邵阳</title>
+</item>
+<item>
+<title>岳阳</title>
+</item>
+<item>
+<title>常德</title>
+</item>
+<item>
+<title>张家界</title>
+</item>
+<item>
+<title>益阳</title>
+</item>
+<item>
+<title>郴州</title>
+</item>
+<item>
+<title>永州</title>
+</item>
+<item>
+<title>怀化</title>
+</item>
+<item>
+<title>娄底</title>
+</item>
+
+</channel></rss>

@@ -1,0 +1,350 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>L'Isle-Verte</title>
+<cur>CAXX0249</cur>
+<for>L'Isle-Verte</for>
+</item>
+
+<item>
+<title>La Baie</title>
+<cur>CAXX0229</cur>
+<for>La Baie</for>
+</item>
+
+<item>
+<title>La Corey</title>
+<cur>CAXX0230</cur>
+<for>La Corey</for>
+</item>
+
+<item>
+<title>La Grande</title>
+<cur>CAXX0231</cur>
+<for>La Grande</for>
+</item>
+
+<item>
+<title>La Malbaie</title>
+<cur>CAXX0232</cur>
+<for>La Malbaie</for>
+</item>
+
+<item>
+<title>La Ronge</title>
+<cur>CAXX0233</cur>
+<for>La Ronge</for>
+</item>
+
+<item>
+<title>La Salle</title>
+<cur>CAXX0234</cur>
+<for>La Salle</for>
+</item>
+
+<item>
+<title>Labrador City</title>
+<cur>CAXX0235</cur>
+<for>Labrador City</for>
+</item>
+
+<item>
+<title>Lac La Biche</title>
+<cur>CAXX0619</cur>
+<for>Lac La Biche</for>
+</item>
+
+<item>
+<title>Lac St. Pierre</title>
+<cur>CAXX0577</cur>
+<for>Lac St. Pierre</for>
+</item>
+
+<item>
+<title>Lachine</title>
+<cur>CAXX0236</cur>
+<for>Lachine</for>
+</item>
+
+<item>
+<title>Lacombe</title>
+<cur>CAXX0237</cur>
+<for>Lacombe</for>
+</item>
+
+<item>
+<title>Lake Louise</title>
+<cur>CAXX0238</cur>
+<for>Lake Louise</for>
+</item>
+
+<item>
+<title>Lakefield</title>
+<cur>CAXX0239</cur>
+<for>Lakefield</for>
+</item>
+
+<item>
+<title>Lamaline</title>
+<cur>CAXX0240</cur>
+<for>Lamaline</for>
+</item>
+
+<item>
+<title>Langara</title>
+<cur>CAXX0613</cur>
+<for>Langara</for>
+</item>
+
+<item>
+<title>Langham</title>
+<cur>CAXX0241</cur>
+<for>Langham</for>
+</item>
+
+<item>
+<title>Lansdowne House</title>
+<cur>CAXX0605</cur>
+<for>Lansdowne House</for>
+</item>
+
+<item>
+<title>Lashburn</title>
+<cur>CAXX0242</cur>
+<for>Lashburn</for>
+</item>
+
+<item>
+<title>Laval</title>
+<cur>CAXX0243</cur>
+<for>Laval</for>
+</item>
+
+<item>
+<title>Lawn</title>
+<cur>CAXX0244</cur>
+<for>Lawn</for>
+</item>
+
+<item>
+<title>Lennoxville</title>
+<cur>CAXX0245</cur>
+<for>Lennoxville</for>
+</item>
+
+<item>
+<title>Lethbridge</title>
+<cur>CAXX0246</cur>
+<for>Lethbridge</for>
+</item>
+
+<item>
+<title>Levis</title>
+<cur>CAXX0247</cur>
+<for>Levis</for>
+</item>
+
+<item>
+<title>Lions Head</title>
+<cur>CAXX0248</cur>
+<for>Lions Head</for>
+</item>
+
+<item>
+<title>Lively</title>
+<cur>CAXX0250</cur>
+<for>Lively</for>
+</item>
+
+<item>
+<title>Lloydminister</title>
+<cur>CAXX0610</cur>
+<for>Lloydminister</for>
+</item>
+
+<item>
+<title>Lloydminster</title>
+<cur>CAXX0251</cur>
+<for>Lloydminster</for>
+</item>
+
+<item>
+<title>Lochalsh</title>
+<cur>CAXX0252</cur>
+<for>Lochalsh</for>
+</item>
+
+<item>
+<title>Loggieville</title>
+<cur>CAXX0253</cur>
+<for>Loggieville</for>
+</item>
+
+<item>
+<title>Lomond</title>
+<cur>CAXX0254</cur>
+<for>Lomond</for>
+</item>
+
+<item>
+<title>London</title>
+<cur>CAXX0255</cur>
+<for>London</for>
+</item>
+
+<item>
+<title>Longlac</title>
+<cur>CAXX0256</cur>
+<for>Longlac</for>
+</item>
+
+<item>
+<title>Longueuil</title>
+<cur>CAXX0257</cur>
+<for>Longueuil</for>
+</item>
+
+<item>
+<title>Loretteville</title>
+<cur>CAXX0258</cur>
+<for>Loretteville</for>
+</item>
+
+<item>
+<title>Lucan</title>
+<cur>CAXX0259</cur>
+<for>Lucan</for>
+</item>
+
+<item>
+<title>Luceville</title>
+<cur>CAXX0260</cur>
+<for>Luceville</for>
+</item>
+
+<item>
+<title>Lumsden</title>
+<cur>CAXX0261</cur>
+<for>Lumsden</for>
+</item>
+
+<item>
+<title>Lund</title>
+<cur>CAXX0262</cur>
+<for>Lund</for>
+</item>
+
+<item>
+<title>Lynn Lake</title>
+<cur>CAXX0562</cur>
+<for>Lynn Lake</for>
+</item>
+
+<item>
+<title>Lytton</title>
+<cur>CAXX0611</cur>
+<for>Lytton</for>
+</item>
+
+</channel></rss>

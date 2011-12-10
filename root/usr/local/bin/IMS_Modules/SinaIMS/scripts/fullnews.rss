@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="GB2312"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay name=onePartView
+idleImageWidthPC=3.1
+idleImageHeightPC=5.5
+itemPerPage=1
+forceFocusOnItem=no
+backgroundColor=-1:-1:-1
+itemBackgroundColor=-1:-1:-1
+
+sideRightWidthPC= 0
+sideTopHeightPC= 0
+sideBottomHeightPC= 0
+sideLeftWidthPC = 0
+
+itemXPC = 100
+itemYPC = 100
+itemWidthPC = 0
+itemHeightPC = 0
+
+fontSize=18
+
+itemImageXPC = 100
+itemImageYPC = 100
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+capXPC = 0
+capWidthPC = 0
+
+showHeader = "no"
+showDefaultInfo = "no"
+>
+<text offsetXPC=0 offsetYPC=0 widthPC=0 heightPC=0>
+<script>
+drawOnce = 1;
+"";
+</script>
+</text>
+
+<image redraw=yes offsetXPC=3 offsetYPC=91 widthPC=96.88 heightPC=5.97>
+<script>
+	"../image/bestv_info2.bmp";
+</script>
+</image>
+
+<image offsetXPC=79 offsetYPC=25 widthPC=16 heightPC=12>
+<script>
+	ADImageDisplay;
+</script>
+</image>
+<image offsetXPC=79 offsetYPC=50 widthPC=16 heightPC=12>
+<script>
+	sinaADImageDisplay;
+</script>
+</image>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+	<idleImage> image/POPUP_LOADING_07.png </idleImage>
+	<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+<image offsetXPC=39.37 offsetYPC=4.02 widthPC=21.01 heightPC=6.67>
+../image/sina_news_title.bmp
+</image>
+
+	<backgroundDisplay name=fullnews_bg>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+		if (drawOnce == 0)
+		{
+			drawOnce = 1;
+			"IMS_Modules/SinaIMS/image/sina_fullnews_bg.bmp";
+		}
+		else
+		{
+			null;
+		}
+		</script>
+		</image>
+	</backgroundDisplay>
+	
+	<onUserInput>
+		input = currentUserInput();
+		print("fullnews Got user input: ", input);
+		if(input == "down")
+		{
+			nextPage = 0;
+			ret = nextMultiPage();
+			if(ret == "1")
+			{
+				textPageIndex = Add(textPageIndex, 1);
+				nextPage = 1;
+			}
+			if(imgCount &gt; 0)
+			{
+				imgTotal = Minus(imgCount, 1);
+				if(imgPageIndex &lt; imgTotal)
+				{
+					imgPageIndex = Add(imgPageIndex, 1);
+					nextPage = 1;
+					if(imgPageIndex == imgTotal)
+					{
+						imgReachEnd = 1;
+					}
+				}
+			}
+			pageIndex = Add(pageIndex, nextPage);
+			redrawDisplay();
+			"true";
+		}
+		else if(input == "up")
+		{
+		print("textPageIndex , pageIndex , imgCount , imgPageIndex  ", textPageIndex, pageIndex, imgCount, imgPageIndex);
+			prePage = 0;
+			if(textPageIndex == pageIndex)
+			{
+				if(textPageIndex &gt; 0)
+				{
+					ret = preMultiPage();
+					printf("ret : ", ret);
+					if(ret == "1")
+					{
+						textPageIndex = Minus(textPageIndex, 1);
+						prePage = 1;
+						textReachEnd = 0;
+					}
+				}
+			}
+			if(imgCount &gt; 0)
+			{
+				if(imgPageIndex == pageIndex)
+				{
+					if(imgPageIndex &gt; 0)
+					{
+						imgPageIndex = Minus(imgPageIndex, 1);
+						prePage = 1;
+						imgReachEnd = 0;
+					}
+				}
+			}
+			pageIndex = Minus(pageIndex, prePage);
+			redrawDisplay();
+			"true";
+		}
+		else if(input == "left" || input == "right")
+		{
+			totalItemCount = Minus(totalItem, 1);
+			if((input == "left" &amp;&amp; itemIndex &gt; 0) ||
+			(input == "right" &amp;&amp; itemIndex &lt; totalItemCount))
+			{
+				showIdle();
+				if(input == "left")
+				{
+					itemIndex = Minus(itemIndex, 1);
+				}
+				else
+				{
+					itemIndex = Add(itemIndex, 1);
+				}
+				print("itemIndex is :", itemIndex);
+
+				resetMultiPage();
+
+				pageIndex = 0;
+				textPageIndex = 0;
+				textPageCount = 0;
+				imgPageIndex = 0;
+				imgCount = 0;
+				textReachEnd = 0;
+				imgReachEnd = 0;
+
+				fullnews = null;
+				imgArray = null;
+				path = getStoragePath("tmp") + "tmp.rss";
+				dlok = loadXMLFile(path);
+				if(dlok != null)
+				{
+					str = getXMLText("channel", "item", itemIndex, "title");
+					fullnews = pushBackStringArray(fullnews, str);
+					pCount = getXMLElementCount("channel", "item", itemIndex, "p");
+					if (pCount &gt; 0)
+					{
+						index = 0;
+						while(1)
+						{
+							if(index == pCount)
+							{
+								break;
+							}
+							str = getXMLText("channel", "item", itemIndex, "p", index);
+							fullnews = pushBackStringArray(fullnews, str);
+							index = index + 1;
+						}
+					}
+					else
+					{
+						print("No p found!");
+					}
+
+					imgCount = getXMLElementCount("channel", "item", itemIndex, "img");
+					if (imgCount &gt; 0)
+					{
+						index = 0;
+						while(1)
+						{
+							if(index == imgCount)
+							{
+								break;
+							}
+							str = getXMLAttribute("channel", "item", itemIndex, "img", index, "url");
+							str = eraseBlankInHead(str);
+							imgArray = pushBackStringArray(imgArray, str);
+							index = index + 1;
+						}
+						if(imgCount == 1)
+						{
+							imgReachEnd = 1;
+						}
+					}
+					else
+					{
+						imgReachEnd = 1;
+						print("No img found!");
+					}
+				}
+				if(fullnews == null)
+				{
+					fullnews = "NIL";
+				}
+				cancelIdle();
+			}
+			redrawDisplay();
+			"true";
+		}
+		else if(input == "enter")
+		{
+			print("ignore this");
+			"true";
+		}
+		else if (input == "setup" || input == "guide")
+		{
+			drawOnce = 0;
+			"false";
+		}
+		else
+		{
+			"false";
+		}
+	</onUserInput>
+
+	<image offsetXPC=7 offsetYPC=19>
+		<widthPC>
+			<script>
+			if(imgPageIndex &lt; pageIndex)
+			{
+				"0";
+			}
+			else
+			{
+				"35";
+			}
+			</script>
+		</widthPC>
+		<heightPC>
+			<script>
+			if(imgPageIndex &lt; pageIndex)
+			{
+				"0";
+			}
+			else
+			{
+				"60";
+			}
+			</script>
+		</heightPC>
+
+		<script>
+		if(imgCount &gt; 0)
+		{
+			getStringArrayAt(imgArray, imgPageIndex);
+		}
+		else
+		{
+			null;
+		}
+		</script>
+	</image>
+
+	<text offsetXPC=23 offsetYPC=19 heightPC=65 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=16 lines=9 multiPage=yes>
+		<offsetXPC>
+			<script>
+			if((imgCount &gt; 0) &amp;&amp; (imgPageIndex == pageIndex))
+			{
+				"43";
+			}
+			else
+			{
+				"5";
+			}
+			</script>
+		</offsetXPC>
+		<widthPC>
+			<script>
+			if((imgCount &gt; 0) &amp;&amp; (imgPageIndex == pageIndex))
+			{
+				if(textPageIndex &lt; pageIndex)
+				{
+					"0";
+				}
+				else
+				{
+					"34";
+				}
+			}
+			else
+			{
+				"72";
+			}
+			</script>
+		</widthPC>
+
+		<script>
+		fullnews;
+		</script>
+	</text>
+	<text offsetXPC=66 offsetYPC=79 widthPC=26 heightPC=10 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=12>
+		<script>
+		fin = "";
+		ret = isMultiPageReachEnd();
+		if(ret == "1")
+		{
+			textReachEnd = 1;
+		}
+		if(textReachEnd == 1 &amp;&amp; imgReachEnd == 1)
+		{
+			fin = "  (完)";
+		}
+		pageNum = Add(pageIndex, 1);
+		"第 " + pageNum + " 页" + fin;
+		</script>
+	</text>
+
+</mediaDisplay>
+
+
+<bookmark> fullnews </bookmark>
+
+<script>
+</script>
+
+<onEnter>
+	drawOnce = 0;
+
+	pageIndex = 0;
+	textPageIndex = 0;
+	textPageCount = 0;
+	imgPageIndex = 0;
+	imgCount = 0;
+	textReachEnd = 0;
+	imgReachEnd = 0;
+	totalItem = 0;
+
+	fullnews = null;
+	imgArray = null;
+	path = getStoragePath("tmp") + "newsItemIndex.dat";
+	itemIndex = readStringFromFile(path);
+	print("itemIndex is :", itemIndex);
+	path = getStoragePath("tmp") + "tmp.rss";
+	dlok = loadXMLFile(path);
+	if(dlok != null)
+	{
+		totalItem = getXMLElementCount("channel", "item");
+		print("total item is :" , totalItem);
+		str = getXMLText("channel", "item", itemIndex, "title");
+		fullnews = pushBackStringArray(fullnews, str);
+		pCount = getXMLElementCount("channel", "item", itemIndex, "p");
+		if (pCount &gt; 0)
+		{
+			index = 0;
+			while(1)
+			{
+				if(index == pCount)
+				{
+					break;
+				}
+				str = getXMLText("channel", "item", itemIndex, "p", index);
+				fullnews = pushBackStringArray(fullnews, str);
+				index = index + 1;
+			}
+		}
+		else
+		{
+			print("No p found!");
+		}
+
+		imgCount = getXMLElementCount("channel", "item", itemIndex, "img");
+		if (imgCount &gt; 0)
+		{
+			index = 0;
+			while(1)
+			{
+				if(index == imgCount)
+				{
+					break;
+				}
+				str = getXMLAttribute("channel", "item", itemIndex, "img", index, "url");
+				str = eraseBlankInHead(str);
+				imgArray = pushBackStringArray(imgArray, str);
+				index = index + 1;
+			}
+			if(imgCount == 1)
+			{
+				imgReachEnd = 1;
+			}
+		}
+		else
+		{
+			imgReachEnd = 1;
+			print("No img found!");
+		}
+	}
+	if(fullnews == null)
+	{
+		fullnews = "NIL";
+	}
+
+	ADImageUrlArray = null;
+	ADDurationArray = null;
+	ADSize = null;
+	ADUrl = "http://tv2.dnethome.net/nettv/adsource/hisense_adv_source.xml";
+
+	dlok = sina_loadXMLFile(ADUrl);
+
+	ADIndex = 0;
+	if (dlok != null)
+	{
+		ADSize = getXMLElementCount("advertisement", "ad_list","ad");
+		ADImageUrlArray = null;
+		ADDurationArray = null;
+		while (1)
+		{
+			ADImageUrl = getXMLText("advertisement", "ad_list", "ad", ADIndex, "url");
+			ADDuration = getXMLAttribute("advertisement", "ad_list", "ad", ADIndex, "duration");
+
+			print("ADImageUrl= ", ADImageUrl);
+			print("ADDuration= ", ADDuration);
+
+			ADImageUrlArray = pushBackStringArray(ADImageUrlArray, ADImageUrl);
+			ADDurationArray = pushBackStringArray(ADDurationArray, ADDuration);
+
+			ADIndex = ADIndex + 1;
+			if (ADIndex == ADSize)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		print("download AD url fail: ", ADUrl);
+	}
+	ADImageDisplay = null;
+	ADImageTimeout = 0;
+	ADImageIndex = 0;
+	ADImageDisplay = getStringArrayAt(ADImageUrlArray, ADImageIndex);
+	ADImageTimeout = getStringArrayAt(ADDurationArray, ADImageIndex);
+	ADImageTrigger = 0;
+
+	sinaADImageUrlArray = null;
+	sinaADDurationArray = null;
+	sinaADSize = null;
+	sinaADUrl = "http://beta.v.sina.com.cn/sina_adv_source.xml";
+
+	dlok = sina_loadXMLFile(sinaADUrl);
+
+	sinaADIndex = 0;
+	if (dlok != null)
+	{
+		sinaADSize = getXMLElementCount("advertisement", "ad_list","ad");
+		sinaADImageUrlArray = null;
+		sinaADDurationArray = null;
+		while (1)
+		{
+			sinaADImageUrl = getXMLText("advertisement", "ad_list", "ad", sinaADIndex, "url");
+			sinaADDuration = getXMLAttribute("advertisement", "ad_list", "ad", sinaADIndex, "duration");
+
+			print("sinaADImageUrl= ", sinaADImageUrl);
+			print("sinaADDuration= ", sinaADDuration);
+
+			sinaADImageUrlArray = pushBackStringArray(sinaADImageUrlArray, sinaADImageUrl);
+			sinaADDurationArray = pushBackStringArray(sinaADDurationArray, sinaADDuration);
+
+			sinaADIndex = sinaADIndex + 1;
+			if (sinaADIndex == sinaADSize)
+			{
+				break;
+			}
+		}
+	}
+	else
+	{
+		print("download sinaAD url fail: ", sinaADUrl);
+	}
+	sinaADImageDisplay = null;
+	sinaADImageTimeout = 0;
+	sinaADImageIndex = 0;
+	sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, sinaADImageIndex);
+	sinaADImageTimeout = getStringArrayAt(sinaADDurationArray, sinaADImageIndex);
+	sinaADImageTrigger = 0;
+
+	setRefreshTime(10000);
+</onEnter> 
+
+<onRefresh>
+	print("Response to refresh timer");
+	if(ADImageTimeout != 0)
+	{
+		ADImageTrigger = 10 + ADImageTrigger;
+	}
+	if(sinaADImageTimeout != 0)
+	{
+		sinaADImageTrigger = 10 + sinaADImageTrigger;
+	}
+
+	if(ADImageTimeout != 0 &amp;&amp; ((ADImageTrigger == ADImageTimeout) || (ADImageTrigger &gt; ADImageTimeout)))
+	{
+		ADImageUrlArray = null;
+		ADDurationArray = null;
+		ADSize = null;
+		ADUrl = "http://tv2.dnethome.net/nettv/adsource/hisense_adv_source.xml";
+
+		dlok = sina_loadXMLFile(ADUrl);
+
+		ADIndex = 0;
+		if (dlok != null)
+		{
+			ADSize = getXMLElementCount("advertisement", "ad_list","ad");
+			ADImageUrlArray = null;
+			ADDurationArray = null;
+			while (1)
+			{
+				ADImageUrl = getXMLText("advertisement", "ad_list", "ad", ADIndex, "url");
+				ADDuration = getXMLAttribute("advertisement", "ad_list", "ad", ADIndex, "duration");
+
+				ADImageUrlArray = pushBackStringArray(ADImageUrlArray, ADImageUrl);
+				ADDurationArray = pushBackStringArray(ADDurationArray, ADDuration);
+
+				ADIndex = ADIndex + 1;
+				if (ADIndex == ADSize)
+				{
+					break;
+				}
+			}
+		}
+		else
+		{
+			print("download AD url fail: ", ADUrl);
+		}
+		ADImageDisplay = null;
+		ADImageTimeout = 0;
+		ADImageIndex = 1 + ADImageIndex;
+		if(ADImageIndex == ADSize)
+		{
+			ADImageIndex = 0;
+		}
+		ADImageDisplay = getStringArrayAt(ADImageUrlArray, ADImageIndex);
+		ADImageTimeout = getStringArrayAt(ADDurationArray, ADImageIndex);
+		ADImageTrigger = 0;
+		redrawDisplay("widget");
+	}
+
+	if(sinaADImageTimeout != 0 &amp;&amp; ((sinaADImageTrigger == sinaADImageTimeout) || (sinaADImageTrigger &gt; sinaADImageTimeout)))
+	{
+		sinaADImageUrlArray = null;
+		sinaADDurationArray = null;
+		sinaADSize = null;
+		sinaADUrl = "http://beta.v.sina.com.cn/sina_adv_source.xml";
+
+		dlok = sina_loadXMLFile(sinaADUrl);
+
+		sinaADIndex = 0;
+		sinaADImageDisplay = null;
+		sinaADImageTimeout = 0;
+		if (dlok != null)
+		{
+			sinaADSize = getXMLElementCount("advertisement", "ad_list","ad");
+			sinaADImageUrlArray = null;
+			sinaADDurationArray = null;
+			while (1)
+			{
+				sinaADImageUrl = getXMLText("advertisement", "ad_list", "ad", sinaADIndex, "url");
+				sinaADDuration = getXMLAttribute("advertisement", "ad_list", "ad", sinaADIndex, "duration");
+
+				sinaADImageUrlArray = pushBackStringArray(sinaADImageUrlArray, sinaADImageUrl);
+				sinaADDurationArray = pushBackStringArray(sinaADDurationArray, sinaADDuration);
+
+				sinaADIndex = sinaADIndex + 1;
+				if (sinaADIndex == sinaADSize)
+				{
+					break;
+				}
+			}
+			sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, 0);
+			sinaDImageyTimeout = getStringArrayAt(sinaADDurationArray, 0);
+		}
+		else
+		{
+			print("download sinaAD url fail: ", sinaADUrl);
+		}
+		sinaADImageDisplay = null;
+		sinaADImageTimeout = 0;
+		sinaADImageIndex = 1 + sinaADImageIndex;
+		if(sinaADImageIndex == sinaADSize)
+		{
+			sinaADImageIndex = 0;
+		}
+		sinaADImageDisplay = getStringArrayAt(sinaADImageUrlArray, sinaADImageIndex);
+		sinaADImageTimeout = getStringArrayAt(sinaADDurationArray, sinaADImageIndex);
+		sinaADImageTrigger = 0;
+		redrawDisplay("widget");
+	}
+	null;
+</onRefresh>
+
+<channel>
+	<title>$[FULL_NEWS]</title>
+	<link>./fullnews.rss</link>
+	<media:thumbnail url="../image/sinanews.bmp" width="120" height="90" />
+	<menu>main menu</menu>
+</channel>
+
+<onExit>
+setRefreshTime(-1);
+print("exit new");
+</onExit>
+
+</rss>

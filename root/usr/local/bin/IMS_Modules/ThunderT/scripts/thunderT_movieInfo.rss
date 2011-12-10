@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding="GB2312" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> PPS_LVL3 </bookmark>
+
+
+<mediaDisplay name=photoView
+
+showHeader=no
+showDefaultInfo=no
+rowCount=1
+columnCount=10
+
+topArea.heightPC=0
+topArea.yPC=100
+
+imageFocus=null
+bottomYPC=100
+
+drawItemBorder=no
+itemBackgroundColor = :-1:-1
+backgroundColor = -1:-1:-1
+idleImageWidthPC=5.9
+idleImageHeightPC=10
+itemOffsetXPC=33.785
+itemOffsetYPC=71.7
+itemWidthPC=4.61
+itemHeightPC=7.3>
+
+<image redraw=yes offsetXPC=38.68 offsetYPC=91 widthPC=59.49 heightPC=5.97>
+<script>
+	"../image/info1.png";
+</script>
+</image>
+
+<backgroundDisplay name=movieInfo_bg>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+<script>
+if (Type == "0" &amp;&amp; firstTime == 1)
+{
+	firstTime = 0;
+	"../image/movie_intro_bg.fsp";
+}
+else if (firstTime == 1)
+{
+		firstTime = 0;
+	"../image/intro_bg.fsp";
+}
+else
+{
+	firstTime = 0;
+	null;
+}
+</script>
+</image>
+</backgroundDisplay>
+
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading1.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading2.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading3.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading4.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading5.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading6.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading7.png
+</idleImage>
+<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/loading8.png
+</idleImage>
+
+<image offsetXPC=6.09 offsetYPC=3.6 widthPC=19.06 heightPC=9.58>
+<script>
+	path = getStoragePath("tmp");
+	path = path + "cateStatus.dat";
+	cate = readStringFromFile(path);
+	if (cate == "01")
+	{
+		setEnv("templateCode", "MOVIE");
+		"../image/movie_logo.png";
+	}
+	else if (cate == "02")
+	{
+		setEnv("templateCode", "EPISODE");
+		"../image/tv_logo.png";
+	}
+	else if (cate == "03")
+	{
+		setEnv("templateCode", "VAR");
+		"../image/variety_logo.png";
+	}
+	else if (cate == "04")
+	{
+		setEnv("templateCode", "ANI");
+		"../image/anime_logo.png";
+	}
+</script>
+</image>
+
+<image offsetXPC=72 offsetYPC=3.6 widthPC=20.39 heightPC=9.03>
+../image/logo.png
+</image>
+
+<text useBackgroundSurface=yes offsetXPC=31 offsetYPC=15 widthPC=40 heightPC=8 fontSize=20 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+<script>
+"影片: " + Title;
+</script>
+</text>
+
+<text useBackgroundSurface=yes offsetXPC=30.6 offsetYPC=29 widthPC=65 heightPC=5 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+<script>
+	"剧情简介";
+</script>
+</text>
+
+<text useBackgroundSurface=yes offsetXPC=30.6 offsetYPC=35 widthPC=63 heightPC=12 lines=3 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 multiPage=yes>
+<script>
+Desc;
+</script>
+</text>
+
+<text useBackgroundSurface=yes offsetXPC=31.6 offsetYPC=47 widthPC=34 heightPC=5 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+<script>
+    "导演" + ": " + Director;
+</script>
+</text>
+
+<text useBackgroundSurface=yes offsetXPC=70 offsetYPC=47 widthPC=30 heightPC=5 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+<script>
+	"地区" + ": " + Region;
+</script>
+</text>
+
+
+<text useBackgroundSurface=yes offsetXPC=31.6 offsetYPC=53 widthPC=37 heightPC=12 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 lines=3>
+<script>
+	"演员" + ": " + Actor;
+</script>
+</text>
+
+<text useBackgroundSurface=yes offsetXPC=70 offsetYPC=53 widthPC=30 heightPC=5 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+<script>
+	"集数" + ": " + Episodenum;
+</script>
+</text>
+
+<image offsetXPC=5.51 offsetYPC=20.97 widthPC=22.22 heightPC=50.88>
+<script>
+	Icon;
+</script>
+</image>
+
+<image redraw=yes offsetXPC=31.6 offsetYPC=73.9 widthPC=1.33 heightPC=4.58>
+<script>
+index = getFocusItemIndex();
+if (index == 0)
+{
+	"../image/arrow_left_bg.fsp";
+}
+else
+{
+	"../image/arrow_left.png";
+}
+</script>
+</image>
+<image redraw=yes offsetXPC=92 offsetYPC=73.9 widthPC=1.33 heightPC=4.58>
+<script>
+index = getFocusItemIndex();
+if (index == (itemSize-1))
+{
+	"../image/arrow_right_bg.fsp";
+}
+else
+{
+	"../image/arrow_right.png";
+}
+</script>
+</image>
+
+<itemDisplay>
+	<text offsetXPC=0 backgroundColor=-1:-1:-1 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0>
+		<widthPC>
+		<script>
+			"100";
+		</script>
+		</widthPC>
+
+		<heightPC>
+		<script>
+			"100";
+		</script>
+		</heightPC>
+
+		<script>
+			status = getDrawingItemState();
+			resolution = getStringArrayAt(videoResolutionArray, -1);
+			if (status == "focus")
+			{
+				"../image/num_focus.png";
+			}
+			else
+			{
+				"../image/num_unfocus.png";
+			}
+		</script>
+	</image>
+
+	<text fontSize=16 offsetXPC=2 offsetYPC=2 widthPC=96 heightPC=96 align=center backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+	<script>
+		index = getStringArrayAt(videoIndexArray, -1);
+	</script>
+	</text>
+</itemDisplay>
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+if (userInput == "edit")
+{
+	print("edit key is pressed");
+}
+else if (userInput == "video_stop")
+{
+	postMessage("return");
+	"true";
+}
+else if (userInput == "down")
+{
+	ret = nextMultiPage();
+	if (ret == "1")
+	{
+		redrawDisplay();
+		"true";
+	}
+	else
+	{
+		"false";
+	}
+}
+else if (userInput == "up")
+{
+	ret = preMultiPage();
+	if (ret == "1")
+	{
+		redrawDisplay();
+		"true";
+	}
+	else
+	{
+		"false";
+	}
+}
+else
+  "false";
+</script>
+</onUserInput>
+
+<onEnter>
+	firstTime = 1;
+	playTitle = getEnv("playTitle");
+	path = getStoragePath("tmp");
+	path = path + "MovieInfo.dat";
+	movieInfo = readStringFromFile(path);
+
+	Code = getStringArrayAt(movieInfo, 0);
+	Title = getStringArrayAt(movieInfo, 1);
+	Type = getStringArrayAt(movieInfo, 2);
+	Episodenum = getStringArrayAt(movieInfo, 3);
+	Actor = getStringArrayAt(movieInfo, 4);
+	Director = getStringArrayAt(movieInfo, 5);
+	Region = getStringArrayAt(movieInfo, 6);
+	Language = getStringArrayAt(movieInfo, 7);
+	Rating = getStringArrayAt(movieInfo, 8);
+	Desc = getStringArrayAt(movieInfo, 9);
+	Icon = getStringArrayAt(movieInfo, 10);
+
+	/* now construct video clip info array */
+	path = getStoragePath("tmp");
+	path = path + "VideoClip.dat";
+	videoClip = readStringFromFile(path);
+	
+	if (videoClip != null)
+	{
+		videoCodeArray = null;
+		videoDurationArray = null;
+		videoResolutionArray = null;
+		videoIndexArray = null;
+		clipCount = getStringArrayAt(videoClip, 0);
+
+		itemSize = clipCount;
+		index = 1;
+		count = 0;
+		
+		if (Episodenum &gt; itemSize)
+		{
+			Episodenum = itemSize;
+		}
+		
+		while (itemSize &gt; 0) 
+		{ 
+			if (count == itemSize)
+				break;
+
+			videoCode = getStringArrayAt(videoClip, Add(0, index));
+			videoCodeArray = pushBackStringArray(videoCodeArray, videoCode);
+
+			videoDuration = getStringArrayAt(videoClip, Add(1, index));
+			videoDurationArray = pushBackStringArray(videoDurationArray, videoDuration);
+
+			videoResolution = getStringArrayAt(videoClip, Add(2, index));
+			videoResolutionArray = pushBackStringArray(videoResolutionArray, videoResolution);
+	
+			videoIndex = getStringArrayAt(videoClip, Add(3, index));
+			videoIndexArray = pushBackStringArray(videoIndexArray, videoIndex);
+
+			index = Add(index, 4);
+			count = Add(count, 1);
+		}
+		setItemFocus(0);
+		setFocusItemIndex(0);
+		redrawDisplay();
+	}
+</onEnter>
+
+</mediaDisplay>
+
+<item_template>
+	<onClick>
+		currentUrlArray = null;
+		path = getStoragePath("tmp");
+		path = path + "downurl.dat";
+		DownUrlArray = readStringFromFile(path);
+		path = getStoragePath("tmp");
+		path = path + "format.dat";
+		formatArray = readStringFromFile(path);
+		focusIndex = getFocusItemIndex();
+		count = 0;
+		countNum = focusIndex;
+		while(1)
+		{
+			/* currently we support at most 4 movies play continuously, this is the old method. We can do the same work via checking video_completed message */
+			if (count &gt; 4)
+			{
+				break;
+			}
+			if (countNum &gt; (itemSize - 1))
+			{
+				break;
+			}
+			currentUrl = getStringArrayAt(DownUrlArray , countNum);
+			currentUrl = "thunder://" + currentUrl + "." + getStringArrayAt(formatArray , countNum);
+			currentUrlArray = pushBackStringArray(currentUrlArray, currentUrl);
+			count = Add(count, 1);
+			countNum = Add(focusIndex, count);
+		}
+		path = getStoragePath("tmp");
+		path = path + "thundervodplay.m3u";
+		writeStringToFile(path, currentUrlArray);
+		"thunderT_videoPlay.rss";
+	</onClick>
+</item_template>
+
+<onExit>
+setEnv("returnFrom", "movieInfoPage");
+</onExit>
+
+<channel>
+<title>Thunder</title>
+<link>./scripts/thunderT_movieInfo.rss</link>
+<media:thumbnail url="../image/logo.png" width="120" height="90" />
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>

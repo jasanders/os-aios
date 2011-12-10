@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="$[SELECT_AGE]">
+				<submenu>
+						<item label="4"/>
+						<item label="5"/>						
+						<item label="6"/>
+						<item label="7"/>						
+						<item label="8"/>
+						<item label="9"/>						
+						<item label="10"/>
+						<item label="11"/>						
+						<item label="12"/>
+						<item label="13"/>						
+						<item label="14"/>
+						<item label="15"/>						
+						<item label="16"/>
+						<item label="17"/>						
+						<item label="18"/>					
+				</submenu>
+		</item>		
+		<item label="$[FRANCE]">
+				<submenu>
+						<item label="$[GENERAL]"/>
+						<item label="10+"/>
+						<item label="12+"/>
+						<item label="16+"/>
+						<item label="18+"/>
+				</submenu>
+		</item>
+		<item label="$[GERMANY]">
+				<submenu>
+						<item label="$[GENERAL]"/>
+						<item label="6+"/>
+						<item label="12+"/>
+						<item label="16+"/>
+						<item label="$[NO_YOUTH_ADMIT]"/>
+				</submenu>
+		</item>
+		<item label="$[ITALY]">
+				<submenu>
+						<item label="$[GENERAL]"/>
+						<item label="14+"/>
+						<item label="18+"/>
+				</submenu>
+		</item>
+		<item label="others">
+				<submenu>
+						<item label="$[ALLOW_ALL]"/>
+						<item label="$[SELECT_AGE]"/>						
+				</submenu>
+		</item>		
+</menu>

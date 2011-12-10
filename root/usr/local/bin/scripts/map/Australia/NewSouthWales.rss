@@ -1,0 +1,497 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=15
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=15
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(0, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>NewSouthWales</title>
+<link>./scripts/map/Australia/NewSouthWales.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Albury</title>
+<cur>ASXX0364</cur>
+<for>Albury</for>
+</item>
+
+<item>
+<title>Ballina Airport</title>
+<cur>ASXX0224</cur>
+<for>Ballina Airport</for>
+</item>
+
+<item>
+<title>Bankstown</title>
+<cur>ASXX0009</cur>
+<for>Bankstown</for>
+</item>
+
+<item>
+<title>Bathurst</title>
+<cur>ASXX0411</cur>
+<for>Bathurst</for>
+</item>
+
+<item>
+<title>Bega</title>
+<cur>ASXX0368</cur>
+<for>Bega</for>
+</item>
+
+<item>
+<title>Blacktown</title>
+<cur>ASXX0013</cur>
+<for>Blacktown</for>
+</item>
+
+<item>
+<title>Bombala</title>
+<cur>ASXX0320</cur>
+<for>Bombala</for>
+</item>
+
+<item>
+<title>Bourke</title>
+<cur>ASXX0407</cur>
+<for>Bourke</for>
+</item>
+
+<item>
+<title>Bowral</title>
+<cur>ASXX0270</cur>
+<for>Bowral</for>
+</item>
+
+<item>
+<title>Braidwood</title>
+<cur>ASXX0319</cur>
+<for>Braidwood</for>
+</item>
+
+<item>
+<title>Broken Hill</title>
+<cur>ASXX0255</cur>
+<for>Broken Hill</for>
+</item>
+
+<item>
+<title>Byron Bay</title>
+<cur>ASXX0430</cur>
+<for>Byron Bay</for>
+</item>
+
+<item>
+<title>Campbelltown</title>
+<cur>ASXX0022</cur>
+<for>Campbelltown</for>
+</item>
+
+<item>
+<title>Cobar Airport</title>
+<cur>ASXX0262</cur>
+<for>Cobar Airport</for>
+</item>
+
+<item>
+<title>Coffs Harbour</title>
+<cur>ASXX0026</cur>
+<for>Coffs Harbour</for>
+</item>
+
+<item>
+<title>Condobolin</title>
+<cur>ASXX0356</cur>
+<for>Condobolin</for>
+</item>
+
+<item>
+<title>Cooma Airport</title>
+<cur>ASXX0318</cur>
+<for>Cooma Airport</for>
+</item>
+
+<item>
+<title>Coonabarabran</title>
+<cur>ASXX0267</cur>
+<for>Coonabarabran</for>
+</item>
+
+<item>
+<title>Crackenback</title>
+<cur>ASXX0366</cur>
+<for>Crackenback</for>
+</item>
+
+<item>
+<title>Fairfield</title>
+<cur>ASXX0039</cur>
+<for>Fairfield</for>
+</item>
+
+<item>
+<title>Finley</title>
+<cur>ASXX0305</cur>
+<for>Finley</for>
+</item>
+
+<item>
+<title>Forbes</title>
+<cur>ASXX0425</cur>
+<for>Forbes</for>
+</item>
+
+<item>
+<title>Gosford</title>
+<cur>ASXX0049</cur>
+<for>Gosford</for>
+</item>
+
+<item>
+<title>Goulburn</title>
+<cur>ASXX0051</cur>
+<for>Goulburn</for>
+</item>
+
+<item>
+<title>Goulburn Airport</title>
+<cur>ASXX0358</cur>
+<for>Goulburn Airport</for>
+</item>
+
+<item>
+<title>Green Cape</title>
+<cur>ASXX0322</cur>
+<for>Green Cape</for>
+</item>
+
+<item>
+<title>Griffith</title>
+<cur>ASXX0260</cur>
+<for>Griffith</for>
+</item>
+
+<item>
+<title>Gunnedah Aerodrome</title>
+<cur>ASXX0055</cur>
+<for>Gunnedah Aerodrome</for>
+</item>
+
+<item>
+<title>Hay</title>
+<cur>ASXX0257</cur>
+<for>Hay</for>
+</item>
+
+<item>
+<title>Hillston</title>
+<cur>ASXX0258</cur>
+<for>Hillston</for>
+</item>
+
+<item>
+<title>Ivanhoe</title>
+<cur>ASXX0256</cur>
+<for>Ivanhoe</for>
+</item>
+
+<item>
+<title>Katoomba</title>
+<cur>ASXX0269</cur>
+<for>Katoomba</for>
+</item>
+
+<item>
+<title>Moree</title>
+<cur>ASXX0390</cur>
+<for>Moree</for>
+</item>
+
+<item>
+<title>Moruya Heads</title>
+<cur>ASXX0323</cur>
+<for>Moruya Heads</for>
+</item>
+
+<item>
+<title>Mudgee</title>
+<cur>ASXX0266</cur>
+<for>Mudgee</for>
+</item>
+
+<item>
+<title>Murrurundi</title>
+<cur>ASXX0272</cur>
+<for>Murrurundi</for>
+</item>
+
+<item>
+<title>Nambucca Heads</title>
+<cur>ASXX0081</cur>
+<for>Nambucca Heads</for>
+</item>
+
+<item>
+<title>Newcastle</title>
+<cur>ASXX0083</cur>
+<for>Newcastle</for>
+</item>
+
+<item>
+<title>Norah Head</title>
+<cur>ASXX0361</cur>
+<for>Norah Head</for>
+</item>
+
+<item>
+<title>Nowra</title>
+<cur>ASXX0428</cur>
+<for>Nowra</for>
+</item>
+
+<item>
+<title>Nyngan</title>
+<cur>ASXX0261</cur>
+<for>Nyngan</for>
+</item>
+
+<item>
+<title>Paddington</title>
+<cur>ASXX0086</cur>
+<for>Paddington</for>
+</item>
+
+<item>
+<title>Parramatta</title>
+<cur>ASXX0087</cur>
+<for>Parramatta</for>
+</item>
+
+<item>
+<title>Penrith</title>
+<cur>ASXX0088</cur>
+<for>Penrith</for>
+</item>
+
+<item>
+<title>Port Macquarie</title>
+<cur>ASXX0093</cur>
+<for>Port Macquarie</for>
+</item>
+
+<item>
+<title>Queanbeyan</title>
+<cur>ASXX0095</cur>
+<for>Queanbeyan</for>
+</item>
+
+<item>
+<title>Richmond</title>
+<cur>ASXX0359</cur>
+<for>Richmond</for>
+</item>
+
+<item>
+<title>Scone Memorial Airport</title>
+<cur>ASXX0360</cur>
+<for>Scone Memorial Airport</for>
+</item>
+
+<item>
+<title>Shellharbour</title>
+<cur>ASXX0107</cur>
+<for>Shellharbour</for>
+</item>
+
+<item>
+<title>Sydney</title>
+<cur>ASXX0112</cur>
+<for>Sydney</for>
+</item>
+
+<item>
+<title>Sydney Bankstown Airport</title>
+<cur>ASXX0273</cur>
+<for>Sydney Bankstown Airport</for>
+</item>
+
+<item>
+<title>Tamworth</title>
+<cur>ASXX0113</cur>
+<for>Tamworth</for>
+</item>
+
+<item>
+<title>Tarago</title>
+<cur>ASXX0114</cur>
+<for>Tarago</for>
+</item>
+
+<item>
+<title>Taree</title>
+<cur>ASXX0386</cur>
+<for>Taree</for>
+</item>
+
+<item>
+<title>Tibooburra</title>
+<cur>ASXX0207</cur>
+<for>Tibooburra</for>
+</item>
+
+<item>
+<title>Ulladulla</title>
+<cur>ASXX0324</cur>
+<for>Ulladulla</for>
+</item>
+
+<item>
+<title>Wagga Wagga</title>
+<cur>ASXX0415</cur>
+<for>Wagga Wagga</for>
+</item>
+
+<item>
+<title>Walgett</title>
+<cur>ASXX0264</cur>
+<for>Walgett</for>
+</item>
+
+<item>
+<title>Walgett Airport</title>
+<cur>ASXX0357</cur>
+<for>Walgett Airport</for>
+</item>
+
+<item>
+<title>Wentworth</title>
+<cur>ASXX0120</cur>
+<for>Wentworth</for>
+</item>
+
+<item>
+<title>Werris Creek</title>
+<cur>ASXX0121</cur>
+<for>Werris Creek</for>
+</item>
+
+<item>
+<title>Wollongong</title>
+<cur>ASXX0124</cur>
+<for>Wollongong</for>
+</item>
+
+<item>
+<title>Woolgoolga</title>
+<cur>ASXX0125</cur>
+<for>Woolgoolga</for>
+</item>
+
+<item>
+<title>Yass</title>
+<cur>ASXX0127</cur>
+<for>Yass</for>
+</item>
+
+<item>
+<title>Young Airport</title>
+<cur>ASXX0263</cur>
+<for>Young Airport</for>
+</item>
+
+
+
+</channel></rss>

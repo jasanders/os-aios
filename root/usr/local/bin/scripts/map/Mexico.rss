@@ -1,0 +1,1178 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Mexico</title>
+<link>./scripts/map/Mexico.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Acapulco</title>
+<cur>MXGR0150</cur>
+<for>Acapulco</for>
+</item>
+
+<item>
+<title>Agua Prieta</title>
+<cur>MXSR0085</cur>
+<for>Agua Prieta</for>
+</item>
+
+<item>
+<title>Aguascalientes</title>
+<cur>MXAS0002</cur>
+<for>Aguascalientes</for>
+</item>
+
+<item>
+<title>Altar</title>
+<cur>MXSR0151</cur>
+<for>Altar</for>
+</item>
+
+<item>
+<title>Altos De Jalisco</title>
+<cur>MXJO0158</cur>
+<for>Altos De Jalisco</for>
+</item>
+
+<item>
+<title>Anahuac</title>
+<cur>MXNL0066</cur>
+<for>Anahuac</for>
+</item>
+
+<item>
+<title>Antsn Lizardo</title>
+<cur>MXVZ2302</cur>
+<for>Antsn Lizardo</for>
+</item>
+
+<item>
+<title>Apatzingan</title>
+<cur>MXMN0056</cur>
+<for>Apatzingan</for>
+</item>
+
+<item>
+<title>Arandas</title>
+<cur>MXJO0040</cur>
+<for>Arandas</for>
+</item>
+
+<item>
+<title>Atoyac De Alvarez</title>
+<cur>MXGR0038</cur>
+<for>Atoyac De Alvarez</for>
+</item>
+
+<item>
+<title>Bagdad</title>
+<cur>MXTS0125</cur>
+<for>Bagdad</for>
+</item>
+
+<item>
+<title>Barra de Navidad</title>
+<cur>MXJO0760</cur>
+<for>Barra de Navidad</for>
+</item>
+
+<item>
+<title>Cabo San Lucas</title>
+<cur>MXBS0135</cur>
+<for>Cabo San Lucas</for>
+</item>
+
+<item>
+<title>Caborca</title>
+<cur>MXSR0087</cur>
+<for>Caborca</for>
+</item>
+
+<item>
+<title>Campeche</title>
+<cur>MXCE0008</cur>
+<for>Campeche</for>
+</item>
+
+<item>
+<title>Cananea</title>
+<cur>MXSR0088</cur>
+<for>Cananea</for>
+</item>
+
+<item>
+<title>Cancun</title>
+<cur>MXQR0138</cur>
+<for>Cancun</for>
+</item>
+
+<item>
+<title>Celaya</title>
+<cur>MXGO0032</cur>
+<for>Celaya</for>
+</item>
+
+<item>
+<title>Chetumal</title>
+<cur>MXQR0133</cur>
+<for>Chetumal</for>
+</item>
+
+<item>
+<title>Chihuahua</title>
+<cur>MXCA0022</cur>
+<for>Chihuahua</for>
+</item>
+
+<item>
+<title>Chilpancingo</title>
+<cur>MXGR0039</cur>
+<for>Chilpancingo</for>
+</item>
+
+<item>
+<title>Chinquila</title>
+<cur>MXYN0162</cur>
+<for>Chinquila</for>
+</item>
+
+<item>
+<title>Choix</title>
+<cur>MXSA0081</cur>
+<for>Choix</for>
+</item>
+
+<item>
+<title>Ciudad Acuna</title>
+<cur>MXCL0010</cur>
+<for>Ciudad Acuna</for>
+</item>
+
+<item>
+<title>Ciudad Camargo</title>
+<cur>MXCA0021</cur>
+<for>Ciudad Camargo</for>
+</item>
+
+<item>
+<title>Ciudad Del Carmen</title>
+<cur>MXCE0009</cur>
+<for>Ciudad Del Carmen</for>
+</item>
+
+<item>
+<title>Ciudad Guzman</title>
+<cur>MXJO0041</cur>
+<for>Ciudad Guzman</for>
+</item>
+
+<item>
+<title>Ciudad Hidalgo</title>
+<cur>MXMN0057</cur>
+<for>Ciudad Hidalgo</for>
+</item>
+
+<item>
+<title>Ciudad Juarez</title>
+<cur>MXCA0026</cur>
+<for>Ciudad Juarez</for>
+</item>
+
+<item>
+<title>Ciudad Madero</title>
+<cur>MXTS0100</cur>
+<for>Ciudad Madero</for>
+</item>
+
+<item>
+<title>Ciudad Obregon</title>
+<cur>MXSR0159</cur>
+<for>Ciudad Obregon</for>
+</item>
+
+<item>
+<title>Ciudad Valles</title>
+<cur>MXSP0077</cur>
+<for>Ciudad Valles</for>
+</item>
+
+<item>
+<title>Ciudad Victoria</title>
+<cur>MXTS0107</cur>
+<for>Ciudad Victoria</for>
+</item>
+
+<item>
+<title>Coatzacoalcos</title>
+<cur>MXVZ0109</cur>
+<for>Coatzacoalcos</for>
+</item>
+
+<item>
+<title>Colima</title>
+<cur>MXCM0015</cur>
+<for>Colima</for>
+</item>
+
+<item>
+<title>Colotlan</title>
+<cur>MXJO0042</cur>
+<for>Colotlan</for>
+</item>
+
+<item>
+<title>Comitan</title>
+<cur>MXCS0018</cur>
+<for>Comitan</for>
+</item>
+
+<item>
+<title>Cordoba</title>
+<cur>MXVZ0110</cur>
+<for>Cordoba</for>
+</item>
+
+<item>
+<title>Cozumel</title>
+<cur>MXQR0074</cur>
+<for>Cozumel</for>
+</item>
+
+<item>
+<title>Cruz Grande</title>
+<cur>MXGR0144</cur>
+<for>Cruz Grande</for>
+</item>
+
+<item>
+<title>Cuauhtemoc</title>
+<cur>MXSA0155</cur>
+<for>Cuauhtemoc</for>
+</item>
+
+<item>
+<title>Cuautitlan</title>
+<cur>MXMO0053</cur>
+<for>Cuautitlan</for>
+</item>
+
+<item>
+<title>Cuernavaca</title>
+<cur>MXMS0064</cur>
+<for>Cuernavaca</for>
+</item>
+
+<item>
+<title>Culiacan</title>
+<cur>MXSA0080</cur>
+<for>Culiacan</for>
+</item>
+
+<item>
+<title>Delicias</title>
+<cur>MXCA0023</cur>
+<for>Delicias</for>
+</item>
+
+<item>
+<title>Durango</title>
+<cur>MXDO0030</cur>
+<for>Durango</for>
+</item>
+
+<item>
+<title>Ebano</title>
+<cur>MXSP0078</cur>
+<for>Ebano</for>
+</item>
+
+<item>
+<title>El Mante</title>
+<cur>MXTS2043</cur>
+<for>El Mante</for>
+</item>
+
+<item>
+<title>Empalme</title>
+<cur>MXSR0089</cur>
+<for>Empalme</for>
+</item>
+
+<item>
+<title>Ensenada</title>
+<cur>MXBC0003</cur>
+<for>Ensenada</for>
+</item>
+
+<item>
+<title>Escuinapa</title>
+<cur>MXSA0082</cur>
+<for>Escuinapa</for>
+</item>
+
+<item>
+<title>Fortmn de las Flores</title>
+<cur>MXVZ2301</cur>
+<for>Fortmn de las Flores</for>
+</item>
+
+<item>
+<title>Fresnillo</title>
+<cur>MXZS0121</cur>
+<for>Fresnillo</for>
+</item>
+
+<item>
+<title>Galeana</title>
+<cur>MXNL0067</cur>
+<for>Galeana</for>
+</item>
+
+<item>
+<title>Garza Garcia</title>
+<cur>MXNL1082</cur>
+<for>Garza Garcia</for>
+</item>
+
+<item>
+<title>Guadalajara</title>
+<cur>MXJO0043</cur>
+<for>Guadalajara</for>
+</item>
+
+<item>
+<title>Guamuchil</title>
+<cur>MXSA0148</cur>
+<for>Guamuchil</for>
+</item>
+
+<item>
+<title>Guanajuato</title>
+<cur>MXGO0033</cur>
+<for>Guanajuato</for>
+</item>
+
+<item>
+<title>Guasave</title>
+<cur>MXSA0083</cur>
+<for>Guasave</for>
+</item>
+
+<item>
+<title>Guaymas</title>
+<cur>MXSR0090</cur>
+<for>Guaymas</for>
+</item>
+
+<item>
+<title>Guerrero Negro</title>
+<cur>MXBS0149</cur>
+<for>Guerrero Negro</for>
+</item>
+
+<item>
+<title>Hermosillo</title>
+<cur>MXSR0091</cur>
+<for>Hermosillo</for>
+</item>
+
+<item>
+<title>Hidalgo Del Parral</title>
+<cur>MXCA0024</cur>
+<for>Hidalgo Del Parral</for>
+</item>
+
+<item>
+<title>Huatabampo</title>
+<cur>MXSR0092</cur>
+<for>Huatabampo</for>
+</item>
+
+<item>
+<title>Irapuato</title>
+<cur>MXGO0034</cur>
+<for>Irapuato</for>
+</item>
+
+<item>
+<title>Isla Mujeres</title>
+<cur>MXQR0075</cur>
+<for>Isla Mujeres</for>
+</item>
+
+<item>
+<title>Ixtapa</title>
+<cur>MXGR0137</cur>
+<for>Ixtapa</for>
+</item>
+
+<item>
+<title>Jalapa Enriquez</title>
+<cur>MXVZ0127</cur>
+<for>Jalapa Enriquez</for>
+</item>
+
+<item>
+<title>Jalostotitlan</title>
+<cur>MXJO0044</cur>
+<for>Jalostotitlan</for>
+</item>
+
+<item>
+<title>Jiminez</title>
+<cur>MXCA0025</cur>
+<for>Jiminez</for>
+</item>
+
+<item>
+<title>Juan Carrasco</title>
+<cur>MXSA0166</cur>
+<for>Juan Carrasco</for>
+</item>
+
+<item>
+<title>Juchitan De Zaragoza</title>
+<cur>MXOA1123</cur>
+<for>Juchitan De Zaragoza</for>
+</item>
+
+<item>
+<title>La Paz</title>
+<cur>MXBS0006</cur>
+<for>La Paz</for>
+</item>
+
+<item>
+<title>La Piedad Cavadas</title>
+<cur>MXMN0060</cur>
+<for>La Piedad Cavadas</for>
+</item>
+
+<item>
+<title>Lagos De Moreno</title>
+<cur>MXJO0045</cur>
+<for>Lagos De Moreno</for>
+</item>
+
+<item>
+<title>Lazaro Cardenas</title>
+<cur>MXMN0058</cur>
+<for>Lazaro Cardenas</for>
+</item>
+
+<item>
+<title>Leon</title>
+<cur>MXGO0035</cur>
+<for>Leon</for>
+</item>
+
+<item>
+<title>Loreto</title>
+<cur>MXBS0129</cur>
+<for>Loreto</for>
+</item>
+
+<item>
+<title>Los Cabos</title>
+<cur>MXBS0007</cur>
+<for>Los Cabos</for>
+</item>
+
+<item>
+<title>Los Mochis</title>
+<cur>MXSA0130</cur>
+<for>Los Mochis</for>
+</item>
+
+<item>
+<title>Macuspana</title>
+<cur>MXTO0098</cur>
+<for>Macuspana</for>
+</item>
+
+<item>
+<title>Magdalena</title>
+<cur>MXSR0093</cur>
+<for>Magdalena</for>
+</item>
+
+<item>
+<title>Manzanillo</title>
+<cur>MXCM0016</cur>
+<for>Manzanillo</for>
+</item>
+
+<item>
+<title>Matamoros</title>
+<cur>MXTS0101</cur>
+<for>Matamoros</for>
+</item>
+
+<item>
+<title>Mazatlan</title>
+<cur>MXSA0084</cur>
+<for>Mazatlan</for>
+</item>
+
+<item>
+<title>Merida</title>
+<cur>MXYN0117</cur>
+<for>Merida</for>
+</item>
+
+<item>
+<title>Mexicali</title>
+<cur>MXBC0004</cur>
+<for>Mexicali</for>
+</item>
+
+<item>
+<title>Mexico City</title>
+<cur>MXDF0132</cur>
+<for>Mexico City</for>
+</item>
+
+<item>
+<title>Minatitlan</title>
+<cur>MXVZ0112</cur>
+<for>Minatitlan</for>
+</item>
+
+<item>
+<title>Monclova</title>
+<cur>MXCL0011</cur>
+<for>Monclova</for>
+</item>
+
+<item>
+<title>Monterrey</title>
+<cur>MXNL0068</cur>
+<for>Monterrey</for>
+</item>
+
+<item>
+<title>Morelia</title>
+<cur>MXMN0059</cur>
+<for>Morelia</for>
+</item>
+
+<item>
+<title>Morelos</title>
+<cur>MXMS0140</cur>
+<for>Morelos</for>
+</item>
+
+<item>
+<title>Motul</title>
+<cur>MXYN0118</cur>
+<for>Motul</for>
+</item>
+
+<item>
+<title>Navojoa</title>
+<cur>MXSR0094</cur>
+<for>Navojoa</for>
+</item>
+
+<item>
+<title>Nogales</title>
+<cur>MXSR0095</cur>
+<for>Nogales</for>
+</item>
+
+<item>
+<title>Novillero</title>
+<cur>MXNT0156</cur>
+<for>Novillero</for>
+</item>
+
+<item>
+<title>Nueva Italia De Ruiz</title>
+<cur>MXMN0160</cur>
+<for>Nueva Italia De Ruiz</for>
+</item>
+
+<item>
+<title>Nueva Rosita</title>
+<cur>MXCL0146</cur>
+<for>Nueva Rosita</for>
+</item>
+
+<item>
+<title>Nuevo Casas Grandes</title>
+<cur>MXCA0027</cur>
+<for>Nuevo Casas Grandes</for>
+</item>
+
+<item>
+<title>Nuevo Laredo</title>
+<cur>MXTS0102</cur>
+<for>Nuevo Laredo</for>
+</item>
+
+<item>
+<title>Oaxaca</title>
+<cur>MXOA0069</cur>
+<for>Oaxaca</for>
+</item>
+
+<item>
+<title>Ocotlan</title>
+<cur>MXJO0046</cur>
+<for>Ocotlan</for>
+</item>
+
+<item>
+<title>Orizaba</title>
+<cur>MXVZ0113</cur>
+<for>Orizaba</for>
+</item>
+
+<item>
+<title>Pachuca</title>
+<cur>MXHO0134</cur>
+<for>Pachuca</for>
+</item>
+
+<item>
+<title>Paraiso</title>
+<cur>MXTO0099</cur>
+<for>Paraiso</for>
+</item>
+
+<item>
+<title>Pich</title>
+<cur>MXCE0011</cur>
+<for>Pich</for>
+</item>
+
+<item>
+<title>Piedras Negras</title>
+<cur>MXCL0012</cur>
+<for>Piedras Negras</for>
+</item>
+
+<item>
+<title>Playa Del Carmen</title>
+<cur>MXQR0076</cur>
+<for>Playa Del Carmen</for>
+</item>
+
+<item>
+<title>Poza Rica</title>
+<cur>MXVZ0114</cur>
+<for>Poza Rica</for>
+</item>
+
+<item>
+<title>Poza Rica De Hidalgo</title>
+<cur>MXVZ0163</cur>
+<for>Poza Rica De Hidalgo</for>
+</item>
+
+<item>
+<title>Progreso</title>
+<cur>MXYN0119</cur>
+<for>Progreso</for>
+</item>
+
+<item>
+<title>Puebla</title>
+<cur>MXPA0070</cur>
+<for>Puebla</for>
+</item>
+
+<item>
+<title>Puerto Escondido</title>
+<cur>MXOA0141</cur>
+<for>Puerto Escondido</for>
+</item>
+
+<item>
+<title>Puerto Juarez</title>
+<cur>MXQR0164</cur>
+<for>Puerto Juarez</for>
+</item>
+
+<item>
+<title>Puerto Morelos</title>
+<cur>MXQR0165</cur>
+<for>Puerto Morelos</for>
+</item>
+
+<item>
+<title>Puerto Penasco</title>
+<cur>MXSR0096</cur>
+<for>Puerto Penasco</for>
+</item>
+
+<item>
+<title>Puerto Vallarta</title>
+<cur>MXJO0047</cur>
+<for>Puerto Vallarta</for>
+</item>
+
+<item>
+<title>Putla de Guerrero</title>
+<cur>MXOA1650</cur>
+<for>Putla de Guerrero</for>
+</item>
+
+<item>
+<title>Queretaro</title>
+<cur>MXQA0072</cur>
+<for>Queretaro</for>
+</item>
+
+<item>
+<title>Reynosa</title>
+<cur>MXTS0103</cur>
+<for>Reynosa</for>
+</item>
+
+<item>
+<title>Sahuayo</title>
+<cur>MXMN0947</cur>
+<for>Sahuayo</for>
+</item>
+
+<item>
+<title>Salamanca</title>
+<cur>MXGO0036</cur>
+<for>Salamanca</for>
+</item>
+
+<item>
+<title>Saltillo</title>
+<cur>MXCL0013</cur>
+<for>Saltillo</for>
+</item>
+
+<item>
+<title>San Andres Tuxtla</title>
+<cur>MXVZ0115</cur>
+<for>San Andres Tuxtla</for>
+</item>
+
+<item>
+<title>San Carlos</title>
+<cur>MXTS0104</cur>
+<for>San Carlos</for>
+</item>
+
+<item>
+<title>San Felipe</title>
+<cur>MXBC0145</cur>
+<for>San Felipe</for>
+</item>
+
+<item>
+<title>San Francisco Del Rincon</title>
+<cur>MXGO0037</cur>
+<for>San Francisco Del Rincon</for>
+</item>
+
+<item>
+<title>San Jose Del Cabo</title>
+<cur>MXBS0157</cur>
+<for>San Jose Del Cabo</for>
+</item>
+
+<item>
+<title>San Juan Del Rio</title>
+<cur>MXQA0073</cur>
+<for>San Juan Del Rio</for>
+</item>
+
+<item>
+<title>San Julian</title>
+<cur>MXJO0048</cur>
+<for>San Julian</for>
+</item>
+
+<item>
+<title>San Luis Potosi</title>
+<cur>MXSP0079</cur>
+<for>San Luis Potosi</for>
+</item>
+
+<item>
+<title>San Luis Rio Colorado</title>
+<cur>MXSR0097</cur>
+<for>San Luis Rio Colorado</for>
+</item>
+
+<item>
+<title>San Marcos</title>
+<cur>MXMO0154</cur>
+<for>San Marcos</for>
+</item>
+
+<item>
+<title>San Miguel El Alto</title>
+<cur>MXJO0715</cur>
+<for>San Miguel El Alto</for>
+</item>
+
+<item>
+<title>San Miguel de Allende</title>
+<cur>MXGO0501</cur>
+<for>San Miguel de Allende</for>
+</item>
+
+<item>
+<title>San Sebastian Vizcaino Bay</title>
+<cur>MXBS0185</cur>
+<for>San Sebastian Vizcaino Bay</for>
+</item>
+
+<item>
+<title>San Vicente</title>
+<cur>MXBC0161</cur>
+<for>San Vicente</for>
+</item>
+
+<item>
+<title>Santa Rosalia</title>
+<cur>MXBS0167</cur>
+<for>Santa Rosalia</for>
+</item>
+
+<item>
+<title>Seybaplaya</title>
+<cur>MXCE0010</cur>
+<for>Seybaplaya</for>
+</item>
+
+<item>
+<title>Sombrerete</title>
+<cur>MXZS0122</cur>
+<for>Sombrerete</for>
+</item>
+
+<item>
+<title>Tala</title>
+<cur>MXJO0049</cur>
+<for>Tala</for>
+</item>
+
+<item>
+<title>Tampico</title>
+<cur>MXTS0105</cur>
+<for>Tampico</for>
+</item>
+
+<item>
+<title>Tapachula</title>
+<cur>MXCS0019</cur>
+<for>Tapachula</for>
+</item>
+
+<item>
+<title>Tecoman</title>
+<cur>MXCM0017</cur>
+<for>Tecoman</for>
+</item>
+
+<item>
+<title>Tehuacan</title>
+<cur>MXPA0071</cur>
+<for>Tehuacan</for>
+</item>
+
+<item>
+<title>Teirra Colorada</title>
+<cur>MXGR0563</cur>
+<for>Teirra Colorada</for>
+</item>
+
+<item>
+<title>Temosachic</title>
+<cur>MXCA0028</cur>
+<for>Temosachic</for>
+</item>
+
+<item>
+<title>Tepatitlan De Morelos</title>
+<cur>MXJO0729</cur>
+<for>Tepatitlan De Morelos</for>
+</item>
+
+<item>
+<title>Tepehuanes</title>
+<cur>MXDO0031</cur>
+<for>Tepehuanes</for>
+</item>
+
+<item>
+<title>Tepic</title>
+<cur>MXNT0065</cur>
+<for>Tepic</for>
+</item>
+
+<item>
+<title>Tijuana</title>
+<cur>MXBC0005</cur>
+<for>Tijuana</for>
+</item>
+
+<item>
+<title>Tlalnepantla</title>
+<cur>MXMO0054</cur>
+<for>Tlalnepantla</for>
+</item>
+
+<item>
+<title>Tlaquepaque</title>
+<cur>MXJO0050</cur>
+<for>Tlaquepaque</for>
+</item>
+
+<item>
+<title>Tlaxcala</title>
+<cur>MXTA0108</cur>
+<for>Tlaxcala</for>
+</item>
+
+<item>
+<title>Todos Santos</title>
+<cur>MXBS0126</cur>
+<for>Todos Santos</for>
+</item>
+
+<item>
+<title>Toluca</title>
+<cur>MXMO0055</cur>
+<for>Toluca</for>
+</item>
+
+<item>
+<title>Tomatlan</title>
+<cur>MXJO0051</cur>
+<for>Tomatlan</for>
+</item>
+
+<item>
+<title>Torreon</title>
+<cur>MXCL0014</cur>
+<for>Torreon</for>
+</item>
+
+<item>
+<title>Tulancingo De Bravo</title>
+<cur>MXHO0639</cur>
+<for>Tulancingo De Bravo</for>
+</item>
+
+<item>
+<title>Tulum</title>
+<cur>MXQR1886</cur>
+<for>Tulum</for>
+</item>
+
+<item>
+<title>Tuxpan</title>
+<cur>MXVZ0128</cur>
+<for>Tuxpan</for>
+</item>
+
+<item>
+<title>Tuxtla Gutierrez</title>
+<cur>MXCS0020</cur>
+<for>Tuxtla Gutierrez</for>
+</item>
+
+<item>
+<title>Uruapan</title>
+<cur>MXMN0061</cur>
+<for>Uruapan</for>
+</item>
+
+<item>
+<title>Valladolid</title>
+<cur>MXYN0120</cur>
+<for>Valladolid</for>
+</item>
+
+<item>
+<title>Valle Hermoso</title>
+<cur>MXTS0106</cur>
+<for>Valle Hermoso</for>
+</item>
+
+<item>
+<title>Valle de Bravo Lake</title>
+<cur>MXMO0876</cur>
+<for>Valle de Bravo Lake</for>
+</item>
+
+<item>
+<title>Veracruz</title>
+<cur>MXVZ0116</cur>
+<for>Veracruz</for>
+</item>
+
+<item>
+<title>Victoria De Durango</title>
+<cur>MXDO0142</cur>
+<for>Victoria De Durango</for>
+</item>
+
+<item>
+<title>Villa Union</title>
+<cur>MXSA0147</cur>
+<for>Villa Union</for>
+</item>
+
+<item>
+<title>Villahermosa</title>
+<cur>MXTO0152</cur>
+<for>Villahermosa</for>
+</item>
+
+<item>
+<title>Xalapa</title>
+<cur>MXVZ0111</cur>
+<for>Xalapa</for>
+</item>
+
+<item>
+<title>Xcaret</title>
+<cur>MXQR1887</cur>
+<for>Xcaret</for>
+</item>
+
+<item>
+<title>Xochimilco</title>
+<cur>MXDF0029</cur>
+<for>Xochimilco</for>
+</item>
+
+<item>
+<title>Zacapu</title>
+<cur>MXMN0062</cur>
+<for>Zacapu</for>
+</item>
+
+<item>
+<title>Zacatecas</title>
+<cur>MXZS0123</cur>
+<for>Zacatecas</for>
+</item>
+
+<item>
+<title>Zamora</title>
+<cur>MXMN0063</cur>
+<for>Zamora</for>
+</item>
+
+<item>
+<title>Zapopan</title>
+<cur>MXJO0052</cur>
+<for>Zapopan</for>
+</item>
+
+<item>
+<title>Zihuatanejo</title>
+<cur>MXGR0136</cur>
+<for>Zihuatanejo</for>
+</item>
+
+</channel></rss>

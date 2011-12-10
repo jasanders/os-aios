@@ -1,0 +1,177 @@
+<html>
+
+<head>
+
+
+<title>Webkit</title>
+
+<script type="text/javascript">
+var index;
+var index_prev;
+var timer_cnt=0;
+var length = 6 ;
+var row = 2 ;
+var unsel_w = 157;
+var unsel_h = 246;
+var sel_w = 277;
+var sel_h = 477;
+var pos_x1 = 218;
+var pos_y1 = 200;
+var offset_x = 168;
+left_most_unsel = 218;
+left_most_sel = 160;
+sel_pos_y1 = 345;
+bg_w = 1080;
+bg_h = 680;
+function draw(which, select)
+{
+	var myspan = document.getElementById('span'+which);
+		
+	if(select==1)
+	{
+		document.getElementById('index'+which).style.visibility='hidden';
+		myspan.style.zIndex = 9;
+		myspan.style.top = sel_pos_y1 ;
+		myspan.style.left = left_most_sel + offset_x * which;
+		document.getElementById('index'+which).src = "webkit_test.files/image" + index + "_unfocus.png";
+		document.getElementById('index'+which).width = sel_w;
+		document.getElementById('index'+which).style.visibility='visible';
+	}
+	else
+	{
+		document.getElementById('index'+which).src = "webkit_test.files/image" + which + ".png";
+		document.getElementById('index'+which).width = unsel_w;
+		myspan.style.zIndex = 5;
+		myspan.style.top = pos_y1 ;
+		myspan.style.left = left_most_unsel + offset_x * which;
+	}
+}
+function init()
+{
+	index = 0;	
+	index_prev = -1;
+
+	bg_w = window.innerWidth;
+	bg_h = window.innerHeight;
+
+	pos_y1 = 424 * bg_h / 720 - unsel_h/2;
+	
+	left_most_unsel = (bg_w - offset_x * length)/2;
+	left_most_sel = left_most_unsel - (sel_w - unsel_w)/2;
+	sel_pos_y1 = pos_y1 - (sel_h - unsel_h)/2;
+	for(iii=0 ; iii<length ; iii++)
+	{
+		var myspan = document.getElementById('span'+iii);
+		myspan.style.left = left_most_unsel + offset_x * iii;
+		myspan.style.top = pos_y1;
+	//	window.console.debug(left_most_unsel + offset_x * iii);
+	//	window.console.debug(pos_y1);
+	//	window.console.debug("TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT");
+	}
+	
+	draw(index, 1);
+}	
+function whichButton(event)
+{ 	
+	index_prev = index
+
+  if (event.keyCode == 37)	// left 
+	{//¡û
+		if(index==0)
+			index = length - 1;
+		else 
+			index = index -1 ;
+	}
+	
+	else if (event.keyCode == 39)	  // right 
+	{//¡ú
+		if(index == length -1)
+		{
+			index = 0  ;
+		}
+		else
+		{
+			index = index + 1 ;
+		}
+	}
+	else if( event.keyCode == 13)
+	{
+		location.assign(document.getElementById('span'+index).firstChild.href);
+		return;
+	}	
+	else
+		return;
+		
+	draw(index, 1) ;
+	draw(index_prev, 0);
+	timer_cnt = 5;		
+} 
+</script> 	
+</head>
+
+<body link=blue vlink="#660099" style='tab-interval:.3333in;margin:0;background-color:#000000' onkeydown="whichButton(event)" onload="init()">
+
+<div style='position:absolute'>
+	
+<span name="span_bg" style='mso-ignore:vglayout;position:
+absolute;z-index:3;top:355px'><img id='index99' border=0 lock="true" style='z-index:3'
+src="0902/image002.png" width='1280px' height='245px' style="background-color:#000000"></span>
+
+<span id='span5' style='mso-ignore:vglayout;position:
+absolute;z-index:4;left:976px;top:301px;width:158px;height:247px'><a id='anchor5'
+href="http://218.210.127.133/VOD_R344399/webkit_test_p3.html"><img id='index5' border=0 lock="true" width=158
+src="webkit_test.files/image5.png" v:shapes="_x0000_s1043"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:301px;width:158px;height:247px;visibility:hidden'><img border=0 lock="true" width=158
+src="webkit_test.files/image5_unfocus.png"></span>
+
+<span id='span4' style='mso-ignore:vglayout;position:
+absolute;z-index:5;left:808px;top:301px;width:158px'><a
+href="http://www.google.com.tw/"><img id='index4' border=0 lock="true" width=158
+src="webkit_test.files/image4.png" v:shapes="_x0000_s1044"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:301px;width:158px;height:247px;visibility:hidden'><img border=0 lock="true" width=158
+src="webkit_test.files/image4_unfocus.png"></span>
+
+<span id='span3' style='mso-ignore:vglayout;position:
+absolute;z-index:6;left:640px;top:301px;width:158px'><a
+href="http://m.mlb.com/"><img id='index3' border=0 width=158
+src="webkit_test.files/image3.png" lock="true" v:shapes="_x0000_s1045"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:301px;width:158px;height:247px;visibility:hidden'><img border=0 lock="true" width=158
+src="webkit_test.files/image3_unfocus.png"></span>
+
+<span id='span2' style='mso-ignore:vglayout;position:
+absolute;z-index:7;left:472px;top:301px;width:158px'><a
+href="http://www.netflix.com/"><img id='index2' border=0 lock="true" width=158 
+src="webkit_test.files/image2.png" v:shapes="_x0000_s1046"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:0px;width:158px;height:247px;visibility:hidden'><img border=0 width=158
+lock="true" src="webkit_test.files/image2_unfocus.png"></span>
+
+<span id='span1' style='mso-ignore:vglayout;position:
+absolute;z-index:8;left:304px;top:301px;width:158px;'><a
+href="http://www.facebook.com/"><img id='index1' border=0 width=158 
+lock="true" src="webkit_test.files/image1.png" v:shapes="_x0000_s1047"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:301px;width:158px;height:247px;visibility:hidden'><img border=0 width=158
+lock="true" src="webkit_test.files/image1_unfocus.png"></span>
+
+<span id='span0' style='z-index:5;position:
+absolute;left:136px;top:301px;width:158px'><a
+href="http://api.video.sina.com.cn/interface/"><img id="index0" border=0 width=158
+lock="true" src="webkit_test.files/image0.png" v:shapes="_x0000_s1048"></a></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:1000px;top:301px;width:158px;height:247px;visibility:hidden'><img border=0 width=158
+lock="true" src="webkit_test.files/image0_unfocus.png"></span>
+</div>
+
+</body>
+
+</html>

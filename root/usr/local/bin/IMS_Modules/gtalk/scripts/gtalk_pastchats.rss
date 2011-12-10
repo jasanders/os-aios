@@ -1,0 +1,1149 @@
+
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> Gtalk file lists </bookmark>
+
+
+<onEnter>
+setEnv("InGtalkAP","true");
+  setRefreshTime(400000);
+
+  bg_flag=0;
+  
+	 xmlFile = gtalk_getUsers();
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+			{
+				self_status=getXMLText("report","self","status");
+				self_display=getXMLText("report","self","display");
+				self_id=getXMLText("report","self","id");
+			}
+	}
+	path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+      friendDisplay = readStringFromFile(path);
+	  
+</onEnter>
+
+
+
+<onRefresh>
+
+
+
+</onRefresh>
+
+
+<mediaDisplay
+showHeader=no
+forceFocusOnItem=yes
+selectMenuOnRight=no
+autoSelectMenu=no
+autoSelectItem=no
+showDefaultInfo=no
+name=threePartsView
+rollItems= yes
+
+
+
+menuXPC = 0
+menuYPC = 0
+menuWidthPC = 0
+menuHeightPC = 0
+
+itemXPC = 8
+itemYPC = 34
+itemWidthPC = 80
+itemHeightPC = 11.11
+itemPerPage=4
+itemGap = 0
+itemImageXPC = 0.5
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+
+itemBackgroundColor = -1:-1:-1
+>
+
+
+<backgroundDisplay name=gtalk_pastchats_bg>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+		if(bg_flag==0)
+			{
+			bg_flag=1;
+		"IMS_Modules/gtalk/image/gtalk_bg.fsp";
+		}
+		else
+			null;
+	</script>
+	</image>
+</backgroundDisplay>
+
+<recordpopupDialog>
+	<mediaDisplay>
+		<onEnter>
+			btnSize = 3;
+			btnString = pushBackStringArray(btnString, "$[DEL_RECORD]");
+			btnString = pushBackStringArray(btnString, "$[DEL_ALL_RECORD]");
+			btnString = pushBackStringArray(btnString, "$[ADD_RMV_STAR]");
+		</onEnter>
+	</mediaDisplay>
+</recordpopupDialog>
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			header = "$[CONFIRM]";
+			message = "Are you sure to cancel selected transfering?";
+			btnSize = 2;
+			btnString = pushBackStringArray(btnString, "$[YES]");
+			btnString = pushBackStringArray(btnString, "$[NO]");
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+<!--
+<image redraw=no offsetXPC=6 offsetYPC=10 widthPC=18 heightPC=7.5  useBackgroundSurface="yes">
+../image/p2_logo.fsp
+</image>
+-->
+
+
+
+<text offsetXPC="71" offsetYPC="10" widthPC="100" heightPC="15" fontSize=24  backgroundColor=-1:-1:-1 foregroundColor=222:229:244 >
+<script>
+"$[PAST_CHATS]";
+</script>
+</text>
+
+
+
+<text useBackgroundSurface=yes redraw=yes offsetXPC=87 offsetYPC=27 widthPC=10 heightPC=4 fontSize=15  backgroundColor=-1:-1:-1  foregroundColor=80:184:180  >
+<script>
+menuFocus = getFocusItemIndex();
+menuFocus=Add(menuFocus,1);
+if(fileCount==0)
+	menuFocus=0;
+str=menuFocus+"/ "+fileCount;;
+</script>
+</text>
+
+
+
+<text offsetXPC="10" offsetYPC="84.44" widthPC="25" heightPC="10" fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=172:173:174  >
+Enter: $[MSG_DETAIL]
+</text>
+
+
+<text offsetXPC="32" offsetYPC="84.44" widthPC="25" heightPC="10" fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=172:173:174  >
+Stop: $[DEL_RECORD]
+</text>
+
+<text offsetXPC="52" offsetYPC="84.44" widthPC="25" heightPC="10" fontSize=13 backgroundColor=-1:-1:-1 foregroundColor=172:173:174 >
+Zoom: $[ADD_RMV_STAR]
+</text>
+
+<image redraw=no offsetXPC=75 offsetYPC=87.5 widthPC=1.8 heightPC=3.2 >
+../image/option_red.fsp
+</image>
+
+<text offsetXPC=77 offsetYPC=84.44 widthPC=20 heightPC=10 fontSize=13  backgroundColor=-1:-1:-1 foregroundColor=172:173:174 >
+$[OPTION_MENU]
+</text>
+
+<text offsetXPC="41" offsetYPC="24" widthPC="10" heightPC="10" fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=80:184:180  >
+$[BUDDY_SEND]
+</text>
+
+<text offsetXPC="66" offsetYPC="24" widthPC="12" heightPC="10" fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=80:184:180>
+$[BUDDY_RECV]
+</text>
+
+<text offsetXPC="9" offsetYPC="24" widthPC="10" heightPC="10" fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=80:184:180>
+$[BUDDY_TIME]
+</text>
+
+
+<image redraw=yes  offsetXPC=90  offsetYPC=34  widthPC=0.5  heightPC=44.5>
+<script>
+image = "IMS_Modules/gtalk/image/Slidebar_down.fsp";
+</script>
+</image>
+
+<image redraw=yes offsetXPC=90  widthPC=0.5>
+<offsetYPC>
+	<script>
+	if(fileCount==0)
+		ret=0;
+	else
+	{
+		scrollindex=getFocusItemIndex();
+		ret=Add(34.5,scrollindex*43/fileCount);
+	}
+	</script>
+</offsetYPC>
+
+<heightPC>
+	<script>
+	if(fileCount==0)
+		ret=0;
+	else
+	{
+		ret=43/fileCount;
+		if(ret &lt; 1)
+			ret=1;
+	}
+
+	</script>
+</heightPC>
+
+<script>
+image = "IMS_Modules/gtalk/image/slidebar_inside.fsp";
+</script>
+</image>
+
+
+<itemDisplay>
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			if (getDrawingItemState() == "focus")
+			{
+				"../image/border01_selected.fsp";
+			}
+			else
+			{
+				
+				"../image/border01.fsp";
+			}
+			
+		</script>
+	</image>
+
+<text offsetXPC=41 offsetYPC=5 widthPC=60 heightPC=45 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+gtalk_getShortName(getStringArrayAt(sendNameArray , -1));
+</script>
+</text>
+
+<text offsetXPC=72 offsetYPC=5 widthPC=28 heightPC=45 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+gtalk_getShortName(getStringArrayAt(recvNameArray , -1));
+</script>
+</text>
+
+<text offsetXPC=0.5  offsetYPC=5 widthPC=80 heightPC=45 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+getStringArrayAt(actTimeArray , -1);
+</script>
+</text>
+
+<text offsetXPC=6 offsetYPC=40 widthPC=83 heightPC=55 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=80:184:180>
+<script>
+getStringArrayAt(msgTxtArray , -1);
+</script>
+</text>
+
+<image redraw=yes offsetXPC=1.5  offsetYPC=48 widthPC=4.5  heightPC=38>
+<script>
+star=getStringArrayAt(starArray , -1);
+if(star=="0")
+   img="../image/chat_empty.fsp";
+else
+   img="../image/chat_star.fsp";
+
+   img;
+</script>   
+</image>
+
+</itemDisplay>
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("Catch input111: ", userInput);
+
+if(userInput=="up"||userInput=="down")
+{
+ "false";
+}
+else
+{
+
+if (userInput == "right")
+{
+	print("ignore right key");
+
+	"true";
+}
+else
+if (userInput == "edit")
+{
+  
+
+   "true";
+
+}else
+if (userInput == "usb_updated")
+{
+print("gtalk_sharelist got usb_updated ");
+
+
+   "true";
+}
+else
+if (userInput == "setup"||userInput == "guide")
+{
+	print("gtalk_pastchats got setup**************** ");
+	bg_flag=0;
+
+    "false";
+}
+else if(userInput == "im_status")
+{
+	print("get im_status");
+
+	path = getStoragePath("tmp") + "im_status.dat";
+      im_status = readStringFromFile(path);
+
+	 friendid = getStringArrayAt(im_status, 1);
+	 changestat=getStringArrayAt(im_status, 2);
+	 print("im_status friendid===========",friendid);
+	 print("im_status changestat===========",changestat);
+
+
+	if(changestat=="3")  changestat="$[BUDDY_IDLE]";
+	if(changestat=="4")  changestat="$[BUDDY_BUSY]";
+	if(changestat=="5")  changestat="$[BUDDY_AVAILABLE]";
+	if(changestat=="0")  changestat="$[BUDDY_OFFLINE]";
+
+	imstatus_str=friendid+" $[CHANGE_TO] "+changestat;
+	
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+	"true";
+}
+else if(userInput == "video_stop")
+{
+	if(fileCount &gt; 0)
+	{
+	 itemFocusIndex=getFocusItemIndex();
+	 
+	itemID=getStringArrayAt(itemIDArray ,itemFocusIndex);
+	print("+++++++++itemID=",itemID);
+	gtalk_clearMsgById(itemID);
+
+
+	 xmlFile = gtalk_getUsers();
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+			{
+				self_status=getXMLText("report","self","status");
+				self_display=getXMLText("report","self","display");
+				self_id=getXMLText("report","self","id");
+			}
+	}
+	path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+      friendDisplay = readStringFromFile(path);
+
+	gtalk_getMsgFromDbByName(friendDisplay,self_display);
+
+
+	  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+	  print("get user xml:",xmlFile);
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("past chat Count :: ",fileCount);
+		
+			if (fileCount &gt; 0)
+			{
+
+				itemIDArray=null;			
+				sendNameArray = null;
+				recvNameArray =null;
+				actTimeArray=null;
+				msgTxtArray=null;
+				starArray=null;
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+					
+					itemID=getXMLText("report","item",index,"itemID");
+					sendName=getXMLText("report","item",index,"sendName");
+					recvName=getXMLText("report","item",index,"recvName");
+					actTime=getXMLText("report","item",index,"actTime");
+					msgTxt=getXMLText("report","item",index,"msgTxt");
+					star=getXMLText("report","item",index,"star");
+
+					itemIDArray=pushBackStringArray(itemIDArray,itemID);
+					sendNameArray=pushBackStringArray(sendNameArray,sendName);
+					recvNameArray=pushBackStringArray(recvNameArray,recvName);
+					actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+					msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+					starArray=pushBackStringArray(starArray,star);
+
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}
+
+
+	if(itemFocusIndex == fileCount)
+		{
+			setFocusItemIndex(Minus(itemFocusIndex,1));
+		}
+	else
+		setFocusItemIndex(itemFocusIndex);
+
+
+	redrawDisplay();
+	}
+	"true";
+}
+else if(userInput == "im_file_status")
+{
+	print("get im_file_status");
+	
+	path = getStoragePath("tmp") + "im_file_status.dat";
+      im_file_status = readStringFromFile(path);
+
+	 file_action = getStringArrayAt(im_file_status, 1);
+	 action_id=getStringArrayAt(im_file_status, 2);
+
+
+	 if(file_action=="start") 		imstatus_str="$[FILE_RECV_START] "+action_id;
+	 if(file_action=="cancelrcv") 	imstatus_str="$[CANCEL_RECVSHARE] "+action_id;
+	 if(file_action=="cancelsnd") imstatus_str="$[CANCEL_SENDSHARE] "+action_id;
+	 if(file_action=="donesnd") 	imstatus_str="$[FILE_SEND_DONE] "+action_id;
+	 if(file_action=="donercv") 	
+	 	{
+
+		action_dir=getStringArrayAt(im_file_status, 3);
+	 	imstatus_str="$[FILE_RECV_DONE] "+gtalk_getDiskString(action_dir);
+
+	 	}
+	 if(file_action=="canceldsk")    imstatus_str=action_id+"$[CANCEL_RECVDSK]";
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+
+	  gtalk_getInfoFromDb();
+	  xmlFile =getStoragePath("tmp") + "gtalkDbInfo.xml";
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("save file Count :: ",fileCount);
+			if (fileCount &gt; 0)
+			{
+
+							
+				fileArray = null;
+				fromNameArray =null;
+				saveDirArray=null;
+				savePathArray=null;
+				recvTimeArray=null;
+
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+
+					fromName=getXMLText("report","item",index,"fromName");
+					saveDir=getXMLText("report","item",index,"saveDir");
+					recvTime=getXMLText("report","item",index,"recvTime");
+					
+
+					fromNameArray=pushBackStringArray(fromNameArray,fromName);
+					savePathArray=pushBackStringArray(savePathArray,saveDir);
+					saveDirArray=pushBackStringArray(saveDirArray,gtalk_getDiskString(saveDir));				
+					recvTimeArray=pushBackStringArray(recvTimeArray,recvTime);
+
+					
+                               print("get save llist  :",fromName, saveDir,recvTime);
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}
+
+
+	redrawDisplay();
+
+
+
+
+	"true";
+}
+else if(userInput == "zoom")
+{
+ 	if(fileCount &gt; 0)
+ 		{
+			itemFocusIndex=getFocusItemIndex();
+
+
+
+			star=getStringArrayAt(starArray ,itemFocusIndex);
+			print("itemIDArray==========",itemIDArray);
+			itemID=getStringArrayAt(itemIDArray ,itemFocusIndex);
+			print("star===========",star);
+			if(star=="0")
+				gtalk_updateMsgStar(itemID,"1");
+			else
+				gtalk_updateMsgStar(itemID,"0");
+			
+	gtalk_getMsgFromDbByName(friendDisplay,self_display);
+
+
+	  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+	  print("get user xml:",xmlFile);
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("past chat Count :: ",fileCount);
+		
+			if (fileCount &gt; 0)
+			{
+
+				itemIDArray=null;			
+				sendNameArray = null;
+				recvNameArray =null;
+				actTimeArray=null;
+				msgTxtArray=null;
+				starArray=null;
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+					
+					itemID=getXMLText("report","item",index,"itemID");
+					sendName=getXMLText("report","item",index,"sendName");
+					recvName=getXMLText("report","item",index,"recvName");
+					actTime=getXMLText("report","item",index,"actTime");
+					msgTxt=getXMLText("report","item",index,"msgTxt");
+					star=getXMLText("report","item",index,"star");
+
+					itemIDArray=pushBackStringArray(itemIDArray,itemID);
+					sendNameArray=pushBackStringArray(sendNameArray,sendName);
+					recvNameArray=pushBackStringArray(recvNameArray,recvName);
+					actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+					msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+					starArray=pushBackStringArray(starArray,star);
+
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}			
+
+		setFocusItemIndex(itemFocusIndex);
+
+		redrawDisplay();
+ 		}
+
+	"true";
+}
+else if(userInput == "im_msg_txt")
+{
+	print("get im_msg_txt");
+	
+	path = getStoragePath("tmp") + "im_msg_txt.dat";
+      im_msg_txt = readStringFromFile(path);
+
+	 im_jid = getStringArrayAt(im_msg_txt, 1);
+	 
+	 im_msg=null;
+	 index=2;
+	 while(1)
+	 {
+		str=getStringArrayAt(im_msg_txt, index);
+		if(str==null)
+			break;
+		
+		index=Add(index,1);		
+
+		tmpstr=getStringArrayAt(im_msg_txt, index);
+		if(tmpstr==null)
+		{
+		im_msg=im_msg+str;
+		break;
+		}
+		else
+		{
+		print("str=========",str);
+		 im_msg=pushBackStringArray(im_msg,str);
+		 print("im_msg=========",im_msg);
+		}
+
+
+
+	 }
+
+	  
+	 print("=@@@@@@@============im_msg=",im_msg);
+	 
+	imstatus_str="$[NEW_MSG_FROM] "+gtalk_getShortName(im_jid)+"): "+im_msg;
+		
+	 path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+
+	path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+      friendDisplay = readStringFromFile(path);
+
+	imArray=null;
+	imArray=pushBackStringArray(imArray, "im_msg_txt");
+	imArray=pushBackStringArray(imArray, im_jid);
+	imArray=pushBackStringArray(imArray,"msg");
+
+	path = getStoragePath("tmp") + "im_status.dat";
+	writeStringToFile(path, imArray);
+
+
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+	"true";
+}
+else if (userInput == "option_red")
+{
+  	 print("enter display key,delet focus  friend !!!",getFocusItemIndex());
+
+	itemFocusIndex=getFocusItemIndex();
+	print("itemFocusIndex==",itemFocusIndex);
+	
+	
+
+	rss = "./IMS_Modules/gtalk/scripts/recordstatpopDialog.rss";
+	confirm = doModalRss(rss, "mediaDisplay", "recordpopupDialog", 0);
+	print("confirm-============",confirm);
+
+
+	if(confirm=="$[DEL_RECORD]")
+		{	 
+		if(fileCount &gt; 0)
+		  {
+			itemID=getStringArrayAt(itemIDArray ,itemFocusIndex);
+			print("+++++++++itemID=",itemID);
+			gtalk_clearMsgById(itemID);
+
+
+	 xmlFile = gtalk_getUsers();
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+			{
+				self_status=getXMLText("report","self","status");
+				self_display=getXMLText("report","self","display");
+				self_id=getXMLText("report","self","id");
+			}
+	}
+	path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+      friendDisplay = readStringFromFile(path);
+
+	gtalk_getMsgFromDbByName(friendDisplay,self_display);
+
+
+	  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+	  print("get user xml:",xmlFile);
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("past chat Count :: ",fileCount);
+		
+			if (fileCount &gt; 0)
+			{
+
+				itemIDArray=null;			
+				sendNameArray = null;
+				recvNameArray =null;
+				actTimeArray=null;
+				msgTxtArray=null;
+				starArray=null;
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+					
+					itemID=getXMLText("report","item",index,"itemID");
+					sendName=getXMLText("report","item",index,"sendName");
+					recvName=getXMLText("report","item",index,"recvName");
+					actTime=getXMLText("report","item",index,"actTime");
+					msgTxt=getXMLText("report","item",index,"msgTxt");
+					star=getXMLText("report","item",index,"star");
+
+					itemIDArray=pushBackStringArray(itemIDArray,itemID);
+					sendNameArray=pushBackStringArray(sendNameArray,sendName);
+					recvNameArray=pushBackStringArray(recvNameArray,recvName);
+					actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+					msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+					starArray=pushBackStringArray(starArray,star);
+
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}
+
+
+	if(itemFocusIndex == fileCount)
+		{
+			setFocusItemIndex(Minus(itemFocusIndex,1));
+		}
+	else
+		setFocusItemIndex(itemFocusIndex);
+
+
+	redrawDisplay();
+			}
+		}
+else
+	if(confirm=="$[DEL_ALL_RECORD]")
+	{	 
+	if(fileCount &gt; 0)
+	{
+		 xmlFile = gtalk_getUsers();
+		if (xmlFile != null)
+		{
+			parseResult = gtalk_parseXMLFile(xmlFile);
+			if (parseResult != null)
+				{
+					self_status=getXMLText("report","self","status");
+					self_display=getXMLText("report","self","display");
+					self_id=getXMLText("report","self","id");
+				}
+		}
+		path = getStoragePath("tmp") + "gtalk_to_friend.dat";
+	      friendDisplay = readStringFromFile(path);
+
+
+		gtalk_clearMsgByName(friendDisplay,self_display);
+
+		gtalk_getMsgFromDbByName(friendDisplay,self_display);
+
+
+		  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+		  print("get user xml:",xmlFile);
+
+		if (xmlFile != null)
+		{
+			parseResult = gtalk_parseXMLFile(xmlFile);
+			if (parseResult != null)
+			{
+			
+			fileCount=getXMLElementCount("report","item");
+			print("past chat Count :: ",fileCount);
+			
+				if (fileCount &gt; 0)
+				{
+
+					itemIDArray=null;			
+					sendNameArray = null;
+					recvNameArray =null;
+					actTimeArray=null;
+					msgTxtArray=null;
+					starArray=null;
+					
+					index = 0;
+					while (1)
+					{
+						if (index == fileCount)
+							break;
+						
+						itemID=getXMLText("report","item",index,"itemID");
+						sendName=getXMLText("report","item",index,"sendName");
+						recvName=getXMLText("report","item",index,"recvName");
+						actTime=getXMLText("report","item",index,"actTime");
+						msgTxt=getXMLText("report","item",index,"msgTxt");
+						star=getXMLText("report","item",index,"star");
+
+						itemIDArray=pushBackStringArray(itemIDArray,itemID);
+						sendNameArray=pushBackStringArray(sendNameArray,sendName);
+						recvNameArray=pushBackStringArray(recvNameArray,recvName);
+						actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+						msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+						starArray=pushBackStringArray(starArray,star);
+
+
+						index = index + 1;
+					}
+
+
+					redrawDisplay();
+			 
+
+
+					null;
+					}
+					else
+					{
+					print("!!!!!! No  save file  found !!!!!!");
+					null;
+					}
+			}
+			else
+				{
+				print("gtalk.. parse a new xml file fail");
+				null;
+				}
+
+			}
+
+
+		setFocusItemIndex(0);
+
+		redrawDisplay();
+		}		
+			}
+else	
+	if(confirm=="$[ADD_RMV_STAR]")
+		{
+		if(fileCount &gt; 0)
+			{
+			star=getStringArrayAt(starArray ,itemFocusIndex);
+			print("itemIDArray==========",itemIDArray);
+			itemID=getStringArrayAt(itemIDArray ,itemFocusIndex);
+			print("star===========",star);
+			if(star=="0")
+				gtalk_updateMsgStar(itemID,"1");
+			else
+				gtalk_updateMsgStar(itemID,"0");
+			
+	gtalk_getMsgFromDbByName(friendDisplay,self_display);
+
+
+	  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+	  print("get user xml:",xmlFile);
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("past chat Count :: ",fileCount);
+		
+			if (fileCount &gt; 0)
+			{
+
+				itemIDArray=null;			
+				sendNameArray = null;
+				recvNameArray =null;
+				actTimeArray=null;
+				msgTxtArray=null;
+				starArray=null;
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+					
+					itemID=getXMLText("report","item",index,"itemID");
+					sendName=getXMLText("report","item",index,"sendName");
+					recvName=getXMLText("report","item",index,"recvName");
+					actTime=getXMLText("report","item",index,"actTime");
+					msgTxt=getXMLText("report","item",index,"msgTxt");
+					star=getXMLText("report","item",index,"star");
+
+					itemIDArray=pushBackStringArray(itemIDArray,itemID);
+					sendNameArray=pushBackStringArray(sendNameArray,sendName);
+					recvNameArray=pushBackStringArray(recvNameArray,recvName);
+					actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+					msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+					starArray=pushBackStringArray(starArray,star);
+
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}			
+
+		setFocusItemIndex(itemFocusIndex);
+
+		redrawDisplay();
+
+		}
+		}
+
+			bg_flag=0;
+   "true";
+
+}
+else
+	"false";
+
+}
+
+
+</script>
+</onUserInput>
+
+
+
+</mediaDisplay>
+
+<onExit>
+unsetEnv("InGtalkAP");
+
+</onExit>
+
+<script>
+
+		print("-=-=-=-= Enter gtalk past chats list -=-=-=-=");
+
+	  xmlFile =getStoragePath("tmp") + "gtalkDbMsgInfoByName.xml";
+	  print("get user xml:",xmlFile);
+
+
+	if (xmlFile != null)
+	{
+		parseResult = gtalk_parseXMLFile(xmlFile);
+		if (parseResult != null)
+		{
+		
+		fileCount=getXMLElementCount("report","item");
+		print("past chat Count :: ",fileCount);
+		
+			if (fileCount &gt; 0)
+			{
+
+				itemIDArray=null;			
+				sendNameArray = null;
+				recvNameArray =null;
+				actTimeArray=null;
+				msgTxtArray=null;
+				starArray=null;
+				
+				index = 0;
+				while (1)
+				{
+					if (index == fileCount)
+						break;
+					
+					itemID=getXMLText("report","item",index,"itemID");
+					sendName=getXMLText("report","item",index,"sendName");
+					recvName=getXMLText("report","item",index,"recvName");
+					actTime=getXMLText("report","item",index,"actTime");
+					msgTxt=getXMLText("report","item",index,"msgTxt");
+					star=getXMLText("report","item",index,"star");
+
+					itemIDArray=pushBackStringArray(itemIDArray,itemID);
+					sendNameArray=pushBackStringArray(sendNameArray,sendName);
+					recvNameArray=pushBackStringArray(recvNameArray,recvName);
+					actTimeArray=pushBackStringArray(actTimeArray,actTime);				
+					msgTxtArray=pushBackStringArray(msgTxtArray,msgTxt);
+					starArray=pushBackStringArray(starArray,star);
+
+
+					index = index + 1;
+				}
+
+
+				redrawDisplay();
+		 
+
+
+				null;
+				}
+				else
+				{
+				print("!!!!!! No  save file  found !!!!!!");
+				null;
+				}
+		}
+		else
+			{
+			print("gtalk.. parse a new xml file fail");
+			null;
+			}
+
+		}
+
+
+	setFocusItemIndex(0);
+	redrawDisplay();
+</script>
+
+<item_template>
+<displayTitle>
+<script>
+getStringArrayAt(sendNameArray , -1);
+</script>
+</displayTitle>
+<onClick>
+tmpMsg=getStringArrayAt(msgTxtArray , -1);
+		path = getStoragePath("tmp");
+		path = path + "gtalk_tmpMsgDetail.dat";
+		writeStringToFile(path,tmpMsg);
+
+  retString = doModalRss("./IMS_Modules/gtalk/scripts/gtalk_tmpMsgDetail.rss");
+
+
+	null;
+</onClick>
+</item_template>
+
+
+<jumpLink>
+<link>
+gtalk_guide.rss
+</link>
+</jumpLink>
+
+<channel>
+<title>share list</title>
+<link>./gtalk_sharelist.rss</link>
+<media:thumbnail url="../image/gtalk.jpg" width="120" height="90" />
+
+<itemSize>
+<script>
+fileCount;
+</script>
+</itemSize>
+
+</channel>
+</rss>
+
+
+

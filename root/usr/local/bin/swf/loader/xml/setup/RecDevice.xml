@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[DEVICE_HDD]"/>
+		<item label="$[DEVICE_USB]"/>
+</menu>

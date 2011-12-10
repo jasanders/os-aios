@@ -1,0 +1,327 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Flickr </bookmark>
+
+<mediaDisplay name=photoFocusView 
+
+	itemGapYPC="1.75" 
+    idleImageXPC=83.12
+    idleImageYPC=89.58
+    idleImageWidthPC=3.1
+    idleImageHeightPC=5.5
+		
+	imageFocus ="focus1.bmp"
+	imageParentFocus=null
+	backgroundColor=210:210:210
+		
+	itemGrid.focusElementBackground.image="focusItemBackground.png"
+	itemGrid.elementBackground.image="itemBackground.png"
+
+	imageFocusItemBackground="focusItemBackground.png"
+	imageItemBackground="itemBackground.png"
+	
+	rowCount=1
+	columnCount=7
+	fontSize = 12
+	
+	sideTopHeightPC = 15
+	sideColorTop = 0:0:0
+	menuBorderColor = 0:0:0
+	menuFontColor = 255:255:255
+			
+	menuOffsetXPC = 8
+	menuOffsetYPC = 5.5
+	menuItemHeightPC = 3.5
+	menuItemWidthPC = 15
+	
+	itemGrid.element.xPC = 5.3
+	itemGrid.element.yPC = 38
+	
+	itemGrid.element.widthPC=8.86
+	itemGrid.element.heightPC=23.8
+	itemGrid.elementBackground.widthPC=9.85
+	itemGrid.elementBackground.heightPC=26.25	
+	
+	itemGrid.gapXPC=2.2
+		
+	itemGrid.focusElement.yPC = 23
+	itemGrid.heightPC = 70
+	
+	itemGrid.focusElement.widthPC=18.2
+	itemGrid.focusElement.heightPC=49.8
+	itemGrid.focusElementBackground.widthPC=20.25
+	itemGrid.focusElementBackground.heightPC=54
+	itemBackgroundColor = 210:210:210
+	
+
+	
+	bottomArea.yPC=100
+	blitBackground=no
+	showHeader=no
+	showDefaultInfo=yes
+
+    fadeInFocus=yes
+>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+<slideItems>
+<script>
+pageInfo = getPageInfo("majorContext");
+print("----------------------", pageInfo);
+if (pageInfo == "items")
+{
+	"yes";
+}
+else
+{
+	"no";
+}
+</script>
+</slideItems>
+
+<itemDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 align=center useBackgroundSurface=yes/>
+<image redraw=no offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 scale=no>
+<script>
+	state = getDrawingItemState();
+	url = "http://" + "farm" + getStringArrayAt(farmArray , -1) + ".static.flickr.com/";
+	url = url + getStringArrayAt(serverArray , -1) + "/";
+	url = url + getStringArrayAt(idArray , -1) + "_";
+	url = url + getStringArrayAt(secretArray , -1);
+	if (state == "focus") {
+		url = url + ".jpg";
+	}
+	else if (state == "unfocus"){
+		url = url + "_m.jpg";
+	}
+	else {
+		url = url + ".jpg";
+	}
+	url;
+</script>
+</image>
+</itemDisplay>
+
+	<onUserInput>
+		<script>
+     		userInput = currentUserInput();
+			ret = "false";
+			if (userInput=="edit"){
+				ret = "true";
+			}
+
+			if (type == "slideShow") {
+				if (userInput == "up") {
+					type = "mostInterested";
+					setRefreshTime(-1);
+				}
+			}
+			ret;
+		</script>	
+	</onUserInput>
+
+	<backgroundDisplay  name=flickrBackground>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	 ./home_menu/image/HomeMenu_BG.fsp
+	 </image>
+	<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=19>
+		topBanner.png
+	</image>	
+	<image offsetXPC=80.5  offsetYPC= 71 widthPC=15 heightPC=27>
+		flickr_logo.png
+	</image>		
+	</backgroundDisplay>
+	
+	<!--
+    <text offsetXPC="46" offsetYPC="85.3" widthPC="20" heightPC="6" 
+		fontSize="16" backgroundColor="230:230:230" foregroundColor="20:20:20"
+		redraw=yes>
+        <script>
+			str = getPageInfo("focusItemIndex") + "/" + getPageInfo("itemCount"); 
+			page = getItemInfo("pageNumber"); 
+			if (page != null) { 
+				str = str + ", Page:" + page; 
+			} 
+			else { 
+				str; 
+			}
+		</script>
+    </text>			
+	-->
+</mediaDisplay>
+
+<script>
+	header = "Flickr";
+	page = 1;
+	type = "mostInterested";
+	firstEnter = "yes";
+	setRefreshTime(1);
+</script>
+	
+<onRefresh>
+
+	if (type == "slideShow") {
+		postMessage("right");
+		
+		index = getFocusItemIndex();
+		/*print("Right--------", index);*/
+		if (index == 23) {
+			postMessage("up");
+			postMessage("up");
+			postMessage("enter");
+		}
+	}
+	else {
+	titleArray  = null;
+	idArray     = null;
+	farmArray   = null;
+	serverArray = null;
+	secretArray = null;
+	originalsecretArray = null;
+
+	if (type == "search") {
+	    print("The search keyword is ", keyword);  	
+	    encodedK = urlEncode(keyword);
+		url = "http://api.flickr.com/services/rest/?method=flickr.photos.search&amp;text=" + encodedK + "&amp;page=" + page + "&amp;per_page=50&amp;api_key=8e4111d0e0a7f4072f1152d210bc3ef3";
+        url = url + "&amp;extras=original_format";	
+	    print(url);
+		header = "Search Result : " + keyword;
+		setRefreshTime(-1);
+	}
+	else if (type == "mostInterested"){
+		url = "http://api.flickr.com/services/rest/?method=flickr.interestingness.getList&amp;api_key=8e4111d0e0a7f4072f1152d210bc3ef3" + "&amp;page=" + page + "&amp;per_page=50";
+        url = url + "&amp;extras=original_format";
+        header = "Most Interested Pictures";
+	/*
+		type = "slideShow";
+		setRefreshTime(5000);
+    */	setRefreshTime(-1);
+
+	}
+	file = loadXMLFile(url);
+	if (file == null) {
+		itemSize = 0;
+		print("Load URL fail ", url);
+	}
+	else {
+		itemSize = getXMLElementCount("rsp", "photos", "photo");
+		print("Item Size = ", itemSize);
+	}
+	if (itemSize &gt; 0) {
+		count=0;
+		while(1){
+	  		title  = getXMLAttribute("rsp", "photos", "photo", count, "title");
+	  		id     = getXMLAttribute("rsp", "photos", "photo", count, "id");
+	  		farm   = getXMLAttribute("rsp", "photos", "photo", count, "farm");
+	  		server = getXMLAttribute("rsp", "photos", "photo", count, "server");
+	  		secret = getXMLAttribute("rsp", "photos", "photo", count, "secret");
+	  		originalsecret = getXMLAttribute("rsp", "photos", "photo", count, "originalsecret");
+
+	  		titleArray  = pushBackStringArray(titleArray, title);
+	  		idArray     = pushBackStringArray(idArray, id);
+	  		serverArray = pushBackStringArray(serverArray, server);
+	  		farmArray   = pushBackStringArray(farmArray, farm);
+	  		secretArray = pushBackStringArray(secretArray, secret);
+	  		originalsecretArray = pushBackStringArray(originalsecretArray, originalsecret);
+
+	  		count += 1;
+	  		if (count &gt; itemSize){
+				break;
+	  		}
+		}
+	}
+		if (firstEnter != "yes")
+		{
+			redrawDisplay();
+		}
+		else
+		{
+			firstEnter = "no";
+		}
+	}
+</onRefresh>
+
+<item_template>
+        <playURL>
+		   <script>
+				url = "http://" + "farm" + getStringArrayAt(farmArray , -1) + ".static.flickr.com/";
+				url = url + getStringArrayAt(serverArray , -1) + "/";
+				url = url + getStringArrayAt(idArray , -1) + "_";
+				
+				originalsecret = getStringArrayAt(originalsecretArray , -1);
+				print("originalsecret= ", originalsecret);
+				if (originalsecret != "") {
+					url = url + getStringArrayAt(originalsecretArray , -1) + "_o.jpg";
+					print("Original picture");
+				}
+				else {
+					url = url + getStringArrayAt(secretArray , -1) + ".jpg";
+				}
+				print("picture URL = ", url);		
+				url;		
+           </script>
+        </playURL>
+		<media:content type="image/jpeg" />
+		<onClick>
+			print("onClick");
+		</onClick>
+</item_template>
+
+
+
+<submenu name=$[IMS_SEARCH_PHOTO]>
+        <onClick>
+            <script>
+				keyword= getInput(); 
+				type = "search";
+				page = 1;
+				if (keyword!=null) { 
+					setRefreshTime(1);
+				}
+				else {
+				  url = null;
+				}
+				
+            </script>
+        </onClick>
+</submenu>	
+
+<submenu name=$[IMS_PREVIOUS_PAGE]>
+	<script>
+		if (page &gt; 1) {
+			page = page - 1;
+			setRefreshTime(1);
+		}				
+	</script>	
+</submenu>
+
+<submenu name=$[IMS_NEXT_PAGE]>
+	<script>
+		page = page + 1;
+		setRefreshTime(1);
+	</script>	
+</submenu>
+
+
+
+
+<channel>
+	<title> <script> header; </script> </title>
+	<link>./scripts/flickr.rss</link>
+	<media:thumbnail url="http://static.youku.com/v1.0.0328/index/img/youkulogo.gif" width="120" height="90" />
+
+<itemSize>
+	<script>
+		itemSize;
+	</script>
+</itemSize>
+
+</channel>
+</rss>

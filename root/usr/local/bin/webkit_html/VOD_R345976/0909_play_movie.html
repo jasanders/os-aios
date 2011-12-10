@@ -1,0 +1,198 @@
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+
+<head>
+<style type="text/css">
+
+body {
+	background-repeat: no-repeat;
+	font-family:Arial,"Times New Roman",Georgia,Serif;
+}
+
+a.btn{
+	mso-ignore:vglayout;
+	position:absolute;
+	width:120px;
+	height:40px;
+	border:0px solid #FFFFFF;
+}
+
+a.btn:hover {
+       border:1px solid #5dacec;
+       color:#5dacec;
+}
+
+.font_2{
+	font-size:12px;
+	font-weight:normal;
+	color:RGB(255,255,255);
+	text-align:left;
+}
+
+.font_1{
+	font-size:12px;
+	font-weight:bold;
+	color:RGB(0,147,160);
+	text-align:justify;	
+}
+
+.font_0{
+	font-size:24px;
+	font-weight:bold;
+	color:RGB(0,147,160);
+}
+</style>
+
+<script type="text/javascript">
+	
+function draw(which)
+{
+	var myimg = document.getElementById('img'+which).src;
+	document.getElementById('img'+which).src = document.getElementById('img'+which).alt;
+	document.getElementById('img'+which).alt = myimg;
+ 
+}
+
+			
+function init()
+{
+	index = 0;	
+	draw(index)
+}
+
+	
+function whichButton(event)
+{ 
+	var index_prev = index;
+	if (event.keyCode == 38)   ///  up 
+	{ 	
+		index =0
+	} 
+
+	else if ( event.keyCode== 40)   //down 
+	{ 
+		index = 1;
+
+	}	
+	
+	else if( event.keyCode == 13)
+	{
+		if(index == 0)
+		{
+			 window.name = window.location.protocol + "//" + window.location.host + "/movies/A/new-moon.avi:::785";
+	               location.assign("./bif.html");
+		}
+		else
+		{
+			 history.back();
+		}
+		return;
+	}
+	
+	else
+	{
+		return;
+	}
+	
+	if(index == index_prev)
+	{
+		return;
+	}
+	else
+	{
+		draw(index);
+		draw(index_prev);
+	}
+
+}
+
+function ToPlay()
+{
+	window.name = window.location.protocol + "//" + window.location.host + "/movies/A/new-moon.avi:::785";
+	location.assign("./bif.html");
+}
+
+function ToExit()
+{
+	history.back();
+}
+
+</script>
+
+</head>
+
+<body  link=blue vlink="#660099" style='tab-interval:.3333in;margin:0;background-color:#000000' onkeydown="whichButton(event)" onload="init()">
+<div style='position:absolute;left:0px;top:0px'>
+
+<span style='mso-ignore:vglayout;position:absolute;width:585px;height:5px;left:430px;top:145px'>
+<img border=0 lock="true" src="0902/image000.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:510px;height:5px;left:430px;top:253px'>
+<img border=0 src="0902/image000.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:1280px;height:245px;left:0px;top:475px'>
+<img border=0 src="0902/image002.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:515px;height:42px;left:430px;top:500px'>
+<img border=0 lock="true" src="0902/image001.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:510px;height:5px;left:430px;top:495px'>
+<img border=0 src="0902/image000.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:199px;height:569px;left:210px;top:111px'>
+<img border=0 width=199 lock="true" src="play_movie/web_movie_4.png" >
+</span>
+
+<span style='mso-ignore:vglayout;position:absolute;width:600px;height:569px;left:441px;top:92px;'>
+	<div style='mso-ignore:vglayout;position:absolute;width:600px;height:46px;left:0px;top:0px'>
+	<p class="font_0">14 Blades</p>
+</div>
+
+<div style='mso-ignore:vglayout;position:absolute;width:600px;height:60px;left:0px;top:42px';>
+
+<span>
+<div style='mso-ignore:vglayout;position:absolute;width:400px;height:100px;left:0px;top:15px'>
+	<p class="font_2">
+	<span class="font_1">Rating: </span>PGR<br>
+	<span class="font_1">Runtime: </span>112 mins<br>
+	<span class="font_1">Released: </span>11 February 2010<br>
+	<span class="font_1">Country: </span>China<br>
+	<span class="font_1">Genre: </span> Costume martial arts drama</p>
+</div>
+</span>
+
+<span>
+<a class="btn" style='left:457px;top:30px' onmousedown="ToPlay()">
+<img id="img0" border=0 width=120 lock="true" src="play_movie/web_play_unfocus.png" alt="play_movie/web_play_focus.png">
+</a>
+
+<a class="btn" style='left:457px;top:75px' onmousedown="ToExit()">
+<img id="img1" border=0 width=120 lock="true" src="play_movie/web_exit_unfocus.png" alt="play_movie/web_exit_focus.png" >
+</a>
+</span>
+
+</div>
+
+<div style='mso-ignore:vglayout;position:absolute;width:588px;height:126px;left:0px;top:165px'>
+	<p class="font_2">
+	<span class="font_1">Synopsis</span><br>During the late Ming Dynasty, the Chinese imperial court is plagued by corruption as eunuchs usurp state power and the reigning emperor is deemed incompetent. The Jinyi Wei (literally: Brocade-clad Guards) is the government's secret police, trained in clandestine combat since childhood, they are in charge of conducting missions to ensure peace and stability within the empire. </p>
+</div>
+
+<div style='mso-ignore:vglayout;position:absolute;width:588px;height:72px;left:0px;top:268px'>
+	<p class="font_2">
+	<span class="font_1">Actor</span><br> Donnie Yen, Zhao Wei, Wu Chun, Kate Tsui, Qi Yuwu</p>
+</div>
+
+<div style='mso-ignore:vglayout;position:absolute;width:588px;height:20px;left:0px;top:360px'>
+	<p class="font_2"><span class="font_1">Director: </span>Daniel Lee</p>
+</div>
+
+</span>
+
+</div>
+
+</body>

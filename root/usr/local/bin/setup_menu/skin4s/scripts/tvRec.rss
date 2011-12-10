@@ -1,0 +1,686 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>TvRec</bookmark>
+
+<onEnter>
+	pageTitle = getPageInfo("pageTitle");
+	print("page title is ", pageTitle);
+
+	changeCategory = getEnv("changeCategory");
+	if (changeCategory == "previous" || changeCategory == "next") {
+		postMessage("return");
+	}
+
+	disableDrawBackBuffer = getEnv("disableDrawBackBuffer");
+	if (disableDrawBackBuffer == "true") {
+		redrawDisplay("no");
+		if (changeCategory == "") {
+			setEnv("disableDrawBackBuffer", "false");
+		}
+	}
+
+	targetTitle = "$[TV_AND_RECORD]";
+	itemTitleCount = getEnv("itemTitleCount");
+	itemTitleList = getEnv("itemTitleList");
+	itemTitleIndex = 0;
+	checkIndex = 0;
+	while (1) {
+		checkTitle = getStringArrayAt(itemTitleList, checkIndex);
+		if (checkTitle == targetTitle) {
+			itemTitleIndex = checkIndex;
+		}
+		checkIndex += 1;
+  		if (checkIndex == itemTitleCount){
+			break;
+  		}
+	}
+</onEnter>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=7
+	viewAreaXPC=0
+	viewAreaYPC=0
+	viewAreaWidthPC=100
+	viewAreaHeightPC=100
+
+	itemXPC=27.4
+	itemYPC=37.5
+	itemWidthPC=60.8
+	itemHeightPC=6.3
+	itemImageXPC=27.4
+	itemImageYPC=37.5
+	itemImageWidthPC=60.8
+	itemImageHeightPC=6.3
+
+	imageFocus=""
+	imageUnFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	rollItems="no"
+	forceRedrawItems="yes"
+>
+
+<backgroundDisplay name="SetupMenuChild">
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/skin4s/image/setup_bg.bmp
+	</image>
+	<text offsetXPC=23.5 offsetYPC=17.8 widthPC=20.9 heightPC=6.0 fontSize=20 align=left>
+		$[SETUP]
+	</text>
+	<image offsetXPC=10.1 offsetYPC=26.5 widthPC=80.5 heightPC=16.4>
+		<script>
+			if (initFlag == "$[ON]") {
+				"./setup_menu/skin4s/image/setup_p2_box_top_1.bmp";
+			}
+			else if (itemTitleCount == 4) {
+				"./setup_menu/skin4s/image/setup_p2_box_top_4.bmp";
+			}
+			else if (itemTitleCount == 5) {
+				"./setup_menu/skin4s/image/setup_p2_box_top_5.bmp";
+			}
+			else {
+				"./setup_menu/skin4s/image/setup_p2_box_top_6.bmp";
+			}
+		</script>
+	</image>
+	<image offsetXPC=10.1 offsetYPC=42.8 widthPC=80.5 heightPC=42.2>
+		./setup_menu/skin4s/image/setup_p2_box_bottom.bmp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=11.8 offsetYPC=29.9 widthPC=15.3 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=255:255:255 useBackgroundSurface="yes">
+	<script>
+		index = itemTitleIndex;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=27.9 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 1) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=42.9 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 2) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=57.6 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		index = (itemTitleIndex + 3) % itemTitleCount;
+		title = getStringArrayAt(itemTitleList, index);
+	</script>
+</text>
+<text offsetXPC=72.3 offsetYPC=29.9 widthPC=14.4 heightPC=6.0 fontSize=16 align=center backgroundColor=-1:-1:-1 foregroundColor=6:33:52 useBackgroundSurface="yes">
+	<script>
+		if (itemTitleCount &gt; 4) {
+			index = (itemTitleIndex + 4) % itemTitleCount;
+			title = getStringArrayAt(itemTitleList, index);
+		}
+		else {
+			title = "";
+		}
+	</script>
+</text>
+
+<image offsetXPC=12.1 offsetYPC=37.2 widthPC=15.1 heightPC=44.3>
+	./setup_menu/skin4s/image/tv_focus.bmp
+</image>
+
+<image offsetXPC=11.4 offsetYPC=84.7 widthPC=79.1 heightPC=7.6 useBackgroundSurface="yes">
+</image>
+
+<image>
+	<offsetXPC>
+		<script>
+			nextPos = hintIconX;
+			currPos = nextPos;
+			nextPos += hintIconWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintIconY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintIconWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintIconHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/skin4s/image/hint_left.bmp";
+		}
+	</script>
+</image>
+<image>
+	<offsetXPC>
+		<script>
+			currPos = nextPos;
+			nextPos += hintIconWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintIconY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintIconWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintIconHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/skin4s/image/hint_right.bmp";
+		}
+	</script>
+</image>
+<text fontSize=12 align=left useBackgroundSurface="yes">
+	<offsetXPC>
+		<script>
+			currPos = nextPos;
+			nextPos += hintMsgWidth + hintGap;
+			currPos;
+		</script>
+	</offsetXPC>
+	<offsetYPC>
+		<script>
+			hintMsgY;
+		</script>
+	</offsetYPC>
+	<widthPC>
+		<script>
+			hintMsgWidth;
+		</script>
+	</widthPC>
+	<heightPC>
+		<script>
+			hintMsgHeight;
+		</script>
+	</heightPC>
+	<script>
+		if (initFlag == "$[ON]") {
+			nextPos = hintIconX;
+			currPos = nextPos;
+			"";
+		}
+		else {
+			"$[CHANGE_CATEGORY]";
+		}
+	</script>
+</text>
+
+<image offsetXPC=11.4 offsetYPC=89.4 widthPC=1.3 heightPC=2.2>
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			"./setup_menu/skin4s/image/setup_p2_point.bmp";
+		}
+	</script>
+</image>
+<text offsetXPC=13.7 offsetYPC=88.8 widthPC=70.4 heightPC=3.6 fontSize=12 align=left useBackgroundSurface="yes">
+	<script>
+		if (initFlag == "$[ON]") {
+			"";
+		}
+		else {
+			getPageInfo("pageTitle");
+		}
+	</script>
+</text>
+
+<scrollbar offsetXPC=90.2 offsetYPC=36.9 widthPC=0.4 heightPC=45.0 backgroundImage="./setup_menu/skin4s/image/scroll_bar_01.bmp" foregroundImage="./setup_menu/skin4s/image/scroll_bar_02.bmp" border=0 offset=0 direction="vertical" redraw="yes">
+	<totalSize>
+		<script>
+			getPageInfo("itemCount");
+		</script>
+	</totalSize>
+	<startIndex>
+		<script>
+			getFocusItemIndex();
+		</script>
+	</startIndex>
+</scrollbar>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<!-- clear background -->
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface="yes"/>
+	<!-- draw foreground -->
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/skin4s/image/setup_p2_list_focus.bmp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=45 heightPC=90 align=left fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+	<text offsetXPC=50 offsetYPC=5 widthPC=45 heightPC=90 align=right fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script>
+			title = getItemInfo("title");
+			getCurrentSetting(title);
+		</script>
+	</text>
+</itemDisplay>
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			popupHeader = "$[FORBIDDEN_OPERATION]";
+			popupMessageSize = 1;
+			popupMessages = "$[CAN_NOT_EXECUTE_TV_REGION]";
+			popupOptionSize = 0;
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			popupHeader = "$[FORBIDDEN_OPERATION]";
+			popupMessageSize = 1;
+			popupMessages = "$[CAN_NOT_EXECUTE_CH_SCAN]";
+			popupOptionSize = 0;
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+<onEnter>
+	hintIconX = 11.4;
+	hintIconY = 84.7;
+	hintIconWidth = 2.0;
+	hintIconHeight = 3.6;
+	hintGap = 0.9;
+	hintMsgY = 85.6;
+	hintMsgWidth = 17.2;
+	hintMsgHeight = 2.8;
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ("left" == userInput) {
+		redrawDisplay("no");
+		setEnv("disableDrawBackBuffer", "true");
+		setEnv("changeCategory", "previous");
+		handle = "return";
+	}
+	else if ("right" == userInput) {
+		redrawDisplay("no");
+		setEnv("disableDrawBackBuffer", "true");
+		setEnv("changeCategory", "next");
+		handle = "return";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>$[TV_AND_RECORD]</title>
+	<link>rss_file://./setup_menu/skin4s/scripts/tvRec.rss</link>
+
+
+<item>
+<title>$[TV_REGION]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("satelliteUiDisable") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[TV_REGION]";
+		popupOptionSize = 32;
+		popupOptions = pushBackStringArray(popupOptions, "$[ARGENTINA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[AUSTRALIA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[AUSTRIA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[BELGIUM]");
+		popupOptions = pushBackStringArray(popupOptions, "$[BRAZIL]");
+		popupOptions = pushBackStringArray(popupOptions, "$[CHINA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[CZECH_REPUBLIC]");
+		popupOptions = pushBackStringArray(popupOptions, "$[DENMARK]");
+		popupOptions = pushBackStringArray(popupOptions, "$[FINLAND]");
+		popupOptions = pushBackStringArray(popupOptions, "$[FRANCE]");
+		popupOptions = pushBackStringArray(popupOptions, "$[GERMANY]");
+		popupOptions = pushBackStringArray(popupOptions, "$[GREECE]");
+		popupOptions = pushBackStringArray(popupOptions, "$[HUNGARY]");
+		popupOptions = pushBackStringArray(popupOptions, "$[IRELAND]");
+		popupOptions = pushBackStringArray(popupOptions, "$[ITALY]");
+		popupOptions = pushBackStringArray(popupOptions, "$[JAPAN]");
+		popupOptions = pushBackStringArray(popupOptions, "$[KOREA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[LUXEMBOURG]");
+		popupOptions = pushBackStringArray(popupOptions, "$[NETHERLANDS]");
+		popupOptions = pushBackStringArray(popupOptions, "$[NORWAY]");
+		popupOptions = pushBackStringArray(popupOptions, "$[POLAND]");
+		popupOptions = pushBackStringArray(popupOptions, "$[PORTUGAL]");
+		popupOptions = pushBackStringArray(popupOptions, "$[RUSSIA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SLOVAKIA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SLOVENIA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SPAIN]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SWEDEN]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SWITZERLAND]");
+		popupOptions = pushBackStringArray(popupOptions, "$[TAIWAN]");
+		popupOptions = pushBackStringArray(popupOptions, "$[TURKEY]");
+		popupOptions = pushBackStringArray(popupOptions, "$[UNITED_KINGDOM]");
+		popupOptions = pushBackStringArray(popupOptions, "$[USA]");
+		popupOptionFocus = getCurrentSetting("$[TV_REGION]");
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		isDoable = "yes";
+		if(isRecording() == "true" || isTimeshifting() == "true" || isEpgRunning() == "true"){
+			isDoable = "no";
+		}
+
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		if (isDoable == "no") {
+			ret = doModalRss(rss, "mediaDisplay", "popupDialog", 0);
+		}
+		else {
+			ret = doModalRss(rss);
+			if( ret != NULL ) {
+				setTvRegion(ret);
+			}
+		}
+	</script>
+</onClick>
+</item>
+
+<!--
+<item>
+<title>$[TV_INPUT]</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[TV_INPUT]";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "$[ANTENNA]");
+		popupOptions = pushBackStringArray(popupOptions, "$[CATV]");
+		popupOptionFocus = getCurrentSetting("$[TV_INPUT]");
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setTvInput(ret);
+		}
+	</script>
+</onClick>
+</item>
+-->
+
+<item>
+<title>$[CHANNEL_SCAN]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("satelliteUiDisable") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		isDoable = "yes";
+		if(isRecording() == "true" || isTimeshifting() == "true" || isEpgRunning() == "true"){
+			isDoable = "no";
+		}
+
+		if (isDoable == "no") {
+			link = null;
+
+			rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+			ret = doModalRss(rss, "mediaDisplay", "popupDialog", 1);
+		}
+		else {
+			link = "rss_file://./setup_menu/skin4s/scripts/channelScan.rss";
+		}
+		link;
+	</script>
+</onClick>
+</item>
+
+<!-- move to RootAP -->
+<!--
+<item>
+<title>$[CHANNEL_SET]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("satelliteUiDisable") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		link = "rss_file://./setup_menu/skin4s/scripts/channelEditDtv.rss";
+		link;
+	</script>
+</onClick>
+</item>
+-->
+
+<item>
+<title>$[CHANNEL_SORT]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("satelliteUiDisable") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		link = "rss_file://./setup_menu/skin4s/scripts/channelSortDtv.rss";
+		link;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[SATELLITE]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("satelliteUiDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		link = "rss_file://./setup_menu/skin4s/scripts/satellite.rss";
+		link;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[AV_IN_REC_QUALITY]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("AVinRecDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[AV_IN_REC_QUALITY]";
+		popupOptionSize = 5;
+		popupOptions = pushBackStringArray(popupOptions, "$[HQ]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SP]");
+		popupOptions = pushBackStringArray(popupOptions, "$[LP]");
+		popupOptions = pushBackStringArray(popupOptions, "$[EP]");
+		popupOptions = pushBackStringArray(popupOptions, "$[SLP]");
+		popupOptionFocus = getCurrentSetting("$[AV_IN_REC_QUALITY]");
+		popupOptionWide = 0;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setRecQuality(ret);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+<!--
+<item>
+<title>$[PERMANENT_TIMESHIFT]</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[PERMANENT_TIMESHIFT]";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "$[OFF]");
+		popupOptions = pushBackStringArray(popupOptions, "$[ON]");
+		popupOptionFocus = getCurrentSetting("$[PERMANENT_TIMESHIFT]");
+		popupOptionWide = 0;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setPermanentTimeShift(ret);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+-->
+
+<item>
+<title>$[REC_DEVICE]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("RecordableDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[REC_DEVICE]";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "$[DEVICE_HDD]");
+		popupOptions = pushBackStringArray(popupOptions, "$[DEVICE_USB]");
+		popupOptionFocus = getCurrentSetting("$[REC_DEVICE]");
+		popupOptionWide = 0;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setRecDevice(ret);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>$[REC_PRIORITY]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("RecordableDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[REC_PRIORITY]";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "$[REC_MANUAL]");
+		popupOptions = pushBackStringArray(popupOptions, "$[REC_SCHEDULE]");
+		popupOptionFocus = getCurrentSetting("$[REC_PRIORITY]");
+		popupOptionWide = 0;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/skin4s/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setRecPriority(ret);
+		}
+		null;
+	</script>
+</onClick>
+</item>
+
+
+</channel>
+</rss>

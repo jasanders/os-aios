@@ -1,0 +1,196 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  <script>
+	print("////////////////////////////////////Mediafly_adduser_choice.rss/////////////////////////////////");
+	 setParentFade(100);
+	displayTitleArray = null;
+	displayTitleArray = pushBackStringArray(displayTitleArray, "Get Association Code");
+	displayTitleArray = pushBackStringArray(displayTitleArray, "Login With Mediafly Account");
+	itemSize = 2;
+	setFocusItemIndex(0);
+	addArray = null;
+</script>
+
+
+<!-- mediaDisplay of parent will be merged into the mediaDisplay here, include all child elements, ex: onEnter, text, image, etc. -->
+<mediaDisplay
+	name=onePartView
+	
+	itemPerPage=2
+	
+	viewAreaXPC=20.20
+	viewAreaYPC=27.64
+	viewAreaWidthPC=59.61
+	viewAreaHeightPC=44.72
+
+	itemXPC=21
+	itemYPC=40
+	itemWidthPC=58
+	itemHeightPC=20
+	
+	itemImageXPC=21
+	itemImageYPC=40
+	itemImageWidthPC=58
+	itemImageHeightPC=28
+	
+	itemGap = 0.5
+	
+	imageFocus=null
+	
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+	>
+
+	<backgroundDisplay name=mediafly_dialog_background>
+                <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+                	<script>
+	                      "./IMS_Modules/Mediafly/image/mediafly_dialog_bg.fsp";
+                       </script>
+                </image>
+	</backgroundDisplay>
+	<text offsetXPC=5 offsetYPC=2  widthPC=90 heightPC=18 align=center  fontSize=17 backgroundColor=-1:-1:-1 foregroundColor=0:143:18  >
+  <script>
+ 	"Personalize your shows and channels!";
+  </script>
+</text>
+
+<text offsetXPC=10 offsetYPC=18 widthPC=80 heightPC=21 align=center  fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=51:51:51 lines="3" >
+  <script>
+ 	"Get an association code first if you have not linked the device to your personalized Mediafly account. Or you can directly login with your Mediafly ID and password.";
+  </script>
+</text>
+
+<text offsetXPC=5 offsetYPC=81 widthPC=90 heightPC=15 align=center  fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=51:51:51 lines="2" >
+  <script>
+ 	"Don't  worry if you do not have an account. Just visit http://www.mediafly.com on your computer. It's free!";
+  </script>
+</text>
+
+
+
+	 <onUserInput>
+    <script>
+      userInput = currentUserInput();
+      itemFocusState = getDrawingItemState();
+      print("delete input key: ", userInput);
+      ret = "false";
+      if (userInput=="return")
+      	{
+      		setReturnString(addArray);
+      	}
+      ret;
+    </script>
+  </onUserInput>
+   
+  <itemDisplay>
+          <image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=90 useBackgroundSurface=yes >
+			<script>
+			index1 = getQueryItemIndex();
+			
+			index2 =getFocusItemIndex ();
+
+			if (index1 == index2)
+			{
+			
+				 "./IMS_Modules/Mediafly/image/mediafly_dialog_focus.fsp";
+			
+			}
+			else
+			{
+			
+				  "./IMS_Modules/Mediafly/image/mediafly_dialog_unfocus.fsp";
+			}
+			   
+			</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=10 align=center widthPC=90 heightPC=80 backgroundColor=-1:-1:-1  fontSize=14 >
+			<foregroundColor>
+				<script>
+					fgcolor = "51:51:51";
+					queryIndex = getQueryItemIndex();
+					focusIndex = getFocusItemIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "0:143:18";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryItemIndex();
+				str = getStringArrayAt(displayTitleArray , index);
+				str;
+			</script>
+	</text>
+     
+      
+
+    </itemDisplay>
+
+</mediaDisplay>
+
+<item_template>
+    <onClick>
+    
+      selectedIndex = getFocusItemIndex();
+      print("selectedIndex: ",selectedIdex);
+
+      if (selectedIndex==0)
+      	{
+      		getcode_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_getcode.rss";
+      		LinkedArray = doModalRss(getcode_rss);
+      		Linked = getStringArrayAt(LinkedArray,0);
+      		print("Linked Status",Linked);
+      		print("?????????????????????");
+      		if (Linked=="Linked")
+      		{
+      			addArray = pushBackStringArray(addArray,"Linked");
+      			postMessage("return");
+      		}
+      		else
+      		{
+      			addArray = null;
+      		}
+      		
+      		
+      	}
+      else if (selectedIndex ==1)
+      		{
+      			userpassword_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_UserPassword.rss";
+      			userName = doModalRss(userpassword_rss);
+      			if (userName!=null)
+      			{
+      				addArray = pushBackStringArray(addArray,"yes");
+      				addArray=pushBackStringArray(addArray,userName);
+      			}
+      			
+      		}
+     if (userName!=null)
+	      postMessage("return");
+      null;
+    </onClick>
+  </item_template>
+
+<channel>
+	<title>AddUser_Choice</title>
+	<link>rss_file://./IMS_Modules/Mediafly/mediafly_adduser_choice.rss</link>
+  	 <itemSize>
+      <script>
+        itemSize;
+      </script>
+    </itemSize>
+
+</channel>
+</rss>
+
+

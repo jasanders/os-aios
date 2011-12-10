@@ -1,0 +1,877 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Mediafly Add User </bookmark>
+
+  <!-- the global onEnter element will be executed when enter or re-enter the page -->
+<onEnter>
+  showIdle();
+  currentFocusMenuItem = getFocusMenuIndex();
+  print("(onEnter)currentFocusMenuItem: ",currentFocusMenuItem);
+  print("focus item: ",getDrawingItemState());
+  firstEntry = 1;
+  setDefaultUserMenuLoc = 1; /* tsp change this value if menu add or remove */
+  deleteUserMenuLoc = 2; /* tsp change this value if menu add or remove */
+</onEnter>
+
+<onRefresh>
+  setRefreshTime(-1);
+  print("(onRefresh)focusIndex: ", focusIndex,"userInput: ",userInput );
+</onRefresh>
+
+<onDestroyToken>
+		 fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+		 writeStringToFile(fileName,NULL);
+		 print("Destroy Token>>>>>>>>>>>>");
+		 
+</onDestroyToken>
+<!-- the global script element will be executed only once when the page start -->
+<script>
+ /* variables initialize */
+  bLogin = "false";
+  
+  userNameArray = null;
+  imageArray = null;
+  currentTextArray = null;
+  valtoken = null;
+  tokenId = null;
+  
+  
+  
+  menuArray = null;
+  menuArray  = pushBackStringArray(menuArray, "$[Add User]");
+
+		
+  print("Jump To Link RSS>>>>>>>mediafly_adduser.rss");
+  
+  /* read saved token - tp*/
+  fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+  tokenArray = readStringFromFile(fileName);
+  valtoken = getStringArrayAt(tokenArray, 0);
+  tokenId = getStringArrayAt(tokenArray, 1);
+  tokenTime = getStringArrayAt(tokenArray, 2);
+  print("tokenTime: ",tokenTime);
+
+  keyFilePath = getStoragePath("key") + "__mdfly_key.dat";
+  decryptionKeyArray = decFile(keyFilePath);
+   
+    sharedKey = getStringArrayAt(decryptionKeyArray,0);
+    app_id =getStringArrayAt(decryptionKeyArray,1);
+  
+    print("KeyArray =",decryptionKeyArray);
+    print("SharedKey= ", sharedKey);
+    print("app_id= ",app_id);
+
+  storagePathdefaultUserName = getStoragePath("key") + "mdfly_defaultusername.dat";
+ 
+  defaultUserName = readStringFromFile(storagePathdefaultUserName);
+  if(defaultUserName == null || defaultUserName == "")
+    defaultUserName = VtunergetMACaddress(); /* get some info */;
+ 
+  print("storagePathdefaultUserName: ", storagePathdefaultUserName);
+
+
+  if(valtoken == null || tokenTime == null || (getSystemTime() - 3300) &gt; tokenTime)
+  {
+ 	    print("Re Get Token!");
+ 	
+	    if(tokenArray != null)
+	    {
+	       /* delete all elements - tp */
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	       tokenArray = deleteStringArrayAt(tokenArray,0);
+	    }
+	    url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Authentication.GetToken?app_id="+app_id+"";
+	    url = url + "&amp;thirdPartyUserID=" + defaultUserName; 
+	    print("url", url);
+	    file = loadXMLFile(url);
+
+	    if (file == null)
+	    {
+	      print("failed to load ", url);
+	      titleString = "Sign in failed!";
+	      redrawDisplay();
+	    }
+	    else
+	    {
+	      valtoken  = getXMLText("response","token");
+	      tokenId   = getXMLAttribute("response","token","id");
+	      print("token = ", valtoken);
+	      print("token id = ", tokenId);
+	     }
+	    if ( valtoken != null )
+	    {
+	      storagePathMediaflyToken = getStoragePath("tmp") + "mediaflyToken.dat";
+	      tokenArray = pushBackStringArray(tokenArray, valtoken);
+	      tokenArray = pushBackStringArray(tokenArray, tokenId);
+	      tokenArray = pushBackStringArray(tokenArray, getSystemTime());
+	      writeStringToFile(storagePathMediaflyToken, tokenArray);
+	      print("token: ", tokenArray);
+	      print("write to file ", storagePathMediaflyToken);
+	    }
+  }
+
+  md5_string = MD5(sharedKey, tokenId,  "__mediafly__");
+  print("md5_string",md5_string);
+  urlBound = "http://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.GetBoundUsers?app_id="+app_id+"&amp;token=";
+  urlBound = urlBound + valtoken;
+  urlBound = urlBound +"&amp;contentSources=__mediafly__";
+  urlBound = urlBound + "&amp;call_sig=" + md5_string;
+  
+  print("urlBound:",urlBound);
+  
+  file = loadXMLFile(urlBound);
+  
+  if (file == null)
+  {
+    itemSize = 0;
+    print("Load URL fail ", urlBound);
+  }
+  else
+  {
+	    status = getXMLAttribute("response", "status");
+	    print("status: ", status);
+	    if(status == "fail")
+	    {
+	      err =  getXMLAttribute("response", "err", "message");
+	      print ("error", err);
+	      itemSize = 0;
+	    }
+	    else 
+	      itemSize = getXMLElementCount("response", "usersResponse","contentSource","users", "user");
+    	      print("Item Size = ", itemSize);
+  }
+  
+  if (itemSize &gt; 0)
+  {
+   
+    count=0;
+    while(1)
+    {
+      accountName       = getXMLAttribute("response", "usersResponse","contentSource","users", "user", count, "accountName");
+      default           = getXMLAttribute("response", "usersResponse","contentSource","users", "user",count, "default");
+
+      if(accountName != null)
+      if(accountName != "")
+      {
+	        if (default == "true")
+	        {
+	          defaultUserName = accountName;
+	          print("save default user name: ",defaultUserName, " to: " ,storagePathdefaultUserName);
+	        }
+      }
+      count += 1;
+      if (count == itemSize)
+      {
+          break;
+      }
+      
+    }  /* end_while(1) */
+    
+    count=0;
+    arraySizeItemSize = 0;
+    
+    while(1)
+    {
+	      accountName       = getXMLAttribute("response", "usersResponse","contentSource","users", "user", count, "accountName");
+	      default           = getXMLAttribute("response", "usersResponse","contentSource","users", "user",count, "default");
+
+	      if(accountName != null)
+	      if(accountName != "")
+	      {
+		        arraySizeItemSize += 1;
+		        userNameArray    = pushBackStringArray(userNameArray, accountName);
+		        if(accountName != defaultUserName)
+		        {
+		          imageArray        = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/settings_Clear_small.fsp");
+		          currentTextArray  = pushBackStringArray(currentTextArray, " ");
+		          print("accountName: ",accountName);
+		        }
+		        else
+		        {
+		          imageArray       = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/SelectedUser128.fsp");
+		          currentTextArray  = pushBackStringArray(currentTextArray, "$[Current User]");
+		          storagePathdefaultUserName = getStoragePath("key")  + "mdfly_defaultusername.dat";
+		          writeStringToFile(storagePathdefaultUserName,defaultUserName);
+		        }
+	      }
+
+              count += 1;
+	      if (count ==itemSize)
+	      {
+	          break;
+	      }
+    
+      } 
+
+  } 
+  
+  if(itemSize &lt; 1)
+  {
+	    fileName= getStoragePath("key") + "mdfly_defaultusername.dat";
+	    writeStringToFile(fileName,""); /* clear previuos default user*/
+	    
+   }
+ 
+  print("default Name:", defaultUserName);
+  print("userNameArray: ",userNameArray);
+  print("imageArray: ",imageArray);
+  print("currentTextArray: ",currentTextArray);
+
+</script>
+/* remove for now */
+<!--
+  <submenu name="My Favorite Show">
+    <onClick>
+      print("submenu My Favorite Show ","userInput: ",userInput);
+      if(userInput == "enter")
+      {
+      mylink = "http://www.seagate.com/support/software/Theater/Mediafly/v1/mediafly_mychannel.rss";
+      mylink;
+      }
+      else
+      {
+      null;
+      }
+    </onClick>
+  </submenu>
+  -->
+
+  <submenu >
+    <menu>Add User</menu>
+    <onClick>
+      <script>
+        print("submenu add user userInput: ",userInput);
+        bSetDefaultUser = "false";
+     
+        if (userInput == "enter")
+        {
+        	add_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_adduser_choice.rss";
+		add_or_not_array  = doModalRss(add_rss);
+		add_or_not = getStringArrayAt(add_or_not_array,0);
+		
+		print("add or not =",add_or_not);
+		
+		if (add_or_not=="yes")
+		{
+			userName = getStringArrayAt(add_or_not_array,1);
+			print("userName =",userName);
+			 tmp = getStringArrayAt(userNameArray,0);
+	                print("-----tmp: ",tmp);
+	               if(tmp == null ||  tmp == "")
+	                {
+	                      md5_string = MD5(sharedKey, tokenId,userName,"__mediafly__");
+	                      print("md5 string", md5_string);
+	                      urlBind = "http://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.SetUserAsDefault?app_id="+app_id+"&amp;token=";
+	                      urlBind = urlBind + valtoken;
+	                      urlBind = urlBind +"&amp;source=__mediafly__";
+	                      urlBind = urlBind + "&amp;accountName=" + userName;
+	                      urlBind = urlBind + "&amp;call_sig=";
+	                      urlBind = urlBind + md5_string;
+	                      print("url: ", urlBind);
+	                      file = loadXMLFile(urlBind);
+	  
+	                      if (file == null)
+	                      {
+		                        print("failed to load ", url);
+		                        titleString = "Sign in failed!";
+		                        redrawDisplay();
+	                      }
+	                      else
+	                      {
+		                        status = getXMLAttribute("response", "status");
+		                        print ("SetMFUserAsDefault status: ", status);
+		                        if ( status == "fail")
+		                        {
+			                          err =  getXMLAttribute("response", "err", "message");
+			                          print ("error", err);
+		                        }
+		                        else
+		                        {
+			                          storagePathdefaultUserName = getStoragePath("key") + "mdfly_defaultusername.dat";;
+			                          defaultUserName = userName;
+			                          print("save default user name: ",userName, " to: " ,storagePathdefaultUserName);
+			                          writeStringToFile(storagePathdefaultUserName,defaultUserName);
+			                          bSetDefaultUser = "true";
+		                        }
+	                      } 
+			}
+	               
+			userNameArray    = pushBackStringArray(userNameArray, userName);
+	                if(bSetDefaultUser == "false")
+	                {
+	                  print("bSetDefaultUser1: ",bSetDefaultUser);              
+	                  imageArray       = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/settings_Clear_small.fsp");
+	                  currentTextArray  = pushBackStringArray(currentTextArray, " ");
+	                }
+	                else if(bSetDefaultUser == "true")
+	                {
+	                    print("bSetDefaultUser2: ",bSetDefaultUser);              
+	                    imageArray       = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/SelectedUser128.fsp");
+	                    currentTextArray  = pushBackStringArray(currentTextArray, "$[Current User]");
+	                }
+	                arraySizeItemSize += 1;
+	                print("userNameArray: ", userNameArray,"imageArray: ", imageArray);
+	               
+		}
+		else if (add_or_not == "Linked")
+			{
+				print("Execute-Script>>>>>>>>>>>");
+				executeScript("script");
+			}
+        }
+        null;
+      </script>
+    </onClick>
+  </submenu>
+
+<onDeleteUser>
+	 print(" delete user userInput: ",userInput);
+    		
+   	 if(arraySizeItemSize == 0)
+   	 {
+   	 	
+   	 	null;
+   	 }
+      		
+    	else 
+    	{
+    		confirm_rss = "rss_file://./IMS_Modules/Mediafly/mediafly_delete_confirm.rss";
+		delete_or_not  = doModalRss(confirm_rss);
+		print("delete or not =",delete_or_not);
+	
+		if (delete_or_not =="yes")
+		{  
+			index = getFocusItemIndex();
+	      		if (index &gt; -1) 
+	      	 	{
+			        userName = getStringArrayAt(userNameArray, index);
+			        print("userName = ", userName);
+			        print("defaultuserName =", defaultUserName);
+
+		        	md5_string = MD5(sharedKey,tokenId, userName,"__mediafly__");
+		        
+			        print("md5 string", md5_string);
+			        urlUnbind = "http://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.UnbindUser?app_id="+app_id+"&amp;token=";
+			        urlUnbind = urlUnbind + valtoken;
+			        urlUnbind = urlUnbind +"&amp;source=__mediafly__";
+			        urlUnbind = urlUnbind + "&amp;accountName=" + userName;
+			 	urlUnbind = urlUnbind + "&amp;call_sig=";
+			        urlUnbind = urlUnbind + md5_string;
+				print("urlUnbind=",urlUnbind);
+		        	file = loadXMLFile(urlUnbind);
+			        if (file == null) 
+			        {
+				          itemSize = 0;
+				          print("Load URL fail ", urlUnbind);
+			        }
+			        else
+			        {
+				          status = getXMLAttribute("response", "status");
+				          print ("status", status);
+				          if ( status == "fail")
+				          {
+					            err =  getXMLAttribute("response", "err", "message");
+					            print ("error", err);
+				          }
+				          else
+				          {
+					            userNameArray = deleteStringArrayAt(userNameArray, index);
+					            imageArray = deleteStringArrayAt(imageArray, index);
+					            currentTextArray  = deleteStringArrayAt(currentTextArray,index);
+					            arraySizeItemSize -= 1;
+					            print("userNameArray: ",userNameArray, "arraySizeItemSize: ",arraySizeItemSize);
+					            if(userName ==  defaultUserName)
+					            {
+					             
+					                fileName = getStoragePath("key") + "mdfly_defaultusername.dat";            
+					                writeStringToFile(fileName,"");
+					                defaultUserName = null;
+					                executeScript("onDestroyToken");
+					            } 
+					            if (arraySizeItemSize==0)
+					            	{
+					            		postMessage("left");
+					            	}
+					            
+			          	   }
+			          
+			         } 
+	       		 	redrawDisplay();
+	      		} 
+	      	}
+ 	}
+    cancelIdle();
+    null;
+</onDeleteUser>
+ 
+  <script>
+<!-- mediaDisplay element describe the display properties of the page -->
+</script>
+  
+<mediaDisplay name="threePartsView"
+		showDefaultInfo="no"
+		autoSelectMenu="no"
+		autoSelectItem="no"
+		
+		forceFocusOnItem="yes"
+		selectMenuOnRight="no"
+		
+		itemPerPage = "5"
+
+    
+		imageFocus=" "
+   		imageParentFocus ="null"
+   		parentFocusFontColor="255:255:0"
+
+
+                
+		
+		
+		backgroundColor="-1:-1:-1"
+		sideColorLeft="-1:-1:-1"
+		sideColorRight="-1:-1:-1"
+		
+		headerImageXPC = "11.1"
+		headerImageYPC = "8"
+		headerImageWidthPC = "11"
+		headerImageHightPC = "10"
+		
+		headerCapWidthPC = "0"
+		headerWidthPC = "0"
+
+     menuXPC = "0"
+     menuYPC = "29"
+     menuWidthPC = "31.72"
+     menuHeightPC = "10.56"
+     menuPerPage = "5"
+
+    menuImageXPC = "0"
+    menuImageYPC = "29"
+    menuImageWidthPC ="0"
+    menuImageHeightPC="0"
+
+		
+
+   		fontSize="13"
+		
+     itemImageXPC = "35"
+     itemImageYPC = "27"
+     itemImageCapYPC = "1"
+     itemImageWidthPC = "0"
+     itemImageHeightPC = "0"
+                
+     itemXPC = "35"
+     itemYPC = "28"
+     itemWidthPC = "53.67"
+     itemHeightPC = "11"
+		
+		itemBackgroundColor="-1:-1:-1"
+		
+		popupXPC="8"
+		popupYPC="15"
+		popupWidthPC="22.3"
+		popupHeightPC="5.5"
+		popupFontSize="13"
+		popupBorderColor="28:35:51"
+		popupForegroundColor="255:255:255"
+		popupBackgroundColor="28:35:51"
+
+
+        	idleImageXPC="83.12"
+        	idleImageYPC="89.58"
+        	idleImageWidthPC="3.1"
+       		idleImageHeightPC="5.5"
+		
+		showHeader="no"
+    >
+		
+		<idleImage> image/POPUP_LOADING_01.fsp </idleImage>
+		<idleImage> image/POPUP_LOADING_02.fsp </idleImage>
+		<idleImage> image/POPUP_LOADING_03.fsp </idleImage>
+		<idleImage> image/POPUP_LOADING_04.fsp </idleImage>
+		<idleImage> image/POPUP_LOADING_05.fsp </idleImage>
+		<idleImage> image/POPUP_LOADING_06.fsp </idleImage>
+
+		
+	<backgroundDisplay  name=mediafly_adduser_background>
+			<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100>
+				<script>
+					"./IMS_Modules/Mediafly/image/mediafly_bg_01-01.fsp";
+				</script>
+			</image>
+	</backgroundDisplay>
+	
+		<image offsetXPC=6.8  offsetYPC= 2.64 widthPC=26.56 heightPC=15.69 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly-logo-and-text-med.fsp";
+			</script>
+		</image>
+
+		<image offsetXPC=31.7  offsetYPC= 26.11 widthPC=3.52 heightPC=74.03 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly_bg_line01.fsp";
+			</script>
+		</image>
+
+  <text offsetXPC=35 offsetYPC=82.5 widthPC=50  heightPC=15 backgroundColor=-1:-1:-1 fontSize=14 >
+	<script>
+		"$[OK: Select current user]";
+	</script>
+  </text>
+   <text offsetXPC=65 offsetYPC=82.5 widthPC=50  heightPC=15 backgroundColor=-1:-1:-1 fontSize=14 >
+	<script>
+		"$[Stop: Delete current user]";
+	</script>
+  </text>
+
+  <text offsetXPC="7.9" offsetYPC="20" widthPC="40" heightPC="5"  fontSize="18" foregroundColor="255:255:255"
+    backgroundColor="-1:-1:-1" align="left"
+   >
+      <script>
+      	"User Management";
+      </script>
+    </text>
+
+	<menuDisplay>
+			<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes>
+			<script>
+			index1 = getQueryMenuIndex();
+			index2 = getFocusMenuIndex();
+			if (index1 == index2)
+			{
+				
+				if (getDrawingItemState() != "focus")
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menu_focus.fsp";
+				}
+				else
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menu_inactive.fsp";
+				}
+			}
+			else
+			{
+				null;
+			}
+			</script>
+			</image>
+		<text offsetXPC=25 offsetYPC=10 widthPC=75  heightPC=80 backgroundColor=-1:-1:-1  fontSize=17 >
+			<foregroundColor>
+				<script>
+				fgcolor = "102:102:102";
+				queryIndex = getQueryMenuIndex();
+				focusIndex = getFocusMenuIndex();
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:148:13";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryMenuIndex();
+				str = getStringArrayAt(menuArray,index);
+				str;
+			</script>
+			</text>
+	</menuDisplay>
+ 
+  <onUserInput>
+    <script>
+      userInput = currentUserInput();
+      itemFocusState = getDrawingItemState();
+      print("input key: ", userInput);
+      print("itemFocusState:",itemFocusState);
+      ret = "false";
+      if(userInput == "right" &amp;&amp; itemFocusState == "focus")
+      {
+        ret = "true"; /* do nothing tsp */
+      }
+      /*end if(userInput == "right" */
+      if(userInput == "enter")
+      {
+        print("currentFocusMenuItem: ", currentFocusMenuItem);;
+        print("(onUserInput)currentFocusMenuItem: ",currentFocusMenuItem, "userInput: ",userInput);        
+        if(currentFocusMenuItem == setDefaultUserMenuLoc || currentFocusMenuItem == deleteUserMenuLoc)
+        {
+          ret = "true";
+          SelectMenu(currentFocusMenuItem);
+        }
+      }
+      if (userInput=="video_stop"&amp;&amp;itemFocusState=="focus")
+      	{
+      		 executeScript("onDeleteUser");	
+      	}
+      ret;
+    </script>
+  </onUserInput>
+
+  <script>
+    currentFocusMenuItem = getFocusMenuIndex();
+    print("(script)currentFocusMenuItem: ",currentFocusMenuItem, "userInput: ",userInput);
+    /* move cursor to menu item tsp */
+    if(firstEntry == 1 &amp;&amp; getDrawingItemState() == "focus")
+    {
+      print("(script)focus item : ",getDrawingItemState());
+      firstEntry = 0;
+     
+    }
+  </script>
+
+  
+
+<itemDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+			index1 = getQueryItemIndex();
+			index2 =getFocusItemIndex ();
+			if (index1 == index2)
+			{
+				if (getDrawingItemState() == "focus")
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menuitem_focus.fsp";
+				}
+				else
+				{
+					"./IMS_Modules/Mediafly/image/mediafly_menuitem_unfocus.fsp";
+				}
+			}
+			else
+			{
+				"./IMS_Modules/Mediafly/image/mediafly_menuitem_unfocus.fsp";
+			}
+			
+			</script>
+		</image>
+		
+		<text offsetXPC= 5 offsetYPC=10 widthPC=90 heightPC=80 backgroundColor=-1:-1:-1  fontSize=17 >
+			<foregroundColor>
+				<script>
+					fgcolor = "102:102:102";
+					queryIndex = getQueryItemIndex();
+					focusIndex = getFocusItemIndex();
+					if (queryIndex == focusIndex) {
+						fgcolor = "0:148:13";
+					}
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryItemIndex();
+				
+				str =  getStringArrayAt(userNameArray , index);
+				str;
+			</script>
+		</text>
+		<text offsetXPC= 59 offsetYPC=10  widthPC=90 heightPC=80 backgroundColor=-1:-1:-1  fontSize=17 >
+			<foregroundColor>
+				<script>
+					fgcolor = "102:102:102";
+				
+						queryIndex = getQueryItemIndex();
+						focusIndex = getFocusItemIndex();
+					
+						if (queryIndex == focusIndex) {
+							fgcolor = "0:148:13";
+						}
+					
+					fgcolor;
+				</script>
+			</foregroundColor>
+			
+			<script>
+				index = getQueryItemIndex();
+				
+				str =  getStringArrayAt(currentTextArray , index);
+				str;
+			</script>
+		</text>
+</itemDisplay>
+
+
+    <!-- top indicator -->
+    <image offsetXPC="32" offsetYPC="13.5" widthPC="40" heightPC="1.5" redraw="yes">
+      <script>
+        if(userInput == "up" || userInput == "down")
+        {
+          index = getFocusItemIndex();
+          itemCount = getPageInfo("itemCount");
+          print("itemCount", itemCount);
+          print("focusIndex", index);
+          if (itemCount &lt; 5) 
+          {
+           null;
+          }
+          else 
+          {
+            if (index &gt; 4) 
+            {
+            "./IMS_Modules/Mediafly/image/arrow_up.fsp";
+            }
+            else
+            {
+            null;
+            }
+          }
+        } else
+        	null; /* bug when there is no user activitiy on first entry tsp */
+      </script>
+    </image>
+
+    <!-- bottom indicator -->
+    <image offsetXPC="32" offsetYPC="85" widthPC="40" heightPC="1.5" redraw="yes">
+      <script>
+        if(userInput == "up" || userInput == "down")
+        {
+          index = getFocusItemIndex();
+          itemCount = getPageInfo("itemCount");
+          if (itemCount &lt; 5) 
+          {
+           null;
+          }
+          else 
+          {
+            if (index &gt; (itemCount-4))
+            {
+	            null;
+            }
+            else
+            {
+               "./IMS_Modules/Mediafly/image/arrow_down.fsp";
+            }
+          }
+        } else
+        	null; /* bug when there is no user activitiy on first entry tsp */
+      </script>
+    </image>  
+  
+  
+
+</mediaDisplay>
+
+<!-- item_template is the element to substitute item element when the elements under item element does not exist -->
+<item_template>
+   <onClick>
+      print("Switch Default User Input: ",userInput);
+      index = getFocusItemIndex();
+      if(userInput == "enter")
+      {
+        if (index &gt; -1)
+        {
+	          userName = getStringArrayAt(userNameArray, index);
+	          if (userName !=defaultUserName)
+	          {
+		         print("userName (Switch User): ", userName);
+	           	 md5_string = MD5(sharedKey, tokenId,userName,"__mediafly__");
+	                 print("md5 string", md5_string);
+
+			 urlBind = "http://api.mediafly.com/api/rest/2.0/Mediafly.ContentSources.SetUserAsDefault?app_id="+app_id+"&amp;token=";
+			 urlBind = urlBind + valtoken;
+			 urlBind = urlBind +"&amp;source=__mediafly__";
+			 urlBind = urlBind + "&amp;accountName=" + userName;
+			 urlBind = urlBind + "&amp;call_sig=";
+			 urlBind = urlBind + md5_string;
+
+		          print("url: ", urlBind);
+		          file = loadXMLFile(urlBind);
+
+		          if (file == null)
+		          {
+		            print("failed to load ", url);
+		            titleString = "Sign in failed!";
+		            redrawDisplay();
+		          }
+		          else
+		          {
+			            status = getXMLAttribute("response", "status");
+			            print ("SetMFUserAsDefault status: ", status);
+			            if ( status == "fail")
+			            {
+			              err =  getXMLAttribute("response", "err", "message");
+			              print ("error", err);
+			            }
+			            else
+			            {
+				              storagePathdefaultUserName = getStoragePath("key") + "mdfly_defaultusername.dat";;
+				              defaultUserName = userName;
+				              print("save default user name: ",userName, " to: " ,storagePathdefaultUserName);
+				              writeStringToFile(storagePathdefaultUserName,defaultUserName);
+				              cnt = arraySizeItemSize;
+				              cnt -= 1;
+				              while(cnt >= 0)
+				              {
+					                imageArray = deleteStringArrayAt(imageArray, cnt);
+					                currentTextArray  = deleteStringArrayAt(currentTextArray,cnt);
+					                cnt -= 1;
+				              } 
+				              redrawDisplay();
+				              cnt = 0;
+				              while(cnt &lt; arraySizeItemSize)
+				              {
+				                	userName = getStringArrayAt(userNameArray, cnt);
+					                if(userName != defaultUserName)
+					                {
+						                  imageArray       = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/settings_Clear_small.fsp");
+						                  currentTextArray  = pushBackStringArray(currentTextArray, " ");
+					                }
+					                else
+					                {
+						                  imageArray       = pushBackStringArray(imageArray, "./IMS_Modules/Mediafly/image/SelectedUser128.fsp");
+						                  currentTextArray  = pushBackStringArray(currentTextArray, "$[Current User]");
+					                }
+				                	cnt += 1;
+				              } 
+			              
+			              	     print("imageArray: ", imageArray);
+			              	     
+		            	    }
+		            }
+	   	
+	          }
+
+          } 
+        } 
+      cancelIdle();
+     null;
+   </onClick>
+
+  <displayTitle>
+    <script>
+      getStringArrayAt(userNameArray , -1);
+    </script>
+    <link>
+      <!-- call rss to delete user here-->
+      null;
+    </link>
+  </displayTitle>
+  
+  <media:thumbnail >
+    <script>
+      getStringArrayAt(imageArray , -1);
+    </script>
+  </media:thumbnail>
+  <link>
+    <!-- call rss to delete user here-->
+    null;
+  </link>
+
+</item_template>
+
+<channel>
+	<!--<title> Mediafly add user</title>-->
+  <title> </title>  
+	<!--<link>mediafly_adduser.rss</link> -->
+  null;
+	<!-- use itemSize element to describe how many items in the page -->
+	<itemSize>
+		<script>
+      			arraySizeItemSize;
+    		</script>
+	</itemSize>
+</channel>
+
+
+</rss>

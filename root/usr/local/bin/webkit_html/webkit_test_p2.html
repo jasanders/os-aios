@@ -1,0 +1,242 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:b="urn:schemas-microsoft-com:office:publisher"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=big5">
+<meta name=ProgId content=Publisher.Document>
+<meta name=Generator content="Microsoft Publisher 11">
+<link rel=File-List href="webkit_test_p2.files/filelist.xml">
+
+<title>Webkit</title>
+
+<style>
+
+</style>
+
+<script type="text/javascript">
+var index;
+var index_prev;
+var timer_cnt=0;
+var length = 3 ;
+var length_2nd = 2;
+var batch_index = 1 ;
+var unsel_w = 140;//200 * 0.7;
+var unsel_h = 393;//560 * 0.7;
+var sel_w = 212;//303 * 0.7;
+var sel_h = 529;//753 * 0.7;
+//var unsel_w = 200 * 0.9;
+//var unsel_h = 560 * 0.9;
+//var sel_w = 303 * 0.9;
+//var sel_h = 753 * 0.9;
+var pos_x1 = 218;
+var pos_y1 = 200;//285;
+
+left_most_unsel = 218;
+left_most_sel = 160;
+sel_pos_y1 = 250;//345;
+arrow_left_x = 100;
+arrow_right_x = 1080;
+arrow_w = 42;
+arrow_h = 66;
+space_padding = 60;
+var offset_x = unsel_w+space_padding;
+
+bg_w = 1080;
+bg_h = 680;
+
+function draw(which, select)
+{
+	var myspan = document.getElementById('span'+which);
+//	var offset_w = (sel_w - unsel_w)/2;
+//	var offset_h = (sel_h - unsel_h)/2;
+	
+	if(select==1)
+	{
+		myspan.style.zIndex = 9;
+		myspan.style.top = sel_pos_y1 ;
+		myspan.style.left = left_most_sel + offset_x * which;
+		document.getElementById('index'+which).src = "webkit_test_p2.files/image" + index + "_focus_s.png";
+		document.getElementById('index'+which).width = sel_w;
+	//	document.getElementById('index'+which).height = sel_h;
+	}
+	else
+	{
+	//	myspan.top = myspan.top + offset_h;
+		document.getElementById('index'+which).src = "webkit_test_p2.files/image" + which + "_unfocus_s.png";
+		document.getElementById('index'+which).width = unsel_w;
+	//	document.getElementById('index'+which).height = unsel_h;
+		myspan.style.zIndex = 5;
+		myspan.style.top = pos_y1 ;
+		myspan.style.left = left_most_unsel + offset_x * which;
+		myspan.style.width = unsel_w;
+	//	myspan.style.height = unsel_h;
+	}
+}
+function init()
+{
+//	alert("window.name=" + window.name); 
+	
+	index = 0;	
+	index_prev = -1;
+	
+	bg_w = window.innerWidth;
+	bg_h = window.innerHeight;
+	
+	document.getElementById("index99").width = bg_w;
+	document.getElementById("index99").height = bg_h;
+	pos_y1 = 424 * bg_h / 720 - unsel_h/2;
+//	pos_y1 = 350 * bg_h / 720 - unsel_h/2;
+	
+	left_most_unsel = (bg_w - (unsel_w+space_padding) * length)/2 + space_padding/2;
+	left_most_sel = left_most_unsel - (sel_w - unsel_w)/2;
+	sel_pos_y1 = pos_y1 - (sel_h - unsel_h)/2;
+	for(iii=0 ; iii<length ; iii++)
+	{
+		var myspan = document.getElementById('span'+iii);
+		myspan.style.left = left_most_unsel + offset_x * iii;
+		myspan.style.top = pos_y1;
+	//	myspan.style.width = unsel_w;
+	//	myspan.style.height = unsel_h;
+		
+		document.getElementById('index'+iii).width = unsel_w;
+	//	document.getElementById('index'+iii).height = unsel_h;
+	}
+	
+//	alert(index) ;
+//	draw();
+//	timer_start();
+	draw(index, 1);
+}	
+function whichButton(event)
+{ 	
+	index_prev = index
+/*	if (event.keyCode == 38)   ///  up 
+	{ 	
+	//	alert(111);
+		if( index >= 0 &&  index <= (length/row -1 ))
+			index  = index + length/row ;
+		else
+			index = index - length/row ;
+		//alert(index );	
+	} 
+
+	else if ( event.keyCode== 40)   //down 
+	{ 
+		//alert(2222);		
+		if( index >= 0 &&  index <= (length/row -1 ))
+			index  = index + length/row ;
+		else
+			index = index - length/row ;	
+		//alert(index );
+	}
+	
+	else */if (event.keyCode == 37)	// left 
+	{//↘
+		//alert(3333);
+		if(index==0)
+		//	index = length - 1;
+			return;
+		else 
+			index = index -1 ;
+		//alert(index );	
+	}
+	
+	else if (event.keyCode == 39)	  // right 
+	{//↙
+		//alert(4444);
+		//alert(index) ;
+		//alert(length);	
+		if(index == length -1)
+		{
+			//alert(5555);
+		//	index = 0  ;
+			return;
+		}
+		else
+		{
+			//alert(66666);
+			index = index + 1 ;
+		}
+		//alert(index );
+	}
+	else if( event.keyCode == 13)
+	{
+	//	if(index==5)
+	//		window.name = "heyheyhey";
+	//	alert(index);
+	//	location.assign(document.getElementById('span'+index).firstChild.href);
+	//	window.name = "/tmp/usbmounts/sda1/Byousoku.mkv";
+		window.name = document.getElementById('span'+index).title;
+		location.assign("bif.html");
+	//	document.getElementById('anchor'+index).focus();
+	//	document.getElementById('anchor'+index).click();
+		return;
+	}	
+		
+//	alert("index="+index + "index_prev=" +index_prev);
+	draw(index, 1) ;
+	draw(index_prev, 0);
+	timer_cnt = 5;		
+} 
+function myload()
+{
+	alert("window.name=" + window.name);
+}
+</script>
+
+</head>
+
+<body link=blue vlink="#660099" style='tab-interval:.3333in;margin:0' onkeydown="whichButton(event)" onload="init()">
+
+<div style='position:absolute'>
+<span name="span_bg" style='mso-ignore:vglayout;position:
+absolute;z-index:3;left:0px;top:0px'>
+<img id="index99" name='img_bg' src="webkit_test.files/image001.png" width='1280px' height='720px' ></span>
+
+<span id="span1" title="/tmp/usbmounts/sda1/B/one-piece.mp4:::686" style='mso-ignore:vglayout;position:
+absolute;z-index:4;left:563px;top:228px'><img id='index1'
+src="webkit_test_p2.files/image1_unfocus_s.png" v:shapes="_x0000_s1050"></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:0px;top:0px'><img  width=212
+src="webkit_test_p2.files/image1_focus_s.png"></span>
+
+<span id="span0" title="/tmp/usbmounts/sda1/A/new-moon.avi:::785" style='mso-ignore:vglayout;position:
+absolute;z-index:5;left:327px;top:228px'><img id='index0'
+src="webkit_test_p2.files/image0_unfocus_s.png" v:shapes="_x0000_s1052"></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:0px;top:0px'><img  width=212
+src="webkit_test_p2.files/image0_focus_s.png"></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:6;left:1130px;top:431px;width:46px;height:73px'><img width=46
+height=73 src="webkit_test_p2.files/right.png" v:shapes="_x0000_s1053"></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:7;left:100px;top:431px;width:46px;height:73px'><img width=46
+height=73 src="webkit_test_p2.files/left.png" v:shapes="_x0000_s1054"></span>
+
+<span id="span2" title="/tmp/usbmounts/sda1/C/naruto.mkv:::576" style='mso-ignore:vglayout;position:
+absolute;z-index:8;left:890px;top:228px'><img id='index2' 
+ src="webkit_test_p2.files/image2_unfocus_s.png" v:shapes="_x0000_s1055"></span>
+
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:0px;top:0px'><img  width=212
+src="webkit_test_p2.files/image2_focus_s.png"></span>
+ 
+<!--span id="span3" style='mso-ignore:vglayout;position:
+absolute;z-index:8;left:890px;top:312px'><img id='index3'
+ src="webkit_test_p2.files/image3_unfocus_s.png" v:shapes="_x0000_s1055"></span> 
+ 
+<span style='mso-ignore:vglayout;position:
+absolute;z-index:-1;left:0px;top:0px'><img width=212
+src="webkit_test_p2.files/image3_focus_s.png"></span--> 
+</div>
+
+</body>
+
+</html>

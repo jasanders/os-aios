@@ -1,0 +1,89 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> youtubeRegion_Menu </bookmark>
+
+
+<script>
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "youtubeRegion.dat";
+	symbolArray = null;
+	symbolArray = getItemInfoArray("symbol"); 
+	print(symbolArray);
+</script>
+
+
+<item_template>
+	<onClick>
+	  <script>
+	    symbol = getStringArrayAt(symbolArray);
+		print("Select  ", getStringArrayAt(symbolArray));
+		writeStringToFile(storagePath, symbol);
+		redrawDisplay();
+	  </script>
+	</onClick> 
+
+<media:thumbnail>
+ <script>
+    old = readStringFromFile(storagePath);
+    symbol = getStringArrayAt(symbolArray , -1);
+    if (symbol== old) {
+       thumbnail = "image/check_focus.jpg";
+    }
+    else {
+       thumbnail = "image/check_unfocus.jpg";
+    }		
+ </script>
+</media:thumbnail>
+
+
+</item_template>
+
+
+
+
+<channel>
+        <title> $[LOCAL_SITES] </title>
+        <link>./scripts/youtubeRegion.rss</link>
+
+<item>
+<title>Worldwide</title>
+<symbol> </symbol>
+</item>
+
+<item>
+<title>Korea</title>
+<symbol>KR</symbol>
+</item>
+
+<item>
+<title>Irland</title>
+<symbol>IE</symbol>
+</item>
+
+<item>
+<title>Mexico</title>
+<symbol>MX</symbol>
+</item>
+
+
+<item>
+<title>Taiwan</title>
+<symbol> TW </symbol>
+</item>
+
+
+
+<item>
+<title>Hong Kong</title>
+<symbol>HK</symbol>
+</item>
+
+<item>
+<title>Japan</title>
+<symbol>JP</symbol>
+</item>
+
+
+
+</channel>
+</rss>

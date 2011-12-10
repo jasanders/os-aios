@@ -1,0 +1,375 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns:b="urn:schemas-microsoft-com:office:publisher"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<link rel=File-List href="webkit_test_p3.files/filelist.xml">
+
+<style type="text/css">
+	
+a { color:#213f71; font-size:9pt; text-decoration:none;}
+a:hover {color:#0066cc; }
+.blk_18 {
+ overflow:hidden;
+ zoom:1;
+ font-size:9pt;
+ border:0px solid #e3e3e3;
+ width:840px;
+ margin-top:8px;
+ mso-ignore:vglayout;
+ position:absolute;
+ left:230px;
+ top:230px;
+ overflow:hidden;
+}
+.blk_18 .pcont {
+ width:720px;
+ float:left;
+ overflow:hidden;
+ padding-left:0px;
+}
+.blk_18 .ScrCont {
+ width:32766px;
+ zoom:1;
+ margin-left:-5px;
+}
+.blk_18 #List1_1, .blk_18 #List2_1 {
+ float:left;
+}
+.blk_18 .LeftBotton, .blk_18 .RightBotton {
+ width:46px;
+ height:70px;
+ float:left;
+}
+.blk_18 .LeftBotton {
+ background-position: 0 0;
+ margin:108px 0px 0;
+ background:url(webkit_test_p3.files/left_unfocus.png) no-repeat;
+}
+.blk_18 .RightBotton {
+ margin:108px 1px 0px 25px;
+ background:url(webkit_test_p3.files/right_unfocus.png) no-repeat; 
+}
+.blk_18 .LeftBotton:hover {
+ background:url(webkit_test_p3.files/left.png) no-repeat;
+}
+.blk_18 .RightBotton:hover {
+ background:url(webkit_test_p3.files/right.png) no-repeat;
+}
+.blk_18 .pl img {
+ display:block;
+ cursor:pointer;
+ border:none;
+ margin:18px auto 1px auto;
+
+}
+.blk_18 .pl {
+ width:186px;
+ margin-left:50px;
+ margin-right:4px;
+ border:0px solid #f3f3f3;
+ float:left;
+ text-align:center;
+// background:url(webkit_test_p3.files/focus_frame.png) no-repeat;
+}
+.blk_18 a.pl:hover {
+ border:0px solid #5dacec;
+ color:#5dacec;
+}
+
+body{
+	
+}
+</style>
+
+
+<script type="text/javascript">
+var index;
+var index_prev;
+var length = 6 ;
+var select_url="";
+
+var Speed_1 = 2; //速度(毫秒)
+var Space_1 = 120; //每次移动(px)
+var PageWidth_1 = 240 * 3; //翻页宽度
+var fill_1 = 0; //整体移位
+var MoveLock_1 = false;
+var MoveTimeObj_1;
+var MoveWay_1="left";
+var Comp_1 = 0;
+
+function draw(which, select)
+{
+	var myimg = document.getElementById('img'+which);
+  if(select == 1)
+  {
+	    document.getElementById('img'+which).style.backgroundImage="url(webkit_test_p3.files/focus_frame.png)";
+	    document.getElementById('img'+which).style.backgroundRepeat="no-repeat"
+  }
+	else
+		{
+			document.getElementById('img'+which).style.backgroundImage="";
+		}
+}
+			
+function init()
+{
+	index = 0;	
+	draw(index, 1)
+}
+	
+function whichButton(event)
+{ 
+	//setTimeout("howtodo(even)",2000);
+	index_prev = index;
+	if (event.keyCode == 38)   ///  up 
+	{ 	
+		if(index==0)
+			return;
+		else 
+		{
+				index = index -1 ;
+		}
+		if((index_prev%3) == 0)
+	  {
+		ISL_GoKeyUp_1();
+	  }	
+	} 
+
+	else if ( event.keyCode== 40)   //down 
+	{ 
+		if(index == length -1)
+		{
+			return;
+		}
+		else
+		{
+			index = index + 1 ;
+		}	
+		if((index%3) ==0)
+	{
+		ISL_GoDown_1();
+		ISL_StopDown_1();
+
+	}	
+	}
+	
+	else if (event.keyCode == 37)	// left 
+	{//←
+		if(index==0)
+			return;
+		else 
+		{
+				index = index -1 ;
+		}
+		if((index_prev%3) == 0)
+	{
+		ISL_GoKeyUp_1();
+	}		
+	}
+	
+	else if (event.keyCode == 39)	  // right 
+	{//→
+		if(index == length -1)
+		{
+			return;
+		}
+		else
+		{
+			index = index + 1 ;
+		}	
+		if((index%3) ==0)
+	{
+		ISL_GoDown_1();
+		ISL_StopDown_1();
+	}	
+
+	}
+	else if( event.keyCode == 13)
+	{
+//	select_url = document.getElementById('img'+index).href
+	//window.open(select_url);
+	window.name = document.getElementById('img'+index).title;
+	location.assign(window.name);
+//	location.assign("guide2.htm");
+		return;
+	}	
+	draw(index, 1)
+	draw(index_prev, 0);
+	
+}
+
+function GoToMovie(theTag)
+{
+  window.name = theTag.href;
+  location.assign(theTag.href);
+}
+
+function GetObj(objName)
+{
+	if(document.getElementById)
+	{
+		return eval('document.getElementById("'+objName+'")')
+	}
+	else
+	{
+		return eval('document.all.'+objName)
+	}
+}
+
+
+function ISL_GoUp_1()
+{
+	clearInterval(MoveTimeObj_1);
+	if(MoveLock_1)return;
+	MoveLock_1=true;
+	MoveWay_1="left";
+	MoveTimeObj_1=setInterval('ISL_ScrUp_1();',Speed_1);
+}
+
+function ISL_StopUp_1()
+{
+	if(MoveWay_1 == "right"){return};
+	clearInterval(MoveTimeObj_1);
+	if((GetObj('ISL_Cont_1').scrollLeft-fill_1)%PageWidth_1!=0)
+	{
+		Comp_1=fill_1-(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1);
+		CompScr_1()
+	}
+	else
+	{MoveLock_1=false}
+}
+
+function ISL_GoKeyUp_1()
+{
+	movePage=PageWidth_1;
+	clearInterval(MoveTimeObj_1);
+	if(MoveLock_1)return;
+	MoveLock_1=true;
+	MoveWay_1="left";
+	MoveTimeObj_1=setInterval('ISL_KeyUp_1();',Speed_1);
+}
+function ISL_KeyUp_1()
+{
+	if(movePage<=Space_1){
+		 ISL_StopUp_1();
+		 return;
+	}
+	movePage-=Space_1;
+  GetObj('ISL_Cont_1').scrollLeft-=Space_1
+}
+
+function ISL_ScrUp_1()
+{
+	if(GetObj('ISL_Cont_1').scrollLeft<=0){
+		 return;
+	}
+  GetObj('ISL_Cont_1').scrollLeft-=Space_1
+}
+
+function ISL_GoDown_1()
+{
+	clearInterval(MoveTimeObj_1);
+	if(MoveLock_1)
+	    return;
+
+	MoveLock_1=true;
+	MoveWay_1="right";
+	ISL_ScrDown_1(); 
+	MoveTimeObj_1=setInterval('ISL_ScrDown_1()',Speed_1)
+}
+	
+function ISL_StopDown_1()
+{
+	if(MoveWay_1 == "left")
+	{return};
+	clearInterval(MoveTimeObj_1);
+	if(GetObj('ISL_Cont_1').scrollLeft%PageWidth_1-(fill_1>=0?fill_1:fill_1+1)!=0)
+	{
+		Comp_1=PageWidth_1-GetObj('ISL_Cont_1').scrollLeft%PageWidth_1+fill_1; 
+		CompScr_1();
+	}
+	else
+	{
+		MoveLock_1=false;
+	}
+}
+
+function ISL_ScrDown_1()
+{
+	if(GetObj('ISL_Cont_1').scrollLeft + PageWidth_1 + 30 >=GetObj('List1_1').scrollWidth)
+	{
+		return;
+	}
+  GetObj('ISL_Cont_1').scrollLeft+=Space_1  
+}
+
+function CompScr_1()
+{
+	if(Comp_1==0)
+	{
+		MoveLock_1=false;
+		return;
+	}
+  var num,TempSpeed=Speed_1,TempSpace=Space_1;
+ // if(Math.abs(Comp_1)<PageWidth_1/2)
+  //{
+  //	TempSpace=Math.round(Math.abs(Comp_1/Space_1));
+  //	if(TempSpace<1){TempSpace=1}
+ // }
+  if(Comp_1<0)
+  {
+  	if(Comp_1<-TempSpace)
+  	{
+  		Comp_1+=TempSpace;
+  		num=TempSpace;
+  	}
+  	else
+  	{
+  		num=-Comp_1;
+  		Comp_1=0
+  	}
+    GetObj('ISL_Cont_1').scrollLeft-=num;setTimeout('CompScr_1()',TempSpeed)
+  }
+  else{if(Comp_1>TempSpace)
+  {
+  	Comp_1-=TempSpace;num=TempSpace}else{num=Comp_1;
+  	Comp_1=0
+  }
+  GetObj('ISL_Cont_1').scrollLeft+=num;setTimeout('CompScr_1()',TempSpeed)
+  }
+}
+</script>
+</head>
+
+
+<body link=blue vlink="#660099" style='tab-interval:.3333in;margin:0' onkeydown="whichButton(event)" onload="init()">
+	
+<span style='mso-ignore:vglayout;position:absolute;z-index:0;left:0px;top:0px'><img src="webkit_test.files/image001.png"></span>
+<span style='mso-ignore:vglayout;position:absolute;z-index:-1;left:0px;top:0px'><img src="webkit_test_p3.files/image3_unfocus_s.png"></span>
+<span style='mso-ignore:vglayout;position:absolute;z-index:-1;left:0px;top:0px'><img src="webkit_test_p3.files/image4_unfocus_s.png"></span>
+<span style='mso-ignore:vglayout;position:absolute;z-index:-1;left:0px;top:0px'><img src="webkit_test_p3.files/image5_unfocus_s.png"></span>	
+<!-- picrotate_left start  -->
+<div class="blk_18"> 
+	<a class="LeftBotton" onmousedown="ISL_GoUp_1()" onmouseup="ISL_StopUp_1()" onmouseout="ISL_StopUp_1()" href="javascript:void(0);" target="_self"></a>
+  <div class="pcont" id="ISL_Cont_1">
+    <div class="ScrCont">
+      <div id="List1_1">
+        <!-- piclist begin -->
+        <a class="pl" title="http://218.210.127.133/movies/A/0902_play_movie.html" href="" id="img0"  onmousedown="GoToMovie(this)"><img id="imgimg0" src="webkit_test_p3.files/image0_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <a class="pl" title="http://218.210.127.133/movies/B/0903_play_movie.html" href="" id="img1" onmousedown="GoToMovie(this)"><img id="imgimg1" src="webkit_test_p3.files/image1_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <a class="pl" title="http://218.210.127.133/movies/C/0904_play_movie.html" href="" id="img2"  onmousedown="GoToMovie(this)"><img id="imgimg2" src="webkit_test_p3.files/image2_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <a class="pl" href="" id="img3"  onmousedown="GoToMovie(this)"><img id="imgimg3" src="webkit_test_p3.files/image3_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <a class="pl" href="" id="img4"  onmousedown="GoToMovie(this)"><img id="imgimg4" src="webkit_test_p3.files/image4_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <a class="pl" href="" id="img5" onmousedown="GoToMovie(this)"><img id="imgimg5" src="webkit_test_p3.files/image5_unfocus_s.png" alt="" width="140px" height="393px" /></a>
+        <!-- piclist end -->
+      </div>
+    </div>
+  </div>
+  <a class="RightBotton" onmousedown="ISL_GoDown_1()" onmouseup="ISL_StopDown_1()" onmouseout="ISL_StopDown_1()" href="javascript:void(0);" target="_self"></a> </div>
+
+<!-- picrotate_left end -->
+</body>
+</html>

@@ -1,0 +1,351 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>ChannelScanAutoProgress</bookmark>
+
+<onEnter>
+	SetScreenSaverStatus("no");
+	ret = tvScanAutoStart("ATV");
+	if( ret == "E_FAIL" ) {
+		ret = tvScanAutoStart("DTV");
+	}
+	if( ret == "E_FAIL" ) {
+		infoStr1 = "$[FAILURE].";
+		prompt = "$[PRESS_ANY_KEY_CONTINUE]";
+		state = "DTV_COMPLETE";
+	}
+	else {
+		state = tvScanAutoQueryInfo("STATE");
+		setRefreshTime(1200);
+		prompt = "$[CANCEL]";
+	}
+	infoStr1 = "$[FOUND]" + " " + "0";
+	infoStr2 = "$[FOUND]" + " " + "0";
+
+	startIdx1 = 0;
+	startIdx2 = 0;
+</onEnter>
+
+<onExit>
+	SetScreenSaverStatus("yes");
+	setRefreshTime(-1);
+</onExit>
+
+<onRefresh>
+	lastProgress = progress;
+	lastFound = found;
+	progress = tvScanAutoQueryInfo("PROGRESS");
+	found = tvScanAutoQueryInfo("CHANNEL_COUNT");
+
+	found1 = getDtvChListCount("DTV_CH_LIST_ONLY_VIDEO");
+	found2 = getDtvChListCount("DTV_CH_LIST_ONLY_RADIO");
+	infoStr1 = "$[FOUND]" + " " + found1;
+	infoStr2 = "$[FOUND]" + " " + found2;
+
+	listStr1 = getDtvChTotalList("DTV_CH_LIST_ONLY_VIDEO");
+	listStr2 = getDtvChTotalList("DTV_CH_LIST_ONLY_RADIO");
+
+	state = tvScanAutoQueryInfo("STATE");
+	print("state = ", state);
+	if( state == "ATV_COMPLETE" ) {
+		ret = tvScanAutoStart("DTV");
+		if( ret == "E_FAIL" ) {
+			setRefreshTime(-1);
+			state = "DTV_COMPLETE";
+			prompt = "$[OK]";
+			redrawDisplay("item", 0);
+		}
+		else {
+			state = tvScanAutoQueryInfo("STATE");
+		}
+	}
+	else if( state == "DTV_COMPLETE" ) {
+		setRefreshTime(-1);
+		prompt = "$[OK]";
+		redrawDisplay("item", 0);
+		tvScanAutoComplete();
+	}
+
+	if (lastProgress != progress || lastFound != found) {
+		redrawDisplay("widget");
+	}
+</onRefresh>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=1
+	viewAreaXPC=26.8
+	viewAreaYPC=9.6
+	viewAreaWidthPC=46.4
+	viewAreaHeightPC=80.8
+
+	itemXPC=7.2
+	itemYPC=78.0
+	itemWidthPC=85.7
+	itemHeightPC=8.6
+	itemImageXPC=7.2
+	itemImageYPC=78.0
+	itemImageWidthPC=85.7
+	itemImageHeightPC=8.6
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/skin4s/image/setup_ip_bg.bmp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=7.1 offsetYPC=7.2 widthPC=85.7 heightPC=13.1 align=center fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header = getPageInfo("pageTitle");
+		header;
+	</script>
+</text>
+
+<text offsetXPC=7.2 offsetYPC=23.0 widthPC=42.8 heightPC=6.2 fontSize=14 align=center lines=1 useBackgroundSurface="yes">
+	$[VIDEO_CHANNEL]
+</text>
+
+<text offsetXPC=50 offsetYPC=23.0 widthPC=42.8 heightPC=6.2 fontSize=14 align=center lines=1 useBackgroundSurface="yes">
+	$[AUDIO_CHANNEL]
+</text>
+
+<text offsetXPC=14.4 offsetYPC=32.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 0+startIdx1);
+	</script>
+</text>
+<text offsetXPC=14.4 offsetYPC=37.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 1+startIdx1);
+	</script>
+</text>
+<text offsetXPC=14.4 offsetYPC=42.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 2+startIdx1);
+	</script>
+</text>
+<text offsetXPC=14.4 offsetYPC=47.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 3+startIdx1);
+	</script>
+</text>
+<text offsetXPC=14.4 offsetYPC=52.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 4+startIdx1);
+	</script>
+</text>
+<text offsetXPC=14.4 offsetYPC=57.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr1, 5+startIdx1);
+	</script>
+</text>
+
+<text offsetXPC=51.6 offsetYPC=32.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 0+startIdx2);
+	</script>
+</text>
+<text offsetXPC=51.6 offsetYPC=37.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 1+startIdx2);
+	</script>
+</text>
+<text offsetXPC=51.6 offsetYPC=42.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 2+startIdx2);
+	</script>
+</text>
+<text offsetXPC=51.6 offsetYPC=47.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 3+startIdx2);
+	</script>
+</text>
+<text offsetXPC=51.6 offsetYPC=52.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 4+startIdx2);
+	</script>
+</text>
+<text offsetXPC=51.6 offsetYPC=57.0 widthPC=32.4 heightPC=5.0 fontSize=12 align=left lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		getStringArrayAt(listStr2, 5+startIdx2);
+	</script>
+</text>
+
+<scrollbar offsetXPC=46.8 offsetYPC=32.0 widthPC=1.6 heightPC=29.0 backgroundImage="./setup_menu/skin4s/image/scroll_bar_01.bmp" foregroundImage="./setup_menu/skin4s/image/scroll_bar_02.bmp" border=0 offset=0 direction="vertical" redraw="yes">
+	<totalSize>
+		<script>
+			found1;
+		</script>
+	</totalSize>
+	<startIndex>
+		<script>
+			startIdx1;
+		</script>
+	</startIndex>
+</scrollbar>
+
+<scrollbar offsetXPC=84.0 offsetYPC=32.0 widthPC=1.6 heightPC=29.0 backgroundImage="./setup_menu/skin4s/image/scroll_bar_01.bmp" foregroundImage="./setup_menu/skin4s/image/scroll_bar_02.bmp" border=0 offset=0 direction="vertical" redraw="yes">
+	<totalSize>
+		<script>
+			found2;
+		</script>
+	</totalSize>
+	<startIndex>
+		<script>
+			startIdx2;
+		</script>
+	</startIndex>
+</scrollbar>
+
+<text offsetXPC=7.2 offsetYPC=63.7 widthPC=42.8 heightPC=6.2 fontSize=14 align=center lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		infoStr1;
+	</script>
+</text>
+
+<text offsetXPC=50 offsetYPC=63.7 widthPC=42.8 heightPC=6.2 fontSize=14 align=center lines=1 useBackgroundSurface="yes" redraw="yes">
+	<script>
+		infoStr2;
+	</script>
+</text>
+
+<progressbar offsetXPC=13.0 offsetYPC=72.7 widthPC=75.1 heightPC=2.6 backgroundImage="./setup_menu/skin4s/image/scroll_bar_03.bmp" foregroundImage="./setup_menu/skin4s/image/scroll_bar_04.bmp" direction="horizontal" min=0 max=100 redraw="yes">
+	<script>
+		tvScanAutoQueryInfo("PROGRESS");
+	</script>
+</progressbar>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/skin4s/image/509_focus.bmp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1>
+		<foregroundColor>
+			<script>
+				fgcolor = "255:255:255";
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+				data = getStringArrayAt(popupOptions, queryIndex);
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:153:255";
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		<script>
+			title = getItemInfo("title");
+			title;
+		</script>
+	</text>
+</itemDisplay>
+
+<onEnter>
+	setFullScreenFade(64);
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if( "enter" == userInput || "return" == userInput ) {
+		if( state == "DTV_COMPLETE" ) {
+			handle = "return";
+		}
+		else if( state == "DTV" || state == "ATV" ) {
+			setRefreshTime(-1);
+			tvScanAutoStop();
+			if( state == "ATV" ) {
+				ret = tvScanAutoStart("DTV");
+				if( ret == "E_FAIL" ) {
+					state = "DTV_COMPLETE";
+					handle = "return";
+				}
+				else {
+					state = tvScanAutoQueryInfo("STATE");
+					setRefreshTime(200);
+					handle = "true";
+				}
+			}
+			else if ( state == "DTV" ) {
+				state = "DTV_COMPLETE";
+				handle = "return";
+				tvScanAutoComplete();
+			}
+		}
+	}
+	else if ("pageup" == userInput) {
+		if (startIdx1 &gt; 0) {
+			startIdx1 -= 1;
+			redrawDisplay("widget");
+		}
+		handle = "true";
+	}
+	else if ("pagedown" == userInput) {
+		if (startIdx1 &lt; (found1 - 6)) {
+			startIdx1 += 1;
+			redrawDisplay("widget");
+		}
+		handle = "true";
+	}
+	else if ("video_frwd" == userInput) {
+		if (startIdx2 &gt; 0) {
+			startIdx2 -= 1;
+			redrawDisplay("widget");
+		}
+		handle = "true";
+	}
+	else if ("video_ffwd" == userInput) {
+		if (startIdx2 &lt; (found2 - 6)) {
+			startIdx2 += 1;
+			redrawDisplay("widget");
+		}
+		handle = "true";
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>$[AUTOSCAN]</title>
+	<link>rss_file://./setup_menu/skin4s/scripts/channelScanAutoAvProgress.rss</link>
+
+
+<item>
+<title>
+	<script>
+		prompt;
+	</script>
+</title>
+</item>
+
+
+</channel>
+</rss>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="$[OFF]"/>
+		<item label="$[ONE]"/>
+		<item label="$[TWO]"/>
+		<item label="$[THREE]"/>
+		<item label="$[FOUR]"/>
+		<item label="$[FIVE]"/>
+		<item label="$[SIX]"/>
+		<item label="$[SEVEN]"/>
+		<item label="$[EIGHT]"/>
+</menu>

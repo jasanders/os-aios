@@ -1,0 +1,362 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Baden</title>
+<cur>CAXX0017</cur>
+<for>Baden</for>
+</item>
+
+<item>
+<title>Badger</title>
+<cur>CAXX0580</cur>
+<for>Badger</for>
+</item>
+
+<item>
+<title>Bagotville</title>
+<cur>CAXX0018</cur>
+<for>Bagotville</for>
+</item>
+
+<item>
+<title>Baie-Comeau</title>
+<cur>CAXX0019</cur>
+<for>Baie-Comeau</for>
+</item>
+
+<item>
+<title>Baie-Saint-Paul</title>
+<cur>CAXX0020</cur>
+<for>Baie-Saint-Paul</for>
+</item>
+
+<item>
+<title>Baker Lake</title>
+<cur>CAXX0021</cur>
+<for>Baker Lake</for>
+</item>
+
+<item>
+<title>Bala</title>
+<cur>CAXX0022</cur>
+<for>Bala</for>
+</item>
+
+<item>
+<title>Banff</title>
+<cur>CAXX0023</cur>
+<for>Banff</for>
+</item>
+
+<item>
+<title>Barachois</title>
+<cur>CAXX0024</cur>
+<for>Barachois</for>
+</item>
+
+<item>
+<title>Barrie</title>
+<cur>CAXX0025</cur>
+<for>Barrie</for>
+</item>
+
+<item>
+<title>Bayfield</title>
+<cur>CAXX0026</cur>
+<for>Bayfield</for>
+</item>
+
+<item>
+<title>Beamsville</title>
+<cur>CAXX0027</cur>
+<for>Beamsville</for>
+</item>
+
+<item>
+<title>Beauport</title>
+<cur>CAXX0028</cur>
+<for>Beauport</for>
+</item>
+
+<item>
+<title>Beausejour</title>
+<cur>CAXX0029</cur>
+<for>Beausejour</for>
+</item>
+
+<item>
+<title>Beaver Cove</title>
+<cur>CAXX0030</cur>
+<for>Beaver Cove</for>
+</item>
+
+<item>
+<title>Becancour</title>
+<cur>CAXX0031</cur>
+<for>Becancour</for>
+</item>
+
+<item>
+<title>Bedford</title>
+<cur>CAXX0032</cur>
+<for>Bedford</for>
+</item>
+
+<item>
+<title>Belcourt</title>
+<cur>CAXX0033</cur>
+<for>Belcourt</for>
+</item>
+
+<item>
+<title>Belleville</title>
+<cur>CAXX0034</cur>
+<for>Belleville</for>
+</item>
+
+<item>
+<title>Belmont</title>
+<cur>CAXX0035</cur>
+<for>Belmont</for>
+</item>
+
+<item>
+<title>Big Brook</title>
+<cur>CAXX0036</cur>
+<for>Big Brook</for>
+</item>
+
+<item>
+<title>Big Trout Lake</title>
+<cur>CAXX0604</cur>
+<for>Big Trout Lake</for>
+</item>
+
+<item>
+<title>Birch Hills</title>
+<cur>CAXX0037</cur>
+<for>Birch Hills</for>
+</item>
+
+<item>
+<title>Birken</title>
+<cur>CAXX0038</cur>
+<for>Birken</for>
+</item>
+
+<item>
+<title>Blanc Sablon</title>
+<cur>CAXX0597</cur>
+<for>Blanc Sablon</for>
+</item>
+
+<item>
+<title>Bloedel</title>
+<cur>CAXX0039</cur>
+<for>Bloedel</for>
+</item>
+
+<item>
+<title>Bonavista</title>
+<cur>CAXX0576</cur>
+<for>Bonavista</for>
+</item>
+
+<item>
+<title>Boucherville</title>
+<cur>CAXX0040</cur>
+<for>Boucherville</for>
+</item>
+
+<item>
+<title>Bowmanville</title>
+<cur>CAXX0041</cur>
+<for>Bowmanville</for>
+</item>
+
+<item>
+<title>Bracebridge</title>
+<cur>CAXX0042</cur>
+<for>Bracebridge</for>
+</item>
+
+<item>
+<title>Brampton</title>
+<cur>CAXX0043</cur>
+<for>Brampton</for>
+</item>
+
+<item>
+<title>Brandon</title>
+<cur>CAXX0044</cur>
+<for>Brandon</for>
+</item>
+
+<item>
+<title>Brantford</title>
+<cur>CAXX0045</cur>
+<for>Brantford</for>
+</item>
+
+<item>
+<title>Brighton</title>
+<cur>CAXX0046</cur>
+<for>Brighton</for>
+</item>
+
+<item>
+<title>Broadview</title>
+<cur>CAXX0607</cur>
+<for>Broadview</for>
+</item>
+
+<item>
+<title>Bromptonville</title>
+<cur>CAXX0047</cur>
+<for>Bromptonville</for>
+</item>
+
+<item>
+<title>Bruce Mines</title>
+<cur>CAXX0048</cur>
+<for>Bruce Mines</for>
+</item>
+
+<item>
+<title>Buffalo Narrows</title>
+<cur>CAXX0561</cur>
+<for>Buffalo Narrows</for>
+</item>
+
+<item>
+<title>Burgeo</title>
+<cur>CAXX0575</cur>
+<for>Burgeo</for>
+</item>
+
+<item>
+<title>Burin</title>
+<cur>CAXX0049</cur>
+<for>Burin</for>
+</item>
+
+<item>
+<title>Burlington</title>
+<cur>CAXX0050</cur>
+<for>Burlington</for>
+</item>
+
+<item>
+<title>Burnaby</title>
+<cur>CAXX0051</cur>
+<for>Burnaby</for>
+</item>
+
+<item>
+<title>Bylot</title>
+<cur>CAXX0052</cur>
+<for>Bylot</for>
+</item>
+
+</channel></rss>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name=onePartView>
+  <backgroundColor>0:0:0</backgroundColor>
+  <sideColorTop>139:146:156</sideColorTop>
+  <sideColorBottom>139:146:156</sideColorBottom>
+  <sideColorLeft>139:146:156</sideColorLeft>
+  <sideColorRight>139:146:156</sideColorRight>
+  <itemBackgroundColor> 0:0:0</itemBackgroundColor>
+  
+  <itemXPC> 20 </itemXPC>
+  <itemYPC> 25 </itemYPC>
+  <itemWidthPC> 60 </itemWidthPC>
+  <itemHeightPC> 13 </itemHeightPC>
+  
+  <showHeader>no</showHeader>
+  <showDefaultInfo>no</showDefaultInfo>
+
+  <onUserInput>
+	   userInput = currentUserInput();
+	if ("enter" == userInput){
+		 "true";
+	}
+ 	else if ("right"== userInput){
+ 		 "true";
+	}
+  </onUserInput>
+  
+
+
+	<text offsetXPC=0  offsetYPC= 5 widthPC=100 heightPC=83  fontSize=11 lines=15>
+&#x20;&#x20;1.&#x20;&#x20; Press "Menu" on the remote to display the main menu.&#xA;&#x20;&#x20;2.&#x20;&#x20; Use the arrow keys on the remote to highlight "Music" in the menu and press "OK" on the remote to display the Music screen.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;The Music screen displays all the music available on the media player, with albums listed first.&#xA;&#x20;&#x20;3.&#x20;&#x20; Use the arrow keys to browse through your music lists and select music.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;- OR -&#xA;&#x20;&#x20;4.&#x20;&#x20; Press "Menu" again to display the Music menu, select "Search", and press "OK" on the remote to open the Search Music screen and&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;look for specific music.&#xA;&#x20;&#x20;5.&#x20;&#x20; When you’ve selected the music you want to play, press the Play button on the remote.&#xA;&#x20;&#x20;6.&#x20;&#x20; Press "Menu" again while the music is playing to display the menu options for this screen. &#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20;&#x20; Play Once: Play all music once.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20;&#x20; Repeat Track: Repeat the current track until you choose a different option.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20;&#x20; Repeat All: Repeat all the music in the order it’s listed.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20;&#x20; Shuffle & Repeat: Play the music continuously in random order.&#xA;&#x20;&#x20;7.&#x20;&#x20; Press "Info" on the remote to display the album title, artist name, running time, year, and progress bar.&#xA;&#x20;&#x20;8.&#x20;&#x20; Press the "Volume" + and - keys on the remote to adjust the sound.&#xA;&#x20;&#x20;&#xA;     
+  </text>
+
+
+
+</mediaDisplay>
+
+
+</rss>

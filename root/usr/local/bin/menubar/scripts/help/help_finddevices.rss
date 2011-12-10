@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name=onePartView>
+  <backgroundColor>0:0:0</backgroundColor>
+  <sideColorTop>139:146:156</sideColorTop>
+  <sideColorBottom>139:146:156</sideColorBottom>
+  <sideColorLeft>139:146:156</sideColorLeft>
+  <sideColorRight>139:146:156</sideColorRight>
+  <itemBackgroundColor> 0:0:0</itemBackgroundColor>
+  
+
+  <itemXPC> 20 </itemXPC>
+  <itemYPC> 25 </itemYPC>
+  <itemWidthPC> 60 </itemWidthPC>
+  <itemHeightPC> 13 </itemHeightPC>
+  
+  <showHeader>no</showHeader>
+  <showDefaultInfo>no</showDefaultInfo>
+
+  <onUserInput>
+	   userInput = currentUserInput();
+	if ("enter" == userInput){
+		 "true";
+	}
+ 	else if ("right"== userInput){
+ 		 "true";
+	}
+  </onUserInput>
+  
+
+
+<text offsetXPC=0  offsetYPC= 5 widthPC=100 heightPC=83  fontSize=11 lines=15>
+
+&#x20;&#x20;The menus displayed on the various Devices screens allow you to select the kind of media files to display and how to display them.&#xA;
+&#x20;&#x20;&#xA;&#x20;&#x20;1.&#x20;&#x20; Press "Menu" on the remote to display the main menu.&#xA;
+&#x20;&#x20;2.&#x20;&#x20; Use the arrow keys on the remote to highlight "Devices" in the menu and press "OK"&#x20; on the remote.&#xA;
+&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20; If only one device is connected to the media player, the files and folders on that device are displayed.&#xA;
+&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;*&#x20; If more than one device is connected, all devices are displayed. &#xA;
+&#x20;&#x20;3.&#x20;&#x20; If more than one device is connected, use the arrow keys on the remote to select a device and press "OK" to view its files and &#xA;
+&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;folders.&#xA;
+&#x20;&#x20;4.&#x20;&#x20; Press "Menu" again to display the Devices menu.&#xA;
+&#x20;&#x20;5.&#x20;&#x20; Select how to display the media on this device (Thumbnails or List) and which kinds of media files to display (Movies, Pictures, &#xA;
+&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;Music, or All).&#xA;
+&#x20;&#x20;6.&#x20;&#x20; When you’ve found the movie, music, or pictures you want to view, press the Play button on the remote.&#xA;
+&#x20;&#x20;&#xA;
+&#x20;&#x20;NOTE: Using the Devices menu is the only way to browse through the folders on a device and view media files within their folders. You can access the Devices menu either by selecting Devices on the main menu or by selecting Browse Folders on any feature menu.&#xA;
+&#x20;&#x20;&#xA;&#x20;&#x20;&#xA;     
+
+  </text>
+
+
+
+</mediaDisplay>
+
+
+</rss>

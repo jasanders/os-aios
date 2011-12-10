@@ -1,0 +1,185 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>PPPoEConnect</bookmark>
+
+<onEnter>
+	ret = pppoeStart();
+	if( ret == "E_FAIL" ) {
+		postMessage("return");
+	}
+	else {
+		header = "$[NETWL_TEST_CONN]";
+		infoStr = "$[NETWL_TESTING]";
+		prompt = "$[CANCEL]";
+
+		state = pppoeQueryState();
+		retry = getPPPoEData("RETRY_COUNT");
+		setRefreshTime(1000);
+	}
+</onEnter>
+
+<onExit>
+	setRefreshTime(-1);
+</onExit>
+
+<onRefresh>
+	newState = pppoeQueryState();
+	if( state != newState ) {
+		if( newState == "OK" ) {
+			setRefreshTime(-1);
+			pppoeStop("COMPLETE");
+
+			infoStr = "$[CONNECTED]." + " " + "$[NET_IP_ADDR]: " + getPPPoEData("IP_ADDR");
+			prompt = "$[OK]";
+		}
+		else if( newState == "FAIL" ) {
+			setRefreshTime(-1);
+			pppoeStop("COMPLETE");
+
+			infoStr = "$[NETWL_TEST_FAIL].";
+			prompt = "$[OK]";
+		}
+
+		state = newState;
+		redrawDisplay();
+	}
+	else {
+		tmp = getPPPoEData("RETRY_COUNT");
+		if( tmp != retry ) {
+			retry = tmp;
+			infoStr = "Retry: " + retry;
+			redrawDisplay();
+		}
+	}
+</onRefresh>
+
+<mediaDisplay
+	name=onePartView
+	itemPerPage=1
+	viewAreaXPC=31.3
+	viewAreaYPC=21.3
+	viewAreaWidthPC=37.3
+	viewAreaHeightPC=57.5
+
+	itemXPC=8.8
+	itemYPC=70.0
+	itemWidthPC=83.5
+	itemHeightPC=12.1
+	itemImageXPC=8.8
+	itemImageYPC=70.0
+	itemImageWidthPC=83.5
+	itemImageHeightPC=12.1
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/skin4s/image/setup_popup_bg.bmp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=8.8 offsetYPC=10.1 widthPC=83.5 heightPC=18.4 fontSize=18 align=center backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header;
+	</script>
+</text>
+
+<text offsetXPC=13.0 offsetYPC=32.4 widthPC=75.1 heightPC=21.7 fontSize=14 align=left lines=2>
+	<script>
+		infoStr;
+	</script>
+</text>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				image = "./setup_menu/skin4s/image/398_focus.bmp";
+			}
+			image;
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1>
+		<foregroundColor>
+			<script>
+				fgcolor = "255:255:255";
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+				data = getStringArrayAt(popupOptions, queryIndex);
+				if (queryIndex == focusIndex) {
+					fgcolor = "0:153:255";
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		<script>
+			title = getItemInfo("title");
+			title;
+		</script>
+	</text>
+</itemDisplay>
+
+<onEnter>
+	setFullScreenFade(64);
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ( "enter" == userInput || "return" == userInput ) {
+		if( (state == "OK") || (state == "FAIL") ) {
+			print("do nothing");
+		}
+		else {
+			pppoeStop("CANCEL");
+		}
+
+		if (state != NULL) {
+			setReturnString(state);
+		}
+
+		handle = "return";
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>$[NETWL_TEST_CONN]</title>
+	<link>rss_file://./setup_menu/skin4s/scripts/pppoeConnect.rss</link>
+
+
+<item>
+<title>
+	<script>
+		prompt;
+	</script>
+</title>
+</item>
+
+
+</channel>
+</rss>

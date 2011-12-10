@@ -1,0 +1,274 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>金融類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>2801 彰銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2801.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2801" />
+        </item>
+        <item>
+            <title>2809 京城銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2809.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2809" />
+        </item>
+        <item>
+            <title>2812 台中銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2812.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2812" />
+        </item>
+        <item>
+            <title>2816 旺旺保</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2816.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2816" />
+        </item>
+        <item>
+            <title>2820 華票</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2820.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2820" />
+        </item>
+        <item>
+            <title>2823 中壽</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2823.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2823" />
+        </item>
+        <item>
+            <title>2832 台產</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2832.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2832" />
+        </item>
+        <item>
+            <title>2833 台壽保</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2833.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2833" />
+        </item>
+        <item>
+            <title>2834 臺企銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2834.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2834" />
+        </item>
+        <item>
+            <title>2836 高雄銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2836.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2836" />
+        </item>
+        <item>
+            <title>2837 萬泰銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2837.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2837" />
+        </item>
+        <item>
+            <title>2838 聯邦銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2838.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2838" />
+        </item>
+        <item>
+            <title>2845 遠東銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2845.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2845" />
+        </item>
+        <item>
+            <title>2847 大眾銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2847.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2847" />
+        </item>
+        <item>
+            <title>2849 安泰銀</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2849.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2849" />
+        </item>
+        <item>
+            <title>2850 新產</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2850.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2850" />
+        </item>
+        <item>
+            <title>2851 中再保</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2851.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2851" />
+        </item>
+        <item>
+            <title>2852 第一保</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2852.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2852" />
+        </item>
+        <item>
+            <title>2854 寶來證</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2854.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2854" />
+        </item>
+        <item>
+            <title>2855 統一證</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2855.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2855" />
+        </item>
+        <item>
+            <title>2856 元富證</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2856.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2856" />
+        </item>
+        <item>
+            <title>2880 華南金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2880.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2880" />
+        </item>
+        <item>
+            <title>2881 富邦金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2881.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2881" />
+        </item>
+        <item>
+            <title>2882 國泰金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2882.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2882" />
+        </item>
+        <item>
+            <title>2883 開發金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2883.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2883" />
+        </item>
+        <item>
+            <title>2884 玉山金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2884.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2884" />
+        </item>
+        <item>
+            <title>2885 元大金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2885.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2885" />
+        </item>
+        <item>
+            <title>2886 兆豐金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2886.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2886" />
+        </item>
+        <item>
+            <title>2887 台新金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2887.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2887" />
+        </item>
+        <item>
+            <title>2887C 新丙特</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2887C.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2887C" />
+        </item>
+        <item>
+            <title>2888 新光金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2888.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2888" />
+        </item>
+        <item>
+            <title>2889 國票金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2889.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2889" />
+        </item>
+        <item>
+            <title>2890 永豐金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2890.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2890" />
+        </item>
+        <item>
+            <title>2891 中信金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2891.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2891" />
+        </item>
+        <item>
+            <title>2892 第一金</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2892.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2892" />
+        </item>
+        <item>
+            <title>5854 合庫</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=5854.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/5854" />
+        </item>
+        <item>
+            <title>6005 群益證</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6005.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6005" />
+        </item>
+        <item>
+            <title>6012 金鼎證</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6012.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6012" />
+        </item>
+    </channel>
+</rss>

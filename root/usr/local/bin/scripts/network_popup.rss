@@ -1,0 +1,215 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+if (redirectDone == "yes")
+{
+	redirectDone = "no";
+	redrawDisplay("no");
+	postMessage("return");
+}
+</onEnter>
+
+<jumpLink>
+<link>
+<script>
+redirectRSSPath; 
+</script>
+</link>
+</jumpLink>
+
+<script>
+redirectRSSPath = getEnv("redirectRSSPath");
+unsetEnv("redirectRSSPath");
+redirect = "no";
+if (redirectRSSPath != null)
+{
+	redirect = "yes";
+}
+</script>
+
+<mediaDisplay
+	name=photoView
+	viewAreaXPC=34.4
+	viewAreaYPC=33.3
+	viewAreaWidthPC=31.1
+	viewAreaHeightPC=33.3
+	rowCount = 1
+	columnCount = 2
+
+	topArea.heightPC=0
+	topArea.yPC=100
+	bottomYPC=100
+
+	drawItemBorder=no
+
+	itemOffsetXPC=2
+	itemOffsetYPC=70
+	itemHeightPC=12
+	itemGapXPC = 6
+
+	imageFocus=null
+
+	showHeader=no
+	showDefaultInfo=no
+
+	backgroundColor=33:33:33
+	itemBackgroundColor =33:33:33
+	itemGrid.elementBackground = 33:33:33
+>
+
+<backgroundDisplay name=network_popup_bg>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 backgroundColor=255:0:255 foregroundColor=255:255:255>
+	</text>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	"image/setup/setup_popup_bg_simple.png";
+	</script>
+	</image>
+</backgroundDisplay>
+
+<onUserInput>
+index = getFocusItemIndex();
+input = currentUserInput();
+ret = "false";
+
+if ("enter" == input)
+{
+	if(index==0)
+		data="$[Retry]";
+	else
+		data="$[Stop]";
+
+	if (redirect == "no")
+	{
+		setReturnString(data);
+		postMessage("return");
+		ret = "true";
+	}
+	else
+	{
+		if (index == 1)
+		{
+			postMessage("return");
+			ret = "true";
+		}
+		else
+		{
+			if (checkNetworkLinkup() != "linkdown")
+			{
+				serviceType = getEnv("serviceType");
+				unsetEnv("serviceType");
+				if (serviceType == "NETFLIX")
+				{
+					APName = "NetFlixAP";
+					swf_path = GetMenuPath("NetFlix");
+					Init_item = "0";
+					CurAPName = "SWFHomeAP";
+					CurMenuType = "./swf/loader/deploy/Navigator.swf";
+					CurMenuLink = "";
+					menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);	
+				}
+				else if (serviceType == "YouTubeXL")
+				{
+ 					APName = "WebKitAP_youtubexl";
+				 	swf_path = "";
+					Init_item = "yxl";
+					CurAPName = "SWFHomeAP";
+					CurMenuType = "./swf/loader/deploy/Navigator.swf";
+					CurMenuLink = "";
+					menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
+				}
+				else if (serviceType == "VOD")
+				{
+					APName = "WebKitAP";
+					swf_path = "";
+					Init_item = "vod";
+					CurAPName = "SWFHomeAP";
+					CurMenuType = "./swf/loader/deploy/Navigator.swf";
+					CurMenuLink = "";
+					menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
+				}
+				else if (serviceType == "Webkit")
+				{
+					APName = "WebKitAP";
+					swf_path = "";
+					Init_item = "";
+					CurAPName = "SWFHomeAP";
+					CurMenuType = "./swf/loader/deploy/Navigator.swf";
+					CurMenuLink = "";
+					menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
+				}
+				else
+				{
+					jumpToLink("jumpLink");
+				}
+				redirectDone = "yes";
+				redrawDisplay();
+				ret = "true";
+			}
+		}
+	}
+}
+ret;
+</onUserInput>
+
+
+<text offsetXPC=15 offsetYPC=10 widthPC=80 heightPC=15 align=left fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		"Network Disconnect";
+	</script>
+</text>
+
+<text offsetXPC=0 offsetYPC=35 widthPC=95  heightPC=12 align=center  fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 lines=1 >
+	<script>
+		"Retry or Stop ?";
+	</script>
+</text>
+
+
+<itemDisplay>
+	<text offsetXPC=0 backgroundColor=-1:-1:-1 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	if (getDrawingItemState() == "focus")
+	{
+		"image/setup/setup_popup_bar_focus.fsp";
+	}
+	else
+	{
+		null;
+	}
+	</script>
+	</image>
+
+	<text foregroundColor=250:250:250 offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 fontSize=15 align=center backgroundColor=-1:-1:-1>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+</itemDisplay>
+
+</mediaDisplay>
+
+
+<channel>
+
+<item>
+<title>
+$[Retry]
+</title>
+</item>
+
+<item>
+<title>
+$[Stop]
+</title>
+</item>
+
+</channel>
+
+<onExit>
+</onExit>
+
+</rss>

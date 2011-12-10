@@ -1,0 +1,198 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>鋼鐵類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>1532 勤美</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1532.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1532" />
+        </item>
+        <item>
+            <title>2002 中鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2002.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2002" />
+        </item>
+        <item>
+            <title>2002A 中鋼特</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2002A.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2002A" />
+        </item>
+        <item>
+            <title>2006 東鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2006.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2006" />
+        </item>
+        <item>
+            <title>2007 燁興</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2007.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2007" />
+        </item>
+        <item>
+            <title>2008 高興昌</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2008.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2008" />
+        </item>
+        <item>
+            <title>2009 第一銅</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2009.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2009" />
+        </item>
+        <item>
+            <title>2010 春源</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2010.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2010" />
+        </item>
+        <item>
+            <title>2012 春雨</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2012.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2012" />
+        </item>
+        <item>
+            <title>2013 中鋼構</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2013.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2013" />
+        </item>
+        <item>
+            <title>2014 中鴻</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2014.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2014" />
+        </item>
+        <item>
+            <title>2015 豐興</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2015.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2015" />
+        </item>
+        <item>
+            <title>2017 官田鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2017.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2017" />
+        </item>
+        <item>
+            <title>2020 美亞</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2020.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2020" />
+        </item>
+        <item>
+            <title>2022 聚亨</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2022.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2022" />
+        </item>
+        <item>
+            <title>2023 燁輝</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2023.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2023" />
+        </item>
+        <item>
+            <title>2024 志聯</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2024.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2024" />
+        </item>
+        <item>
+            <title>2025 千興</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2025.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2025" />
+        </item>
+        <item>
+            <title>2027 大成鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2027.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2027" />
+        </item>
+        <item>
+            <title>2028 威致</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2028.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2028" />
+        </item>
+        <item>
+            <title>2029 盛餘</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2029.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2029" />
+        </item>
+        <item>
+            <title>2030 彰源</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2030.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2030" />
+        </item>
+        <item>
+            <title>2031 新光鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2031.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2031" />
+        </item>
+        <item>
+            <title>2032 新鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2032.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2032" />
+        </item>
+        <item>
+            <title>2033 佳大</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2033.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2033" />
+        </item>
+        <item>
+            <title>2034 允強</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2034.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2034" />
+        </item>
+        <item>
+            <title>9958 世紀鋼</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=9958.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/9958" />
+        </item>
+    </channel>
+</rss>
+        

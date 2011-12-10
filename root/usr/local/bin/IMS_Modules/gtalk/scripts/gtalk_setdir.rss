@@ -1,0 +1,510 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> Gtalk file lists </bookmark>
+
+
+<onEnter>
+
+</onEnter>
+
+<mediaDisplay
+name=onePartView
+forceFocusOnItem=yes
+ viewAreaXPC=33.3
+ viewAreaYPC=42.5
+ viewAreaWidthPC=35.16
+ viewAreaHeightPC=48
+ itemXPC=10
+ itemYPC=22
+ itemGap =0.5
+ itemWidthPC = 85
+ itemHeightPC =13
+
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+
+
+
+sideTopHeightPC= 0
+sideBottomHeightPC= 0
+
+
+sideLeftWidthPC=100
+sideRightWidthPC=0
+imageLeftSide="../image/ChangeStatus_bg.fsp"
+imageRightSide=""
+
+imageFocus="../image/ChangeStatus_focus.fsp"
+
+sideColorRight=-1:-1:-1
+sideColorLeft=-1:-1:-1
+sideColorTop=-1:-1:-1
+sideColorBottom=-1:-1:-1
+backgroundColor=-1:-1:-1
+focusBorderColor=-1:-1:-1
+unFocusBorderColor=-1:-1:-1
+itemBackgroundColor=-1:-1:-1
+
+showHeader="no"
+showDefaultInfo="no"
+>
+
+
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "IMS_Modules/gtalk/image/Receiving_bg.fsp";
+			image;
+		</script>
+	</image>
+
+</backgroundDisplay>
+
+
+<text offsetXPC="2" offsetYPC="1.5" widthPC="100" heightPC="10" fontSize=12 foregroundColor=42:164:222>
+<script>
+	if(saveDir!=null&amp;&amp;saveDir!="NODIR"&amp;&amp;saveDir!="fail")
+		{
+			str="$[CURR_SETTING]: "+displaySaveDir;	
+		}
+	else
+		{
+			str="$[WARN_RECVDIR_NOTSET]";
+		}
+
+str;
+	</script>
+</text>
+
+
+<text offsetXPC=4 offsetYPC=82 widthPC=95 heightPC=20 fontSize=12 align=center backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+$[PLAY_SETDIR]
+</text>
+
+<!--
+<image redraw=yes offsetXPC=15 offsetYPC=12 widthPC=5 heightPC=5>
+../image/folder.fsp
+</image>
+-->
+
+<text offsetXPC="11" offsetYPC="10" widthPC="80" heightPC="15" fontSize=10 >
+<script>
+if(firstPath==rootPath)
+	currpath="/";
+else
+	currpath=gtalk_getDiskString(firstPath+"/");
+
+currpath;
+</script>
+</text>
+
+
+<itemDisplay>
+	<image offsetYPC=0  heightPC=100  widthPC=85  offsetXPC=3>
+
+	<script>
+
+		status = getDrawingItemState();
+		if (status == "focus")
+		{
+			icon="../image/ChangeStatus_focus.fsp";
+		}
+		else
+		{
+			icon = "../image/ChangeStatus_unfocus.fsp";
+		}
+
+		icon;
+	</script>
+	</image>
+<text offsetXPC=15 offsetYPC=0 widthPC=70 heightPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+<script>
+itemT = getItemInfo("displayTitle");
+itemT;
+</script>
+</text>
+<image redraw=yes offsetXPC=5 offsetYPC=15 widthPC=5 heightPC=70>
+<script>
+	getStringArrayAt(imageArray, -1);
+</script>
+</image>
+</itemDisplay>
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("Catch input: ", userInput);
+if (userInput == "right")
+{
+	print("ignore right key");
+	"true";
+}
+else
+if (userInput == "video_play")
+{
+	print("enter display key,set receive folder dir!!!",getFocusItemIndex());
+
+   	itemFocusIndex=getFocusItemIndex();
+  stat = getStringArrayAt(statArray , itemFocusIndex);
+  if(stat=="dir")
+  	{
+	name = getStringArrayAt(nameArray , itemFocusIndex);
+	print("display: name:",name);	
+
+	if(name!="..")
+		{
+		print("onclick on dir ,set receive dir.");
+
+		destDirName=firstPath+"/"+name;
+			ret=gtalk_setDir(destDirName);
+		print("set dest dir =",destDirName);
+		print("set dest dir ,ret=",ret);
+		postMessage("return");
+		}else
+		{
+			print("select on dir ../,do nothing");
+
+		}
+  	}
+   else
+   	{
+		print("select on one file, do nothing");
+      }
+	"true";
+
+}else
+if (userInput == "usb_updated")
+{
+	print("gtalk set dir ;got usb updated");
+
+
+	postMessage("return");
+
+"true";
+}
+else if(userInput == "im_status")
+{
+	print("get im_status");
+
+	path = getStoragePath("tmp") + "im_status.dat";
+      im_status = readStringFromFile(path);
+
+	 friendid = getStringArrayAt(im_status, 1);
+	 changestat=getStringArrayAt(im_status, 2);
+	 print("im_status friendid===========",friendid);
+	 print("im_status changestat===========",changestat);
+
+	if(changestat=="3")  changestat="$[BUDDY_IDLE]";
+	if(changestat=="4")  changestat="$[BUDDY_BUSY]";
+	if(changestat=="5")  changestat="$[BUDDY_AVAILABLE]";
+	if(changestat=="0")  changestat="$[BUDDY_OFFLINE]";
+
+	imstatus_str=friendid+" $[CHANGE_TO] "+changestat;
+	
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+	"true";
+}
+else if(userInput == "im_file_status")
+{
+	print("get im_file_status");
+	
+	path = getStoragePath("tmp") + "im_file_status.dat";
+      im_file_status = readStringFromFile(path);
+
+	 file_action = getStringArrayAt(im_file_status, 1);
+	 action_id=getStringArrayAt(im_file_status, 2);
+
+	 if(file_action=="start") 		imstatus_str="$[FILE_RECV_START] "+action_id;
+	 if(file_action=="cancelrcv") 	imstatus_str="$[CANCEL_RECVSHARE] "+action_id;
+	 if(file_action=="cancelsnd") imstatus_str="$[CANCEL_SENDSHARE] "+action_id;
+	 if(file_action=="donesnd") 	imstatus_str="$[FILE_SEND_DONE] "+action_id;
+	 if(file_action=="donercv") 	
+	 	{
+
+		action_dir=getStringArrayAt(im_file_status, 3);
+	 	imstatus_str="$[FILE_RECV_DONE] "+gtalk_getDiskString(action_dir);
+
+	 	}
+	 if(file_action=="canceldsk")    imstatus_str=action_id+"$[CANCEL_RECVDSK]";
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+	writeStringToFile(path, imstatus_str);
+	
+	rss = "./IMS_Modules/gtalk/scripts/miniPopupDialog.rss";
+	confirm = doModalRss(rss);
+
+	"true";
+}
+else
+	"false";
+		
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+<script>
+	nameArray = null;
+	imageArray =null;
+	statArray=null;
+	displayArray=null;
+
+	rootPath="/tmp/usbmounts";
+
+
+     	saveDir=gtalk_getSaveDir();
+		
+	if(saveDir!=null&amp;&amp;saveDir!="NODIR"&amp;&amp;saveDir!="fail")
+		{
+			firstPath=saveDir;
+	
+			displaySaveDir=gtalk_getDiskString(saveDir+"/");
+			
+
+		}
+	else
+		{
+			firstPath=rootPath;
+			displaySaveDir="Not Set";
+		}
+
+	
+		ret=gtalk_travelStorageList(firstPath);
+		print("list storage,ret=",ret);
+	if(ret!=null)
+	{
+		parseResult = gtalk_parseXMLFile("/tmp/cached/filelist.xml");
+		if (parseResult != null)
+			{
+				
+				fileCount=getXMLElementCount("list","file");
+				dirCount=getXMLElementCount("list","dir");
+				itemCount = Add(fileCount, dirCount);
+			
+				
+				print("gtalk_friend.rss:  file and dir Count :: ",itemCount);
+
+				if(firstPath!=rootPath)
+				{
+					nameArray = pushBackStringArray(nameArray, "..");
+					displayArray=pushBackStringArray(displayArray, "/../");
+					imageArray=pushBackStringArray(imageArray,"../image/folder.fsp");
+					statArray=pushBackStringArray(statArray,"dir");				
+					itemCount=Add(itemCount,1);
+				}				
+
+				
+				if (dirCount &gt; 0)
+				{
+					index = 0;
+					while (1)
+					{
+						if (index == dirCount)
+						{
+							break;
+						}
+
+						name = getXMLText("list", "dir", index);
+
+						if(firstPath==rootPath)
+							{
+							 display="/"+gtalk_getDiskLabel(firstPath+"/"+name)+"/";
+							
+							}
+						else
+							display="/"+name+"/";
+
+						print("display=========",display);
+					
+						
+						nameArray = pushBackStringArray(nameArray, name);
+						displayArray=pushBackStringArray(displayArray, display);
+						imageArray=pushBackStringArray(imageArray,"../image/folder.fsp");
+						statArray=pushBackStringArray(statArray,"dir");
+						
+						index = index + 1;
+							
+					}
+				}
+
+
+				if (fileCount &gt; 0)
+				{
+					index = 0;
+					while (1)
+					{
+						if (index == fileCount)
+						{
+							break;
+						}
+
+						name = getXMLText("list", "file", index);
+						
+						nameArray = pushBackStringArray(nameArray, name);
+						displayArray=pushBackStringArray(displayArray, name);
+						imageArray=pushBackStringArray(imageArray,"../image/file.fsp");
+						statArray=pushBackStringArray(statArray,"file");
+						selectArray=pushBackStringArray(selectArray,"unselect");
+						
+						index = index + 1;
+					}
+				}				
+		
+			}
+
+		}
+        setFocusItemIndex(0);
+
+	redrawDisplay();
+</script>
+
+<item_template>
+<displayTitle>
+<script>
+str = getStringArrayAt(displayArray , -1);
+str;
+</script>
+</displayTitle>
+<media:thumbnail>
+	<script>
+		face = getStringArrayAt(imageArray, -1);
+	</script>
+</media:thumbnail>
+
+<onClick>
+print("hellllllllllo ");
+name=getStringArrayAt(nameArray , -1);
+display=getStringArrayAt(displayArray , -1);
+stat=getStringArrayAt(statArray , -1);
+print("name:",name);
+print("stat:",stat);
+print("rootPath:",rootPath);
+if(stat=="dir")
+	{
+		print("i'm a dir");
+
+		nameArray = null;
+		imageArray =null;
+		statArray=null;
+		displayArray=null;
+		
+		if(name!="..")
+			{
+			firstPath=firstPath+"/"+name;
+			ret=gtalk_travelStorageList(firstPath);
+			}
+		else
+			{
+			firstPath=gtalk_getLastDir(firstPath);
+			ret=gtalk_travelStorageList(firstPath);
+			}
+		print("firstPath:",firstPath);
+
+		print("list storage,ret=",ret);
+		if(ret!=null)
+		{
+		parseResult = gtalk_parseXMLFile("/tmp/cached/filelist.xml");
+		if (parseResult != null)
+			{
+				
+				fileCount=getXMLElementCount("list","file");
+				dirCount=getXMLElementCount("list","dir");
+				itemCount = Add(fileCount, dirCount);
+			
+				
+				print("gtalk_friend.rss:  file and dir Count :: ",itemCount);
+
+				if(firstPath!=rootPath)
+				{
+					nameArray = pushBackStringArray(nameArray, "..");
+					displayArray=pushBackStringArray(displayArray, "/../");
+					imageArray=pushBackStringArray(imageArray,"../image/folder.fsp");
+					statArray=pushBackStringArray(statArray,"dir");				
+					itemCount=Add(itemCount,1);
+				}
+				
+				if (dirCount &gt; 0)
+				{
+					index = 0;
+					while (1)
+					{
+						if (index == dirCount)
+						{
+							break;
+						}
+
+						name = getXMLText("list", "dir", index);
+
+						if(firstPath==rootPath)
+							{
+							 display="/"+gtalk_getDiskLabel(firstPath+"/"+name)+"/";
+							
+							}
+						else
+							display="/"+name+"/";
+				
+						nameArray = pushBackStringArray(nameArray, name);
+						displayArray=pushBackStringArray(displayArray, display);
+						imageArray=pushBackStringArray(imageArray,"../image/folder.fsp");
+						statArray=pushBackStringArray(statArray,"dir");
+						
+						index = index + 1;
+					}
+				}
+
+				if (fileCount &gt; 0)
+				{
+					index = 0;
+					while (1)
+					{
+						if (index == fileCount)
+						{
+							break;
+						}
+
+						name = getXMLText("list", "file", index);
+						
+						nameArray = pushBackStringArray(nameArray, name);
+						displayArray=pushBackStringArray(displayArray, name);
+						imageArray=pushBackStringArray(imageArray,"../image/file.fsp");
+						statArray=pushBackStringArray(statArray,"file");
+						selectArray=pushBackStringArray(selectArray,"unselect");
+						
+						index = index + 1;
+					}
+				}
+
+					
+			}
+
+		}
+		setFocusItemIndex(0);
+		setItemFocus(0);
+		redrawDisplay();
+		
+	}
+
+null;
+</onClick>
+</item_template>
+
+<channel>
+<title>file list</title>
+<link>./gtalk_filelist.rss</link>
+<media:thumbnail url="../image/gtalk.jpg" width="120" height="90" />
+
+<itemSize>
+<script>
+itemCount;
+</script>
+</itemSize>
+
+</channel>
+</rss>
+

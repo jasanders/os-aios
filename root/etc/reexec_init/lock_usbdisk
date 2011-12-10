@@ -1,0 +1,10 @@
+#!/bin/sh
+
+while [ -f /tmp/usbdisk_lock ]; do
+	true;
+done
+
+
+#echo ---------- Found one usbdisk ---------- > /dev/console
+
+

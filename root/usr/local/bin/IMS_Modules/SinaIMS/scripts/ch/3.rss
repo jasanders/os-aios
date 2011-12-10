@@ -1,0 +1,87 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "Weather_favorites.dat";
+	favoriteLocationArray = readStringFromFile(storagePath);
+</script>
+
+	<onUserInput>
+		userInput = currentUserInput();
+		print(userInput);
+	   if ("edit" == userInput){
+				LocationID = getItemInfo("title");
+				print("add ", LocationID, " to favorite");
+				favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+				writeStringToFile(storagePath, favoriteLocationArray);		
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+						postMessage("return");	
+								postMessage("return");	
+	   }
+	</onUserInput>
+	
+<item_template>
+       <onClick>
+	   
+						LocationID = getItemInfo("title");
+						print("add ", LocationID, " to favorite");
+						retstr = SetIMSParam("is_str_exist",favoriteLocationArray,LocationID);
+						if(retstr != "yes")
+						{
+							favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+							writeStringToFile(storagePath, favoriteLocationArray);	
+						}
+						else
+						{
+								msgBox("EXIST_INFO");
+						}
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+								postMessage("return");		 
+										postMessage("return");	
+			}
+	    </onClick>
+</item_template>
+
+<channel>
+<title>山西省</title>
+<link>./scripts/hisense/ch/3.rss</link>
+<!--<media:thumbnail url="image/weather.jpg"/>-->
+<item>
+<title>太原</title>
+</item>
+<item>
+<title>大同</title>
+</item>
+<item>
+<title>阳泉</title>
+</item>
+<item>
+<title>长治</title>
+</item>
+<item>
+<title>晋城</title>
+</item>
+<item>
+<title>朔州</title>
+</item>
+ 
+<item>
+<title>忻州</title>
+</item>
+<item>
+<title>临汾</title>
+</item>
+<item>
+<title>运城</title>
+</item>
+
+</channel></rss>

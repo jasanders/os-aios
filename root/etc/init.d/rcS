@@ -1,0 +1,6 @@
+#!/bin/sh
+
+/etc/init.d/rcS1>/dev/console&
+
+echo "Welcome to Realtek Linux"
+

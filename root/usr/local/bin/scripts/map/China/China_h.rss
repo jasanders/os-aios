@@ -1,0 +1,433 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>China</title>
+<link>./scripts/map/China_h.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Haicheng</title>
+<cur>CHXX0041</cur>
+<for>Haicheng</for>
+</item>
+
+
+<item>
+<title>Haikou</title>
+<cur>CHXX0502</cur>
+<for>Haikou</for>
+</item>
+
+
+
+<item>
+<title>Hailar</title>
+<cur>CHXX0175</cur>
+<for>Hailar</for>
+</item>
+
+
+
+<item>
+<title>Hails</title>
+<cur>CHXX0244</cur>
+<for>Hails</for>
+</item>
+
+
+
+<item>
+<title>Hailun</title>
+<cur>CHXX0183</cur>
+<for>Hailun</for>
+</item>
+
+
+
+<item>
+<title>Haining</title>
+<cur>CHXX0042</cur>
+<for>Haining</for>
+</item>
+
+
+
+
+<item>
+<title>Haiyang</title>
+<cur>CHXX0319</cur>
+<for>Haiyang</for>
+</item>
+
+
+
+
+<item>
+<title>Haliut</title>
+<cur>CHXX0246</cur>
+<for>Haliut</for>
+</item>
+
+
+
+
+<item>
+<title>Hami</title>
+<cur>CHXX0219</cur>
+<for>Hami</for>
+</item>
+
+
+
+<item>
+<title>Hangu</title>
+<cur>CHXX0043</cur>
+<for>Hangu</for>
+</item>
+
+
+
+<item>
+<title>Hangzhou</title>
+<cur>CHXX0044</cur>
+<for>Hangzhou</for>
+</item>
+
+
+
+<item>
+<title>Hanzhong</title>
+<cur>CHXX0390</cur>
+<for>Hanzhong</for>
+</item>
+
+
+
+<item>
+<title>Harbin</title>
+<cur>CHXX0046</cur>
+<for>Harbin</for>
+</item>
+
+
+
+
+<item>
+<title>Hechi</title>
+<cur>CHXX0478</cur>
+<for>Hechi</for>
+</item>
+
+
+
+
+<item>
+<title>Hechuan</title>
+<cur>CHXX0047</cur>
+<for>Hechuan</for>
+</item>
+
+
+
+<item>
+<title>Hefei</title>
+<cur>CHXX0448</cur>
+<for>Hefei</for>
+</item>
+
+
+
+<item>
+<title>Hequ</title>
+<cur>CHXX0256</cur>
+<for>Hequ</for>
+</item>
+
+
+
+<item>
+<title>Heyuan</title>
+<cur>CHXX0492</cur>
+<for>Heyuan</for>
+</item>
+
+
+
+<item>
+<title>Hezuo</title>
+<cur>CHXX0339</cur>
+<for>Hezuo</for>
+</item>
+
+
+
+
+<item>
+<title>Hoboksar</title>
+<cur>CHXX0199</cur>
+<for>Hoboksar</for>
+</item>
+
+
+
+<item>
+<title>Hohhot</title>
+<cur>CHXX0249</cur>
+<for>Hohhot</for>
+</item>
+
+
+
+<item>
+<title>Hong Kong</title>
+<cur>CHXX0049</cur>
+<for>Hong%20Kong</for>
+</item>
+
+
+
+<item>
+<title>Hotan</title>
+<cur>CHXX0216</cur>
+<for>Hotan</for>
+</item>
+
+
+
+
+
+<item>
+<title>Hua Shan</title>
+<cur>CHXX0388</cur>
+<for>Hua%20Shan</for>
+</item>
+
+
+
+
+<item>
+<title>Huade</title>
+<cur>CHXX0248</cur>
+<for>Huade</for>
+</item>
+
+
+
+
+<item>
+<title>Huadian</title>
+<cur>CHXX0290</cur>
+<for>Huadian</for>
+</item>
+
+
+
+<item>
+<title>Huailai</title>
+<cur>CHXX0301</cur>
+<for>Huailai</for>
+</item>
+
+
+
+<item>
+<title>Huajialing</title>
+<cur>CHXX0239</cur>
+<for>Huajialing</for>
+</item>
+
+
+
+
+<item>
+<title>Huang Shan</title>
+<cur>CHXX0453</cur>
+<for>Huang%20Shan</for>
+</item>
+
+
+
+<item>
+<title>Huangpi</title>
+<cur>CHXX0050</cur>
+<for>Huangpi</for>
+</item>
+
+
+
+<item>
+<title>Huangshi</title>
+<cur>CHXX0051</cur>
+<for>Huangshi</for>
+</item>
+
+
+
+<item>
+<title>Huili</title>
+<cur>CHXX0366</cur>
+<for>Huili</for>
+</item>
+
+
+
+<item>
+<title>Huimin</title>
+<cur>CHXX0311</cur>
+<for>Huimin</for>
+</item>
+
+
+<item>
+<title>Huize</title>
+<cur>CHXX0367</cur>
+<for>Huize</for>
+</item>
+
+
+<item>
+<title>Huizhou</title>
+<cur>CHXX0053</cur>
+<for>Huizhou</for>
+</item>
+
+
+<item>
+<title>Hulan</title>
+<cur>CHXX0054</cur>
+<for>Hulan</for>
+</item>
+
+
+<item>
+<title>Hulin</title>
+<cur>CHXX0194</cur>
+<for>Hulin</for>
+</item>
+
+
+<item>
+<title>Huma</title>
+<cur>CHXX0172</cur>
+<for>Huma</for>
+</item>
+
+
+<item>
+<title>Huoshan</title>
+<cur>CHXX0447</cur>
+<for>Huoshan</for>
+</item>
+
+
+<item>
+<title>Hushitai</title>
+<cur>CHXX0055</cur>
+<for>Hushitai</for>
+</item>
+
+
+<item>
+<title>Huzhou</title>
+<cur>CHXX0056</cur>
+<for>Huzhou</for>
+</item>
+
+
+</channel></rss>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>	
+		<item label="$[CHANNEL]" >
+				<submenu dialog="popupListDlg" type="MANUAL_SCAN_CHANNEL" onSelect="setManualScanParam" onSelectType="MANUAL_SCAN_CHANNEL"/>
+		</item>
+		<item label="$[BANDWIDTH]" >
+				<submenu dialog="popupListDlg" type="MANUAL_SCAN_BANDWIDTH" onSelect="setManualScanParam" onSelectType="MANUAL_SCAN_BANDWIDTH"/>
+		</item>
+		<item label="$[FREQUENCY]" >
+				<submenu dialog="DigitalInputDlg" type="MANUAL_SCAN_FREQUENCY" onSelect="setManualScanParam" onSelectType="MANUAL_SCAN_FREQUENCY" />
+		</item>		
+		<item label="$[OK]" >
+				<submenu dialog="ManualChannelScanDlg" type="$[MANUALSCAN]" />
+		</item>		
+</menu>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+		<item label="S/PDIF RAW"/>
+		<item label="S/PDIF LPCM"/>
+		<item label="HDMI RAW"/>
+		<item label="HDMI LPCM"/>
+		<item label="HDMI LPCM Multi-Ch"/>
+</menu>

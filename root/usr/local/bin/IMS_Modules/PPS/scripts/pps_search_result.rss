@@ -1,0 +1,425 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> PPS_SEARCH </bookmark>
+
+
+
+<mediaDisplay name=threePartsView
+showHeader=no
+showDefaultInfo=no
+
+autoSelectMenu=no
+autoSelectItem=no
+
+sideLeftWidthPC = 100
+sideRightWidthPC = 0
+imageLeftSide = "../image/PPS_level2_Type1_bg.fsp"
+imageFocus = null
+
+itemImageXPC = "6.5"
+itemImageYPC = "13"
+itemImageWidthPC = "5"
+itemImageHeightPC = "11.8"
+itemXPC = 12
+itemYPC = 13
+itemWidthPC = 29
+itemHeightPC = 14
+itemGap = 0
+capWidthPC = 0
+capHeightPC = 0
+
+itemBackgroundColor = 8:8:8
+>
+
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading1.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading2.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading3.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading4.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading5.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading6.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading7.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading8.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading9.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading10.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading11.png </idleImage>
+	<idleImage idleImageWidthPC=10 idleImageHeightPC=10> ../image/pps_loading12.png </idleImage>
+
+
+<text redraw=yes offsetXPC=28 offsetYPC=84 widthPC=12 heightPC=4.3 fontSize=12 backgroundColor=8:8:8 foregroundColor=200:200:200>
+<script>
+str = sprintf("%s", PageIndex) + &quot;/&quot; + PageCount + "页";
+</script>
+</text>
+
+
+<image redraw=yes offsetXPC=80 offsetYPC=4 widthPC=8 heightPC=8>
+<script>
+if (accountType == "1")
+	"../image/pps_vip.jpg";
+else
+	"../image/pps_nonvip.jpg";
+</script>
+</image>
+
+
+<image redraw=yes offsetXPC=60.5 offsetYPC=12 widthPC=18 heightPC=40>
+	<script>
+		url = getStringArrayAt(bigThumbnailArray, -1);
+		print("bigThumbnail url =====================> ", url);
+		url;
+	</script>
+</image>
+
+
+<text redraw=yes offsetXPC=54 offsetYPC=59 widthPC=35 heightPC=6 fontSize=16 backgroundColor=0:0:0 foregroundColor=200:200:200>
+<script>
+getStringArrayAt(titleArray , -1);
+</script>
+</text>
+
+<text redraw=yes offsetXPC=50 offsetYPC=68 widthPC=45 heightPC=5 fontSize=12 backgroundColor=0:0:0 foregroundColor=200:200:200>
+<script>
+str = "导演: " + getStringArrayAt(DirtArray , -1);
+</script>
+</text>
+
+<text redraw=yes offsetXPC=50 offsetYPC=74 widthPC=45 heightPC=5 fontSize=12 backgroundColor=0:0:0 foregroundColor=200:200:200>
+<script>
+str = "主演: " + getStringArrayAt(ActorArray , -1);
+</script>
+</text>
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			idx1 = getFocusItemIndex();
+			idx2 = getQueryItemIndex();
+			if (idx1 == idx2)
+				"../image/pps_level2_type0_item_focus_bar.png";
+			else
+				"";
+		</script>
+	</image>
+	
+	<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=50 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+		<script>
+			getStringArrayAt(titleArray , -1);
+		</script>
+	</text>
+	<text offsetXPC=0 offsetYPC=50 widthPC=100 heightPC=30 fontSize=10 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+			str = "人气: " + getstringArrayAt(ScoreArray,-1);
+		</script>
+	</text>
+	<text offsetXPC=75 offsetYPC=50 widthPC=25 heightPC=40 fontSize=15 backgroundColor=-1:-1:-1 foregroundColor=255:255:0>
+		<script>
+			vip = getStringArrayAt(VFArray , -1);
+			if (vip != "0")
+				"VIP";
+			else
+				null;
+		</script>
+	</text>
+</itemDisplay>
+
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+
+if (userInput == "down")
+{
+    if ((getFocusItemIndex()%5) == 4)
+        userInput = "pagedown";
+}
+else if (userInput == "up")
+{
+    if (getFocusItemIndex() == 0)
+        userInput = "pageup";
+}
+
+if (userInput == "pagedown" || userInput == "pageup")
+{
+		quit = 0;
+		if (userInput == "pagedown")
+		{
+				PageIndex = Add(PageIndex, 1);
+		}
+		else
+		{	
+				PageIndex = Add(PageIndex, -1);
+		}
+
+		if (PageIndex &lt; 1)
+		{
+			PageIndex = 1;
+			quit = 1;
+		}
+		if (PageIndex &gt; PageCount)
+		{
+			PageIndex = PageCount;
+			quit = 1;
+		}
+
+
+		if (quit == 0)
+		{
+			currentUrl = rootUrl + "&amp;pagesize=5&amp;page=" + PageIndex;
+			currentUrl = currentUrl + "&amp;order=5";
+			showIdle();
+			dlok = PPS_loadXMLFile(currentUrl);
+			if (dlok != null)
+			{
+				itemSize = getXMLAttribute("FilmData", "FilmNum");
+				if (itemSize &gt; 0)
+				{
+					count = 0;
+					titleArray  = null;
+					thumbnailArray = null;
+					bigThumbnailArray = null;
+					DirtArray = null;
+					ActorArray = null;
+					ScoreArray = null;
+					CNArray = null;
+					VFArray = null;
+								
+					while(1)
+					{
+						title  = getXMLText("FilmData", "Film", count, "Title");
+						titleArray  = pushBackStringArray(titleArray, title);
+									
+						thumbnail = getXMLText("FilmData", "Film", count, "SIUrl");
+						thumbnail = convertSpaceInUrl(thumbnail);
+						thumbnailArray = pushBackStringArray(thumbnailArray, thumbnail);
+									
+						bigThumbnail = getXMLText("FilmData", "Film", count, "BIUrl");
+						bigThumbnail = convertSpaceInUrl(bigThumbnail);
+						bigThumbnailArray = pushBackStringArray(bigThumbnailArray, bigThumbnail);		
+									
+						Dirt = getXMLText("FilmData","Film",count,"Dirt");
+						DirtArray = pushBackStringArray(DirtArray,Dirt);
+							
+						Actor = getXMLText("FilmData","Film",count,"Actor");
+						ActorArray = pushBackStringArray(ActorArray,Actor);
+									
+						Score = getXMLText("FilmData","Film",count,"Score");
+						ScoreArray = pushBackStringArray(ScoreArray,Score);
+									
+						CN = getXMLText("FilmData","Film",count,"CN");
+						CNArray = pushBackStringArray(CNArray,CN);
+									
+						VF = getXMLText("FilmData", "Film", count, "Down", "Url", "VF");
+						VFArray  = pushBackStringArray(VFArray, VF);
+						
+						count += 1;
+						if (count == itemSize)
+						{
+							break;
+						}
+					}
+				}
+				setFocusItemIndex(0);
+				setItemFocus(0);
+			}
+			else
+			{
+				print("Download xml file fail: ", currentUrl);
+			}
+			cancelIdle();
+			redrawDisplay();
+			"true";
+		}
+		else
+			"true";
+}
+else if (userInput == "edit")
+{
+	cancelIdle();
+	PPS_charge("PPSVIP");
+	redrawDisplay();
+	"true";
+}
+else
+	"false";
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+
+<onExit>
+print("-=-=-=-=-=-= Bye bye bye, pps search -=-=-=-=-=-=");
+PPS_deInit();
+</onExit>
+
+<script>
+
+/* pps init */
+showIdle();
+initRet = PPS_init();
+cancelIdle();
+if (initRet != "done")
+{
+	print("====== pps init fail when enter pps search ======");
+	postMessage("return");
+}
+else
+{
+	PageIndex = 1;
+	titleArray  = null;
+	thumbnailArray = null;
+	bigThumbnailArray = null;
+	DirtArray = null;
+	ActorArray = null;
+	ScoreArray = null;
+	CNArray = null;
+	VFArray = null;
+
+	accountType = PPS_getAccountType();
+
+	searchPageIndex = 1;
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "ppsSearchUrl.dat";
+	rootUrl = readStringFromFile(storagePath);
+
+	searchUrl = rootUrl + "&amp;pagesize=5&amp;page=1&amp;order=5&amp;lang=cn";
+	print("Got search result: ", searchUrl);
+
+	dlok = PPS_loadXMLFile(searchUrl);
+
+	if (dlok != null)
+	{
+		itemSize = getXMLAttribute("FilmData", "FilmNum");
+		totalSize = getXMLAttribute("FilmData", "FilmTotal");
+		if (itemSize &gt; 0)
+		{
+			PageCount = totalSize/5;
+			PageCount = Integer(PageCount);
+			if ((totalSize%5) != "0")
+				PageCount = Add(PageCount, 1);
+
+			count = 0;
+			titleArray = null;
+			while(1)
+			{
+				title  = getXMLText("FilmData", "Film", count, "Title");
+				titleArray  = pushBackStringArray(titleArray, title);
+			
+				thumbnail = getXMLText("FilmData", "Film", count, "SIUrl");
+				thumbnail = convertSpaceInUrl(thumbnail);
+				thumbnailArray = pushBackStringArray(thumbnailArray, thumbnail);
+			
+				bigThumbnail = getXMLText("FilmData", "Film", count, "BIUrl");
+				bigThumbnail = convertSpaceInUrl(bigThumbnail);
+				bigThumbnailArray = pushBackStringArray(bigThumbnailArray, bigThumbnail);		
+			
+				Dirt = getXMLText("FilmData","Film",count,"Dirt");
+				DirtArray = pushBackStringArray(DirtArray,Dirt);
+			
+				Actor = getXMLText("FilmData","Film",count,"Actor");
+				ActorArray = pushBackStringArray(ActorArray,Actor);
+			
+				Score = getXMLText("FilmData","Film",count,"Score");
+				ScoreArray = pushBackStringArray(ScoreArray,Score);
+			
+				CN = getXMLText("FilmData","Film",count,"CN");
+				CNArray = pushBackStringArray(CNArray,CN);
+
+				VF = getXMLText("FilmData", "Film", count, "Down", "Url", "VF");
+				VFArray  = pushBackStringArray(VFArray, VF);
+
+				count += 1;
+				if (count == itemSize)
+				{
+					break;
+				}
+			}
+
+			setFocusItemIndex(0);
+			setItemFocus(0);
+			redrawDisplay();
+		}
+	}
+}
+</script>
+
+
+<item_template>
+
+<media:thumbnail>
+	<script>
+		url = getStringArrayAt(thumbnailArray, -1);
+		print("thumbnail url =====================> ", url);
+		url;
+	</script>
+</media:thumbnail>
+
+
+<onClick>
+	itemIndex = getFocusItemIndex();
+	
+	Url = searchUrl;
+	Url = Url + "&#x000a;" + getStringArrayAt(titleArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(DirtArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(ActorArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(ScoreArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(CNArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(AreaArray , -1);
+	Url = Url + "&#x000a;" + getStringArrayAt(bigThumbnailArray , -1);
+	
+	
+	tmpCN = getStringArrayAt(CNArray , -1);
+	
+	if (tmpCN &gt; 0)
+	{
+		CICount = 0;
+
+		while(1)
+  		{
+			CI = getXMLText("FilmData", "Film", itemIndex, "Down", "Url", CICount, "CI");
+			CI = "第" + CI + "集";
+			Url = Url + "&#x000a;" + CI;
+			Url = Url + "&#x000a;" + getXMLText("FilmData", "Film", itemIndex, "Down", "Url", CICount, "DUrl");
+
+			CICount += 1;
+			if (CICount == tmpCN)
+			{
+				break;
+			}
+		}
+	}
+	
+	urlFile = getStoragePath("tmp");
+	urlFile = urlFile + "ppsUrl.dat";
+	writeStringToFile(urlFile, Url);
+	
+	Url_Ldesc = getXMLText("FilmData", "Film", itemIndex, "Ldesc");
+	urlFile = getStoragePath("tmp");
+	urlFile = urlFile + "ppsUrl_Ldesc.dat";
+	writeStringToFile(urlFile, Url_Ldesc);
+</onClick>
+
+<link>pps_LVL3.rss</link>
+
+</item_template>
+
+
+
+<channel>
+<title>PPS Search</title>
+<link>pps_search_result.rss</link>
+<media:thumbnail url="../image/pps.jpg" width="120" height="90" />
+
+<menuSize>
+	0
+</menuSize>
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>
