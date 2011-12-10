@@ -1,0 +1,10 @@
+$('#btn_ip_message').click(function () {
+
+  var url = 'lib/ajax/ajax_ip_message.php';
+
+  $.get(url, function(data){
+    $('#ip_message').fadeOut('slow');
+  });
+
+  return false;
+});

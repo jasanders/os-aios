@@ -1,0 +1,13 @@
+$("#cron_create").click(function () {
+  
+	  $('#cron_result').html('<img src="images/ajaxLoading.gif">');  
+	
+	  var url = "lib/ajax/ajax_cron.php?m=" + $('select[name=cron_time]').val();
+	
+	  $.get(url, function(data){
+		  $("#cron_result").html(data);
+		  $("#cron_copy").show();
+	  });
+	  
+	  return false;
+});
