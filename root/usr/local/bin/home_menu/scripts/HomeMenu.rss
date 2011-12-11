@@ -718,7 +718,7 @@ redrawState = "no";
 		<script>
 			stat = getSysStatus("mute");
 			currImg = getStringArrayAt(statusArray,7);
-			if (stat == "0")
+			if (stat == "1")
 				"./home_menu/image/" + currImg + "FOCUS.fsp";
 			else
 				"./home_menu/image/" + currImg + "UNFOCUS.fsp";
@@ -774,10 +774,10 @@ redrawState = "no";
 					thumbnail= thumbnail + "_gray";
 				}
 			}
-			if (state == "focus") {
+			if (state == "unfocus") {
 				thumbnail = thumbnail;
 			}
-			else if (state== "unfocus"){
+			else if (state== "focus"){
 				thumbnail = thumbnail + "_unfocus";
 			}
 			else {
