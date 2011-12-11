@@ -533,7 +533,7 @@
 <mediaDisplay>
 	<onEnter>
 		popupHeader = "$[LANG_OSD]";
-		popupOptionSize = 13;
+		popupOptionSize = 14;
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_ENGLISH]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_CHINESE]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_JAPANESE]");
@@ -541,7 +541,7 @@
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_FRENCH]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_GERMAN]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_ITALIAN]");
-	 
+	        popupOptions = pushBackStringArray(popupOptions, "$[OSD_KOREAN]");		
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_DUTCH]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_RUSSIAN]");
 		popupOptions = pushBackStringArray(popupOptions, "$[OSD_SCHINESE]");
