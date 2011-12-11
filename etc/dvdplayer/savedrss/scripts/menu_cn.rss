@@ -159,7 +159,7 @@ else
 	
 	else if (title == "cn_video")
 	{
-		"rss_file://./scripts/menu_cn.rss";
+		"rss_file://./scripts/menu_video.rss";
 	}	
 	
 	else if (title == "bestv")
@@ -340,11 +340,10 @@ else
 	{
 		"http://www.metafeeds.com/channel/main/rss";
 	}
-	 else if (title == "meta_favs")
+        else if (title == "meta_favs")
 	{
 		"http://www.metafeeds.com/channel/fav_aios/rss";
-	}
-			
+	}	
 	else
 	{
 		null;
@@ -364,37 +363,40 @@ focusiconArray = null;
 unfocusiconArray = null;
 itemSize = 0;
  
-service_shannan = null;
-service_haoims = null;
-service_tv = null;
-service_tianwei = null;
-service_hdpfans = null;
-service_vst = null;
-service_yiyi = null;
-service_pudong =null;
-service_06do = null;
-service_cnradio = null;
-service_shoutcast = "1";
-service_googlemus = null;
-service_akado = null;
-service_sina = null;
+service_shannan = "1";
+service_haoims = "1";
+service_tv = "1";
+service_tianwei = "1";
+service_hdpfans = "1";
+service_vst = "1";
+service_yiyi = "1";
+service_pudong ="1";
+service_06do = "1";
+service_cnradio = "1";
+service_googlemus = "1";
+service_akado = "1";
+service_sina = "1";
 service_thunder = null;
-service_bestv = null;
-service_pps = null;
-service_voole = null;
-service_videoaddon = null;
-service_youtube = "1";
-service_mediafly = null;
-service_audiopodcast = "1";
-service_picasa = "1";
+service_bestv = "1";
+service_pps = "1";
+service_voole = "1";
+service_videoaddon = "1";
+
 service_blueberry = null;
-
-video_podcast_EN = "1" ;
 video_podcast_CN = null;
-
-meta_feeds = "1";
-meta_favs = "1";
-
+service_mediafly = null;
+service_youtube = null;
+service_audiopodcast = null;
+service_picasa = null;
+video_podcast_EN = null;
+service_shoutcast = null;
+meta_feeds = null;
+meta_favs = null;
+service_weather = null;
+service_finance = null;
+service_flickr = null;
+service_realpilot = null;
+service_yxl = null;
  
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "cn_video");
@@ -515,7 +517,7 @@ if (service_akado != null)
 	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/audio_AKADO_unfocus.png");
 	itemSize = Add(itemSize, 1);	
 }
-if (serviceEnabled("weather") != null)
+if (service_weather != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "weather");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/yahoo_weather_focus.fsp");
@@ -555,7 +557,7 @@ if (service_sina != null)
 	itemSize = Add(itemSize, 1);
 }
 
-if (serviceEnabled("finance") != null)
+if (service_finance != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "finance");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/yahoo_finance_focus.fsp");
@@ -603,7 +605,7 @@ if (service_cnradio != null)
 }
 
 
-if (serviceEnabled("flickr") != null)
+if (service_flickr != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "flickr");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/flickr_focus.fsp");
@@ -642,7 +644,7 @@ if (serviceEnabled("vtuner") != null)
 	itemSize = Add(itemSize, 1);
 }
 
-if (serviceEnabled("realpilot") != null)
+if (service_realpilot != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "realpilot");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/realpilot_focus.fsp");
@@ -692,7 +694,7 @@ if (serviceEnabled("netflix") != null)
 	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/netflix_unfocus.fsp");
 	itemSize = Add(itemSize, 1);
 }
-if (serviceEnabled("yxl") != null)
+if (service_yxl != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "yxl");
 	/* need yxl image */
@@ -716,6 +718,7 @@ if (serviceEnabled("facebook") != null)
 	itemSize = Add(itemSize, 1);
 }
 
+
 if (meta_feeds != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "meta_feeds");
@@ -723,7 +726,7 @@ if (meta_feeds != null)
 	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/mfeeds_unfocus.png");
 	itemSize = Add(itemSize, 1);
 }
-	
+
 if (meta_favs != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "meta_favs");
