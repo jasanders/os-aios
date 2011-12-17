@@ -207,7 +207,7 @@
 
   <onRefresh>
     if (startVideo == 1) {
-       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay");
        setRefreshTime(1000);
        startVideo = 0;
     }
@@ -455,7 +455,7 @@
 
   <onRefresh>
     if (startVideo == 1) {
-       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay");
        setRefreshTime(1000);
        startVideo = 0;
     }

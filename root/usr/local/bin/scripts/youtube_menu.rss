@@ -136,7 +136,8 @@
   <onRefresh>
     if (startVideo == 1) {
        print("Start to play video!!!!\n");
-       playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");
+       /* playItemURL(-1, 0, "mediaDisplay", "infoDisplay", "previewWindow");*/
+       playItemURL(-1, 0, "mediaDisplay", "infoDisplay");
        setRefreshTime(1000);
        startVideo = 0;
     }
