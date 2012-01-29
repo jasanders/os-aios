@@ -129,6 +129,12 @@
 </item>
 
 <item>
+<title>V</title>
+<link>rss_file://./scripts/map/Canada/Canada_v.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
 <title>W</title>
 <link>rss_file://./scripts/map/Canada/Canada_w.rss</link>
 <media:thumbnail url="image/weather.jpg"/>
