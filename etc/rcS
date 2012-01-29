@@ -64,3 +64,5 @@ sleep 30 && swapon /dev/sda2
 for i in /opt/etc/init.d/S??* ;do
 	$i  &
 done
+
+/usr/local/etc/mnt_favs.sh &

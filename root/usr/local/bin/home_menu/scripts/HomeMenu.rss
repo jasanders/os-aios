@@ -1242,10 +1242,9 @@ redrawState = "no";
 </onClick>
 </item>   -->
 
-<item>
+<!-- <item>
 <title>$[BOOKMARK]</title>
 <imagePath> home_menu/image/Home_bookmark </imagePath>
-<!-- <group> DB </group> -->
 <onClick>
 	<script>
 		 
@@ -1271,8 +1270,21 @@ redrawState = "no";
 		null;
 	</script>
 </onClick>
-</item> 
+</item> --> 
 
+<item>
+<title>Movie Jukebox</title>
+<imagePath> home_menu/image/Home_bookmark </imagePath>
+<onClick>
+	<script>
+		APName = "IMSAP";
+		MenuType = "TopMenu";
+		MenuLink = "rss_file://./IMS_Modules/Movie_Jukebox/Movie_Jukebox.rss";
+		menuCmd(APName, MenuType, MenuLink, BltType);
+		null;
+	</script>
+</onClick>
+</item>
 
 <item>
 <title>$[SETUP_MENU]</title>
