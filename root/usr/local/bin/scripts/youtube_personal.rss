@@ -65,7 +65,7 @@
 <item>
     <title>
     <script>
-       url = username+"'s Videos";
+       url = username+"'s Public Videos";
        url;
     </script>
     </title>
@@ -312,7 +312,7 @@
 <item>
     <title>
     <script>
-       url = username+"'s Favorites";
+       url = username+"'s Public Favorites";
        url;
     </script>
     </title>

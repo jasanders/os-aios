@@ -51,27 +51,44 @@
 </item>
 
 <item>
-<title>Korea</title>
-<symbol>KR</symbol>
+<title>Argentina</title>
+<symbol>AR</symbol>
 </item>
 
 <item>
-<title>Irland</title>
-<symbol>IE</symbol>
+<title>Australia</title>
+<symbol>AU</symbol>
 </item>
 
 <item>
-<title>Mexico</title>
-<symbol>MX</symbol>
+<title>Brazil</title>
+<symbol>BR</symbol>
 </item>
-
 
 <item>
-<title>Taiwan</title>
-<symbol> TW </symbol>
+<title>Canada</title>
+<symbol>CA</symbol>
 </item>
 
+<item>
+<title>Czech Republic</title>
+<symbol>CZ</symbol>
+</item>
 
+<item>
+<title>France</title>
+<symbol>FR</symbol>
+</item>
+
+<item>
+<title>Germany</title>
+<symbol>DE</symbol>
+</item>
+
+<item>
+<title>Great Britain</title>
+<symbol>GB</symbol>
+</item>
 
 <item>
 <title>Hong Kong</title>
@@ -79,11 +96,84 @@
 </item>
 
 <item>
+<title>India</title>
+<symbol>IN</symbol>
+</item>
+
+<item>
+<title>Ireland</title>
+<symbol>IE</symbol>
+</item>
+
+<item>
+<title>Israel</title>
+<symbol>IL</symbol>
+</item>
+
+<item>
+<title>Italy</title>
+<symbol>IT</symbol>
+</item>	
+
+<item>
 <title>Japan</title>
 <symbol>JP</symbol>
 </item>
 
+<item>
+<title>Mexico</title>
+<symbol>MX</symbol>
+</item>
 
+<item>
+<title>Netherlands</title>
+<symbol>NL</symbol>
+</item>
+
+<item>
+<title>New Zealand</title>
+<symbol>NZ</symbol>
+</item>
+
+<item>
+<title>Poland</title>
+<symbol>PL</symbol>
+</item>
+
+<item>
+<title>Russia</title>
+<symbol>RU</symbol>
+</item>
+
+<item>
+<title>South Africa</title>
+<symbol>ZA</symbol>
+</item>
+
+<item>
+<title>South Korea</title>
+<symbol>KR</symbol>
+</item>
+
+<item>
+<title>Spain</title>
+<symbol>ES</symbol>
+</item>
+
+<item>
+<title>Sweden</title>
+<symbol>SE</symbol>
+</item>
+
+<item>
+<title>Taiwan</title>
+<symbol>TW</symbol>
+</item>
+
+<item>
+<title>United States</title>
+<symbol>US</symbol>
+</item>
 
 </channel>
 </rss>
