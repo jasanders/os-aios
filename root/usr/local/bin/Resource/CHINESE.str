@@ -1543,7 +1543,7 @@ Expires:
 按return鍵中斷任務
 延續掃描
 市集
-Dolby TureHD输出
+Dolby TrueHD输出
 TrueHD
 音樂緩衝區衝突
 音樂緩衝區可能衝突
@@ -1773,7 +1773,7 @@ AAC 输出
 DTS-HD输出 
 7.1 CH
 5.1 CH
-Dolby TureHD输出
+Dolby TrueHD输出
 SPDIF降解输出（LPCM 2.0声道）
 Bulgarian
 Mongolian
@@ -2079,9 +2079,9 @@ Your device is registered with ID
 purchase failed
 No results match your keyword
 Your email address will also be your username
-"If audio type is TureHD, SPDIF will no output. If audio type not TureHD, SPDIF will RAW out."
-"If Audio type is TureHD, SPDIF will LPCM out."
-"If audio type is TureHD, SPDIF will no output."
+"If audio type is TrueHD, SPDIF will no output. If audio type not TrueHD, SPDIF will RAW out."
+"If Audio type is TrueHD, SPDIF will LPCM out."
+"If audio type is TrueHD, SPDIF will no output."
 來源僅允許同磁區
 按OK鍵輸入帳號.
 按OK鍵輸入密碼

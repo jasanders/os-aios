@@ -1543,7 +1543,7 @@ Pressionar Guia para interromper
 Pressionar RETORNAR para interromper
 Continuar a varredura
 mercado
-Saída Dolby TureHD
+Saída Dolby TrueHD
 TrueHD
 Conflito buffer de áudio
 Possíveis conflitos de buffer de áudio
@@ -1773,7 +1773,7 @@ Dada de compilação
 Saída de DTS-HD
 "7,1 CH"
 5.1 CH
-Saída Dolby TureHD
+Saída Dolby TrueHD
 "Saída SPDIF Downmix (LPCM 2,0 CH)"
 búlgaro
 mongólia
@@ -2079,9 +2079,9 @@ O seu dispositivo é registrado com ID
 falha de compra
 Nenhum resultado corresponde a palavra-chave
 O seu endereço de e-mail também será seu nome de usuário
-"Se o tipo de áudio é TureHD, SPDIF não será de saída. Se o tipo de áudio não é TureHD, SPDIF vai sair RAW."
-"Se o tipo de áudio é TureHD, SPDIF vai sair LPCM."
-"Se o tipo de áudio é TureHD, SPDIF não será de saída."
+"Se o tipo de áudio é TrueHD, SPDIF não será de saída. Se o tipo de áudio não é TrueHD, SPDIF vai sair RAW."
+"Se o tipo de áudio é TrueHD, SPDIF vai sair LPCM."
+"Se o tipo de áudio é TrueHD, SPDIF não será de saída."
 Só é permitido a partir de uma partição
 Pressione OK para entrar a identificação de usuário
 Pressione OK para entrar a senha.

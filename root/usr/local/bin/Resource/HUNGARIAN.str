@@ -1543,7 +1543,7 @@ Megszakítva a GUIDE gombbal
 Megszakítva a RETURN gombbal
 Keresés folytatása
 Piac
-Dolby TureHD Output
+Dolby TrueHD Output
 TrueHD
 Audio betöltésének hibája
 Összeférhetetlenség a hang betöltésekor
@@ -1773,7 +1773,7 @@ Idő szerkesztése
 DTS-HD output 
 7.1 CH
 5.1 CH
-Dolby TureHD Output
+Dolby TrueHD Output
 SPDIF Downmix output（LPCM 2.8 CH）
 Bulgarian
 Mongolian
@@ -2079,9 +2079,9 @@ Az eszköze regisztrálva lett ID-vel
 Vásárlás sikertelen
 Nincs találat a keresőszóra
 Az email címe lesz a felhasználóneve is
-"Ha a hang típusa TureHD, SPDIF kimenet nincs. Ha audio típusú nem TureHD, az SPDIF RAW kimenet lesz."
-"Ha a hang típusa TureHD, az SPDIF LPCM kimenet lesz"
-"Ha a hang típusa TureHD, nem lesz SPDIF kimenet."
+"Ha a hang típusa TrueHD, SPDIF kimenet nincs. Ha audio típusú nem TrueHD, az SPDIF RAW kimenet lesz."
+"Ha a hang típusa TrueHD, az SPDIF LPCM kimenet lesz"
+"Ha a hang típusa TrueHD, nem lesz SPDIF kimenet."
 Csak egy partícióról megengedett
 "Nyomja meg az okét, hogy megadja a használati ID-t"
 "Nyomja meg az okét, hogy megadja a jelszót"
