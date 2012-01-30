@@ -55,9 +55,9 @@
 	<idleImage> image/POPUP_LOADING_05.png </idleImage>
 	<idleImage> image/POPUP_LOADING_06.png </idleImage>
 
-	<backgroundDisplay name=HomeMenuBackground>
+	<backgroundDisplay name=WeatherBackground>
 		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
-			./home_menu/image/HomeMenu_BG.fsp
+			image/YW_bg.png
 		</image>
 	</backgroundDisplay>
 
