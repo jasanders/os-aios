@@ -542,7 +542,7 @@ redrawState = "no";
 	</text> -->
 
 	
-	<image offsetXPC=9 offsetYPC=91 widthPC=3.9 heightPC=7 useBackgroundSurface=yes redraw=yes>
+	<image offsetXPC=9 offsetYPC=86 widthPC=3.9 heightPC=7 useBackgroundSurface=yes redraw=yes>
 		<script>
 			icon = null;
 			if (DBReady == "true") {
@@ -557,7 +557,7 @@ redrawState = "no";
 
 	
 <!-- 	<text offsetXPC=20 offsetYPC=73.05 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=yes redraw=yes> -->
-	<text offsetXPC=12 offsetYPC=92 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=yes redraw=yes>
+	<text offsetXPC=12 offsetYPC=87 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=yes redraw=yes>
 		<script>
 			hint = null;
 			if(CurScanDisk != null){
@@ -744,7 +744,7 @@ redrawState = "no";
 	</text> -->
 	
 	
-	<text offsetXPC=30 offsetYPC=80 widthPC=40 heightPC=8.5 fontSize=20 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=center tailDots=yes useBackgroundSurface=yes redraw=yes>
+	<text offsetXPC=30 offsetYPC=85 widthPC=40 heightPC=8.5 fontSize=20 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=center tailDots=yes useBackgroundSurface=yes redraw=yes>
 		<script>
 			focusIndex = getFocusItemIndex();			 			 		
 			
