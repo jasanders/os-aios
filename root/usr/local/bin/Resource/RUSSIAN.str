@@ -1817,7 +1817,6 @@ NFS
 梦幻泡影
 扬帆归航
 Live TV
-Do you want stop video playback？
 Greek
 Turkish
 Media library
@@ -1825,6 +1824,19 @@ Enter folder
 Play BD/DVD folder
 Ask always
 Auto Load subtitles
+Change LiveTV addr
+Safe shutdown
+SBS/TAB external subtitle
+3D Side By Side
+3D Top Bottom
+VST平台电视直播
+RPEW平台电视直播
+非常高清平台电视直播
+天天在线电视直播
+HDPFans电视直播
+浦东高清电视直播
+使用自定义地址
+选择电视直播地址
 Запись по G-Code таймеру
 Установка таймера записи
 Превышен лимит на записанные файлы
@@ -2144,3 +2156,4 @@ DTS-HD выход (необходимо перезагрузиться)
 Войти в постерный режим просмотра
 Выход постерного режима просмотра
 Scan nfs server， Please Wait…
+Do you want stop video playback?
