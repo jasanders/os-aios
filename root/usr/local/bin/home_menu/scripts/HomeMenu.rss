@@ -280,6 +280,7 @@ redrawState = "no";
 		print("CurStatus:" , CurrentAP, CurrentType, PlayMusic, CurrentSubType, CurrentSubType5, CurrentSubType6, CurrentSubType7);
 
 		SetScreenSaverStatus("yes");
+                unsetEnv("UsingBookMarkDB");
 
 		IsAVinDisable = "yes";
 		IMSDisable = "yes";
