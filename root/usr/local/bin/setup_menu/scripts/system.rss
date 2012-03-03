@@ -697,6 +697,7 @@
 		if( ret != NULL ) {
 			if( ret != oldName ) {
 				setSystemDeviceName(ret);
+                                writeStringToFile("/usr/local/etc/hostname",ret);
 				if( getCurrentSetting("$[DLNA_DMR]") == "$[ON]" ) {
 					setDlnaRenderer("$[OFF]");
 					setDlnaRenderer("$[ON]");
