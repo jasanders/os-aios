@@ -38,7 +38,7 @@
             <image type="yaffs2">
                 <fileName>package2/usr.local.etc.tar.bz2</fileName>
                 <mountPoint>/usr/local/etc</mountPoint>
-                <sizeBytesMin>83886080</sizeBytesMin>
+                <sizeBytesMin>104857600</sizeBytesMin>
             </image>
         </nand>
     </package>
