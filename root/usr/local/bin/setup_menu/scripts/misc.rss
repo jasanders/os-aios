@@ -511,6 +511,12 @@
 		popupMessages = info;
 		popupOptionSize = 0;
 		popupOptionWide = 1;
+
+                arr = readStringFromFile("/usr/local/etc/soversion.txt");
+                soRelease = getStringArrayAt(arr, 0);                                                      
+                soRelease = "Semiofficial Release" + ": " + soRelease;
+                popupMessageSize = popupMessageSize + 1 ;
+                popupMessages = pushBackStringArray(popupMessages, soRelease);       
 	</onEnter>
 </mediaDisplay>
 <onClick>
