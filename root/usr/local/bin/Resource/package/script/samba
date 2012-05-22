@@ -147,6 +147,8 @@ failure() {
 
 
 start() {
+        /usr/local/etc/linked/samba/chg_smb_wrkgrp.sh
+	sleep 5
         KIND="SMB"
 	echo -n $"Starting $KIND services: "
 	nice -n 10 /tmp/package/samba/sbin/smbd -D
