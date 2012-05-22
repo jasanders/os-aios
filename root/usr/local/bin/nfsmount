@@ -3,5 +3,5 @@ for dir in `./nfsprobe -e --no-headers $1 | cut -d " " -f1`
 do
 	  mkdir -p /tmp/nfs/$1$dir
 	  umount -rfl /tmp/nfs/$1$dir 2>/dev/null
-	  mount -t nfs -o nolock $1:$dir /tmp/nfs/$1$dir
+	  mount -t nfs -o nolock,rsize=32768,wsize=32768 $1:$dir /tmp/nfs/$1$dir
 done
