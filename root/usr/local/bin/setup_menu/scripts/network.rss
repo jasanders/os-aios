@@ -762,6 +762,80 @@ setRefreshTime(-1);
 </item>
 
 <item>
+<title>
+<script>
+title="Samba Hostname ("+readStringFromFile("/usr/local/etc/hostname")+")";
+title;
+</script>
+</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(isDeviceExist("ETH0") == "true"){
+			isDisabled = "no";
+		}
+		if(isDeviceExist("WLAN0") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		oldName = readStringFromFile("/usr/local/etc/hostname");
+		ret = getInput("Input system device name", "doModal");
+		if( ret != NULL ) {
+			if( ret != oldName ) {
+				writeStringToFile("/usr/local/etc/hostname",ret);
+			}
+		}
+		focusIndex = getFocusItemIndex();
+		redrawDisplay("item", focusIndex);
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>
+<script>
+title="Samba Workgroup ("+readStringFromFile("/usr/local/etc/linked/samba/wrkgrp.old")+")";
+title;
+</script>
+</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(isDeviceExist("ETH0") == "true"){
+			isDisabled = "no";
+		}
+		if(isDeviceExist("WLAN0") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<onClick>
+	<script>
+		oldName = readStringFromFile("/usr/local/etc/linked/samba/wrkgrp.old");
+		ret = getInput("Input SAMBA workgroup name", "doModal");
+		if( ret != NULL ) {
+			if( ret != oldName ) {
+				writeStringToFile("/usr/local/etc/linked/samba/wrkgrp.new",ret);
+				if( getCurrentSetting("$[SAMBA_PROCESS]") == "$[ON]" ) {
+					setSambaProcess("$[OFF]");
+					setSambaProcess("$[ON]");
+				}
+			}
+		}
+		focusIndex = getFocusItemIndex();
+		redrawDisplay("item", focusIndex);
+		null;
+	</script>
+</onClick>
+</item>
+
+<item>
 <title>$[LOGIN_CONTROL]</title>
 <disable>
 	<script>
