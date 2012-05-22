@@ -66,3 +66,5 @@ for i in /opt/etc/init.d/S??* ;do
 done
 
 /usr/local/etc/mnt_favs.sh &
+/usr/local/etc/ims_clean.sh &
+/usr/local/etc/mos/services start
