@@ -516,7 +516,22 @@
                 soRelease = getStringArrayAt(arr, 0);                                                      
                 soRelease = "Semiofficial Release" + ": " + soRelease;
                 popupMessageSize = popupMessageSize + 1 ;
-                popupMessages = pushBackStringArray(popupMessages, soRelease);       
+		popupMessages = pushBackStringArray(popupMessages, soRelease); 
+
+		arr = readStringFromFile("/usr/local/etc/soversion.txt");
+                soRelease = getStringArrayAt(arr, 0);
+		soStatus="Unavailable";                                                      
+                soUpdate=getURL("http://os-aios.googlecode.com/files/soversion.txt");
+        	soUpdate = getStringArrayAt(soUpdate, 0);
+		if( soUpdate != NULL ) {
+			soStatus="Updated";
+			if( soUpdate != soRelease ) {
+				soStatus="OUTDATED";
+				}
+			}
+		soStatus= "Semiofficial Status"+": "+soStatus;
+		popupMessageSize = popupMessageSize + 1 ;
+		popupMessages = pushBackStringArray(popupMessages, soStatus);                    
 	</onEnter>
 </mediaDisplay>
 <onClick>
