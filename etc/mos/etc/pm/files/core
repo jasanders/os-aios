@@ -1,0 +1,5 @@
+etc/core.ini
+etc/init/S01core
+www/modules/core/
+www/index.php
+www/favicon.ico

@@ -1,0 +1,8 @@
+bin/busybox.1.18.4
+bin/bzip2
+bin/httpd
+bin/passwd
+bin/tar
+bin/telnetd
+bin/gunzip
+bin/wget

@@ -161,7 +161,10 @@ else
 	{
 		"rss_file://./scripts/menu_cn.rss";
 	}	
-	
+	else if (title == "eu_video")
+	{
+		"rss_file://./scripts/menu_eu.rss";
+	}	
 	else if (title == "bestv")
 	{
 		"rss_file://./IMS_Modules/BesTV/scripts/bestv_guide.rss";
@@ -344,6 +347,10 @@ else
 	{
 		"http://www.metafeeds.com/channel/fav_aios/rss";
 	}
+         else if (title == "aios_port")
+	{
+		"http://community.pivosforums.com/semiofficialfirmware/aios_rss/aios_menu.rss";
+	}
 			
 	else
 	{
@@ -394,8 +401,20 @@ video_podcast_CN = null;
 
 meta_feeds = "1";
 meta_favs = "1";
-
+aios_port = "1";
+eu_video = "1";
+cn_video = "1";
  
+if (eu_video != null)
+{
+	itemTitleArray = pushBackStringArray(itemTitleArray, "eu_video");
+	focusiconArray = pushBackStringArray(focusiconArray, "image/eu_ims_focus.png");
+	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/eu_ims_unfocus.png");
+	itemSize = Add(itemSize, 1);
+}
+
+
+if (cn_video != null)
 {
 	itemTitleArray = pushBackStringArray(itemTitleArray, "cn_video");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/asian_focusl.fsp");
@@ -729,6 +748,14 @@ if (meta_favs != null)
 	itemTitleArray = pushBackStringArray(itemTitleArray, "meta_favs");
 	focusiconArray = pushBackStringArray(focusiconArray, "image/mfavs_focus.png");
 	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/mfavs_unfocus.png");
+	itemSize = Add(itemSize, 1);
+}
+
+if (aios_port != null)
+{
+	itemTitleArray = pushBackStringArray(itemTitleArray, "aios_port");
+	focusiconArray = pushBackStringArray(focusiconArray, "image/aios_focus.png");
+	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/aios_unfocus.png");
 	itemSize = Add(itemSize, 1);
 }
 

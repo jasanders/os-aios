@@ -1,0 +1,9 @@
+#EXTM3U
+#EXTINF:-1,Плеер HDD
+/var/hdd/volumes/
+#EXTINF:-1,Плеер USB
+/var/ramfs/volumes/
+#EXTINF:-1,Плеер Playlists
+/usr/local/etc/playlist/
+#EXTINF:-1,Плеер FTP
+ftp://127.0.0.1/

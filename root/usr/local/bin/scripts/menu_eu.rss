@@ -1,0 +1,260 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<bookmark> main_menu </bookmark>
+
+<onEnter>
+showIdle();
+prepareAnimation();
+showLeftArrow = "no";
+</onEnter>
+
+<onExit>
+cancelIdle();
+</onExit>
+
+<item_template>
+<onClick>
+if(checkNetworkLinkup()=="linkdown")
+{
+  
+  	print("=======--------link down------========");
+	
+	rss = "network_popup.rss";
+	confirm = doModalRss(rss);
+	print("ret======",confirm);
+
+	 if (confirm == "$[Retry]")
+	 {
+	       postMessage("enter");
+	 }
+	 else
+	 	{
+			null;
+	 	}
+
+}
+else
+	{
+
+	title = getStringArrayAt(itemTitleArray, getFocusItemIndex());
+        if (title == "rssex")
+	{
+		"rss_file://../etc/translate/rss/menuEx.rss";
+	}
+        else if (title == "hdlinks")
+	{
+		"http://127.0.0.1/cgi-bin/scripts/mini1.php";
+	}	
+	else if (title == "livetv")
+	{
+		"http://127.0.0.1/cgi-bin/scripts/tv/tv_live.php";
+	}	
+        else
+	{
+		null;
+	}	
+
+}
+			
+
+</onClick>
+</item_template>
+
+<script>
+
+/* prepare item info */
+itemTitleArray = null;
+focusiconArray = null;
+unfocusiconArray = null;
+itemSize = 0;
+ 
+rssex = "1";
+livetv = "1";
+hdlinks = "1";
+
+if (rssex != null) 
+{
+	itemTitleArray = pushBackStringArray(itemTitleArray, "rssex");
+	focusiconArray = pushBackStringArray(focusiconArray, "image/rssex_focus.png");
+	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/rssex_unfocus.png");
+	itemSize = Add(itemSize, 1);
+}
+
+if (hdlinks != null) 
+{
+	itemTitleArray = pushBackStringArray(itemTitleArray, "hdlinks");
+	focusiconArray = pushBackStringArray(focusiconArray, "image/hdlinks_focus.png");
+	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/hdlinks_unfocus.png");
+	itemSize = Add(itemSize, 1);
+}
+
+if (livetv != null) 
+{
+	itemTitleArray = pushBackStringArray(itemTitleArray, "livetv");
+	focusiconArray = pushBackStringArray(focusiconArray, "image/livetv_focus.png");
+	unfocusiconArray = pushBackStringArray(unfocusiconArray, "image/livetv_unfocus.png");
+	itemSize = Add(itemSize, 1);
+}
+
+totalColumnCount = Integer(itemSize/3);
+if ((itemSize &gt; 0) &amp;&amp; (totalColumnCount == 0))
+{
+	totalColumnCount = 1;
+}
+else if ((itemSize%3) != 0)
+{
+	totalColumnCount = Add(totalColumnCount, 1);
+}
+
+setFocusItemIndex(0);
+stopBgMusic();
+</script>
+
+<mediaDisplay name=photoView
+	
+	showHeader=no
+	showDefaultInfo=no
+	rowCount=3
+	columnCount=4
+
+	topArea.heightPC=0
+	topArea.yPC=100
+
+	imageFocus=null
+	bottomYPC=100
+	drawItemBorder=no
+
+	itemOffsetXPC=18.35938
+	itemOffsetYPC=19.65278
+	itemGapXPC=2.5
+	itemGapYPC=3.05556
+
+	
+	DoAnimation = "yes"
+	AnimationType = 1
+	AnimationStep = 26
+	AnimationDelay = 1
+	BackgroundDark = "no"
+	
+ 
+	
+	idleImageXPC=83.12
+	idleImageYPC=89.58
+	idleImageWidthPC=3.125
+	idleImageHeightPC=5.56	
+  >
+
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+	<idleImage> image/POPUP_LOADING_07.png </idleImage>
+	<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+<backgroundDisplay name=ims_guide_menu>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			image/IMS_bg.fsp
+		</image>
+</backgroundDisplay>
+
+
+
+<itemDisplay>
+
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+		state = getDrawingItemState();
+		if (state == "focus")
+			getStringArrayAt(focusiconArray, -1);
+		else
+			getStringArrayAt(unfocusiconArray, -1);
+	</script>
+</image>
+
+</itemDisplay>
+
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+focusIndex = getFocusItemIndex();
+if (input == "edit")
+{
+	print("ignore edit key");
+	ret = "true";
+}
+else if (input == "up" &amp;&amp; (focusIndex%3) == 0)
+{
+	print("ignore up key");
+	ret = "true";
+}
+ret;
+</onUserInput>
+
+<!-- left and right indicator -->
+<image useBackgroundSurface=yes widthPC=2.18 redraw=yes heightPC=7.5 offsetXPC=13.75 offsetYPC=46.25>
+<script>
+if (itemSize &gt; 12)
+{
+	focus = getFocusItemIndex();
+	columnIndex = Integer(focus/3);
+	if (columnIndex &gt;= Integer(totalColumnCount/2))
+	{
+		"image/left.png";
+	}
+	else
+	{
+		null;
+	}
+}
+else
+{
+	null;
+}
+</script>
+</image>
+
+<image useBackgroundSurface=yes widthPC=2.18 redraw=yes heightPC=7.5 offsetXPC=83.90 offsetYPC=46.25>
+<script>
+if (itemSize &gt; 12)
+{
+	focus = getFocusItemIndex();
+	columnIndex = Integer(focus/3);
+	if (columnIndex &lt;= Integer(totalColumnCount/2))
+	{
+		"image/right.png";
+	}
+	else
+	{
+		null;
+	}
+}
+else
+{
+	null;
+}
+</script>
+</image>
+
+</mediaDisplay>
+
+<channel>
+	<title>Main</title>
+	<link>./scripts/menu.rss</link>
+        <media:thumbnail url="image/rss1.png"  />
+	<menu>main menu</menu>
+	
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+</channel>
+</rss>
