@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<menu>	
-		<item label="$[NET_AUTO_IP]" >
-				<submenu list="setup/WiredNetAuto.xml" />
-		</item>
-		<item label="$[NET_MENU_IP]" >
-				<submenu dialog="FixedIPSetting" type="$[NET_MENU_IP]" />
-		</item>
-</menu>

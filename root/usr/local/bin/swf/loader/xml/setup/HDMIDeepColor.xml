@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<menu>
-		<item label="$[DEEP_COLOR_AUTO]"/>
-		<item label="$[DEEP_COLOR_12_BIT]"/>
-		<item label="$[DEEP_COLOR_10_BIT]"/>
-		<item label="$[DEEP_COLOR_OFF]"/>
-</menu>

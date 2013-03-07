@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<menu>
-		<item label="$[PAN_SCAN_4_BY_3]"/>
-		<item label="$[LETTER_BOX_4_BY_3]"/>
-		<item label="$[WIDE_16_BY_9]"/>
-		<item label="$[WIDE_16_BY_10]"/>
-</menu>

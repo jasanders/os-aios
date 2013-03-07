@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<menu>	
-		<item label="undefined">
-				<submenu dialog="popupCheckDlg" type="$[AUTO_VIA_DTV]" content="{ 'title':'$[AUTO_VIA_DTV]','description':'$[TIME_ZONE_INVALID]', 'buttons': ['$[OK]']}" />		
-		</item>		
-		<item label="others">
-				<submenu dialog="TimeSetting" type="$[AUTO_VIA_DTV]"  mode="Display"/>
-		</item>		
-</menu>

@@ -1,8 +1,0 @@
-$('#run_check').click(function () {
-  $('#check_result').html('<img src="images/ajaxLoading.gif">&nbsp;This can take a while, please do not close or refresh this page!');
-  $('#run_check').attr('disabled','true');
-  $.get("__exec__/run.php?mode=m", function(data){
-    $('#check_result').html(data);
-    alert('Finished manual run!');
-  });
-});

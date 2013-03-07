@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<menu>
-		<item label="$[ENGLISHLOWER]"/>
-		<item label="$[KBD_TZUIN]"/>
-		<item label="$[KBD_TCHINESE]"/>
-		<item label="$[KBD_SCHINESE]"/>
-</menu>

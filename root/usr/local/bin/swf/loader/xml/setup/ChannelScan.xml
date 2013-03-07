@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<menu>
-		<item label="$[AUTOSCAN]" >				
-				<submenu dialog="AutoChannelScanDlg" type="$[AUTOSCAN]"/>							
-		</item>
-		<item label="$[MANUALSCAN]" >
-				<submenu list="setup/ManualChannelScan.xml" />				
-		</item>
-</menu>

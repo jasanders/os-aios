@@ -1,9 +1,0 @@
-libgcc_s
-libcrypto
-libcurl
-libiconv
-libjpeg
-libpng15
-libxml2
-libssl
-libz
