@@ -1,0 +1,12 @@
+sudo rm ../install/install.img
+sudo rm ../install/package2/squashfs1.img
+sudo rm ../install/package2/usr.local.etc.tar.bz2
+sudo chown root:root ../root/* -R
+sudo chown root:root ../etc/* -R
+cd ../etc
+sudo tar -cjf ../install/package2/usr.local.etc.tar.bz2 *
+cd ..
+sudo ./tools/mksquashfs3.0 root/ install/package2/squashfs1.img
+cd install
+sudo tar -cf install.img *
+
