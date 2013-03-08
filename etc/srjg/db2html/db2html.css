@@ -1,0 +1,89 @@
+body {
+	font-family: Arial;
+	font-size: 16pt;
+	color: #FFFFFF;
+	
+	background: none;
+	background-color: #000000;
+	background-image: url(images/db2html.jpg);
+	background-repeat: repeat;
+	background-attachment: fixed;
+}
+
+.title {
+  font-size : 18pt;
+  color: #FF0000;
+  font-weight: bold;
+  text-align: center;
+}
+
+.title2 {
+  font-size : 12pt;
+  color: #FFFFFF;
+  font-weight: bold;
+
+ }
+
+td {
+	font-family: Arial;
+	font-size: 10pt;
+	text-align: center;	
+	color: #FFFFFF;
+}
+
+img {
+	border: 0;
+}
+
+a {
+	color: #FFFFFF;	
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:hover img#thumbimage {
+	text-decoration: none;
+}
+
+.navigation {
+  text-align: center;
+  display: inline;
+	color: #FFFFFF;	
+	font-size: 14pt;
+	font-weight : bold;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.navigationline {
+  padding: 1px 0px;
+}
+
+.navlink {
+  text-align: center;
+  display: inline;
+	color: #FFFFFF;	
+	font-size: 14pt;
+	font-weight : bold;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.navlink#current {
+  border: solid 1px;
+}
+
+.navlink a {
+	text-decoration: none;
+	color: #FFFFFF;	
+	font-size: 16pt;
+	font-weight : bold;
+}
+
+.navlink a:hover {
+	color: #FDDB2B;
+	text-decoration: underline;
+}

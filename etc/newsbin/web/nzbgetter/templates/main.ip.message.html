@@ -1,0 +1,15 @@
+<blockquote id="ip_message" class="blockquote_red">
+<h3>How to restrict access?</h3>
+<br />
+<p>
+Since NZBGetter v1.1 it is possible to restrict access to the webinterface based on IP address.<br /><br />
+<i>How does it work?</i></><br /><br />
+There are no restrictions by default. If you want to restrict access, you need to create a file named <b>ip.txt</b> in the scripts <b>conf/</b> directory.<br /><br />
+Just put all the IP addresses you want to allow access on a single line separated by a comma. You can write the complete IP adresse, but you can also use wildcards like 192.168.*<br /><br />
+For example a line could look like this:<br /><br />
+<b>122.121.120.119,80.100.90.*,124.*</b><br /><br />
+FYI, your current IP address is: <font color="red"><b>%%-CURRENTIP-%%</b></font>
+<br /><br />
+<button id="btn_ip_message">Don't show this message again</button>
+</p>
+</blockquote>

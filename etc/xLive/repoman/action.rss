@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Action</title>
+
+<item>
+
+      <title>Ticking Clock</title>
+      <link>http://www.movshare.net/stream/w00/5dd2cf4f4e267955a78305404b915ce7/4d03ee85/4efp0n37k039a.avi</link>
+      <media:thumbnail url="http://www.movie2k.to/thumbs/cover-326697-Ticking-Clock-movie2k-film.jpg" />
+	  <enclosure type="video/x-msvideo" url="http://www.movshare.net/stream/w00/5dd2cf4f4e267955a78305404b915ce7/4d03ee85/4efp0n37k039a.avi"/>
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+ 
+ 
+<item>
+
+      <title>Born To Raise Hell</title>
+      <link>http://www.movshare.net/stream/w03/3bb895453de077dd59ce137dd28d31f6/4d03f017/9lkc70dqncs13.avi</link>
+      <media:thumbnail url="http://www.movie2k.to/thumbs/cover-243666-Born-to-Raise-Hell-movie2k-film.jpg" />
+	  <enclosure type="video/x-msvideo" url="http://www.movshare.net/stream/w03/3bb895453de077dd59ce137dd28d31f6/4d03f017/9lkc70dqncs13.avi"/>
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+</channel>
+</rss>
+
+

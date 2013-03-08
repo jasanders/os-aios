@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+   <mediaDisplay name=photoFocusView 
+	focusItem="3"
+	imageFocus=null 
+	imageParentFocus=null 
+	backgroundColor="0:0:0"
+	rowCount="1"
+	columnCount="5"
+	drawItemText="no"
+	fontSize="15"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="0:0:0"
+	itemOffsetXPC="0"
+	itemOffsetYPC="60"
+	itemWidthPC="15.5"
+	itemHeightPC="15.5"
+	itemBackgroundWidthPC="16.5"
+	itemBackgroundHeightPC="16.5"
+	itemGapXPC="1.5"
+	focusItemOffsetYPC="52"
+	focusItemWidthPC="30.43"
+	focusItemHeightPC="30.43"
+	focusItemBackgroundWidthPC="31.5"
+	focusItemBackgroundHeightPC="31.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="85"
+	itemBorderColor="0:0:0"
+	showHeader="yes"
+	headerXPC="5"
+	showDefaultInfo="yes"
+	headerYPC="10"
+  idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> http://repoman.21stxtreme.com/image/loading/loading1.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading2.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading3.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading4.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading5.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading6.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading7.png </idleImage>
+	<idleImage> http://repoman.21stxtreme.com/image/loading/loading7.png </idleImage>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>http://repoman.21stxtreme.com/image/dodge.jpg</image>
+</backgroundDisplay>
+		</mediaDisplay>
+ 			
+  
+<channel>
+<title>Australia Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>Australia Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>http://repoman.21stxtreme.com/country/austalia/p-nsw.rss</link>
+	     <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/austrsml.gif" />
+		 	
+        	
+  </item>
+
+
+<item>
+
+      <title>Austria Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>http://repoman.21stxtreme.com/country/Austria/p-aus.rss</link>
+	        <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/atsmall.gif" />
+				
+    
+  </item>
+  
+    
+<item>
+
+      <title>Canadian Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>http://repoman.21stxtreme.com/country/canada/police.rss</link>
+	     <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/casmall.gif" />
+		 	
+
+  </item>
+  
+   
+<item>
+
+      <title>Chile Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>http://repoman.21stxtreme.com/country/chile/p-ch.rss</link>
+	     <media:thumbnail url="http://wwp.greenwichmeantime.com/time-zone/south-america/chile/images/flag-of-chile.jpg" />
+		 	
+
+  </item>
+  
+<item>
+
+      <title>Germany Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>http://repoman.21stxtreme.com/country/Germany/p-germ.rss</link>
+	        <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/desmall.gif" />
+				
+	
+  </item>
+   
+<item>
+
+      <title>Italy Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>http://repoman.21stxtreme.com/country/Italy/p-ital.rss</link>
+	        <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/itsmall.gif" />
+				
+
+  </item>
+  
+<item>
+
+      <title>Ireland Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>http://repoman.21stxtreme.com/country/Ireland/p-ire.rss</link>
+	        <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/iesmall.gif" />
+				
+
+  </item>
+  
+  
+<item>
+
+   <title>United Kingdom Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>http://repoman.21stxtreme.com/country/United Kingdom/police.rss</link>
+	        <media:thumbnail url="http://www.worldatlas.com/webimage/flags/countrys/zzzflags/uksmall.gif" />
+				
+	
+  </item>
+   
+<item>
+
+    
+      <title>USA Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>http://repoman.21stxtreme.com/country/USA/maine.rss</link>
+	     <media:thumbnail url="http://www.worldatlas.com/webimage/flags/usflagc.gif" />
+		
+  </item>
+  
+ 
+</channel>
+</rss>

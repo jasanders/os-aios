@@ -1,0 +1,473 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_i.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Ibiai</title>
+<cur>BRXX0386</cur>
+<for>Ibiai</for>
+</item>
+
+<item>
+<title>Ibitinga</title>
+<cur>BRXX0565</cur>
+<for>Ibitinga</for>
+</item>
+
+<item>
+<title>Ibiuna</title>
+<cur>BRXX0387</cur>
+<for>Ibiuna</for>
+</item>
+
+<item>
+<title>Icoraci</title>
+<cur>BRXX0731</cur>
+<for>Icoraci</for>
+</item>
+
+<item>
+<title>Iepe</title>
+<cur>BRXX0388</cur>
+<for>Iepe</for>
+</item>
+
+<item>
+<title>Igarape-Acu</title>
+<cur>BRXX0709</cur>
+<for>Igarape-Acu</for>
+</item>
+
+<item>
+<title>Iguape</title>
+<cur>BRXX0109</cur>
+<for>Iguape</for>
+</item>
+
+<item>
+<title>Ijui</title>
+<cur>BRXX3890</cur>
+<for>Ijui</for>
+</item>
+
+<item>
+<title>Ilha Grande</title>
+<cur>BRXX3891</cur>
+<for>Ilha Grande</for>
+</item>
+
+<item>
+<title>Ilhabela</title>
+<cur>BRXX0282</cur>
+<for>Ilhabela</for>
+</item>
+
+<item>
+<title>Ilheus</title>
+<cur>BRXX0283</cur>
+<for>Ilheus</for>
+</item>
+
+<item>
+<title>Ilheus Aeroporto</title>
+<cur>BRXX0323</cur>
+<for>Ilheus Aeroporto</for>
+</item>
+
+<item>
+<title>Imperatriz</title>
+<cur>BRXX0340</cur>
+<for>Imperatriz</for>
+</item>
+
+<item>
+<title>Imperatriz</title>
+<cur>BRXX0566</cur>
+<for>Imperatriz</for>
+</item>
+
+<item>
+<title>Indaial</title>
+<cur>BRXX0110</cur>
+<for>Indaial</for>
+</item>
+
+<item>
+<title>Indaiatuba</title>
+<cur>BRXX0567</cur>
+<for>Indaiatuba</for>
+</item>
+
+<item>
+<title>Inhapim</title>
+<cur>BRXX0568</cur>
+<for>Inhapim</for>
+</item>
+
+<item>
+<title>Inhumas</title>
+<cur>BRXX0111</cur>
+<for>Inhumas</for>
+</item>
+
+<item>
+<title>Ipameri</title>
+<cur>BRXX0569</cur>
+<for>Ipameri</for>
+</item>
+
+<item>
+<title>Iparana</title>
+<cur>BRXX3892</cur>
+<for>Iparana</for>
+</item>
+
+<item>
+<title>Ipatinga</title>
+<cur>BRXX0112</cur>
+<for>Ipatinga</for>
+</item>
+
+<item>
+<title>Ipero</title>
+<cur>BRXX0389</cur>
+<for>Ipero</for>
+</item>
+
+<item>
+<title>Ipiiba</title>
+<cur>BRXX0390</cur>
+<for>Ipiiba</for>
+</item>
+
+<item>
+<title>Irai</title>
+<cur>BRXX0391</cur>
+<for>Irai</for>
+</item>
+
+<item>
+<title>Irati</title>
+<cur>BRXX0113</cur>
+<for>Irati</for>
+</item>
+
+<item>
+<title>Irece</title>
+<cur>BRXX0392</cur>
+<for>Irece</for>
+</item>
+
+<item>
+<title>Itabaiana</title>
+<cur>BRXX0284</cur>
+<for>Itabaiana</for>
+</item>
+
+<item>
+<title>Itabaianinha</title>
+<cur>BRXX0570</cur>
+<for>Itabaianinha</for>
+</item>
+
+<item>
+<title>Itaberaba</title>
+<cur>BRXX0114</cur>
+<for>Itaberaba</for>
+</item>
+
+<item>
+<title>Itabira</title>
+<cur>BRXX0571</cur>
+<for>Itabira</for>
+</item>
+
+<item>
+<title>Itaborai</title>
+<cur>BRXX0393</cur>
+<for>Itaborai</for>
+</item>
+
+<item>
+<title>Itabuna</title>
+<cur>BRXX0285</cur>
+<for>Itabuna</for>
+</item>
+
+<item>
+<title>Itacoatiara</title>
+<cur>BRXX0572</cur>
+<for>Itacoatiara</for>
+</item>
+
+<item>
+<title>Itaguacu</title>
+<cur>BRXX0710</cur>
+<for>Itaguacu</for>
+</item>
+
+<item>
+<title>Itaguai</title>
+<cur>BRXX0394</cur>
+<for>Itaguai</for>
+</item>
+
+<item>
+<title>Itai</title>
+<cur>BRXX0395</cur>
+<for>Itai</for>
+</item>
+
+<item>
+<title>Itaimbezinho</title>
+<cur>BRXX3893</cur>
+<for>Itaimbezinho</for>
+</item>
+
+<item>
+<title>Itaituba</title>
+<cur>BRXX0573</cur>
+<for>Itaituba</for>
+</item>
+
+<item>
+<title>Itajai</title>
+<cur>BRXX0115</cur>
+<for>Itajai</for>
+</item>
+
+<item>
+<title>Itamarandiba</title>
+<cur>BRXX0574</cur>
+<for>Itamarandiba</for>
+</item>
+
+<item>
+<title>Itanhaem</title>
+<cur>BRXX0286</cur>
+<for>Itanhaem</for>
+</item>
+
+<item>
+<title>Itaobim</title>
+<cur>BRXX2151</cur>
+<for>Itaobim</for>
+</item>
+
+<item>
+<title>Itaparica</title>
+<cur>BRXX0733</cur>
+<for>Itaparica</for>
+</item>
+
+<item>
+<title>Itapecerica da Serra</title>
+<cur>BRXX0576</cur>
+<for>Itapecerica da Serra</for>
+</item>
+
+<item>
+<title>Itaperuna</title>
+<cur>BRXX0116</cur>
+<for>Itaperuna</for>
+</item>
+
+<item>
+<title>Itapetininga</title>
+<cur>BRXX0287</cur>
+<for>Itapetininga</for>
+</item>
+
+<item>
+<title>Itapeva</title>
+<cur>BRXX0117</cur>
+<for>Itapeva</for>
+</item>
+
+<item>
+<title>Itapiranga</title>
+<cur>BRXX0577</cur>
+<for>Itapiranga</for>
+</item>
+
+<item>
+<title>Itapolis</title>
+<cur>BRXX0396</cur>
+<for>Itapolis</for>
+</item>
+
+<item>
+<title>Itaquari</title>
+<cur>BRXX0118</cur>
+<for>Itaquari</for>
+</item>
+
+<item>
+<title>Itaqui</title>
+<cur>BRXX0119</cur>
+<for>Itaqui</for>
+</item>
+
+<item>
+<title>Itatiaia</title>
+<cur>BRXX0578</cur>
+<for>Itatiaia</for>
+</item>
+
+<item>
+<title>Itatiaia</title>
+<cur>BRXX3894</cur>
+<for>Itatiaia</for>
+</item>
+
+<item>
+<title>Itatiba</title>
+<cur>BRXX0579</cur>
+<for>Itatiba</for>
+</item>
+
+<item>
+<title>Itauna</title>
+<cur>BRXX0120</cur>
+<for>Itauna</for>
+</item>
+
+<item>
+<title>Itu</title>
+<cur>BRXX0121</cur>
+<for>Itu</for>
+</item>
+
+<item>
+<title>Ituiutaba</title>
+<cur>BRXX0122</cur>
+<for>Ituiutaba</for>
+</item>
+
+<item>
+<title>Itupeva</title>
+<cur>BRXX0580</cur>
+<for>Itupeva</for>
+</item>
+
+<item>
+<title>Ituverava</title>
+<cur>BRXX0581</cur>
+<for>Ituverava</for>
+</item>
+
+<item>
+<title>Iuna</title>
+<cur>BRXX0728</cur>
+<for>Iuna</for>
+</item>
+
+<item>
+<title>Ivai</title>
+<cur>BRXX0397</cur>
+<for>Ivai</for>
+</item>
+
+<item>
+<title>Ivinhema</title>
+<cur>BRXX0711</cur>
+<for>Ivinhema</for>
+</item>
+</channel></rss>

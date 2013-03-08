@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  
+<channel>
+<title>Game Show Network</title>
+
+<item>
+<title>Press Your Luck (1983)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F15BC1954DDA0563C,Press+Your+Luck+%281983%29</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/XED3Px55QiY/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Press Your Luck (1984 Pre-Larson)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F019D5DBC7F85FFD1,Press+Your+Luck+%281984+Pre-Larson%29</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/SxmZubYrSL8/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Press Your Luck (1984 Post-Larson)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F636BA9259A7375F4,Press+Your+Luck+%281984+Post-Larson%29</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FgdKe9_nV88/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Press Your Luck (1985 Pre-Change)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FC8116A7518115AB2,Press+Your+Luck+%281985+Pre-Change%29</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/pE7ASxJwNXo/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Press Your Luck (1985 New Slides)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FA6C2412CCF4F5617,Press+Your+Luck+%281985+New+Slides%29</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/8ekaqMxig90/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Press Your Luck (1986)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F4F75CA4CCFE77D9A,Press+Your+Luck+%281986%29</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/rijXlZRkicE/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Hollywood Squares (Bergeron)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F419CEEC6CE754F6E,Hollywood+Squares+%28Bergeron%29</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/r9YjpBZXEeI/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>To Tell The Truth</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FDA651EE6E2AD3838,To+Tell+The+Truth</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/VTLhDx-QZ4U/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Card Sharks (Jim Perry)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F65295E0A1F7E61EE,Card+Sharks+%28Jim+Perry%29</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/vV9-UtKUerc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Card Sharks (Bob Eubanks)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FF5D7F9B669BC4892,Card+Sharks+%28Bob+Eubanks%29</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/-eI6KVjuktU/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>3's a Crowd</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F27719B71702F8E60,3%27s+a+Crowd</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/beEnxTZJwvU/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>3's a Crowd</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F27719B71702F8E60,3%27s+a+Crowd</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/beEnxTZJwvU/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Russian Roulette</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FDBC0B180CFB16F4A,Russian+Roulette</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/EKx7hRoA__E/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>The Joker's Wild</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F784E04724AD36639,The+Joker%27s+Wild</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/hVgEPJmXxdA/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Tattletales</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FF87A55963C34CB07,Tattletales</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/_IpIuXTOE8c/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>As Seen On</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F98F898F7684221B0,As+Seen+On</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/VxboOfLlylc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>The Newlyweds</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Fthewhammy83%2Fuploads%3Forderby%3Dupdated%26vq%3Dnewlywed,The+Newlyweds</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/newlywed.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

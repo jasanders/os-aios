@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Live Air Traffic - From Their Headsets to you</title>
+
+<item>
+
+      <title>Canada</title>
+      <link>/usr/local/etc/xLive/repoman/air/can/can.rss</link>
+	  <media:thumbnail url="/usr/local/etc/xLive/repoman/image/a-t.jpg" />
+	     
+  </item>
+  
+  
+    
+ 
+</channel>
+</rss>

@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Movie Time</title>
+
+<item>
+<title>Horror</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F55FBE761FC805E53,Horror</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/9lzSSuMwq9k/default.jpg"/>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Documentaries</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F2284E4E3A1B0CC04,Documentaries</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/N6sqg85OMfs/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>World War II</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FAE69F912ACB48563,World+War+II</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/WixCu061ZEM/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Charkie Chaplin</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD1195C36ED47A16D,Charkie+Chaplin</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/6GjgoYFw4Gw/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Westerns</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F43CC7935F6CCF388,Westerns</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/wFeoZRwYc9Q/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Crime/Film Noir</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FDD51E6AE061B5E40,Crime%2FFilm+Noir</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/VNR_bW35NW4/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Sci-Fi</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F2BA2825CD40DC7DE,Sci-Fi</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LzPLmgcPrws/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Comedy</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F1472E59380311965,Comedy</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/UL8_A_w519w/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Mystery</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FF9137482C49CD304,Mystery</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/GSP4ci5g_6w/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Romance</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F51EBB42E128E7020,Romance</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/kQtfEIQpXyQ/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Drama</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F8D23DEA20D11ADCC,Drama</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/0IjSQKjm9Ts/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Adventure</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F51A4934F597A1552,Adventure</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/OyoDLy_VNT8/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Musicals</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FB53A852C0B5C6521,Musicals</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/eNe4weF-qgE/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

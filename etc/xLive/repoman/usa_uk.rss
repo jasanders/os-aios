@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>USA/UK TV Streaming</title>
+
+<item>
+
+      <title>UK TV</title>
+      <link>uktv.rss</link>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/ukflag.png" />
+	  	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+<item>
+
+      <title>USA TV</title>
+      <link>http://www.metafeeds.com/channel/usa_tv/rss</link>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/usa.png" />
+	  	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+
+
+<item>
+
+<title>One HD</title>
+ <link>http://127.0.0.1/media/sda1/scripts/xLive/repoman/php/rtmp_live.cgi?rtmp://93.114.43.3:1935/live/rock</link>
+  
+  <media:thumbnail url="http://farm4.static.flickr.com/3126/2880759336_d615bdbb56.jpg" />
+<enclosure type="video/mp4" url="http://127.0.0.1/media/sda1/scripts/xLive/repoman/php/rtmp_live.cgi?rtmp://93.114.43.3:1935/live/rock"/>
+      <media:thumbnail url="http://farm4.static.flickr.com/3126/2880759336_d615bdbb56.jpg" />
+	  	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+
+<item>
+
+<title>France TV</title>
+      <link>http://www.metafeeds.com/channel/frence-tv/rss</link>
+      <media:thumbnail url="http://www.skyscanner.net/news/france.flag.JPG" />
+	  	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+<item>
+
+<title>France TV</title>
+      <link>Music_streams.xml</link>
+      <media:thumbnail url="http://www.skyscanner.net/news/france.flag.JPG" />
+	  	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+</channel>
+</rss>

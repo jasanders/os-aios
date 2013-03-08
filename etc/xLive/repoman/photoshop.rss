@@ -1,0 +1,335 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Adobe Photoshop</title>
+
+<item>
+
+      <title>Photoshop Killer Tips</title>
+      <link>http://kelbytv.com/photoshopkillertips/podcast/</link>
+      <media:thumbnail url="http://www.kelbytv.com/wp-content/themes/kelbytv_show/images/photoshopkillertips_podcast_144.jpg" />
+	 <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Understanding Adobe Photoshop</title>
+      <link>http://understandingadobephotoshop.blip.tv/rss/itunes</link>
+      <media:thumbnail url="http://a.images.blip.tv/RhedPixel-picture470.jpg" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+   
+<item>
+
+      <title>2 Minute Photoshop Tricks</title>
+      <link>http://feeds.feedburner.com/2MinutePhotoshopTricks</link>
+     <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+   
+<item>
+
+      <title>Photoshop User TV</title>
+      <link>http://kelbytv.com/photoshopusertv/podcast/
+</link>
+      <media:thumbnail url="http://www.kelbytv.com/wp-content/themes/kelbytv_show/images/photoshopusertv_podcast_144.jpg" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+   
+   
+<item>
+
+      <title>Lightroom Killer Tips</title>
+      <link>http://kelbytv.com/lightroomkillertips/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_lightroomkillertips.gif" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Layers TV</title>
+      <link>http://layerstv.blip.tv/rss/itunes/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_layerstv.gif" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Adobe Photoshop Quicktips</title>
+      <link>http://feeds.feedburner.com/PhotoshopquickTips</link>
+      <media:thumbnail url="http://asset-server.libsyn.com/show/k-3323b25e357b1118/height/144/width/144" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Adobe Photoshop Elements Killer Tips</title>
+      <link>http://feeds.feedburner.com/adobephotoshopelementskillertips</link>
+      <media:thumbnail url="http://neptune.podbean.com/image-logo/0/17700_logo.jpg" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+  
+  
+<item>
+
+      <title>Adobe ® Photoshop® Lightroom</title>
+      <link>http://rss.adobe.com/www/special/light_room.rss</link>
+      <media:thumbnail url="http://1.bp.blogspot.com/_xO-JHA-1hiY/SJRTKligrPI/AAAAAAAAAoY/CT0oT-MW3bk/s1600-h/Adobe+Lightroom20.jpg" />
+	<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+  </item>
+
+
+   
+
+
+</channel>
+</rss>

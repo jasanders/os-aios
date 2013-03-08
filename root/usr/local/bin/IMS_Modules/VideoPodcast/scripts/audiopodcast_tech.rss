@@ -1,0 +1,388 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<bookmark> main_menu </bookmark>
+ <script>
+ focusiconArray = getItemInfoArray("focusIcon");
+ unfocusiconArray = getItemInfoArray("unfocusIcon");
+ urlArray = getItemInfoArray("url");
+ setFocusItemIndex(0);
+ bRight = 0;
+ bLeft = 0;
+ bLastPage = 0; 
+ </script>
+
+<mediaDisplay name=photoView
+	
+	showHeader=no
+	showDefaultInfo=no
+	rowCount=2
+	columnCount=5
+	
+	topArea.heightPC=0
+	topArea.yPC=100
+
+    imageFocus=null
+    backgroundColor="28:35:51" 
+    sideColorTop="28:35:51" 
+    sideColorBottom="28:35:51" 
+    imageBorderColor="83:202:245" 
+    imageBorderPC="1.25" 
+    centerColor="28:35:51" 
+      
+    centerWidthPC=100
+
+	itemWidthPC = "13.28"
+	itemHeightPC = "23"
+
+	itemImageXPC = "7.8"
+	itemImageYPC = "16"
+	itemImageWidthPC = "13.28"
+	itemImageHeightPC = "26"
+  
+	itemOffsetXPC=13
+	itemOffsetYPC=30
+	itemGapXPC=2
+	itemGapYPC=2
+		
+	DoAnimation = "no"
+	AnimationType = 1
+	AnimationStep = 26
+	AnimationDelay = 1
+	BackgroundDark = "no"
+	
+	idleImageXPC=83.12
+	idleImageYPC=89.58
+	idleImageWidthPC=3.1
+	idleImageHeightPC=5.5
+  >
+
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage> 
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+
+
+<backgroundDisplay name=podcast_p2_bg>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			./IMS_Modules/VideoPodcast/image/podcast_p2_bg.fsp
+				  </image>
+</backgroundDisplay>
+
+
+<image offsetXPC="14.5" offsetYPC="24.4" widthPC="13.91" heightPC="1.39">
+   ./IMS_Modules/VideoPodcast/image/p2_tech_focus.png
+</image>
+
+<text offsetXPC="14" offsetYPC="20" widthPC="15" heightPC="6" fontSize="11" align=center>
+   $[TECHNOLOGY]
+</text>
+
+<image offsetXPC="8" offsetYPC="50" widthPC="3" heightPC="7" useBackgroundSurface="yes" redraw="yes">
+ <script>
+  pic = null;
+  focusIndex = getFocusItemIndex();
+  /*
+  print("focusIndex:", focusIndex);
+  print("bLeft:", bLeft);
+   */
+  
+  if (itemCount &gt; 10)
+  {
+	  if (bLeft == 1)
+	  {
+	  	if (focusIndex &lt; 4)
+	  	{
+	  		bLeft = 0;
+	  		pic = null;
+	  	}
+	  	else
+	  	{
+	  		bLeft = 1;
+	   		pic = "./IMS_Modules/VideoPodcast/image/left.png";
+	  	}  	
+	  }
+	  else if (bLeft == 0)
+	  {
+	  	if (focusIndex &gt; 7)
+	  	{
+	  		bLeft = 1;
+	   		pic = "./IMS_Modules/VideoPodcast/image/left.png";
+	  	}
+	  	else
+		{
+		  	bLeft = 0;
+		  	pic = null;
+		}
+	  }
+   }
+   pic;
+ </script>
+</image>
+<image offsetXPC="92" offsetYPC="50" widthPC="3" heightPC="7" useBackgroundSurface="yes" redraw="yes">
+ <script>
+  pic = null;
+  focusIndex = getFocusItemIndex();
+  itemCount = getPageInfo("itemCount");
+  bOdd = (itemCount%2);
+  iRightLimit = itemCount - 4;
+  iRightLimit = Add(iRightLimit, bOdd);
+  iExitLastPageLeftLimit = itemCount - 8;
+  iExitLastPageLeftLimit = Add(iExitLastPageLeftLimit, bOdd);
+  /*
+  print("bOdd: ", bOdd);
+  print("focusidx: ", focusIndex);
+  print("itemCount: ", itemCount);
+  print("iRightLimit: ", iRightLimit);
+  print("bLastPage:", bLastPage); 
+  print("iExitLastPageLeftLimit:", iExitLastPageLeftLimit); 
+  */
+  
+  if (itemCount &gt; 10)
+  {
+	 if (bLastPage == 0)
+	 {
+	  if (focusIndex &lt; iRightLimit)
+	  {    
+	   	bRight = 1;   	
+		pic = "./IMS_Modules/VideoPodcast/image/right.png";
+	  }
+	  else
+	  {
+	  	bRight = 0;
+	  	bLastPage = 1;
+	  	pic = null;
+	  }
+	 }
+	 else if (bLastPage == 1)
+	 {
+	 	if (focusIndex &lt; iExitLastPageLeftLimit)
+	 	{
+		 	bRight = 1;   	
+		 	bLastPage = 0;
+			pic = "./IMS_Modules/VideoPodcast/image/right.png";
+	 	}
+	 	else
+	 	{
+	 		pic = null;
+	 		bRight = 0;
+	 	}
+	 }
+   }
+  
+   pic;
+ </script>
+</image>
+
+<itemDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=90>
+	<script>
+		state = getDrawingItemState();
+		if (state == "focus")
+			getStringArrayAt(unfocusiconArray, -1);
+		else
+			getStringArrayAt(unfocusiconArray, -1);
+	</script>
+</image>
+
+</itemDisplay>
+
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+focusIndex = getFocusItemIndex();
+if (input == "edit")
+{
+	print("ignore edit key");
+	ret = "true";
+}
+ret;
+</onUserInput>
+<text offsetXPC="15" offsetYPC="83" widthPC="73" heightPC="4" fontSize="11" foregroundColor=1:137:252 useBackgroundSurface="yes" redraw="yes" lines="1" align=center>
+ <script>
+  getItemInfo("title");
+ </script>
+</text>
+
+<!--
+<text offsetXPC="70" offsetYPC="16" widthPC="73" heightPC="6" fontSize="14" useBackgroundSurface="yes" redraw="yes" lines="1">
+ <script>
+  focusIndex = getFocusItemIndex();
+  focusIndex = Add(focusIndex, 1);
+  totalItemCount = getPageInfo("itemCount");
+  outText = focusIndex + " / " + totalItemCount;
+  outText;
+ </script>
+</text>
+-->
+
+</mediaDisplay>
+
+  <item_template>
+	<link>http://dmp.realtek.com/VideoPodcast2/scripts/podcast_listpage.rss</link>
+	<onClick>
+	showIdle();
+	url = getStringArrayAt(urlArray , -1);
+	setEnv("myURL", url);
+	thum = getStringArrayAt(unfocusiconArray, -1);
+	setEnv("myThumnail", thum);
+	</onClick>
+  </item_template>
+
+<channel>
+	<title>Tech</title>
+	<link>http://dmp.realtek.com/VideoPodcast2/scripts/world.rss</link>
+        <media:thumbnail url="image/rss1.png"  />
+	<menu>Video Podcast Tech</menu>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/3954.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/3954.jpg</unfocusIcon>
+<title>Chaosradio Express</title>
+<url>http://chaosradio.ccc.de/chaosradio_express-latest.rss</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12356.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12356.jpg</unfocusIcon>
+<title>mintCast</title>
+<url>http://www.mintcast.org/feed/podcast/</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/5285.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/5285.jpg</unfocusIcon>
+<title>Security Now!</title>
+<url>http://leoville.tv/podcasts/sn.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12417.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12417.jpg</unfocusIcon>
+<title>FLOSS Weekly</title>
+<url>http://leoville.tv/podcasts/floss.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12099.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12099.jpg</unfocusIcon>
+<title>Linux Outlaws 176 - Special: Fallout New Vegas Review</title>
+<url>http://feeds.feedburner.com/linuxoutlaws?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/11203.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/11203.jpg</unfocusIcon>
+<title>PlaySounds</title>
+<url>http://feeds.feedburner.com/PlaySoundsPodcast?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12476.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12476.jpg</unfocusIcon>
+<title>Windows Weekly with Paul Thurrott</title>
+<url>http://www.twit.tv/node/4544/feed</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12898.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12898.jpg</unfocusIcon>
+<title>Windows Weekly with Paul Thurrott</title>
+<url>http://radiotux.de/podcast/rss/radiotux_at_horads.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/5884.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/5884.jpg</unfocusIcon>
+<title>This Week in Photography</title>
+<url>http://feeds.pixelcorps.com/feeds/twip.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/6161.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/6161.jpg</unfocusIcon>
+<title>tech5</title>
+<url>http://www.btpodshow.com/feeds/tech5.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12475.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12475.jpg</unfocusIcon>
+<title>MacBreak Weekly</title>
+<url>http://www.twit.tv/node/4445/feed</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/7132.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/7132.jpg</unfocusIcon>
+<title>TechStuff</title>
+<url>http://www.howstuffworks.com/podcasts/techstuff.rss</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/7609.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/7609.jpg</unfocusIcon>
+<title>Robots - The Podcast for News and Views on Robotics ? Podcast</title>
+<url>http://feeds.feedburner.com/robotspodcast?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/11124.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/11124.jpg</unfocusIcon>
+<title>NYT Tech Talk</title>
+<url>http://www.nytimes.com/services/xml/rss/nyt/podcasts/techtalk.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12885.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12885.jpg</unfocusIcon>
+<title>PC Pro podcast</title>
+<url>http://feeds.feedburner.com/pcpropodcast?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13719.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13719.jpg</unfocusIcon>
+<title>Android Central Podcast</title>
+<url>http://feeds.feedburner.com/AndroidCentralPodcast?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13740.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13740.jpg</unfocusIcon>
+<title>Tech News Today</title>
+<url>http://leoville.tv/podcasts/tnt.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13871.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13871.jpg</unfocusIcon>
+<title>Science Update Podcast - Daily Edition</title>
+<url>http://feeds.feedburner.com/ScienceUpdatePodcastDailyEdition?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13932.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/13932.jpg</unfocusIcon>
+<title>Oracle Magazine</title>
+<url>http://feeds.feedburner.com/OracleMagazine?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12336.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/tech_icons/12336.jpg</unfocusIcon>
+<title>The Skeptics' Guide to the Universe</title>
+<url>http://www.theskepticsguide.org/feed/rss.aspx?feed=SGU</url>
+</item>
+
+</channel>
+
+</rss>

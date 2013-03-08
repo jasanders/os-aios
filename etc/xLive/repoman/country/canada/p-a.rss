@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xlive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+   <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Australia Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>Australia Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>/usr/local/etc/xLive/category/p-nsw.rss</link>
+	        <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+<item>
+
+      <title>Australia Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>/usr/local/etc/xLive/category/p-aus.rss</link>
+	        <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+    
+<item>
+
+      <title>Canadian Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>/usr/local/etc/xLive/category/police.rss</link>
+	     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+     
+<item>
+
+      <title>Chile Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>/usr/local/etc/xLive/category/p-ch.rss</link>
+	     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+<item>
+
+      <title>Germany Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>/usr/local/etc/xLive/category/p-germ.rss</link>
+	        <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+<item>
+
+      <title>Ireland Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>/usr/local/etc/xLive/category/p-ire.rss</link>
+	        <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+<item>
+
+      <title>United Kingdom Police, Fire, EMS and Amateur Radio Feeds</title>
+       <link>/usr/local/etc/xLive/category/p-uk.rss</link>
+	        <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   
+  
+  </item>
+    
+      <title>USA Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>/usr/local/etc/xLive/category/maine.rss</link>
+	     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+ 
+</channel>
+</rss>

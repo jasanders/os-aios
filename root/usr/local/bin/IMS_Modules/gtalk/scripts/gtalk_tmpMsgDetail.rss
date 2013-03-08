@@ -1,0 +1,127 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<bookmark> Gtalk file lists </bookmark>
+
+
+<mediaDisplay
+showHeader=no
+name=onePartView
+forceFocusOnItem=yes
+itemBackgroundColor = 0:0:0
+ viewAreaXPC=30
+ viewAreaYPC=30
+ viewAreaWidthPC=40
+ viewAreaHeightPC=40
+ itemXPC=20
+
+  sideRightWidthPC= 0
+sideTopHeightPC= 0
+sideBottomHeightPC= 0
+sideLeftWidthPC = 0
+
+ itemWidthPC=75
+>
+  <showHeader>no</showHeader>
+  <showDefaultInfo>no</showDefaultInfo>
+
+  <backgroundColor>-1:-1:-1</backgroundColor>
+  <sideColorTop>0:0:0</sideColorTop>
+  <sideColorBottom>0:0:0</sideColorBottom>
+  <sideColorLeft>28:35:51</sideColorLeft>
+  <sideColorRight>0:0:0</sideColorRight>
+  <itemBackgroundColor>-1:-1:-1</itemBackgroundColor>
+  <focusBorderColor>28:35:51</focusBorderColor>
+  <unFocusBorderColor>28:35:51</unFocusBorderColor>
+
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "IMS_Modules/gtalk/image/Settings_ bg.fsp";
+			image;
+		</script>
+	</image>
+
+
+<text offsetXPC="0"  align=center offsetYPC="1.5" widthPC="100" heightPC="10" fontSize=18 >
+<script>
+"$[MSG_DETAIL]";
+	</script>
+</text>
+
+
+
+
+<text offsetXPC=10 offsetYPC=20 widthPC=80 heightPC=70 fontSize=15 align=center backgroundColor=-1:-1:-1 foregroundColor=200:200:200  lines=7 multiPage=yes>
+<script>
+msgDetail;
+</script>
+</text>
+
+<text offsetXPC="45" offsetYPC="90" widthPC="100" heightPC="10" fontSize=11 >
+<script>
+"($[UPDOWN_VIEW])";
+	</script>
+</text>
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("Catch input: ", userInput);
+if (userInput == "right")
+{
+	print("ignore right key");
+	"true";
+}
+else if(userInput == "enter")
+{
+	"true";
+}
+else 	
+	if(userInput == "down")
+		{
+			ret = gtalk_nextMultiPage();
+			print("down----------ret=",ret);
+			redrawDisplay();
+			"true";
+		}
+else 	
+	if(userInput == "up")
+		{
+			ret = gtalk_preMultiPage();
+			print("up----------ret=",ret);
+			redrawDisplay();
+			"true";
+		}
+else
+	"false";
+		
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+<script>
+
+path = getStoragePath("tmp") + "gtalk_tmpMsgDetail.dat";
+msgDetail = readStringFromFile(path);
+
+
+	redrawDisplay();
+</script>
+
+
+
+<channel>
+<title>file list</title>
+<link>./gtalk_filedetails.rss</link>
+<media:thumbnail url="./IMS_Modules/gtalk/image/file.fsp" width="120" height="90" />
+
+<itemSize>
+<script>
+0;
+</script>
+</itemSize>
+
+</channel>
+</rss>
+
+

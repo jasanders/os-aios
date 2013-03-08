@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Movie Time</title>
+
+<item>
+<title>Rescue From Gilligan's Island</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Fdrelbcom%2Fuploads%3Fvq%3Dgilligan,Rescue+From+Gilligan%27s+Island</link>
+<media:thumbnail url="http://a1.phobos.apple.com/us/r1000/030/Purple/09/89/d6/mzl.tiypjovp.175x175-75.jpg"/>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Movie Trailers</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Ftrailers%2Fuploads%3Forderby%3Dupdated,Movie+Trailers</link>
+<media:thumbnail url="http://www.soundonsight.org/wp-content/uploads/2010/12/Movie-Trailer-poster.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Western Movies (B&W - Color)</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FWesternsOnline%2Fuploads%3Forderby%3Dupdated,Western+Movies+%28B%26W+-+Color%29</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/wildbunch.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+      <title>Open Flix (Mostly B&W Movies)</title>
+      <link>/movies-openflix.rss</link>
+	  <media:thumbnail url="/usr/local/etc/xLive/repoman/image/flix.png" />
+	 <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+          <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	    </mediaDisplay>
+	     
+  </item>
+	   
+	  
+	 
+</channel>
+</rss>

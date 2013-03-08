@@ -1,0 +1,227 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_f.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Farroupilha</title>
+<cur>BRXX0088</cur>
+<for>Farroupilha</for>
+</item>
+
+<item>
+<title>Feijo</title>
+<cur>BRXX0378</cur>
+<for>Feijo</for>
+</item>
+
+<item>
+<title>Feira de Santana</title>
+<cur>BRXX0089</cur>
+<for>Feira de Santana</for>
+</item>
+
+<item>
+<title>Fernandopolis</title>
+<cur>BRXX0090</cur>
+<for>Fernandopolis</for>
+</item>
+
+<item>
+<title>Ferraz de Vasconcelos</title>
+<cur>BRXX0705</cur>
+<for>Ferraz de Vasconcelos</for>
+</item>
+
+<item>
+<title>Figueiropolis</title>
+<cur>BRXX0706</cur>
+<for>Figueiropolis</for>
+</item>
+
+<item>
+<title>Filadelfia</title>
+<cur>BRXX0379</cur>
+<for>Filadelfia</for>
+</item>
+
+<item>
+<title>Floresta da Tijuca</title>
+<cur>BRXX3887</cur>
+<for>Floresta da Tijuca</for>
+</item>
+
+<item>
+<title>Floriano</title>
+<cur>BRXX0556</cur>
+<for>Floriano</for>
+</item>
+
+<item>
+<title>Florianopolis</title>
+<cur>BRXX0091</cur>
+<for>Florianopolis</for>
+</item>
+
+<item>
+<title>Fonte Boa</title>
+<cur>BRXX0557</cur>
+<for>Fonte Boa</for>
+</item>
+
+<item>
+<title>Formosa</title>
+<cur>BRXX0092</cur>
+<for>Formosa</for>
+</item>
+
+<item>
+<title>Formoso</title>
+<cur>BRXX0558</cur>
+<for>Formoso</for>
+</item>
+
+<item>
+<title>Formoso do Araguaia</title>
+<cur>BRXX0707</cur>
+<for>Formoso do Araguaia</for>
+</item>
+
+<item>
+<title>Fortaleza</title>
+<cur>BRXX0093</cur>
+<for>Fortaleza</for>
+</item>
+
+<item>
+<title>Foz de Iguazu</title>
+<cur>BRXX3888</cur>
+<for>Foz de Iguazu</for>
+</item>
+
+<item>
+<title>Foz do Iguacu</title>
+<cur>BRXX0094</cur>
+<for>Foz do Iguacu</for>
+</item>
+
+<item>
+<title>Franca</title>
+<cur>BRXX0095</cur>
+<for>Franca</for>
+</item>
+
+<item>
+<title>Francisco Morato</title>
+<cur>BRXX0559</cur>
+<for>Francisco Morato</for>
+</item>
+
+<item>
+<title>Francisco Sa</title>
+<cur>BRXX0380</cur>
+<for>Francisco Sa</for>
+</item>
+
+<item>
+<title>Franco da Rocha</title>
+<cur>BRXX0560</cur>
+<for>Franco da Rocha</for>
+</item>
+</channel></rss>

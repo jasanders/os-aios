@@ -1,0 +1,247 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>通信網路類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>2314 台揚</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2314.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2314" />
+        </item>
+        <item>
+            <title>2321 東訊</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2321.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2321" />
+        </item>
+        <item>
+            <title>2332 友訊</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2332.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2332" />
+        </item>
+        <item>
+            <title>2345 智邦</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2345.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2345" />
+        </item>
+        <item>
+            <title>2391 合勤</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2391.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2391" />
+        </item>
+        <item>
+            <title>2402 毅嘉</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2402.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2402" />
+        </item>
+        <item>
+            <title>2412 中華電</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2412.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2412" />
+        </item>
+        <item>
+            <title>2419 仲琦</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2419.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2419" />
+        </item>
+        <item>
+            <title>2439 美律</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2439.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2439" />
+        </item>
+        <item>
+            <title>2444 友旺</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2444.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2444" />
+        </item>
+        <item>
+            <title>2450 神腦</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2450.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2450" />
+        </item>
+        <item>
+            <title>2455 全新</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2455.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2455" />
+        </item>
+        <item>
+            <title>2485 兆赫</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2485.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2485" />
+        </item>
+        <item>
+            <title>2494 廣業</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2494.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2494" />
+        </item>
+        <item>
+            <title>2496 卓越</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2496.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2496" />
+        </item>
+        <item>
+            <title>2498 宏達電</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2498.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2498" />
+        </item>
+        <item>
+            <title>3025 星通</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3025.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3025" />
+        </item>
+        <item>
+            <title>3027 盛達</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3027.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3027" />
+        </item>
+        <item>
+            <title>3045 台灣大</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3045.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3045" />
+        </item>
+        <item>
+            <title>3047 訊舟</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3047.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3047" />
+        </item>
+        <item>
+            <title>3062 建漢</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3062.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3062" />
+        </item>
+        <item>
+            <title>3311 閎暉</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3311.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3311" />
+        </item>
+        <item>
+            <title>3380 明泰</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3380.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3380" />
+        </item>
+        <item>
+            <title>3419 譁裕</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=3419.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/3419" />
+        </item>
+        <item>
+            <title>4904 遠傳</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=4904.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/4904" />
+        </item>
+        <item>
+            <title>4906 正文</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=4906.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/4906" />
+        </item>
+        <item>
+            <title>5388 中磊</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=5388.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/5388" />
+        </item>
+        <item>
+            <title>6112 聚碩</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6112.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6112" />
+        </item>
+        <item>
+            <title>6136 富爾特</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6136.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6136" />
+        </item>
+        <item>
+            <title>6142 友勁</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6142.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6142" />
+        </item>
+        <item>
+            <title>6216 居易</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6216.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6216" />
+        </item>
+        <item>
+            <title>6285 啟碁</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=6285.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/6285" />
+        </item>
+        <item>
+            <title>8078 華寶</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=8078.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/8078" />
+        </item>
+        <item>
+            <title>8101 華冠</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=8101.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/8101" />
+        </item>
+    </channel>
+</rss>
+                

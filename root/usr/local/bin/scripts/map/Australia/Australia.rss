@@ -1,0 +1,60 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>China</title>
+<link>./scripts/map/Australia/Australia.rss</link>
+<media:thumbnail url="image/weather.jpg" />
+<zoom>country</zoom>
+<Latitude>36.894451</Latitude>
+<Longitude>104.165649</Longitude>
+
+<item>
+<title>Australian Capital Territory</title>
+<link>rss_file://./scripts/map/Australia/AustralianCapitalTerritory.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>New South Wales</title>
+<link>rss_file://./scripts/map/Australia/NewSouthWales.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Northern Territory</title>
+<link>rss_file://./scripts/map/Australia/NorthernTerritory.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Queensland</title>
+<link>rss_file://./scripts/map/Australia/Queensland.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>South Australia</title>
+<link>rss_file://./scripts/map/Australia/SouthAustralia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Tasmania</title>
+<link>rss_file://./scripts/map/Australia/Tasmania.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Victoria</title>
+<link>rss_file://./scripts/map/Australia/Victoria.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+<item>
+<title>Western Australia</title>
+<link>rss_file://./scripts/map/Australia/WesternAustralia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+</item>
+
+</channel>
+</rss>

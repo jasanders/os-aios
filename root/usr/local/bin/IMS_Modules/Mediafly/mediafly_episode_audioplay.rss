@@ -1,0 +1,937 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+	print("Stop Audio>>>>>>>>>>>");
+	playItemURL(-1,1);
+
+	
+	path = getStoragePath("tmp");
+	path = path + "meidafly_audio.dat";
+	content = readStringFromFile(path);
+	print("play ",content);
+	episodeUrl = content;
+	
+	returnFromSeek = "no";
+	infoDisplay = "no";
+	infoDisplayTime = 0;
+
+	keyFilePath = getStoragePath("key") + "__mdfly_key.dat";
+	decryptionKeyArray = decFile(keyFilePath);
+   
+	sharedKey = getStringArrayAt(decryptionKeyArray,0);
+	app_id =getStringArrayAt(decryptionKeyArray,1);
+	  
+
+
+	storagePathMediaflyEpisode = getStoragePath("tmp");
+	storagePathMediaflyEpisode = storagePathMediaflyEpisode + "mediaflyEpisode.dat";
+	currentEpisodeSlug = readStringFromFile(storagePathMediaflyEpisode);
+	print("read episode slug", currentEpisodeSlug);
+
+
+	mediaTypeFilter = getEnv("mdflyfilter");
+	print("mediaTypeFilter:",mediaTypeFilter);
+	    
+
+	fileName= getStoragePath("tmp") + "mediaflyToken.dat";
+	tokenArray = readStringFromFile(fileName);
+	valtoken = getStringArrayAt(tokenArray, 0);
+	tokenId = getStringArrayAt(tokenArray, 1);
+	tokenTime = getStringArrayAt(tokenArray, 2);
+	print("tokenTime: ",tokenTime);
+
+
+
+    	storagePathMediaflyShowOrChannel = getStoragePath("tmp");
+	storagePathMediaflyShowOrChannel = storagePathMediaflyShowOrChannel +"mediaflyInWhich.dat";
+	episodeInWhich = readStringFromFile(storagePathMediaflyShowOrChannel);
+	print("episodeInWhich",episodeInWhich);
+
+
+	mediaflyStorageSource = getStoragePath("tmp");
+	mediaflyStorageSource = mediaflyStorageSource +"mediafly_source.dat";
+	source = readStringFromFile(mediaflyStorageSource);
+	
+	if (source=="Mediafly")
+	{
+		contentSourceSlug = "__mediafly__";
+		storagePathdefaultUserName = getStoragePath("key");
+	    	storagePathdefaultUserName = storagePathdefaultUserName + "mdfly_defaultusername.dat";
+	    	linkedUserName = readStringFromFile(storagePathdefaultUserName);
+	    	print("linkedUserName:",linkedUserName);
+	}
+	else
+	{
+		contentSourceSlug = source;
+		current_contentsource_file = getStoragePath("key")+"mdfly_tmpContentSource.dat";
+		infoArray = readStringFromFile(current_contentsource_file);
+		linkedUserName = getStringArrayAt(infoArray,3);
+		print("linkedUserName",linkedUserName);
+	}
+
+	audioPostAction = null;
+	audioPlayLength = null;
+	audioPlayPosition = null;
+
+	playMode = getEnv("playMode");
+	print("playMode=",playMode);
+
+
+	firstPlay = 1;
+
+
+	audioEpisodeInfo = getStoragePath("tmp");
+	audioEpisodeInfo = audioEpisodeInfo + "meidafly_audioEpisodeInfo.dat";
+	episodeInfo = readStringFromFile(audioEpisodeInfo);
+	audioTitle = getStringArrayAt(episodeInfo,0);
+	audioImageUrl = getStringArrayAt(episodeInfo,1);
+	
+	print("audioTitle>>>>>>:",audioTitle);
+	
+    
+</script>
+
+<onEnter>
+
+
+     startAudio = 1;
+     pauseAudio = -1;
+
+     if (playMode=="Play")
+     {
+     	if (firstPlay==1)
+     	{
+     		firstPlay = 0;
+     		print("First Play  in Play Mode>>>>>>>>>");
+     		setRefreshTime(1);
+     	}
+     	else if (firstPlay==0)
+     		{
+     			print("Return from Video Page in Play Mode>>>>>>");
+     			content = readStringFromFile(path);
+			print("play ",content);
+			episodeUrl = content;
+			currentEpisodeSlug = getEnv("RecentEpisodeSlug");
+			print(">>>>>>>>>>>>currentEpisodeSlug:",currentEpisodeSlug);
+			unsetEnv("RecentEpisodeSlug");
+			if (currentEpisodeSlug!=null)
+			{
+				episodeInfo = readStringFromFile(audioEpisodeInfo);
+				audioTitle = getStringArrayAt(episodeInfo,0);
+				audioImageUrl = getStringArrayAt(episodeInfo,1);
+				
+				timeToRun = null;
+				setRefreshTime(1);
+				playItemURL(-1,1);
+				cancelIdle();
+			}
+			else
+			{
+				postMessage("return");
+			}
+     		}
+     
+     }
+     else if (playMode=="Switch")
+     		{
+
+     			print("Jump From Video Page in Switch Mode>>>>>>>>>");
+     			currentEpisodeSlug = getEnv("RecentEpisodeSlug");
+			print(">>>>>>>>>>>>currentEpisodeSlug:",currentEpisodeSlug);
+			unsetEnv("RecentEpisodeSlug");
+			setRefreshTime(1);
+
+			episodeInfo = readStringFromFile(audioEpisodeInfo);
+			audioTitle = getStringArrayAt(episodeInfo,0);
+			audioImageUrl = getStringArrayAt(episodeInfo,1);
+
+			
+     			
+     		}
+
+</onEnter>
+
+<onExit>
+	if (playMode=="Play")
+	{
+		      playItemURL(-1, 1);
+     		      setRefreshTime(-1);
+	}
+
+</onExit>
+
+<onRefresh>
+		if (startAudio == 1)
+		{
+					        
+			print("start To Play Audio>>>>>>>>>>>>>");
+			playItemURL(content, 5, "mediaDisplay", "previewWindow");
+			playStopImage = "./IMS_Modules/Mediafly/image/stop.fsp";
+			setRefreshTime(1000);
+			print("content:",content);
+			startAudio = 0;
+			showIdle();
+		}
+		   else
+	      {
+		        trackAudioPlay += 1;
+		        audioProgress = getPlaybackStatus();
+		        
+		        print("PlaybackStatus=",audioProgress);
+		        
+		        playElapsed = getStringArrayAt(audioProgress, 0);
+		        
+		        playStatus = getStringArrayAt(audioProgress, 3);
+
+		        print("pauseAudio=",pauseAudio);	           	
+	        	
+	        	
+	        	
+		        if (playStatus == "2" &amp;&amp; playElapsed &gt;0)
+		        {
+					if (pauseAudio==-1)
+					{
+						timeToRun = secondToString(getStringArrayAt(audioProgress, 1));
+		           			pauseAudio= 0;
+		           			
+						audioPostAction = "play";
+						audioPlayPosition = 0;
+						audioPlayLength = getStringArrayAt(audioProgress, 1);
+						
+						print("PostAction:PlayPostion--",audioPlayPosition);
+						print("PostAction:PlayLength--",audioPlayLength);
+					        executeScript("AudioPostAction");
+					}
+		                  
+		                  	print("updatePlaybackProgress>>>>>>>>>>>>>>>>>");
+		                  	playStatusText = secondToString(playElapsed);
+				  	updatePlaybackProgress(audioProgress, "mediaDisplay", "infoDisplay","progressBar");
+	
+			          	cancelIdle();
+		        }
+		        else if (playStatus == "0")
+		        {
+			          playStopImage = "./IMS_Modules/Mediafly/image/play.fsp"; 
+			          print("Audio Stoped >>>>>>>>>>>>>>>>>>>>>>>>>");
+			         
+		          	  print("no audio is playing");
+			          if(trackAudioPlay > 4)
+			          {
+				         
+				            playStatusText = null;
+				            playStopImage = "./IMS_Modules/Mediafly/image/play.fsp";
+				           
+			          }
+
+				postMessage("return");
+		        }
+	          }
+	          
+
+		null;
+		
+</onRefresh>
+
+<mediaDisplay name=threePartsView 
+		showDefaultInfo="no"
+		autoSelectMenu="no"
+		autoSelectItem="no"
+		
+		forceFocusOnItem="yes"
+		selectMenuOnRight="no"
+		
+		itemPerPage = "5"
+
+    
+		imageFocus=" "
+   		imageParentFocus ="null"
+   		parentFocusFontColor="255:255:0"
+
+                
+		sideLeftWidthPC= "29.5"
+		sideRightWidthPC= "70.7"
+		sideTopHeightPC= "0"
+		sideBottomHeightPC= "0"
+		
+		backgroundColor="-1:-1:-1"
+		sideColorLeft="28:35:51"
+		sideColorRight="28:35:51"
+		
+		headerImageXPC = "11.1"
+		headerImageYPC = "8"
+		headerImageWidthPC = "11"
+		headerImageHightPC = "10"
+		
+		headerCapWidthPC = "0"
+		headerWidthPC = "0"
+
+		menuXPC = "72"
+     		menuYPC = "26.4"
+    		menuWidthPC = "31.72"
+	        menuHeightPC = "10.56"
+                menuPerPage = "5"
+
+   	        menuImageXPC = "8"
+                menuImageYPC = "25.7"
+                menuImageWidthPC ="0"
+                menuImageHeightPC="0"
+
+		
+
+   		fontSize="13"
+		
+		itemImageXPC = "11.09"
+		itemImageYPC = "30.42"
+		itemImageCapYPC = "3.5"
+		itemImageWidthPC = "9.61"
+		itemImageHeightPC = "17.08"
+		
+		itemXPC = "23.20"
+		itemYPC = "29"
+		itemWidthPC = "46.09"
+		itemHeightPC = "11"
+		
+		itemBackgroundColor="-1:-1:-1"
+		
+		popupXPC="8"
+		popupYPC="15"
+		popupWidthPC="22.3"
+		popupHeightPC="5.5"
+		popupFontSize="13"
+		popupBorderColor="28:35:51"
+		popupForegroundColor="255:255:255"
+		popupBackgroundColor="28:35:51"
+
+
+        	idleImageXPC="83.12"
+        	idleImageYPC="89.58"
+        	idleImageWidthPC="3.1"
+       		idleImageHeightPC="5.5"
+		
+		showHeader="no">
+
+    <idleImage> image/POPUP_LOADING_01.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_02.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_03.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_04.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_05.fsp </idleImage>
+    <idleImage> image/POPUP_LOADING_06.fsp </idleImage>
+    
+    	<backgroundDisplay  name=mediafly_episode_background>
+			<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100>
+				<script>
+					"./IMS_Modules/Mediafly/image/mediafly_bg_01-01.fsp";
+				</script>
+			</image>
+	</backgroundDisplay>
+
+			<image offsetXPC=6.8  offsetYPC= 2.64 widthPC=26.56 heightPC=15.69 redraw="no">
+			<script>
+				"./IMS_Modules/Mediafly/image/mediafly-logo-and-text-med.fsp";
+			</script>
+		</image>
+
+
+    <previewWindow windowColor="28:35:51" backgroundColor="28:35:51" foregroundColor="28:35:51"  offsetXPC="34" offsetYPC="-20" widthPC="57" heightPC="4" refill=no>
+    </previewWindow>
+
+    
+   <infoDisplay>
+          
+	      <progressBar backgroundColor="26:26:26" offsetXPC="0" offsetYPC="84.03" widthPC="100" heightPC="6.39">
+
+	        <text offsetXPC="79" offsetYPC="2" widthPC="20" heightPC="100" fontSize="11" backgroundColor="26:26:26" foregroundColor="153:153:153">
+	          <script>
+	            timeToRun;
+	          </script>
+	        </text>
+	        <bar offsetXPC="24.77" offsetYPC="37" widthPC="52.5" heightPC="23.91" barColor="77:77:77" progressColor="0:143:18"/>
+	        <text offsetXPC="13.91" offsetYPC="2" widthPC="8" heightPC="100" fontSize="11" backgroundColor="26:26:26" foregroundColor="153:153:153">
+	          <script>
+	            playStatusText;
+	          </script>
+	        </text>
+	        <image offsetXPC= "21.6"  offsetYPC= "25" widthPC="2.19" heightPC="47.82">
+	          <script>playStopImage;</script>
+	        </image>
+	      </progressBar>
+      
+    </infoDisplay>
+
+		<image offsetXPC=11.09  offsetYPC= 30.42 widthPC=9.61 heightPC=17.08 redraw="yes">
+			<script>
+				audioImageUrl;
+			</script>
+		</image>
+
+		  <text  redraw=yes offsetXPC="23.20" offsetYPC="35" widthPC="60" heightPC="5"  fontSize="20"  foregroundColor="102:102:102"  backgroundColor="-1:-1:-1" align="left">
+		      <script>
+
+				audioTitle;
+		        
+		      </script>
+    		</text>
+
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+print("Got input: ", input);
+seek = videoIsSeekable();
+print("Seek or not :",seek);
+if (input=="return")
+{
+	if (startAudio==0)
+	{
+		print("Audio Stop>>>>>>>>>>>>>");
+		playItemURL(-1,1);
+		if (linkedUserName!=null)
+		{
+			audioPostAction = "stop";
+			audioPlayPosition = getStringArrayAt(audioProgress,0);
+			audioPlayLength = getStringArrayAt(audioProgress,1);
+			print("PostAction:PlayPostion--",audioPlayPosition);
+			print("PostAction:PlayLength--",audioPlayLength);
+			executeScript("getToken");
+			executeScript("AudioPostAction");
+		}
+		
+	}
+	setEnv("playMode","Done");
+	ret = "false";
+}
+else if (input == "setup" || input == "guide")
+{
+	pauseAudio = 1;
+	ret = "false";
+}
+else if (input == "video_stop")
+{
+	print("Audio Stop>>>>>>>>>>>>>");
+	postMessage("return");
+	ret = "true";
+}
+else if(input == "video_completed")
+{
+	print("Audio Completed>>>>>>>>>>");
+
+	if (startAudio==0)
+	{
+		if (linkedUserName!=null)
+		{
+			audioPostAction = "end";
+			audioPlayPosition = getStringArrayAt(audioProgress,0);
+			audioPlayLength = getStringArrayAt(audioProgress,1);
+			print("PostAction:PlayPostion--",audioPlayPosition);
+			print("PostAction:PlayLength--",audioPlayLength);
+			executeScript("getToken");
+			executeScript("AudioPostAction");
+		}
+
+		if (episodeInWhich=="Channel")
+		{
+			executeScript("getToken");
+			executeScript("getNextEpisodeForChannel");
+		}
+		else if (episodeInWhich=="Show")
+		{	
+			executeScript("getToken");
+			executeScript("getNextEpisodeForShow");
+		}	
+		if (status=="ok")
+		{
+			content = playUrl;
+			currentEpisodeSlug = episodeSlug;
+			pauseAudio = -1;
+			executeScript("onChangePlayMode");
+			
+		}
+		else
+		{
+			playItemURL(-1,1);
+			startAudio = -1;
+			pauseAudio = -1;
+			postMessage("return");
+		}
+	}
+	ret = "true";
+}
+else if(input=="video_play"&amp;&amp;pauseAudio==1)
+	{
+		print("audio Resume>>>>>>>>");
+		pauseAudio = 0;
+		
+		ret = "false";
+	}
+else if (input=="video_play"&amp;&amp;pauseAudio==0)
+	{
+		print("audio Start to Pause>>>>>>>>");
+		pauseAudio = 1;
+		postMessage("video_pause");
+		ret = "true";
+	}
+else if (input=="video_pause")
+	{
+		print("aduio Pause>>>>>>>");
+		
+		pauseAudio = 1;
+		ret = "false";
+	}
+else if (input=="pageup"&amp;&amp;pauseAudio&gt;-1)
+{
+	if (episodeInWhich=="Channel")
+	{
+		executeScript("getToken");
+		executeScript("getPrevEpisodeForChannel");
+	}
+	else if (episodeInWhich=="Show")
+	{
+		executeScript("getToken");
+		executeScript("getPrevEpisodeForShow");
+	}
+	if (status=="ok")
+	{
+		content = playUrl;
+		episodeUrl = content;
+		currentEpisodeSlug = episodeSlug;
+		pauseAudio = -1;
+		executeScript("onChangePlayMode");
+		
+		
+	}
+	
+	
+}
+else if (input=="pagedown"&amp;&amp;pauseAudio&gt;-1)
+{
+
+	if (episodeInWhich=="Channel")
+	{
+		executeScript("getToken");
+		executeScript("getNextEpisodeForChannel");
+	}
+	else if (episodeInWhich=="Show")
+	{
+		executeScript("getToken");
+		executeScript("getNextEpisodeForShow");
+	}	
+		if (status=="ok")
+	{
+		content = playUrl;
+		episodeUrl = content;
+		currentEpisodeSlug = episodeSlug;
+		pauseAudio = -1;
+
+		executeScript("onChangePlayMode");
+		
+
+
+		
+		
+		
+	}
+	
+}
+
+
+ret;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<onChangePlayMode>
+	if (episodeMediaType=="Audio")
+	{
+		print("continue Play in the mode");
+		startAudio = 1;
+		timeToRun = null;
+		setRefreshTime(1);
+		playItemURL(-1,1);
+		cancelIdle();
+		
+	}
+	else if (episodeMediaType=="Video")
+		{
+
+				path = getStoragePath("tmp");
+				path = path + "meidafly_video.dat";
+				writeStringToFile(path,playUrl);
+				setEnv("RecentEpisodeSlug",currentEpisodeSlug);
+				setRefreshTime(-1);
+			if (playMode=="Play")
+			{
+				print("Need To Jump To Video Play Page");
+				setEnv("playMode","Switch");
+				jumpToLink("videoLink");
+				
+			}
+			else if (playMode=="Switch")
+				{
+					print("Need To Return to Video Play Page");
+					setEnv("playMode","Play");
+					postMessage("return");
+				}
+		}
+		
+
+
+</onChangePlayMode>
+
+<videoLink>
+	 <link>
+	          <script>
+	           "rss_file://./IMS_Modules/Mediafly/mediafly_episode_videoplay.rss";
+	          </script>
+        </link>
+</videoLink>
+
+
+<getNextEpisodeForChannel>
+
+	storagePathMediaflyChannel = getStoragePath("tmp");
+    	storagePathMediaflyChannel = storagePathMediaflyChannel + "mediaflyChannel.dat";
+    
+    	channelSlug = readStringFromFile(storagePathMediaflyChannel);
+    	print("read from: ",storagePathMediaflyChannel, "return channelSlug: ",channelSlug);
+
+    	inclAttr = "title,description,imageUrl,channel,published,url,mediaType";
+    	
+    	userContext = readStringFromFile(getStoragePath("tmp") + "mdflyUserContext.dat");
+	if ( userContext == null || userContext == "")
+		 userContext = "app_context_system";
+
+	md5_string = MD5(sharedKey,tokenId,channelSlug,currentEpisodeSlug,inclAttr,mediaTypeFilter,userContext);
+	print("md5 string", md5_string);
+
+    	urlNextEpisode = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetNextEpisodeForChannel?app_id="+app_id+"&amp;token=";
+    	urlNextEpisode = urlNextEpisode +valtoken;
+    	urlNextEpisode = urlNextEpisode + "&amp;channelSlug=" + channelSlug;
+    	urlNextEpisode = urlNextEpisode + "&amp;episodeSlug=" + currentEpisodeSlug;
+    	urlNextEpisode = urlNextEpisode + "&amp;includeAttributes=" + inclAttr;
+    	urlNextEpisode = urlNextEpisode + "&amp;mediaType=" + mediaTypeFilter;
+    	urlNextEpisode = urlNextEpisode + "&amp;user_context=" + urlEncode(userContext);
+    	urlNextEpisode = urlNextEpisode + "&amp;call_sig=";
+        urlNextEpisode = urlNextEpisode + md5_string;
+
+        print("urlNextEpisode:",urlNextEpisode);
+
+        	file = loadXMLFile(urlNextEpisode);
+        	
+	    if (file == null) 
+	    {
+		
+		    print("Load URL fail ", url);
+	    }
+	    else 
+	    {
+	    	   status = getXMLAttribute("response", "status");
+	    	   print("Status:",status);
+	    	   
+		   if (status=="ok")
+		   {
+		   	episodeStatus =  getXMLAttribute("response","episodeResponse","status");
+		   	print("episodeStatus = ",episodeStatus);
+		   	episodeSlug = getXMLAttribute("response","episodeResponse","episode","slug");
+		   	print(">>>>>>>>>>>>>>>>>episodeSlug",episodeSlug);
+		   	episodeMediaType = getXMLAttribute("response","episodeResponse","episode","mediaType");
+		   	print(">>>>>>>>>>>>>>episodeMediaType,",episodeMediaType);
+		   	
+		   	playUrl = getXMLAttribute("response","episodeResponse","episode","url");
+			if(episodeMediaType=="Audio")
+			{
+				audioTitle = getXMLAttribute("response","episodeResponse","episode","title");
+				audioImageUrl = getXMLAttribute("response","episodeResponse","episode","imageUrl");
+			}
+
+		   	
+		   }
+		
+	    }
+
+</getNextEpisodeForChannel>
+
+
+
+
+
+<getPrevEpisodeForChannel>
+	storagePathMediaflyChannel = getStoragePath("tmp");
+    	storagePathMediaflyChannel = storagePathMediaflyChannel + "mediaflyChannel.dat";
+    
+    	channelSlug = readStringFromFile(storagePathMediaflyChannel);
+    	print("read from: ",storagePathMediaflyChannel, "return channelSlug: ",channelSlug);
+
+    	inclAttr = "title,description,imageUrl,channel,published,url,mediaType";
+
+    	userContext = readStringFromFile(getStoragePath("tmp") + "mdflyUserContext.dat");
+	if ( userContext == null || userContext == "")
+		 userContext = "app_context_system";
+
+	md5_string = MD5(sharedKey,tokenId,channelSlug,currentEpisodeSlug,inclAttr,mediaTypeFilter,userContext);
+	print("md5 string", md5_string);
+	
+    	urlPrevEpisode = "http://api.mediafly.com/api/rest/2.0/Mediafly.Channels.GetPrevEpisodeForChannel?app_id="+app_id+"&amp;token=";
+    	urlPrevEpisode = urlPrevEpisode +valtoken;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;channelSlug=" + channelSlug;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;episodeSlug=" + currentEpisodeSlug;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;includeAttributes=" + inclAttr;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;mediaType=" + mediaTypeFilter;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;user_context=" + urlEncode(userContext);
+    	urlPrevEpisode = urlPrevEpisode + "&amp;call_sig=";
+        urlPrevEpisode = urlPrevEpisode + md5_string;
+
+        print("urlPrevEpisode:",urlPrevEpisode);
+
+        	file = loadXMLFile(urlPrevEpisode);
+        	
+	    if (file == null) 
+	    {
+		
+		    print("Load URL fail ", url);
+	    }
+	    else 
+	    {
+	    	   status = getXMLAttribute("response", "status");
+	    	   print("Status:",status);
+	    	   
+		   if (status=="ok")
+		   {
+		   	episodeStatus =  getXMLAttribute("response","episodeResponse","status");
+		   	print("episodeStatus = ",episodeStatus);
+		   	episodeSlug = getXMLAttribute("response","episodeResponse","episode","slug");
+		   	print(">>>>>>>>>>>>>>>>>episodeSlug",episodeSlug);
+		   	episodeMediaType = getXMLAttribute("response","episodeResponse","episode","mediaType");
+		   	print(">>>>>>>>>>>>>>episodeMediaType,",episodeMediaType);
+		   	playUrl = getXMLAttribute("response","episodeResponse","episode","url");
+
+			if(episodeMediaType=="Audio")
+			{
+				audioTitle = getXMLAttribute("response","episodeResponse","episode","title");
+				audioImageUrl = getXMLAttribute("response","episodeResponse","episode","imageUrl");
+			}
+		   	
+		   }
+		
+	    }
+
+    
+</getPrevEpisodeForChannel>
+
+<getNextEpisodeForShow>
+
+    storagePathMediaflyShow = getStoragePath("tmp");
+    storagePathMediaflyShow = storagePathMediaflyShow + "mediaflyShow.dat";
+    
+    	showSlug = readStringFromFile(storagePathMediaflyShow);
+
+
+
+
+	md5_string = MD5(sharedKey,tokenId,showSlug,currentEpisodeSlug,mediaTypeFilter);
+	print("md5 string", md5_string);
+	
+    	urlNextEpisode = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.GetNextEpisodeForShow?app_id="+app_id+"&amp;token=";
+    	urlNextEpisode = urlNextEpisode +valtoken;
+    	urlNextEpisode = urlNextEpisode + "&amp;showSlug=" + showSlug;
+    	urlNextEpisode = urlNextEpisode + "&amp;episodeSlug=" + currentEpisodeSlug;
+    	urlNextEpisode = urlNextEpisode + "&amp;mediaType=" + mediaTypeFilter;
+    	urlNextEpisode = urlNextEpisode + "&amp;call_sig=";
+        urlNextEpisode = urlNextEpisode + md5_string;
+
+        print("urlNextEpisode:",urlNextEpisode);
+
+        	file = loadXMLFile(urlNextEpisode);
+        	
+	    if (file == null) 
+	    {
+		
+		    print("Load URL fail ", url);
+	    }
+	    else 
+	    {
+	    	   status = getXMLAttribute("response", "status");
+	    	   print("Status:",status);
+	    	   
+		   if (status=="ok")
+		   {
+		   	episodeStatus =  getXMLAttribute("response","episodeResponse","status");
+		   	print("episodeStatus = ",episodeStatus);
+		   	episodeSlug = getXMLAttribute("response","episodeResponse","episode","slug");
+		   	print(">>>>>>>>>>>>>>>>>episodeSlug",episodeSlug);
+		   	episodeMediaType = getXMLAttribute("response","episodeResponse","episode","mediaType");
+		   	print(">>>>>>>>>>>>>>episodeMediaType,",episodeMediaType);
+		   	playUrl = getXMLAttribute("response","episodeResponse","episode","url");
+
+			if(episodeMediaType=="Audio")
+			{
+				audioTitle = getXMLAttribute("response","episodeResponse","episode","title");
+				audioImageUrl = getXMLAttribute("response","episodeResponse","episode","imageUrl");
+			}
+		   	
+		   }
+		
+	    }
+
+</getNextEpisodeForShow>
+
+
+
+
+
+<getPrevEpisodeForShow>
+ storagePathMediaflyShow = getStoragePath("tmp");
+    storagePathMediaflyShow = storagePathMediaflyShow + "mediaflyShow.dat";
+    
+    	showSlug = readStringFromFile(storagePathMediaflyShow);
+
+
+
+	md5_string = MD5(sharedKey,tokenId,showSlug,currentEpisodeSlug,mediaTypeFilter);
+	print("md5 string", md5_string);
+	
+    	urlPrevEpisode = "http://api.mediafly.com/api/rest/2.0/Mediafly.Shows.GetPrevEpisodeForShow?app_id="+app_id+"&amp;token=";
+    	urlPrevEpisode = urlPrevEpisode +valtoken;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;showSlug=" + showSlug;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;episodeSlug=" + currentEpisodeSlug;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;mediaType=" + mediaTypeFilter;
+    	urlPrevEpisode = urlPrevEpisode + "&amp;call_sig=";
+        urlPrevEpisode = urlPrevEpisode + md5_string;
+
+        print("urlPrevEpisode:",urlPrevEpisode);
+
+        	file = loadXMLFile(urlPrevEpisode);
+        	
+	    if (file == null) 
+	    {
+		
+		    print("Load URL fail ", url);
+	    }
+	    else 
+	    {
+	    	   status = getXMLAttribute("response", "status");
+	    	   print("Status:",status);
+	    	   
+		   if (status=="ok")
+		   {
+		    	episodeStatus =  getXMLAttribute("response","episodeResponse","status");
+		    	
+		   	print("episodeStatus = ",episodeStatus);
+		   	episodeSlug = getXMLAttribute("response","episodeResponse","episode","slug");
+		   	print(">>>>>>>>>>>>>>>>>episodeSlug",episodeSlug);
+		   	episodeMediaType = getXMLAttribute("response","episodeResponse","episode","mediaType");
+		   	print(">>>>>>>>>>>>>>episodeMediaType,",episodeMediaType);
+		   	playUrl = getXMLAttribute("response","episodeResponse","episode","url");
+			
+			if(episodeMediaType=="Audio")
+			{
+				audioTitle = getXMLAttribute("response","episodeResponse","episode","title");
+				audioImageUrl = getXMLAttribute("response","episodeResponse","episode","imageUrl");
+			}
+		   	
+		   }
+		
+	    }
+
+    
+</getPrevEpisodeForShow>
+
+<AudioPostAction>
+					md5_string = MD5(sharedKey,tokenId, audioPostAction,audioPlayLength,audioPlayPosition,currentEpisodeSlug,contentSourceSlug,"audio",episodeUrl,linkedUserName);
+				         print("md5 string", md5_string);
+				         url = "http://api.mediafly.com/api/rest/3.0/Mediafly.Experience.PostAction?app_id="+app_id;
+				         url = url +"&amp;token="+ valtoken;
+				         url = url+"&amp;action="+audioPostAction;
+				         url = url + "&amp;length=" +audioPlayLength;
+				         url = url + "&amp;position=" + audioPlayPosition;
+				         url = url +"&amp;slug="+currentEpisodeSlug;
+				         url = url+"&amp;source="+contentSourceSlug;
+				         url = url+"&amp;type="+"audio";
+				         url = url+"&amp;url="+episodeUrl;
+				         url = url +"&amp;user_context=" +linkedUserName;
+				    	 url = url + "&amp;call_sig=";
+				    	 url = url + md5_string;
+				     	 print("url", url);
+			     		 file = loadXMLFile(url);
+				    	  if (file == null)
+				      	{
+					      print("failed to load ", url);
+					     
+					     
+				      	}
+				      	else
+				     	 {
+						      
+						      status = getXMLAttribute("response", "status");
+						      print("token status: ", status);
+						      if(status == "fail")
+						      {
+							      err =  getXMLAttribute("response", "err", "message");
+							      print ("error", err);
+						      }
+						   
+				      	}
+	
+</AudioPostAction>
+
+  <getToken>
+  print("Get Token ");
+  if(valtoken == null || tokenTime == null || (getSystemTime() - 3300) &gt; tokenTime)
+  {
+  	if(tokenArray != null)
+        {
+          
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+          tokenArray = deleteStringArrayAt(tokenArray,0);
+        }
+       url = "http://api.mediafly.com/api/rest/2.0/Mediafly.Authentication.GetToken?app_id="+app_id+"";
+       url = url + "&amp;thirdPartyUserID=" + VtunergetMACaddress();
+       print("url", url);
+      
+      file = loadXMLFile(url);
+
+      if (file == null)
+      {
+  	      print("failed to load ", url);
+  	      titleString = "Sign in failed!";
+  	      print("call redrawDisplay()");
+  	      redrawDisplay();
+      }
+      else
+      {
+		        valtoken  = getXMLText("response","token");
+		        tokenId   = getXMLAttribute("response","token","id");
+		        print("token = ", valtoken);
+		        print("token id = ", tokenId);
+
+	        if ( valtoken != null )
+	        {
+		          storagePathMediaflyToken = getStoragePath("tmp");
+		          storagePathMediaflyToken = storagePathMediaflyToken + "mediaflyToken.dat";
+		          tokenArray = pushBackStringArray(tokenArray, valtoken);
+		          tokenArray = pushBackStringArray(tokenArray, tokenId);
+		          tokenTime = getSystemTime();
+		          tokenArray = pushBackStringArray(tokenArray, tokenTime);
+		          
+		          writeStringToFile(storagePathMediaflyToken, tokenArray);
+		       
+		          print("write to file ", storagePathMediaflyToken);
+	        }
+      }
+   }
+  </getToken> 
+
+<channel>
+	<title>Mediafly</title>
+	<link>mediafly_episode_audioplay.rss</link>
+
+</channel>
+
+
+
+
+</rss>
+
+

@@ -1,0 +1,324 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=15
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=15
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(0, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>NorthernTerritory</title>
+<link>./scripts/map/Australia/NorthernTerritory.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Ali Curung</title>
+<cur>ASXX0176</cur>
+<for>Ali Curung</for>
+</item>
+
+<item>
+<title>Alice Springs</title>
+<cur>ASXX0002</cur>
+<for>Alice Springs</for>
+</item>
+
+<item>
+<title>Avon Downs</title>
+<cur>ASXX0004</cur>
+<for>Avon Downs</for>
+</item>
+
+<item>
+<title>Ayers Rock</title>
+<cur>ASXX0005</cur>
+<for>Ayers Rock</for>
+</item>
+
+<item>
+<title>Batchelor</title>
+<cur>ASXX0010</cur>
+<for>Batchelor</for>
+</item>
+
+<item>
+<title>Bathurst Island</title>
+<cur>ASXX0385</cur>
+<for>Bathurst Island</for>
+</item>
+
+<item>
+<title>Birdum</title>
+<cur>ASXX0012</cur>
+<for>Birdum</for>
+</item>
+
+<item>
+<title>Brunette Downs</title>
+<cur>ASXX0153</cur>
+<for>Brunette Downs</for>
+</item>
+
+<item>
+<title>Cape Don Aerodrome</title>
+<cur>ASXX0131</cur>
+<for>Cape Don Aerodrome</for>
+</item>
+
+<item>
+<title>Centre Island</title>
+<cur>ASXX0154</cur>
+<for>Centre Island</for>
+</item>
+
+<item>
+<title>Cobourg Peninsula</title>
+<cur>ASXX0134</cur>
+<for>Cobourg Peninsula</for>
+</item>
+
+<item>
+<title>Daly Waters</title>
+<cur>ASXX0029</cur>
+<for>Daly Waters</for>
+</item>
+
+<item>
+<title>Darwin</title>
+<cur>ASXX0032</cur>
+<for>Darwin</for>
+</item>
+
+<item>
+<title>Elcho Island</title>
+<cur>ASXX0140</cur>
+<for>Elcho Island</for>
+</item>
+
+<item>
+<title>Garden Point Airport</title>
+<cur>ASXX0383</cur>
+<for>Garden Point Airport</for>
+</item>
+
+<item>
+<title>Jabiru</title>
+<cur>ASXX0136</cur>
+<for>Jabiru</for>
+</item>
+
+<item>
+<title>Katherine</title>
+<cur>ASXX0133</cur>
+<for>Katherine</for>
+</item>
+
+<item>
+<title>Kings Canyon</title>
+<cur>ASXX0174</cur>
+<for>Kings Canyon</for>
+</item>
+
+<item>
+<title>Kulgera</title>
+<cur>ASXX0202</cur>
+<for>Kulgera</for>
+</item>
+
+<item>
+<title>Larrimah</title>
+<cur>ASXX0069</cur>
+<for>Larrimah</for>
+</item>
+
+<item>
+<title>Maningrida</title>
+<cur>ASXX0139</cur>
+<for>Maningrida</for>
+</item>
+
+<item>
+<title>Mataranka</title>
+<cur>ASXX0074</cur>
+<for>Mataranka</for>
+</item>
+
+<item>
+<title>McCluer Island</title>
+<cur>ASXX0135</cur>
+<for>McCluer Island</for>
+</item>
+
+<item>
+<title>Milingimbi</title>
+<cur>ASXX0138</cur>
+<for>Milingimbi</for>
+</item>
+
+<item>
+<title>Noonamah</title>
+<cur>ASXX0085</cur>
+<for>Noonamah</for>
+</item>
+
+<item>
+<title>Point Stuart</title>
+<cur>ASXX0130</cur>
+<for>Point Stuart</for>
+</item>
+
+<item>
+<title>Rakula</title>
+<cur>ASXX0384</cur>
+<for>Rakula</for>
+</item>
+
+<item>
+<title>Rum Jungle</title>
+<cur>ASXX0104</cur>
+<for>Rum Jungle</for>
+</item>
+
+<item>
+<title>Tennant Creek</title>
+<cur>ASXX0115</cur>
+<for>Tennant Creek</for>
+</item>
+
+<item>
+<title>Tindal RAAF</title>
+<cur>ASXX0132</cur>
+<for>Tindal RAAF</for>
+</item>
+
+<item>
+<title>Umbakumba</title>
+<cur>ASXX0141</cur>
+<for>Umbakumba</for>
+</item>
+
+<item>
+<title>Victoria River Downs</title>
+<cur>ASXX0151</cur>
+<for>Victoria River Downs</for>
+</item>
+
+<item>
+<title>Warruwi</title>
+<cur>ASXX0137</cur>
+<for>Warruwi</for>
+</item>
+
+<item>
+<title>Wollogorang</title>
+<cur>ASXX0156</cur>
+<for>Wollogorang</for>
+</item>
+
+<item>
+<title>Yirrkala</title>
+<cur>ASXX0420</cur>
+<for>Yirrkala</for>
+</item>
+
+<item>
+<title>Yuendumu</title>
+<cur>ASXX0175</cur>
+<for>Yuendumu</for>
+</item>
+
+
+
+
+</channel></rss>

@@ -1,0 +1,171 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>numPopup</bookmark>
+
+<onRefresh>
+	 setRefreshTime(1000);
+	 if (secondRefresh == null)
+	{secondRefresh=getEnv("numPopup");}
+	else if (secondRefresh == getEnv("numPopup"))
+	{setRefreshTime(-1);
+	 setReturnString(secondRefresh);
+	 postMessage("return");}
+	else {secondRefresh= getEnv("numPopup");}
+</onRefresh>
+
+<onExit>
+	setRefreshTime(-1);
+</onExit>
+
+<!-- mediaDisplay of parent will be merged into the mediaDisplay here, include all child elements, ex: onEnter, text, image, etc. -->
+<mediaDisplay
+	name=onePartView
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	rollItems="no"
+	forceRedrawItems="yes"
+
+	itemPerPage=1
+	viewAreaXPC=0
+	viewAreaYPC=43
+	viewAreaWidthPC=100
+	viewAreaHeightPC=15
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 widthPC=100 offsetYPC=0 heightPC=100 redraw=yes>	
+		<script>
+			image = "./scripts/MovieCover/numPopup.png";	
+			image;
+		</script>
+	</image>
+	
+</backgroundDisplay>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			image;
+		</script>
+	</image>
+	
+</itemDisplay>
+
+<text offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100" 
+		fontSize="50" backgroundColor="-1:-1:-1" foregroundColor="255:255:255"
+		redraw=yes align=center useBackgroundSurface=no >
+        	<script>
+			str = getEnv("numPopup");			
+			<!--str = getStringArrayAt(folderNameArray , -1);-->
+			<!--str = getFocusItemIndex()+" - "+itemSize;-->	
+			<!--str="userInput is: "+currentUserInput();-->			
+			str; 
+		</script>
+    </text>			
+
+<!-- Some variables defined here will be referred to define the other attributes in mediaDisplay. -->
+<onEnter>
+	numPopupTimeout=1;
+	setFullScreenFade(64);
+	setRefreshTime(numPopupTimeout*1000);
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	focusIndex = getFocusItemIndex();
+	if ("enter" == userInput) {
+		data = getEnv("numPopup");
+		if (data != NULL) {
+			setReturnString(data);
+		}
+		handle = "return";
+	}
+	else if ("one" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -1);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("two" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -2);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("three" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -3);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("four" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -4);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("five" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -5);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("six" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -6);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("seven" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -7);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("eight" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -8);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("nine" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -9);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("zero" == userInput){
+	setEnv("numPopup",getEnv("numPopup")*10- -0);
+	redrawDisplay();
+	handle = "true";
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>
+		Poster Display
+	</title>
+	<link>rss_file://./scripts/MovieCover/numPopup.rss</link>
+
+
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+0
+</itemSize>
+
+
+</channel>
+</rss>

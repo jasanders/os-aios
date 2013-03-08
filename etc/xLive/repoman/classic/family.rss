@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Family Affair</title>
+
+<item>
+<title>Family Affair Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F5D9AC7F5839EED83,Family+Affair+Season+1</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/flxpwBkG9Yg/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Family Affair Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F577E3EA727BE146A,Family+Affair+Season+2</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/Cty2ppqF7Ng/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Family Affair Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FC0D57669ABEF1C19,Family+Affair+Season+3</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/ElzvLANbAc4/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Family Affair Season 4</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F5C1CC49C0F3640F0,Family+Affair+Season+4</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/s1-FDr432yY/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Family Affair Season 5</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F30E1E2F17F143FB7,Family+Affair+Season+5</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/X-Pa6lqbv1c/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

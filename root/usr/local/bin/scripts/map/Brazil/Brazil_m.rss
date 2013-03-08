@@ -1,0 +1,432 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_m.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Macapa</title>
+<cur>BRXX0142</cur>
+<for>Macapa</for>
+</item>
+
+<item>
+<title>Maceio</title>
+<cur>BRXX0143</cur>
+<for>Maceio</for>
+</item>
+
+<item>
+<title>Machado</title>
+<cur>BRXX0596</cur>
+<for>Machado</for>
+</item>
+
+<item>
+<title>Macuco</title>
+<cur>BRXX0597</cur>
+<for>Macuco</for>
+</item>
+
+<item>
+<title>Mafra</title>
+<cur>BRXX0144</cur>
+<for>Mafra</for>
+</item>
+
+<item>
+<title>Mage</title>
+<cur>BRXX0145</cur>
+<for>Mage</for>
+</item>
+
+<item>
+<title>Mairinque</title>
+<cur>BRXX0598</cur>
+<for>Mairinque</for>
+</item>
+
+<item>
+<title>Mairipora</title>
+<cur>BRXX0407</cur>
+<for>Mairipora</for>
+</item>
+
+<item>
+<title>Malacacheta</title>
+<cur>BRXX0599</cur>
+<for>Malacacheta</for>
+</item>
+
+<item>
+<title>Manacapuru</title>
+<cur>BRXX0600</cur>
+<for>Manacapuru</for>
+</item>
+
+<item>
+<title>Manaus</title>
+<cur>BRXX0146</cur>
+<for>Manaus</for>
+</item>
+
+<item>
+<title>Mancio Lima</title>
+<cur>BRXX0408</cur>
+<for>Mancio Lima</for>
+</item>
+
+<item>
+<title>Manga</title>
+<cur>BRXX0601</cur>
+<for>Manga</for>
+</item>
+
+<item>
+<title>Mangaratiba</title>
+<cur>BRXX0602</cur>
+<for>Mangaratiba</for>
+</item>
+
+<item>
+<title>Manhuacu</title>
+<cur>BRXX0147</cur>
+<for>Manhuacu</for>
+</item>
+
+<item>
+<title>Manicore</title>
+<cur>BRXX0148</cur>
+<for>Manicore</for>
+</item>
+
+<item>
+<title>Mantena</title>
+<cur>BRXX0603</cur>
+<for>Mantena</for>
+</item>
+
+<item>
+<title>Maraba</title>
+<cur>BRXX0149</cur>
+<for>Maraba</for>
+</item>
+
+<item>
+<title>Maracanau</title>
+<cur>BRXX0294</cur>
+<for>Maracanau</for>
+</item>
+
+<item>
+<title>Maragogi</title>
+<cur>BRXX3897</cur>
+<for>Maragogi</for>
+</item>
+
+<item>
+<title>Marambaia</title>
+<cur>BRXX0604</cur>
+<for>Marambaia</for>
+</item>
+
+<item>
+<title>Marataizes</title>
+<cur>BRXX0409</cur>
+<for>Marataizes</for>
+</item>
+
+<item>
+<title>Maresias</title>
+<cur>BRXX0295</cur>
+<for>Maresias</for>
+</item>
+
+<item>
+<title>Mariana</title>
+<cur>BRXX0605</cur>
+<for>Mariana</for>
+</item>
+
+<item>
+<title>Marica</title>
+<cur>BRXX0410</cur>
+<for>Marica</for>
+</item>
+
+<item>
+<title>Marilia</title>
+<cur>BRXX0150</cur>
+<for>Marilia</for>
+</item>
+
+<item>
+<title>Maringa</title>
+<cur>BRXX0151</cur>
+<for>Maringa</for>
+</item>
+
+<item>
+<title>Martinopolis</title>
+<cur>BRXX0411</cur>
+<for>Martinopolis</for>
+</item>
+
+<item>
+<title>Matao</title>
+<cur>BRXX0412</cur>
+<for>Matao</for>
+</item>
+
+<item>
+<title>Maua</title>
+<cur>BRXX0152</cur>
+<for>Maua</for>
+</item>
+
+<item>
+<title>Maues</title>
+<cur>BRXX0413</cur>
+<for>Maues</for>
+</item>
+
+<item>
+<title>Mazagao</title>
+<cur>BRXX0153</cur>
+<for>Mazagao</for>
+</item>
+
+<item>
+<title>Medianeira</title>
+<cur>BRXX0154</cur>
+<for>Medianeira</for>
+</item>
+
+<item>
+<title>Medina</title>
+<cur>BRXX0606</cur>
+<for>Medina</for>
+</item>
+
+<item>
+<title>Mesquita</title>
+<cur>BRXX0607</cur>
+<for>Mesquita</for>
+</item>
+
+<item>
+<title>Minas Novas</title>
+<cur>BRXX0608</cur>
+<for>Minas Novas</for>
+</item>
+
+<item>
+<title>Miracema do Tocantins</title>
+<cur>BRXX0714</cur>
+<for>Miracema do Tocantins</for>
+</item>
+
+<item>
+<title>Mirandopolis</title>
+<cur>BRXX0414</cur>
+<for>Mirandopolis</for>
+</item>
+
+<item>
+<title>Miranorte</title>
+<cur>BRXX0715</cur>
+<for>Miranorte</for>
+</item>
+
+<item>
+<title>Mirassol</title>
+<cur>BRXX0609</cur>
+<for>Mirassol</for>
+</item>
+
+<item>
+<title>Mococa</title>
+<cur>BRXX0610</cur>
+<for>Mococa</for>
+</item>
+
+<item>
+<title>Mogi Das Cruzes</title>
+<cur>BRXX0296</cur>
+<for>Mogi Das Cruzes</for>
+</item>
+
+<item>
+<title>Mogi-Guacu</title>
+<cur>BRXX0297</cur>
+<for>Mogi-Guacu</for>
+</item>
+
+<item>
+<title>Moji-Mirim</title>
+<cur>BRXX0716</cur>
+<for>Moji-Mirim</for>
+</item>
+
+<item>
+<title>Mongagua</title>
+<cur>BRXX0298</cur>
+<for>Mongagua</for>
+</item>
+
+<item>
+<title>Monte Alegre</title>
+<cur>BRXX0611</cur>
+<for>Monte Alegre</for>
+</item>
+
+<item>
+<title>Monte Azul</title>
+<cur>BRXX0612</cur>
+<for>Monte Azul</for>
+</item>
+
+<item>
+<title>Montes Claros</title>
+<cur>BRXX0155</cur>
+<for>Montes Claros</for>
+</item>
+
+<item>
+<title>Morrinhos</title>
+<cur>BRXX0156</cur>
+<for>Morrinhos</for>
+</item>
+
+<item>
+<title>Morro do Chapeu</title>
+<cur>BRXX0406</cur>
+<for>Morro do Chapeu</for>
+</item>
+
+<item>
+<title>Mossoro</title>
+<cur>BRXX0157</cur>
+<for>Mossoro</for>
+</item>
+
+<item>
+<title>Moura</title>
+<cur>BRXX0613</cur>
+<for>Moura</for>
+</item>
+
+<item>
+<title>Muriae</title>
+<cur>BRXX0415</cur>
+<for>Muriae</for>
+</item>
+
+<item>
+<title>Muribeca dos Guararapes</title>
+<cur>BRXX0288</cur>
+<for>Muribeca dos Guararapes</for>
+</item>
+
+<item>
+<title>Mutum</title>
+<cur>BRXX0614</cur>
+<for>Mutum</for>
+</item>
+
+</channel></rss>

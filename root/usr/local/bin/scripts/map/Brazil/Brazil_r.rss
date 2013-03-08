@@ -1,0 +1,257 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_r.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Rancharia</title>
+<cur>BRXX0653</cur>
+<for>Rancharia</for>
+</item>
+
+<item>
+<title>Raul Soares</title>
+<cur>BRXX0654</cur>
+<for>Raul Soares</for>
+</item>
+
+<item>
+<title>Recife</title>
+<cur>BRXX0195</cur>
+<for>Recife</for>
+</item>
+
+<item>
+<title>Regente Feijo</title>
+<cur>BRXX0434</cur>
+<for>Regente Feijo</for>
+</item>
+
+<item>
+<title>Registro</title>
+<cur>BRXX0196</cur>
+<for>Registro</for>
+</item>
+
+<item>
+<title>Remanso</title>
+<cur>BRXX0655</cur>
+<for>Remanso</for>
+</item>
+
+<item>
+<title>Resende</title>
+<cur>BRXX0197</cur>
+<for>Resende</for>
+</item>
+
+<item>
+<title>Ribeirao Pires</title>
+<cur>BRXX0436</cur>
+<for>Ribeirao Pires</for>
+</item>
+
+<item>
+<title>Ribeirao Preto</title>
+<cur>BRXX0198</cur>
+<for>Ribeirao Preto</for>
+</item>
+
+<item>
+<title>Ribeirao das Neves</title>
+<cur>BRXX3187</cur>
+<for>Ribeirao das Neves</for>
+</item>
+
+<item>
+<title>Rio Bananal</title>
+<cur>BRXX0656</cur>
+<for>Rio Bananal</for>
+</item>
+
+<item>
+<title>Rio Branco</title>
+<cur>BRXX0199</cur>
+<for>Rio Branco</for>
+</item>
+
+<item>
+<title>Rio Claro</title>
+<cur>BRXX3201</cur>
+<for>Rio Claro</for>
+</item>
+
+<item>
+<title>Rio Grande</title>
+<cur>BRXX0202</cur>
+<for>Rio Grande</for>
+</item>
+
+<item>
+<title>Rio Grande da Serra</title>
+<cur>BRXX0203</cur>
+<for>Rio Grande da Serra</for>
+</item>
+
+<item>
+<title>Rio Largo</title>
+<cur>BRXX0204</cur>
+<for>Rio Largo</for>
+</item>
+
+<item>
+<title>Rio Pardo de Minas</title>
+<cur>BRXX0658</cur>
+<for>Rio Pardo de Minas</for>
+</item>
+
+<item>
+<title>Rio Verde</title>
+<cur>BRXX0205</cur>
+<for>Rio Verde</for>
+</item>
+
+<item>
+<title>Rio das Ostras</title>
+<cur>BRXX0657</cur>
+<for>Rio das Ostras</for>
+</item>
+
+<item>
+<title>Rio de Janeiro</title>
+<cur>BRXX0201</cur>
+<for>Rio de Janeiro</for>
+</item>
+
+<item>
+<title>Rolandia</title>
+<cur>BRXX0206</cur>
+<for>Rolandia</for>
+</item>
+
+<item>
+<title>Rolim de Moura</title>
+<cur>BRXX0659</cur>
+<for>Rolim de Moura</for>
+</item>
+
+<item>
+<title>Rondonopolis</title>
+<cur>BRXX0207</cur>
+<for>Rondonopolis</for>
+</item>
+
+<item>
+<title>Rosairo</title>
+<cur>BRXX0208</cur>
+<for>Rosairo</for>
+</item>
+
+<item>
+<title>Rosario Oeste</title>
+<cur>BRXX0209</cur>
+<for>Rosario Oeste</for>
+</item>
+
+<item>
+<title>Rozendo</title>
+<cur>BRXX0210</cur>
+<for>Rozendo</for>
+</item>
+</channel></rss>

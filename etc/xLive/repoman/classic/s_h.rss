@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Starsky and Hutch</title>
+
+<item>
+<title>Starsky and Hutch Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD53448BF7228E379,Starsky+and+Hutch+Season+1</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/xvrz7er14mw/market_thumb.jpg?v=5a1451" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Starsky and Hutch Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F080A7AF1B0929ECA,Starsky+and+Hutch+Season+2</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/xvrz7er14mw/market_thumb.jpg?v=5a1451" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

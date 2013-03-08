@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name=onePartView>
+  <backgroundColor>0:0:0</backgroundColor>
+  <sideColorTop>139:146:156</sideColorTop>
+  <sideColorBottom>139:146:156</sideColorBottom>
+  <sideColorLeft>139:146:156</sideColorLeft>
+  <sideColorRight>139:146:156</sideColorRight>
+  <itemBackgroundColor> 0:0:0</itemBackgroundColor>
+  
+  <itemXPC> 20 </itemXPC>
+  <itemYPC> 25 </itemYPC>
+  <itemWidthPC> 60 </itemWidthPC>
+  <itemHeightPC> 13 </itemHeightPC>
+  
+  <showHeader>no</showHeader>
+  <showDefaultInfo>no</showDefaultInfo>
+
+  <onUserInput>
+	   userInput = currentUserInput();
+	if ("enter" == userInput){
+		 "true";
+	}
+ 	else if ("right"== userInput){
+ 		 "true";
+	}
+  </onUserInput>
+  
+
+
+	<text offsetXPC=0  offsetYPC= 5 widthPC=100 heightPC=83  fontSize=11 lines=15>
+&#x20;&#x20;You can find music on your media player by browsing through your music lists or searching for music by its title.&#xA;&#x20;&#x20;&#xA;&#x20;&#x20;1.&#x20;&#x20; Press "Menu" on the remote to display the main menu.&#xA;&#x20;&#x20;2.&#x20;&#x20; Use the arrow keys on the remote to highlight "Music" in the menu and press "OK" on the remote to display the Music screen.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;The Music screen displays the music available on the media player, with albums first.&#xA;&#x20;&#x20;3.&#x20;&#x20; Use the arrow keys on the remote to browse through your music and select an album or music file to play.&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;- OR -&#xA;&#x20;&#x20;4.&#x20;&#x20; Press "Menu" again to display the Music menu, select "Search", and press "OK" to open the Search Music screen and look for a&#xA;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;specific album or music file.&#xA;&#x20;&#x20;5.&#x20;&#x20; On the Search Music screen, use the on-screen keyboard and the remote to enter the name of a music file.&#xA;&#x20;&#x20;6.&#x20;&#x20; When you’ve found the music you want to play, press the Play button on the remote.&#xA;&#x20;&#x20;&#xA;&#x20;&#x20;NOTE: On the Music menu, use the arrow keys on the remote to select how to view your music files (All Songs, Albums, Artists, Genres, or Years) and press "OK" on the remote. The view determines which music is displayed.&#xA;
+
+ 
+  </text>
+
+
+
+</mediaDisplay>
+
+
+</rss>

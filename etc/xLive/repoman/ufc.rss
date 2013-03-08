@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>UFC</title>
+
+<item>
+<title>UFC</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Fufc%2Fuploads%3Forderby%3Dupdated,UFC</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/ufc.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

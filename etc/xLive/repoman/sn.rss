@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<onEnter> 
+       setFocusItemIndex(2);
+</onEnter>
+
+
+<channel>
+<title>Xtreamer - Social Media</title>
+
+<item>
+
+<title>Twitter - Social Sharing</title>
+<link>/usr/local/etc/xLive/category/twitter.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-twi.png"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Flickr - Photo Sharing</title>
+<link>http://live.mvix.net/x_live2/scripts/flickr.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-fli.png"/>
+<mediaDisplay name="photoView" rowCount="2" columnCount="5" drawItemText="no" menuBorderColor="20:20:20" menuOffsetYPC="12" menuOffsetXPC="8" sideColorBottom="20:20:20" sideColorTop="20:20:20" itemImageXPC="10" itemOffsetXPC="7" backgroundColor="0:0:0" sliding="yes" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage> 
+</mediaDisplay> 
+</item>
+
+
+<item>
+
+<title>Metafeeds - RSS Feed Sharing</title>
+<link>/usr/local/etc/xLive/category/metafeeds.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-met.png"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/www/cgi-bin/scripts/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Youtube - Video Sharing</title>
+<link>http://live.mvix.net/x_live2/scripts/menu_lge.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-yt.png"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Mevio - Video Sharing</title>
+<link>http://www.metafeeds.com/channel/xmevio/rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-mev.jpg"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+         <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Miroguide - Video Sharing</title>
+<link>http://www.metafeeds.com/channel/miroguide/rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-mir.jpeg"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Picasa - Photo Sharing</title>
+<link>http://live.mvix.net/x_live2/scripts/picasa.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-pic.png"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Vimeo - Video Sharing</title>
+<link>http://www.metafeeds.com/channel/xvimeo/rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-vim.png"/>
+<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+</mediaDisplay>
+</item>
+
+</channel>
+</rss>

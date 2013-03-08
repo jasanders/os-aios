@@ -1,0 +1,395 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- copyright:  SHENZHEN ZFD ELECTRONIC TECHNOLOGY CO., LTD. -->
+	
+<bookmark> google_music </bookmark>
+
+<script>
+		last_update = null;
+		author = null;
+		radio_path = null;
+		itemSize = null;
+		menuSize = null;
+		menuTitleArray  = null;
+		menuURLArray     = null;
+
+		itemTitleArray  = null;
+	    itemAddrArr     = null;
+		itemArtArr     = null;
+
+		playAddrArr     = null;
+
+		infoArray   = null;
+ 		radio_path = "scripts/google_lists.xml";
+		 
+		  showIdle();
+		dlok = loadXMLFile(radio_path);
+		if (dlok != null)
+		{
+				menuSize = getXMLElementCount("genrelist", "genre");
+				last_update = getXMLAttribute("genrelist", "last_update" );
+				author = getXMLAttribute("genrelist", "author" );
+				count = 0;
+				while (1)
+				{
+						title  = getXMLAttribute("genrelist", "genre", count, "name");
+						url  = getXMLAttribute("genrelist", "genre", count, "url");
+
+						menuTitleArray  = pushBackStringArray(menuTitleArray, title);
+						menuURLArray  = pushBackStringArray(menuURLArray, url);
+
+						count += 1;
+						if (count == menuSize)
+						{
+								break;
+						}
+				}
+				 
+				setRefreshTime(400);
+				cancelIdle();
+		}
+		else
+		{
+				  cancelIdle();
+				  postMessage("return");
+		}
+</script>
+
+ 
+
+<onExit>
+	  setRefreshTime(-1);
+</onExit>
+ 
+<onRefresh>
+		setRefreshTime(-1);
+				if (menuSize &gt; 0) {
+					 
+					 postMessage("down");
+					 postMessage("enter");
+				}	
+</onRefresh> 
+
+<menu_template>
+  <title>
+    <script>
+      getStringArrayAt(menuTitleArray, -1);
+    </script>
+  </title>
+  
+  <onClick>
+		isSearch = null;
+
+	    itemTitleArray  = null;
+	    itemAddrArr     = null;
+		itemArtArr = null;
+
+		menuFocus = getFocusMenuIndex();
+		tmpURL = getStringArrayAt(menuURLArray, menuFocus);
+		 
+		dlok = null;
+		if (menuFocus == 0)
+		{
+				tmpURL = null;
+				isSearch = "1";
+
+				keyword = getInput("Enter keyword");
+				if (keyword == null)
+				{
+				  null;
+				}
+				else
+				{
+					  
+					  url_keyword = urlEncode(keyword);		
+				  
+					showIdle();
+					dlok = loadData("3", url_keyword);
+				 }
+
+				
+		} else {
+					 showIdle();
+					dlok = loadData("4", tmpURL);
+		}
+
+					if (dlok != null)
+					{
+						tmpURL = getStoragePath("tmp");
+						tmpURL = tmpURL + "tmp.rss";
+					}	
+				
+				if (tmpURL != null)
+				{
+						dlok = loadXMLFile(tmpURL);
+						cancelIdle();
+				}
+				if (dlok != null)
+				{	
+						 
+
+						if (isSearch == null) {
+							itemSize = getXMLElementCount("results", "playlist","songList", "song");  
+						} else {
+							itemSize = getXMLElementCount("results", "songList", "song");  
+						}
+						 
+if (itemSize == 0 ) {
+		Thunder_showPopup("没有找到相关歌曲");
+}
+						count = 0;
+							 
+						while (1)
+						{	
+									 
+									if (count == itemSize)
+									{
+											break;
+									}
+
+								if (isSearch == null) {
+									title  = getXMLText("results", "playlist","songList", "song", count,"name");
+									id     = getXMLText("results", "playlist","songList", "song", count,"id");
+									art = getXMLText("results", "playlist","songList", "song", count, "artist");
+								} else {
+									title  = getXMLText("results",  "songList", "song", count,"name");
+									id     = getXMLText("results",  "songList", "song", count,"id");
+									art = getXMLText("results",  "songList", "song", count, "artist");
+								}
+
+									title = title + " - " + art;						
+									
+									itemTitleArray  = pushBackStringArray(itemTitleArray, title);
+									itemAddrArr     = pushBackStringArray(itemAddrArr, id);
+									itemArtArr     = pushBackStringArray(itemArtArr, art);
+					
+								 
+									count += 1;
+
+						 }
+					}
+					else
+					{
+							   
+							  cancelIdle();
+					}
+
+
+		redrawDisplay();
+  </onClick>
+</menu_template>
+
+<!-- 第一个在进入播放页面之前下载 -->
+<item_template>
+	  <onClick>
+					 
+
+					tmp = getStringArrayAt(itemAddrArr , -1);
+
+					showIdle();
+				    play_addr = googleMusicAddr(tmp);
+					cancelIdle();
+					
+					google_musPath = getStoragePath("tmp");
+					google_musPath = google_musPath + "google_musplay.dat";	 
+					
+
+					playAddrArr = null;
+
+										infoArray = null;
+										tmp = getStringArrayAt(itemTitleArray , -1);
+										infoArray     = pushBackStringArray(infoArray, tmp);
+
+					playAddrArr     = pushBackStringArray(playAddrArr, play_addr);
+					count = 0;
+					focus = getFocusItemIndex();
+				    while (1)
+				   {
+							focus = Add(focus, 1);
+							tmp = getStringArrayAt(itemAddrArr , focus);			
+							if (tmp == null)
+							{
+								break;
+							}
+							playAddrArr     = pushBackStringArray(playAddrArr, tmp);
+
+										tmp = getStringArrayAt(itemTitleArray , focus);
+										infoArray     = pushBackStringArray(infoArray, tmp);
+
+							count += 1;
+							if (count == 40)
+							{
+									break;
+							}
+							 
+				    }
+				 
+					writeStringToFile(google_musPath, playAddrArr);
+							    
+					google_musPath = getStoragePath("tmp");
+					google_musPath = google_musPath + "google_mus.dat";	 
+					writeStringToFile(google_musPath, infoArray);
+
+					jumpToLink("playlink");
+	  </onClick>
+
+<title>
+		  <script>
+			getStringArrayAt(itemTitleArray, -1) ;
+		  </script>
+</title>
+  
+<name>
+	<script>
+    	getStringArrayAt(itemTitleArray, -1);
+  </script>
+</name>
+
+<id>
+	<script>
+    getStringArrayAt(itemAddrArr, -1);
+  </script>
+</id>
+
+</item_template>
+
+
+<mediaDisplay name="threePartsView"   
+
+	sideLeftWidthPC = "28"
+	sideRightWidthPC = "15"
+
+	sideBottomHeightPC = "13"
+	
+	autoSelectMenu="no"
+	autoSelectItem="no"
+	
+    sideColorLeft="0:0:0" 
+	sideColorRight="0:0:0" 
+	sideColorTop="0:0:0"
+
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	focusBorderColor="0:0:0"
+	
+	sideTopHeightPC = "13"
+
+	headerImageWidthPC="0"
+	headerImageHeightPC="0"
+	
+	headerXPC="0"
+	headerYPC="0"
+	headerWidthPC="0"
+	headerHeightPC="0"
+
+	menuXPC = "6"
+	menuYPC = "14.5"
+	menuWidthPC = "21"
+	menuHeightPC = "10"
+	menuImageXPC = "0"
+
+    itemImageXPC = "30"
+    itemImageYPC = "14"
+	itemImageWidthPC = "0"
+	itemImageHeightPC = "0"
+
+	itemXPC = "30"
+	itemYPC = "14"
+	itemWidthPC = "65"
+	itemHeightPC = "14"
+
+	capXPC = "50"
+	capYPC = "16"
+	capWidthPC = "50"
+	capHeightPC = "0"
+
+	 infoXPC = "80"
+    infoYPC = "88"
+
+	itemPerPage="5"
+	
+ 
+
+	imageFocus="image/music_list_focus.bmp"
+
+	forceFocusOnItem="no"
+	 forceFocusOnMenu="yes"
+	showHeader="no"
+	showDefaultInfo="yes"
+	fontSize=19 
+	
+	  idleImageXPC=43
+	idleImageYPC=32.5
+	idleImageWidthPC=14
+	idleImageHeightPC=25
+	>
+	
+	<idleImage> image/9006-01.png </idleImage>
+	<idleImage> image/9006-02.png </idleImage>
+	<idleImage> image/9006-03.png </idleImage>
+	<idleImage> image/9006-04.png </idleImage>
+	<idleImage> image/9006-05.png </idleImage>
+	<idleImage> image/9006-06.png </idleImage>
+	<idleImage> image/9006-07.png </idleImage>
+	<idleImage> image/9006-08.png </idleImage>
+	<idleImage> image/9006-09.png </idleImage> 
+	<idleImage> image/9006-10.png </idleImage>  
+	<idleImage> image/9006-11.png </idleImage>
+	<idleImage> image/9006-12.png </idleImage>
+
+<!-- top and bottom image -->
+<image offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=13>
+		<script>
+			"image/main_top.png";
+		</script>
+	</image>
+<image offsetXPC=0  offsetYPC= 87 widthPC=100 heightPC=13>
+		<script>
+			"image/main_bottom.png";
+		</script>
+</image>
+
+	<!--  <!-- help infomation -->
+	<image offsetXPC=9.5 offsetYPC=88 widthPC=3.5 heightPC=5 fontSize=12 backgroundColor=0:0:0 foregroundColor=255:255:255>
+		<script>
+			"./image/info.png";
+		</script>
+	</image>
+
+   <text redraw=yes  offsetXPC=13 offsetYPC=88 widthPC=60 heightPC=5 fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=174:230:255> 
+		<script>
+		"[确认]键进入选定榜单, [右键/确认]键播放选定歌曲";
+		</script>
+	</text>    
+<!-- "特别提示: 在线收听功能受服务器和网络条件限制";  -->
+ 
+
+
+</mediaDisplay> 
+
+
+<playlink>
+	<link>./scripts/google_musicPlay.rss</link>
+</playlink>
+
+
+<channel>
+        <title>cnradio</title>
+        <link>./scripts/google_music.rss</link>
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+
+<menuSize>
+<script>
+menuSize;
+</script>
+</menuSize>
+
+</channel>
+
+</rss>

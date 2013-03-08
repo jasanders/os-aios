@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <mediaDisplay> 
+                <image  offsetXPC=0 offsetYPC=2.8 widthPC=100 heightPC=15.6>
+                http://i1.ytimg.com/vi/pIUVyAH3dTY/background.jpg
+                </image></mediaDisplay>
+  
+ 
+  
+<channel>
+<title>World Rally Championships</title>
+
+<item>
+
+      <title>World Rally Championships 2001 - 2008</title>
+      <link>http://pipes.yahoo.com/pipes/pipe.run?_id=TEM_6l0Q3BG6fZjojknRlg&_render=rss&textinput1=F1F09C45481814B1</link>
+	  <media:thumbnail url="http://i1.ytimg.com/vi/pIUVyAH3dTY/market_thumb.jpg?v=7e7481" />
+	    <mediaDisplay name=photoView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	     
+  </item>
+
+</channel>
+</rss>

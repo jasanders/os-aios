@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Alphabetique</alpha>
+	<genre>Genre</genre>
+	<recent>Ajout Récent</recent>
+	<select>Sélection par:</select>
+	<update>Mise à Jour</update>
+	<notwatched>Pas Regardés</notwatched>
+	<year>Année</year>
+	<search>Recherche</search>
+  <config>Config</config>
+  <textInfo>Bienvenue sur SRJG !&#x0A;&#x0A;1 - pour lancer la dernière vidéo regardée.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Liste des touches:&#x0A;1 = Change de vue pour le Jukebox&#x0A;Enter = Selectionner&#x0A;Rtn = Ecran précédent</helpGP>
+  <helpJbx>Liste des touches:&#x0A;2 = Marquer comme vu&#x0A;Enter = Selectionner&#x0A;Rtn = Ecran précédent&#x0A;Play = Joue la vidéo&#x0A;Goto = va a la vidéo sélectionnée&#x0A;<< = Recule de 10 vidéos&#x0A;>> = avance de 10 vidéos</helpJbx>
+  <helpSheet>Liste des touches:&#x0A;2 = Marquer comme vu&#x0A;Rtn = Ecran précédent&#x0A;Enter = Joue la vidéo&#x0A;Play = Joue la vidéo&#x0A;< = Vidéo précédente&#x0A;> = Vidéo suivante</helpSheet>
+</jukebox>
+<update>
+  <fast>Rapide</fast>
+  <rebuild>Reconstruire</rebuild>
+</update>
+<cfg>
+  <Lang>Langue</Lang>
+  <Jukebox_Size>Vue</Jukebox_Size>
+  <Movies_Path>Chemin des Films</Movies_Path>
+	<Nfo_Path>Chemin Nfo</Nfo_Path>
+	<Poster_Path>Chemin Jaquettes</Poster_Path>
+	<Sheet_Path>Chemin Sheet</Sheet_Path>
+  <Movie_Filter>Filtre</Movie_Filter>
+  <SingleDb>Base unique</SingleDb>
+  <Recent_Max>Max films récents</Recent_Max>
+  <Imdb>Utiliser Imdb</Imdb>
+	<Dspl>Affichage</Dspl>
+	<UnlockRM>Autoriser Suppression</UnlockRM>
+  <Jukebox_Path>Chemin du Jukebox:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Version:</Version>
+  <yes>Oui</yes>
+  <no>Non</no>
+	<top>Haut</top>
+	<bottom>Bas</bottom>
+	<white>Blanc</white>
+	<black>Noir</black>
+	<yellow>Jaune</yellow>
+	<transparent>Transparent</transparent>
+	<browse>Parcourir</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Texte du Genre</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Chemin des films:</FBrowser_Title>
+  <FBrowser_Valid>pour valider</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Activer Imdb</Imdb_Use>
+  <Imdb_Lang>Interface</Imdb_Lang>
+  <Imdb_Source>Source</Imdb_Source>
+  <Imdb_Poster>Télécharger Pochette</Imdb_Poster>
+  <Imdb_PBox>Cadre de la pochette</Imdb_PBox>
+  <Imdb_PPost>Pochette aléatoire</Imdb_PPost>
+  <Imdb_Sheet>Télécharger Sheet</Imdb_Sheet>
+  <Imdb_SBox>Cadre Pochette dans Sheet</Imdb_SBox>
+  <Imdb_SPost>Pochette aléatoire dans Sheet</Imdb_SPost>
+  <Imdb_Backdrop>Image du fond aléatoire</Imdb_Backdrop>
+  <Imdb_Font>Police de caractère</Imdb_Font>
+  <Imdb_Genres>Genres en images</Imdb_Genres>
+  <Imdb_Tagline>Ligne Tag</Imdb_Tagline>
+  <Imdb_Time>Format de la Durée</Imdb_Time>
+  <Imdb_Info>Générer fichier info</Imdb_Info>
+  <Imdb_MaxDl>Téléchargements simultanés</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Menu d'édition</EditMenu>
+  <rmPoster>Supprimer la Pochette</rmPoster>
+  <rmSheet>Supprimer le Sheet</rmSheet>
+  <rmNfo>Supprimer le Nfo</rmNfo>
+  <rmMovie>Supprimer le Film</rmMovie>
+  <ValPoster>Voulez-vous supprimer uniquement le Poster ?</ValPoster>
+  <ValSheet>Voulez-vous supprimer uniquement le Sheet ?</ValSheet>
+  <ValNfo>Voulez-vous supprimer uniquement le Nfo ?</ValNfo>
+  <ValMovie>Voulez-vous supprimer le Film et tous ses fichiers ?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Sélectionnez un sous-titre</SubtMenu>
+  <WtSubt>Sans sous-titrage</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Subt: Lecture auto</Subt_OneAuto>
+  <Subt_FontPath>Subt: Chemin Polices</Subt_FontPath>
+  <Subt_FontFile>Subt: Police active</Subt_FontFile>
+  <Subt_Color>Subt: Couleur</Subt_Color>
+  <Subt_ColorBg>Subt: Couleur de fond</Subt_ColorBg>
+	<Subt_Size>Subt: Taille</Subt_Size>
+	<Subt_Pos>Subt: Position</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Sélectionnez une Police</FontMenu>
+</MFont>

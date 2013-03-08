@@ -1,0 +1,142 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+				 <mediaDisplay name=photoFocusView 
+	focusItem="3"
+	imageFocus=null 
+	imageParentFocus=null 
+	backgroundColor="0:0:0"
+	rowCount="1"
+	columnCount="5"
+	drawItemText="no"
+	fontSize="15"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="0:0:0"
+	itemOffsetXPC="0"
+	itemOffsetYPC="60"
+	itemWidthPC="15.5"
+	itemHeightPC="15.5"
+	itemBackgroundWidthPC="16.5"
+	itemBackgroundHeightPC="16.5"
+	itemGapXPC="1.5"
+	focusItemOffsetYPC="52"
+	focusItemWidthPC="30.43"
+	focusItemHeightPC="30.43"
+	focusItemBackgroundWidthPC="31.5"
+	focusItemBackgroundHeightPC="31.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="85"
+	itemBorderColor="0:0:0"
+	showHeader="yes"
+	headerXPC="5"
+	showDefaultInfo="yes"
+	headerYPC="10"
+     idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>/usr/local/etc/xLive/repoman/image/docb.jpg</image>
+</backgroundDisplay>
+		</mediaDisplay>
+		<item_template>
+				<mediaDisplay name=photoFocusView 
+	focusItem="3"
+	imageFocus=null 
+	imageParentFocus=null 
+	backgroundColor="0:0:0"
+	rowCount="1"
+	columnCount="5"
+	drawItemText="no"
+	fontSize="15"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="0:0:0"
+	itemOffsetXPC="0"
+	itemOffsetYPC="60"
+	itemWidthPC="15.5"
+	itemHeightPC="15.5"
+	itemBackgroundWidthPC="0"
+	itemBackgroundHeightPC="0"
+	itemGapXPC="1.5"
+	focusItemOffsetYPC="52"
+	focusItemWidthPC="30.43"
+	focusItemHeightPC="30.43"
+	focusItemBackgroundWidthPC="31.5"
+	focusItemBackgroundHeightPC="31.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="85"
+	itemBorderColor="0:0:0"
+	showHeader="yes"
+	headerXPC="5"
+	showDefaultInfo="yes"
+	headerYPC="10"
+       idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>/usr/local/etc/xLive/repoman/image/docb.jpg</image>
+</backgroundDisplay>
+			</mediaDisplay>
+		</item_template>
+  
+<channel>
+<title>Documentries</title>
+
+<item>
+<title>Nova Dcumentaries</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FE97B745FA6CC85AE,Nova+Dcumentaries</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/nova.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>PBS Dcumentaries</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FBAAFA7CA6265FE81,PBS+Dcumentaries</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/PBS_Logo.png" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>History Channel Dcumentaries</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F3A821D8E7E418705,History+Channel+Dcumentaries</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/history.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Discovery Channel Dcumentaries</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F94B87CC504FC63E9,Discovery+Channel+Dcumentaries</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/dc_logo.png" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Inside Natures Giants</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F6E477CE9CF07FD64,Inside+Natures+Giants</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/giant.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

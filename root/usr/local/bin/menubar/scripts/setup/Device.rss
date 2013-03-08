@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+
+	CurrentTypeStr1 = getEnv("EntryStatusString1");
+	CurrentTypeStr2 = getEnv("EntryStatusString2");
+	CurrentTypeStr3 = getEnv("EntryStatusString3");
+	CurrentTypeStr4 = getEnv("EntryStatusString4");
+	CurrentTypeStr5 = getEnv("EntryStatusString5");
+	CurrentTypeStr6 = getEnv("EntryStatusString6");
+	CurrentTypeStr7 = getEnv("EntryStatusString7");
+	print("CurStatus:" , CurrentTypeStr1, CurrentTypeStr2, CurrentTypeStr3, CurrentTypeStr4, CurrentTypeStr5, CurrentTypeStr6, CurrentTypeStr7);
+		
+	PreviewDisable = "no";
+	ShowFileDisable = "yes";
+	
+	if(CurrentTypeStr3 == "DevFolder"){
+		ShowFileDisable = "no";
+	}
+	
+	print(PreviewDisable, ShowFileDisable);
+	
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "DeviceSelects.dat";
+	selectArray = readStringFromFile(storagePath);
+	if (selectArray == null){
+	  selectArray = pushBackStringArray(selectArray, "Grid");
+	  selectArray = pushBackStringArray(selectArray, "All");
+	  writeStringToFile(storagePath, selectArray);
+	}
+	ViewSel = getStringArrayAt(selectArray, 0);
+	MMType = getStringArrayAt(selectArray, 1);
+	print("select::", ViewSel, MMType);
+</script>
+
+
+<item_template>
+  <onClick>
+    <script>
+	    selected = getItemInfo("selected");
+	    
+		if (selected != "yes") {
+		  group = getItemInfo("group");
+		  StrCmd= getItemInfo("StrCmd");
+		
+		  if (group=="view") {
+			if(StrCmd != "CheckList"){
+				ViewSel = StrCmd;
+			}
+		  }
+		  else if (group=="mmtype") {
+			MMType = StrCmd;			
+		  }
+		  selectArray = null;
+    	  selectArray = pushBackStringArray(selectArray, ViewSel);
+	      selectArray = pushBackStringArray(selectArray, MMType);
+		  writeStringToFile(storagePath, selectArray);
+	    }
+		else {
+			print("Item already selected");
+		}
+		
+		APName = "GBrowserGridViewAP";
+		Source = "Dev";
+		selectArray = readStringFromFile(storagePath);
+		if(StrCmd == "CheckList"){
+			ViewSel = StrCmd;
+		}else{
+			ViewSel = getStringArrayAt(selectArray, 0);
+		}
+		MMType = getStringArrayAt(selectArray, 1);
+		ShowType = "Folder";
+		if(StrCmd=="File"){
+			ShowType = StrCmd;
+		}
+		pendingMessage = "return";
+		
+		menuCmd(APName, Source, ViewSel, MMType, ShowType);
+
+		null;
+    </script>
+  </onClick>
+  <selected>
+    <script>
+		group = getItemInfo("group");
+		StrCmd= getItemInfo("StrCmd");
+		ret = "no";
+		if (group=="view") {
+			if (StrCmd == ViewSel) {
+			  ret = "yes";
+			}
+		}
+		else if (group=="mmtype") {
+			if (StrCmd == MMType) {
+			  ret = "yes";
+			}
+		}
+		ret;
+
+	</script>
+  </selected>
+</item_template>
+
+<channel>
+	<title>Device</title>
+	<link>./scripts/setup/Device.rss</link>
+
+
+<item>
+<title>$[IMS_VIEW_THUMBNAILS]</title>
+<position> head </position>
+<group> view </group>
+<StrCmd> Grid </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_VIEW_LIST]</title>
+<position> 
+	<script>
+		if(PreviewDisable == "yes"){
+			"tail";
+		}else{
+			"middle";
+		}
+	</script>
+</position>
+<group> view </group>
+<StrCmd> List </StrCmd>
+</item>
+
+
+<item>
+<title>$[IMS_VIEW_PREVIEW]</title>
+<disable>
+	<script>
+		PreviewDisable;
+	</script>
+</disable>
+<position> tail </position>
+<group> view </group>
+<StrCmd> Preview </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_FILES]</title>
+<disable>
+	<script>
+		ShowFileDisable;
+	</script>
+</disable>
+<position> single </position>
+<StrCmd> File </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_ALL_MEDIA]</title>
+<position> head </position>
+<group> mmtype </group>
+<StrCmd> All </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_MOVIES]</title>
+<position> middle </position>
+<group> mmtype </group>
+<StrCmd> Video </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_PICTURES]</title>
+<position> middle </position>
+<group> mmtype </group>
+<StrCmd> Photo </StrCmd>
+</item>
+
+<item>
+<title>$[IMS_SHOW_MUSIC]</title>
+<position> tail </position>
+<group> mmtype </group>
+<StrCmd> Music </StrCmd>
+</item>
+
+
+</channel>
+</rss>

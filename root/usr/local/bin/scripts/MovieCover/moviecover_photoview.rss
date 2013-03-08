@@ -1,0 +1,567 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> MovieCover </bookmark>
+
+
+<mediaDisplay name=photoView
+bottomYPC=100
+sideTopHeightPC=0
+centerHeightPC=100;
+showDefaultInfo=no
+itemBackgroundColor="255:255:255"
+backgroundColor="255:255:255"
+drawItemBorder=yes
+sliding=yes
+itemBorderColor="255:0:0"
+sideColorBottom="255:255:255"
+sideColorTop="255:255:255"
+
+idleImageXPC=83.12
+idleImageYPC=89.58
+idleImageWidthPC=3.1
+idleImageHeightPC=5.5
+>
+
+<itemGapXPC>
+	<script>
+itemGapXPC;
+	</script>
+</itemGapXPC>
+	
+<itemGapYPC>
+	<script>
+itemGapYPC;
+	</script>
+</itemGapYPC>
+
+<itemWidthPC>
+	<script>
+itemWidthPC;
+	</script>
+</itemWidthPC>
+
+<itemHeightPC>
+	<script>
+itemHeightPC;
+	</script>
+</itemHeightPC>
+
+<imageBorderPC>
+	<script>
+imageBorderPC;
+	</script>
+</imageBorderPC>
+
+<rowCount>
+	<script>
+rowCount;
+	</script>
+</rowCount>
+
+<columnCount>
+	<script>
+columnCount;
+	</script>
+</columnCount>
+
+<itemOffsetXPC>
+	<script>
+itemOffsetXPC;
+	</script>
+</itemOffsetXPC>
+
+<itemOffsetYPC>
+	<script>
+itemOffsetYPC;
+	</script>
+</itemOffsetYPC>
+
+<itemPerPage>
+	<script>
+itemPerPage;
+	</script>
+</itemPerPage>
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+
+<itemDisplay>
+<!--<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 align=center useBackgroundSurface=no/>-->
+<image redraw=yes offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 scale=yes backgroundColor="255:255:255" useBackgroundSurface=yes>
+<script>
+	state = getDrawingItemState();
+	print("image state===>",state);
+	url = getStringArrayAt(folderArray , -1)+"/folder.jpg" ;
+	url;
+</script>
+</image>
+</itemDisplay>
+
+	<onUserInput>
+		<script>
+     		userInput = currentUserInput();
+			ret = "false";
+			
+			if (userInput=="pagedown"){
+				setFocusItemIndex((getFocusItemIndex()+10)%itemSize);
+				redrawDisplay();
+				ret = "true";
+			}
+			else if (userInput=="pageup"){
+			setFocusItemIndex((((getFocusItemIndex()-10)%itemSize)+itemSize)%itemSize);
+				redrawDisplay();
+				ret = "true";
+			}
+			else if (userInput=="option_blue"){
+			setEnv("bgPopup", getStringArrayAt(folderArray , -1)+"/poster.jpg");
+			rss = "rss_file://./scripts/MovieCover/bgPopup.rss";
+			ret = doModalRss(rss);
+			null;
+			}
+			else if (userInput=="option_red"){
+			rss = "rss_file://./scripts/MovieCover/timePopup.rss";
+			doModalRss(rss);
+			ret = "true";
+			}
+			else if (userInput=="option_yellow"){
+			rss = "rss_file://./scripts/MovieCover/numPassPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";			
+			}
+			else if (userInput=="option_green"){
+			ret = getInput("Input search term", "doModal");
+			if( ret != NULL ) {
+	setFocusItemIndex(getURL("http://127.0.0.1/cgi-bin/custom/searchMovieLists.php?term="+ret));	
+			}
+			ret = "true";
+			}
+			else if (userInput=="one"){
+			setEnv("numPopup", "1");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="two"){
+			setEnv("numPopup", "2");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="three"){
+			setEnv("numPopup", "3");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="four"){
+			setEnv("numPopup", "4");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="five"){
+			setEnv("numPopup", "5");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="six"){
+			setEnv("numPopup", "6");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="seven"){
+			setEnv("numPopup", "7");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="eight"){
+			setEnv("numPopup", "8");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			else if (userInput=="nine"){
+			setEnv("numPopup", "9");
+			rss = "rss_file://./scripts/MovieCover/numPopup.rss";
+			setFocusItemIndex((doModalRss(rss)-1)%itemSize);
+			redrawDisplay();
+			ret = "true";
+			}
+			
+			if (userInput=="edit"){
+				ret = "true";
+			}
+
+			if (type == "slideShow") {
+				if (userInput == "up") {
+					type = "mostInterested";
+					setRefreshTime(-1);
+				}
+			}
+			ret;
+		</script>	
+	</onUserInput>
+
+
+	<backgroundDisplay  name=flickrBackground>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	 	./scripts/MovieCover/movieCoverBG-4.png
+	 </image>
+	</backgroundDisplay>
+<text offsetXPC="0" offsetYPC="96" widthPC="10" heightPC="4" 
+		fontSize="10" backgroundColor="-1:-1:-1" foregroundColor="255:255:255"
+		redraw=yes align=center useBackgroundSurface=yes >
+        	<script>
+			num=getFocusItemIndex()- -1;			
+			str = num;
+			str = "["+str+"/"+itemSize+"]";				
+			<!--str =currentUserInput();-->	
+			str; 
+		</script>
+
+    </text>	
+
+    <text offsetXPC="10" offsetYPC="94" widthPC="80" heightPC="6" 
+		fontSize="18" backgroundColor="-1:-1:-1" foregroundColor="255:255:255"
+		redraw=yes align=center useBackgroundSurface=yes >
+        	<script>
+			str = getStringArrayAt(folderNameArray , -1);
+			<!--str = getFocusItemIndex()+" - "+itemSize;-->	
+			<!--str="userInput is: "+currentUserInput();-->		
+			str; 
+		</script>
+    </text>			
+
+	<!-- the entry point of the view, you can set the initial focus here -->
+	<!-- you can also use postMessage to do the initial operation on the focus item -->
+	<onEnter>
+		subStoragePath = "/usr/local/etc/CustomMenus.dat";
+		menuArray = readStringFromFile(subStoragePath);
+		cover_mode=("2x5");
+		if (menuArray == null){
+		cover_mode=("2x5");
+		}
+		else cover_mode = getStringArrayAt(menuArray, 5);	
+		if (cover_mode=="2x5")		
+		{itemGapXPC=4.5;
+		itemGapYPC=2;
+		itemOffsetXPC=2;
+		itemOffsetYPC=11;
+		itemWidthPC=14;
+		itemHeightPC=34;
+		imageBorderPC=1;
+		rowCount=2;
+		columnCount=5;
+		itemPerPage=10;}
+		else if (cover_mode=="2x6")		
+		{itemGapXPC=2;
+		itemGapYPC=2;
+		itemWidthPC=14;
+		itemHeightPC=34;
+		imageBorderPC=1;
+		rowCount=2;
+		columnCount=6;
+		itemOffsetXPC=1.5;
+		itemOffsetYPC=11;
+		itemPerPage=12;}
+		else if (cover_mode == "2x7")
+		{
+		itemOffsetXPC=2;
+      		itemOffsetYPC=13.5;
+		itemWidthPC=12.1;
+      		itemHeightPC=29.4;
+		imageBorderPC=1;
+      		itemGapXPC=1.5;
+      		itemGapYPC=3;
+      		rowCount=2;
+      		columnCount=7;
+      		itemPerPage=14;
+		}
+		else if (cover_mode == "2x8")
+		{
+		itemOffsetXPC=1;
+      		itemOffsetYPC=15.5;
+		itemWidthPC=10.6;
+      		itemHeightPC=25.8;
+		imageBorderPC=1;
+      		itemGapXPC=1.5;
+      		itemGapYPC=5;
+      		rowCount=2;
+      		columnCount=8;
+      		itemPerPage=16;
+		}
+		else if (cover_mode == "3x8")
+		{
+		itemOffsetXPC=1.75;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=9.7;
+      		itemHeightPC=23;
+		imageBorderPC=1;
+      		itemGapXPC=2.2;
+      		itemGapYPC=0.5;
+      		rowCount=3;
+      		columnCount=8;
+      		itemPerPage=24;
+		}
+		else if (cover_mode == "3x9")
+		{
+		itemOffsetXPC=1;
+      		itemOffsetYPC=12;
+		itemWidthPC=9.3;
+      		itemHeightPC=22.6;
+		imageBorderPC=1;
+      		itemGapXPC=1.5;
+      		itemGapYPC=1;
+      		rowCount=3;
+      		columnCount=9;
+      		itemPerPage=27;
+		}
+		else if (cover_mode == "4x10")
+		{
+		itemOffsetXPC=2.2;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=7.4;
+      		itemHeightPC=17;
+		imageBorderPC=1;
+      		itemGapXPC=1.9;
+      		itemGapYPC=0.75;
+      		rowCount=4;
+      		columnCount=10;
+      		itemPerPage=40;
+		}
+		else if (cover_mode == "4x11")
+		{
+		itemOffsetXPC=0.7;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=7.4;
+      		itemHeightPC=17;
+		imageBorderPC=1;
+      		itemGapXPC=1.5;
+      		itemGapYPC=0.75;
+      		rowCount=4;
+      		columnCount=11;
+      		itemPerPage=44;
+		}
+		else if (cover_mode == "5x12")
+		{
+		itemOffsetXPC=1.5;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=5.7;
+      		itemHeightPC=13.5;
+		imageBorderPC=1;
+      		itemGapXPC=2.25;
+      		itemGapYPC=0.5;
+      		rowCount=5;
+      		columnCount=12;
+      		itemPerPage=60;
+		}
+		else if (cover_mode == "5x13")
+		{
+		itemOffsetXPC=1.0;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=5.7;
+      		itemHeightPC=13.5;
+		imageBorderPC=1;
+      		itemGapXPC=1.75;
+      		itemGapYPC=0.5;
+      		rowCount=5;
+      		columnCount=13;
+      		itemPerPage=65;
+		}
+		else if (cover_mode == "5x14")
+		{
+		itemOffsetXPC=1.0;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=5.7;
+      		itemHeightPC=13.5;
+		imageBorderPC=1;
+      		itemGapXPC=1.25;
+      		itemGapYPC=0.5;
+      		rowCount=5;
+      		columnCount=14;
+      		itemPerPage=70;
+		}
+		else if (cover_mode == "6x15")
+		{
+		itemOffsetXPC=1.0;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=4.7;
+      		itemHeightPC=11;
+		imageBorderPC=1;
+      		itemGapXPC=1.70;
+      		itemGapYPC=0.75;
+      		rowCount=6;
+      		columnCount=15;
+      		itemPerPage=90;
+		}
+		else if (cover_mode == "6x16")
+		{
+		itemOffsetXPC=1;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=4.5;
+      		itemHeightPC=11;
+		imageBorderPC=1;
+      		itemGapXPC=1.5;
+      		itemGapYPC=0.75;
+      		rowCount=6;
+      		columnCount=16;
+      		itemPerPage=96;
+		}
+		else if (cover_mode == "6x17")
+		{
+		itemOffsetXPC=0.9;
+      		itemOffsetYPC=12.5;
+		itemWidthPC=4.7;
+      		itemHeightPC=11;
+		imageBorderPC=1;
+      		itemGapXPC=1.1;
+      		itemGapYPC=0.75;
+      		rowCount=6;
+      		columnCount=17;
+      		itemPerPage=102;
+		}
+		redrawDisplay();
+		
+	</onEnter>
+</mediaDisplay>
+<!--
+else if (cover_mode == " x ")
+		{
+		itemOffsetXPC=;
+      		itemOffsetYPC=;
+		itemWidthPC=;
+      		itemHeightPC=;
+		imageBorderPC=;
+      		itemGapXPC=;
+      		itemGapYPC=;
+      		rowCount=;
+      		columnCount=;
+      		itemPerPage=;
+		}
+		
+-->
+<script>
+	 
+	header = "MovieCover";
+	page = 1;
+	type = "mostInterested";
+	firstEnter = "yes";
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "movieDir.dat";
+	idArray = readStringFromFile(storagePath);
+	print(storagePath, "symbolArray = ", idArray);	
+
+	itemSize = 0;
+	querySymbols = "";
+	symbol = getStringArrayAt(idArray, itemSize);	
+	while (  symbol != null) {
+		itemSize = itemSize + 1;
+		symbol = getStringArrayAt(idArray, itemSize);
+	}	
+	print("itemp size=**=>",itemSize);
+	
+	currentFocusItemIndex=getEnv("currentFocusItemIndex");
+	if (currentFocusItemIndex != null)
+	{
+	setFocusItemIndex(currentFocusItemIndex);
+	unsetEnv("currentFocusItemIndex");
+	}	
+	else{
+	getURL("http://127.0.0.1/cgi-bin/custom/sortMovieLists.php");	
+	setFocusItemIndex(0);}
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "movieDir.dat";
+	folderArray = readStringFromFile(storagePath);
+
+	storagePath = getStoragePath("tmp");
+	storagePath = storagePath + "movieName.dat";
+	folderNameArray = readStringFromFile(storagePath);
+	
+	
+</script>
+	
+<onRefresh>
+
+</onRefresh>
+
+<item_template>
+		<onClick>
+			url = getStringArrayAt(folderArray , -1) ;
+			print("onClick |*****|",url);
+			
+			APName = "GBrowserGridViewAP";
+			menuCmd(APName, "StartPlayVideoFolder", url);
+			setEnv("currentFocusItemIndex", getFocusItemIndex());
+			null;
+		</onClick>
+</item_template>
+
+
+<!--
+<submenu name=$[IMS_SEARCH_PHOTO]>
+        <onClick>
+            <script>
+				keyword= getInput(); 
+				type = "search";
+				page = 1;
+				if (keyword!=null) { 
+					setRefreshTime(1);
+				}
+				else {
+				  url = null;
+				}
+				
+            </script>
+        </onClick>
+</submenu>	
+
+
+<submenu name=$[IMS_PREVIOUS_PAGE]>
+	<script>
+		if (page &gt; 1) {
+			page = page - 1;
+			setRefreshTime(1);
+		}				
+	</script>	
+</submenu>
+
+<submenu name=$[IMS_NEXT_PAGE]>
+	<script>
+		page = page + 1;
+		setRefreshTime(1);
+	</script>	
+</submenu>
+-->
+
+
+<channel>
+	<title> <script> header; </script> </title>
+	<link>./scripts/MovieCover/moviecover.rss</link>
+
+<itemSize>
+	<script>
+		itemSize;
+	</script>
+</itemSize>
+
+</channel>
+</rss>

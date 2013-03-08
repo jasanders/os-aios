@@ -1,0 +1,80 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+        <title>US Stock Starting with A</title>
+        <link>./scripts/stock/USA_A.rss</link>
+        <media:thumbnail url="image/stock.jpg"/>       
+
+<item>
+<title>A A O N INC</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=AAON&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A A R CORP</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=AIR&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B B AB</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABBBY&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B C BANCORP</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABCB&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B C DISPENSING TECH INC</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABCC&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B C RAIL PRODUCTS CORP</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABCR&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B M INDUSTRIES INC</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABM&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B N AMRO HLDGS N V</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=AAN&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>A B R INFO SVCS INC</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=ABRX&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+<item>
+<title>APPLE COMPUTER INC</title>
+<link>http://finance.yahoo.com/d/quotes.csv?s=AAPL&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+<media:thumbnail url="image/stock.jpg"/>
+<mediaDisplay name=stockView />
+</item>
+
+</channel>
+</rss>
+

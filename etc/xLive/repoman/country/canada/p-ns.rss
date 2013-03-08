@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xlive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<channel>
+<title>Police Feeds</title>
+
+<item>
+
+      <title>Halifax</title>
+      <link>http://relay.radioreference.com:80/840231147</link>
+	   <enclosure type="video/x-ms-wma" url="http://relay.radioreference.com:80/840231147"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+     <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>New Glasgow</title>
+      <link>http://relay.radioreference.com:80/556026934</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/556026934"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+</channel>
+</rss>

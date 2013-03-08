@@ -1,0 +1,100 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>電器電纜類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>1603 華電</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1603.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1603" />
+        </item>
+        <item>
+            <title>1605 華新</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1605.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1605" />
+        </item>
+        <item>
+            <title>1606 歌林</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1606.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1606" />
+        </item>
+        <item>
+            <title>1608 華榮</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1608.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1608" />
+        </item>
+        <item>
+            <title>1609 大亞</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1609.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1609" />
+        </item>
+        <item>
+            <title>1611 中電</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1611.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1611" />
+        </item>
+        <item>
+            <title>1612 宏泰</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1612.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1612" />
+        </item>
+        <item>
+            <title>1613 台一</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1613.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1613" />
+        </item>
+        <item>
+            <title>1614 三洋電</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1614.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1614" />
+        </item>
+        <item>
+            <title>1615 大山</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1615.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1615" />
+        </item>
+        <item>
+            <title>1616 億泰</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1616.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1616" />
+        </item>
+        <item>
+            <title>1617 榮星</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1617.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1617" />
+        </item>
+        <item>
+            <title>1618 合機</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=1618.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/1618" />
+        </item>
+    </channel>
+</rss>
+        

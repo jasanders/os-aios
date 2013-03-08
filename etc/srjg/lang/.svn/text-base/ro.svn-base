@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Alfabet</alpha>
+	<genre>Gen</genre>
+	<recent>Adaugate Recent</recent>
+	<select>Selectati Filme de:</select>
+	<update>Actualizare Jukebox</update>
+	<notwatched>Nevizionate</notwatched>
+	<year>An</year>
+	<search>Cautare</search>
+  <config>Configurare</config>
+  <textInfo>Wellcome on SRJG !&#x0A;&#x0A;1 - to play the last watched video.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Keys list:&#x0A;1 = Switch View for the Jukebox&#x0A;Enter = To select&#x0A;Rtn = Previous screen</helpGP>
+  <helpJbx>Keys list:&#x0A;2 = Mark as Watched&#x0A;Enter = Select&#x0A;Rtn = Previous screen&#x0A;Play = Play video&#x0A;Goto = Seek the video number&#x0A;<< = Go back 10 videos&#x0A;>> = Skip 10 videos</helpJbx>
+  <helpSheet>Keys list:&#x0A;2 = Mark as Watched&#x0A;Rtn = Previous screen&#x0A;Enter = Play video&#x0A;Play = Play video&#x0A;< = Previous video&#x0A;> = Next video</helpSheet>
+</jukebox>
+<update>
+  <fast>Rapid</fast>
+  <rebuild>Reconstruire</rebuild>
+</update>
+<cfg>
+  <Lang>Limba</Lang>
+  <Jukebox_Size>Afisare</Jukebox_Size>
+  <Movies_Path>Cale Filme</Movies_Path>
+	<Nfo_Path>Nfo path</Nfo_Path>
+	<Poster_Path>Cale Poster</Poster_Path>
+	<Sheet_Path>Cale Sheet</Sheet_Path>
+  <Movie_Filter>Filtrul</Movie_Filter>
+  <SingleDb>O Singura Baza</SingleDb>
+  <Recent_Max>Max Filme Recente </Recent_Max>
+  <Imdb>Utilizati IMDB</Imdb>
+	<Dspl>Afiseaza</Dspl>
+	<UnlockRM>Allow Delete</UnlockRM>
+  <Jukebox_Path>Cale Jukebox:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Versiune:</Version>
+  <yes>Da</yes>
+  <no>Nu</no>
+	<top>Sus</top>
+	<bottom>Jos</bottom>
+	<white>Alb</white>
+	<black>Negru</black>
+	<yellow>Galben</yellow>
+	<transparent>Transparent</transparent>
+	<browse>Navigare</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Text Gen:</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Cale Filme:</FBrowser_Title>
+  <FBrowser_Valid>pentru a valida</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Utilizati IMDB</Imdb_Use>
+  <Imdb_Lang>Sinopsis</Imdb_Lang>
+  <Imdb_Source>Poster Aleatoriu</Imdb_Source>
+  <Imdb_Poster>Descarcati Poster</Imdb_Poster>
+  <Imdb_PBox>Poster Box</Imdb_PBox>
+  <Imdb_PPost>Poster Aleatoriu</Imdb_PPost>
+  <Imdb_Sheet>Descarcati Sheet</Imdb_Sheet>
+  <Imdb_SBox>Poster Box in Sheet</Imdb_SBox>
+  <Imdb_SPost>Poster Aleatoriu in Sheet</Imdb_SPost>
+  <Imdb_Backdrop>Fundal Aleatoriu</Imdb_Backdrop>
+  <Imdb_Font>Font</Imdb_Font>
+  <Imdb_Genres>Imagini Genuri</Imdb_Genres>
+  <Imdb_Tagline>Tagline</Imdb_Tagline>
+  <Imdb_Time>Format de time</Imdb_Time>
+  <Imdb_Info>Creati fisier info</Imdb_Info>
+  <Imdb_MaxDl>Descarcari Simultane</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Edit Meniu</EditMenu>
+  <rmPoster>Sterge Poster</rmPoster>
+  <rmSheet>Sterge Sheet</rmSheet>
+  <rmNfo>Sterge Nfo</rmNfo>
+  <rmMovie>Sterge Film</rmMovie>
+  <ValPoster>Sigur doriti sa stergeti numai Poster ?</ValPoster>
+  <ValSheet>Sigur doriti sa stergeti numai Sheet ?</ValSheet>
+  <ValNfo>Sigur doriti sa stergeti numai Nfo ?</ValNfo>
+  <ValMovie>Sigur doriti sa stergeti toate fisierele inclusiv filmul?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Selectati subtitrare</SubtMenu>
+  <WtSubt>Fara subtitrare</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Subt: Auto play</Subt_OneAuto>
+  <Subt_FontPath>Subt: Cale Font</Subt_FontPath>
+  <Subt_FontFile>Subt: Font Activ</Subt_FontFile>
+  <Subt_Color>Subt: Culoare</Subt_Color>
+  <Subt_ColorBg>Subt: Culoare Fundal</Subt_ColorBg>
+	<Subt_Size>Subt: Dimensiune</Subt_Size>
+	<Subt_Pos>Subt: Pozitie</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Selectati font</FontMenu>
+</MFont>

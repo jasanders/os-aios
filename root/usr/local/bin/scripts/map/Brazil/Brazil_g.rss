@@ -1,0 +1,251 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_g.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Garanhuns</title>
+<cur>BRXX0096</cur>
+<for>Garanhuns</for>
+</item>
+
+<item>
+<title>Garca</title>
+<cur>BRXX0708</cur>
+<for>Garca</for>
+</item>
+
+<item>
+<title>Garopaba</title>
+<cur>BRXX0097</cur>
+<for>Garopaba</for>
+</item>
+
+<item>
+<title>Gaspar</title>
+<cur>BRXX0098</cur>
+<for>Gaspar</for>
+</item>
+
+<item>
+<title>General Salgado</title>
+<cur>BRXX0561</cur>
+<for>General Salgado</for>
+</item>
+
+<item>
+<title>Goiania</title>
+<cur>BRXX0099</cur>
+<for>Goiania</for>
+</item>
+
+<item>
+<title>Governador Valadares</title>
+<cur>BRXX0100</cur>
+<for>Governador Valadares</for>
+</item>
+
+<item>
+<title>Gramado</title>
+<cur>BRXX0101</cur>
+<for>Gramado</for>
+</item>
+
+<item>
+<title>Grao Mogol</title>
+<cur>BRXX0381</cur>
+<for>Grao Mogol</for>
+</item>
+
+<item>
+<title>Gravatai</title>
+<cur>BRXX0280</cur>
+<for>Gravatai</for>
+</item>
+
+<item>
+<title>Guaiba</title>
+<cur>BRXX0102</cur>
+<for>Guaiba</for>
+</item>
+
+<item>
+<title>Guaira</title>
+<cur>BRXX0382</cur>
+<for>Guaira</for>
+</item>
+
+<item>
+<title>Guanambi</title>
+<cur>BRXX0732</cur>
+<for>Guanambi</for>
+</item>
+
+<item>
+<title>Guapiara</title>
+<cur>BRXX0562</cur>
+<for>Guapiara</for>
+</item>
+
+<item>
+<title>Guapore</title>
+<cur>BRXX3889</cur>
+<for>Guapore</for>
+</item>
+
+<item>
+<title>Guarapari</title>
+<cur>BRXX0103</cur>
+<for>Guarapari</for>
+</item>
+
+<item>
+<title>Guarapuava</title>
+<cur>BRXX0104</cur>
+<for>Guarapuava</for>
+</item>
+
+<item>
+<title>Guararapes</title>
+<cur>BRXX0105</cur>
+<for>Guararapes</for>
+</item>
+
+<item>
+<title>Guaratingueta</title>
+<cur>BRXX0383</cur>
+<for>Guaratingueta</for>
+</item>
+
+<item>
+<title>Guaratuba</title>
+<cur>BRXX0106</cur>
+<for>Guaratuba</for>
+</item>
+
+<item>
+<title>Guaruja</title>
+<cur>BRXX0281</cur>
+<for>Guaruja</for>
+</item>
+
+<item>
+<title>Guarulhos</title>
+<cur>BRXX0107</cur>
+<for>Guarulhos</for>
+</item>
+
+<item>
+<title>Guarus</title>
+<cur>BRXX0563</cur>
+<for>Guarus</for>
+</item>
+
+<item>
+<title>Gurupa</title>
+<cur>BRXX0384</cur>
+<for>Gurupa</for>
+</item>
+
+<item>
+<title>Gurupi</title>
+<cur>BRXX0564</cur>
+<for>Gurupi</for>
+</item>
+</channel></rss>

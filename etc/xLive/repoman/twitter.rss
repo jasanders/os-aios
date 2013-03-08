@@ -1,0 +1,54 @@
+<?xml version='1.0' ?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay name="threePartsView"
+	sideLeftWidthPC="0"
+	itemImageXPC="5"
+	itemXPC="20"
+	itemYPC="20"
+	itemWidthPC="65"
+	capWidthPC="70"
+        showDefaultInfo="no"
+        showHeader="no"
+	unFocusFontColor="101:101:101"
+	focusFontColor="255:255:255" idleImageXPC="40" idleImageYPC="40" idleImageWidthPC="20" idleImageHeightPC="26">
+        <idleImage>/usr/local/etc/xLive/image/busy1.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy2.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy3.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy4.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy5.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy6.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy7.png</idleImage>
+        <idleImage>/usr/local/etc/xLive/image/busy8.png</idleImage>
+	
+	<text  offsetXPC=40 offsetYPC=8 widthPC=35 heightPC=10 fontSize=30 backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		Twitter
+	</text>
+</mediaDisplay>
+
+<item_template>
+</item_template>
+
+
+<channel>
+<title>Twitter</title>
+
+<item>
+
+<title>Read User Tweers (Enter User Name)</title>
+<link>rss_command://search</link>
+<search url="http://twitter.com/statuses/user_timeline/%s.rss" />
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-twi.png" />
+</item>
+
+
+<item>
+
+<title>Search Twitter(Enter Search Phrase)</title>
+<link>rss_command://search</link>
+<search url="http://search.twitter.com/search.atom?q=%s" />
+<media:thumbnail url="/usr/local/etc/xLive/image/sn-twi.png" />
+</item>
+
+</channel>
+</rss>

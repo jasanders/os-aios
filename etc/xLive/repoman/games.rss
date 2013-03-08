@@ -1,0 +1,28 @@
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+                
+
+
+
+<channel>
+<title>Canada Games</title>
+
+<item>
+
+      <title>Games</title>
+      <link> mms://bellaliant-event53.wm.llnwd.net/bellaliant-event53?MSWMExt=.asf</link>
+      <media:thumbnail url="" />
+	  <enclosure type="video/x-ms-wmv" url="mms://bellaliant-event53.wm.llnwd.net/bellaliant-event53?MSWMExt=.asf"/>
+	 <idleImage>/usr/local/etc/xLive/repoman/image/loading/hdd_mount_1.png </idleImage>
+<idleImage>/usr/local/etc/xLive/repoman/image/loading/hdd_mount_2.png </idleImage>
+ </item>
+	  
+	 
+  
+  
+  
+      
+
+</channel>
+</rss>

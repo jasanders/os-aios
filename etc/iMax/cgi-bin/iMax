@@ -1,0 +1,8 @@
+#!/bin/sh
+cat <<EOF
+Content-type: text/html
+
+EOF
+
+IMAX_PATH=/usr/local/etc/iMax
+exec $IMAX_PATH/bin/iMax.cgi

@@ -1,0 +1,1049 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+
+<channel>
+<title>Argentina</title>
+<link>./scripts/map/Argentina.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Aeroparque Buenos Aires</title>
+<cur>ARDF0127</cur>
+<for>Aeroparque Buenos Aires</for>
+</item>
+
+<item>
+<title>Alta Gracia</title>
+<cur>ARCA0001</cur>
+<for>Alta Gracia</for>
+</item>
+
+<item>
+<title>Avellaneda</title>
+<cur>ARDF0002</cur>
+<for>Avellaneda</for>
+</item>
+
+<item>
+<title>Azul</title>
+<cur>ARBA0129</cur>
+<for>Azul</for>
+</item>
+
+<item>
+<title>Bahia Blanca</title>
+<cur>ARBA0134</cur>
+<for>Bahia Blanca</for>
+</item>
+
+<item>
+<title>Bahia Blanca</title>
+<cur>ARBA0004</cur>
+<for>Bahia Blanca</for>
+</item>
+
+<item>
+<title>Balcarce</title>
+<cur>ARBA0005</cur>
+<for>Balcarce</for>
+</item>
+
+<item>
+<title>Balde</title>
+<cur>ARSL0006</cur>
+<for>Balde</for>
+</item>
+
+<item>
+<title>Banos de Copahue</title>
+<cur>ARNN0007</cur>
+<for>Banos de Copahue</for>
+</item>
+
+<item>
+<title>Bariloche</title>
+<cur>ARRN0116</cur>
+<for>Bariloche</for>
+</item>
+
+<item>
+<title>Bolivar</title>
+<cur>ARBA0128</cur>
+<for>Bolivar</for>
+</item>
+
+<item>
+<title>Bragado</title>
+<cur>ARBA0008</cur>
+<for>Bragado</for>
+</item>
+
+<item>
+<title>Buenos Aires</title>
+<cur>ARBA0009</cur>
+<for>Buenos Aires</for>
+</item>
+
+<item>
+<title>Cafayate</title>
+<cur>ARSA0135</cur>
+<for>Cafayate</for>
+</item>
+
+<item>
+<title>Campana</title>
+<cur>ARBA0010</cur>
+<for>Campana</for>
+</item>
+
+<item>
+<title>Canada de Gomez</title>
+<cur>ARSF0011</cur>
+<for>Canada de Gomez</for>
+</item>
+
+<item>
+<title>Casilda</title>
+<cur>ARSF0012</cur>
+<for>Casilda</for>
+</item>
+
+<item>
+<title>Catamarca</title>
+<cur>ARCC0013</cur>
+<for>Catamarca</for>
+</item>
+
+<item>
+<title>Caviahue</title>
+<cur>ARNN0062</cur>
+<for>Caviahue</for>
+</item>
+
+<item>
+<title>Caviahue/Copahue</title>
+<cur>ARNN0063</cur>
+<for>Caviahue/Copahue</for>
+</item>
+
+<item>
+<title>Cebollar</title>
+<cur>ARLR0014</cur>
+<for>Cebollar</for>
+</item>
+
+<item>
+<title>Ceres</title>
+<cur>ARSF0015</cur>
+<for>Ceres</for>
+</item>
+
+<item>
+<title>Chamical</title>
+<cur>ARLR0119</cur>
+<for>Chamical</for>
+</item>
+
+<item>
+<title>Chascomus</title>
+<cur>ARBA0016</cur>
+<for>Chascomus</for>
+</item>
+
+<item>
+<title>Chepes</title>
+<cur>ARLR0017</cur>
+<for>Chepes</for>
+</item>
+
+<item>
+<title>Chimbas</title>
+<cur>ARSJ0018</cur>
+<for>Chimbas</for>
+</item>
+
+<item>
+<title>Chivilcoy</title>
+<cur>ARBA0019</cur>
+<for>Chivilcoy</for>
+</item>
+
+<item>
+<title>Clorinda</title>
+<cur>ARFA0020</cur>
+<for>Clorinda</for>
+</item>
+
+<item>
+<title>Comodoro Rivadavia</title>
+<cur>ARCT0021</cur>
+<for>Comodoro Rivadavia</for>
+</item>
+
+<item>
+<title>Concepcion del Uruguay</title>
+<cur>ARER0024</cur>
+<for>Concepcion del Uruguay</for>
+</item>
+
+<item>
+<title>Concordia</title>
+<cur>ARER0022</cur>
+<for>Concordia</for>
+</item>
+
+<item>
+<title>Copahue</title>
+<cur>ARNN0064</cur>
+<for>Copahue</for>
+</item>
+
+<item>
+<title>Cordoba</title>
+<cur>ARCA0023</cur>
+<for>Cordoba</for>
+</item>
+
+<item>
+<title>Corrida de Cori</title>
+<cur>ARSA0024</cur>
+<for>Corrida de Cori</for>
+</item>
+
+<item>
+<title>Corrientes</title>
+<cur>ARCS0025</cur>
+<for>Corrientes</for>
+</item>
+
+<item>
+<title>Cruz del Eje</title>
+<cur>ARCA0026</cur>
+<for>Cruz del Eje</for>
+</item>
+
+<item>
+<title>Curuzu Cuatia</title>
+<cur>ARCS0027</cur>
+<for>Curuzu Cuatia</for>
+</item>
+
+<item>
+<title>Dolores</title>
+<cur>ARBA0130</cur>
+<for>Dolores</for>
+</item>
+
+<item>
+<title>El Calafate</title>
+<cur>ARSC0134</cur>
+<for>El Calafate</for>
+</item>
+
+<item>
+<title>Empedrado</title>
+<cur>ARCS0028</cur>
+<for>Empedrado</for>
+</item>
+
+<item>
+<title>Esperanza</title>
+<cur>ARSF0029</cur>
+<for>Esperanza</for>
+</item>
+
+<item>
+<title>Esquel</title>
+<cur>ARCT0132</cur>
+<for>Esquel</for>
+</item>
+
+<item>
+<title>Formosa</title>
+<cur>ARFA0030</cur>
+<for>Formosa</for>
+</item>
+
+<item>
+<title>Fraga</title>
+<cur>ARSL0031</cur>
+<for>Fraga</for>
+</item>
+
+<item>
+<title>General Daniel Cerri</title>
+<cur>ARBA0032</cur>
+<for>General Daniel Cerri</for>
+</item>
+
+<item>
+<title>General Roca</title>
+<cur>ARRN0033</cur>
+<for>General Roca</for>
+</item>
+
+<item>
+<title>General San Martin</title>
+<cur>ARBA0034</cur>
+<for>General San Martin</for>
+</item>
+
+<item>
+<title>Gerli</title>
+<cur>ARBA0135</cur>
+<for>Gerli</for>
+</item>
+
+<item>
+<title>Gobernador Gregores</title>
+<cur>ARSC0035</cur>
+<for>Gobernador Gregores</for>
+</item>
+
+<item>
+<title>Godoy Cruz</title>
+<cur>ARMA0036</cur>
+<for>Godoy Cruz</for>
+</item>
+
+<item>
+<title>Gualeguaychu</title>
+<cur>ARER0125</cur>
+<for>Gualeguaychu</for>
+</item>
+
+<item>
+<title>Guaymallen</title>
+<cur>ARMA0037</cur>
+<for>Guaymallen</for>
+</item>
+
+<item>
+<title>Iguazu Aerodrome</title>
+<cur>ARMS0117</cur>
+<for>Iguazu Aerodrome</for>
+</item>
+
+<item>
+<title>Jachal</title>
+<cur>ARSJ0038</cur>
+<for>Jachal</for>
+</item>
+
+<item>
+<title>Jesus Maria</title>
+<cur>ARSF0039</cur>
+<for>Jesus Maria</for>
+</item>
+
+<item>
+<title>Junin</title>
+<cur>ARBA0040</cur>
+<for>Junin</for>
+</item>
+
+<item>
+<title>La Banda</title>
+<cur>ARSE0041</cur>
+<for>La Banda</for>
+</item>
+
+<item>
+<title>La Falda</title>
+<cur>ARCA0042</cur>
+<for>La Falda</for>
+</item>
+
+<item>
+<title>La Plata</title>
+<cur>ARBA0043</cur>
+<for>La Plata</for>
+</item>
+
+<item>
+<title>La Quiaca</title>
+<cur>ARJY0044</cur>
+<for>La Quiaca</for>
+</item>
+
+<item>
+<title>La Rioja</title>
+<cur>ARLR0045</cur>
+<for>La Rioja</for>
+</item>
+
+<item>
+<title>Laboulaye</title>
+<cur>ARCA0126</cur>
+<for>Laboulaye</for>
+</item>
+
+<item>
+<title>Lago Argentino</title>
+<cur>ARSC0046</cur>
+<for>Lago Argentino</for>
+</item>
+
+<item>
+<title>Laguna de Pozuelos</title>
+<cur>ARJY0094</cur>
+<for>Laguna de Pozuelos</for>
+</item>
+
+<item>
+<title>Las Heras</title>
+<cur>ARMA0047</cur>
+<for>Las Heras</for>
+</item>
+
+<item>
+<title>Las Lenas/Los Molles</title>
+<cur>ARMA0124</cur>
+<for>Las Lenas/Los Molles</for>
+</item>
+
+<item>
+<title>Las Lomitas</title>
+<cur>ARFA0048</cur>
+<for>Las Lomitas</for>
+</item>
+
+<item>
+<title>Las Peladas</title>
+<cur>ARCC0192</cur>
+<for>Las Peladas</for>
+</item>
+
+<item>
+<title>Lomas de Zamora</title>
+<cur>ARBA0049</cur>
+<for>Lomas de Zamora</for>
+</item>
+
+<item>
+<title>Los Molles</title>
+<cur>ARMA0126</cur>
+<for>Los Molles</for>
+</item>
+
+<item>
+<title>Lujan de Cuyo</title>
+<cur>ARMA0050</cur>
+<for>Lujan de Cuyo</for>
+</item>
+
+<item>
+<title>Maipu</title>
+<cur>ARBA0051</cur>
+<for>Maipu</for>
+</item>
+
+<item>
+<title>Malargue</title>
+<cur>ARMA0052</cur>
+<for>Malargue</for>
+</item>
+
+<item>
+<title>Maquinchao</title>
+<cur>ARRN0053</cur>
+<for>Maquinchao</for>
+</item>
+
+<item>
+<title>Mar de Ajo</title>
+<cur>ARBA0131</cur>
+<for>Mar de Ajo</for>
+</item>
+
+<item>
+<title>Mar del Plata</title>
+<cur>ARBA0054</cur>
+<for>Mar del Plata</for>
+</item>
+
+<item>
+<title>Marcos Juarez</title>
+<cur>ARCA0124</cur>
+<for>Marcos Juarez</for>
+</item>
+
+<item>
+<title>Medanos</title>
+<cur>ARBA0055</cur>
+<for>Medanos</for>
+</item>
+
+<item>
+<title>Mendoza</title>
+<cur>ARMA0056</cur>
+<for>Mendoza</for>
+</item>
+
+<item>
+<title>Mercedes</title>
+<cur>ARBA0057</cur>
+<for>Mercedes</for>
+</item>
+
+<item>
+<title>Monte Caseros</title>
+<cur>ARCS0122</cur>
+<for>Monte Caseros</for>
+</item>
+
+<item>
+<title>Necochea</title>
+<cur>ARBA0058</cur>
+<for>Necochea</for>
+</item>
+
+<item>
+<title>Neuquen</title>
+<cur>ARRN0059</cur>
+<for>Neuquen</for>
+</item>
+
+<item>
+<title>Olavarria</title>
+<cur>ARBA0060</cur>
+<for>Olavarria</for>
+</item>
+
+<item>
+<title>Oran</title>
+<cur>ARSA0061</cur>
+<for>Oran</for>
+</item>
+
+<item>
+<title>Parana</title>
+<cur>ARSF0062</cur>
+<for>Parana</for>
+</item>
+
+<item>
+<title>Paso de Indios</title>
+<cur>ARCT0063</cur>
+<for>Paso de Indios</for>
+</item>
+
+<item>
+<title>Pergamino</title>
+<cur>ARBA0064</cur>
+<for>Pergamino</for>
+</item>
+
+<item>
+<title>Pigue</title>
+<cur>ARBA0065</cur>
+<for>Pigue</for>
+</item>
+
+<item>
+<title>Pilar Observatorio</title>
+<cur>ARCS0120</cur>
+<for>Pilar Observatorio</for>
+</item>
+
+<item>
+<title>Polvorines</title>
+<cur>ARBA0137</cur>
+<for>Polvorines</for>
+</item>
+
+<item>
+<title>Posadas</title>
+<cur>ARMS0118</cur>
+<for>Posadas</for>
+</item>
+
+<item>
+<title>Presidencia Roque Saenz Pena</title>
+<cur>ARCO0066</cur>
+<for>Presidencia Roque Saenz Pena</for>
+</item>
+
+<item>
+<title>Pucha Pucha</title>
+<cur>ARLR0121</cur>
+<for>Pucha Pucha</for>
+</item>
+
+<item>
+<title>Puerto Deseado</title>
+<cur>ARSC0067</cur>
+<for>Puerto Deseado</for>
+</item>
+
+<item>
+<title>Puerto Iguazu</title>
+<cur>ARMS0120</cur>
+<for>Puerto Iguazu</for>
+</item>
+
+<item>
+<title>Punta Alta</title>
+<cur>ARBA0068</cur>
+<for>Punta Alta</for>
+</item>
+
+<item>
+<title>Punta de Agua</title>
+<cur>ARLR0069</cur>
+<for>Punta de Agua</for>
+</item>
+
+<item>
+<title>Punta de Vacas</title>
+<cur>ARMA0125</cur>
+<for>Punta de Vacas</for>
+</item>
+
+<item>
+<title>Reconquista</title>
+<cur>ARSF0071</cur>
+<for>Reconquista</for>
+</item>
+
+<item>
+<title>Resistencia</title>
+<cur>ARCO0072</cur>
+<for>Resistencia</for>
+</item>
+
+<item>
+<title>Rio Cuarto</title>
+<cur>ARCA0073</cur>
+<for>Rio Cuarto</for>
+</item>
+
+<item>
+<title>Rio Gallegos</title>
+<cur>ARSC0074</cur>
+<for>Rio Gallegos</for>
+</item>
+
+<item>
+<title>Rio Segundo</title>
+<cur>ARCA0075</cur>
+<for>Rio Segundo</for>
+</item>
+
+<item>
+<title>Rio Tercero</title>
+<cur>ARCA0076</cur>
+<for>Rio Tercero</for>
+</item>
+
+<item>
+<title>Rivadavia</title>
+<cur>ARSJ0077</cur>
+<for>Rivadavia</for>
+</item>
+
+<item>
+<title>River Plate Estuary</title>
+<cur>ARBA0132</cur>
+<for>River Plate Estuary</for>
+</item>
+
+<item>
+<title>Rosario</title>
+<cur>ARSF0078</cur>
+<for>Rosario</for>
+</item>
+
+<item>
+<title>Salta</title>
+<cur>ARSA0079</cur>
+<for>Salta</for>
+</item>
+
+<item>
+<title>San Agustin del Valle Ferti</title>
+<cur>ARSJ0112</cur>
+<for>San Agustin del Valle Ferti</for>
+</item>
+
+<item>
+<title>San Antonio Oeste</title>
+<cur>ARRN0080</cur>
+<for>San Antonio Oeste</for>
+</item>
+
+<item>
+<title>San Carlos de Bariloche</title>
+<cur>ARRN0081</cur>
+<for>San Carlos de Bariloche</for>
+</item>
+
+<item>
+<title>San Francisco</title>
+<cur>ARCA0082</cur>
+<for>San Francisco</for>
+</item>
+
+<item>
+<title>San Isidro</title>
+<cur>ARBA0083</cur>
+<for>San Isidro</for>
+</item>
+
+<item>
+<title>San Juan</title>
+<cur>ARSJ0084</cur>
+<for>San Juan</for>
+</item>
+
+<item>
+<title>San Julian</title>
+<cur>ARSC0133</cur>
+<for>San Julian</for>
+</item>
+
+<item>
+<title>San Justo</title>
+<cur>ARSF0085</cur>
+<for>San Justo</for>
+</item>
+
+<item>
+<title>San Lorenzo</title>
+<cur>ARSF0086</cur>
+<for>San Lorenzo</for>
+</item>
+
+<item>
+<title>San Luis</title>
+<cur>ARCS0087</cur>
+<for>San Luis</for>
+</item>
+
+<item>
+<title>San Martin</title>
+<cur>ARMA0123</cur>
+<for>San Martin</for>
+</item>
+
+<item>
+<title>San Martin de los Andes</title>
+<cur>ARNN0061</cur>
+<for>San Martin de los Andes</for>
+</item>
+
+<item>
+<title>San Miguel de Tucuman</title>
+<cur>ARTN0088</cur>
+<for>San Miguel de Tucuman</for>
+</item>
+
+<item>
+<title>San Nicolas de los Arroyos</title>
+<cur>ARBA0089</cur>
+<for>San Nicolas de los Arroyos</for>
+</item>
+
+<item>
+<title>San Pedro</title>
+<cur>ARJY0090</cur>
+<for>San Pedro</for>
+</item>
+
+<item>
+<title>San Rafael</title>
+<cur>ARMA0091</cur>
+<for>San Rafael</for>
+</item>
+
+<item>
+<title>San Rafael</title>
+<cur>ARTU0127</cur>
+<for>San Rafael</for>
+</item>
+
+<item>
+<title>San Salvador de Jujuy</title>
+<cur>ARJY0092</cur>
+<for>San Salvador de Jujuy</for>
+</item>
+
+<item>
+<title>Santa Fe</title>
+<cur>ARER0093</cur>
+<for>Santa Fe</for>
+</item>
+
+<item>
+<title>Santa Lucia</title>
+<cur>ARSJ0094</cur>
+<for>Santa Lucia</for>
+</item>
+
+<item>
+<title>Santa Rosa</title>
+<cur>ARLP0095</cur>
+<for>Santa Rosa</for>
+</item>
+
+<item>
+<title>Santiago del Estero</title>
+<cur>ARSE0096</cur>
+<for>Santiago del Estero</for>
+</item>
+
+<item>
+<title>Santo Tome</title>
+<cur>ARCS0097</cur>
+<for>Santo Tome</for>
+</item>
+
+<item>
+<title>Sarandi</title>
+<cur>ARBA0136</cur>
+<for>Sarandi</for>
+</item>
+
+<item>
+<title>Sauce Viejo</title>
+<cur>ARSF0121</cur>
+<for>Sauce Viejo</for>
+</item>
+
+<item>
+<title>Sierra de la Ventana</title>
+<cur>ARBA0133</cur>
+<for>Sierra de la Ventana</for>
+</item>
+
+<item>
+<title>Tafi del Valle</title>
+<cur>ARTN0090</cur>
+<for>Tafi del Valle</for>
+</item>
+
+<item>
+<title>Tandil</title>
+<cur>ARBA0098</cur>
+<for>Tandil</for>
+</item>
+
+<item>
+<title>Tartagal</title>
+<cur>ARSA0134</cur>
+<for>Tartagal</for>
+</item>
+
+<item>
+<title>Termas de Rio Hondo</title>
+<cur>ARSE0099</cur>
+<for>Termas de Rio Hondo</for>
+</item>
+
+<item>
+<title>Tinogasta</title>
+<cur>ARCC0100</cur>
+<for>Tinogasta</for>
+</item>
+
+<item>
+<title>Tornquist</title>
+<cur>ARBA0101</cur>
+<for>Tornquist</for>
+</item>
+
+<item>
+<title>Trelew/Rawson</title>
+<cur>ARCT0102</cur>
+<for>Trelew/Rawson</for>
+</item>
+
+<item>
+<title>Trenque Lauquen</title>
+<cur>ARBA0103</cur>
+<for>Trenque Lauquen</for>
+</item>
+
+<item>
+<title>Tres Arroyos</title>
+<cur>ARBA0104</cur>
+<for>Tres Arroyos</for>
+</item>
+
+<item>
+<title>Ushuaia</title>
+<cur>ARTF0105</cur>
+<for>Ushuaia</for>
+</item>
+
+<item>
+<title>Uspallata</title>
+<cur>ARMA0106</cur>
+<for>Uspallata</for>
+</item>
+
+<item>
+<title>Vicente Lopez</title>
+<cur>ARBA0107</cur>
+<for>Vicente Lopez</for>
+</item>
+
+<item>
+<title>Viedma</title>
+<cur>ARRN0131</cur>
+<for>Viedma</for>
+</item>
+
+<item>
+<title>Villa Carlos Paz</title>
+<cur>ARCA0108</cur>
+<for>Villa Carlos Paz</for>
+</item>
+
+<item>
+<title>Villa Constitucion</title>
+<cur>ARSF0109</cur>
+<for>Villa Constitucion</for>
+</item>
+
+<item>
+<title>Villa Dolores</title>
+<cur>ARCA0110</cur>
+<for>Villa Dolores</for>
+</item>
+
+<item>
+<title>Villa General Belgrano</title>
+<cur>ARCA0191</cur>
+<for>Villa General Belgrano</for>
+</item>
+
+<item>
+<title>Villa Krause</title>
+<cur>ARSJ0111</cur>
+<for>Villa Krause</for>
+</item>
+
+<item>
+<title>Villa Mercedes</title>
+<cur>ARSL0112</cur>
+<for>Villa Mercedes</for>
+</item>
+
+<item>
+<title>Villa Reynolds</title>
+<cur>ARSL0113</cur>
+<for>Villa Reynolds</for>
+</item>
+
+<item>
+<title>Vivorata</title>
+<cur>ARBA0114</cur>
+<for>Vivorata</for>
+</item>
+
+<item>
+<title>Zarate</title>
+<cur>ARBA0115</cur>
+<for>Zarate</for>
+</item>
+
+
+</channel></rss>

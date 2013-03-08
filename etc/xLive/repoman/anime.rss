@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Anime</title>
+
+<item>
+<title>Ah! My Goddess</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F78CC7E4A7AD66E9A,Ah%21+My+Goddess</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/oEKqfhI7sFU/market_thumb.jpg?v=a38e7b" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Blade of the Immortal</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD7BB197012D1FB92,Blade+of+the+Immortal</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/ZyXxCu-hB2s/market_thumb.jpg?v=9df7c0" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+      <title>Speed Racer</title>
+      <link>/robotech.rss</link>
+	  <media:thumbnail url="http://i3.ytimg.com/vi/ZFAFAZOs-qw/market_thumb.jpg?v=71b04c" />
+	     
+ 	   <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay></item>
+  
+  
+<item>
+<title>RoboTech: The Masters</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F968409838A88D9B4,RoboTech%3A+The+Masters</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/nFcGERxJKhA/market_thumb.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Robotech: The New Generation</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F8984BEC4B98523F7,Robotech%3A+The+New+Generation</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/MXNsVkpqiYk/market_thumb.jpg?v=7ae56d" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Knight Hunters: Eternity</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FA814C430A5DF2F71,Knight+Hunters%3A+Eternity</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/aTD3e6mggOc/market_thumb.jpg?v=9f4d56" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Magic Knight Rayearth</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F92946497A37EE806,Magic+Knight+Rayearth</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/Ck34InlKvdo/market_thumb.jpg?v=9ec8d2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Gurren Lagann</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F9B8584D14112E1CD,Gurren+Lagann</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/1GGORwgVQSw/market_thumb.jpg?v=7d071e" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Mirage Of Blaze</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F19636EB00000EB22,Mirage+Of+Blaze</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/jn-LhP2xAis/market_thumb.jpg?v=8c16e0" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

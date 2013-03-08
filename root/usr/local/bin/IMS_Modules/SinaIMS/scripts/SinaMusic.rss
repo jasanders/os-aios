@@ -1,0 +1,694 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Sina Music </bookmark>
+
+<config>
+"music";
+</config>
+
+<script_hi>
+"http://music.sina.com.cn/yueku/cooperate/hisense/xml.list.php@dl_sina_music.rss";
+</script_hi>
+
+
+<script>
+music_song_url = "http://music.sina.com.cn/yueku/cooperate/hisense/xml.song.php?id=" ;
+searchurl_prefix = "http://music.sina.com.cn/yueku/port/search/search_songandsinger.php?key=";
+print ("======> searchurl is: ", searchurl_prefix);
+
+pageInit = null;
+itemSize = 0;
+menuTitleArray  = null;
+menuIDArray     = null;
+
+menuTitleArray = pushBackStringArray(menuTitleArray, "音乐收藏夹");
+menuTitleArray = pushBackStringArray(menuTitleArray, "音乐搜索");
+menuTitleArray = pushBackStringArray(menuTitleArray, "热门新歌榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "华语音乐榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "欧美音乐榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "日韩音乐榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "摇滚排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "爵士排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "轻音乐排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "民谣排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "电子排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "嬉哈排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "古典排行榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "中国歌曲榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "全球华语榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "音乐风云榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "英国单曲榜");
+menuTitleArray = pushBackStringArray(menuTitleArray, "美国排行榜");
+menuSize = 18;
+setFocusMenuIndex(2);
+redrawDisplay();
+postMessage("enter");
+</script>
+
+<onEnter>
+drawBgImage = 1;
+print("[onEnter] enter sina music");
+if (pageInit == null)
+{
+		pageInit = "1";
+		ADSize = null;
+		ADUrl = "http://music.sina.com.cn/yueku/sina_adv_source.xml" ;
+
+		dlok = sina_loadXMLFile("/tmp/cached/mus_sina_adv.rss");
+		if (dlok == null)
+				dlok = sina_loadXMLFile(ADUrl);
+
+		ADIndex = 0;
+		if (dlok != null)
+		{
+				ADSize = getXMLElementCount("advertisement", "ad_list","ad");
+				ADImageUrlArray  = null;
+				ADDurationArray     = null;
+				while (1)
+				{
+						ADImageUrl  = getXMLText("advertisement", "ad_list", "ad", ADIndex, "url");
+						ADDuration     = getXMLAttribute("advertisement", "ad_list", "ad", ADIndex, "duration");
+
+						print("ADImageUrl= ", ADImageUrl);
+						print("ADDuration= ", ADDuration);
+
+						ADImageUrlArray  = pushBackStringArray(ADImageUrlArray, ADImageUrl);
+						ADDurationArray     = pushBackStringArray(ADDurationArray, ADDuration);
+
+						ADIndex = ADIndex + 1;
+						if (ADIndex == ADSize)
+						{
+								break;
+						}
+				}
+
+				ADImageUrl = getStringArrayAt(ADImageUrlArray, 0);
+				ADImageUrl2 = getStringArrayAt(ADImageUrlArray, 1);
+		}
+		else
+		{
+				print("download AD url fail: ", ADUrl);
+				cancelIdle();
+		}
+
+}
+</onEnter>
+
+<onExit>
+print("[onExit] exit sina music");
+</onExit>
+
+<menu_template>
+<displayTitle>
+<script>
+menuIndex = getQueryMenuIndex();
+getStringArrayAt(menuTitleArray, menuIndex);
+</script>
+</displayTitle>
+
+<onClick>
+menuFocus = getFocusMenuIndex();
+accessIndex = menuFocus;
+itemSize = 0;
+if (menuFocus == 0)
+{
+	file = getStoragePath("key");
+	file = file + "musicFavorite.dat";
+	musicList = readStringFromFile(file);
+		
+	itemTitleArray  = null;
+	itemIDArray     = null;
+	thumbnailArray  = null;
+	singerArray   = null;
+	albumArray   = null;
+	itemSize = 0;
+	count = 0;
+	print("======> musicList include: ", musicList);
+	while (1)
+	{
+		title  = getStringArrayAt(musicList, count);
+		if (title == null)
+			break;
+		id  = getStringArrayAt(musicList, Add(count, 1));
+		thumbnail  = getStringArrayAt(musicList, Add(count, 2));
+		singer  = getStringArrayAt(musicList, Add(count, 3));
+		album  = getStringArrayAt(musicList, Add(count, 4));
+
+		itemTitleArray  = pushBackStringArray(itemTitleArray, title);
+		itemIDArray     = pushBackStringArray(itemIDArray, id);
+		thumbnailArray     = pushBackStringArray(thumbnailArray, thumbnail);
+		singerArray 	  = pushBackStringArray(singerArray, singer);
+		albumArray 	  = pushBackStringArray(albumArray, album);
+
+		itemSize = Add(itemSize, 1);
+		count = Add(count, 5);
+	}
+	if (itemSize &gt; 0)
+		postMessage("right");
+}
+else if (menuFocus == 1)
+{
+	keyword = getInput( );
+	if (keyword != null)
+	{
+	    searchurl = searchurl_prefix + utf8togbk(keyword) + "&amp;start=0&amp;limit=30";
+	    dlok = sina_loadXMLFile(searchurl);
+	    cancelIdle();
+	    if (dlok != null)
+	    {
+			itemTitleArray  = null;
+			itemIDArray     = null;
+			thumbnailArray  = null;
+			singerArray   = null;
+			albumArray   = null;
+			itemSize = getXMLElementCount("Result", "item");
+			print("itemsize= ",itemSize);
+			count = 0;
+			while (1 &amp;&amp; itemSize &gt; 0)
+			{
+				title  = getXMLText("Result",  "item", count,"NAME");
+				id     = getXMLText("Result",  "item", count,"SONGBASEID");
+				thumbnail     = getXMLText("Result",  "item", count,"PHOTOFILENAME");
+				singer   = getXMLText("Result",  "item", count,"SINGERCNAME");
+				album   = getXMLText("Result",  "item", count,"ALBUMCNAME");
+
+
+				itemTitleArray  = pushBackStringArray(itemTitleArray, title);
+				itemIDArray     = pushBackStringArray(itemIDArray, id);
+				thumbnailArray     = pushBackStringArray(thumbnailArray, thumbnail);
+				singerArray 	  = pushBackStringArray(singerArray, singer);
+				albumArray 	  = pushBackStringArray(albumArray, album);
+
+				count += 1;
+				if (count == itemSize)
+				{
+					break;
+				}
+			}
+			if (itemSize &gt; 0)
+			{
+				postMessage("right");
+			}
+			Sina_skipTransition("false");
+	    }
+	}
+	else
+	{
+		Sina_skipTransition("false");
+	}
+}
+else if (menuFocus &gt; 1)
+{
+	accessIndex = Add(accessIndex, -2);
+	
+	itemTitleArray  = null;
+	itemIDArray     = null;
+	thumbnailArray  = null;
+	singerArray   = null;
+	albumArray   = null;
+
+	menuUrl="http://music.sina.com.cn/yueku/cooperate/hisense/xml.list.php";
+	showIdle();
+	dlok = sina_loadXMLFile(menuUrl);
+	if (dlok != null)
+	{
+		itemSize = getXMLElementCount("lists", "list", accessIndex, "song");
+		count = 0;
+		while (1)
+		{
+			title  = getXMLAttribute("lists", "list", accessIndex, "song", count, "name");
+			id     = getXMLAttribute("lists", "list", accessIndex, "song", count, "id");
+			thumbnail     = getXMLAttribute("lists", "list", accessIndex, "song", count, "thumbnail");
+			singer   = getXMLAttribute("lists", "list", accessIndex, "song", count, "singer");
+			album   = getXMLAttribute("lists", "list", accessIndex, "song", count, "album");
+
+			itemTitleArray  = pushBackStringArray(itemTitleArray, title);
+			itemIDArray     = pushBackStringArray(itemIDArray, id);
+			thumbnailArray     = pushBackStringArray(thumbnailArray, thumbnail);
+			singerArray 	  = pushBackStringArray(singerArray, singer);
+			albumArray 	  = pushBackStringArray(albumArray, album);
+
+			count += 1;
+			if (count == itemSize)
+			{
+				break;
+			}
+		}
+	}
+}
+redrawDisplay();
+</onClick>
+</menu_template>
+
+<item_template>
+<title>
+<script>
+displaytitle = getStringArrayAt(itemTitleArray, -1)+ "    " + getStringArrayAt(singerArray , -1);
+</script>
+</title>
+
+<onClick>
+<script>
+currentUrlArray = null;
+focuseditem = getFocusItemIndex();
+print("current item= ",focuseditem);
+count = 0;
+while(1)
+{
+	if(count == itemSize)
+	{
+		break;
+	}
+	realURL = music_song_url + getStringArrayAt(itemIDArray , count);
+	if (realURL != null)
+	{
+		currentUrlArray = pushBackStringArray(currentUrlArray, realURL);
+		count = Add(count, 1);
+	}
+	else
+		break;
+}
+path = getStoragePath("tmp");
+path = path + "sinamusicplay.dat";
+writeStringToFile(path, currentUrlArray);
+
+path = getStoragePath("tmp");
+path = path + "sinamusicSelected.dat";
+writeStringToFile(path, focuseditem);
+
+path = getStoragePath("tmp");
+path = path + "musicName.dat";
+string = itemSize + "&#x000a;" + itemTitleArray;
+writeStringToFile(path, string);
+
+"Sinamusic_playback.rss";
+</script>
+</onClick>
+<media:thumbnail>
+<script>
+pic = getStringArrayAt(thumbnailArray, -1);
+pic = getsinaimageurl(pic);
+pic;
+</script>
+</media:thumbnail>
+
+<media:content type="audio/mpeg" />
+
+<name>
+<script>
+getStringArrayAt(itemTitleArray, -1);
+</script>
+</name>
+
+<id>
+<script>
+getStringArrayAt(itemIDArray, -1);
+</script>
+</id>
+<!-- 
+<thumbnail>
+<script>
+getStringArrayAt(thumbnailArray, -1);
+</script>
+</thumbnail>
+-->
+<singer>
+<script>
+getStringArrayAt(singerArray, -1);
+</script>
+</singer>
+
+
+<album>
+<script>
+menuFocus = getFocusMenuIndex();
+
+if(menuFocus == 0)
+{
+		getStringArrayAt(albumArray, -1);
+}
+else
+{
+		"专辑:  " +  getStringArrayAt(albumArray, -1);
+}
+</script>
+</album>
+
+</item_template>
+
+
+<mediaDisplay name=threePartsView
+idleImageWidthPC=3.1
+idleImageHeightPC=5.5
+imageFocus = null
+
+forceFocusOnMenu=yes
+autoSelectMenu=no
+autoSelectItem=no
+
+sideColorLeft=0:0:0 
+sideColorRight=0:0:0 
+sideColorTop=0:0:0
+
+backgroundColor=-1:-1:-1 
+itemBackgroundColor=-1:-1:-1
+focusBorderColor=0:0:0
+
+headerImageWidthPC=0
+headerImageHeightPC=0
+
+headerCapX=0
+headerCapY=0
+headerCapWidth=0
+headerCapHeight=0
+
+headerCapXPC=0
+headerCapYPC=0
+headerCapWidthPC=0
+headerCapHeightPC=0
+
+menuXPC = 5.6
+menuYPC = 22
+menuWidthPC = 15
+menuHeightPC = 8
+
+sideLeftWidthPC=21
+sideRightWidthPC=0
+sideBottomHeightPC = 0
+sideTopHeightPC=0
+
+itemImageXPC = 25
+itemImageYPC = 38.6
+itemImageWidthPC = 8.3
+itemImageHeightPC = 11.2
+
+itemXPC = 34
+itemYPC = 38.6
+itemWidthPC = 35
+itemHeightPC = 11.6
+
+capXPC = 70
+capYPC = 100
+capWidthPC = 0
+capHeightPC = 0
+
+itemPerPage=4
+
+forceFocusOnItem="no"
+isSinaMusic="yes"
+showHeader="no"
+showDefaultInfo=no>
+
+
+<image redraw=yes offsetXPC=3 offsetYPC=91 widthPC=96.88 heightPC=5.97>
+<script>
+	"../image/bestv_info1.bmp";
+</script>
+</image>
+
+<idleImage> image/POPUP_LOADING_01.png </idleImage>
+<idleImage> image/POPUP_LOADING_02.png </idleImage>
+<idleImage> image/POPUP_LOADING_03.png </idleImage>
+<idleImage> image/POPUP_LOADING_04.png </idleImage>
+<idleImage> image/POPUP_LOADING_05.png </idleImage>
+<idleImage> image/POPUP_LOADING_06.png </idleImage>
+<idleImage> image/POPUP_LOADING_07.png </idleImage>
+<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+<onUserInput>
+userInput = currentUserInput();
+majorContext = getPageInfo("majorContext");
+menuFocus = getFocusMenuIndex();
+ret = "false";
+
+print("context: ", menuFocus, majorContext );
+
+if (userInput == "right" &amp;&amp; majorContext == "items")
+{
+	print("ignore right key when focus on items");
+	ret = "true";
+}
+else if (userInput == "edit" &amp;&amp; majorContext == "items")
+{
+	if(menuFocus == 0)
+	{
+		print("user press edit to delete from favorite");
+		focusIndex = getFocusItemIndex();
+		indexD = 5 * focusIndex;
+		file = getStoragePath("key");
+		file = file + "musicFavorite.dat";
+		musicList = readStringFromFile(file);
+		musicList = deleteStringArrayAt(musicList, indexD);
+		musicList = deleteStringArrayAt(musicList, indexD);
+		musicList = deleteStringArrayAt(musicList, indexD);
+		musicList = deleteStringArrayAt(musicList, indexD);
+		musicList = deleteStringArrayAt(musicList, indexD);
+		writeStringToFile(file, musicList);
+
+		itemTitleArray  = null;
+		itemIDArray     = null;
+		thumbnailArray  = null;
+		singerArray   = null;
+		albumArray   = null;
+		itemSize = 0;
+		count = 0;
+		print("======> musicList include: ", musicList);
+		while (1)
+		{
+			title  = getStringArrayAt(musicList, count);
+			if (title == null)
+				break;
+			id  = getStringArrayAt(musicList, Add(count, 1));
+			thumbnail  = getStringArrayAt(musicList, Add(count, 2));
+			singer  = getStringArrayAt(musicList, Add(count, 3));
+			album  = getStringArrayAt(musicList, Add(count, 4));
+
+			itemTitleArray  = pushBackStringArray(itemTitleArray, title);
+			itemIDArray     = pushBackStringArray(itemIDArray, id);
+			thumbnailArray     = pushBackStringArray(thumbnailArray, thumbnail);
+			singerArray 	  = pushBackStringArray(singerArray, singer);
+			albumArray 	  = pushBackStringArray(albumArray, album);
+
+			itemSize = Add(itemSize, 1);
+			count = Add(count, 5);
+		}
+		if(itemSize == 0)
+		{
+			print("NO Favorite!!!");
+			postMessage("left");
+		}
+		redrawDisplay();
+	}
+	else
+	{
+		print("user press edit to add to favorite");
+		/* write iteminfo into musicFavorite */
+		file = getStoragePath("key");
+		file = file + "musicFavorite.dat";
+		index = getFocusItemIndex();
+		title  = getStringArrayAt(itemTitleArray, index);
+		id     = getStringArrayAt(itemIDArray, index);
+		thumbnail     = getStringArrayAt(thumbnailArray, index);
+		singer 	  = getStringArrayAt(singerArray, index);
+		album 	  = getStringArrayAt(albumArray, index);
+
+		string = title + "&#x000a;" + id + "&#x000a;" + thumbnail + "&#x000a;" + singer + "&#x000a;" + album + "&#x000a;";
+		Sina_appendStringToFile(file, string);
+	}
+}
+else if (userInput == "setup" || userInput == "guide")
+{
+	drawBgImage = 1;
+}
+ret;
+</onUserInput>
+
+<image redraw=yes offsetXPC=12.2 offsetYPC=19 widthPC=1.72 heightPC=2.36>
+<script>
+index = getFocusMenuIndex();
+if (index == 0)
+	"../image/arrow_up_unfocus.bmp";
+else
+	"../image/arrow_up.bmp";
+</script>
+</image>
+
+<image redraw=yes offsetXPC=12.2 offsetYPC=79 widthPC=1.72 heightPC=2.36>
+<script>
+index = getFocusMenuIndex();
+if (index == (menuSize-1))
+	"../image/arrow_down_unfocus.bmp";
+else
+	"../image/arrow_down.bmp";
+</script>
+</image>
+
+<image offsetXPC=40 offsetYPC=5 widthPC=20 heightPC=5.6>
+../image/sina_music_title.bmp
+</image>
+
+<image redraw=yes offsetXPC=24.9 offsetYPC=16 widthPC=20 heightPC=20>
+<script>
+pic = getStringArrayAt(thumbnailArray, -1);
+getsinaimageurl(pic);
+</script>
+</image>
+
+<image redraw=yes offsetXPC=71 offsetYPC=39 widthPC=1.6 heightPC=45>
+../image/sina_music_scrollingbar_bg.bmp
+</image>
+
+<image redraw=yes offsetXPC=71 widthPC=1.6>
+<heightPC>
+<script>
+if (itemSize &gt; 0)
+{
+	unitH = 45/itemSize;
+}
+else
+{
+	"0";
+}
+</script>
+</heightPC>
+<offsetYPC>
+<script>
+focusIndex = getFocusItemIndex();
+if (itemSize &gt; 0)
+{
+	unitH = 45/itemSize;
+	offset = Add(39, focusIndex*unitH);
+}
+else
+{
+	"39";
+}
+</script>
+</offsetYPC>
+<script>
+"../image/sina_music_scrollingbar_focusbg.bmp";
+</script>
+</image>
+
+<text redraw=yes offsetXPC=46 offsetYPC=16 widthPC=30 heightPC=10 useBackgroundSurface=yes fontSize=19>
+<script>
+"曲名: " + getStringArrayAt(itemTitleArray, -1);
+</script>
+</text>
+
+<text redraw=yes offsetXPC=46 offsetYPC=26 widthPC=30 heightPC=10 useBackgroundSurface=yes fontSize=19>
+<script>
+"艺术家: " + getStringArrayAt(singerArray, -1);
+</script>
+</text>
+
+<image offsetXPC=78 offsetYPC=16 widthPC=18 heightPC=31>
+<script>
+print("Draw ADImageUrl: ",ADImageUrl);
+ADImageUrl;
+</script>
+</image>
+<image offsetXPC=78 offsetYPC=50 widthPC=18 heightPC=31>
+<script>
+print("Draw ADImageUrl2: ",ADImageUrl2);
+ADImageUrl2;
+</script>
+</image>
+
+<menuDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+<script>
+index1 = getFocusMenuIndex();
+index2 = getQueryMenuIndex();
+if (index1 == index2)
+{
+	if (getDrawingItemState() == "focus")
+	{
+		"../image/sina_focus_bg_dark.bmp";
+	}
+	else
+	{
+		"../image/sina_focus_bg.bmp";
+	}
+}
+else
+	null;
+</script>
+</image>
+
+<text align=center offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 fontSize=14 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+<script>
+index = getQueryMenuIndex();
+getStringArrayAt(menuTitleArray, index);
+</script>
+</text>
+</menuDisplay>
+
+
+<itemDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+<script>
+status = getDrawingItemState();
+if (status == "focus")
+{
+	"../image/sina_news_focus_long_bg.bmp";
+}
+else
+	null;
+</script>
+</image>
+
+<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 backgroundColor=-1:-1:-1 foregroundColor=250:250:250>
+<fontSize>
+<script>
+if ("focus" == getDrawingItemState())
+	"17.5";
+else
+	"14";
+</script>
+</fontSize>
+<script>
+getStringArrayAt(itemTitleArray, -1);
+</script>
+</text>
+
+</itemDisplay>
+
+<backgroundDisplay name=sina_music_bg>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+<script>
+if (drawBgImage == 1)
+{
+	drawBgImage = 0;
+	"../image/sina_music_bg.bmp";
+}
+else
+	null;
+</script>
+</image>
+</backgroundDisplay>
+
+</mediaDisplay> 
+
+<channel>
+<title>my sina music</title>
+<link>./scripts/SinaMusic.rss</link>
+<media:thumbnail url="image/empty.png"/>
+
+<itemSize>
+<script>
+itemSize;
+</script>
+</itemSize>
+
+<menuSize>
+<script>
+menuSize;
+</script>
+</menuSize>
+
+</channel>
+</rss>

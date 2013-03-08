@@ -1,0 +1,35 @@
+Package: libcurl
+Version: 7.21.6-1
+Depends: openssl, zlib
+Status: install ok installed
+Architecture: mipsel
+
+Package: libevent
+Version: 2.0.11-1
+Status: install ok installed
+Architecture: mipsel
+
+Package: openssl
+Version: 0.9.7m-5
+Status: install ok installed
+Architecture: mipsel
+
+Package: transmission
+Version: 2.31-1
+Depends: openssl, libcurl, libevent, zlib
+Status: install user installed
+Architecture: mipsel
+
+Package: vsftpd
+Version: 2.3.4-1
+Status: install user installed
+Architecture: mipsel
+Conffiles:
+/opt/etc/vsftpd.conf 1fea0e1ece5dc5b88e6728b1f8be0a7f
+Installed-Time: 1306831174
+
+Package: zlib
+Version: 1.2.5-1
+Status: install ok installed
+Architecture: mipsel
+

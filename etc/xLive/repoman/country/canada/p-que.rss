@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+   <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Police Feeds</title>
+
+<item>
+
+      <title>Rouyn-Noranda Police, Fire, and EMS</title>
+      <link>http://relay.radioreference.com:80/747951258</link>
+	   <enclosure type="video/x-ms-wma" url="http://relay.radioreference.com:80/747951258"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+     <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Ambulance Incendie M.R.C. La Matapédia,Matane,Mitis</title>
+      <link>http://relay.radioreference.com:80/935535707</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/935535707"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Quebec City Ambulance Dispatch</title>
+      <link>http://relay.radioreference.com:80/610438333
+</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/610438333
+"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Quebec City Fire Department
+
+</title>
+      <link>http://relay.radioreference.com:80/320079032</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/320079032"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+
+
+   
+     <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Drummondville Police, Fire, and EMS
+
+</title>
+      <link>http://relay.radioreference.com:80/486871736</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/486871736"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Levis Fire Department</title>
+      <link>http://relay.radioreference.com:80/408266381</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/408266381"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>St-Georges de Beauce Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/921076376</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/921076376"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+  
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Ambulance Estrie</title>
+      <link>http://relay.radioreference.com:80/477976260</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/477976260"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Cookshire-Eaton Fire Department</title>
+      <link>http://relay.radioreference.com:80/77574986</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/77574986"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Sherbrooke Fire Department</title>
+      <link>http://relay.radioreference.com:80/347864155</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/347864155"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Kahnawake Mohawk Territory Police, Fire, and EMS
+
+</title>
+      <link>http://relay.radioreference.com:80/179271736</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/179271736"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Rousillon Police and Fire
+
+</title>
+      <link>http://relay.radioreference.com:80/763752861</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/763752861"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>L'Ange-Gardien - Fire, Medical, Police</title>
+      <link>http://relay.radioreference.com:80/454134328</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/454134328"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>SOPFEU Fire Prevention</title>
+      <link>http://relay.radioreference.com:80/640566931</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/640566931"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Saguenay Fire</title>
+      <link>http://relay.radioreference.com:80/157193479</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/157193479"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Gatineau Fire Department</title>
+      <link>http://relay.radioreference.com:80/232170588</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/232170588"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Saint-Jean-sur-Richelieu Police and Fire
+
+</title>
+      <link>http://relay.radioreference.com:80/414796832</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/414796832"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Outaouais County Public Safety</title>
+      <link>http://relay.radioreference.com:80/726327911</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/726327911"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Montreal Surete du Quebec Highway Patrol
+
+</title>
+      <link>http://relay.radioreference.com:80/575851704</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/575851704"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Saguenay Police and Fire</title>
+      <link>http://relay.radioreference.com:80/640566931</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/640566931"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Saguenay Police and Fire</title>
+      <link>http://relay.radioreference.com:80/370756937</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/370756937"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+</channel>
+</rss>

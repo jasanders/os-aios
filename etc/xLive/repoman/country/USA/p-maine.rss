@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Maine Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>Aroostook Fire Dist. 1, Area Police, Fire, and EMS</title>
+      <link>http://relay.radioreference.com:80/755403038</link>
+	   <enclosure type="video/mp3" url="http://relay.radioreference.com:80/755403038"/>
+     
+  </item>
+  
+    
+
+    
+<item>
+
+      <title>Bangor Public Safety and Area Fire Department</title>
+      <link>http://relay.radioreference.com:80/873050325</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/873050325"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+ 
+
+    
+<item>
+
+      <title>Kingston Fire and Rescue</title>
+      <link>http://relay.radioreference.com:80/me_penobscot
+</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/me_penobscot
+"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+
+    
+<item>
+
+      <title>Halton County Police, Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/97210680</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/97210680"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+
+
+   
+    
+
+    
+<item>
+
+      <title>Hamilton Police, Fire, and EMS</title>
+      <link>http://relay.radioreference.com:80/78657077</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/78657077"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+ 
+
+    
+<item>
+
+      <title>Penobscot County Sheriff and Fire</title>
+      <link>http://relay.radioreference.com:80/702816647</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/702816647"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+
+    
+<item>
+
+      <title> Hancock County Public Safety</title>
+      <link>http://relay.radioreference.com:80/541187535
+</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/541187535
+"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+  
+  
+ 
+
+    
+<item>
+
+      <title>Mount Desert Island Public Safety</title>
+      <link>http://relay.radioreference.com:80/519577755</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/519577755"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+ 
+
+    
+<item>
+
+      <title>Penobscot County Sheriff and Fire</title>
+      <link>http://relay.radioreference.com:80/me_penobscot</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/me_penobscot"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+
+    
+<item>
+
+      <title>Waldo County Fire/EMS North and South</title>
+      <link>http://relay.radioreference.com:80/657872230</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/657872230"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+   
+ 
+
+    
+<item>
+
+      <title>Knox County Sheriff's Department</title>
+      <link>http://relay.radioreference.com:80/561605979</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/561605979"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+ 
+
+    
+<item>
+
+      <title>Lincoln County Area Police, Fire, EMS, and Public Works</title>
+      <link>http://relay.radioreference.com:80/891100550</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/891100550"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+
+    
+<item>
+
+      <title>Towns of Winthrop and Monmouth Police, Fire and EMS, Town of Wales Fire</title>
+      <link>http://relay.radioreference.com:80/196620166</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/196620166"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+   
+ 
+
+    
+<item>
+
+      <title>Auburn and Lewiston Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/123626946</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/123626946"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+ 
+
+    
+<item>
+
+      <title>Towns of Winthrop and Monmouth Police, Fire and EMS, Town of Wales Fire</title>
+      <link>http://relay.radioreference.com:80/196620166</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/196620166"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+
+    
+<item>
+
+      <title>Oxford County Fire Dispatch</title>
+      <link>http://relay.radioreference.com:80/272632478</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/272632478"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+</channel>
+</rss>

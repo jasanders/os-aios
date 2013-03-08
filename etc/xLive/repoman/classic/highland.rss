@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay> 
+                <image  offsetXPC=0 offsetYPC=2.8 widthPC=100 heightPC=15.6>
+                http://i3.ytimg.com/vi/FmSWro-zwnI/background.jpg
+                </image></mediaDisplay>
+				
+				
+
+  
+<channel>
+<title>Highlander</title>
+
+<item>
+<title>Highlander Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FF5C65FBE9EEEDEC9,Highlander+Season+1</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Highlander Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F6F09D5F15D10A8E6,Highlander+Season+2</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Highlander Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F07F34D717FC2952E,Highlander+Season+3</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Highlander Season 4</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F699FF9FACE6E50A3,Highlander+Season+4</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Highlander Season 5</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F1285A93FE9E211B2,Highlander+Season+5</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Highlander Season 6</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F08172AA9F99A862D,Highlander+Season+6</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/FmSWro-zwnI/market_thumb.jpg?v=7a95e2" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

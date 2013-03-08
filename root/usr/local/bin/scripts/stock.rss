@@ -1,0 +1,597 @@
+﻿<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> Stock </bookmark>
+
+<onEnter>
+	showIdle();
+</onEnter>
+<!--
+<onUserInput>
+input=currentUserInput ();
+
+if ("display" == input)
+{
+        postMessage("edit");
+}
+</onUserInput>
+-->
+<!-- initially set 100ms refresh time, then trigger download from yahoo website -->
+<!-- the global script element will be executed only once when the page start   -->
+<script>
+	setRefreshTime(100);
+	idleCount = 0;
+
+	keyword = null;
+    StockSymbol = null;
+	symbolArray_keep = null;
+	symbolArray = null;     
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "Stock_favorites.dat";
+	symbolArray = readStringFromFile(storagePath);
+	print(storagePath, "symbolArray = ", symbolArray);	
+    
+	favoriteCount = 0;
+	querySymbols = "";
+	symbol = getStringArrayAt(symbolArray, favoriteCount);	
+	while (  symbol != null) {
+	   favoriteCount = favoriteCount + 1;
+	   symbol = getStringArrayAt(symbolArray, favoriteCount);
+	}	
+	if (favoriteCount == 0) {
+		symbolArray = pushBackStringArray(symbolArray, "DJI");
+		symbolArray = pushBackStringArray(symbolArray, "MSFT");
+		symbolArray = pushBackStringArray(symbolArray, "INTC");
+		symbolArray = pushBackStringArray(symbolArray, "QQQQ");
+		symbolArray = pushBackStringArray(symbolArray, "SPY");
+		symbolArray = pushBackStringArray(symbolArray, "DIA");
+		symbolArray = pushBackStringArray(symbolArray, "IBM");
+
+	}
+	setFocusItemIndex(1);
+	
+</script>
+
+<!-- the refresh will set to correct value to trigger repaint -->
+<onRefresh>
+    setRefreshTime(5000);
+	idleCount = idleCount + 1;
+    print("onRefresh***********");
+	favoriteCount = 0;
+	querySymbols = "";
+	symbol = getStringArrayAt(symbolArray, favoriteCount);
+	print("symbols = ", symbolArray);
+	print("symbols = ", symbolArray);
+	while (  symbol != null) {
+	   favoriteCount = favoriteCount + 1;
+	   querySymbols = querySymbols + symbol;
+	   symbol = getStringArrayAt(symbolArray, favoriteCount);
+	   if (symbol != null) {
+		querySymbols = querySymbols + "+";
+	   }
+	}
+	
+	url = "http://download.finance.yahoo.com/d/quotes.csv?s="; 
+    url = url + urlEncode(querySymbols); 
+	url = url + "&amp;f=l1c6p2njkvr";
+	result = getCSVFromURL(url);
+	
+	loop = 0;
+	i = 0;
+	priceArray = null; changeArray = null; changePercentageArray = null; nameArray = null;	
+	yearLowArray = null; yearHighArray = null; volumeArray = null; peArray = null;
+	while (loop &lt; favoriteCount){
+		priceArray = pushBackStringArray(priceArray, getStringArrayAt(result, i)); i= i+1;
+		changeArray = pushBackStringArray(changeArray, getStringArrayAt(result, i)); i= i+1;
+		changePercentageArray = pushBackStringArray(changePercentageArray, getStringArrayAt(result, i)); i= i+1;
+		nameArray = pushBackStringArray(nameArray, getStringArrayAt(result, i)); i= i+1;
+		yearLowArray = pushBackStringArray(yearLowArray, getStringArrayAt(result, i)); i= i+1;
+		yearHighArray  = pushBackStringArray(yearHighArray, getStringArrayAt(result, i)); i= i+1;
+		volumeArray = pushBackStringArray(volumeArray, getStringArrayAt(result, i)); i= i+1;
+		peArray = pushBackStringArray(peArray, getStringArrayAt(result, i)); i= i+1;
+		
+	    loop = loop + 1;
+	}
+	print("PriceArray =", priceArray);
+	
+	itemSize = favoriteCount + 1;
+	redrawDisplay();
+
+	
+</onRefresh>
+
+<!-- the global onEnter element will be executed when enter or re-enter the page -->
+<onEnter>
+	print("enter or re-enter stock.rss");
+</onEnter>
+
+<!-- mediaDisplay element describe the display properties of the page -->
+<mediaDisplay name=onePartView 
+	itemPerPage=11
+    imageFocus ="image/stock_list_select.png"
+    forceFocusOnItem=no
+	sideColorLeft=33:240:58 
+	sideColorRight=33:240:58 
+	sideColorTop=33:240:58 
+	sideColorBottom=33:240:58 
+	backgroundColor=27:35:51 
+	itemBackgroundColor=27:35:51 
+	
+	itemGapYPC="1.75" 
+    idleImageXPC=83.12
+    idleImageYPC=89.58
+    idleImageWidthPC=3.1
+    idleImageHeightPC=5.5
+
+	sideLeftWidthPC= 0
+	sideRightWidthPC= 0
+	sideTopHeightPC=  0
+	sideBottomHeightPC= 0
+
+	itemXPC = 7
+	itemYPC = 8
+	itemWidthPC = 38
+	itemHeightPC = 6
+
+    itemImageXPC = 7
+    itemImageYPC = 15
+	itemImageWidthPC = 0
+	itemImageHeightPC = 14
+	capXPC = 45
+	capWidthPC = 0
+
+	showHeader = "no"
+	showDefaultInfo = "no">
+	
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage>
+	
+	<onUserInput>
+		userInput = currentUserInput();
+		print(userInput);
+	   if ("edit" == userInput){
+			index = getFocusItemIndex();
+			indexD = index - 1;
+			if (indexD &gt; -1) {
+				showIdle();
+				print("delete ", indexD);		 
+				symbolArray = deleteStringArrayAt(symbolArray, indexD);
+				
+				/* also delete priceArray changeArray and changePercentageArray */
+				priceArray = deleteStringArrayAt(priceArray, indexD);
+				changeArray = deleteStringArrayAt(changeArray, indexD);
+				changePercentageArray = deleteStringArrayAt(changePercentageArray, indexD);
+				
+				itemSize = itemSize - 1;
+				index = index -1;
+				setFocusItemIndex(index);
+				redrawDisplay();
+			}
+			true;
+	   }
+	   else if ("right" == userInput) {
+		  true;
+	   }
+	   else if ("up" == userInput) {
+		  setRefreshTime(6000);
+		  false;
+	   }
+	   else if ("down" == userInput) {
+	      if (getFocusItemIndex() == (itemSize - 1)){
+			setFocusItemIndex(0);
+		  }
+		  else {
+			setRefreshTime(6000);
+			false;
+		  }
+	   }
+	   else if ("display" == userInput){
+           	postMessage("edit");
+	   }
+	   
+	</onUserInput>
+	<backgroundDisplay>
+
+	<text offsetXPC=5  offsetYPC= 5 widthPC=90 heightPC=83.5 
+		backgroundColor=46:51:68 cornerRounding=5/>
+
+	<text offsetXPC=5.5  offsetYPC= 5.89 widthPC=89 heightPC=82.11 
+		backgroundColor=27:35:51 cornerRounding=5/>
+		
+	<text offsetXPC=48  offsetYPC= 8 widthPC=45 heightPC=77.5 
+		backgroundColor=38:45:63 cornerRounding=10/>		
+
+
+
+	</backgroundDisplay>
+
+	
+	<itemDisplay>
+		<!-- background focus image -->
+	    <image offsetXPC=0  offsetYPC= 5 widthPC=100 heightPC=90>
+			<script>
+				state = getDrawingItemState();
+				if (state == "focus") {
+					"image/stock_list_select.png";					
+				}
+				else if (state == "unfocus") {
+					null;
+				}
+			</script>
+		</image>		
+		
+	    <!-- Stock Symbol -->
+		<text offsetXPC=0  offsetYPC=0 heightPC=100 fontSize=12>
+			<script>
+				title = getItemInfo("title");		
+			</script>
+			<widthPC>
+			<script>
+			index = getQueryItemIndex();
+			if (index == 0)
+			{
+				"100";
+			}
+			else
+			{
+				"25";
+			}
+			</script>
+			</widthPC>
+			<backgroundColor>
+				<script>
+					c = getItemInfo("backgroundColor");
+					queryIndex = getQueryItemIndex();
+					state = getDrawingItemState();
+						if (state == "focus") {
+							"-1:-1:-1";
+						}
+						else {
+							c;
+						}
+				</script>	
+			</backgroundColor>
+		</text>	
+		<!-- Price -->
+		<text offsetXPC=25  offsetYPC= 5 widthPC=30 heightPC=90  fontSize=12>
+			<foregroundColor>
+				<script>
+				    change = getItemInfo("change");
+					if (change &lt; 0) {
+						"255:25:0";
+					}
+					else {
+						"0:250:255";
+					}
+				</script>
+			</foregroundColor>
+			<script>
+				getItemInfo("price");
+			</script>
+		</text>
+
+		<!-- Change -->
+		<text offsetXPC=48  offsetYPC= 5 widthPC=25 heightPC=90  fontSize=12>
+			<script>
+				change = getItemInfo("change");
+			</script>
+			<foregroundColor>
+				<script>
+				    print("change = ", change);
+					if (change &lt; 0) {
+						"255:25:0";
+					}
+					else {
+						"0:250:255";
+					}
+				</script>
+			</foregroundColor>	
+		</text>		
+
+		<!-- Change in Percentage -->
+		<text offsetXPC=75  offsetYPC= 5 widthPC=20 heightPC=90  fontSize=12 foregroundColor=255:255:0>
+			<script>
+				getItemInfo("changePercentage");
+			</script>
+		</text>
+		
+	</itemDisplay>
+	
+	<!-- ***************************************************************************** -->
+	<!-- *****   the section below is the widgets that display on the page  ********** -->
+    <!-- widgets will be draw only once if the widget contains only the static members -->
+    <!-- widgets that contains scripts will be draw on repaint -->
+	
+	<!-- Company Name -->
+	<text offsetXPC=48  offsetYPC= 13 widthPC=45 heightPC=10  fontSize=18 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+	   index = getFocusItemIndex();
+	   print("focus index = ", index);
+	   getItemInfo(index, "name");
+	  </script>
+	</text>	
+	
+	<!-- current chart image -->
+	<!-- 1. background -->
+	<image offsetXPC=67  offsetYPC= 24 widthPC=22 heightPC=17>
+		image/stock_chart_bg.png
+	</image>
+	<!-- 2. chart -->
+	<image offsetXPC=68  offsetYPC= 25 widthPC=20 heightPC=15 >
+		<script>
+			symbol = getItemInfo("stockSymbol");
+			if (symbol != null) {
+			    "http://ichart.finance.yahoo.com/instrument/1.0/" + urlEncode(getItemInfo("stockSymbol")) + "/chart;range=1d/image;size=239x110";
+				
+			}
+		</script>
+	</image>
+
+	<!-- Current Price -->
+	<text offsetXPC=50  offsetYPC= 33 widthPC=15 heightPC=10  fontSize=22 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+	   index = getFocusItemIndex();
+	   getItemInfo(index, "price");
+	  </script>
+	</text>	
+	
+
+	
+	<!-- the following widgets get the information directly from arrays. It is easier then the method above -->
+	<!-- just from Data/View separate point of view, below design is not easy for future code change -->
+	
+	
+	<!-- Price Change -->
+	<text offsetXPC=50  offsetYPC= 48 widthPC=12 heightPC=10  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	Change
+	</text>
+	<text offsetXPC=61  offsetYPC= 48 widthPC=10 heightPC=10  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() -1;
+            print("Year High index =", index);			
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(changeArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>	
+
+	<!-- Change percentage -->
+	<text offsetXPC=72  offsetYPC= 48 widthPC=12 heightPC=10  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	Percentage
+	</text>	
+	<text offsetXPC=83  offsetYPC= 48 widthPC=10 heightPC=10  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() - 1;	
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(changePercentageArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>		
+	
+	<!-- Year High Price -->
+	<text offsetXPC=50  offsetYPC= 55 widthPC=12 heightPC=10  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	Year High
+	</text>
+	<text offsetXPC=61  offsetYPC= 55 widthPC=10 heightPC=10  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() -1;
+            print("Year High index =", index);			
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(yearHighArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>	
+
+	<!-- Year low Price -->
+	<text offsetXPC=72  offsetYPC= 55 widthPC=12 heightPC=10  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	Year Low
+	</text>	
+	<text offsetXPC=83  offsetYPC= 55 widthPC=10 heightPC=10  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() - 1;	
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(yearLowArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>		
+	<!-- Volume Price -->
+	<text offsetXPC=50  offsetYPC= 62 widthPC=15 heightPC=10  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	Volume
+	</text>	
+	<text offsetXPC=61  offsetYPC= 62 widthPC=20 heightPC=10  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() - 1;	
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(volumeArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>	
+
+	<!-- P/E -->
+	<text offsetXPC=50  offsetYPC= 69 widthPC=15 heightPC=8  fontSize=12 lines=1 
+		foregroundColor=20:250:24 backgroundColor = 38:45:63>
+	P/E
+	</text>	
+	<text offsetXPC=61  offsetYPC= 69 widthPC=10 heightPC=8  fontSize=13 lines=1 
+		foregroundColor=250:250:250 backgroundColor = 38:45:63>
+	  <script>
+			index = getFocusItemIndex() - 1;	
+			if (symbolIndex &gt; -1 ) {
+				getStringArrayAt(peArray, index);
+			}
+			else { null; }
+	  </script>
+	</text>		
+	
+	
+	<!-- help guide indications -->
+	<text offsetXPC=6  offsetYPC= 78.5 widthPC=42 heightPC=9  fontSize=12 lines=1 foregroundColor=240:240:170 backgroundColor=27:35:51> 
+		<script>
+			index = getFocusItemIndex();
+			if (index &gt; 0) {
+				"  $[PRESS_INFO_DELECTE_STOCK]";
+			}
+			else {
+				"$[TICKER_SYMBOL]";
+			}
+		</script>
+	</text>		
+	
+	
+</mediaDisplay>
+
+
+<!-- this is another global script element, will only be executed once at page loading -->
+<script>
+  print("yet another place to put script");
+</script>
+
+<!-- sub-menu of the page -->
+<submenu name="Next Page">  </submenu>
+
+<submenu name="Previous Page"> </submenu>
+
+
+<!-- item_template is the element to substitute item element when the elements under item element does not exist -->
+<item_template>	
+		<onClick>
+		    setRefreshTime(100);
+			null;
+		</onClick>
+		<backgroundColor> 27:35:51 </backgroundColor>
+		<stockSymbol> 
+			<script>
+			    index = getFocusItemIndex();
+				index = index - 1;
+				print("index = ", index);
+				if (index &gt; -1 ) {
+					id = getStringArrayAt(symbolArray, index);
+					print("Stock Symbol = ", id);
+					id;
+				}
+				else{
+					null;
+				}
+			</script>	
+		</stockSymbol>
+		<title> 
+			<script>
+				symbolIndex = getQueryItemIndex() -1;
+				if (symbolIndex &gt; -1 ) {
+					id = getStringArrayAt(symbolArray, symbolIndex);
+				}
+				else{
+					null;
+				}
+			</script>	
+		</title>
+		<price> 
+			<script>
+			    symbolIndex = getQueryItemIndex() -1;
+				if (symbolIndex &gt; -1 ) {
+					id = getStringArrayAt(priceArray, symbolIndex);
+				}
+				else{ null; }
+			</script>	
+		</price>		
+		<change> 	    
+			<script>
+				symbolIndex = getQueryItemIndex() -1;
+				if (symbolIndex &gt; -1 ) {
+					id = getStringArrayAt(changeArray, symbolIndex);
+				}
+				else{ null; }
+			</script>	
+		</change>		
+		<changePercentage> 
+			<script>
+				symbolIndex = getQueryItemIndex() -1;
+				if (symbolIndex &gt; -1 ) {
+					id = getStringArrayAt(changePercentageArray, symbolIndex);
+				}
+				else{ null; }
+			</script>	
+		</changePercentage>		
+		<name> 	    
+			<script>
+			    symbolIndex = getQueryItemIndex() -1;			
+				if (symbolIndex &gt; -1 ) {
+					id = getStringArrayAt(nameArray, symbolIndex);
+				}
+				else{ null; }
+			</script>	
+		</name>		
+</item_template>
+
+
+
+<channel>
+	<title> Yahoo Finance</title>
+	<link>./scripts/internet/weather.rss</link>
+	<media:thumbnail url="http://static.youku.com/v1.0.0328/index/img/youkulogo.gif" width="120" height="90" />
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+	<script>
+		itemSize;
+	</script>
+</itemSize>
+
+<item>
+   <title> $[ADD_STOCK_TO_FAVORITE] </title>
+   <backgroundColor> 88:88:88 </backgroundColor>
+   <foregroundColor> 128:128:128 </foregroundColor>
+   
+	<onClick>
+		print("onClick");
+		StockSymbol = getInput("Enter Ticker Symbol"); 								
+		if (StockSymbol!=null) { 
+
+			print("add ", StockSymbol, " to favorite");
+			symbolArray = pushBackStringArray(symbolArray, StockSymbol);		
+			writeStringToFile(storagePath, symbolArray);		 
+			itemSize = itemSize + 1;
+			setFocusItemIndex(itemSize -1);
+			setRefreshTime(100);
+			null;
+		}
+		else {
+			url = null;
+		}			
+
+	</onClick>   
+   
+   <!-- the onClick implementation of search is implemented inside item_template:onClick -->
+   <!-- move to item_template is to combine the logic with favorite symbols -->
+
+</item>
+
+</channel>
+
+<onExit>
+    print("Onexit");
+	print(storagePath, "  ", symbolArray);
+	writeStringToFile(storagePath, symbolArray);
+</onExit>	
+
+</rss>

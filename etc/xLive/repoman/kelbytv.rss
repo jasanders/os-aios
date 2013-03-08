@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>TWIT</title>
+
+<item>
+
+      <title>Larry's Cheap Shots</title>
+      <link>http://kelbytv.com/cheapshots/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_cheapshots.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>NAPP News</title>
+      <link>http://kelbytv.com/nappnews/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_nappnews.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+   
+<item>
+
+      <title>Ask Dave</title>
+      <link>http://kelbytv.com/askdave/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_askdave.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+   
+<item>
+
+      <title>Photoshop User TV</title>
+      <link>http://kelbytv.com/photoshopusertv/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_photoshopusertv.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+   
+<item>
+
+      <title>Lightroom Killer Tips</title>
+      <link>http://kelbytv.com/lightroomkillertips/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_lightroomkillertips.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Layers TV</title>
+      <link>http://kelbytv.com/layerstv/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_layerstv.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>D-Town TV</title>
+      <link>http://kelbytv.com/dtowntv/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_dtowntv.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+<item>
+
+      <title>Photoshop Killer Tips</title>
+      <link>http://kelbytv.com/photoshopkillertips/rss/</link>
+      <media:thumbnail url="http://kelbytv.com/wp-content/themes/kelbytv/images/badges_photoshopkillertips.gif" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+
+   
+
+
+</channel>
+</rss>

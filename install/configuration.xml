@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<packageFile>
+    <info>
+        <company>Realtek Semiconductor Corp.</company>
+        <description>This image file contains 3 Jupiter packages. The first one is for AVHDD on NOR, the second one is for AVHDD on NAND, and the third one is for AVHDD on ISO image.</description>
+        <version>0.0.1</version>
+        <releaseDate>12/07/11 19:08</releaseDate>
+        <signature>Jupiter image files</signature>
+    </info>
+    <installerAP>
+        <fileName>install_a</fileName>
+    </installerAP>
+    <package>
+        <info>
+            <description>This is Jupiter AVHDD on NAND</description>
+            <version>N/A</version>
+        </info>
+        <nand>
+            <image type="linuxKernel">
+                <fileName>package2/vmlinux.develop.avhdd.jupiter.nand.bin</fileName>
+                <targetAddress>0x80100000</targetAddress>
+                <version>SVN:</version>
+            </image>
+            <image type="audioKernel">
+                <fileName>package2/bluecore.audio</fileName>
+                <targetAddress>0x81b00000</targetAddress>
+                <version>N/A</version>
+            </image>
+            <image type="videoKernel">
+                <fileName>package2/video_firmware.bin</fileName>
+                <targetAddress>0x81d80000</targetAddress>
+                <version>N/A</version>
+            </image>
+            <image type="squash">
+                <fileName>package2/squashfs1.img</fileName>
+                <mountPoint>/</mountPoint>
+            </image>
+            <image type="yaffs2">
+                <fileName>package2/usr.local.etc.tar.bz2</fileName>
+                <mountPoint>/usr/local/etc</mountPoint>
+                <sizeBytesMin>131072000</sizeBytesMin>
+            </image>
+        </nand>
+    </package>
+</packageFile>

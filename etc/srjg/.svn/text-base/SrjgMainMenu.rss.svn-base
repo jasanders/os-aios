@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://purl.org/dc/elements/1.1/">
+
+<onEnter>
+  clearAllCache();
+  displayInfos = "false";
+  showIdle();
+	Config = "/usr/local/etc/srjg.cfg";
+    Config_ok = loadXMLFile(Config);
+    
+	if (Config_ok == null) {
+		print("Load Config fail ", Config);
+	}
+    else {
+        Config_itemSize = getXMLElementCount("Config");
+	}
+    
+  if (Config_itemSize > 0) {
+    Language = getXMLText("Config", "Lang");
+		Jukebox_Path = getXMLText("Config", "Jukebox_Path");
+		Jukebox_Size = getXMLText("Config", "Jukebox_Size");
+		Movies_Path = getXMLText("Config", "Movies_Path");
+		Nfo_Path = getXMLText("Config", "Nfo_Path");
+		Poster_Path = getXMLText("Config", "Poster_Path");
+		Sheet_Path = getXMLText("Config", "Sheet_Path");
+    UnlockRM = getXMLText("Config", "UnlockRM");
+    SingleDb = getXMLText("Config", "SingleDb");
+		Movie_Filter = getXMLText("Config", "Movie_Filter");
+		Port = getXMLText("Config", "Port");
+		Recent_Max = getXMLText("Config", "Recent_Max");
+		Dspl_Genre_txt = getXMLText("Config", "Dspl_Genre_txt");
+		Subt_OneAuto = getXMLText("Config", "Subt_OneAuto");
+		Subt_FontPath = getXMLText("Config", "Subt_FontPath");
+		Subt_FontFile = getXMLText("Config", "Subt_FontFile");
+		Subt_Color = getXMLText("Config", "Subt_Color");
+		Subt_ColorBg = getXMLText("Config", "Subt_ColorBg");
+		Subt_Size = getXMLText("Config", "Subt_Size");
+		Subt_Pos = getXMLText("Config", "Subt_Pos");
+    Imdb = getXMLText("Config", "Imdb");
+		Imdb_Lang = getXMLText("Config", "Imdb_Lang");
+		Imdb_Source = getXMLText("Config", "Imdb_Source");
+		Imdb_Poster = getXMLText("Config", "Imdb_Poster");
+		Imdb_PBox = getXMLText("Config", "Imdb_PBox");
+		Imdb_PPost = getXMLText("Config", "Imdb_PPost");
+		Imdb_Sheet = getXMLText("Config", "Imdb_Sheet");
+		Imdb_SBox = getXMLText("Config", "Imdb_SBox");
+		Imdb_SPost = getXMLText("Config", "Imdb_SPost");
+		Imdb_Backdrop = getXMLText("Config", "Imdb_Backdrop");
+		Imdb_Font = getXMLText("Config", "Imdb_Font");
+		Imdb_Genres = getXMLText("Config", "Imdb_Genres");
+    Imdb_Tagline = getXMLText("Config", "Imdb_Tagline");
+    Imdb_Time = getXMLText("Config", "Imdb_Time");
+    Imdb_Info = getXMLText("Config", "Imdb_Info");
+    Imdb_MaxDl = getXMLText("Config", "Imdb_MaxDl");
+  }
+	 
+  srjgconf="/tmp/srjg.cfg";
+  tmpconfigArray=null;
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Language="+Language);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Jukebox_Path="+Jukebox_Path);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Movies_Path="+Movies_Path);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Nfo_Path="+Nfo_Path);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Poster_Path="+Poster_Path);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Sheet_Path="+Sheet_Path);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "SingleDb="+SingleDb);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "UnlockRM="+UnlockRM);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Movie_Filter="+Movie_Filter);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Port="+Port);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Recent_Max="+Recent_Max);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Dspl_Genre_txt="+Dspl_Genre_txt);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_OneAuto="+Subt_OneAuto);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_FontPath="+Subt_FontPath);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_FontFile="+Subt_FontFile);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_Color="+Subt_Color);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_ColorBg="+Subt_ColorBg);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_Size="+Subt_Size);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Subt_Pos="+Subt_Pos);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb="+Imdb);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Lang="+Imdb_Lang);
+	tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Source="+Imdb_Source);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Poster="+Imdb_Poster);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_PBox="+Imdb_PBox);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_PPost="+Imdb_PPost);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Sheet="+Imdb_Sheet);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_SBox="+Imdb_SBox);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_SPost="+Imdb_SPost);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Backdrop="+Imdb_Backdrop);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Font="+Imdb_Font);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Genres="+Imdb_Genres);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Tagline="+Imdb_Tagline);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Time="+Imdb_Time);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_Info="+Imdb_Info);
+  tmpconfigArray=pushBackStringArray(tmpconfigArray, "Imdb_MaxDl="+Imdb_MaxDl);
+  writeStringToFile(srjgconf, tmpconfigArray);
+	 
+  langpath = Jukebox_Path + "lang/" + Language;
+  langfile = loadXMLFile(langpath);
+  if (langfile != null) {
+    main_alpha = getXMLText("main", "alpha");
+    main_genre = getXMLText("main", "genre");
+    main_recent = getXMLText("main", "recent");
+    main_select = getXMLText("main", "select");
+    main_update = getXMLText("main", "update");
+    main_notwatched = getXMLText("main", "notwatched");
+    main_year = getXMLText("main", "year");
+    main_search = getXMLText("main", "search");
+    main_config = getXMLText("main", "config");
+    main_textInfo = getXMLText("main", "textInfo");
+  }
+</onEnter>
+
+
+
+<mediaDisplay name="photoView" rowCount="8" columnCount="1" drawItemText="no" showHeader="no" showDefaultInfo="no" menuBorderColor="255:255:255" sideColorBottom="-1:-1:-1" sideColorTop="-1:-1:-1" itemAlignt="left" itemOffsetXPC="24" itemOffsetYPC="30" itemWidthPC="25" itemHeightPC="7.2" backgroundColor="-1:-1:-1" itemBackgroundColor="-1:-1:-1" sliding="no" itemGap="0" idleImageXPC="90" idleImageYPC="5" idleImageWidthPC="5" idleImageHeightPC="8" imageUnFocus="null" imageParentFocus="null" imageBorderPC="0" forceFocusOnItem="no" cornerRounding="yes" itemBorderColor="-1:-1:-1" focusBorderColor="-1:-1:-1" unFocusBorderColor="-1:-1:-1">
+<idleImage> image/POPUP_LOADING_01.png </idleImage> 
+<idleImage> image/POPUP_LOADING_02.png </idleImage> 
+<idleImage> image/POPUP_LOADING_03.png </idleImage> 
+<idleImage> image/POPUP_LOADING_04.png </idleImage> 
+<idleImage> image/POPUP_LOADING_05.png </idleImage> 
+<idleImage> image/POPUP_LOADING_06.png </idleImage> 
+<idleImage> image/POPUP_LOADING_07.png </idleImage> 
+<idleImage> image/POPUP_LOADING_08.png </idleImage> 
+
+<text redraw="no" backgroundColor="-1:-1:-1" foregroundColor="200:200:200" offsetXPC="5" offsetYPC="27" widthPC="19" heightPC="14" fontSize="16" lines="1" align="right">
+	<script>
+		print(main_select);
+	</script>
+</text>
+
+<onUserInput>
+  <script>
+    userInput = currentUserInput();
+
+    ret="false";
+    if (displayInfos == "true") {
+      ret="true";
+      if (userInput == "enter" || userInput == "return" || userInput == "display") {
+        displayInfos = "false";
+      	redrawDisplay();
+      }
+    } else {
+      if (userInput == "enter") {
+        indx=getFocusItemIndex();
+        mode=getItemInfo(indx, "selection");		/* getItemInfo(-1, "selection"); don't work with the last item */
+        if ( mode == "moviesearch") {
+          inputMovie=getInput("userName","doModal");
+          if (inputMovie != NULL) SelTitle = inputMovie;
+        } else SelTitle=getItemInfo(indx, "title");
+        SelTitle=urlEncode(SelTitle);	
+        mode=urlEncode(mode);
+        jumpToLink("SelectionEntered");
+        ret="false";
+      } else if (userInput == "edit") {
+        ret="true";
+      } else if (userInput == "one") {
+	    	LastFile = readStringFromFile(Jukebox_Path + "recently_played");
+	    	if (LastFile != null) playItemURL(LastFile, 10);
+        ret="false";
+	    } else if (userInput == "display") {
+	    	displayInfos = "true";
+	    	redrawDisplay();
+        ret="true";
+      }
+    }
+    ret;
+  </script>
+</onUserInput>
+
+ 
+<itemDisplay>
+
+<image type="image/png" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+ <script>
+  if (getDrawingItemState() == "focus")
+  {
+      print(Jukebox_Path + "images/focus_on.png");
+  }
+ else
+  {
+      print(Jukebox_Path + "images/focus_off.png");
+  }
+ </script>
+</image>
+
+<text redraw="no" offsetXPC="0" offsetYPC="0" widthPC="94" heightPC="100" backgroundColor="-1:-1:-1" foregroundColor="200:200:200" fontSize="16" align="center">
+ <script>
+    getItemInfo(-1, "title");
+ </script>
+</text>
+</itemDisplay>  
+
+  <backgroundDisplay>
+    <image type="image/jpeg" redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>
+        print(Jukebox_Path + "images/srjgMainMenu.jpg");
+      </script>
+    </image>
+  </backgroundDisplay>
+
+  <image type="image/png" redraw="no" offsetXPC="0" offsetYPC="0">
+  <widthPC>
+    <script>
+      if(displayInfos == "true") 100;
+      else 0;
+    </script>
+  </widthPC>
+  <heightPC>
+    <script>
+      if(displayInfos == "true") 100;
+      else 0;
+    </script>
+  </heightPC>
+    <script>
+      print(Jukebox_Path + "images/focus_on.png");
+    </script>
+  </image>
+
+	<text redraw="yes" align="left" lines="15" fontSize="15" offsetXPC="23" offsetYPC="18" heightPC="70" backgroundColor="-1:-1:-1" foregroundColor="200:200:200">
+		<widthPC>
+			<script>
+				if(displayInfos == "true") 55;
+        else 0;
+			</script>
+		</widthPC>
+		<script>
+			main_textInfo;
+		</script>
+	</text>
+
+</mediaDisplay>
+
+<SelectionEntered>
+    <link>
+       <script>
+           print("http://127.0.0.1:"+Port+"/cgi-bin/srjg.cgi?"+mode+"@"+SelTitle+"@"+Jukebox_Size);
+       </script>
+    </link>
+</SelectionEntered>
+
+<channel>
+<title>Main menu</title>
+
+<item>
+<title>
+	<script>
+		print(main_genre);
+	</script>
+</title>
+<selection>genreSelection</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_year);
+	</script>
+</title>
+<selection>yearSelection</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_alpha);
+	</script>
+</title>
+<selection>alphaSelection</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_recent);
+	</script>
+</title>
+<selection>recent</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_notwatched);
+	</script>
+</title>
+<selection>notwatched</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_search);
+	</script>
+</title>
+<selection>moviesearch</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_update);
+	</script>
+</title>
+<selection>Update</selection>
+</item>
+
+<item>
+<title>
+	<script>
+		print(main_config);
+	</script>
+</title>
+<selection>MenuCfg</selection>
+</item>
+
+</channel>
+</rss>

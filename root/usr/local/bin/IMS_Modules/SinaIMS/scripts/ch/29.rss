@@ -1,0 +1,116 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "Weather_favorites.dat";
+	favoriteLocationArray = readStringFromFile(storagePath);
+</script>
+
+	<onUserInput>
+		userInput = currentUserInput();
+		print(userInput);
+	   if ("edit" == userInput){
+				LocationID = getItemInfo("title");
+				print("add ", LocationID, " to favorite");
+				favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+				writeStringToFile(storagePath, favoriteLocationArray);		
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+						postMessage("return");	
+						postMessage("return");	
+	   }
+	</onUserInput>
+	
+<item_template>
+       <onClick>
+	   
+						LocationID = getItemInfo("title");
+						print("add ", LocationID, " to favorite");
+						retstr = SetIMSParam("is_str_exist",favoriteLocationArray,LocationID);
+						if(retstr != "yes")
+						{
+							favoriteLocationArray = pushBackStringArray(favoriteLocationArray, LocationID);	
+							writeStringToFile(storagePath, favoriteLocationArray);	
+						}
+						else
+						{
+								msgBox("EXIST_INFO");
+						}
+
+						path = getStoragePath("tmp");
+						path = path + "showTransition.dat";
+						writeStringToFile(path, "0");
+
+								postMessage("return");	
+								postMessage("return");		 
+			}
+	    </onClick>
+</item_template>
+<channel>
+<title>台湾</title>
+<link>./scripts/hisense/ch/29.rss</link>
+<!--<media:thumbnail url="image/weather.jpg"/>-->
+<item>
+<title>台北</title>
+</item>
+
+<item>
+<title>台中</title>
+</item>
+
+<item>
+<title>台南</title>
+</item>
+
+<item>
+<title>高雄</title>
+</item>
+
+<item>
+<title>基隆</title>
+</item>
+
+<item>
+<title>新竹</title>
+</item>
+
+<item>
+<title>嘉义</title>
+</item>
+
+<item>
+<title>宜兰</title>
+</item>
+
+<item>
+<title>桃园</title>
+</item>
+
+<item>
+<title>彰化</title>
+</item>
+
+<item>
+<title>苗栗</title>
+</item>
+
+<item>
+<title>云林</title>
+</item>
+
+<item>
+<title>屏东</title>
+</item>
+
+<item>
+<title>彭湖</title>
+</item>
+
+<item>
+<title>花莲</title>
+</item>
+
+</channel></rss>

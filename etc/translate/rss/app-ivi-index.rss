@@ -1,0 +1,531 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<!--
+#
+#   http://code.google.com/media-translate/
+#   Copyright (C) 2010  Serge A. Timchenko
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program. If not, see <http://www.gnu.org/licenses/>.
+#
+-->
+
+<mediaDisplay name="onePartView"
+	sideColorLeft="0:0:0"
+	sideLeftWidthPC="0"
+	sideColorRight="0:0:0"
+	headerImageWidthPC="0"
+	headerXPC="16"
+	headerYPC="3"
+	headerWidthPC="0"
+	itemXPC="30"
+	itemYPC="25"
+	itemWidthPC="40"
+	itemHeightPC="7"
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	itemPerPage="9"
+  itemGap="0"
+	bottomYPC="90"
+	showHeader="no"
+	showDefaultInfo="no"
+	sliding="yes"
+	imageFocus=""
+	imageUnFocus=""
+	imageParentFocus=""
+>
+
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_01.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_02.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_03.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_04.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_05.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_06.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_07.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_08.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+
+
+  	<text align="center" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="20" fontSize="30" backgroundColor="10:105:150" foregroundColor="100:200:255">
+		  ivi.ru
+		</text>
+
+		<image offsetXPC=5 offsetYPC=2 widthPC=21 heightPC=16>
+		  ../etc/translate/rss/image/menu/ivi.png
+      <widthPC>
+        <script>
+          21 * screenYp / screenXp;
+        </script>
+      </widthPC>
+      <offsetXPC>
+        <script>
+          5 + 21 * (1 - screenYp / screenXp) / 2;
+        </script>
+      </offsetXPC>
+		</image>
+
+  	<text redraw="yes" offsetXPC="82" offsetYPC="12" widthPC="13" heightPC="6" fontSize="20" backgroundColor="10:105:150" foregroundColor="60:160:205">
+		  <script>sprintf("%s / ", focus-(-1))+itemCount;</script>
+		</text>
+	
+	<itemDisplay>
+		<text offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100" fontSize="17" backgroundColor="0:0:0" foregroundColor="250:250:250">
+			<script>
+			  idx = getQueryItemIndex();
+			  focus = getFocusItemIndex();
+		    getItemInfo(idx, "title");
+			</script>
+		  <foregroundColor>
+  			<script>
+  			  idx = getQueryItemIndex();
+  			  focus = getFocusItemIndex();
+  		    if(idx==focus) "255:255:255"; else "150:150:150";
+  			</script>
+		  </foregroundColor>
+		  <backgroundColor>
+  			<script>
+  			  idx = getQueryItemIndex();
+  			  focus = getFocusItemIndex();
+  		    if(idx==focus) "200:0:63"; else "0:0:0";
+  			</script>
+		  </backgroundColor>
+		  <offsetXPC>
+		    <script>
+		      idx = getQueryItemIndex();
+		      value = getItemInfo(idx, "feedIndent");  
+		      if(value == "" || value == null)
+		        value = 0;
+		      value;
+		    </script>
+		  </offsetXPC>
+		  <widthPC>
+		    <script>
+		      100 - value;
+		    </script>
+		  </widthPC>
+		</text>
+	</itemDisplay>
+
+  <onUserInput>
+    <script>
+      ret = "false";
+      
+      userInput = currentUserInput();
+      majorContext = getPageInfo("majorContext");
+      
+      print("*** majorContext=",majorContext);
+      print("*** userInput=",userInput);
+
+      if (userInput == "pagedown" || userInput == "pageup" || userInput == "PG" || userInput == "PD")
+      {
+        itemSize = getPageInfo("itemCount");
+        idx = Integer(getFocusItemIndex());
+        if (userInput == "pagedown" || userInput == "PD")
+        {
+          idx -= -9;
+          if(idx &gt;= itemSize)
+            idx = itemSize-1;
+        }
+        else
+        {
+          idx -= 9;
+          if(idx &lt; 0)
+            idx = 0;
+        }
+        setFocusItemIndex(idx);
+      	setItemFocus(idx);
+        redrawDisplay();
+        ret = "true";
+      }
+      ret;
+    </script>
+  </onUserInput>
+
+</mediaDisplay>
+
+<item_template>
+	<mediaDisplay name="threePartsView">
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_01.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_02.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_03.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_04.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_05.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_06.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_07.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+  	<idleImage idleImageYPC="45" idleImageHeightPC="10">../etc/translate/rss/image/POPUP_LOADING_08.png<idleImageWidthPC><script>10 * screenYp / screenXp;</script></idleImageWidthPC><idleImageXPC><script>45 + 10 * (1 - screenYp / screenXp) / 2;</script></idleImageXPC></idleImage>
+
+	</mediaDisplay>
+	<onClick>
+	  <script>
+	     focus = getFocusItemIndex();
+       arr = null;
+       arr = pushBackStringArray(arr, getItemInfo(focus, "feedPath"));
+       arr = pushBackStringArray(arr, getItemInfo(focus, "feedTitle"));
+       writeStringToFile(storagePath + "stream.dat", arr);
+	     focus = getFocusItemIndex();
+	     if(getItemInfo(focus, "feedPath") == "/")
+	       linkurl = translate_base_url + "app/ivi/index,feed_main";
+	     else
+	       linkurl = translate_base_url + "app/ivi/index,feed";
+       doModalRss(linkurl);
+	  </script>
+	</onClick> 
+</item_template>
+
+<onExit>
+</onExit>
+
+<onEnter>
+  itemCount = getPageInfo("itemCount");
+
+    translate_base_url  = "http://127.0.0.1/cgi-bin/translate?";
+  screenXp = 4;
+  screenYp = 3;
+  rssconf = readStringFromFile(getStoragePath("key")+"translate.dat");
+  print("rssconf:",rssconf);
+  if(rssconf != null)
+  {
+    value = getStringArrayAt(rssconf, 0);
+    if(value != null &amp;&amp; value != "")
+      translate_base_url = value;
+    value = getStringArrayAt(rssconf, 1);
+    if(value != null &amp;&amp; value != "")
+      screenXp = Integer(value);
+    value = getStringArrayAt(rssconf, 2);
+    if(value != null &amp;&amp; value != "")
+      screenYp = Integer(value);
+  }
+  print("rssconf:",translate_base_url,screenXp,screenYp);
+
+  
+  storagePath = getStoragePath("tmp");
+</onEnter>
+
+<channel>
+  <title>ivi.ru</title>
+  <item>
+    <location>http://www.ivi.ru/rss/new</location>
+    <title>Главная</title>
+    <rssLink>ivi.ru</rssLink>
+    <feedTitle>ivi.ru</feedTitle>
+    <feedPath>/</feedPath>
+    <feedIndent>0</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/</location>
+    <title>Кино</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино</feedTitle>
+    <feedPath>/-/14/</feedPath>
+    <feedIndent>0</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/94</location>
+    <title>Боевик</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Боевик</feedTitle>
+    <feedPath>/-/14/94</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/103</location>
+    <title>Военный</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Военный</feedTitle>
+    <feedPath>/-/14/103</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/97</location>
+    <title>Детектив</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Детектив</feedTitle>
+    <feedPath>/-/14/97</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/105</location>
+    <title>Драма</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Драма</feedTitle>
+    <feedPath>/-/14/105</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/109</location>
+    <title>Документальный</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Документальный</feedTitle>
+    <feedPath>/-/14/109</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/95</location>
+    <title>Комедия</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Комедия</feedTitle>
+    <feedPath>/-/14/95</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/107</location>
+    <title>Мелодрама</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Мелодрама</feedTitle>
+    <feedPath>/-/14/107</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/101</location>
+    <title>Приключения</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Приключения</feedTitle>
+    <feedPath>/-/14/101</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/127</location>
+    <title>Триллер</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Триллер</feedTitle>
+    <feedPath>/-/14/127</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/14/99</location>
+    <title>Ужасы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Кино / Ужасы</feedTitle>
+    <feedPath>/-/14/99</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/</location>
+    <title>Сериалы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы</feedTitle>
+    <feedPath>/-/15/</feedPath>
+    <feedIndent>0</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/93</location>
+    <title>Боевик</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Боевик</feedTitle>
+    <feedPath>/-/15/93</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/102</location>
+    <title>Военный</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Военный</feedTitle>
+    <feedPath>/-/15/102</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/96</location>
+    <title>Детектив</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Детектив</feedTitle>
+    <feedPath>/-/15/96</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/108</location>
+    <title>Документальный</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Документальный</feedTitle>
+    <feedPath>/-/15/108</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/104</location>
+    <title>Драма</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Драма</feedTitle>
+    <feedPath>/-/15/104</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/110</location>
+    <title>Комедийный</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Комедийный</feedTitle>
+    <feedPath>/-/15/110</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/106</location>
+    <title>Мелодрама</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Мелодрама</feedTitle>
+    <feedPath>/-/15/106</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/100</location>
+    <title>Приключения</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Приключения</feedTitle>
+    <feedPath>/-/15/100</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/128</location>
+    <title>Триллер</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Триллер</feedTitle>
+    <feedPath>/-/15/128</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/15/98</location>
+    <title>Ужасы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Сериалы / Ужасы</feedTitle>
+    <feedPath>/-/15/98</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/</location>
+    <title>Программы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы</feedTitle>
+    <feedPath>/-/16/</feedPath>
+    <feedIndent>0</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/113</location>
+    <title>Авто-мото</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Авто-мото</feedTitle>
+    <feedPath>/-/16/113</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/117</location>
+    <title>Вокруг света</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Вокруг света</feedTitle>
+    <feedPath>/-/16/117</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/126</location>
+    <title>Воспитание детей</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Воспитание детей</feedTitle>
+    <feedPath>/-/16/126</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/112</location>
+    <title>Гламур</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Гламур</feedTitle>
+    <feedPath>/-/16/112</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/116</location>
+    <title>Дом и сад</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Дом и сад</feedTitle>
+    <feedPath>/-/16/116</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/120</location>
+    <title>Красота и здоровье</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Красота и здоровье</feedTitle>
+    <feedPath>/-/16/120</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/130</location>
+    <title>Кулинария</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Кулинария</feedTitle>
+    <feedPath>/-/16/130</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/118</location>
+    <title>Охота и рыбалка</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Охота и рыбалка</feedTitle>
+    <feedPath>/-/16/118</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/119</location>
+    <title>Познавательные</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Познавательные</feedTitle>
+    <feedPath>/-/16/119</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/114</location>
+    <title>Психология и гороскопы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Психология и гороскопы</feedTitle>
+    <feedPath>/-/16/114</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/16/111</location>
+    <title>Юмористические</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Программы / Юмористические</feedTitle>
+    <feedPath>/-/16/111</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/17/</location>
+    <title>Мультфильмы</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Мультфильмы</feedTitle>
+    <feedPath>/-/17/</feedPath>
+    <feedIndent>0</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/17/125</location>
+    <title>Аниме</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Мультфильмы / Аниме</feedTitle>
+    <feedPath>/-/17/125</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/17/124</location>
+    <title>Взрослые</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Мультфильмы / Взрослые</feedTitle>
+    <feedPath>/-/17/124</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+  <item>
+    <location>http://www.ivi.ru/rss/new/-/17/123</location>
+    <title>Детские</title>
+    <rssLink>rss_file://../etc/translate/app/ivi/</rssLink>
+    <feedTitle>Мультфильмы / Детские</feedTitle>
+    <feedPath>/-/17/123</feedPath>
+    <feedIndent>20</feedIndent>
+  </item>
+</channel>
+
+
+</rss>

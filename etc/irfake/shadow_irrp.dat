@@ -1,0 +1,29 @@
+"0","ed12b649","a758686c",left
+"0","b44bb649","a05f686c",right
+"0","b54ab649","a15e686c",up
+"0","b14eb649","a35c686c",down
+"0","f50ab649","a25d686c",ok/select
+"0","bc43b649","bb44686c",return
+"0","ea15b649","fb04686c",stop
+"0","af50b649","ba45686c",setup
+"0","e41bb649","bf40686c",home
+"0","bb44b649","ab54686c",display
+"0","ad52b649","ae51686c",mute
+"0","b04fb649","b34c686c",vol-
+"0","ae51b649","e41b686c",vol+
+"0","e51ab649","a956686c",power
+"0","f609b649","be41686c",fr
+"0","f20db649","e817686c",ff
+"0","fc03b649","e718686c",play/pause
+"0","e817b649","e619686c",prev
+"0","a857b649","ec13686c",next
+"0","b946b649","a45b686c",subtitle
+"0","ba45b649","a857686c",audio
+"0","ab54b649","bd42686c",zoom
+"0","b847b649","b44b686c",tvsys = file
+"0","f708b649","a55a686c",repeat
+"0","fb04b649","b54a686c",option
+"5","f00fb649","e41bb649","af50686c",slow + home = discmenu
+"5","f00fb649","ea15b649","b04f686c",slow + stop = eject
+"5","f00fb649","f50ab649","b649686c",slow + ok/select = random
+"3","f00fb649","e51ab649","/bin/sh -c reboot", slow + power = reboot

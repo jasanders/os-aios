@@ -1,0 +1,46 @@
+#!/bin/sh
+# This script is used to do some things before changing root to ram. It will try to
+# move mount points of usbdisk to new root, and then execute "loader_a" to install
+# firmware that resides in some usbdisk or on the internet.
+#
+# Use "kill -6 1" to trigger busybox to execute this script and then execute new init
+# in ram.
+
+# Ramfs can use more memory
+echo 1 > /sys/realtek_boards/update
+
+# If we echo lock_usbdisk script to /tmp, it cannot work. This is pretty strange.
+#echo -e "#!/bin/sh\n\nwhile [ -f /tmp/usbdisk_lock ]; do\n\ttrue;\ndone\n\n" > /tmp/lock_usbdisk
+#chmod a+x /tmp/lock_usbdisk
+cp /etc/reexec_init/lock_usbdisk /tmp/
+touch /tmp/usbdisk_lock
+
+#swapoff /mnt/rd/swap.img
+
+# Keep usbdisk mounts
+for Dir in `ls /mnt/usbmounts/`; do
+	cd /mnt/usbmounts/$Dir; /tmp/lock_usbdisk&
+done
+cd /mnt/rd; /tmp/lock_usbdisk&
+cd /tmp; umount -a; rm /tmp/usbdisk_lock; cd /
+
+mount -t ramfs ramfs /mnt/hda
+cd /mnt/hda; cp -a /lib /bin /sbin /etc .
+mkdir -p /mnt/hda/usr/local; cd /mnt/hda/usr; cp -a /usr/bin /usr/sbin .; cd /mnt/hda/usr/local/; cp -a /usr/local/sbin .
+rm -rf /mnt/hda/lib/modules
+cd /mnt/hda; cp /etc/reexec_init/rcS etc/init.d/; cp /etc/reexec_init/fstab etc/
+mkdir -p /mnt/hda/tmp /mnt/hda/proc /mnt/hda/sys
+mkdir -p /mnt/hda/mnt/old /mnt/hda/mnt/rd
+cp /tmp/installing_source /mnt/hda/tmp/
+
+# Move usbdisk mounts
+for Dir in `ls /mnt/usbmounts/`; do
+	mkdir -p /mnt/hda/mnt/usbmounts/$Dir
+	mount --move /mnt/usbmounts/$Dir /mnt/hda/mnt/usbmounts/$Dir
+done
+mv /tmp/* /mnt/hda/tmp
+mount --move /mnt/rd /mnt/hda/mnt/rd
+pivot_root /mnt/hda /mnt/hda/mnt/old
+mkdir dev; mount -t devfs devfs dev
+
+

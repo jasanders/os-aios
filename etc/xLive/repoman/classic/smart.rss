@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Get Smart</title>
+
+<item>
+<title>Get Smart Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F92FC1C6369B13DA0,Get+Smart+Season+1</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/kMciZ7eZag0/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Get Smart Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F638A09D4D84DAAAC,Get+Smart+Season+2</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/HfXK0d7YHsc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Get Smart Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F438F43FEAC3C3C96,Get+Smart+Season+3</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/csVgj-BKBTY/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Get Smart Season 4</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F4F3CF0BFCA551703,Get+Smart+Season+4</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/XxOijINp6n0/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Get Smart Season 5</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F52DED4094C7B0654,Get+Smart+Season+5</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/uAqm-T5hxzA/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

@@ -1,0 +1,135 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!---->
+<bookmark> main_menu </bookmark>
+
+ <onExit>
+ </onExit>
+
+ <script>
+ titleArray = getItemInfoArray("title");
+ setFocusItemIndex(0);
+ setup_guide_pressed = "no";
+ </script>
+
+<mediaDisplay name=onePartView
+	
+		viewAreaXPC=31.33
+		viewAreaYPC=24.17
+		viewAreaWidthPC=20.94
+		viewAreaHeightPC=18.19
+			
+		sideColorLeft=-1:-1:-1
+		sideColorRight=-1:-1:-1
+		
+		
+		itemImageXPC = 4.1
+		itemImageYPC = 7
+		itemImageWidthPC = 91.79
+		itemImageHeightPC = 42.75
+		
+		itemXPC = 4.1
+		itemYPC = 7
+		itemWidthPC = 91.79
+		itemHeightPC = 42.75
+		itemGapYPC=7
+		itemBackgroundColor=-1:-1:-1
+
+	
+	showHeader = "no"
+	showDefaultInfo=no
+	
+	DoAnimation = "yes"
+	AnimationType = 1
+	AnimationStep = 26
+	AnimationDelay = 1
+	BackgroundDark = "no"
+	rollItems=no
+	slidingItemText=yes
+	backgroundColor=-1:-1:-1
+  >
+<backgroundDisplay name=FlickrExplore>
+                <image offsetXPC=0 offsetYPC=1 widthPC=100 heightPC=100 >
+				<script>
+                        "../image/Flcikr_BTN_DropMenu_DropPanelX2.png";
+				</script>
+                </image>
+</backgroundDisplay>
+
+<itemDisplay>
+
+<text  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+		if (setup_guide_pressed == "yes")
+		{
+			setup_guide_pressed = "no";
+			restoreOsdArea("no", "no");
+		}
+		state = getDrawingItemState();
+		if (state == "focus")
+			"../image/Flcikr_Btn_DropMenu_Sub_ Focus.png";
+		</script>
+</image>
+
+<text align=center offsetXPC=2 offsetYPC=10 widthPC=96 heightPC=90 fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=200:200:200>
+	<script>
+		getStringArrayAt(titleArray, -1);
+	</script>
+</text>
+</itemDisplay>
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+if (input == "left")
+{
+	print("====== ignore left key ======");
+	ret = "true";
+}
+else if (input == "up")
+{
+	index = getFocusItemIndex();
+	if(index == 0){
+		postMessage("return");
+		ret = "true";
+	}
+	else{
+		ret = "false";
+	}
+}
+else if (input == "setup" || input == "guide")
+{
+	setup_guide_pressed = "yes";
+	saveOsdArea();
+}
+ret;
+</onUserInput>
+
+</mediaDisplay>
+
+<channel>
+	<title>explore</title>
+	<link>flickr_explore.rss</link>
+<item>
+	<title>$[IMS_HOT_TAGS]</title>
+	<onClick>
+		setEnv("viewpage","hottags");
+		itemchoose = 1;
+		postMessage("return");
+		null;
+	</onClick>
+</item>
+
+<item>
+	<title>$[IMS_INTERESTING]</title>
+	<onClick>
+		setEnv("viewpage","mostInterested");
+		itemchoose = 1;
+		postMessage("return");
+		null;
+	</onClick>
+</item>
+
+</channel>
+</rss>

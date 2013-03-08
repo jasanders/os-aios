@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Alphabet</alpha>
+	<genre>Genre</genre>
+	<recent>Recently Added</recent>
+	<select>Select Movies by:</select>
+	<update>Update Jukebox</update>
+	<notwatched>Not Watched</notwatched>
+	<year>Year</year>
+	<search>Search</search>
+  <config>Config</config>
+  <textInfo>Wellcome on SRJG !&#x0A;&#x0A;1 - to play the last watched video.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Keys list:&#x0A;1 = Switch View for the Jukebox&#x0A;Enter = To select&#x0A;Rtn = Previous screen</helpGP>
+  <helpJbx>Keys list:&#x0A;2 = Mark as Watched&#x0A;Enter = Select&#x0A;Rtn = Previous screen&#x0A;Play = Play video&#x0A;Goto = Seek the video number&#x0A;<< = Go back 10 videos&#x0A;>> = Skip 10 videos</helpJbx>
+  <helpSheet>Keys list:&#x0A;2 = Mark as Watched&#x0A;Rtn = Previous screen&#x0A;Enter = Play video&#x0A;Play = Play video&#x0A;< = Previous video&#x0A;> = Next video</helpSheet>
+</jukebox>
+<update>
+  <fast>Fast</fast>
+  <rebuild>Rebuild</rebuild>
+</update>
+<cfg>
+  <Lang>Language</Lang>
+  <Jukebox_Size>View</Jukebox_Size>
+  <Movies_Path>Movie path</Movies_Path>
+	<Nfo_Path>Nfo path</Nfo_Path>
+	<Poster_Path>Poster path</Poster_Path>
+	<Sheet_Path>Sheet path</Sheet_Path>
+  <Movie_Filter>Filter</Movie_Filter>
+  <SingleDb>Single Database</SingleDb>
+  <Recent_Max>Max recent movie</Recent_Max>
+  <Imdb>Use Imdb</Imdb>
+	<Dspl>Display</Dspl>
+	<UnlockRM>Allow Delete</UnlockRM>
+  <Jukebox_Path>Jukebox path:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Version:</Version>
+  <yes>Yes</yes>
+  <no>No</no>
+	<top>Top</top>
+	<bottom>Bottom</bottom>
+	<white>White</white>
+	<black>Black</black>
+	<yellow>yellow</yellow>
+	<transparent>Transparent</transparent>
+	<browse>Browse</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Genre text:</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Movies Path:</FBrowser_Title>
+  <FBrowser_Valid>to validate</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Activate Imdb</Imdb_Use>
+  <Imdb_Lang>Interface</Imdb_Lang>
+  <Imdb_Source>Source</Imdb_Source>
+  <Imdb_Poster>Download Poster</Imdb_Poster>
+  <Imdb_PBox>Poster Box</Imdb_PBox>
+  <Imdb_PPost>Random Poster</Imdb_PPost>
+  <Imdb_Sheet>Download Sheet</Imdb_Sheet>
+  <Imdb_SBox>Poster Box in Sheet</Imdb_SBox>
+  <Imdb_SPost>Random Poster in Sheet</Imdb_SPost>
+  <Imdb_Backdrop>Random Bankground</Imdb_Backdrop>
+  <Imdb_Font>Font</Imdb_Font>
+  <Imdb_Genres>Genres images</Imdb_Genres>
+  <Imdb_Tagline>Tagline</Imdb_Tagline>
+  <Imdb_Time>Format time</Imdb_Time>
+  <Imdb_Info>Create file info</Imdb_Info>
+  <Imdb_MaxDl>Simultaneous downloads</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Edit Menu</EditMenu>
+  <rmPoster>Remove the Poster</rmPoster>
+  <rmSheet>Remove the Sheet</rmSheet>
+  <rmNfo>Remove the Nfo</rmNfo>
+  <rmMovie>Remove the Movie</rmMovie>
+  <ValPoster>Do you really want to remove only the Poster ?</ValPoster>
+  <ValSheet>Do you really want to remove only the Sheet ?</ValSheet>
+  <ValNfo>Do you really want to remove only the Nfo ?</ValNfo>
+  <ValMovie>Do you really want to remove all the movie's files ?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Select subtitle</SubtMenu>
+  <WtSubt>Without subtitle</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Subt: Auto play</Subt_OneAuto>
+  <Subt_FontPath>Subt: Font path</Subt_FontPath>
+  <Subt_FontFile>Subt: Active Font</Subt_FontFile>
+  <Subt_Color>Subt: Color</Subt_Color>
+  <Subt_ColorBg>Subt: Background color</Subt_ColorBg>
+	<Subt_Size>Subt: Size</Subt_Size>
+	<Subt_Pos>Subt: Position</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Select a font</FontMenu>
+</MFont>

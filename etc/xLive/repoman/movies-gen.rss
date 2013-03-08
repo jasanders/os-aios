@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Movie Time</title>
+
+<item>
+<title>Horror</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F704EC65E83E35171,Horror</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/yBezGsRnUME/default.jpg"/>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Movie Trailers</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Ftrailers%2Fuploads%3Forderby%3Dupdated,Movie+Trailers</link>
+<media:thumbnail url="http://www.soundonsight.org/wp-content/uploads/2010/12/Movie-Trailer-poster.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Comedy</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F8D23F34BDCB9C91F,Comedy</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/N1piR_TXPRs/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Martial Arts</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F085D7853969ED748,Martial+Arts</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/SgOtOHUcjAM/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Documentary</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F83848891AC40E396,Documentary</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/fJIsrb_6uiA/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Love, Sex & Secrets</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F4723A69BF8F4D24F,Love%2C+Sex+%26+Secrets</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/l0Ur60UKIVE/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Sci-Fi</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F187B692794A81E1E,Sci-Fi</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/0Itdbzw9ZHc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Action & Thriller</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F2F3E8346A8B0B1B9,Action+%26+Thriller</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/NuG05g5Ixn8/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Drama</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FBFD742E3E04710B9,Drama</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/o6OZ8BORJLw/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Adventure</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F719FD40A44C8D038,Adventure</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/zmTmRo4d_jE/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Family</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F7881FC27D4269FEF,Family</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/cVBB30ZSUwU/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

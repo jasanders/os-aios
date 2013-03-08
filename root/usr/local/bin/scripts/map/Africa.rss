@@ -1,0 +1,509 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>Africa</title>
+<link>./scripts/map/Africa.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Algeria</title>
+<link>rss_file://./scripts/map/Algeria.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>28.026880</Latitude>
+<Longitude>1.652840</Longitude>
+</item>
+
+<item>
+<title>Angola</title>
+<link>rss_file://./scripts/map/Angola.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-11.941840</Latitude>
+<Longitude>17.907209</Longitude>
+</item>
+
+<item>
+<title>Benin</title>
+<link>rss_file://./scripts/map/Benin.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>9.322040</Latitude>
+<Longitude>2.313130</Longitude>
+</item>
+
+<item>
+<title>Botswana</title>
+<link>rss_file://./scripts/map/Botswana.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-22.344030</Latitude>
+<Longitude>24.680161</Longitude>
+</item>
+
+<item>
+<title>Burkina Faso</title>
+<link>rss_file://./scripts/map/BurkinaFaso.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>12.241840</Latitude>
+<Longitude>-1.556760</Longitude>
+</item>
+
+<item>
+<title>Burundi</title>
+<link>rss_file://./scripts/map/Burundi.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-3.387910</Latitude>
+<Longitude>29.920389</Longitude>
+</item>
+
+<item>
+<title>Cameroon</title>
+<link>rss_file://./scripts/map/Cameroon.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>7.365290</Latitude>
+<Longitude>12.343440</Longitude>
+</item>
+
+<item>
+<title>Cape Verde</title>
+<link>rss_file://./scripts/map/CapeVerde.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>15.112300</Latitude>
+<Longitude>-23.614759</Longitude>
+</item>
+
+<item>
+<title>Central African Republic</title>
+<link>rss_file://./scripts/map/CentralAfricanRepublic.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>6.614040</Latitude>
+<Longitude>20.941759</Longitude>
+</item>
+
+<item>
+<title>Chad</title>
+<link>rss_file://./scripts/map/Chad.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>15.445710</Latitude>
+<Longitude>18.738060</Longitude>
+</item>
+
+<item>
+<title>Comoros</title>
+<link>rss_file://./scripts/map/Comoros.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-11.651580</Latitude>
+<Longitude>43.359970</Longitude>
+</item>
+
+<item>
+<title>Cote D'Ivoire</title>
+<link>rss_file://./scripts/map/CoteDIvoire.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+</item>
+
+<item>
+<title>Congo</title>
+<link>rss_file://./scripts/map/DemocraticRepublicofTheCongo.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-0.662620</Latitude>
+<Longitude>14.927410</Longitude>
+</item>
+
+<item>
+<title>Djibouti</title>
+<link>rss_file://./scripts/map/Djibouti.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>11.583230</Latitude>
+<Longitude>43.144119</Longitude>
+</item>
+
+<item>
+<title>Egypt</title>
+<link>rss_file://./scripts/map/Egypt.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>26.696360</Latitude>
+<Longitude>30.246469</Longitude>
+</item>
+
+<item>
+<title>Equatorial Guinea</title>
+<link>rss_file://./scripts/map/EquatorialGuinea.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>1.633920</Latitude>
+<Longitude>10.341290</Longitude>
+</item>
+
+<item>
+<title>Eritrea</title>
+<link>rss_file://./scripts/map/Eritrea.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>15.181320</Latitude>
+<Longitude>39.950859</Longitude>
+</item>
+
+<item>
+<title>Ethiopia</title>
+<link>rss_file://./scripts/map/Ethiopia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>9.147300</Latitude>
+<Longitude>40.493050</Longitude>
+</item>
+
+<item>
+<title>Gabon</title>
+<link>rss_file://./scripts/map/Gabon.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-0.828090</Latitude>
+<Longitude>11.598910</Longitude>
+</item>
+
+<item>
+<title>Ghana</title>
+<link>rss_file://./scripts/map/Ghana.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>7.955010</Latitude>
+<Longitude>-1.031820</Longitude>
+</item>
+
+<item>
+<title>Guinea</title>
+<link>rss_file://./scripts/map/Guinea.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>9.934880</Latitude>
+<Longitude>-9.660630</Longitude>
+</item>
+
+<item>
+<title>Guinea-Bissau</title>
+<link>rss_file://./scripts/map/Guinea-bissau.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>11.802520</Latitude>
+<Longitude>-15.177020</Longitude>
+</item>
+
+<item>
+<title>Kenya</title>
+<link>rss_file://./scripts/map/Kenya.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-0.024350</Latitude>
+<Longitude>37.903950</Longitude>
+</item>
+
+<item>
+<title>Lesotho</title>
+<link>rss_file://./scripts/map/Lesotho.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-29.620510</Latitude>
+<Longitude>28.247419</Longitude>
+</item>
+
+<item>
+<title>Liberia</title>
+<link>rss_file://./scripts/map/Liberia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>6.452420</Latitude>
+<Longitude>-9.428590</Longitude>
+</item>
+
+<item>
+<title>Libya</title>
+<link>rss_file://./scripts/map/Libya.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>26.338520</Latitude>
+<Longitude>17.268820</Longitude>
+</item>
+
+<item>
+<title>Madagascar</title>
+<link>rss_file://./scripts/map/Madagascar.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-18.777180</Latitude>
+<Longitude>46.854321</Longitude>
+</item>
+
+<item>
+<title>Malawi</title>
+<link>rss_file://./scripts/map/Malawi.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-13.246270</Latitude>
+<Longitude>34.295380</Longitude>
+</item>
+
+<item>
+<title>Mali</title>
+<link>rss_file://./scripts/map/Mali.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>17.579750</Latitude>
+<Longitude>-3.998830</Longitude>
+</item>
+
+<item>
+<title>Mauritania</title>
+<link>rss_file://./scripts/map/Mauritania.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>21.006809</Latitude>
+<Longitude>-10.950860</Longitude>
+</item>
+
+<item>
+<title>Mauritius</title>
+<link>rss_file://./scripts/map/Mauritius.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-20.255409</Latitude>
+<Longitude>57.551739</Longitude>
+</item>
+
+<item>
+<title>Mayotte</title>
+<link>rss_file://./scripts/map/Mayotte.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-12.824510</Latitude>
+<Longitude>45.136780</Longitude>
+</item>
+
+<item>
+<title>Morocco</title>
+<link>rss_file://./scripts/map/Morocco.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>31.815411</Latitude>
+<Longitude>-7.067000</Longitude>
+</item>
+
+<item>
+<title>Mozambique</title>
+<link>rss_file://./scripts/map/Mozambique.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-18.670280</Latitude>
+<Longitude>35.530151</Longitude>
+</item>
+
+<item>
+<title>Namibia</title>
+<link>rss_file://./scripts/map/Namibia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-22.965660</Latitude>
+<Longitude>18.486170</Longitude>
+</item>
+
+<item>
+<title>Niger</title>
+<link>rss_file://./scripts/map/Niger.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>17.610991</Latitude>
+<Longitude>8.080940</Longitude>
+</item>
+
+<item>
+<title>Nigeria</title>
+<link>rss_file://./scripts/map/Nigeria.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>9.084570</Latitude>
+<Longitude>8.674250</Longitude>
+</item>
+
+<item>
+<title>Reunion</title>
+<link>rss_file://./scripts/map/Reunion.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+</item>
+
+<item>
+<title>Rwanda</title>
+<link>rss_file://./scripts/map/Rwanda.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-1.947070</Latitude>
+<Longitude>29.876381</Longitude>
+</item>
+
+<item>
+<title>Sao Tome and Principe</title>
+<link>rss_file://./scripts/map/SaoTomeandPrincipe.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>0.220320</Latitude>
+<Longitude>6.619350</Longitude>
+</item>
+
+<item>
+<title>Senegal</title>
+<link>rss_file://./scripts/map/Senegal.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>14.499450</Latitude>
+<Longitude>-14.445550</Longitude>
+</item>
+
+<item>
+<title>Seychelles</title>
+<link>rss_file://./scripts/map/Seychelles.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-4.684440</Latitude>
+<Longitude>55.487320</Longitude>
+</item>
+
+<item>
+<title>Sierra Leone</title>
+<link>rss_file://./scripts/map/SierraLeone.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>8.465020</Latitude>
+<Longitude>-11.795930</Longitude>
+</item>
+
+<item>
+<title>Somalia</title>
+<link>rss_file://./scripts/map/Somalia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>5.161580</Latitude>
+<Longitude>46.200829</Longitude>
+</item>
+
+<item>
+<title>South Africa</title>
+<link>rss_file://./scripts/map/SouthAfrica.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-28.483219</Latitude>
+<Longitude>24.676991</Longitude>
+</item>
+
+<item>
+<title>St. Helena</title>
+<link>rss_file://./scripts/map/StHelena.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>13.316640</Latitude>
+<Longitude>30.209490</Longitude>
+</item>
+
+<item>
+<title>Sudan</title>
+<link>rss_file://./scripts/map/Sudan.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>13.316640</Latitude>
+<Longitude>30.209490</Longitude>
+</item>
+
+<item>
+<title>Swaziland</title>
+<link>rss_file://./scripts/map/Swaziland.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-26.518370</Latitude>
+<Longitude>31.465679</Longitude>
+</item>
+
+<item>
+<title>The Gambia</title>
+<link>rss_file://./scripts/map/TheGambia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-6.368210</Latitude>
+<Longitude>34.885189</Longitude>
+</item>
+
+<item>
+<title>Togo</title>
+<link>rss_file://./scripts/map/Togo.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>8.621690</Latitude>
+<Longitude>0.829690</Longitude>
+</item>
+
+<item>
+<title>Tunisia</title>
+<link>rss_file://./scripts/map/Tunisia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>33.795021</Latitude>
+<Longitude>9.561540</Longitude>
+</item>
+
+<item>
+<title>Uganda</title>
+<link>rss_file://./scripts/map/Uganda.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>1.365190</Latitude>
+<Longitude>32.304649</Longitude>
+</item>
+
+<item>
+<title>United Republic of Tanzania</title>
+<link>rss_file://./scripts/map/UnitedRepublicofTanzania.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>24.238480</Latitude>
+<Longitude>-12.886300</Longitude>
+</item>
+
+<item>
+<title>Western Sahara</title>
+<link>rss_file://./scripts/map/WesternSahara.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>24.238480</Latitude>
+<Longitude>-12.886300</Longitude>
+</item>
+
+<item>
+<title>Zambia</title>
+<link>rss_file://./scripts/map/Zambia.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-13.151920</Latitude>
+<Longitude>27.852539</Longitude>
+</item>
+
+<item>
+<title>Zimbabwe</title>
+<link>rss_file://./scripts/map/Zimbabwe.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>-19.013281</Latitude>
+<Longitude>29.146660</Longitude>
+</item>
+
+
+</channel></rss>

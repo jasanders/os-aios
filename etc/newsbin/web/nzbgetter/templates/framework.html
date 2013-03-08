@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>%%-TITLE-%%</title>
+<link rel="stylesheet" type="text/css" href="%%-CSS-%%" />
+<script type="text/javascript" src="%%-JQUERY-%%"></script>
+<script>
+$(document).ready(function(){
+$.ajaxSetup ({cache: false});
+%%-JQUERY_PAGE_DEPEND-%%
+});
+</script>
+</head>
+<body>
+<div id="nzbg_wrapper">
+    <div id="nzbg_header">
+    <h2>%%-TITLE-%%</h2>
+    %%-MENU-%%
+    </div>
+    <div id="nzbg_content">
+        <div style="padding-left: 30px">
+        %%-CONTENT-%%
+        </div>
+    </div>
+    <div id="nzbg_footer">
+    &nbsp;Copyright %%-COPYRIGHTYEAR-%% - %%-AUTHOR-%% - <a href="%%-URL-%%" target="_blank">%%-URL-%%</a>
+    </div>
+</div>
+</body>
+</html>

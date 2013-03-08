@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Bewitched</title>
+
+<item>
+<title>Bewitched Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FBD2BA4731135A652,Bewitched+Season+1</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LSY_tb69Pb8/market_thumb.jpg?v=5a13b7" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Bewitched Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F7A0807E60DEF8E78,Bewitched+Season+2</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LSY_tb69Pb8/market_thumb.jpg?v=5a13b7" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Bewitched Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F8942FD20FA8159CC,Bewitched+Season+3</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LSY_tb69Pb8/market_thumb.jpg?v=5a13b7" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Bewitched Season 4</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F5D37AF2D57D98A1B,Bewitched+Season+4</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LSY_tb69Pb8/market_thumb.jpg?v=5a13b7" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Bewitched Season 5</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FA770C244F3ABAA53,Bewitched+Season+5</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/LSY_tb69Pb8/market_thumb.jpg?v=5a13b7" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

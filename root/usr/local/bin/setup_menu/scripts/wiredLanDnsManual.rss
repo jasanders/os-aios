@@ -1,0 +1,264 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>DnsServerManual</bookmark>
+
+<mediaDisplay
+	name=photoView
+	columnCount=4
+	rowCount=2
+	viewAreaXPC=26.8
+	viewAreaYPC=27.4
+	viewAreaWidthPC=46.4
+	viewAreaHeightPC=45.3
+
+	itemOffsetXPC=14.3
+	itemOffsetYPC=36.5
+	itemGapXPC=0
+	itemGapYPC=0
+	itemWidthPC=17.8
+	itemHeightPC=18.7
+	imageBorderPC=0
+
+	sideTopHeightPC=0
+	sideBottomHeightPC=0
+
+	imageFocus=""
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=0:0:0
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	drawItemText="no"
+	drawItemBorder="no"
+	sliding="no"
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/image/setup_popup_bg_line.fsp
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=7.1 offsetYPC=12.9 widthPC=85.7 heightPC=23.3 align=center fontSize=18 backgroundColor=-1:-1:-1 foregroundColor=255:255:255 >
+	<script>
+		header = getPageInfo("pageTitle");
+		header;
+	</script>
+</text>
+
+<text offsetXPC=14.3 offsetYPC=36.5 widthPC=71.2 heightPC=18.7 fontSize=16 align=left backgroundColor=-1:-1:-1>
+	$[NET_DNS_SERVER_IP]
+</text>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			queryIndex = getQueryItemIndex();
+			if (queryIndex == 1 || queryIndex == 3 || queryIndex == 5 || queryIndex == 7) {
+				image = "./setup_menu/image/setup_input_unfoucs_bg.fsp";
+
+			}
+			image;
+		</script>
+	</image>
+	<editbox offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1 >
+		<foregroundColor>
+			<script>
+				fgcolor = "255:255:255";
+				queryIndex = getQueryItemIndex();
+				if (queryIndex == 1 || queryIndex == 3 || queryIndex == 5 || queryIndex == 7) {
+					fgcolor = "0:0:0";
+				}
+				fgcolor;
+			</script>
+		</foregroundColor>
+		<script>
+			getItemInfo("title");
+		</script>
+	</editbox>
+</itemDisplay>
+
+<popupDialog>
+	<mediaDisplay>
+		<onEnter>
+			popupHeader = "$[CONFIRM]";
+			popupMessageSize = 1;
+			popupMessages = "$[NET_CONFIRM_SETTING]";
+			popupOptionSize = 2;
+			popupOptions = pushBackStringArray(popupOptions, "$[YES]");
+			popupOptions = pushBackStringArray(popupOptions, "$[NO]");
+		</onEnter>
+	</mediaDisplay>
+</popupDialog>
+
+<onEnter>
+	setFullScreenFade(64);
+
+	dns_0     = 192;
+	dns_1     = 168;
+	dns_2     = 0;
+	dns_3     = 1;
+	dns       = getWiredLanIpAddr("DNS");
+
+	if (dns != NULL) {
+		dns_0     = getStringArrayAt(dns, 0);
+		dns_1     = getStringArrayAt(dns, 1);
+		dns_2     = getStringArrayAt(dns, 2);
+		dns_3     = getStringArrayAt(dns, 3);
+	}
+
+	setFocusItemIndex(1);
+	setItemFocus(1);
+	redrawDisplay("item", 1);
+	postMessage("enter");
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	if ("enter" == userInput) {
+		rss = "rss_file://./setup_menu/scripts/widget.rss";
+		ret = doModalRss(rss);
+		redrawDisplay("no");
+		redrawDisplay("clear");
+		if (ret != null) {
+			inputKey = getStringArrayAt(ret, 0);
+			returnVal = 0 + getStringArrayAt(ret, 1);
+			queryIndex = getQueryItemIndex();
+			if (queryIndex == 1) {
+				dns_0 = returnVal;
+			}
+			else if (queryIndex == 3) {
+				dns_1 = returnVal;
+			}
+			else if (queryIndex == 5) {
+				dns_2 = returnVal;
+			}
+			else if (queryIndex == 7) {
+				dns_3 = returnVal;
+			}
+
+			target = queryIndex;
+			if (inputKey == "left") {
+				if (queryIndex == 3 || queryIndex == 5 || queryIndex == 7) {
+					target = 0 + queryIndex - 2;
+				}
+				else if (queryIndex == 1 || queryIndex == 5 || queryIndex == 7) {
+					target = 1;
+				}
+			}
+			else if (inputKey == "right") {
+				if (queryIndex == 1 || queryIndex == 3 || queryIndex == 5) {
+					target = 0 + queryIndex + 2;
+				}
+				else if (queryIndex == 7) {
+					target = 7;
+				}
+			}
+
+			if (inputKey == "enter") {
+				rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+				confirm = doModalRss(rss, "mediaDisplay", "popupDialog", 0);
+				if (confirm == "$[YES]") {
+					setWiredLanIpAddr("DNS", dns_0, dns_1, dns_2, dns_3);
+
+					setReturnString(confirm);
+					redrawDisplay("no");
+					handle = "return";
+				}
+				else {
+					redrawDisplay("item", target);
+					postMessage("enter");
+					handle = "true";
+				}
+			}
+			else if (inputKey == "return") {
+				setReturnString("");
+				redrawDisplay("no");
+				handle = "return";
+			}
+			else {
+				if (target == queryIndex) {
+					redrawDisplay("no");
+				}
+				else {
+					setFocusItemIndex(target);
+					setItemFocus(target);
+					redrawDisplay("item", queryIndex);
+					redrawDisplay("item", target);
+				}
+				postMessage("enter");
+				handle = "true";
+			}
+		}
+	}
+	else if ("left" == userInput || "right" == userInput) {
+		handle = "true";
+	}
+	else if ("up" == userInput || "down" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<item_template>
+	<title>
+		<script>
+			data = "";
+			queryIndex = getQueryItemIndex();
+			if (queryIndex == 1) {
+				data = dns_0;
+			}
+			else if (queryIndex == 3) {
+				data = dns_1;
+			}
+			else if (queryIndex == 5) {
+				data = dns_2;
+			}
+			else if (queryIndex == 7) {
+				data = dns_3;
+			}
+			data;
+		</script>
+	</title>
+
+	<mediaDisplay>
+		<itemDisplay>
+			<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+				./setup_menu/image/setup_input_foucs_bg.fsp
+			</image>
+			<editbox offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 align=center fontSize=16 backgroundColor=-1:-1:-1 foregroundColor=0:153:255 widgetFormat=numeric widgetMin=0 widgetMax=255 widgetOffset=0 widgetDigit=3 >
+				0
+			</editbox>
+		</itemDisplay>
+	</mediaDisplay>
+</item_template>
+
+
+<channel>
+	<title>DNS Manual</title>
+	<link>rss_file://./setup_menu/scripts/wiredLanDnsManual.rss</link>
+
+
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+	8
+</itemSize>
+
+
+</channel>
+</rss>

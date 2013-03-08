@@ -1,0 +1,27 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>Asia</title>
+<link>./scripts/map/Asia.rss</link>
+<media:thumbnail url="image/weather.jpg" />
+
+<!--Country-->
+<item>
+<title>Australia</title>
+<link>rss_file://./scripts/map/Australia/Australia.rss</link>
+<media:thumbnail url="image/weather.jpg" />
+<zoom>country</zoom>
+<Latitude>33.930450</Latitude>
+<Longitude>67.678940</Longitude>
+</item>
+
+<item>
+<title>Papua New Guinea</title>
+<link>rss_file://./scripts/map/Australia/PapuaNewGuinea.rss</link>
+<media:thumbnail url="image/weather.jpg" />
+<zoom>country</zoom>
+<Latitude>40.066170</Latitude>
+<Longitude>45.039890</Longitude>
+</item>
+
+</channel></rss>

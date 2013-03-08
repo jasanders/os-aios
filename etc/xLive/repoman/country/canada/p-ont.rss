@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+   <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Police Feeds</title>
+
+<item>
+
+      <title>Chatham-Kent Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/538179048</link>
+	   <enclosure type="video/x-ms-wma" url="http://relay.radioreference.com:80/538179048"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+     <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Leamington and Kingsville Fire Departments</title>
+      <link>http://relay.radioreference.com:80/214195225</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/214195225"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Kingston Fire and Rescue</title>
+      <link>http://relay.radioreference.com:80/702816647</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/702816647"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Halton County Police, Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/97210680</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/97210680"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+
+
+   
+     <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Hamilton Police, Fire, and EMS</title>
+      <link>http://relay.radioreference.com:80/78657077</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/78657077"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Kingston Fire and Rescue</title>
+      <link>http://relay.radioreference.com:80/702816647</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/702816647"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>London Middlesex EMS, Fire, and OPP</title>
+      <link>http://relay.radioreference.com:80/124430972</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/124430972"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+  
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Niagara Region- Fire Department Dispatch & Fire Ground Operations</title>
+      <link>http://relay.radioreference.com:80/856608662</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/856608662"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>City of Ottawa Fire</title>
+      <link>http://relay.radioreference.com:80/279892593</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/279892593"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Ottawa Fire Department, Ottawa Airport Fire, OPP, Ottawa EMS</title>
+      <link>http://relay.radioreference.com:80/269207264</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/269207264"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Renfrew County Police, Fire, EMS</title>
+      <link>http://relay.radioreference.com:80/572546663</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/572546663"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Toronto Fire Services South Zone</title>
+      <link>http://relay.radioreference.com:80/60509807</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/60509807"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Waterloo Regional Police, Fire and EMS</title>
+      <link>http://relay.radioreference.com:80/333108723</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/333108723"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Wellington Public Safety</title>
+      <link>http://relay.radioreference.com:80/610837260</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/610837260"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>Ontario Provincial Police, EMS, MNR, MTO</title>
+      <link>http://relay.radioreference.com:80/512255975</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/512255975"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Police Feeds</title>
+
+    
+<item>
+
+      <title>York Region Fire and Police</title>
+      <link>http://relay.radioreference.com:80/208720075</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/208720075"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+</channel>
+</rss>

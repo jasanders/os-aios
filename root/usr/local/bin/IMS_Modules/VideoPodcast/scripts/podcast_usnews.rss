@@ -1,0 +1,500 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<bookmark> main_menu </bookmark>
+ <script>
+ focusiconArray = getItemInfoArray("focusIcon");
+ unfocusiconArray = getItemInfoArray("unfocusIcon");
+ urlArray = getItemInfoArray("url");
+ setFocusItemIndex(0);
+ bRight = 0;
+ bLeft = 0;
+ bLastPage = 0; 
+ </script>
+
+<mediaDisplay name=photoView
+	
+	showHeader=no
+	showDefaultInfo=no
+	rowCount=2
+	columnCount=5
+	
+	topArea.heightPC=0
+	topArea.yPC=100
+
+    imageFocus=null
+    backgroundColor="28:35:51" 
+    sideColorTop="28:35:51" 
+    sideColorBottom="28:35:51" 
+    imageBorderColor="83:202:245" 
+    imageBorderPC="1.25" 
+    centerColor="28:35:51" 
+      
+    centerWidthPC=100
+
+	itemWidthPC = "13.28"
+	itemHeightPC = "23"
+
+	itemImageXPC = "7.8"
+	itemImageYPC = "16"
+	itemImageWidthPC = "13.28"
+	itemImageHeightPC = "26"
+  
+	itemOffsetXPC=13
+	itemOffsetYPC=30
+	itemGapXPC=2
+	itemGapYPC=2
+		
+	DoAnimation = "no"
+	AnimationType = 1
+	AnimationStep = 26
+	AnimationDelay = 1
+	BackgroundDark = "no"
+	
+	idleImageXPC=83.12
+	idleImageYPC=89.58
+	idleImageWidthPC=3.1
+	idleImageHeightPC=5.5
+  >
+
+
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+	<idleImage> image/POPUP_LOADING_03.png </idleImage>
+	<idleImage> image/POPUP_LOADING_04.png </idleImage>
+	<idleImage> image/POPUP_LOADING_05.png </idleImage>
+	<idleImage> image/POPUP_LOADING_06.png </idleImage> 
+	<idleImage> image/POPUP_LOADING_01.png </idleImage>
+	<idleImage> image/POPUP_LOADING_02.png </idleImage>
+
+
+<backgroundDisplay name=podcast_p2_bg>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			./IMS_Modules/VideoPodcast/image/podcast_p2_bg.fsp
+				  </image>
+</backgroundDisplay>
+
+
+<image offsetXPC="14.5" offsetYPC="24.4" widthPC="13.91" heightPC="1.39">
+   ./IMS_Modules/VideoPodcast/image/p2_news_focus.png
+</image>
+
+<text offsetXPC="14" offsetYPC="20" widthPC="15" heightPC="6" fontSize="11" align=center>
+   $[US_NEWS]
+</text>
+
+<image offsetXPC="8" offsetYPC="50" widthPC="3" heightPC="7" useBackgroundSurface="yes" redraw="yes">
+ <script>
+  pic = null;
+  focusIndex = getFocusItemIndex();
+  /*
+  print("focusIndex:", focusIndex);
+  print("bLeft:", bLeft);
+  */
+  if (itemCount &gt; 10)
+  {
+	  if (bLeft == 1)
+	  {
+	  	if (focusIndex &lt; 4)
+	  	{
+	  		bLeft = 0;
+	  		pic = null;
+	  	}
+	  	else
+	  	{
+	  		bLeft = 1;
+	   		pic = "./IMS_Modules/VideoPodcast/image/left.png";
+	  	}  	
+	  }
+	  else if (bLeft == 0)
+	  {
+	  	if (focusIndex &gt; 7)
+	  	{
+	  		bLeft = 1;
+	   		pic = "./IMS_Modules/VideoPodcast/image/left.png";
+	  	}
+	  	else
+		{
+		  	bLeft = 0;
+		  	pic = null;
+		}
+	  }
+   }
+   pic;
+ </script>
+</image>
+<image offsetXPC="92" offsetYPC="50" widthPC="3" heightPC="7" useBackgroundSurface="yes" redraw="yes">
+ <script>
+  pic = null;
+  focusIndex = getFocusItemIndex();
+  itemCount = getPageInfo("itemCount");
+  bOdd = (itemCount%2);
+  iRightLimit = itemCount - 4;
+  iRightLimit = Add(iRightLimit, bOdd);
+  iExitLastPageLeftLimit = itemCount - 8;
+  iExitLastPageLeftLimit = Add(iExitLastPageLeftLimit, bOdd);
+  /*
+  print("bOdd: ", bOdd);
+  print("focusidx: ", focusIndex);
+  print("itemCount: ", itemCount);
+  print("iRightLimit: ", iRightLimit);
+  print("bLastPage:", bLastPage); 
+  print("iExitLastPageLeftLimit:", iExitLastPageLeftLimit); 
+  */
+  if (itemCount &gt; 10)
+  {
+	 if (bLastPage == 0)
+	 {
+	  if (focusIndex &lt; iRightLimit)
+	  {    
+	   	bRight = 1;   	
+		pic = "./IMS_Modules/VideoPodcast/image/right.png";
+	  }
+	  else
+	  {
+	  	bRight = 0;
+	  	bLastPage = 1;
+	  	pic = null;
+	  }
+	 }
+	 else if (bLastPage == 1)
+	 {
+	 	if (focusIndex &lt; iExitLastPageLeftLimit)
+	 	{
+		 	bRight = 1;   	
+		 	bLastPage = 0;
+			pic = "./IMS_Modules/VideoPodcast/image/right.png";
+	 	}
+	 	else
+	 	{
+	 		pic = null;
+	 		bRight = 0;
+	 	}
+	 }
+   }
+  
+   pic;
+ </script>
+</image>
+
+<itemDisplay>
+<text offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/>
+<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=90>
+	<script>
+		state = getDrawingItemState();
+		if (state == "focus")
+			getStringArrayAt(unfocusiconArray, -1);
+		else
+			getStringArrayAt(unfocusiconArray, -1);
+	</script>
+</image>
+
+</itemDisplay>
+
+
+<onUserInput>
+input = currentUserInput();
+ret = "false";
+focusIndex = getFocusItemIndex();
+if (input == "edit")
+{
+	print("ignore edit key");
+	ret = "true";
+}
+ret;
+</onUserInput>
+
+<text offsetXPC="15" offsetYPC="83" widthPC="73" heightPC="4" fontSize="11" foregroundColor=1:137:252 useBackgroundSurface="yes" redraw="yes" lines="1" align=center>
+ <script>
+  getItemInfo("title");
+ </script>
+</text>
+
+<!--
+<text offsetXPC="70" offsetYPC="16" widthPC="73" heightPC="6" fontSize="14" useBackgroundSurface="yes" redraw="yes" lines="1">
+ <script>
+  focusIndex = getFocusItemIndex();
+  focusIndex = Add(focusIndex, 1);
+  totalItemCount = getPageInfo("itemCount");
+  outText = focusIndex + " / " + totalItemCount;
+  outText;
+ </script>
+</text>
+-->
+
+</mediaDisplay>
+
+  <item_template>
+	<link>http://dmp.realtek.com/VideoPodcast2/scripts/podcast_listpage.rss</link>
+	<onClick>
+	showIdle();
+	url = getStringArrayAt(urlArray , -1);
+	setEnv("myURL", url);
+	thum = getStringArrayAt(unfocusiconArray, -1);
+	setEnv("myThumnail", thum);
+	</onClick>
+  </item_template>
+
+<channel>
+	<title>Us News</title>
+	<link>http://dmp.realtek.com/VideoPodcast2/scripts/podcast_usnews.rss</link>
+        <media:thumbnail url="image/rss1.png"  />
+	<menu>Video Podcast US News</menu>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/ac360_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/ac360_unfocus.fsp</unfocusIcon>
+<title>Anderson Cooper 360° Daily</title>
+<url>http://rss.cnn.com/services/podcasting/ac360/rss.xml</url>
+</item>
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/CNN/CNNDaily_08.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/CNN/CNNDaily_08_unfocus.jpg</unfocusIcon>
+<title>CNN Daily</title>
+<url>http://rss.cnn.com/services/podcasting/cnnnewsroom/rss</url>
+</item>
+--> 
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/larry-king_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/larry-king_unfocus.fsp</unfocusIcon>
+<title>The Larry King Podcast</title>
+<url>http://rss.cnn.com/services/podcasting/lkl/rss.xml</url>
+</item>
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/cnn-news-update_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/cnn-news-update_unfocus.fsp</unfocusIcon>
+<title>CNN News Update</title>
+<url>http://rss.cnn.com/services/podcasting/newscast/rss.xml</url>
+</item> 
+-->
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/CNN/icymi_New.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/CNN/icymi_New_unfocus.jpg</unfocusIcon>
+<title>CNN In Case You Missed It</title>
+<url>http://rss.cnn.com/services/podcasting/incaseyoumissed/rss.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/CNN/polpod1.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/CNN/polpod1_unfocus.jpg</unfocusIcon>
+<title>CNN=Politics Daily</title>
+<url>http://rss.cnn.com/services/podcasting/bestpolitics/rss.xml</url>
+</item>
+-->
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/abc-news-nightline_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/abc-news-nightline_unfocus.fsp</unfocusIcon>
+<title>ABC News : Nightline</title>
+<url>http://feeds.abcnews.com/abcnews/nightlinevideopodcast</url>
+</item>
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/300_300_abcnews_wn_sawyer_new.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/300_300_abcnews_wn_sawyer_new_unfocus.jpg</unfocusIcon>
+<title>ABC World News</title>
+<url>http://feeds.abcnews.com/abcnews/worldnewsvideopodcas</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pdv_mtp_netcast.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pdv_mtp_netcast_unfocus.jpg</unfocusIcon>
+<title>NBC Meet the Press</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-MTP-NETCAST-M4V.xml</url>
+</item>
+-->
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/nbc-today_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/nbc-today_unfocus.fsp</unfocusIcon>
+<title>NBC TODAY show</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-TDY-PODCAST-M4V.xml</url>
+</item>
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pd_Rachel_video.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pd_Rachel_video_unfocus.jpg</unfocusIcon>
+<title>MSNBC Rachel Maddow</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-MADDOW-NETCAST-M4V.xml</url>
+</item>
+-->
+
+<!--
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pd_Countdown_video.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pd_Countdown_video_unfocus.jpg</unfocusIcon>
+<title>MSNBC Countdown</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-COUNTDOWN-NETCAST-M4V.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pdv_morningjoe.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/MSNBC/pdv_morningjoe_unfocus.jpg</unfocusIcon>
+<title>MSNBC Morning Joe</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-SCARBOROUGH-NETCAST-M4V.xml</url>
+</item>
+-->
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/cbs-evening-news_focus.fsp</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/news_icons/cbs-evening-news_unfocus.fsp</unfocusIcon>
+<title>CBS Evening News with Katie Couric</title>
+<url>http://feeds.cbsnews.com/podcast_eveningnews_video_1</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/59647_90_cavuto_neil.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/59647_90_cavuto_neil.jpg</unfocusIcon>
+<title>Fox News: YOUR WORLD WITH NEIL CAVUTO</title>
+<url>http://feeds.foxnews.com/podcasts/NeilCavutosCommonSense?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/59642_90_oreilly_bill.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/59642_90_oreilly_bill.jpg</unfocusIcon>
+<title>Fox News: THE O'REILLY FACTOR</title>
+<url>http://feeds.foxnews.com/podcasts/TalkingPoints?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/OA_Intro_Preview.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/OA_Intro_Preview.jpg</unfocusIcon>
+<title>CNBC's "Options Action"</title>
+<url>http://podcast.cnbc.com/mmpodcast/optionsaction.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/112.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/112.jpg</unfocusIcon>
+<title>Democracy Now! Video</title>
+<url>http://www.democracynow.org/podcast-video.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/2364.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/2364.jpg</unfocusIcon>
+<title>The CNN Daily (video)</title>
+<url>http://rss.cnn.com/services/podcasting/cnnnewsroom/rss.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/2155.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/2155.jpg</unfocusIcon>
+<title>CNN In Case You Missed It (video)</title>
+<url>http://rss.cnn.com/services/podcasting/incaseyoumissed/rss.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/4141.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/4141.jpg</unfocusIcon>
+<title>Video: Face the Nation</title>
+<url>http://feeds.cbsnews.com/podcast_nation_video_1?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/1850.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/1850.jpg</unfocusIcon>
+<title>FOX News Flash</title>
+<url>http://feeds.foxnews.com/podcasts/FoxNewsFlash?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/3536.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/3536.jpg</unfocusIcon>
+<title>ABC Good Morning America</title>
+<url>http://abcnews.go.com/xmldata/xmlPodcast?id=1474766</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/4136.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/4136.jpg</unfocusIcon>
+<title>Video: CBS Evening News with Katie Couric</title>
+<url>http://feeds.cbsnews.com/podcast_eveningnews_video_1?format=xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/7700.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/7700.jpg</unfocusIcon>
+<title>Washington Week Video Podcast | PBS</title>
+<url>http://feeds.pbs.org/pbs/weta/washingtonweek-video</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/1866.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/1866.jpg</unfocusIcon>
+<title>State of the Union (video)</title>
+<url>http://rss.cnn.com/services/podcasting/lateedition/rss.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/7382.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/7382.jpg</unfocusIcon>
+<title>This Week in the Pentagon</title>
+<url>http://www.pentagonchannel.mil/podcast/xml/PC_ThisWeekinthePentagon.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/7397.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/7397.jpg</unfocusIcon>
+<title>Chairman of the Joint Chiefs of Staff</title>
+<url>http://www.pentagonchannel.mil/podcast/xml/PC_VideoCJCS.xml</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/9754.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/9754.jpg</unfocusIcon>
+<title>CNN : Reliable Sources</title>
+<url>http://rss.cnn.com/services/podcasting/reliablesources/rss.xml</url>
+</item>
+
+
+<!--
+can't load xml
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast2/image/1850.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast2/image/1850.jpg</unfocusIcon>
+<title>ABC This Week with Christiane Amanpour</title>
+<url>http://abcnews.go.com/xmldata/xmlPodcast?id=6629919&src=i</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/CBS/image1985435.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/CBS/image1985435_unfocus.jpg</unfocusIcon>
+<title>CBS Face the Nation</title>
+<url>http://feeds.cbsnews.com/podcast_nation_video_1</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/Fox/foxnewsflash.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/Fox/foxnewsflash_unfocus.jpg</unfocusIcon>
+<title>FOX News Flash</title>
+<url>http://feeds.foxnews.com/podcasts/FoxNewsFlas</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/Fox/fnc.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/Fox/fnc_unfocus.jpg</unfocusIcon>
+<title>Journal Editorial Report</title>
+<url>http://feeds.feedburner.com/JournalEditorialReport</url>
+</item>
+
+<item>
+<focusIcon>http://dmp.realtek.com/VideoPodcast/image/pdv_nn_netcast.jpg</focusIcon>
+<unfocusIcon>http://dmp.realtek.com/VideoPodcast/image/pdv_nn_netcast_unfocus.jpg</unfocusIcon>
+<title>NBC nightly news</title>
+<url>http://podcast.msnbc.com/audio/podcast/MSNBC-NN-NETCAST-M4V.xml</url>
+</item>
+-->
+</channel>
+
+</rss>

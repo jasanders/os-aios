@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+  
+<channel>
+<title>BBC Documentries</title>
+
+<item>
+<title>BBC HD - Life Series</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F52EEAA83635C42E1,BBC+HD+-+Life+Series</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/bbc-life.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - Yellowstone</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F5144B83CC8EF9CD4,BBC+HD+-+Yellowstone</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/O5iKBLZLHls/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC - Nature's Great Events</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FBFB0C96653B11E21,BBC+-+Nature%27s+Great+Events</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/G-HuG7mXr00/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - The Meerkats</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FBA3E2A4A202E5297,BBC+HD+-+The+Meerkats</link>
+<media:thumbnail>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - Madagascar</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FB584CA7F964B50D6,BBC+HD+-+Madagascar</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/8YDkEK_Dc0c/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - The Monkey-Eating Eagle of the Orinoco</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F5BDAC4D9D292FC8A,BBC+HD+-+The+Monkey-Eating+Eagle+of+the+Orinoco</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/N3DXNeL9bNQ/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD Galapagos</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FC700604797C719CC,BBC+HD+Galapagos</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/mPReSAbnFnc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - A Turtle's Guide to the Pacific</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F311D0E953A542113,BBC+HD+-+A+Turtle%27s+Guide+to+the+Pacific</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/nsMOFVQGWL4/market_thumb.jpg?v=a58375" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - Ganges</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FB492215F6EB115C7,BBC+HD+-+Ganges</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/P7rH78ruRnA/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - Lost Land of the Jaguar</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F66AF039BFC303942,BBC+HD+-+Lost+Land+of+the+Jaguar</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/F6qEJpL7Syg/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>BBC HD - A Turtle's Guide to the Pacific</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F311D0E953A542113,BBC+HD+-+A+Turtle%27s+Guide+to+the+Pacific</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/nsMOFVQGWL4/market_thumb.jpg?v=a58375" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Campus PD Seasons 1,2 & 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FAB7A49A4CABA12E1,Campus+PD+Seasons+1%2C2+%26+3</link>
+<media:thumbnail url="http://pcm-tv.com/news/wp-content/uploads/2011/01/key_art_campus_pd1.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

@@ -1,0 +1,347 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xlive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+   <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+<item>
+
+      <title>Steinbach, Manitoba, Canada</title>
+      <link>http://d.liveatc.net/ckk7</link>
+	   <enclosure type="video/x-ms-wma" url="http://d.liveatc.net/ckk7"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+     <title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Winnepeg, Manitoba, Canada</title>
+      <link>http://d.liveatc.net/cyav</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyav"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Brooks, Alberta, Canada</title>
+      <link>http://d.liveatc.net/cybp</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cybp"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>St. Jean, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyjn</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyjn"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+
+
+   
+     <title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Toronto Approach Waterloo, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cykf_yyz</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cykf_yyz"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Waterloo Tower Waterloo, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cykf</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cykf"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Buttonville, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cykz</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cykz"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+  
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Ottawa, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cyow</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyow"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>Pitt Meadows, British Columbia, Canada</title>
+      <link>http://d.liveatc.net/cypk</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cypk"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYQB Gnd/Twr/ Quebec City, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyqb</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyqb"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYQB Tower/ Montreal Center Quebec, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyqb2</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyqb2"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CZQM Moncton Center Moncton, New Brunswick, Canada</title>
+      <link>http://d.liveatc.net/czqm</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/czqm"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYQM - Moncton, NB Moncton, New Brunswick, Canada</title>
+      <link>http://d.liveatc.net/cyqm</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyqm"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  
+   
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CZQX - Moncton Center Sydney, Nova Scotia, Canada</title>
+      <link>http://d.liveatc.net/czqx</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/czqx"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>YUL ACC (Noranda Sector) Timmins, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cyul_timmins</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyul_timmins"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYUL Approach/Departure Montreal, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyul_twr2</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyul_twr2"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYVO - Val-D'Or, Quebec Val-D'Or, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyvr</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyvr"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYWG Gnd/Twr/App Winnipeg, Manitoba, Canada</title>
+      <link>http://d.liveatc.net/cywg</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cywg"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CCYYC - Calgary International Calgary, Alberta, Canada</title>
+      <link>http://d.liveatc.net/cyyc</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyyc"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+  <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYYT Gnd/Twr/Gander Center St. John's, Newfoundland, Canada</title>
+      <link>http://d.liveatc.net/cyyt</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyyt"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYYZ Tower Toronto, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cyyz_twr</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyyz_twr"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>YYZ ACC (Timmins Sector) Timmins, Ontario, Canada</title>
+      <link>http://d.liveatc.net/czyz_timmins</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/czyz_timmins"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYUL Approach/Departure Montreal, Quebec, Canada</title>
+      <link>http://d.liveatc.net/cyul_twr2</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyul_twr2"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+   <title>Canada - Live Air Traffic - From Their Headsets to you</title>
+
+    
+<item>
+
+      <title>CYYZ Arrival Toronto, Ontario, Canada</title>
+      <link>http://d.liveatc.net/cyyz_app</link>
+	   <enclosure type="audio/mp3" url="http://d.liveatc.net/cyyz_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+</channel>
+</rss>

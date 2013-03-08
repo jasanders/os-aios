@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="GB2312"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay name=onePartView
+idleImageWidthPC=3.1
+idleImageHeightPC=5.5
+itemPerPage=1
+forceFocusOnItem=no
+backgroundColor=-1:-1:-1
+itemBackgroundColor=-1:-1:-1
+	viewAreaXPC=13.09
+	viewAreaYPC=22
+	viewAreaWidthPC=73.83
+	viewAreaHeightPC=70.83
+sideRightWidthPC= 0
+sideTopHeightPC= 0
+sideBottomHeightPC= 0
+sideLeftWidthPC = 0
+
+itemXPC = 100
+itemYPC = 100
+itemWidthPC = 0
+itemHeightPC = 0
+
+fontSize=18
+
+itemImageXPC = 100
+itemImageYPC = 100
+itemImageWidthPC = 0
+itemImageHeightPC = 0
+capXPC = 0
+capWidthPC = 0
+
+showHeader = "no"
+showDefaultInfo = "no"
+>
+<text offsetXPC=0 offsetYPC=0 widthPC=0 heightPC=0>
+<script>
+drawOnce = 1;
+"";
+</script>
+</text>
+
+<image redraw=yes offsetXPC=3 offsetYPC=91 widthPC=96.88 heightPC=5.97>
+<script>
+	"../image/bestv_info2.fsp";
+</script>
+</image>
+
+<image offsetXPC=79 offsetYPC=25 widthPC=16 heightPC=12>
+<script>
+	ADImageDisplay;
+</script>
+</image>
+<image offsetXPC=79 offsetYPC=50 widthPC=16 heightPC=12>
+<script>
+	sinaADImageDisplay;
+</script>
+</image>
+
+	<idleImage> ../image/laoding0001.fsp </idleImage>
+	<idleImage> ../image/laoding0002.fsp </idleImage>
+	<idleImage> ../image/laoding0003.fsp </idleImage>
+	<idleImage> ../image/laoding0004.fsp </idleImage>
+	<idleImage> ../image/laoding0005.fsp </idleImage>
+	<idleImage> ../image/laoding0006.fsp </idleImage>
+	<idleImage> ../image/laoding0007.fsp </idleImage>
+	<idleImage> ../image/laoding0008.fsp </idleImage>
+	<idleImage> ../image/laoding0009.fsp </idleImage>
+
+	<backgroundDisplay name=fullnews_bg>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+		if (drawOnce == 0)
+		{
+			drawOnce = 1;
+			"../image/create_account_bg.fsp";
+		}
+		else
+		{
+			null;
+		}
+		</script>
+		</image>
+	</backgroundDisplay>
+	
+	<onEnter>
+	setParentFade(128);
+	</onEnter>
+	
+	<onUserInput>
+		input = currentUserInput();
+		print("fullnews Got user input: ", input);
+		if(input == "down")
+		{
+			nextPage = 0;
+			ret = nextMultiPage();
+			if(ret == "1")
+			{
+				textPageIndex = Add(textPageIndex, 1);
+				nextPage = 1;
+			}
+			pageIndex = Add(pageIndex, nextPage);
+			redrawDisplay();
+			"true";
+		}
+		else if(input == "up")
+		{
+		print("textPageIndex , pageIndex , imgCount , imgPageIndex  ", textPageIndex, pageIndex, imgCount, imgPageIndex);
+			prePage = 0;
+			if(textPageIndex == pageIndex)
+			{
+				if(textPageIndex &gt; 0)
+				{
+					ret = preMultiPage();
+					printf("ret : ", ret);
+					if(ret == "1")
+					{
+						textPageIndex = Minus(textPageIndex, 1);
+						prePage = 1;
+						textReachEnd = 0;
+					}
+				}
+			}
+			pageIndex = Minus(pageIndex, prePage);
+			redrawDisplay();
+			"true";
+		}
+		else if(input == "enter")
+		{
+			print("ignore this");
+			"true";
+		}
+		else if (input == "setup" || input == "guide")
+		{
+			drawOnce = 0;
+			"false";
+		}
+		else if (input == "left" || input == "right")
+		{
+			"true";
+		}
+		else
+		{
+			"false";
+		}
+	</onUserInput>
+
+	<text offsetXPC=10 offsetYPC=19 heightPC=65 widthPC=80 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=12 lines=10 multiPage=yes>
+		<script>
+		fullnews;
+		</script>
+	</text>
+	<text offsetXPC=-10 offsetYPC=85 widthPC=100 heightPC=10 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=12 align=right>
+		<script>
+		fin = "";
+		ret = isMultiPageReachEnd();
+		if(ret == "1")
+		{
+			textReachEnd = 1;
+		}
+		if(textReachEnd == 1 &amp;&amp; imgReachEnd == 1)
+		{
+			fin = "  (完)";
+			fin = "  (end)";
+		}
+		pageNum = Add(pageIndex, 1);
+		/*"第 " + pageNum + " 页" + fin;*/
+		"Page " + pageNum  + fin;
+		</script>
+	</text>
+	<text offsetXPC=10 offsetYPC=5 widthPC=26 heightPC=10 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 fontSize=16>
+		<script>
+		getEnv("popuptexttype");
+		<--!
+		title = getEnv("synopsisedtitle");
+		title;
+		-->
+		</script>
+	</text>
+</mediaDisplay>
+
+
+<bookmark> fullnews </bookmark>
+
+<script>
+</script>
+
+<onEnter>
+	drawOnce = 0;
+
+	pageIndex = 0;
+	textPageIndex = 0;
+	textPageCount = 0;
+	textReachEnd = 0;
+	totalItem = 0;
+	fullnews = getEnv("popuptext");;
+
+</onEnter> 
+
+<channel>
+	<title>$[FULL_NEWS]</title>
+	<link>./fullnews.rss</link>
+	<media:thumbnail url="../image/sinanews.fsp" width="120" height="90" />
+	<menu>main menu</menu>
+</channel>
+
+<onExit>
+setRefreshTime(-1);
+print("exit new");
+</onExit>
+
+</rss>

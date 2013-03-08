@@ -1,0 +1,401 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>Setup</bookmark>
+
+<onEnter>
+	
+	redrawDisplay("no");
+	pageTitle = getPageInfo("pageTitle");
+	print("page title is ", pageTitle);
+
+	changeCategory = getEnv("changeCategory");
+	if (changeCategory == "previous" || changeCategory == "next") {
+		itemCount = getEnv("itemTitleCount");
+		if (itemCount == 0 || itemCount == NULL) {
+			itemCount = getPageInfo("itemCount");
+			setEnv("itemTitleCount", itemCount);
+		}
+		maxIndex = itemCount - 1;
+		focusIndex = getFocusItemIndex();
+		if (changeCategory == "previous") {
+			if (focusIndex == 0) {
+				focusIndex = maxIndex;
+			}
+			else {
+				focusIndex = focusIndex - 1;
+			}
+		}
+		else if (changeCategory == "next") {
+			if (focusIndex == maxIndex) {
+				focusIndex = 0;
+			}
+			else {
+				focusIndex = 0 + focusIndex + 1;
+			}
+		}
+		setFocusItemIndex(focusIndex);
+		setItemFocus(focusIndex);
+		postMessage("enter");
+		
+		 
+	}
+
+	disableDrawBackBuffer = getEnv("disableDrawBackBuffer");
+	if (disableDrawBackBuffer == "true") {
+		redrawDisplay("no");
+		if (changeCategory == "") {
+			setEnv("disableDrawBackBuffer", "false");
+		}
+	}
+	else if (isBackBufferDisable == "true") {
+		isBackBufferDisable = "false";
+		redrawDisplay("no");
+	}
+
+	itemCount = getEnv("itemTitleCount");
+	if (itemCount == 0 || itemCount == NULL) {
+		itemCount = getPageInfo("itemCount");
+		setEnv("itemTitleCount", itemCount);
+	}
+
+	if (isBackBufferDisable == "false") {
+		itemTitleList = getEnv("itemTitleList");
+			if (itemTitleList == "" || itemTitleList == NULL) {
+			itemIndex = 0;
+			while (1) {
+				itemTitle = getItemInfo(itemIndex, "title");
+				itemTitleList = pushBackStringArray(itemTitleList, itemTitle);
+				itemIndex += 1;
+		  		if (itemIndex == itemCount){
+					break;
+		  		}
+			}
+			setEnv("itemTitleList", itemTitleList);
+				}
+	}
+	
+	exitFlg = getEnv("exitFromSubSetup");
+	if (exitFlg == 0 || exitFlg == NULL) {
+		print("enterenterenterenterenterenterenterenterenterenterenterenter");
+		print("exitFlg 0 HOME to Setup, 1, switch changeCategory, 2, exit setup"); 
+		setEnv("exitFromSubSetup", 1); 
+		postMessage("enter");
+	 
+	 
+	}
+	else if (exitFlg == 2)
+	{
+		print("returnreturnreturnreturnreturnreturnreturnreturnreturnreturnreturn");
+		setEnv("exitFromSubSetup", 0);
+		postMessage("return"); 
+		
+	}
+</onEnter>
+
+
+ 
+
+
+<onExit>
+	setEnv("itemTitleCount", 0);
+	setEnv("itemTitleList", "");
+	SetScreenSaverStatus("no");
+</onExit>
+
+<mediaDisplay
+	name=photoView
+
+	backgroundColor=-1:-1:-1
+
+	viewAreaXPC=0
+	viewAreaYPC=0
+	viewAreaWidthPC=100
+	viewAreaHeightPC=100
+
+	rowCount=1
+	columnCount=6
+
+	sideTopHeightPC=0
+	sideBottomHeightPC=0
+
+	itemGrid.heightPC=46.1
+	itemGrid.gapXPC=0.3
+
+	itemGrid.element.yPC=36.2
+	itemGrid.element.widthPC=15.1
+	itemGrid.element.heightPC=43.9
+
+	itemBackgroundColor=-1:-1:-1
+	drawItemBorder="no"
+
+	bottomArea.yPC=100
+
+	sliding="no"
+	showHeader="no"
+	showDefaultInfo="no"
+	circlingItems="no"
+	fillBackground="no"
+>
+
+	 
+	
+<itemGrid.element.xPC>
+	<script>
+		11.9 + xOffset;
+	</script>
+</itemGrid.element.xPC>
+
+<backgroundDisplay name=SetupMenuRoot>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		./setup_menu/image/setup_bg.fsp
+	</image>
+	<text offsetXPC=23.5 offsetYPC=17.8 widthPC=20.9 heightPC=6.0 fontSize=20 align=left>
+		$[SETUP]
+	</text>
+	<image offsetYPC=33.6 widthPC=4.1 heightPC=51.1>
+		<offsetXPC>
+			<script>
+				10.1 + xOffset;
+			</script>
+		</offsetXPC>
+		<script>
+			image = "./setup_menu/image/setup_p1_box_left.fsp";
+			image;
+		</script>
+	</image>
+	<image offsetYPC=33.6 heightPC=51.1>
+		<offsetXPC>
+			<script>
+				14.2 + xOffset;
+			</script>
+		</offsetXPC>
+		<widthPC>
+			<script>
+				72.4 - xOffset * 2;
+			</script>
+		</widthPC>
+		<script>
+			image = "./setup_menu/image/setup_p1_box_middle.fsp";
+			image;
+		</script>
+	</image>
+	<image offsetYPC=33.6 widthPC=4.1 heightPC=51.1>
+		<offsetXPC>
+			<script>
+				86.5 - xOffset;
+			</script>
+		</offsetXPC>
+		<script>
+			image = "./setup_menu/image/setup_p1_box_right.fsp";
+			image;
+		</script>
+	</image>
+	<image offsetXPC=7.9 offsetYPC=54.7 widthPC=3.7 heightPC=7.9>
+		<script>
+			image = "";
+			if (itemCount &gt; 5) {
+				image = "./setup_menu/image/left.fsp";
+			}
+			image;
+		</script>
+	</image>
+	<image offsetXPC=88.8 offsetYPC=54.7 widthPC=3.7 heightPC=7.9>
+		<script>
+			image = "";
+			if (itemCount &gt; 5) {
+				image = "./setup_menu/image/right.fsp";
+			}
+			image;
+		</script>
+	</image>
+</backgroundDisplay>
+
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			thumbnail = getItemInfo("imagePath");
+			queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			if (queryIndex == focusIndex) {
+				thumbnail = thumbnail + "_focus" + image_bmp;
+			}
+			else {
+				thumbnail = thumbnail + "_unfocus" + image_bmp;
+			}
+		</script>
+	</image>
+	<text offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=10 align=center fontSize=18 backgroundColor=-1:-1:-1>
+		<foregroundColor>
+			<script>
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+				if (queryIndex == focusIndex) {
+					color = "255:255:255";
+				}
+				else {
+					color = "6:33:52";
+				}
+			</script>
+		</foregroundColor>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+</itemDisplay>
+
+<!-- PopupMenuAP does NOT need to call prepareAnimation() to enable fade-in animation, IMSAP need it. -->
+<!-- PopupMenuAP does NOT call showDisplay(), so need to call redrawDisplay() here. -->
+<onEnter>
+	prepareAnimation();
+	SetScreenSaverStatus("yes");
+
+	redrawDisplay();
+	isBackBufferDisable = "false";
+	setEnv("disableDrawBackBuffer", "false");
+	setEnv("changeCategory", "");
+	image_bmp = ".bmp";
+
+	itemCount = getPageInfo("itemCount");
+	setEnv("itemTitleCount", itemCount);
+	xOffset = 0;
+	if (itemCount &lt; 5) {
+		xOffset = 15.1 * (5 - itemCount) / 2;
+	}
+	setEnv("itemTitleList", "");
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	itemCount = getPageInfo("itemCount");
+	maxIndex = itemCount - 1;
+	focusIndex = getFocusItemIndex();
+
+	changeCategory = getEnv("changeCategory");
+	if (changeCategory == "previous" || changeCategory == "next") {
+		if ("return" == userInput) {
+			handle = "return";
+		}
+		else if ("enter" == userInput) {
+			isBackBufferDisable = "true";
+			setEnv("disableDrawBackBuffer", "false");
+			setEnv("changeCategory", "");
+			handle = "enter";
+		}
+		else {
+			handle = "true";
+		}
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<item_template>
+	<media:thumbnail>
+		<script>
+			thumbnail = getItemInfo("imagePath");
+			state = getDrawingItemState();
+
+			if (state == "focus") {
+				thumbnail = thumbnail + "_focus";
+			}
+			else if (state== "unfocus"){
+				thumbnail = thumbnail + "_unfocus";
+			}
+			else {
+				thumbnail = null;
+			}
+
+			if(thumbnail != null){
+				thumbnail = thumbnail + image_bmp;
+			}
+		</script>
+	</media:thumbnail>
+</item_template>
+
+
+<channel>
+	<title>$[SETUP_MENU]</title>
+	<link>rss_file://./setup_menu/scripts/setup.rss</link>
+
+
+<item>
+<title>$[SYSTEM]</title>
+<imagePath> ./setup_menu/image/system </imagePath>
+<link>rss_file://./setup_menu/scripts/system.rss</link>
+</item>
+
+<item>
+<title>$[AUDIO]</title>
+<imagePath> ./setup_menu/image/audio </imagePath>
+<link>rss_file://./setup_menu/scripts/audio.rss</link>
+</item>
+
+<item>
+<title>$[VIDEO]</title>
+<imagePath> ./setup_menu/image/video </imagePath>
+<link>rss_file://./setup_menu/scripts/video.rss</link>
+</item>
+
+<!--
+<item>
+<title>$[TV_AND_RECORD]</title>
+<imagePath> ./setup_menu/image/tv </imagePath>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(IsItemDisasble("DtvDisable") == "false" || IsItemDisasble("IsAnalogInputDisable") == "false" || IsItemDisasble("RecordableDisable") == "false"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<link>rss_file://./setup_menu/scripts/tvRec.rss</link>
+</item>
+-->
+
+<item>
+<title>$[NETWORK]</title>
+<disable>
+	<script>
+		isDisabled = "yes";
+		if(isDeviceExist("ETH0") == "true" || isDeviceExist("WLAN0") == "true"){
+			isDisabled = "no";
+		}
+		isDisabled;
+	</script>
+</disable>
+<imagePath> ./setup_menu/image/network </imagePath>
+<link>rss_file://./setup_menu/scripts/network.rss</link>
+</item>
+
+<item>
+<title>$[MISC]</title>
+<link>rss_file://./setup_menu/scripts/misc.rss</link>
+<imagePath> ./setup_menu/image/misc </imagePath>
+</item>
+
+<!--  add by blueb  -->
+<item>
+<title>$[ADVANCED_SETTING]</title>
+<disable>
+	<script>
+		isAdvancedDisabled();
+	</script>
+</disable>
+<link>rss_file://./setup_menu/scripts/advanced.rss</link>
+<imagePath> ./setup_menu/image/misc </imagePath>
+</item> 
+
+<item>
+<title>Customize</title>
+<link>rss_file://./setup_menu/scripts/customization.rss</link>
+<imagePath> ./setup_menu/image/misc </imagePath>
+</item>
+
+ 
+</channel>
+</rss>

@@ -1,0 +1,1171 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<genrelist ver="0" last_update="20091202" author="zfd" update_url="" >
+
+<genre name="Радио России"  
+thumbnail="./image/radio-logos/logo_002.gif" 
+url="http://w01-cn01.akadostream.ru:8000/radiorussia128.mp3"
+> </genre>
+
+
+<genre name="Радио Юность"  
+thumbnail="./image/radio-logos/LOGO-UFM.gif" 
+url="http://w02-cn01.akadostream.ru:8000/radioyunost128.mp3"
+> </genre>
+
+
+<genre name="Радио Орфей"  
+thumbnail="./image/radio-logos/logo_069.gif" 
+url="http://w02-cn01.akadostream.ru:8000/orfey128.mp3"
+> </genre>
+
+
+<genre name="Ретро FM"  
+thumbnail="./image/radio-logos/logo_119.gif" 
+url="http://w01-cn01.akadostream.ru:8000/radioretro128.mp3"
+> </genre>
+
+
+<genre name="Эхо Москвы"  
+
+thumbnail="./image/radio-logos/logo_027.gif" 
+url="http://w01-cn01.akadostream.ru:8000/moscowecho128.mp3"
+> </genre>
+
+
+<genre name="Серебряный дождь"  
+thumbnail="./image/radio-logos/silver_rain.jpg" 
+url="http://w02-cn01.akadostream.ru:8000/silverrain128.mp3"
+> </genre>
+
+
+<genre name="D-FM"  
+thumbnail="./image/radio-logos/logo_100.gif" 
+url="http://w02-cn01.akadostream.ru:8000/dinamitfm128.mp3"
+> </genre>
+
+
+<genre name="Маяк"  
+thumbnail="./image/radio-logos/logo_067.gif" 
+url="http://w01-cn01.akadostream.ru:8000/mayak128.mp3"
+> </genre>
+
+
+<genre name="Русское Радио"  
+thumbnail="./image/radio-logos/rusradio.jpg" 
+url="http://w01-cn01.akadostream.ru:8000/russianradio128.mp3"
+> </genre>
+
+
+<genre name="Европа плюс"  
+
+thumbnail="./image/radio-logos/logo_026.gif" 
+url="http://w02-cn01.akadostream.ru:8000/europaplus128.mp3"
+> </genre>
+
+
+<genre name="Авторадио"  
+thumbnail="./image/radio-logos/avtoradio.jpg" 
+url="http://w02-cn01.akadostream.ru:8000/avtoradio128.mp3"
+> </genre>
+
+
+<genre name="Love Радио"  
+thumbnail="./image/radio-logos/love.jpg" 
+url="http://w01-cn01.akadostream.ru:8102/loveradio96.mp3"
+> </genre>
+
+
+<genre name="Дорожное Радио"  
+thumbnail="./image/radio-logos/logo_004.gif" 
+url="http://w02-cn01.akadostream.ru:8110/dorojnoe64.mp3"
+> </genre>
+
+
+<genre name="Радио Рекорд"  
+thumbnail="./image/radio-logos/Record_Modified.gif" 
+url="http://w01-cn01.akadostream.ru:8102/record112.mp3"
+> </genre>
+
+
+<genre name="Радио Гардарика"  
+
+thumbnail="./image/radio-logos/toplogo.gif" 
+url="http://w01-cn01.akadostream.ru:8112/radiogardarica128.mp3"
+> </genre>
+
+
+<genre name="Радио Мир"  
+thumbnail="./image/radio-logos/mir.jpg" 
+url="http://w01-cn01.akadostream.ru:8000/radiomir128.mp3"
+> </genre>
+
+
+<genre name="Радио Шансон"  
+thumbnail="./image/radio-logos/logo_080.gif" 
+url="http://w01-cn01.akadostream.ru:8108/shanson128.mp3"
+> </genre>
+
+
+<genre name="[ULTRA] Наше Радио"  
+thumbnail="./image/radio-logos/logo_146.gif" 
+url="http://w02-cn01.akadostream.ru:8112/nashe128.mp3"
+> </genre>
+
+
+<genre name="Радио РОКС"  
+thumbnail="./image/radio-logos/logo_024.gif" 
+url="http://w01-cn01.akadostream.ru:8112/radioroks128.mp3"
+> </genre>
+
+
+<genre name="Радио ДАЧА"  
+
+thumbnail="./image/radio-logos/logo_020.gif" 
+url="http://w01-cn01.akadostream.ru:8110/radiodacha96.mp3"
+> </genre>
+
+
+<genre name="X-fm 96.4 FM"  
+thumbnail="./image/radio-logos/x-fm.jpg" 
+url="http://w01-cn01.akadostream.ru:8108/xfm96.mp3"
+> </genre>
+
+
+<genre name="ABF Analog"  
+thumbnail="./image/radio-logos/logo_015.gif" 
+url="http://w01-cn01.akadostream.ru:8108/abf-analog160.mp3"
+> </genre>
+
+
+<genre name="ABF RADIO"  
+thumbnail="./image/radio-logos/logo_058.gif" 
+url="http://w02-cn01.akadostream.ru:8108/abf192.mp3"
+> </genre>
+
+
+<genre name="CLUB 977 The 80s Channel"  
+thumbnail="./image/radio-logos/logo_077.gif" 
+url="http://w02-cn01.akadostream.ru:8110/club977_80s128.mp3"
+> </genre>
+
+
+<genre name="ChroniX Aggression"  
+
+thumbnail="./image/radio-logos/cronix_aggression.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/chronixaggression128.mp3"
+> </genre>
+
+
+<genre name="DeSi-RaDio"  
+thumbnail="./image/radio-logos/logo_050.gif" 
+url="http://w01-cn01.akadostream.ru:8110/desiradio96.mp3"
+> </genre>
+
+
+<genre name="Deep Mix Moscow Radio"  
+thumbnail="./image/radio-logos/logo_098.gif" 
+url="http://w01-cn01.akadostream.ru:8112/deepmix128.mp3"
+> </genre>
+
+
+<genre name="Lounge-radio.com"  
+thumbnail="./image/radio-logos/logo_075.gif" 
+url="http://w01-cn01.akadostream.ru:8112/loungeradiocom128.mp3"
+> </genre>
+
+
+<genre name="MIX FM"  
+thumbnail="./image/radio-logos/logo_066.gif" 
+url="http://w01-cn01.akadostream.ru:8112/mixfm128.mp3"
+> </genre>
+
+
+<genre name="MoonBeat Radio"  
+
+thumbnail="./image/radio-logos/logo_047.gif" 
+url="http://w01-cn01.akadostream.ru:8112/moonbeat128.mp3"
+> </genre>
+
+
+<genre name="Radio Paradise"  
+thumbnail="./image/radio-logos/logo_006.gif" 
+url="http://w01-cn01.akadostream.ru:8110/radioparadise192.mp3"
+> </genre>
+
+
+<genre name="Radio SHOCK"  
+thumbnail="./image/radio-logos/logo_030.gif" 
+url="http://w01-cn01.akadostream.ru:8112/radioshock128.mp3"
+> </genre>
+
+
+<genre name="RadioTochka.Net"  
+thumbnail="./image/radio-logos/logo_073.gif" 
+url="http://w01-cn01.akadostream.ru:8111/radiotochka128.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM]   Country"  
+thumbnail="./image/radio-logos/logo_085.gif" 
+url="http://w01-cn01.akadostream.ru:8104/country_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM]  Roots Reggae"  
+
+thumbnail="./image/radio-logos/logo_134.gif" 
+url="http://w02-cn01.akadostream.ru:8104/reggae_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] All Hit 70s"  
+thumbnail="./image/radio-logos/logo_032.gif" 
+url="http://w02-cn01.akadostream.ru:8104/hit70s_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Ambient"  
+thumbnail="./image/radio-logos/logo_111.gif" 
+url="http://w01-cn01.akadostream.ru:8104/ambient96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Best of the 80s"  
+thumbnail="./image/radio-logos/logo_102.gif" 
+url="http://w02-cn01.akadostream.ru:8104/the80s_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Chillout"  
+thumbnail="./image/radio-logos/logo_149.gif" 
+url="http://w02-cn01.akadostream.ru:8104/chillout96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Classic Rap"  
+
+thumbnail="./image/radio-logos/logo_011.gif" 
+url="http://w01-cn01.akadostream.ru:8104/classicrap_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Classical Guitar"  
+thumbnail="./image/radio-logos/logo_053.gif" 
+url="http://w01-cn01.akadostream.ru:8104/guitar_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Deep House"  
+thumbnail="./image/radio-logos/logo_084.gif" 
+url="http://w02-cn01.akadostream.ru:8104/deephouse96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Euro Dance"  
+thumbnail="./image/radio-logos/logo_096.gif" 
+url="http://w02-cn01.akadostream.ru:8104/eurodance96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Lounge"  
+thumbnail="./image/radio-logos/logo_124.gif" 
+url="http://w02-cn01.akadostream.ru:8104/lounge96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Modern Jazz"  
+
+thumbnail="./image/radio-logos/logo_037.gif" 
+url="http://w01-cn01.akadostream.ru:8104/modernjazz_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Mostly Classical"  
+thumbnail="./image/radio-logos/logo_141.gif" 
+url="http://w01-cn01.akadostream.ru:8104/classical_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] New Age"  
+thumbnail="./image/radio-logos/logo_019.gif" 
+url="http://w02-cn01.akadostream.ru:8104/newage_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Oldies"  
+thumbnail="./image/radio-logos/logo_009.gif" 
+url="http://w01-cn01.akadostream.ru:8104/oldies_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Salsa"  
+thumbnail="./image/radio-logos/logo_052.gif" 
+url="http://w01-cn01.akadostream.ru:8104/salsa_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Smooth Jazz"  
+
+thumbnail="./image/radio-logos/logo_082.gif" 
+url="http://w01-cn01.akadostream.ru:8104/smoothjazz_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Top Hits Music"  
+thumbnail="./image/radio-logos/logo_059.gif" 
+url="http://w02-cn01.akadostream.ru:8104/tophits_1_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Trance"  
+thumbnail="./image/radio-logos/logo_156.gif" 
+url="http://w01-cn01.akadostream.ru:8104/trance96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Urban Jamz"  
+thumbnail="./image/radio-logos/logo_036.gif" 
+url="http://w01-cn01.akadostream.ru:8104/urbanjamz96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] World"  
+thumbnail="./image/radio-logos/logo_060.gif" 
+url="http://w02-cn01.akadostream.ru:8104/world_sky96.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Beat Blender"  
+
+thumbnail="./image/radio-logos/logo_074.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_blender128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] DRONE ZONE"  
+thumbnail="./image/radio-logos/logo_012.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_dronezone128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] DoomeD"  
+thumbnail="./image/radio-logos/logo_055.gif" 
+url="http://w01-cn01.akadostream.ru:8112/somafm_doomed128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Groove Salad"  
+thumbnail="./image/radio-logos/logo_081.gif" 
+url="http://w01-cn01.akadostream.ru:8112/somafm_groovesalad128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Illinois Street Lounge"  
+thumbnail="./image/radio-logos/logo_130.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_illstreet128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Space Station SOMA"  
+
+thumbnail="./image/radio-logos/logo_155.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_spacestation128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Tags Trance Trip"  
+thumbnail="./image/radio-logos/logo_035.gif" 
+url="http://w01-cn01.akadostream.ru:8112/somafm_tagstrance128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] cliqhop idm"  
+thumbnail="./image/radio-logos/logo_029.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_cliqhop128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] indie pop rocks"  
+thumbnail="./image/radio-logos/logo_109.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_indychick128.mp3"
+> </genre>
+
+
+<genre name="[SOMA.FM] Secret Agent"  
+thumbnail="./image/radio-logos/logo_103.gif" 
+url="http://w02-cn01.akadostream.ru:8112/somafm_secretagent128.mp3"
+> </genre>
+
+
+<genre name="[ULTRA] РАДИО ULTRA 70,19 FM"  
+
+thumbnail="./image/radio-logos/logo_083.gif" 
+url="http://w02-cn01.akadostream.ru:8112/radioultra128.mp3"
+> </genre>
+
+
+<genre name="Айчына SHOUTcast"  
+thumbnail="./image/radio-logos/logo.gif" 
+url="http://w01-cn01.akadostream.ru:8108/aichyna128.mp3"
+> </genre>
+
+
+<genre name="Вирус FM"  
+thumbnail="./image/radio-logos/logo_139.gif" 
+url="http://w01-cn01.akadostream.ru:8112/virusfm128.mp3"
+> </genre>
+
+
+<genre name="Говорит Москва"  
+thumbnail="./image/radio-logos/logo_017.gif" 
+url="http://w02-cn01.akadostream.ru:8108/govoritmoskva128.mp3"
+> </genre>
+
+
+<genre name="Новое Чистое Радио"  
+thumbnail="./image/radio-logos/logo_120.gif" 
+url="http://w02-cn01.akadostream.ru:8112/nu-clear128.mp3"
+> </genre>
+
+
+<genre name="Общественное Российское Радио"  
+
+thumbnail="./image/radio-logos/logo_003.gif" 
+url="http://w02-cn01.akadostream.ru:8108/orrfm128.mp3"
+> </genre>
+
+
+<genre name="Радио ВЕДО - Радио Друзей"  
+thumbnail="./image/radio-logos/logo_044.gif" 
+url="http://w02-cn01.akadostream.ru:8112/vedo128.mp3"
+> </genre>
+
+
+<genre name="Радио КИНО"  
+thumbnail="./image/radio-logos/logo_091.gif" 
+url="http://w02-cn01.akadostream.ru:8100/kinoradio128.mp3"
+> </genre>
+
+
+<genre name="Радио СПОРТ 93.2 ФМ"  
+thumbnail="./image/radio-logos/logo_101.gif" 
+url="http://w01-cn01.akadostream.ru:8108/radiosport128.mp3"
+> </genre>
+
+
+<genre name="Радио Студио 102.4 FM [SPB]"  
+thumbnail="./image/radio-logos/logo_148.gif" 
+url="http://w01-cn01.akadostream.ru:8108/radiostudio96.mp3"
+> </genre>
+
+
+<genre name="Радио ЮНИТОН - Новосибирск 100.7FM"  
+
+thumbnail="./image/radio-logos/logo_042.gif" 
+url="http://w02-cn01.akadostream.ru:8108/uniton128.mp3"
+> </genre>
+
+
+<genre name="Стильное радио"  
+thumbnail="./image/radio-logos/logo_136.gif" 
+url="http://w02-cn01.akadostream.ru:8112/stilnoe128.mp3"
+> </genre>
+
+
+<genre name="ХИТрое радио"  
+thumbnail="./image/radio-logos/logo_016.gif" 
+url="http://w02-cn01.akadostream.ru:8108/hitroe96.mp3"
+> </genre>
+
+
+<genre name="Big Beat radio"  
+thumbnail="./image/radio-logos/logo_079.gif" 
+url="http://w02-cn01.akadostream.ru:8112/bbr128.mp3"
+> </genre>
+
+
+<genre name="Радио MakkiRUS"  
+thumbnail="./image/radio-logos/makkirus.gif" 
+url="http://w01-cn01.akadostream.ru:8111/makkirus128.mp3"
+> </genre>
+
+
+<genre name="HitzRadio.com - #1 for all the hits!"  
+
+thumbnail="./image/radio-logos/logo_154.gif" 
+url="http://w01-cn01.akadostream.ru:8110/hitzradio128.mp3"
+> </genre>
+
+
+<genre name="Radio de Glazen Stad"  
+thumbnail="./image/radio-logos/logo_140.gif" 
+url="http://w02-cn01.akadostream.ru:8102/radiodeglazenstad160.mp3"
+> </genre>
+
+
+<genre name="Rock N Metal station"  
+thumbnail="./image/radio-logos/logo_057.gif" 
+url="http://w01-cn01.akadostream.ru:8100/4urocknmetal128.mp3"
+> </genre>
+
+
+<genre name="i-Radio: Heavy Duty"  
+thumbnail="./image/radio-logos/logo_105.gif" 
+url="http://w02-cn01.akadostream.ru:8112/iradiometal128.mp3"
+> </genre>
+
+
+<genre name="Радио Сибирь"  
+thumbnail="./image/radio-logos/logo_159.gif" 
+url="http://w01-cn01.akadostream.ru:8102/radiosibir112.mp3"
+> </genre>
+
+
+<genre name="Radio Darkness"  
+
+thumbnail="./image/radio-logos/logo_040.gif" 
+url="http://w01-cn01.akadostream.ru:8100/radiodarkness128.mp3"
+> </genre>
+
+
+<genre name="SnakeNet Metal Radio"  
+thumbnail="./image/radio-logos/logo_086.gif" 
+url="http://w02-cn01.akadostream.ru:8100/snakenetmetalradio128.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Trance"  
+thumbnail="./image/radio-logos/logo_135.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmtrance96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Classic Electronica"  
+thumbnail="./image/radio-logos/logo_144.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmclasselectronica96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Goa-Psy trance"  
+thumbnail="./image/radio-logos/logo_023.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmgoapsy96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Ambient"  
+
+thumbnail="./image/radio-logos/logo_043.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmambient96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Breaks"  
+thumbnail="./image/radio-logos/logo_089.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmbreaks96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Chillout"  
+thumbnail="./image/radio-logos/logo_137.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmchillout96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] DJ Mixes"  
+thumbnail="./image/radio-logos/logo_056.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmdjmixes96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Drum'n'bass"  
+thumbnail="./image/radio-logos/logo_063.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmdrumnbass96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Euro Dance"  
+
+thumbnail="./image/radio-logos/logo_114.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmeurodance96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Gabber"  
+thumbnail="./image/radio-logos/logo_158.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmgabber96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Hard Core"  
+thumbnail="./image/radio-logos/logo_038.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmhardcore96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Hard Dance"  
+thumbnail="./image/radio-logos/logo_048.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmharddance96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] House"  
+thumbnail="./image/radio-logos/logo_094.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmhouse96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Lounge"  
+
+thumbnail="./image/radio-logos/logo_157.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmlounge96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Progressive"  
+thumbnail="./image/radio-logos/logo_162.gif" 
+url="http://w02-cn01.akadostream.ru:8106/difmprogressive96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Vocal Trance"  
+thumbnail="./image/radio-logos/logo_133.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmvocaltrance96.mp3"
+> </genre>
+
+
+<genre name="[DI.FM] Techno"  
+thumbnail="./image/radio-logos/logo_143.gif" 
+url="http://w01-cn01.akadostream.ru:8106/difmtechno96.mp3"
+> </genre>
+
+
+<genre name="[VF] DemonMaestro"  
+thumbnail="./image/radio-logos/logo_021.gif" 
+url="http://w02-cn01.akadostream.ru:8100/demonmaestro128.mp3"
+> </genre>
+
+
+<genre name="[VF] Hot Goth"  
+
+thumbnail="./image/radio-logos/logo_061.gif" 
+url="http://w01-cn01.akadostream.ru:8100/hg128.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Uptempo Smooth Jazz"  
+thumbnail="./image/radio-logos/logo_122.gif" 
+url="http://w01-cn01.akadostream.ru:8104/uptemposmoothjazz96.mp3"
+> </genre>
+
+
+<genre name="TOP Radio"  
+thumbnail="./image/radio-logos/logo_128.gif" 
+url="http://w01-cn01.akadostream.ru:8102/topradio128.mp3"
+> </genre>
+
+
+<genre name="GothVille"  
+thumbnail="./image/radio-logos/logo_110.gif" 
+url="http://w01-cn01.akadostream.ru:8100/gothville128.mp3"
+> </genre>
+
+
+<genre name="SUN Radio [LV]"  
+thumbnail="./image/radio-logos/logo_145.gif" 
+url="http://w01-cn01.akadostream.ru:8102/sunradio128.mp3"
+> </genre>
+
+
+<genre name="Борнео"  
+
+thumbnail="./image/radio-logos/logo_008.gif" 
+url="http://w01-cn01.akadostream.ru:8102/borneo128.mp3"
+> </genre>
+
+
+<genre name="PSYRadio.FM"  
+thumbnail="./image/radio-logos/logo_018.gif" 
+url="http://w02-cn01.akadostream.ru:8102/psyradiofm128.mp3"
+> </genre>
+
+
+<genre name="Bass Drive Radio"  
+thumbnail="./image/radio-logos/logo_007.gif" 
+url="http://w01-cn01.akadostream.ru:8102/bassdrive128.mp3"
+> </genre>
+
+
+<genre name="DNB Radio"  
+thumbnail="./image/radio-logos/logo_013.gif" 
+url="http://w01-cn01.akadostream.ru:8102/dnbradio128.mp3"
+> </genre>
+
+
+<genre name="DNBradio.net"  
+thumbnail="./image/radio-logos/logo_099.gif" 
+url="http://w02-cn01.akadostream.ru:8102/dnbradionet128.mp3"
+> </genre>
+
+
+<genre name="UK Bass Radio"  
+
+thumbnail="./image/radio-logos/logo_107.gif" 
+url="http://w01-cn01.akadostream.ru:8102/ukbassradio128.mp3"
+> </genre>
+
+
+<genre name="BestDance.FM"  
+thumbnail="./image/radio-logos/logobestdanceFM.gif" 
+url="http://w01-cn01.akadostream.ru:8102/mbdanceradio128.mp3"
+> </genre>
+
+
+<genre name="MOH Radio"  
+thumbnail="./image/radio-logos/logo_090.gif" 
+url="http://w01-cn01.akadostream.ru:8102/mohradio96.mp3"
+> </genre>
+
+
+<genre name="Morow"  
+thumbnail="./image/radio-logos/logo_138.gif" 
+url="http://w02-cn01.akadostream.ru:8102/morow128.mp3"
+> </genre>
+
+
+<genre name="SAN Radio"  
+thumbnail="./image/radio-logos/logo_160.gif" 
+url="http://w01-cn01.akadostream.ru:8102/sanradio96.mp3"
+> </genre>
+
+
+<genre name="Rockabilly Radio"  
+
+thumbnail="./image/radio-logos/logo_115.gif" 
+url="http://w02-cn01.akadostream.ru:8100/rockabillyradio128.mp3"
+> </genre>
+
+
+<genre name="radio.wazee"  
+thumbnail="./image/radio-logos/logo_125.gif" 
+url="http://w02-cn01.akadostream.ru:8100/radiowazee128.mp3"
+> </genre>
+
+
+<genre name="XRM Radio"  
+thumbnail="./image/radio-logos/logo_039.gif" 
+url="http://w01-cn01.akadostream.ru:8100/xrmradio96.mp3"
+> </genre>
+
+
+<genre name="DEEPINSIDE SESSION"  
+thumbnail="./image/radio-logos/logo_031.gif" 
+url="http://w01-cn01.akadostream.ru:8110/deepinside_in128.mp3"
+> </genre>
+
+
+<genre name="DEEPINSIDE Soulful House Station"  
+thumbnail="./image/radio-logos/logo_076.gif" 
+url="http://w01-cn01.akadostream.ru:8110/deepinside_us160.mp3"
+> </genre>
+
+
+<genre name="Seven Skies"  
+
+thumbnail="./image/radio-logos/logo_022.gif" 
+url="http://w01-cn01.akadostream.ru:8110/sevenskies128.mp3"
+> </genre>
+
+
+<genre name="Радио Юго-Восток"  
+thumbnail="./image/radio-logos/logo_062.gif" 
+url="http://w02-cn01.akadostream.ru:8110/radiouvao128.mp3"
+> </genre>
+
+
+<genre name="Molode Radio [UA]"  
+thumbnail="./image/radio-logos/logo_112.gif" 
+url="http://w01-cn01.akadostream.ru:8110/radiomolode128.mp3"
+> </genre>
+
+
+<genre name="Радио Гора Electro"  
+thumbnail="./image/radio-logos/logo_123.gif" 
+url="http://w01-cn01.akadostream.ru:8110/radiogoraelectro192.mp3"
+> </genre>
+
+
+<genre name="Радио Кукуруза"  
+thumbnail="./image/radio-logos/logo_kukuruza.jpg" 
+url="http://w02-cn01.akadostream.ru:8110/radiokukuruza192.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Classic Rock"  
+
+thumbnail="./image/radio-logos/logo_104.gif" 
+url="http://w01-cn01.akadostream.ru:8104/classicrock_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] DaTempo Lounge"  
+thumbnail="./image/radio-logos/logo_152.gif" 
+url="http://w01-cn01.akadostream.ru:8104/datempolounge_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Indie Rock"  
+thumbnail="./image/radio-logos/logo_046.gif" 
+url="http://w02-cn01.akadostream.ru:8104/indierock_sky96.mp3"
+> </genre>
+
+
+<genre name="[SKY.FM] Soulful House"  
+thumbnail="./image/radio-logos/logo_093.gif" 
+url="http://w01-cn01.akadostream.ru:8104/soulhouse_sky96.mp3"
+> </genre>
+
+
+<genre name="Baltcom Radio"  
+thumbnail="./image/radio-logos/logo_028.gif" 
+url="http://w02-cn01.akadostream.ru:8110/radiobaltcom128.mp3"
+> </genre>
+
+
+
+<genre name="DEFJAY"  
+thumbnail="./image/radio-logos/logo_071.gif" 
+url="http://w02-cn01.akadostream.ru:8110/defjay128.mp3"
+> </genre>
+
+
+<genre name="Radio13"  
+thumbnail="./image/radio-logos/logo_108.gif" 
+url="http://w02-cn01.akadostream.ru:8110/radio13128.mp3"
+> </genre>
+
+
+<genre name="Радио Чипльдук"  
+thumbnail="./image/radio-logos/4duk.gif" 
+
+url="http://w01-cn01.akadostream.ru:8110/4duk128.mp3"
+> </genre>
+
+
+<genre name="Verdure Station"  
+thumbnail="./image/radio-logos/verdure.gif" 
+url="http://w01-cn01.akadostream.ru:8110/verdure128.mp3"
+> </genre>
+
+
+<genre name="Radio Intrigue [non-stop]"  
+thumbnail="./image/radio-logos/radio_intrigue.gif" 
+url="http://w01-cn01.akadostream.ru:8110/intrigue128.mp3"
+> </genre>
+
+
+<genre name="Radio Intrigue [live]"  
+thumbnail="./image/radio-logos/radio_intrigue_002.gif" 
+url="http://w02-cn01.akadostream.ru:8110/intrigue-live128.mp3"
+> </genre>
+
+
+<genre name="Радио 107"  
+thumbnail="./image/radio-logos/Logo_radio_107_small_size.gif" 
+url="http://w02-cn01.akadostream.ru:8111/radio107128.mp3"
+> </genre>
+
+
+<genre name="Tushino On Air 'Рок'"  
+
+thumbnail="./image/radio-logos/logo_117.gif" 
+url="http://w01-cn01.akadostream.ru:8111/tushinoonair128.mp3"
+> </genre>
+
+
+<genre name="Радио ТУТ"  
+thumbnail="./image/radio-logos/avatar.gif" 
+url="http://w01-cn01.akadostream.ru:8111/radiotut128.mp3"
+> </genre>
+
+
+<genre name="DMA-Media - РГТМ Радио"  
+thumbnail="./image/radio-logos/rgtm_micro.jpg" 
+url="http://w01-cn01.akadostream.ru:8111/rgtm96.mp3"
+> </genre>
+
+
+<genre name="Радио MakkiRUS Light"  
+thumbnail="./image/radio-logos/makkirus_light.gif" 
+url="http://w02-cn01.akadostream.ru:8111/makkiruslight128.mp3"
+> </genre>
+
+
+<genre name="Radio PREMIUM"  
+thumbnail="./image/radio-logos/1.gif" 
+url="http://w01-cn01.akadostream.ru:8111/radiopremium192.mp3"
+> </genre>
+
+
+<genre name="NWG Radio"  
+
+thumbnail="./image/radio-logos/logo_nwg.gif" 
+url="http://w01-cn01.akadostream.ru:8111/nwgradio160.mp3"
+> </genre>
+
+
+<genre name="queerFM"  
+thumbnail="./image/radio-logos/queerfm.png" 
+url="http://w02-cn01.akadostream.ru:8111/queerfm128.mp3"
+> </genre>
+
+
+<genre name="RadioCafe"  
+thumbnail="./image/radio-logos/radiocafe.png" 
+url="http://w01-cn01.akadostream.ru:8111/caferadio128.mp3"
+> </genre>
+
+
+<genre name="Радио MakkiRUS-Mix"  
+thumbnail="./image/radio-logos/makkirus_mix.gif" 
+url="http://w01-cn01.akadostream.ru:8111/makkirus-mix128.mp3"
+> </genre>
+
+
+<genre name="МОСТ Радио"  
+thumbnail="./image/radio-logos/most-radio.gif" 
+url="http://w01-cn01.akadostream.ru:8111/mostradio64.mp3"
+> </genre>
+
+
+<genre name="Старое радио"  
+
+thumbnail="./image/radio-logos/staroeradio.jpg" 
+url="http://w02-cn01.akadostream.ru:8111/staroeradio128.mp3"
+> </genre>
+
+
+<genre name="Старое радио: Детское"  
+thumbnail="./image/radio-logos/staroeradio-detskoe.jpg" 
+url="http://w02-cn01.akadostream.ru:8111/staroeradiodetskoe128.mp3"
+> </genre>
+
+
+<genre name="Старое радио: Музыка"  
+thumbnail="./image/radio-logos/staroeradio-music.jpg" 
+url="http://w01-cn01.akadostream.ru:8111/staroeradiomusic128.mp3"
+> </genre>
+
+
+<genre name="eSViDi radio"  
+thumbnail="./image/radio-logos/logo_90_80.png" 
+url="http://w01-cn01.akadostream.ru:8111/esvidi128.mp3"
+> </genre>
+
+
+<genre name="CLUB 977 The Hitz"  
+thumbnail="./image/radio-logos/club_hitz.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/club977_hitz128.mp3"
+> </genre>
+
+
+<genre name="ChroniX Grit"  
+
+thumbnail="./image/radio-logos/cronix_grit.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/chronixgrit128.mp3"
+> </genre>
+
+
+<genre name="ChroniX Metal"  
+thumbnail="./image/radio-logos/cronix_metal.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/chronixmetal128.mp3"
+> </genre>
+
+
+<genre name="Love Russian"  
+thumbnail="./image/radio-logos/love_russian.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/love_russian96.mp3"
+> </genre>
+
+
+<genre name="Love Alternative"  
+thumbnail="./image/radio-logos/alternative.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/love_alternative96.mp3"
+> </genre>
+
+
+<genre name="Love Chill"  
+thumbnail="./image/radio-logos/love_chill.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/love_chill96.mp3"
+> </genre>
+
+
+<genre name="Love Gold"  
+thumbnail="./image/radio-logos/love_gold.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/love_gold96.mp3"
+> </genre>
+
+
+<genre name="Love Pride"  
+thumbnail="./image/radio-logos/love_pride.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/love_pride96.mp3"
+> </genre>
+
+
+<genre name="Love RNB"  
+thumbnail="./image/radio-logos/love_rnb.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/love_rnb96.mp3"
+> </genre>
+
+
+<genre name="Love Top 40"  
+thumbnail="./image/radio-logos/love_top40.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/love_top4096.mp3"
+> </genre>
+
+
+<genre name="Lebalten"  
+
+thumbnail="./image/radio-logos/lebalten.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/lebalten128.mp3"
+> </genre>
+
+
+<genre name="NETradio «100%»"  
+thumbnail="./image/radio-logos/100.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/netradio100128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Adult»"  
+thumbnail="./image/radio-logos/adult.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradioadult128.mp3"
+> </genre>
+
+
+<genre name="NETradio «ETHNOza»"  
+thumbnail="./image/radio-logos/ethnoza.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/netradioethno128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Garage»"  
+thumbnail="./image/radio-logos/garage.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradiogarage128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Live»"  
+
+thumbnail="./image/radio-logos/live.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/netradiolive128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Нot»"  
+thumbnail="./image/radio-logos/hot.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradiohot128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Club»"  
+thumbnail="./image/radio-logos/club.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradioclub128.mp3"
+> </genre>
+
+
+<genre name="NETradio «France»"  
+thumbnail="./image/radio-logos/france.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradiofrance128.mp3"
+> </genre>
+
+
+<genre name="NETradio «RELAX»"  
+thumbnail="./image/radio-logos/relax.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/netradiorelax128.mp3"
+> </genre>
+
+
+<genre name="NETradio «Trance»"  
+
+thumbnail="./image/radio-logos/trance.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/netradiotrance128.mp3"
+> </genre>
+
+
+<genre name="Поместное Радио"  
+thumbnail="./image/radio-logos/pomestnoe.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/pomestnoeradio192.mp3"
+> </genre>
+
+
+<genre name="Deutsche Welle"  
+thumbnail="./image/radio-logos/dw.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/dwradio64.mp3"
+> </genre>
+
+
+<genre name="Радио Фантастики"  
+thumbnail="./image/radio-logos/fantastika.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/radiofantastki64.mp3"
+> </genre>
+
+
+<genre name="Радио ЗАЧЕТ"  
+thumbnail="./image/radio-logos/zachet.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/radiozachet192.mp3"
+> </genre>
+
+
+<genre name="DEEP &amp; DEEPER"  
+
+thumbnail="./image/radio-logos/deeper.gif" 
+url="http://w02-cn01.akadostream.ru:8110/deepinside_deeper128.mp3"
+> </genre>
+
+
+<genre name="VLADIVOSTOK.FM - CLUB | DANCE"  
+thumbnail="./image/radio-logos/vladivostokfm.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/vladivostokfmclub128.mp3"
+> </genre>
+
+
+<genre name="VLADIVOSTOK.FM - PETPO"  
+thumbnail="./image/radio-logos/vladivostokfm_002.jpg" 
+url="http://w02-cn01.akadostream.ru:8112/vladivostokfmretro128.mp3"
+> </genre>
+
+
+<genre name="VLADIVOSTOK.FM - ROCK"  
+thumbnail="./image/radio-logos/vladivostokfm_004.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/vladivostokfmrock128.mp3"
+> </genre>
+
+
+<genre name="VLADIVOSTOK.FM - ДУШЕВНЫЙ"  
+thumbnail="./image/radio-logos/vladivostokfm_003.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/vladivostokfmsoul128.mp3"
+> </genre>
+
+
+<genre name="Tushino On Air 'Электро'"  
+
+thumbnail="./image/radio-logos/tushinoonair.gif" 
+url="http://w01-cn01.akadostream.ru:8112/tushinoonairelectro128.mp3"
+> </genre>
+
+
+<genre name="Муз Радио"  
+thumbnail="./image/radio-logos/muz-radio.jpg" 
+url="http://w01-cn01.akadostream.ru:8112/muzradio128.mp3"
+> </genre>
+
+
+<genre name="Яскраве радіо"  
+thumbnail="./image/radio-logos/Yaskrave.gif" 
+url="http://w02-cn01.akadostream.ru:8112/yaskraveradio96.mp3"
+> </genre>
+
+
+
+</genrelist>

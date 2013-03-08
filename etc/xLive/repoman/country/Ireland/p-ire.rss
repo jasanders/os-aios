@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+     <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Italy Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>Dublin Port Operations</title>
+      <link>http://relay.radioreference.com:80/45138404
+</link>
+	   <enclosure type="video/mp3" url="http://relay.radioreference.com:80/45138404
+"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+      
+
+    
+<item>
+
+      <title>Dundalk Bay Marine</title>
+      <link>http://relay.radioreference.com:80/820501334</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/820501334"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+
+    
+<item>
+
+      <title>Dundalk Amateur Radio Society Ireland EI2CCR VHF Repeater.</title>
+      <link>http://relay.radioreference.com:80/278858274</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/278858274"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+
+  </item>
+  
+        
+<item>
+
+      <title>Puente Alto Fire</title>
+      <link>http://relay.radioreference.com:80/662868525</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/662868525"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+
+
+   
+      
+
+    
+<item>
+
+      <title>Shanwick HF Oceanic Control</title>
+      <link>http://relay.radioreference.com:80/749322801</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/552008778"/>
+      <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+   
+</channel>
+</rss>

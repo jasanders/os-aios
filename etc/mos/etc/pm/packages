@@ -1,0 +1,491 @@
+[hdcpoff]
+	revision = 1
+	title = "Hdcp Off"
+	role = patch
+	init = S04HdcpOff
+	actions = "restart"
+	size = 12
+
+[itunes]
+	revision= 1
+	title = "iTunes server"
+	role = daemon
+	check = "port 5353"
+	init = S21itunes
+	backup = "itunes/mt-daapd.conf"
+	navy_title = "manage iTunes server"
+	navy_frame = "http://%addr%:3689"
+	config_edit = "itunes/mt-daapd.conf"
+	size = 724
+
+[libcurl]
+	revision = 1
+	title = "Lib CUrl 4.2.0"
+	role = package
+	check = lib
+	size = 2784
+
+[libevent2]
+	revision = 1
+	title = "Lib Event-2.0 5.0.1"
+	role = package
+	check = lib
+	size = 1448
+
+[libgcc_s]
+	revision= 1
+	title = "Lib gcc_s"
+	role = package
+	check = lib
+	size = 68
+
+[libjpeg]
+	revision= 1
+	title = "Lib Jpeg v8.0.1"
+	role = package
+	check = lib
+	size = 304
+
+[libpng14]
+	revision= 1
+	title = "Lib Png v14.1.0"
+	role = package
+	check = lib
+	size = 376
+
+[libxml2]
+	revision= 1
+	title = "Lib XML2 v 2.7.2"
+	role = package
+	check = lib
+	size = 1688
+
+[libz]
+	revision= 1
+	title = "Lib Zip v1.2.5"
+	role = package
+	check = lib
+	size = 112
+
+[mediatomb]
+	revision= 1
+	title = "MediaTomb server"
+	role = daemon
+	init = S22mediatomb
+	backup = "mediatomb/config/config.xml mediatomb/config/mediatomb.db"
+	navy_title = "manage MediaTomb"
+	navy_frame = "http://%addr%:49152"
+	config_edit = "mediatomb/config/config.xml"
+	size = 7296
+
+[samba]
+	revision= 1
+	title = "SAMBA daemon v3.0.8"
+	role = daemon
+	check = "port 139"
+	init = S12samba
+	backup = "samba/smb.conf"
+	config_edit = "samba/smb.conf"
+	size = 5300
+
+[swp]
+	revision = 1
+	title = "Swap on drive"
+	role = patch
+	init = S02swp
+	size = 8
+
+[top]
+	revision = 1
+	title ="Top 3.6"
+	role = package
+	size = 160
+
+[status]
+	revision = 2
+	title ="System status"
+	role = web
+	size = 56
+
+[zswap]
+	revision = 2
+	title = "RAM zipped SWAP (compcache 0.6.2)"
+	role = patch
+	init = S43zswap
+	size = 92
+
+[smarttool]
+	revision = 1
+	title ="SMART HDD Tool (smartctl 5.41)"
+	init = "S44libata"
+	role = web
+	size = 1064
+
+[tvigle]
+	revision = 1
+	title = "Tvigle.RU"
+	role = rss
+	size = 16
+
+[ipla]
+	revision = 1
+	title ="Polish IPTV ipla.tv"
+	role = rss
+	size = 1012
+
+[mediarss]
+	revision = 2
+	title = "Sayler's Media RSS"
+	role = rss
+	init = S33mediarss
+	backup = "mediarss/sayler.conf"
+	config_edit = "mediarss/sayler.conf"
+	size = 1140
+
+[quixplorer]
+	revision = 3
+	title = "QuiXplorer"
+	role = web
+	size = 660
+
+[fakeshell]
+	revision= 2
+	title = "Fake Shell 1.0.5.2"
+	role = web
+	navy_title = "Fake Shell"
+	navy_frame = "modules/fakeshell/fakeshell.php"
+	size = 20
+
+[uaonline]
+	revision = 7
+	title ="Ukraine Online Services"
+	role = rss
+	init = S32uaonline
+	backup = "uaonline/settings.conf"
+	config_edit = "uaonline/settings.conf"
+	size = 2700
+
+[libiconv]
+	revision= 1
+	title = "Lib iConv v2.5.0"
+	role = package
+	check = "lib libiconv.so.2"
+	size = 924
+
+[web]
+	revision = 2
+	title ="Lighttpd web server v1.4.28 pcre"
+	role = package
+	backup = "etc/lighttpd.conf etc/lighttpd.plain"
+	size = 8916
+
+[httpd]
+	revision = 1
+	title ="HTTPd busybox daemon"
+	role = package
+	backup = "etc/httpd.conf"
+	size = 16
+
+[rootapp]
+	revision = 2
+	title ="Patched RootApp"
+	role = patch
+	init = S42rootapp
+	size = 308
+
+[telnetd]
+	revision = 1
+	title ="telnet busybox daemon"
+	role = daemon
+	check = "port 23"
+	init = S08telnetd
+	size = 12
+
+[php]
+	revision = 2
+	title ="PHP v5.3.2 curl hash ssl"
+	role = package
+	size = 9920
+
+[trans]
+	revision = 9
+	title = "Transmission v2.33"
+	role = daemon
+	check = "port 9091"
+	init = S23trans
+	backup = "trans/home/"
+	config_edit = "trans/home/settings.json"
+	size = 3200
+
+[sskin]
+	revision = 8
+	title = "Skin selector for HD2 revs"
+	role = patch
+	backup = "etc/sskin.conf"
+	config_link = "/?page=sskin_sets"
+	size = 132
+
+[udpxy]
+	revision = 3
+	title = "UDP-to-HTTP Proxy v1.0b19-Chipmunk"
+	role = daemon
+	check = "port 8080"
+	init = S24udpxy
+	navy_title = "UDPxy status"
+	navy_frame = "http://%addr%:8080/status"
+	size = 396
+
+[pshare]
+	revision= 2
+	title = "pShare uPnP playlist browser 0.0.2rc2"
+	role = daemon
+	init = S26pShare
+	backup = "pshare/pshare.conf"
+	navy_title = "pShare status"
+	navy_frame = "http://%addr%:4044"
+	config_edit = "pshare/pshare.conf"
+	size = 164
+
+[ushare]
+	revision= 2
+	title = "uShare UPnP/DLNA server 1.1a"
+	role = daemon
+	init = S25uShare
+	backup = "etc/ushare.conf"
+	config_edit = "etc/ushare.conf"
+	size = 5944
+
+[spindown]
+	revision = 2
+	title = "SpinDown service"
+	role = daemon
+	init = S14spindown
+	backup = "etc/spindown.conf"
+	actions = "down"
+	config_edit = "etc/spindown.conf"
+	size = 336
+
+[uletno]
+	revision = 7
+	title = "Uletno.info"
+	role = rss
+	size = 60
+
+[fex]
+	revision = 6
+	title = "fex.net / ex.ua"
+	role = rss
+	size = 112
+
+[capture]
+	revision = 3
+	title = "Capture TV screen"
+	role = web
+	size = 3660
+
+[autorun]
+	revision = 1
+	title = "AutoRun"
+	role = patch
+	init = S05AutoRun
+	actions = "restart"
+	size = 12
+
+[awk]
+	revision = 1
+	title ="GNU Awk 3.1.5"
+	role = package
+	size = 1244
+
+[irfake]
+	revision = 4
+	title = "IR Fake RC replacement v1.2.13"
+	role = patch
+	init = S41irfake
+	backup = "irfake/irfake.conf"
+	config_before = copy
+	config_after  = save
+	config_edit   = "irfake/irfake.conf"
+	size = 120
+
+[horosho]
+	revision = 2
+	title = "Horosho.tv"
+	role = rss
+	size = 68
+
+[patch61]
+	revision = 1
+	title = "Update amp r6 to amp r6.1"
+	role = patch
+	init = S45patch61
+	size = 1420
+
+[woowza]
+	revision = 3
+	title = "Woowza movies"
+	role = rss
+	size = 84
+
+[myhit]
+	revision = 1
+	title = "MY-HIT.ru"
+	role = rss
+	size = 52
+
+[sovok]
+	revision = 8
+	title = "Sovok TV"
+	role = rss
+	size = 100
+
+[mosondrive]
+	revision = 1
+	title = "moServices on drive"
+	role = patch
+	init = S47mosondrive
+	size = 16
+
+[repos]
+	revision = 1
+	title = "Manage repositories"
+	role = patch
+	config_link = "?page=repos"
+	size = 32
+
+[mounts]
+	revision = 5
+	title = "Mounts"
+	role = daemon
+	init = S10mounts
+	backup = "etc/mounts.ini etc/mounts.list"
+	config_link = "?page=mount_sets"
+	size = 44
+
+[weather]
+	revision = 6
+	title = "Weather Yahoo"
+	role = rss
+	config_edit = "www/modules/weather/weather.conf"
+	size = 48
+
+[rdate]
+	revision = 2
+	title = "Remote date and time sync"
+	role = patch
+	init = S11rdate
+	backup = "etc/rdate.conf"
+	actions = "restart"
+	config_edit = "etc/rdate.conf"
+	size = 24
+
+[vsftpd]
+	revision = 1
+	title = "vsFTPd FTP daemon v2.2.2"
+	role = daemon
+	check = "port 21"
+	init = S15vsftpd
+	backup = "etc/vsftpd.conf"
+	navy_title = "Explore FTP"
+	navy_frame = "ftp://root@%addr%/tmp/usbmounts"
+	config_edit = "etc/vsftpd.conf"
+	size = 272
+
+[parole]
+	revision = 2
+	title = "Authorization"
+	role = patch
+	size = 32
+
+[busybox]
+	revision= 3
+	title = "BusyBox v1.18.4"
+	role = package
+	size = 1520
+
+[keys]
+	revision = 2
+	title = "RSS Keys"
+	role = rss
+	size = 64
+
+[base]
+	revision = 12
+	title = "moServices base"
+	role = package
+	size = 496
+
+[curl]
+	revision = 2
+	title = "cUrl 7.20.1"
+	role = package
+	size = 772
+
+[rtmpdump]
+	revision= 1
+	title = "RTMPDump v2.3"
+	role = package
+	size = 2696
+
+[core]
+	revision = 35
+	title = "moServices core"
+	role = core
+	init = S01core
+	backup = "etc/core.ini"
+	config_link = "?page=sets"
+	size = 828
+
+[rssex2]
+	revision = 14
+	title = "RSS Ex 2.0.11 r606"
+	role = rss
+	init = S31rssex2
+	backup= "rssex2/etc/"
+	config_edit = "rssex2/etc/translate.conf"
+	navy_title = "Media Renderer"
+	navy_frame = "http://%addr%:88/cgi-bin/renderer"
+	size = 14684
+
+[glavtv]
+	revision = 2
+	title = "Glavnoe TV"
+	role = rss
+	size = 1472
+
+[remount]
+	revision = 2
+	title = "Remount drives"
+	role = patch
+	init = S06Remount
+	actions = "restart"
+	size = 12
+
+[ivi]
+	revision = 5
+	title = "ivi.ru"
+	role = rss
+	size = 68
+
+[uaonline2]
+	revision = 13
+	title = "UA Online 2"
+	role = rss
+	backup = "www/modules/uaonline2/ua_favorites.conf www/modules/uaonline2/ua_settings.conf"
+	config_edit = "www/modules/uaonline2/ua_settings.conf"
+	navy_title = "UAOnline 2 Fav. Editor"
+	navy_frame = "http://%addr%/modules/uaonline2/ua_web_fav.php"
+	size = 1712
+
+[tvontop]
+	revision = 10
+	title = "TV on Top 1.1.4"
+	role = rss
+	size = 2976
+
+[mediaportal]
+	revision = 16
+	title = "Media portal"
+	role = rss
+	size = 36
+

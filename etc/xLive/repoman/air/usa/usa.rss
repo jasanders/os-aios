@@ -1,0 +1,285 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>United States - Live Air Traffic - From Their Headsets to you</title>
+
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+    
+	
+	
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kapa</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kapa"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KAPA Gnd/Twr/Denver App Denver, Colorado
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KBCT Twr/Palm Beach App/Miami App Boca Raton, Florida
+</title>
+      <link>http://d.liveatc.net/kbct</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kbct"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KBED/KLWM/KBVY Boston Approach Bedford, Massachusetts
+</title>
+      <link>http://d.liveatc.net/kbed_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kbed_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KBJC Gnd/Twr/Denver App Denver, Colorado
+</title>
+      <link>http://d.liveatc.net/kbjc</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kbjc"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	    
+<item>
+
+      <title>KADS Approach (VFR Arrivals) Dallas, Texas
+</title>
+      <link>http://d.liveatc.net/kads_app</link>
+	   <enclosure type="audio/x-mpegurl" url="http://d.liveatc.net/kads_app"/>
+      <media:thumbnail url="/usr/local/etc/xLive/image/a-t.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+  
+	
+</channel>
+</rss>

@@ -1,0 +1,440 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Cacouna</title>
+<cur>CAXX0053</cur>
+<for>Cacouna</for>
+</item>
+
+<item>
+<title>Calgary</title>
+<cur>CAXX0054</cur>
+<for>Calgary</for>
+</item>
+
+<item>
+<title>Callander</title>
+<cur>CAXX0055</cur>
+<for>Callander</for>
+</item>
+
+<item>
+<title>Cambridge</title>
+<cur>CAXX0056</cur>
+<for>Cambridge</for>
+</item>
+
+<item>
+<title>Campbell River</title>
+<cur>CAXX0057</cur>
+<for>Campbell River</for>
+</item>
+
+<item>
+<title>Campbellton</title>
+<cur>CAXX0058</cur>
+<for>Campbellton</for>
+</item>
+
+<item>
+<title>Canmore</title>
+<cur>CAXX0059</cur>
+<for>Canmore</for>
+</item>
+
+<item>
+<title>Cap Chat</title>
+<cur>CAXX0060</cur>
+<for>Cap Chat</for>
+</item>
+
+<item>
+<title>Cap-de-la-Madeleine</title>
+<cur>CAXX0061</cur>
+<for>Cap-de-la-Madeleine</for>
+</item>
+
+<item>
+<title>Cap-des-Rosiers</title>
+<cur>CAXX0062</cur>
+<for>Cap-des-Rosiers</for>
+</item>
+
+<item>
+<title>Cape Dorset</title>
+<cur>CAXX0617</cur>
+<for>Cape Dorset</for>
+</item>
+
+<item>
+<title>Carcross</title>
+<cur>CAXX0063</cur>
+<for>Carcross</for>
+</item>
+
+<item>
+<title>Caronport</title>
+<cur>CAXX0064</cur>
+<for>Caronport</for>
+</item>
+
+<item>
+<title>Carp</title>
+<cur>CAXX0065</cur>
+<for>Carp</for>
+</item>
+
+<item>
+<title>Cartwright</title>
+<cur>CAXX0601</cur>
+<for>Cartwright</for>
+</item>
+
+<item>
+<title>Castlegar</title>
+<cur>CAXX0066</cur>
+<for>Castlegar</for>
+</item>
+
+<item>
+<title>Castor</title>
+<cur>CAXX0067</cur>
+<for>Castor</for>
+</item>
+
+<item>
+<title>Chambord</title>
+<cur>CAXX0068</cur>
+<for>Chambord</for>
+</item>
+
+<item>
+<title>Champagne</title>
+<cur>CAXX0069</cur>
+<for>Champagne</for>
+</item>
+
+<item>
+<title>Chapais</title>
+<cur>CAXX0070</cur>
+<for>Chapais</for>
+</item>
+
+<item>
+<title>Charlesbourg</title>
+<cur>CAXX0071</cur>
+<for>Charlesbourg</for>
+</item>
+
+<item>
+<title>Charlie Lake</title>
+<cur>CAXX0072</cur>
+<for>Charlie Lake</for>
+</item>
+
+<item>
+<title>Charlottetown</title>
+<cur>CAXX0073</cur>
+<for>Charlottetown</for>
+</item>
+
+<item>
+<title>Chatham</title>
+<cur>CAXX0074</cur>
+<for>Chatham</for>
+</item>
+
+<item>
+<title>Chibougamau</title>
+<cur>CAXX0075</cur>
+<for>Chibougamau</for>
+</item>
+
+<item>
+<title>Chicoutimi</title>
+<cur>CAXX0076</cur>
+<for>Chicoutimi</for>
+</item>
+
+<item>
+<title>Chilliwack</title>
+<cur>CAXX0077</cur>
+<for>Chilliwack</for>
+</item>
+
+<item>
+<title>Churchill</title>
+<cur>CAXX0078</cur>
+<for>Churchill</for>
+</item>
+
+<item>
+<title>Churchill Falls</title>
+<cur>CAXX0574</cur>
+<for>Churchill Falls</for>
+</item>
+
+<item>
+<title>Chute-aux-Outardes</title>
+<cur>CAXX0079</cur>
+<for>Chute-aux-Outardes</for>
+</item>
+
+<item>
+<title>Clairmont</title>
+<cur>CAXX0080</cur>
+<for>Clairmont</for>
+</item>
+
+<item>
+<title>Clarke City</title>
+<cur>CAXX0081</cur>
+<for>Clarke City</for>
+</item>
+
+<item>
+<title>Clinton</title>
+<cur>CAXX0082</cur>
+<for>Clinton</for>
+</item>
+
+<item>
+<title>Coal Harbour</title>
+<cur>CAXX0083</cur>
+<for>Coal Harbour</for>
+</item>
+
+<item>
+<title>Coaldale</title>
+<cur>CAXX0084</cur>
+<for>Coaldale</for>
+</item>
+
+<item>
+<title>Cobden</title>
+<cur>CAXX0085</cur>
+<for>Cobden</for>
+</item>
+
+<item>
+<title>Cochrane</title>
+<cur>CAXX0086</cur>
+<for>Cochrane</for>
+</item>
+
+<item>
+<title>Codroy</title>
+<cur>CAXX0087</cur>
+<for>Codroy</for>
+</item>
+
+<item>
+<title>Colborne</title>
+<cur>CAXX0088</cur>
+<for>Colborne</for>
+</item>
+
+<item>
+<title>Cold Lake</title>
+<cur>CAXX0089</cur>
+<for>Cold Lake</for>
+</item>
+
+<item>
+<title>Collingwood</title>
+<cur>CAXX0090</cur>
+<for>Collingwood</for>
+</item>
+
+<item>
+<title>Collins Bay</title>
+<cur>CAXX0091</cur>
+<for>Collins Bay</for>
+</item>
+
+<item>
+<title>Comox</title>
+<cur>CAXX0092</cur>
+<for>Comox</for>
+</item>
+
+<item>
+<title>Coniston</title>
+<cur>CAXX0093</cur>
+<for>Coniston</for>
+</item>
+
+<item>
+<title>Copper Cliff</title>
+<cur>CAXX0094</cur>
+<for>Copper Cliff</for>
+</item>
+
+<item>
+<title>Copper Creek</title>
+<cur>CAXX0095</cur>
+<for>Copper Creek</for>
+</item>
+
+<item>
+<title>Coral Harbour</title>
+<cur>CAXX0618</cur>
+<for>Coral Harbour</for>
+</item>
+
+<item>
+<title>Cormorant</title>
+<cur>CAXX0096</cur>
+<for>Cormorant</for>
+</item>
+
+<item>
+<title>Corner Brook</title>
+<cur>CAXX0097</cur>
+<for>Corner Brook</for>
+</item>
+
+<item>
+<title>Coronation</title>
+<cur>CAXX0098</cur>
+<for>Coronation</for>
+</item>
+
+<item>
+<title>Courtenay</title>
+<cur>CAXX0099</cur>
+<for>Courtenay</for>
+</item>
+
+<item>
+<title>Courtright</title>
+<cur>CAXX0100</cur>
+<for>Courtright</for>
+</item>
+
+<item>
+<title>Cranberry Portage</title>
+<cur>CAXX0101</cur>
+<for>Cranberry Portage</for>
+</item>
+
+<item>
+<title>Cranbrook</title>
+<cur>CAXX0102</cur>
+<for>Cranbrook</for>
+</item>
+
+<item>
+<title>Cumberland</title>
+<cur>CAXX0103</cur>
+<for>Cumberland</for>
+</item>
+
+<item>
+<title>Cut Knife</title>
+<cur>CAXX0104</cur>
+<for>Cut Knife</for>
+</item>
+
+</channel></rss>

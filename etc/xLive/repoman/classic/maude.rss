@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Maude</title>
+
+<item>
+<title>Maude Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F25C99DDC8183E9AF,Maude+Season+1</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/maude.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Maude Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F9ED37B1D30C036BB,Maude+Season+2</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/maude.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

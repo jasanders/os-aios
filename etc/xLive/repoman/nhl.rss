@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>http://prosportsblogging.com/psb/uploads/2010/08/NHL-HockeyTeams.jpeg</image>
+</backgroundDisplay>
+		
+	    </mediaDisplay>
+
+  
+<channel>
+<title>NHL.com</title>
+
+<item>
+<title>NHL Post Game Highlights</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F9466176CDC69FC24,NHL+Post+Game+Highlights</link>
+<media:thumbnail url="http://4.bp.blogspot.com/_14EAkPRbXD8/THLXou5p6TI/AAAAAAAAAlc/YP9wcBjuN5k/s200/NHL+logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NHL Quick Picks</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F1C54AF99272DD7B7,NHL+Quick+Picks</link>
+<media:thumbnail url="http://4.bp.blogspot.com/_14EAkPRbXD8/THLXou5p6TI/AAAAAAAAAlc/YP9wcBjuN5k/s200/NHL+logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NHL Plays of the Night</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FCB5A83D9EF731F5B,NHL+Plays+of+the+Night</link>
+<media:thumbnail url="http://4.bp.blogspot.com/_14EAkPRbXD8/THLXou5p6TI/AAAAAAAAAlc/YP9wcBjuN5k/s200/NHL+logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NHL Best of the Week</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F86428130B1D6261A,NHL+Best+of+the+Week</link>
+<media:thumbnail url="http://4.bp.blogspot.com/_14EAkPRbXD8/THLXou5p6TI/AAAAAAAAAlc/YP9wcBjuN5k/s200/NHL+logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NHL Presents</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FA2F06B0E94F26BD1,NHL+Presents</link>
+<media:thumbnail url="http://4.bp.blogspot.com/_14EAkPRbXD8/THLXou5p6TI/AAAAAAAAAlc/YP9wcBjuN5k/s200/NHL+logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

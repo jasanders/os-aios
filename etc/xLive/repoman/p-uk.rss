@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>England Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>London area GB7OK and GB3OK Repeaters</title>
+      <link>/usr/local/etc/xLive/category/United Kingdom/England/p-eng.rss</link>
+	  <media:thumbnail url="/usr/local/etc/xLive/image/scanner.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+         <title>England Police - Fire - EMS - Amateur Radio Feeds</title>
+
+    
+<item>
+
+      <title>South London Amateur Group 145.325mhz</title>
+      <link>/usr/local/etc/xLive/category/United Kingdom/Scotland/p-scot.rss
+	  <media:thumbnail url="/usr/local/etc/xLive/image/scanner.jpg" />
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+  
+   
+</channel>
+</rss>

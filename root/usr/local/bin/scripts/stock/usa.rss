@@ -1,0 +1,129 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <script>
+    setRefreshTime(1000); 
+    symbolArray_keep = NULL;
+    symbolArray = getItemInfoArray("symbol");     
+    stockNameArray = getItemInfoArray("stockName"); 
+    symbols = catStringArray(symbolArray, "+"); 
+   
+     
+    symbolArray = getItemInfoArray("symbol"); 
+    if (symbolArray != symbolArray_keep) {
+        stockNameArray = getItemInfoArray("stockName"); 
+        symbols = catStringArray(symbolArray, "+"); 
+    }
+    symbolArray_keep = symbolArray;
+    url = "http://download.finance.yahoo.com/d/quotes.csv?s="; 
+    url = url + symbols; url = url + "&amp;f=l1c6p2";
+    priceArray = getURLforStock(url); 
+    </script>
+    <onRefresh>
+    setRefreshTime(4000); 
+    print("onRefresh"); 
+    symbolArray = getItemInfoArray("symbol"); 
+    if (symbolArray != symbolArray_keep) {
+        stockNameArray = getItemInfoArray("stockName"); 
+        symbols = catStringArray(symbolArray, "+"); 
+    }
+    symbolArray_keep = symbolArray;
+    url = "http://download.finance.yahoo.com/d/quotes.csv?s="; 
+    url = url + symbols; url = url + "&amp;f=l1c6p2";
+    priceArray = getURLforStock(url); 
+    print(priceArray);
+    </onRefresh>
+    <onUpdate>setRefreshTime(500); print("onUpdate");</onUpdate>
+    
+    <newItem>
+        <symbol>
+            <script>keyword;</script>
+        </symbol>
+        <stockName>
+            <script>keyword;</script>
+        </stockName>
+        <news>
+            <url> <script> "http://finance.yahoo.com/rss/headline?s=" + keyword; </script> </url>
+        </news>                       
+    </newItem>
+
+    <item_template>
+        <title>
+            <script>
+                 "\\e[30;255;255;250;205m" + getStringArrayAt(stockNameArray , -1) + getStringArrayAt(priceArray, -1); 
+            </script>
+        </title>
+        <link>
+            <script>"http://finance.yahoo.com/d/quotes.csv?s=" + getStringArrayAt(symbolArray, -1) + "&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb" ;
+            </script>
+        </link>
+        <media:thumbnail url="image/stock.jpg" />
+        <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+        <canDelete>yes</canDelete>
+    </item_template>
+    <channel>
+        <title>US Stock Lists</title>
+        <link>./scripts/stock/USA.rss</link>
+        <media:thumbnail url="image/stock.jpg"/>  
+
+        <item>
+	 <title>Add Stock</title>
+        <onClick>
+            <script>keyword= getInput(); 
+            if (keyword==NULL) return NULL; 
+            print("The search Keyword is ", keyword); 
+            addItem("newItem"); 
+            stockNameArray = getItemInfoArray("stockName"); 
+            symbolArray = getItemInfoArray("symbol"); 
+            symbols = catStringArray(symbolArray, "+"); 
+            url = "http://download.finance.yahoo.com/d/quotes.csv?s="; 
+            url = url + symbols; 
+            url = url + "&amp;f=l1"; 
+            redrawDisplay(); 
+            </script>
+        </onClick>
+    	 </item>
+    	
+   	 <item>
+        <title>Get Quotes</title>
+        <onClick>
+            <script>keyword= getInput(); 
+            if (keyword==NULL) return NULL; 
+            print("The search Keyword is ", keyword); 
+            localUrl = "http://finance.yahoo.com/d/quotes.csv?s="; 
+            localUrl = localUrl + keyword + "&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb";
+            </script>
+        </onClick>
+        <symbol>
+            <script>keyword</script>
+        </symbol>
+        <stockName>
+            <script>keyword</script>
+        </stockName>
+        <news>
+            <url> <script> "http://finance.yahoo.com/rss/headline?s=" + keyword; </script> </url>
+        </news>                       
+ 	</item>
+        <item>
+            <symbol>%5EDJI</symbol>
+            <stockName>Dow Jones</stockName>  
+            <news url="http://finance.yahoo.com/rss/headline?s=^DJI" />                       
+        </item>
+        <item>
+            <symbol>%5EIXIC</symbol>
+            <stockName>NASDAQ</stockName>
+            <news url="http://finance.yahoo.com/rss/headline?s=^IXIC" />                       
+        </item>
+        <item>
+            <symbol>%5EGSPC</symbol>
+            <stockName>S&amp;P 500</stockName>
+            <news url="http://finance.yahoo.com/rss/headline?s=^GSPC" />                       
+        </item>
+        <item>
+            <symbol>%5ETNX</symbol>
+            <stockName>10-YEAR TREASURY</stockName>            
+            <news url="http://finance.yahoo.com/rss/headline?s=^TNX" />                       
+        </item>
+
+</channel>
+</rss>
+

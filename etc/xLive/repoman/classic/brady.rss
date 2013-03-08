@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Brady Bunch</title>
+
+<item>
+<title>Brady Bunch Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD14DDFB01C3BB68D,Brady+Bunch+Season+1</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/-_ZdMy3X_uc/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Brady Bunch Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD834AA601ED269CC,Brady+Bunch+Season+2</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/wEIcL0vjNXY/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Brady Bunch Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F03B60758CB40C9B0,Brady+Bunch+Season+3</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/_1rcmIBeBCY/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Brady Bunch Season 4</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FC22BAA24F6F5149C,Brady+Bunch+Season+4</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/t4gKkPBpuHU/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Brady Bunch Season 5</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F96C0AC5B034E1C6D,Brady+Bunch+Season+5</link>
+<media:thumbnail url="http://i1.ytimg.com/vi/xwHaL31KEOI/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

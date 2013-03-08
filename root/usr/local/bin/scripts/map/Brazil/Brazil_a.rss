@@ -1,0 +1,498 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_a.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Abaete</title>
+<cur>BRXX0346</cur>
+<for>Abaete</for>
+</item>
+
+<item>
+<title>Abreu e Lima</title>
+<cur>BRXX0735</cur>
+<for>Abreu e Lima</for>
+</item>
+
+<item>
+<title>Acucena</title>
+<cur>BRXX0686</cur>
+<for>Acucena</for>
+</item>
+
+<item>
+<title>Adamantina</title>
+<cur>BRXX0001</cur>
+<for>Adamantina</for>
+</item>
+
+<item>
+<title>Aeroporto de Confins</title>
+<cur>BRXX0687</cur>
+<for>Aeroporto de Confins</for>
+</item>
+
+<item>
+<title>Aeroporto do Galeao</title>
+<cur>BRXX0688</cur>
+<for>Aeroporto do Galeao</for>
+</item>
+
+<item>
+<title>Afua</title>
+<cur>BRXX0347</cur>
+<for>Afua</for>
+</item>
+
+<item>
+<title>Aguai</title>
+<cur>BRXX0348</cur>
+<for>Aguai</for>
+</item>
+
+<item>
+<title>Aguas Formosas</title>
+<cur>BRXX0350</cur>
+<for>Aguas Formosas</for>
+</item>
+
+<item>
+<title>Aguas de Sao Pedro</title>
+<cur>BRXX0349</cur>
+<for>Aguas de Sao Pedro</for>
+</item>
+
+<item>
+<title>Agudos</title>
+<cur>BRXX0479</cur>
+<for>Agudos</for>
+</item>
+
+<item>
+<title>Aimores</title>
+<cur>BRXX0351</cur>
+<for>Aimores</for>
+</item>
+
+<item>
+<title>Alagoinhas</title>
+<cur>BRXX0002</cur>
+<for>Alagoinhas</for>
+</item>
+
+<item>
+<title>Alegre</title>
+<cur>BRXX0480</cur>
+<for>Alegre</for>
+</item>
+
+<item>
+<title>Alegrete</title>
+<cur>BRXX0003</cur>
+<for>Alegrete</for>
+</item>
+
+<item>
+<title>Alenquer</title>
+<cur>BRXX0481</cur>
+<for>Alenquer</for>
+</item>
+
+<item>
+<title>Alfenas</title>
+<cur>BRXX0482</cur>
+<for>Alfenas</for>
+</item>
+
+<item>
+<title>Almeirim</title>
+<cur>BRXX0483</cur>
+<for>Almeirim</for>
+</item>
+
+<item>
+<title>Almenara</title>
+<cur>BRXX0484</cur>
+<for>Almenara</for>
+</item>
+
+<item>
+<title>Alpinopolis</title>
+<cur>BRXX0352</cur>
+<for>Alpinopolis</for>
+</item>
+
+<item>
+<title>Alta Floresta</title>
+<cur>BRXX0339</cur>
+<for>Alta Floresta</for>
+</item>
+
+<item>
+<title>Altamira</title>
+<cur>BRXX0005</cur>
+<for>Altamira</for>
+</item>
+
+<item>
+<title>Aluminio</title>
+<cur>BRXX0689</cur>
+<for>Aluminio</for>
+</item>
+
+<item>
+<title>Alvaraes</title>
+<cur>BRXX0353</cur>
+<for>Alvaraes</for>
+</item>
+
+<item>
+<title>Alvares Machado</title>
+<cur>BRXX0354</cur>
+<for>Alvares Machado</for>
+</item>
+
+<item>
+<title>Alvorada</title>
+<cur>BRXX0927</cur>
+<for>Alvorada</for>
+</item>
+
+<item>
+<title>Amapa</title>
+<cur>BRXX0730</cur>
+<for>Amapa</for>
+</item>
+
+<item>
+<title>Americana</title>
+<cur>BRXX0006</cur>
+<for>Americana</for>
+</item>
+
+<item>
+<title>Amparo</title>
+<cur>BRXX0485</cur>
+<for>Amparo</for>
+</item>
+
+<item>
+<title>Ananindeua</title>
+<cur>BRXX0486</cur>
+<for>Ananindeua</for>
+</item>
+
+<item>
+<title>Anapolis</title>
+<cur>BRXX0007</cur>
+<for>Anapolis</for>
+</item>
+
+<item>
+<title>Anastacio</title>
+<cur>BRXX0008</cur>
+<for>Anastacio</for>
+</item>
+
+<item>
+<title>Andira</title>
+<cur>BRXX0355</cur>
+<for>Andira</for>
+</item>
+
+<item>
+<title>Andradina</title>
+<cur>BRXX0009</cur>
+<for>Andradina</for>
+</item>
+
+<item>
+<title>Angatuba</title>
+<cur>BRXX0487</cur>
+<for>Angatuba</for>
+</item>
+
+<item>
+<title>Angra dos Reis</title>
+<cur>BRXX0263</cur>
+<for>Angra dos Reis</for>
+</item>
+
+<item>
+<title>Aparecida</title>
+<cur>BRXX0488</cur>
+<for>Aparecida</for>
+</item>
+
+<item>
+<title>Apiai</title>
+<cur>BRXX0356</cur>
+<for>Apiai</for>
+</item>
+
+<item>
+<title>Apucarana</title>
+<cur>BRXX0010</cur>
+<for>Apucarana</for>
+</item>
+
+<item>
+<title>Aracaju</title>
+<cur>BRXX0011</cur>
+<for>Aracaju</for>
+</item>
+
+<item>
+<title>Aracati</title>
+<cur>BRXX0012</cur>
+<for>Aracati</for>
+</item>
+
+<item>
+<title>Aracatuba</title>
+<cur>BRXX0013</cur>
+<for>Aracatuba</for>
+</item>
+
+<item>
+<title>Aracoiaba da Serra</title>
+<cur>BRXX0690</cur>
+<for>Aracoiaba da Serra</for>
+</item>
+
+<item>
+<title>Aracruz</title>
+<cur>BRXX0014</cur>
+<for>Aracruz</for>
+</item>
+
+<item>
+<title>Aracuai</title>
+<cur>BRXX0691</cur>
+<for>Aracuai</for>
+</item>
+
+<item>
+<title>Aragarcas</title>
+<cur>BRXX0692</cur>
+<for>Aragarcas</for>
+</item>
+
+<item>
+<title>Araguacu</title>
+<cur>BRXX0693</cur>
+<for>Araguacu</for>
+</item>
+
+<item>
+<title>Araguaina</title>
+<cur>BRXX0357</cur>
+<for>Araguaina</for>
+</item>
+
+<item>
+<title>Araguari</title>
+<cur>BRXX0264</cur>
+<for>Araguari</for>
+</item>
+
+<item>
+<title>Araguatins</title>
+<cur>BRXX0489</cur>
+<for>Araguatins</for>
+</item>
+
+<item>
+<title>Arapiraca</title>
+<cur>BRXX0015</cur>
+<for>Arapiraca</for>
+</item>
+
+<item>
+<title>Arapongas</title>
+<cur>BRXX0016</cur>
+<for>Arapongas</for>
+</item>
+
+<item>
+<title>Araraquara</title>
+<cur>BRXX0265</cur>
+<for>Araraquara</for>
+</item>
+
+<item>
+<title>Araruama</title>
+<cur>BRXX0490</cur>
+<for>Araruama</for>
+</item>
+
+<item>
+<title>Araucaria</title>
+<cur>BRXX0017</cur>
+<for>Araucaria</for>
+</item>
+
+<item>
+<title>Araxa</title>
+<cur>BRXX0018</cur>
+<for>Araxa</for>
+</item>
+
+<item>
+<title>Arinos</title>
+<cur>BRXX0491</cur>
+<for>Arinos</for>
+</item>
+
+<item>
+<title>Aripuana</title>
+<cur>BRXX0019</cur>
+<for>Aripuana</for>
+</item>
+
+<item>
+<title>Ariquemes</title>
+<cur>BRXX0492</cur>
+<for>Ariquemes</for>
+</item>
+
+<item>
+<title>Aruja</title>
+<cur>BRXX0358</cur>
+<for>Aruja</for>
+</item>
+
+<item>
+<title>Arvoredo</title>
+<cur>BRXX0266</cur>
+<for>Arvoredo</for>
+</item>
+
+<item>
+<title>Assis</title>
+<cur>BRXX0267</cur>
+<for>Assis</for>
+</item>
+
+<item>
+<title>Atibaia</title>
+<cur>BRXX0493</cur>
+<for>Atibaia</for>
+</item>
+
+<item>
+<title>Augustinopolis</title>
+<cur>BRXX0694</cur>
+<for>Augustinopolis</for>
+</item>
+
+<item>
+<title>Auriflama</title>
+<cur>BRXX0020</cur>
+<for>Auriflama</for>
+</item>
+
+<item>
+<title>Avare</title>
+<cur>BRXX0021</cur>
+<for>Avare</for>
+</item>
+
+</channel></rss>

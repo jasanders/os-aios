@@ -1,0 +1,105 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>bgPopup</bookmark>
+
+<onRefresh>
+	 setRefreshTime(-1);
+	 postMessage("return");
+</onRefresh>
+
+<onExit>
+	setRefreshTime(-1);
+</onExit>
+
+<!-- mediaDisplay of parent will be merged into the mediaDisplay here, include all child elements, ex: onEnter, text, image, etc. -->
+<mediaDisplay
+	name=onePartView
+
+	sideColorRight=-1:-1:-1
+	sideColorLeft=-1:-1:-1
+	sideColorTop=-1:-1:-1
+	sideColorBottom=-1:-1:-1
+	backgroundColor=-1:-1:-1
+	focusBorderColor=-1:-1:-1
+	unFocusBorderColor=-1:-1:-1
+	itemBackgroundColor=-1:-1:-1
+
+	showHeader="no"
+	showDefaultInfo="no"
+
+	rollItems="no"
+	forceRedrawItems="yes"
+
+	itemPerPage=1
+	viewAreaXPC=10
+	viewAreaYPC=10
+	viewAreaWidthPC=80
+	viewAreaHeightPC=80
+>
+
+<backgroundDisplay>
+	<image offsetXPC=0 widthPC=100 offsetYPC=0 heightPC=100>	
+		<script>
+			image = getEnv("bgPopup");
+			
+			image;
+		</script>
+	</image>
+	
+</backgroundDisplay>
+
+<!-- itemDisplay will draw widget inside the item area, item area is decided by mediaDisplay attributes -->
+<itemDisplay>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+		<script>
+			image = "";
+			image;
+		</script>
+	</image>
+	
+</itemDisplay>
+
+<!-- Some variables defined here will be referred to define the other attributes in mediaDisplay. -->
+<onEnter>
+	bgPopupTimeout=15;
+	setFullScreenFade(64);
+	setRefreshTime(bgPopupTimeout*1000);
+</onEnter>
+
+<onUserInput>
+	handle = "false";
+	userInput = currentUserInput();
+	focusIndex = getFocusItemIndex();
+	if ("enter" == userInput) {
+		data = "";
+		if (data != NULL) {
+			print("item was pressed. set return string = ", data);
+			setReturnString(data);
+		}
+		handle = "return";
+	}
+	else if ("right" == userInput || "left" == userInput) {
+		handle = "true";
+	}
+	handle;
+</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+	<title>
+		Poster Display
+	</title>
+	<link>rss_file://./scripts/MovieCover/bgPopup.rss</link>
+
+
+<!-- use itemSize element to describe how many items in the page -->
+<itemSize>
+0
+</itemSize>
+
+
+</channel>
+</rss>

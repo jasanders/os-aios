@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Charlie's Angels</title>
+
+<item>
+<title>Charlie's Angels Season 1</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FF1238F11B188240A,Charlie%27s+Angels+Season+1</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/b-odWvM8_Mo/market_thumb.jpg?v=70b46c" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Charlie's Angels Season 2</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F185B116AF011B864,Charlie%27s+Angels+Season+2</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/b-odWvM8_Mo/market_thumb.jpg?v=70b46c" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Charlie's Angels Season 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FD431F22788A0F25F,Charlie%27s+Angels+Season+3</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/b-odWvM8_Mo/market_thumb.jpg?v=70b46c" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

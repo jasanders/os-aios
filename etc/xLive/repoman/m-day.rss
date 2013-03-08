@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>http://www.getthebigpicture.net/storage/anjelica/RED%20Bruce%20Willis%20movie%20trailer-1.jpg?__SQUARESPACE_CACHEVERSION=1283960107421</image>
+</backgroundDisplay>
+		
+	    </mediaDisplay>
+  
+<channel>
+<title>R.E.D. - Older. Harder. Better.</title>
+
+<item>
+
+      <title>R.E.D. - Older. Harder. Better.</title>
+      <link>http://w00.movshare.net/dl/9758a383c41bbb47061125796f8fa017/4d35b9b6/7fnptc2eerlk3.avi</link>
+      <media:thumbnail url="http://www.bollywoodbilli.com/wp-content/uploads/2010/11/RED-movie-2010-torrent-download-Bruce-Willis-starrer-new-English-film-RED.jpg" />
+	  <enclosure type="video/mp4" url="http://w00.movshare.net/dl/9758a383c41bbb47061125796f8fa017/4d35b9b6/7fnptc2eerlk3.avi"/>
+	<mediaDisplay name="threePartsView" sideLeftWidthPC="0" itemImageXPC="5" itemXPC="20" itemYPC="20" itemWidthPC="65" capWidthPC="70" unFocusFontColor="101:101:101" focusFontColor="255:255:255" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+         <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay>
+  </item>
+	
+	
+
+	
+</channel>
+</rss>

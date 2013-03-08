@@ -1,0 +1,209 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark> KenBurns </bookmark>
+
+<script>
+	
+	CurrentAP = getEnv("EntryStatusString1");
+	CurrentTypeStr2 = getEnv("EntryStatusString2");
+	CurrentTypeStr3 = getEnv("EntryStatusString3");
+	CurrentTypeStr4 = getEnv("EntryStatusString4");
+	CurrentTypeStr5 = getEnv("EntryStatusString5");
+	CurrentTypeStr6 = getEnv("EntryStatusString6");
+	CurrentTypeStr7 = getEnv("EntryStatusString7");
+	print("CurStatus:" , CurrentAP, CurrentTypeStr2, CurrentTypeStr3, CurrentTypeStr4, CurrentTypeStr5, CurrentTypeStr6, CurrentTypeStr7);
+
+	storagePath = getStoragePath("key");
+	storagePath = storagePath + "KenBurns.dat";
+	selectArray = readStringFromFile(storagePath);
+	if (selectArray != null){
+		lastSel = getStringArrayAt(selectArray, 0);
+	}			
+	print("####### - ", CurrentAP, lastSel);
+
+</script>
+
+<mediaDisplay name=onePartView 
+
+	sideLeftWidthPC=100
+	sideRightWidthPC=0
+	imageLeftSide="menubar/image/option_menu_bg.bmp"
+	imageRightSide=""
+	
+	showHeader = "no"
+	showDefaultInfo="no"
+	rollItems = "no"
+	
+	itemXPC = 3
+	itemWidthPC = 94
+	imageFocus="menubar/image/popmunu_focus.bmp"
+	itemBackgroundColor=-1:-1:-1
+		
+>
+
+	<onEnter>
+		redrawDisplay();
+		
+		RightBottomOffsetX = 95;
+		RightBottomOffsetY = 92;
+		itemPerPage=2;
+		titleHeightF = 5;	
+		BottomHeightF = 1;	
+		EachItemheight = 5.3;
+		viewAreaWidthPC = 23.8;
+		viewAreaHeightPC = EachItemheight * itemPerPage + titleHeightF + BottomHeightF;
+	</onEnter>
+	
+	<!-- Display View Area -------------------------------->
+	
+		<viewAreaWidthPC> 
+			<script>	
+				viewAreaWidthPC;
+			</script>
+		</viewAreaWidthPC> 
+		<viewAreaHeightPC> 
+			<script>	
+				viewAreaHeightPC;
+			</script>
+		</viewAreaHeightPC>
+		<viewAreaXPC> 
+			<script>
+				viewAreaXPC = RightBottomOffsetX-viewAreaWidthPC;  
+			</script> 
+		</viewAreaXPC>
+		<viewAreaYPC> 
+			<script>
+				viewAreaYPC = RightBottomOffsetY-viewAreaHeightPC;  
+			</script> 
+		</viewAreaYPC>
+	<!----------------------------------------------------->
+	
+	<!-- Item Display Parameter --------------------------->
+		<itemPerPage>
+			<script>	
+				itemPerPage;
+			</script>
+		</itemPerPage>
+		<itemYPC>  
+			<script>
+				itemYPC = (titleHeightF*100/viewAreaHeightPC); 
+			</script>
+		</itemYPC>				
+		<itemHeightPC> 
+			<script>
+				itemHeightPC = EachItemheight*100/viewAreaHeightPC; 
+			</script> 
+		</itemHeightPC>
+	<!----------------------------------------------------->
+	
+
+	<!-- over write user key mapping here -->
+	<!-- return true means the event has been handled -->
+	<!-- return false means the View will continue to handle the event -->
+
+	<itemDisplay>
+		<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+			<script>
+				queryIndex = getQueryItemIndex();
+				focusIndex = getFocusItemIndex();
+				lastSelectedIndex = getSelectedItemIndex();
+				state = getDrawingItemState();
+				print("XXX0 - ",queryIndex, " state = ", state, " f: ", focusIndex, " lSel: ",lastSelectedIndex, " sel: ", CurrentSel);
+				if (queryIndex == focusIndex) {
+					thumbnail = "menubar/image/popmunu_focus.bmp";
+				}else {
+					position = getItemInfo("position");
+					if (position == "single"){
+						thumbnail = "menubar/image/item_normal_bar_single.bmp";
+					}else if (position == "head"){
+						thumbnail = "menubar/image/item_normal_bar_head.bmp";
+					}else if (position == "tail"){
+						thumbnail = "menubar/image/item_normal_bar_tail.bmp";
+					}else{
+						thumbnail = "menubar/image/item_normal_bar.bmp";
+					}
+				}
+			</script>
+		</image>
+		<text offsetXPC=3.0 offsetYPC=10 widthPC=94 heightPC=85 fontSize=16 backgroundColor=-1:-1:-1>
+			<script>
+				title = " " + getItemInfo("title");				
+			</script>
+			<foregroundColor>
+				<script>
+					selected = getItemInfo("selected");
+					state = getDrawingItemState();	
+					if (state == "focus") { 
+						color="255:255:255";
+					}
+					else {
+						if (selected == "yes") { 
+							color="253:184:50";
+						}else {
+							color="172:172:172";
+						}
+					}		
+				</script>
+			</foregroundColor>
+		</text>
+	</itemDisplay>
+	
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=15>
+		<script>
+			"menubar/image/option_menu_title_bg.bmp";
+		</script>
+	</image>
+	<text fontSize=18 offsetXPC=0 offsetYPC=3 widthPC=100 heightPC=25 align=center backgroundColor=-1:-1:-1 foregroundColor=255:255:255>
+		<script>
+			title = "Ken Burns";
+		</script>			
+	</text>
+	
+</mediaDisplay>
+
+
+	<item_template>
+		<onClick>
+		    <script>
+			    StrCmd= getItemInfo("StrCmd");
+				CmdType = "KenBurns";
+				print("select::", CurrentAP, CmdType, StrCmd);
+				pendingMessage = "return";
+				menuCmd(CurrentAP, CmdType, StrCmd);
+				null;
+		    </script>
+		</onClick>
+		
+		<selected>
+		    <script>
+				ret = "no";
+				StrCmd= getItemInfo("StrCmd");
+				if(StrCmd == lastSel){
+					ret = "yes";
+				}
+	
+				ret;
+			</script>
+		</selected>
+	</item_template>
+
+<channel>
+	<title>Ken Burns</title>
+	<link>./scripts/widget/KenBurns.rss </link>
+
+<item>
+<title> $[OFF] </title>
+<position> head </position>
+<StrCmd> off </StrCmd>
+</item>
+
+<item>
+<title> $[ON] </title>
+<position> tail </position>
+<StrCmd> on </StrCmd>
+</item>
+
+</channel>
+</rss>
+

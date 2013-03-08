@@ -1,0 +1,252 @@
+#!/bin/sh
+#
+# this script handles the gtalk daemon process
+
+# ====== UTILITY FUNCTION BEGINNING ======
+
+# Set up a default search path.
+PATH="/sbin:/usr/sbin:/bin:/usr/bin"
+export PATH
+
+# Check if $pid (could be plural) are running
+checkpid() {
+	local i
+
+	for i in $* ; do
+		[ -d "/proc/$i" ] && return 0
+	done
+	return 1
+}
+
+# __proc_pids {program} [pidfile]
+# Set $pid to pids from /var/run* for {program}.  $pid should be declared
+# local in the caller.
+# Returns LSB exit code for the 'status' action.
+__pids_var_run() {
+	local base=${1##*/}
+	local pid_file=${2:-/var/run/$base.pid}
+
+	pid=
+	if [ -f "$pid_file" ] ; then
+	        local line p
+		read line < "$pid_file"
+		for p in $line ; do
+			[ -d "/proc/$p" ] && pid="$pid $p"
+		done
+	        if [ -n "$pid" ]; then
+	                return 0
+	        fi
+		return 1 # "Program is dead and /var/run pid file exists"
+	fi
+	return 3 # "Program is not running"
+}
+
+# Output PIDs of matching processes, found using pidof
+__pids_pidof() {
+	pidof "$1"
+}
+
+# A function to stop a program.
+killproc() {
+	local RC killlevel= base pid pid_file= delay
+
+	RC=0; delay=3
+	# Test syntax.
+	if [ "$#" -eq 0 ]; then
+		echo $"Usage: killproc [-p pidfile] [ -d delay] {program} [-signal]"
+		return 1
+	fi
+	if [ "$1" = "-p" ]; then
+		pid=$2
+		shift 2
+	fi
+	if [ "$1" = "-d" ]; then
+		delay=$2
+		shift 2
+	fi
+        
+
+	# check for second arg to be kill level
+	[ -n "${2:-}" ] && killlevel=$2
+
+        # Save basename.
+        base=${1##*/}
+
+        # Kill it.
+        if [ -n "$pid" ] ; then
+                [ "$BOOTUP" = "verbose" -a -z "${LSB:-}" ] && echo -n "$base "
+		if [ -z "$killlevel" ] ; then
+		       if checkpid $pid 2>&1; then
+			   # TERM first, then KILL if not dead
+			   kill -TERM $pid >/dev/null 2>&1
+			   usleep 100000
+			   if checkpid $pid && sleep 1 &&
+			      checkpid $pid && sleep $delay &&
+			      checkpid $pid ; then
+                                kill -KILL $pid >/dev/null 2>&1
+				usleep 100000
+			   fi
+		        fi
+			checkpid $pid
+			RC=$?
+			[ "$RC" -eq 0 ] && failure $"$base shutdown" || success $"$base shutdown"
+			RC=$((! $RC))
+		# use specified level only
+		else
+		        if checkpid $pid; then
+	                	kill $killlevel $pid >/dev/null 2>&1
+				RC=$?
+				[ "$RC" -eq 0 ] && success $"$base $killlevel" || failure $"$base $killlevel"
+			elif [ -n "${LSB:-}" ]; then
+				RC=7 # Program is not running
+			fi
+		fi
+	else
+		if [ -n "${LSB:-}" -a -n "$killlevel" ]; then
+			RC=7 # Program is not running
+		else
+			failure $"$base shutdown"
+			RC=0
+		fi
+	fi
+
+        # Remove pid file if any.
+	if [ -z "$killlevel" ]; then
+            rm -f "${pid_file:-/var/run/$base.pid}"
+	fi
+	return $RC
+}
+
+# Log that something succeeded
+success() {
+  return 0
+}
+
+# Log that something failed
+failure() {
+  local rc=$?
+  return $rc
+}
+
+# ====== UTILITY FUNCTION END ======
+
+
+gtalk_start(){
+#define where bthome is. This is where gtalk stores metadata information
+#such as how many torrents are being downloaded and their progress
+    bthome=$2
+    btdl=/tmp/btdownload
+#define where the btpd binary is
+    btpdbin=$1
+    btdldir=$2
+
+    btpdpid=`ps ux | awk '/btpd/ && !/awk/ && !/bt.script/ {print $1}'`
+    if test "$btpdpid" != ""; then 
+	echo "it is still running!"
+	exit 0
+    fi
+
+    if test "$bthome" = "" ; then
+	echo "no download dir specified"
+	exit 1
+    fi
+
+    if test "$btpdbin" = "" ; then
+	echo "no btpd binary specified"
+	exit 1
+    fi
+
+    if [ ! -d $btdldir ]; then
+	echo "btpd directory is invalid"
+	echo "bt.script create a "
+	echo $btdldir
+	mkdir $btdldir
+	#exit 1
+    fi
+
+    if [ ! -e $btpdbin ]; then
+	echo "btpd binary is missing"
+	exit 1
+    fi
+
+    #if [ -e $btdl ]; then
+	rm -rf $btdl
+    #fi
+	
+    ln -s $btdldir $btdl
+
+   #if [ ! -e $btdl ]; then
+   #echo "YOU DIDNT SETUP /tmp/btdownload link!!!!"
+   #echo "I refuse to start btpd"
+   #exit 1
+   #fi
+
+#start running btpd
+    export HOME=$bthome
+    $btpdbin
+
+   # return 0;
+	exit 0;
+}
+
+gtalk_stop(){
+#    btpdpid=`ps ux | awk '/IMS_Modules\/gtalk\/gtalk/ && !/awk/ && !/gtalk.script/ {print $1}'`
+btpdpid=`echo \`ps ux | grep IMS_Modules/gtalk/gtalk | grep -v "grep IMS_Modules/gtalk/gtalk" | head -n 1\` | cut -d ' ' -f 1`
+
+   #btpdpid=`ps ux | awk '/btpd/ && !/awk/ {print $1}'`
+
+    if test "$btpdpid" == ""; then 
+	echo " no btpdpid"
+	#exit 0
+	else
+
+    killproc -p $btpdpid	
+	#exit 0;
+	fi
+}
+
+gtalk_status(){
+
+#    pattern1=`ps ux | awk '/IMS_Modules\/gtalk\/gtalk/ && !/awk/ && !/gtalk.script/ {print $1}'`
+
+pattern1=`echo \`ps ux | grep IMS_Modules/gtalk/gtalk | grep -v "grep IMS_Modules/gtalk/gtalk" | head -n 1\` | cut -d ' ' -f 1`
+
+#   echo $pattern1
+#	echo $btpdpid 
+
+
+   if test "$pattern1" == ""; then 
+    	echo "gtalk stopped"
+	exit 0
+    fi
+    echo "gtalk running"
+    exit 0
+}
+
+case "$1" in
+	start)
+		echo "Gtalk start"
+		gtalk_start $2 $3
+		;;
+	stop)
+		echo "Gtalk stop"
+		gtalk_stop
+		exit 0
+		;;
+	status)
+		echo "Gtalk status"
+		gtalk_status
+		;;
+	restart)
+		echo "Gtalk restart"
+		echo "Gtalk stop"
+		gtalk_stop
+		echo "Gtalk start"
+		gtalk_start $2 $3
+		;;
+	*)
+      	echo $"Usage: $0 {start|stop|status}"
+		exit 1
+esac
+
+exit 1

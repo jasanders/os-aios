@@ -1,0 +1,207 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+     <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	   idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+  >
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+<channel>
+<title>Australia Police - Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+      <title>Central West Police, Ambulance, Fire, ATC, and Rural Fire Service</title>
+      <link>http://relay.radioreference.com:80/276193228
+</link>
+	   <enclosure type="video/mp3" url="http://relay.radioreference.com:80/276193228
+"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+      
+
+    
+<item>
+
+      <title>Central West Police, RFS, Country Energy</title>
+      <link>http://relay.radioreference.com:80/154430433
+</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/154430433
+"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+
+    
+<item>
+
+      <title> Newcastlescan EMS and Local Services</title>
+      <link>http://relay.radioreference.com:80/30186630</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/30186630"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+    
+
+    
+<item>
+
+      <title>Hunter Valley and Coffs Harbour/Port Macquarie - Police</title>
+      <link>http://relay.radioreference.com:80/210470645</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/210470645"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+
+
+   
+      
+
+    
+<item>
+
+      <title>NSW Police and Ambulance, Rural Fire Service and Fire Brigade</title>
+      <link>http://relay.radioreference.com:80/552008778</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/552008778"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+
+    
+<item>
+
+      <title>NSW Police Southern Districts</title>
+      <link>http://relay.radioreference.com:80/182548682</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/182548682"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+    
+
+    
+<item>
+
+      <title>Gold Coast and Tweed Heads (Northern NSW)- Police</title>
+      <link>http://relay.radioreference.com:80/279876771</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/279876771"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+  
+  
+   
+
+    
+<item>
+
+      <title>Surf Life Saving Far North Coast</title>
+      <link>http://relay.radioreference.com:80/773653457</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/773653457"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+
+    
+<item>
+
+      <title>NSW Far South Cast Fire, Flood and Storm</title>
+      <link>http://relay.radioreference.com:80/742342340</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/742342340"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+    
+
+    
+<item>
+
+      <title>NSW Police and Ambulance, Rural Fire Service and Fire Brigade</title>
+      <link>http://relay.radioreference.com:80/552008778</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/552008778"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+  
+   
+   
+
+    
+<item>
+
+      <title>NSW Police, Fire Agencies, and Ambulance ,NPWS ,SCA and RTA</title>
+      <link>http://relay.radioreference.com:80/41087701</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/41087701"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+
+    
+<item>
+
+      <title>Sydney Area Fire Service</title>
+      <link>http://relay.radioreference.com:80/550880968</link>
+	   <enclosure type="audio/mp3" url="http://relay.radioreference.com:80/550880968"/>
+     <media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg" />
+	
+  </item>
+  
+   
+</channel>
+</rss>

@@ -1,0 +1,53 @@
+﻿[+] - New
+[*] - Fixed
+[~] - Changed
+
+1.0.0
+	First Version
+
+1.0.2
+	[+] System commands
+	[+] Extended keys
+
+1.1.3
+	[+] Standby mode support
+
+1.1.5
+	[*] Small bugs CSV parser
+	[*] Some bug in the test mode
+
+1.1.6
+	[+] IpodCGI support (SDK4)
+
+1.1.8
+	[*] Ignored keys not working correctly
+	[+] Switch -r redirects unknown keys to the player
+
+1.2.12
+	[~] Record #0 now first value it’s pressed key and second command key
+	[+] Switch -f loading configuration from alternative path
+	[+] You can use # symbol to add some comments to the configuration file
+	[~] Updated configuration sample for AL460
+
+1.2.14
+	[~] Some memory optimization
+	[*] Small bug with comments
+
+1.2.16
+	[+] Switch -c capture mode (display pressed keys)
+	[+] Switch -h short help
+	[+] Changes log
+
+1.3.19
+	[+] New POWERKEY_IRRP mode
+	[+] Switch -R redirect absolutely all keys-codes to the player
+	[~] Reduced install steps (removed echo 1 > /sys/devices/platform/VenusIR/bypass)
+	[*] Some fixes in the capture mode
+
+1.3.21
+	[+] RC capability: reverse code detection
+	[+] RC capability: protocol selection
+
+1.3.23
+	[+] RC capability: debounce selection
+	[~] Prevent running more than one program instance

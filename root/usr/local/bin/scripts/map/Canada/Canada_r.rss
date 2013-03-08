@@ -1,0 +1,272 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Radisson</title>
+<cur>CAXX0388</cur>
+<for>Radisson</for>
+</item>
+
+<item>
+<title>Radium Hot Springs</title>
+<cur>CAXX0389</cur>
+<for>Radium Hot Springs</for>
+</item>
+
+<item>
+<title>Rae</title>
+<cur>CAXX0390</cur>
+<for>Rae</for>
+</item>
+
+<item>
+<title>Raleigh</title>
+<cur>CAXX0391</cur>
+<for>Raleigh</for>
+</item>
+
+<item>
+<title>Rankin Inlet</title>
+<cur>CAXX0563</cur>
+<for>Rankin Inlet</for>
+</item>
+
+<item>
+<title>Raymond</title>
+<cur>CAXX0392</cur>
+<for>Raymond</for>
+</item>
+
+<item>
+<title>Read Island</title>
+<cur>CAXX0393</cur>
+<for>Read Island</for>
+</item>
+
+<item>
+<title>Red Deer</title>
+<cur>CAXX0394</cur>
+<for>Red Deer</for>
+</item>
+
+<item>
+<title>Red Lake</title>
+<cur>CAXX0606</cur>
+<for>Red Lake</for>
+</item>
+
+<item>
+<title>Red Rock</title>
+<cur>CAXX0395</cur>
+<for>Red Rock</for>
+</item>
+
+<item>
+<title>Redcliff</title>
+<cur>CAXX0396</cur>
+<for>Redcliff</for>
+</item>
+
+<item>
+<title>Regina</title>
+<cur>CAXX0397</cur>
+<for>Regina</for>
+</item>
+
+<item>
+<title>Revelstoke</title>
+<cur>CAXX0398</cur>
+<for>Revelstoke</for>
+</item>
+
+<item>
+<title>Rhein</title>
+<cur>CAXX0399</cur>
+<for>Rhein</for>
+</item>
+
+<item>
+<title>Richmond</title>
+<cur>CAXX0400</cur>
+<for>Richmond</for>
+</item>
+
+<item>
+<title>Richmond Hill</title>
+<cur>CAXX0401</cur>
+<for>Richmond Hill</for>
+</item>
+
+<item>
+<title>Rimouski</title>
+<cur>CAXX0402</cur>
+<for>Rimouski</for>
+</item>
+
+<item>
+<title>Riverton</title>
+<cur>CAXX0403</cur>
+<for>Riverton</for>
+</item>
+
+<item>
+<title>Riviere-a-Claude</title>
+<cur>CAXX0404</cur>
+<for>Riviere-a-Claude</for>
+</item>
+
+<item>
+<title>Riviere-du-Loup</title>
+<cur>CAXX0405</cur>
+<for>Riviere-du-Loup</for>
+</item>
+
+<item>
+<title>Roberval</title>
+<cur>CAXX0406</cur>
+<for>Roberval</for>
+</item>
+
+<item>
+<title>Rockglen</title>
+<cur>CAXX0570</cur>
+<for>Rockglen</for>
+</item>
+
+<item>
+<title>Rolla</title>
+<cur>CAXX0407</cur>
+<for>Rolla</for>
+</item>
+
+<item>
+<title>Rose Blanche</title>
+<cur>CAXX0408</cur>
+<for>Rose Blanche</for>
+</item>
+
+<item>
+<title>Rosetown</title>
+<cur>CAXX0409</cur>
+<for>Rosetown</for>
+</item>
+
+<item>
+<title>Rosetown East</title>
+<cur>CAXX0590</cur>
+<for>Rosetown East</for>
+</item>
+
+<item>
+<title>Rossland</title>
+<cur>CAXX0410</cur>
+<for>Rossland</for>
+</item>
+
+<item>
+<title>Rothesay</title>
+<cur>CAXX0411</cur>
+<for>Rothesay</for>
+</item>
+
+</channel></rss>

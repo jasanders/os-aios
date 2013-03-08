@@ -1,0 +1,9 @@
+Jukebox.cfg				<Jukebox_Path>
+jukebox.cgi 			inside of httpd /cgi-bin directory
+MainJukebox.rss			/usr/local/etc/srjg/
+movies.db				<Movies_Path>  Now automatically created if not found
+sqlite3					<Jukebox_Path>
+new_jukebox_update.sh	<Jukebox_Path>
+imdb.sh					<Jukebox_Path>
+mainjukebox.xml			/home/srjgsql/
+genre_img(dir)          /home/srjgsql/

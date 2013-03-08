@@ -1,0 +1,42 @@
+[+] - New
+[*] - Fixed
+[~] - Changed
+
+1.0.0
+	First version (based on irfake3 1.2.14)
+
+1.0.2
+	[+] Switch -c capture mode (display pressed keys)
+	[+] Switch -h short help
+	[+] Changes log
+
+1.1.5
+	[+] New POWERKEY_IRRP mode
+	[+] Switch -R redirect absolutely all keys-codes to the player
+	[~] Reduced install steps (removed echo 1 > /sys/devices/platform/VenusIR/bypass)
+	[*] Some fixes in the capture mode
+
+1.1.7
+	[+] RC capability: reverse code detection
+	[+] RC capability: protocol selection
+
+1.1.9
+	[+] RC capability: debounce selection
+	[~] Prevent running more than one program instance
+
+1.2.13
+	[+] RC capability: Driver mode selection
+	[~] Protocol,Debounce,Driver Mode: now by default all parameters configured by DvdPlayer
+	[+] Switch -C raw capture mode
+	[~] Enhanced POWERKEY_IRRP now if this option is not defined in the system parameter list it will be added automatically
+	[*] Switch -R now garbage will be not translated to the driver
+
+1.2.15
+	[+] Jupiter chip support
+	[*] CSV parser bug (Issue 3, see project page for more details)
+
+1.2.15 Revision 1
+	[*] Fixed POWERKEY_IRRP issue for Jupiter based CPU & new kernel.
+
+1.2.15 Revision 2
+	[*] Improved compatibility of the POWERKEY_IRRP (required for some player models like iconbit,mele and others)

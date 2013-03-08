@@ -1,0 +1,233 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=10
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>Brazil</title>
+<link>./scripts/map/Brazil_v.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Valinhos</title>
+<cur>BRXX0679</cur>
+<for>Valinhos</for>
+</item>
+
+<item>
+<title>Vargem Grande do Sul</title>
+<cur>BRXX0475</cur>
+<for>Vargem Grande do Sul</for>
+</item>
+
+<item>
+<title>Varginha</title>
+<cur>BRXX0318</cur>
+<for>Varginha</for>
+</item>
+
+<item>
+<title>Varzea Grande</title>
+<cur>BRXX0255</cur>
+<for>Varzea Grande</for>
+</item>
+
+<item>
+<title>Varzea Paulista</title>
+<cur>BRXX0476</cur>
+<for>Varzea Paulista</for>
+</item>
+
+<item>
+<title>Vassouras</title>
+<cur>BRXX0680</cur>
+<for>Vassouras</for>
+</item>
+
+<item>
+<title>Vera</title>
+<cur>BRXX0726</cur>
+<for>Vera</for>
+</item>
+
+<item>
+<title>Vera Cruz</title>
+<cur>BRXX0256</cur>
+<for>Vera Cruz</for>
+</item>
+
+<item>
+<title>Vespasiano</title>
+<cur>BRXX0681</cur>
+<for>Vespasiano</for>
+</item>
+
+<item>
+<title>Viamao</title>
+<cur>BRXX0257</cur>
+<for>Viamao</for>
+</item>
+
+<item>
+<title>Vicosa</title>
+<cur>BRXX0477</cur>
+<for>Vicosa</for>
+</item>
+
+<item>
+<title>Vila Velha</title>
+<cur>BRXX0319</cur>
+<for>Vila Velha</for>
+</item>
+
+<item>
+<title>Vilhena</title>
+<cur>BRXX0258</cur>
+<for>Vilhena</for>
+</item>
+
+<item>
+<title>Vinhedo</title>
+<cur>BRXX0682</cur>
+<for>Vinhedo</for>
+</item>
+
+<item>
+<title>Visconde de Maua</title>
+<cur>BRXX3911</cur>
+<for>Visconde de Maua</for>
+</item>
+
+<item>
+<title>Visconde do Rio Branco</title>
+<cur>BRXX0478</cur>
+<for>Visconde do Rio Branco</for>
+</item>
+
+<item>
+<title>Viseu</title>
+<cur>BRXX0683</cur>
+<for>Viseu</for>
+</item>
+
+<item>
+<title>Vitoria</title>
+<cur>BRXX0259</cur>
+<for>Vitoria</for>
+</item>
+
+<item>
+<title>Vitoria da Conquista</title>
+<cur>BRXX0260</cur>
+<for>Vitoria da Conquista</for>
+</item>
+
+<item>
+<title>Volta Redonda</title>
+<cur>BRXX0320</cur>
+<for>Volta Redonda</for>
+</item>
+
+<item>
+<title>Votorantim</title>
+<cur>BRXX0684</cur>
+<for>Votorantim</for>
+</item>
+
+<item>
+<title>Votuporanga</title>
+<cur>BRXX0261</cur>
+<for>Votuporanga</for>
+</item>
+</channel></rss>

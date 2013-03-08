@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Lynda.com</title>
+
+<item>
+
+<title>lynda.com Video Training</title>
+<link>http://feeds.feedburner.com/ldcvideotraining</link>
+<media:thumbnail url="http://www.lynda.com/podcasts/lynda_logo.png"/>
+    <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+    </item>
+
+</channel>
+</rss>

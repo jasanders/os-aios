@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Alfabet</alpha>
+	<genre>Gatunek</genre>
+	<recent>Ostatnio dodane</recent>
+	<select>Wybierz według:</select>
+	<update>Aktualizacja</update>
+	<notwatched>Do zobaczenia</notwatched>
+	<year>Rok</year>
+	<search>Szukaj</search>
+  <config>Konfiguracja</config>
+  <textInfo>Witamy w SRJG !&#x0A;&#x0A;1 - aby odtworzyć ostatnio oglądany film.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Keys list:&#x0A;1 = Switch View for the Jukebox&#x0A;Enter = To select&#x0A;Rtn = Previous screen</helpGP>
+  <helpJbx>Keys list:&#x0A;2 = Mark as Watched&#x0A;Enter = Select&#x0A;Rtn = Previous screen&#x0A;Play = Play video&#x0A;Goto = Seek the video number&#x0A;<< = Go back 10 videos&#x0A;>> = Skip 10 videos</helpJbx>
+  <helpSheet>Keys list:&#x0A;2 = Mark as Watched&#x0A;Rtn = Previous screen&#x0A;Enter = Play video&#x0A;Play = Play video&#x0A;< = Previous video&#x0A;> = Next video</helpSheet>
+</jukebox>
+<update>
+  <fast>Szybka</fast>
+  <rebuild>Pełna</rebuild>
+</update>
+<cfg>
+  <Lang>Język</Lang>
+  <Jukebox_Size>Widok</Jukebox_Size>
+  <Movies_Path>Ścieżka do filmów</Movies_Path>
+	<Nfo_Path>Ścieżka do Nfo</Nfo_Path>
+	<Poster_Path>Ścieżka do plakatów</Poster_Path>
+	<Sheet_Path>Ścieżka do okładek</Sheet_Path>
+  <Movie_Filter>Filtr</Movie_Filter>
+  <SingleDb>Wspólna baza danych</SingleDb>
+  <Recent_Max>Max ostatnich filmów</Recent_Max>
+  <Imdb>Użyj IMDB</Imdb>
+	<Dspl>Opcje wyświetlania</Dspl>
+	<UnlockRM>Zezwalaj na usuwanie</UnlockRM>
+  <Jukebox_Path>Ścieżka do Jukebox:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Wersja:</Version>
+  <yes>Tak</yes>
+  <no>Nie</no>
+	<top>Góra</top>
+	<bottom>Dół</bottom>
+	<white>Białe</white>
+	<black>Czarne</black>
+	<yellow>Żółte</yellow>
+	<transparent>Przezroczyste</transparent>
+	<browse>Przeglądaj</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Kolor dla gatunku:</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Ścieżka do filmów:</FBrowser_Title>
+  <FBrowser_Valid>do sprawdzenia</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Aktywacja IMDB</Imdb_Use>
+  <Imdb_Lang>Interfejs</Imdb_Lang>
+  <Imdb_Source>Losowy plakat</Imdb_Source>
+  <Imdb_Poster>Pobierz plakaty</Imdb_Poster>
+  <Imdb_PBox>Ramka plakatu</Imdb_PBox>
+  <Imdb_PPost>Losowy plakat</Imdb_PPost>
+  <Imdb_Sheet>Pobierz okładki</Imdb_Sheet>
+  <Imdb_SBox>Ramka plakatu w okładce</Imdb_SBox>
+  <Imdb_SPost>Losowy plakat w okładce</Imdb_SPost>
+  <Imdb_Backdrop>Losowa okładka</Imdb_Backdrop>
+  <Imdb_Font>Czcionka</Imdb_Font>
+  <Imdb_Genres>Obrazki gatunku</Imdb_Genres>
+  <Imdb_Tagline>Motto</Imdb_Tagline>
+  <Imdb_Time>Format czasu</Imdb_Time>
+  <Imdb_Info>Utwórz pliki info</Imdb_Info>
+  <Imdb_MaxDl>Równoczesne pobieranie</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Menu Edycja</EditMenu>
+  <rmPoster>Usuń Plakat</rmPoster>
+  <rmSheet>Wyjmij arkusz</rmSheet>
+  <rmNfo>Usuń NFO</rmNfo>
+  <rmMovie>Usuń film</rmMovie>
+  <ValPoster>Czy na pewno chcesz, aby stłumić tylko plakat ?</ValPoster>
+  <ValSheet>Czy na pewno chcesz, aby stłumić tylko karta ?</ValSheet>
+  <ValNfo>Czy na pewno chcesz, aby stłumić tylko NFO ?</ValNfo>
+  <ValMovie>Czy na pewno chcesz, aby stłumić wszystkie pliki z filmem?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Select subtitle</SubtMenu>
+  <WtSubt>Without subtitle</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Autoodtwarzanie napisów</Subt_OneAuto>
+  <Subt_FontPath>Ścieżka do czcionki</Subt_FontPath>
+  <Subt_FontFile>Czcionka</Subt_FontFile>
+  <Subt_Color>Kolor napisów</Subt_Color>
+  <Subt_ColorBg>Kolor tła</Subt_ColorBg>
+	<Subt_Size>Rozmiar</Subt_Size>
+	<Subt_Pos>Pozycja</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Wybierz czcionkę</FontMenu>
+</MFont>

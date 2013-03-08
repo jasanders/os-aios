@@ -1,0 +1,238 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+
+<title>亿格瑞</title>
+
+<script type="text/javascript">
+var index;
+var flg;
+var index_prev;
+var timer_cnt=0;
+var length = 5 ;
+var column = 4 ;
+var unsel_w = 165;
+var unsel_h = 165;
+var sel_w =165  //251;
+var sel_h = 165 //432;
+var pos_x1 = 165;
+var pos_y1 = 160;
+var offset_x = 165;
+left_most_unsel = 225;
+left_most_sel = 225;//161;
+sel_pos_y1 =160;
+bg_w = 1080;
+bg_h = 680;
+function draw(which, select)
+{
+	
+	if(which > column)
+	{
+	sel_pos_y1 = 400;
+	pos_y1 = 400;
+	}
+	else
+	{
+	sel_pos_y1 = 160;
+	pos_y1 = 160;	
+	}	
+	
+	
+	if(select==1)
+	{
+		var myspan = document.getElementById('span'+which);
+		document.getElementById('index'+which).style.visibility='hidden';
+		myspan.style.zIndex = 9;
+		myspan.style.top = sel_pos_y1 ;
+		myspan.style.left = left_most_sel + offset_x * (which%(column+1));
+		document.getElementById('index'+which).src = "webkit_test.files/image" + index + ".png";
+		document.getElementById('index'+which).width = sel_w;
+		document.getElementById('index'+which).style.visibility='visible';
+	}
+	else
+	{
+		var myspan = document.getElementById('span'+which);
+		
+		document.getElementById('index'+which).src = "webkit_test.files/image" + which + "_unfocus.png"; 
+		document.getElementById('index'+which).width = unsel_w;
+		myspan.style.zIndex = 5;
+		myspan.style.top = pos_y1 ;
+		myspan.style.left = left_most_sel + offset_x * (which%(column+1));
+	}
+}
+function init()
+{
+	index = 0;	
+	index_prev = -1;
+
+
+	for(iii=0 ; iii<9 ; iii++)
+	{
+		draw(iii, 0);
+
+	}
+	
+	//画出初始化，第一个的状态
+	draw(index, 1);
+}	
+function whichButton(event)
+{ 	
+	index_prev = index
+
+  if (event.keyCode == 37)	// left 
+	{//←
+		if(index == 0)
+		{
+			index = 0;
+			return;
+			}
+		
+		else 
+			index = index -1 ;
+	}
+	
+	else if (event.keyCode == 39)	  // right 
+	{//→
+			if(index == 8)
+			{
+				index = 8;
+				return;
+			}
+			index = index + 1 ;
+		
+	}
+		else if (event.keyCode == 38)	  // up 
+	{//→
+		if(index > column)
+		{
+			index -= (column+1);
+			
+			}
+			else
+				return;
+
+		
+
+		
+	}
+	else if (event.keyCode == 40)	// down 
+	{//←
+	
+	if(index <= (column-1))
+			{
+				index += (column+1);
+			//	return;
+			}
+			else
+				return;
+
+	}
+	else if( event.keyCode == 13)
+	{
+		location.assign(document.getElementById('span'+index).firstChild.href);
+		return;
+	}	
+	else
+		return;
+		
+
+
+	draw(index, 1) ;
+	draw(index_prev, 0);
+	timer_cnt = 5;		
+} 
+</script> 
+
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #FFFFFF;
+	font-size: 18px;
+}
+-->
+</style>
+	
+</head>
+
+<body link=blue vlink="#660099" style='tab-interval:.3333in;margin:0;background-color:#100f10' onkeydown="whichButton(event)" onLoad="init()">
+
+
+<div style='position:absolute'>
+	
+<span name="span_bg" style='mso-ignore:vglayout;position:
+absolute;z-index:3;top:0px; left:0px'><img id='index99' border=0 lock="true" style='z-index:3'
+src="webkit_test.files/bg.png" width='1280px' height='720px' style="background-color:#000000"></span>
+
+<span id='span5' style='z-index:5;position:
+absolute;left:217px;top:400px;width:160px;height:160px'><a
+href="http://www.youku.com"><img id="index5" border=0 
+lock="true" src="webkit_test.files/image5.png" v:shapes="_x0000_s1040"> </a>
+<p align="center" class="STYLE1">优酷高清</p>
+</span>
+
+<span id='span6' style='z-index:6;position:
+absolute;left:371px;top:400px;width:160px;height:160px'><a
+href="http://www.qiyi.com"><img id="index6" border=0 
+lock="true" src="webkit_test.files/image6.png" v:shapes="_x0000_s1041"></a>
+<p align="center" class="STYLE1">奇异高清</p></span>
+
+<span id='span7' style='z-index:7;position:
+absolute;left:528px;top:400px;width:160px;height:160px'><a
+href="http://ipad.xunlei.com/"><img id="index7" border=0 
+lock="true" src="webkit_test.files/image7.png" v:shapes="_x0000_s1042"></a>
+<p align="center" class="STYLE1">迅雷看看</p></span>
+
+<span id='span8' style='z-index:8;position:
+absolute;left:682px;top:400px;width:160px;height:160px'><a
+href="qita.html"><img id="index8" border=0 
+lock="true" src="webkit_test.files/image8.png" v:shapes="_x0000_s1043"></a>
+<p align="center" class="STYLE1">其他</p></span>
+
+
+
+<span id='span4' style='mso-ignore:vglayout;position:
+absolute;z-index:5;left:838px;top:230px;width:160px;height:160px'><a
+href="http://live.qq.com"><img id='index4' border=0 lock="true" 
+src="webkit_test.files/image4.png" v:shapes="_x0000_s1044"></a>
+<p align="center" class="STYLE1">QQlive</p></span>
+
+
+
+<span id='span3' style='mso-ignore:vglayout;position:
+absolute;z-index:6;left:682px;top:230px;width:160px;height:160px'><a
+href="http://ipad.letv.com"><img id='index3' border=0 
+src="webkit_test.files/image3.png" lock="true" v:shapes="_x0000_s1045"></a>
+<p align="center" class="STYLE1">乐视网</p></span>
+
+
+
+<span id='span2' style='mso-ignore:vglayout;position:
+absolute;z-index:7;left:528px;top:230px;width:160px;height:160px'><a
+href="http://ipad.pptv.com"><img id='index2' border=0 lock="true" 
+src="webkit_test.files/image2.png" v:shapes="_x0000_s1046"></a>
+<p align="center" class="STYLE1">PPTV</p></span>
+
+
+
+<span id='span1' style='mso-ignore:vglayout;position:
+absolute;z-index:8;left:371px;top:230px;width:160px;height:160px'><a
+href="http://www.tudou.com"><img id='index1' border=0 
+lock="true" src="webkit_test.files/image1.png" v:shapes="_x0000_s1047"></a>
+<p align="center" class="STYLE1">土豆网</p></span>
+
+
+<span id='span0' style='z-index:5;position:
+absolute;left:217px;top:230px;width:160px;height:160px'><a
+href="http://tv.sohu.com"><img id="index0" border=0 
+lock="true" src="webkit_test.files/image0.png" v:shapes="_x0000_s1048"></a>
+<p align="center" class="STYLE1">搜狐高清</p></span>
+
+
+
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+#!/bin/sh
+TRNS_DRIVE=$(cat /usr/local/etc/trans_drive)
+
+rm /opt/etc/transmission/downloads -r
+rm /opt/etc/transmission/torrents -r
+rm /opt/etc/transmission/resume -r
+rm /opt/etc/transmission/blocklists -r
+
+
+mkdir -p /tmp/usbmounts/$TRNS_DRIVE/transmission/resume
+mkdir -p /tmp/usbmounts/$TRNS_DRIVE/transmission/torrents
+mkdir -p /tmp/usbmounts/$TRNS_DRIVE/transmission/downloads
+mkdir -p /tmp/usbmounts/$TRNS_DRIVE/transmission/blocklists
+
+ln -s /tmp/usbmounts/$TRNS_DRIVE/transmission/resume /opt/etc/transmission/resume
+ln -s /tmp/usbmounts/$TRNS_DRIVE/transmission/torrents /opt/etc/transmission/torrents
+ln -s /tmp/usbmounts/$TRNS_DRIVE/transmission/downloads /opt/etc/transmission/downloads
+ln -s /tmp/usbmounts/$TRNS_DRIVE/transmission/blocklists /opt/etc/transmission/blocklists
+
+/opt/bin/transmission-daemon --paused -g /opt/etc/transmission
+

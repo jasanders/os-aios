@@ -1,0 +1,738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Remote Control</title>
+
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=2.0; user-scalable=no;"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+
+<script>
+
+var global_slider;
+var auto_moved = false;
+
+var isIE = (document.all) ? true : false;
+
+var $ = function (id) {
+	return "string" == typeof id ? document.getElementById(id) : id;
+};
+
+var Class = {
+	create: function() {
+		return function() { this.initialize.apply(this, arguments); }
+	}
+}
+
+var Extend = function(destination, source) {
+	for (var property in source) {
+		destination[property] = source[property];
+	}
+}
+
+var Bind = function(object, fun) {
+	var args = Array.prototype.slice.call(arguments).slice(2);
+	return function() {
+		return fun.apply(object, args);
+	}
+}
+
+var BindAsEventListener = function(object, fun) {
+	return function(event) {
+		return fun.call(object, Event(event));
+	}
+}
+
+function Event(e){
+	var oEvent = isIE ? window.event : e;
+	if (isIE) {
+		oEvent.pageX = oEvent.clientX + document.documentElement.scrollLeft;
+		oEvent.pageY = oEvent.clientY + document.documentElement.scrollTop;
+		oEvent.preventDefault = function () { this.returnValue = false; };
+		oEvent.detail = oEvent.wheelDelta / (-40);
+		oEvent.stopPropagation = function(){ this.cancelBubble = true; }; 
+	}
+	return oEvent;
+}
+
+var CurrentStyle = function(element){
+	return element.currentStyle || document.defaultView.getComputedStyle(element, null);
+}
+
+function addEventHandler(oTarget, sEventType, fnHandler) {
+	if (oTarget.addEventListener) {
+		oTarget.addEventListener(sEventType, fnHandler, false);
+	} else if (oTarget.attachEvent) {
+		oTarget.attachEvent("on" + sEventType, fnHandler);
+	} else {
+		oTarget["on" + sEventType] = fnHandler;
+	}
+};
+
+
+function removeEventHandler(oTarget, sEventType, fnHandler) {
+    if (oTarget.removeEventListener) {
+        oTarget.removeEventListener(sEventType, fnHandler, false);
+    } else if (oTarget.detachEvent) {
+        oTarget.detachEvent("on" + sEventType, fnHandler);
+    } else { 
+        oTarget["on" + sEventType] = null;
+    }
+};
+
+
+//滑动条程序
+var Slider = Class.create();
+Slider.prototype = {
+  //容器对象，滑块
+  initialize: function(container, bar, options) {
+	this.Bar = $(bar);
+	this.Container = $(container);
+	this._timer = null;//自动滑移的定时器
+	this._ondrag = false;//解决ie的click问题
+	//是否最小值、最大值、中间值
+	this._IsMin = this._IsMax = this._IsMid = false;
+	//实例化一个拖放对象，并限定范围
+	this._drag = new Drag(this.Bar, { Limit: true, mxContainer: this.Container,
+		onStart: Bind(this, this.DragStart), onStop: Bind(this, this.DragStop), onMove: Bind(this, this.Move)
+	});
+	
+	this.SetOptions(options);
+	
+	this.WheelSpeed = Math.max(0, this.options.WheelSpeed);
+	this.KeySpeed = Math.max(0, this.options.KeySpeed);
+	
+	this.MinValue = this.options.MinValue;
+	this.MaxValue = this.options.MaxValue;
+	
+	this.RunTime = Math.max(1, this.options.RunTime);
+	this.RunStep = Math.max(1, this.options.RunStep);
+	
+	this.Ease = !!this.options.Ease;
+	this.EaseStep = Math.max(1, this.options.EaseStep);
+	
+	this.onMin = this.options.onMin;
+	this.onMax = this.options.onMax;
+	this.onMid = this.options.onMid;
+	
+	this.onDragStart = this.options.onDragStart;
+	this.onDragStop = this.options.onDragStop;
+	
+	this.onMove = this.options.onMove;
+	
+	this._horizontal = !!this.options.Horizontal;//一般不允许修改
+	
+	//锁定拖放方向
+	this._drag[this._horizontal ? "LockY" : "LockX"] = true;
+	
+	//点击控制
+	addEventHandler(this.Container, "click", BindAsEventListener(this, function(e){ this._ondrag || this.ClickCtrl(e);}));
+	//取消冒泡，防止跟Container的click冲突
+	addEventHandler(this.Bar, "click", BindAsEventListener(this, function(e){ e.stopPropagation(); }));
+	
+	//设置鼠标滚轮控制
+	this.WheelBind(this.Container);
+	//设置方向键控制
+	this.KeyBind(this.Container);
+	//修正获取焦点
+	var oFocus = isIE ? (this.KeyBind(this.Bar), this.Bar) : this.Container;
+	addEventHandler(this.Bar, "mousedown", function(){ oFocus.focus(); });
+	//ie鼠标捕获和ff的取消默认动作都不能获得焦点，所以要手动获取
+	//如果ie把focus设置到Container，那么在出现滚动条时ie的focus可能会导致自动滚屏
+  },
+  //设置默认属性
+  SetOptions: function(options) {
+	this.options = {//默认值
+		MinValue:	0,//最小值
+		MaxValue:	100,//最大值
+		WheelSpeed: 5,//鼠标滚轮速度,越大越快(0则取消鼠标滚轮控制)
+		KeySpeed: 	50,//方向键滚动速度,越大越慢(0则取消方向键控制)
+		Horizontal:	true,//是否水平滑动
+		RunTime:	20,//自动滑移的延时时间,越大越慢
+		RunStep:	2,//自动滑移每次滑动的百分比
+		Ease:		false,//是否缓动
+		EaseStep:	5,//缓动等级,越大越慢
+		onMin:		function(){},//最小值时执行
+		onMax:		function(){},//最大值时执行
+		onMid:		function(){},//中间值时执行
+		onDragStart:function(){},//拖动开始时执行
+		onDragStop:	function(){},//拖动结束时执行
+		onMove:		function(){}//滑动时执行
+	};
+	Extend(this.options, options || {});
+  },
+  //开始拖放滑动
+  DragStart: function() {
+  	this.Stop();
+	this.onDragStart();
+	this._ondrag = true;
+  },
+  //结束拖放滑动
+  DragStop: function() {
+  	this.onDragStop();
+	setTimeout(Bind(this, function(){ this._ondrag = false; }), 10);
+  },
+  //滑动中
+  Move: function() {
+  	this.onMove();
+	
+	var percent = this.GetPercent();
+	//最小值判断
+	if(percent > 0){
+		this._IsMin = false;
+	}else{
+		if(!this._IsMin){ this.onMin(); this._IsMin = true; }
+	}
+	//最大值判断
+	if(percent < 1){
+		this._IsMax = false;
+	}else{
+		if(!this._IsMax){ this.onMax(); this._IsMax = true; }
+	}
+	//中间值判断
+	if(percent > 0 && percent < 1){
+		if(!this._IsMid){ this.onMid(); this._IsMid = true; }
+	}else{
+		this._IsMid = false;
+	}
+  },
+  //鼠标点击控制
+  ClickCtrl: function(e) {
+	var o = this.Container, iLeft = o.offsetLeft, iTop = o.offsetTop;
+	while (o.offsetParent) { o = o.offsetParent; iLeft += o.offsetLeft; iTop += o.offsetTop; }
+	//考虑有滚动条，要用pageX和pageY
+	this.EasePos(e.pageX - iLeft - this.Bar.offsetWidth / 2, e.pageY - iTop - this.Bar.offsetHeight / 2);
+  },
+  //鼠标滚轮控制
+  WheelCtrl: function(e) {
+	var i = this.WheelSpeed * e.detail;
+	this.SetPos(this.Bar.offsetLeft + i, this.Bar.offsetTop + i);
+	//防止触发其他滚动条
+	e.preventDefault();
+  },
+  //绑定鼠标滚轮
+  WheelBind: function(o) {
+  	//鼠标滚轮控制
+	addEventHandler(o, isIE ? "mousewheel" : "DOMMouseScroll", BindAsEventListener(this, this.WheelCtrl));
+  },
+  //方向键控制
+  KeyCtrl: function(e) {
+	if(this.KeySpeed){
+		var iLeft = this.Bar.offsetLeft, iWidth = (this.Container.clientWidth - this.Bar.offsetWidth) / this.KeySpeed
+			, iTop = this.Bar.offsetTop, iHeight = (this.Container.clientHeight - this.Bar.offsetHeight) / this.KeySpeed;
+		//根据按键设置值
+		switch (e.keyCode) {
+			case 37 ://左
+				iLeft -= iWidth; break;
+			case 38 ://上
+				iTop -= iHeight; break;
+			case 39 ://右
+				iLeft += iWidth; break;
+			case 40 ://下
+				iTop += iHeight; break;
+			default :
+				return;//不是方向按键返回
+		}
+		this.SetPos(iLeft, iTop);
+		//防止触发其他滚动条
+		e.preventDefault();
+	}
+  },
+  //绑定方向键
+  KeyBind: function(o) {
+	addEventHandler(o, "keydown", BindAsEventListener(this, this.KeyCtrl));
+	//设置tabIndex使设置对象能支持focus
+	o.tabIndex = -1;
+	//取消focus时出现的虚线框
+	isIE || (o.style.outline = "none");
+  },
+  //获取当前值
+  GetValue: function() {
+	//根据最大最小值和滑动百分比取值
+	return this.MinValue + this.GetPercent() * (this.MaxValue - this.MinValue);
+  },
+  //设置值位置
+  SetValue: function(value) {
+	//根据最大最小值和参数值设置滑块位置
+	this.SetPercent((value- this.MinValue)/(this.MaxValue - this.MinValue));
+  },
+  //获取百分比
+  GetPercent: function() {
+	//根据滑动条滑块取百分比
+	return this._horizontal ? this.Bar.offsetLeft / (this.Container.clientWidth - this.Bar.offsetWidth)
+		: this.Bar.offsetTop / (this.Container.clientHeight - this.Bar.offsetHeight)
+  },
+  //设置百分比位置
+  SetPercent: function(value) {
+	//根据百分比设置滑块位置
+	this.EasePos((this.Container.clientWidth - this.Bar.offsetWidth) * value, (this.Container.clientHeight - this.Bar.offsetHeight) * value);
+  },
+  //自动滑移(是否递增)
+  Run: function(bIncrease) {
+	this.Stop();
+	//修正一下bIncrease
+	bIncrease = !!bIncrease;
+	//根据是否递增来设置值
+	var percent = this.GetPercent() + (bIncrease ? 1 : -1) * this.RunStep / 100;
+	this.SetPos((this.Container.clientWidth - this.Bar.offsetWidth) * percent, (this.Container.clientHeight - this.Bar.offsetHeight) * percent);
+	//如果没有到极限值就继续滑移
+	if(!(bIncrease ? this._IsMax : this._IsMin)){
+		this._timer = setTimeout(Bind(this, this.Run, bIncrease), this.RunTime);
+	}
+  },
+  //停止滑移
+  Stop: function() {
+	clearTimeout(this._timer);
+  },
+  //缓动滑移
+  EasePos: function(iLeftT, iTopT) {
+	this.Stop();
+	//必须是整数，否则可能死循环
+	iLeftT = Math.round(iLeftT); iTopT = Math.round(iTopT);
+	//如果没有设置缓动
+	if(!this.Ease){ this.SetPos(iLeftT, iTopT); return; }
+	//获取缓动参数
+	var iLeftN = this.Bar.offsetLeft, iLeftS = this.GetStep(iLeftT, iLeftN)
+	, iTopN = this.Bar.offsetTop, iTopS = this.GetStep(iTopT, iTopN);
+	//如果参数有值
+	if(this._horizontal ? iLeftS : iTopS){
+		//设置位置
+		this.SetPos(iLeftN + iLeftS, iTopN + iTopS);
+		//如果没有到极限值则继续缓动
+		if(this._IsMid){ this._timer = setTimeout(Bind(this, this.EasePos, iLeftT, iTopT), this.RunTime); }
+	}
+  },
+  //获取步长
+  GetStep: function(iTarget, iNow) {
+    var iStep = (iTarget - iNow) / this.EaseStep;
+    if (iStep == 0) return 0;
+    if (Math.abs(iStep) < 1) return (iStep > 0 ? 1 : -1);
+    return iStep;
+  },
+  //设置滑块位置
+  SetPos: function(iLeft, iTop) {
+	this.Stop();
+	this._drag.SetPos(iLeft, iTop);
+  }
+};
+</script>
+
+<script type="text/javascript" src="Drag.js"></script>
+
+<script>
+	function createPgBar(){
+
+	//	document.getElementById("idSlider3").setAttribute("class", "slider3");
+	//	document.getElementById("idBar3").setAttribute("class", "bar3");
+	global_slider  = new Slider("idSlider3", "idBar3", {
+	//onMin: function(){ $("idCurrentState").innerHTML = "到达开始值"; },
+	//onMax: function(){ $("idCurrentState").innerHTML = "到达结束值"; },
+	//onMid: function(){ $("idCurrentState").innerHTML = "滑动中"; },
+	onMove: function(){
+		$("command_desc").innerHTML = Math.round(this.GetValue());
+    	if(auto_moved == false){   
+		  arr = current_ap_subcontext.split("/");
+          var aa = parseInt(arr[1]);
+          var bb = Math.round(this.GetValue());
+          var time = Math.round(aa*bb/100);
+        
+          var cmd = "playattime " + time;
+          sendCommand(cmd);
+		}
+
+	},
+	
+	onDragStop: function(){
+		
+		$("desc").innerHTML = Math.round(this.GetValue());
+	},
+	
+	onDragStart: function(){
+		alert("aaa");
+	}
+
+});
+
+
+
+}
+</script>
+
+
+
+<style type="text/css">
+.slider3{height:32px; width:316px; background-color:#000000; border:2px solid #EAE6DD; margin:-8px;}
+.bar3 {height:28px; width:10px; border:2px outset buttonhighlight; background-color:#D4D0C8;_font-size:0; }
+</style>
+
+
+<script type="text/javascript">
+
+var current_ap_context = "unknown";
+var current_ap_subcontext = "unknown";
+var command_xmlhttp;
+var status_xmlhttp;
+
+
+function getXmlHttpRequestObject()
+{
+	var xmlhttp;
+	if (window.XMLHttpRequest)
+	{
+	  // code for IE7+, Firefox, Chrome, Opera, Safari
+	  xmlhttp=new XMLHttpRequest();
+	}
+	else
+	{
+	  // code for IE6, IE5
+	  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	return xmlhttp;
+}
+
+function handleCommand()
+{
+	if(command_xmlhttp.readyState==4)
+	{
+		if(command_xmlhttp.status == 200){
+		showDiscription(command_xmlhttp.responseText);
+		}
+	}
+}
+
+function sendCommand(command)
+{
+	command_xmlhttp = getXmlHttpRequestObject();	
+	command_xmlhttp.onreadystatechange = handleCommand;
+	var url="./cgi-bin/IpodCGI.cgi?id=0&command=" + command;
+	command_xmlhttp.open("GET", url ,true);
+	command_xmlhttp.send(null);
+	sendCommand_print(command);
+}
+
+function handleStatus()
+{
+	if(status_xmlhttp.readyState==4)
+   	{
+		if(status_xmlhttp.status == 200){
+		var xmlDoc = status_xmlhttp.responseXML;
+        	var context = xmlDoc.getElementsByTagName("Context").item(0);
+       	 	var appstatus = context.getElementsByTagName("appStatus")[0].firstChild.nodeValue;
+        	var substatus = context.getElementsByTagName("subStatus")[0].firstChild.nodeValue;
+      		showOptionMenu(appstatus,substatus);
+		}
+   	}
+}
+
+function sendStatus(status1,status2)
+{
+        status_xmlhttp = getXmlHttpRequestObject();        
+        status_xmlhttp.onreadystatechange = handleStatus;
+        var url="./cgi-bin/IpodCGI.cgi?id=1&status=" + status1 + "&substatus=" + status2;
+        status_xmlhttp.open("GET", url ,true);
+        status_xmlhttp.send(null);
+}
+
+
+function sendCommand_print(command)
+{
+	document.getElementById("command_desc").innerHTML="Send: " + command;
+}
+
+function showDiscription(text)
+{
+	document.getElementById("desc").innerHTML=text;
+}
+
+function addButton(title, command, div)
+{
+  var newButton = document.createElement("button");
+  buttonText = document.createTextNode(title);
+  newButton.setAttribute("TYPE", "button");
+  newButton.setAttribute("VALUE", command);
+  newButton.setAttribute("name", command);
+  newButton.setAttribute("style","background-image: url('image/button320_45.png'); background-repeat: no-repeat; background-color:black; height: 45px; margin-left: -8px; width: 320px; font-size:25px; font-family:Times; color:white");
+  
+  tmp= "sendCommand('" + command + "')";
+  //alert(tmp);
+  //newButton.setAttribute("onClick", tmp);
+  newButton.onclick = new Function(tmp);
+
+  newButton.appendChild(buttonText);
+ 
+  div.appendChild(newButton);
+  
+  br = document.createElement("br");
+  div.appendChild(br);	
+}
+
+function addButton2(title, command, div)
+{
+  var newButton = document.createElement("button");
+  buttonText = document.createTextNode(title);
+  newButton.setAttribute("TYPE", "button");
+  newButton.setAttribute("VALUE", command);
+  newButton.setAttribute("name", command);
+  newButton.setAttribute("style","background-image: url('image/button320_45.png'); background-repeat: no-repeat; background-color:black; height: 45px; margin-left: -8px; width: 320px; font-size:25px; font-family:Times; color:white");
+  
+  tmp= "createPgBar();";
+  //alert(tmp);
+  //newButton.setAttribute("onClick", tmp);
+  newButton.onclick = new Function(tmp);
+
+  newButton.appendChild(buttonText);
+ 
+  div.appendChild(newButton);
+  
+  br = document.createElement("br");
+  div.appendChild(br);  
+}
+
+
+
+
+function addSerachForm(title, div)
+{
+ 
+  var p = document.createElement("p");
+  var pText = document.createTextNode("Enter Below");
+  p.appendChild(pText);
+  div.appendChild(p);
+
+  var inputtext = document.createElement("input"); 
+  inputtext.setAttribute("TYPE", "text");
+  inputtext.setAttribute("VALUE", "");
+  inputtext.setAttribute("name", "SearchKeyword");
+  inputtext.setAttribute("style","height: 40px; width: 280px; font-size:25px; font-family:Times");
+  tmp = "sendCommand('search ' + this.value);"
+  inputtext.onchange = new Function(tmp);
+ 
+
+ br = document.createElement("br");
+ div.appendChild(br);
+
+
+  div.appendChild(inputtext);
+  div.appendChild(br); 
+}
+
+function showOptionMenu(appstatus,substatus)
+{
+	
+    var container = document.getElementById("optionContainer"); 
+	var div = document.getElementById("optionDiv");
+	var sliderdiv = document.getElementById("idSlider3");
+	var bardiv = document.getElementById("idBar3");
+
+	//if((appstatus == "IMSAP") &&(substatus == "keyboard") && 
+
+    if((current_ap_context == appstatus) &&(current_ap_subcontext == substatus))
+	{ 
+		sendStatus(current_ap_context,current_ap_subcontext);
+		return;		
+	}	
+		
+		if((current_ap_context == appstatus) && (appstatus == "video_playback") && (substatus != "unknown"))
+	{
+		//alert(substatus);	
+		showDiscription(substatus);
+		
+		current_ap_subcontext = substatus;
+		arr = substatus.split("/");
+        var aa = parseInt(arr[0]);
+		var bb = parseInt(arr[1]);
+        var cc = Math.round(aa*100/bb);		
+		
+		auto_moved = true;	
+		global_slider.SetValue(cc);
+		auto_moved = false;
+		sendStatus(current_ap_context,current_ap_subcontext);
+	//	alert(current_ap_context + " " + current_ap_subcontext);
+		return;
+	}
+
+	
+	if (bardiv != null) {
+        sliderdiv.removeChild(bardiv);
+		bardiv = null;
+    }
+
+	if (sliderdiv != null) {
+        container.removeChild(sliderdiv);
+		sliderdiv = null;
+    }
+    
+	if (div != null) {
+        container.removeChild(div);
+		div = null;
+    }
+
+	//document.getElementById("desc").innerHTML=text;
+	//document.getElementById("idSlider3").innerHTML = "";
+    //document.getElementById("idBar3").innerHTML = "aaaa";
+	
+
+	div =document.createElement("div");
+	div.setAttribute("id", "optionDiv");
+
+	sliderdiv =document.createElement("div");
+    sliderdiv.setAttribute("id", "idSlider3");
+	sliderdiv.setAttribute("class", "slider3");
+
+	bardiv =document.createElement("div");
+    bardiv.setAttribute("id", "idBar3");
+	bardiv.setAttribute("class", "bar3");
+	
+	// *************************************************
+	// Add option for each context here <---------------
+	
+	if (appstatus =="home_menu") {
+	
+	}
+	else if (appstatus=="music_playback") {
+                addButton("Prev", "prev", div);
+                addButton("Next", "next", div);
+		addButton("Play", "play", div);
+		addButton("Pause", "pause", div);
+		addButton("Mute", "mute", div);
+		addButton("Stop", "stop", div);
+        }
+	else if (appstatus=="picture_playback") {
+		addButton("Prev", "prev", div);
+                addButton("Next", "next", div);
+		addButton("Zoom", "zoom", div);
+		addButton("Rotate Right 90","rotate right",div);
+		addButton("Rotate Left 90","rotate left",div);
+		addButton("Stop", "stop", div);
+        }
+	else if (appstatus =="video_playback"){
+		addButton("Prev", "prev_file", div);
+                addButton("Next", "next_file", div);
+                addButton("Play/Pause", "play", div);
+		addButton("FastForward", "ffwd", div);
+		addButton("FastRewind", "frwd", div);
+		addButton("Stop", "stop", div);
+		addButton("Mute", "mute", div);
+		container.appendChild(sliderdiv);
+    	sliderdiv.appendChild(bardiv);
+		createPgBar();
+		
+	}
+	else if (appstatus =="keyboard")
+	{
+		 addSerachForm("Search:",div);
+	}
+	else if (appstatus == "IMSAP"){
+	     	if (substatus =="audio") {
+			addButton("Prev", "prev_file", div);
+                	addButton("Next", "next_file", div);
+                	addButton("Play/Pause", "play", div);
+                	addButton("Mute", "mute", div);
+                	addButton("Stop", "stop", div);
+        	}
+		else if (substatus =="picture") {
+        		addButton("Prev", "prev", div);
+                	addButton("Next", "next", div);
+               		addButton("Zoom", "zoom", div);
+                	addButton("Rotate Right 90","rotate right",div);
+                	addButton("Rotate Left 90","rotate left",div);
+                	addButton("Stop", "stop", div);
+		}
+		else if (substatus =="video"){
+			addButton("Prev", "prev_file", div);
+                	addButton("Next", "next_file", div);
+                	addButton("Play/Pause", "play", div);
+			addButton("FastForward", "ffwd", div);
+			addButton("FastRewind", "frwd", div);
+			addButton("Stop", "stop", div);
+			addButton("Mute", "mute", div);
+		}
+		else if (substatus =="keyboard"){
+			addSerachForm("Search:",div);
+
+
+		}
+	}
+		// End of option
+	// --------------------------------------------------
+	
+	container.appendChild(div);
+	current_ap_context = appstatus;
+	current_ap_subcontext = substatus;
+	sendStatus(current_ap_context,current_ap_subcontext);
+}
+
+
+</script>
+</head>
+
+<body bgcolor=black text=yellow onload="sendStatus(current_ap_context,current_ap_subcontext);">
+<!-- Below is the remote control main section, which contains the mapping to up/down/lef/right/select/guide/return -->
+<img src ="image/remote.jpg" width ="320" height ="287" alt="Menu" usemap="#planetmap" />
+
+<map name="planetmap">
+<area shape ="rect" coords ="22,9,82,69"
+onMouseOver="showDiscription('move over Menu')"
+onClick="sendCommand('menu')"
+ target ="_blank" alt="Menu" />
+ 
+<area shape ="rect" coords ="232,9,292,69"
+onMouseOver="showDiscription('move over Return')"
+onClick="sendCommand('return')"
+ target ="_blank" alt="Return" />
+ 
+<area shape ="rect" coords ="96,43,222,103"
+onMouseOver="showDiscription('move over Up')"
+onClick="sendCommand('up')"
+ target ="_blank" alt="Up" /> 
+ 
+<area shape ="rect" coords ="96,226,222,286"
+onMouseOver="showDiscription('move over Down')"
+onClick="sendCommand('down')"
+ target ="_blank" alt="Down" />  
+ 
+<area shape ="rect" coords ="32,89,92,219"
+onMouseOver="showDiscription('move over Left')"
+onClick="sendCommand('left')"
+ target ="_blank" alt="Down" />  
+
+<area shape ="rect" coords ="222,89,282,219"
+onClick="sendCommand('right')"
+onMouseOver="showDiscription('move over right')"
+ target ="_blank" alt="Down" />   
+ 
+
+<area shape ="circle" coords ="163,163,45"
+onClick="sendCommand('select')"
+onMouseOver="showDiscription('move over Select')"
+target ="_blank" alt="Select" />
+
+<area shape ="rect" coords ="24,244,60,280"
+onClick="sendCommand('guide')"
+onMouseOver="showDiscription('move over guide')"
+ target ="_blank" alt="Guide" />
+
+</map> 	
+	
+<br/>
+<div id="optionContainer" align="left">  
+<!--
+<div id="idSlider3">
+<div id="idBar3"></div><br /></div>
+-->
+</div>		
+<br/>
+	
+<p id="desc"></p>
+<p id="command_desc"></p>
+
+
+</body>
+</html>
+
+
+

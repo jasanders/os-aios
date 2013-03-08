@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community - xLive 10 -->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+  
+<channel>
+<title>Discovery</title>
+
+<item>
+<title>Animal Planet</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FAnimalPlanetTV%2Fuploads%3Forderby%3Dupdated%0D%0A,Animal+Planet</link>
+<media:thumbnail url="http://www.houstonpettalk.com/wp-content/uploads/2010/01/animal-planet-logo.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Discovery Channel</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FDiscoveryNetworks%2Fuploads%3Forderby%3Dupdated,Discovery+Channel</link>
+<media:thumbnail url="http://en.kingofsat.net/jpg/discovery-poland.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>TLC</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FTLC%2Fuploads%3Forderby%3Dupdated%0D%0A,TLC</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/tlc.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Discovery ID</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FDiscoveryID%2Fuploads%3Forderby%3Dupdated%0D%0A,Discovery+ID</link>
+<media:thumbnail url="http://static3.channels.com/thumbnails/-id-video-podcast--f199143.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Military Channel</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FMilitaryChannel%2Fuploads%3Forderby%3Dupdated%0D%0A,Military+Channel</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/militaryc.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Science Channel</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FScienceChannel%2Fuploads%3Forderby%3Dupdated%0D%0A,Science+Channel</link>
+<media:thumbnail url="http://i58.photobucket.com/albums/g271/TwiztidChickn/musicmoviestv/sciencech.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Discovery Health</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FDiscoveryHealth%2Fuploads%3Forderby%3Dupdated%0D%0A,Discovery+Health</link>
+<media:thumbnail url="http://www.lifesip.com/images/discovery-health-2.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Planet Green</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FPlanetGreenTV%2Fuploads%3Forderby%3Dupdated,Planet+Green</link>
+<media:thumbnail url="http://planetgreen.discovery.com/images/tophat/planet-green-logo-red.png" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Discovery International</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FDiscoveryTV%2Fuploads%3Forderby%3Dupdated%0D%0A,Discovery+International</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/dinter.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

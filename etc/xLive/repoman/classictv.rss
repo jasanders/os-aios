@@ -1,0 +1,480 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>Classic TV</title>
+
+<item>
+
+      <title>Gidget</title>
+      <link>/usr/local/etc/xLive/repoman/classic/gidget.rss</link>
+	  <media:thumbnail url="http://1.bp.blogspot.com/_vU82iHQogVc/TIHRDFOhoHI/AAAAAAAAA5Y/8mkPYM_QvfE/s400/51GUp74wX2L._SX320_SY240_.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+	
+	
+	
+<item>
+
+      <title>My Three Sons</title>
+      <link>/usr/local/etc/xLive/repoman/classic/3sons.rss</link>
+	  <media:thumbnail url="http://www.meredithmacrae.com/images/g-MyThreeSons.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+	
+	
+<item>
+
+      <title>Leave It to Beaver</title>
+      <link>/usr/local/etc/xLive/repoman/classic/beaver.rss</link>
+	  <media:thumbnail url="http://www.cncbooks.com/blog/wp-content/uploads/2010/10/Leave-It-To-Beaver.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+	
+	
+<item>
+
+      <title>Family Affair</title>
+      <link>/usr/local/etc/xLive/repoman/classic/odd.rss</link>
+	  <media:thumbnail url="http://images.tvrage.com/shows/4/3499.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+
+
+
+<item>
+
+      <title>Odd Couple</title>
+      <link>/usr/local/etc/xLive/repoman/classic/odd.rss</link>
+	  <media:thumbnail url="http://kara.allthingsd.com/files/2008/05/oscar_felix.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+
+
+
+<item>
+<title>Flipper</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Fdragonflyspring%2Fuploads%3Forderby%3Dupdated%26vq%3DFlipper,Flipper</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/flipper.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+      <title>The Brady Bunch</title>
+      <link>/usr/local/etc/xLive/repoman/classic/brady.rss</link>
+	  <media:thumbnail url="/usr/local/etc/xLive/repoman/image/brady.jpg" />
+	   <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+  </item>
+
+    
+<item>
+
+      <title>Bonanza</title>
+      <link>/usr/local/etc/xLive/repoman/classic/bonanza.rss</link>
+	  <media:thumbnail url="http://i1.ytimg.com/vi/XnYB9-0YEV8/market_thumb.jpg?v=5aa18b" />
+	  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+	     
+  </item>
+  
+   
+<item>
+<title>The Lone Ranger</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F77C114C53DA07248,The+Lone+Ranger</link>
+<media:thumbnail url="http://i2.ytimg.com/vi/I_UP7Q4HbmY/market_thumb.jpg?v=59488b" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+      <title>Hunter</title>
+      <link>/usr/local/etc/xLive/repoman/classic/hunter.rss</link>
+	  <media:thumbnail url="http://i2.ytimg.com/vi/aYEb7p0Qxa8/market_thumb.jpg?v=874cd0" />
+	  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+	     
+  </item>
+  
+   
+<item>
+
+      <title>Beverly Hillbillies</title>
+      <link>/usr/local/etc/xLive/repoman/classic/b-hills.rss</link>
+	  <media:thumbnail url="http://i1.ytimg.com/vi/hFF8IZjUuIY/market_thumb.jpg?v=5aa19e" />
+	  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+	     
+  </item>
+  
+   
+<item>
+
+      <title>The Jack Benny Show</title>
+      <link>/usr/local/etc/xLive/repoman/classic/j-b.rss</link>
+	  <media:thumbnail url="http://i1.ytimg.com/vi/tsX1m6LdKjA/market_thumb.jpg?v=5aa196" />
+	  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+	     
+  </item>
+  
+      
+<item>
+
+      <title>The Commish</title>
+      <link>/usr/local/etc/xLive/repoman/classic/commish.rss</link>
+	  <media:thumbnail url="http://i2.ytimg.com/vi/y3VN2OYa0kM/market_thumb.jpg?v=8517d5" /><mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0>
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+		
+	    </mediaDisplay>
+	     
+  </item>
+   
+</channel>
+</rss>

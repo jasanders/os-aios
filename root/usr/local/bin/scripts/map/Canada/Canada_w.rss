@@ -1,0 +1,308 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Waasis</title>
+<cur>CAXX0525</cur>
+<for>Waasis</for>
+</item>
+
+<item>
+<title>Wabush</title>
+<cur>CAXX0526</cur>
+<for>Wabush</for>
+</item>
+
+<item>
+<title>Walcott</title>
+<cur>CAXX0527</cur>
+<for>Walcott</for>
+</item>
+
+<item>
+<title>Waldeck</title>
+<cur>CAXX0528</cur>
+<for>Waldeck</for>
+</item>
+
+<item>
+<title>Waltham Station</title>
+<cur>CAXX0529</cur>
+<for>Waltham Station</for>
+</item>
+
+<item>
+<title>Warman</title>
+<cur>CAXX0530</cur>
+<for>Warman</for>
+</item>
+
+<item>
+<title>Wasagaming</title>
+<cur>CAXX0585</cur>
+<for>Wasagaming</for>
+</item>
+
+<item>
+<title>Waskaganish</title>
+<cur>CAXX0626</cur>
+<for>Waskaganish</for>
+</item>
+
+<item>
+<title>Waterloo</title>
+<cur>CAXX0531</cur>
+<for>Waterloo</for>
+</item>
+
+<item>
+<title>Watson Lake</title>
+<cur>CAXX0627</cur>
+<for>Watson Lake</for>
+</item>
+
+<item>
+<title>Wawa</title>
+<cur>CAXX0532</cur>
+<for>Wawa</for>
+</item>
+
+<item>
+<title>Webb</title>
+<cur>CAXX0533</cur>
+<for>Webb</for>
+</item>
+
+<item>
+<title>Wedgeport</title>
+<cur>CAXX0534</cur>
+<for>Wedgeport</for>
+</item>
+
+<item>
+<title>Welland</title>
+<cur>CAXX0535</cur>
+<for>Welland</for>
+</item>
+
+<item>
+<title>Wembley</title>
+<cur>CAXX0536</cur>
+<for>Wembley</for>
+</item>
+
+<item>
+<title>Western Head</title>
+<cur>CAXX0581</cur>
+<for>Western Head</for>
+</item>
+
+<item>
+<title>Weyburn</title>
+<cur>CAXX0537</cur>
+<for>Weyburn</for>
+</item>
+
+<item>
+<title>Whistler</title>
+<cur>CAXX0538</cur>
+<for>Whistler</for>
+</item>
+
+<item>
+<title>Whitby</title>
+<cur>CAXX0539</cur>
+<for>Whitby</for>
+</item>
+
+<item>
+<title>Whitehorse</title>
+<cur>CAXX0540</cur>
+<for>Whitehorse</for>
+</item>
+
+<item>
+<title>Wiarton</title>
+<cur>CAXX0541</cur>
+<for>Wiarton</for>
+</item>
+
+<item>
+<title>Williams Lake</title>
+<cur>CAXX0542</cur>
+<for>Williams Lake</for>
+</item>
+
+<item>
+<title>Willow River</title>
+<cur>CAXX0543</cur>
+<for>Willow River</for>
+</item>
+
+<item>
+<title>Willowbrook</title>
+<cur>CAXX0544</cur>
+<for>Willowbrook</for>
+</item>
+
+<item>
+<title>Windermere</title>
+<cur>CAXX0545</cur>
+<for>Windermere</for>
+</item>
+
+<item>
+<title>Windsor</title>
+<cur>CAXX0546</cur>
+<for>Windsor</for>
+</item>
+
+<item>
+<title>Winnipeg</title>
+<cur>CAXX0547</cur>
+<for>Winnipeg</for>
+</item>
+
+<item>
+<title>Wishart</title>
+<cur>CAXX0548</cur>
+<for>Wishart</for>
+</item>
+
+<item>
+<title>Witless Bay</title>
+<cur>CAXX0549</cur>
+<for>Witless Bay</for>
+</item>
+
+<item>
+<title>Wolfe Island</title>
+<cur>CAXX0550</cur>
+<for>Wolfe Island</for>
+</item>
+
+<item>
+<title>Woodbridge</title>
+<cur>CAXX0551</cur>
+<for>Woodbridge</for>
+</item>
+
+<item>
+<title>Woodstock</title>
+<cur>CAXX0552</cur>
+<for>Woodstock</for>
+</item>
+
+<item>
+<title>Wymark</title>
+<cur>CAXX0553</cur>
+<for>Wymark</for>
+</item>
+
+<item>
+<title>Wynyard</title>
+<cur>CAXX0554</cur>
+<for>Wynyard</for>
+</item>
+
+</channel></rss>

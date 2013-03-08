@@ -1,0 +1,142 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+print("enter seek popup.rss");
+vidProgress = getEnv("videoStatus");
+elapsed = getStringArrayAt(vidProgress, 0);
+total = getStringArrayAt(vidProgress, 1);
+/* if total time is longer than 30 seconds */
+if (total &lt; 30)
+{
+	step_left = 1;
+	step_right = 1;
+}
+else
+{
+	step_left = 10;
+	step_right = 30;
+}
+time2 = secondToString(total);
+redrawDisplay();
+</onEnter>
+
+<mediaDisplay
+	name=photoView
+	viewAreaXPC=22.27
+	viewAreaYPC=60
+	viewAreaWidthPC=59.77
+	viewAreaHeightPC=21.39
+
+	topArea.heightPC=0
+	topArea.yPC=100
+	bottomYPC=100
+
+	drawItemBorder=no
+
+	showHeader=no
+	showDefaultInfo=no
+
+	backgroundColor=-1:-1:-1
+	itemBackgroundColor =-1:-1:-1
+	itemGrid.elementBackground = -1:-1:-1
+>
+
+<backgroundDisplay name=bestv_seek_popup_bg>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	"image/mediafly_seek_bg.fsp";
+	</script>
+	</image>
+</backgroundDisplay>
+
+<text offsetXPC=10 offsetYPC=30 heightPC=15 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 useBackgroundSurface=yes fontSize=12 widthPC=80>
+Press LEFT / RIGHT then OK to seek to desired time.
+</text>
+
+<image redraw=yes offsetXPC=10 offsetYPC=60 widthPC=80 heightPC=9>
+<script>
+"image/mediafly_seek_bar_bg.fsp";
+</script>
+</image>
+
+<image redraw=yes offsetXPC=10 offsetYPC=60 heightPC=9>
+<script>
+"image/mediafly_seek_bar_fg.fsp";
+</script>
+<widthPC>
+<script>
+(elapsed/total)*80;
+</script>
+</widthPC>
+</image>
+
+<text offsetXPC=10 offsetYPC=72 heightPC=12 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 useBackgroundSurface=yes fontSize=11.2 widthPC=50>
+<script>
+time1 = secondToString(elapsed);
+time1;
+</script>
+</text>
+
+<text offsetXPC=80 offsetYPC=72 heightPC=12 backgroundColor=-1:-1:-1 foregroundColor=250:250:250 useBackgroundSurface=yes fontSize=11.2 widthPC=50>
+<script>
+time2;
+</script>
+</text>
+
+<onUserInput>
+ret = "false";
+input = currentUserInput();
+print("user input is : ", input);
+if (input == "right")
+{
+	elapsed = Add(elapsed, step_right);
+	if (elapsed &gt; total)
+	{
+		elapsed = total;
+	}
+	redrawDisplay("widget");
+	ret = "true";
+}
+else if (input == "left")
+{
+	elapsed = Minus(elapsed, step_left);
+	if (elapsed &lt; 0)
+	{
+		elapsed = 0;
+	}
+	redrawDisplay("widget");
+	ret = "true";
+}
+else if (input == "enter")
+{
+	postMessage("return");
+	/* avoid transition effect */
+	redrawDisplay("no");
+	ret = "true";
+}
+else if (input == "video_completed" || input == "video_stop")
+{
+	playItemURL(-1, 1);
+	postMessage("return");
+	postMessage("return");
+}
+ret;
+</onUserInput>
+</mediaDisplay>
+
+
+<channel>
+<itemSize>
+0
+</itemSize>
+</channel>
+
+<onExit>
+setReturnString(elapsed);
+/* enable drawbackbuffer */
+redrawDisplay("yes");
+</onExit>
+
+</rss>

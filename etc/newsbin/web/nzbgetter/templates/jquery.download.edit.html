@@ -1,0 +1,78 @@
+if($('select[name=strDLHow]').val() == "queue"){
+  $('#fixedfilename').hide();
+}
+
+$("select[name=strDLHow]").change( function() {
+  if($('select[name=strDLHow]').val() == "auto"){
+    $('#fixedfilename').hide().toggle("slow");
+  }else{
+    $('#fixedfilename').show().toggle("slow");
+  }
+});
+
+$('#submit').click(function () {
+
+  var entrytype   = $('input[name=strType]');
+
+  var intID       = $('input[name=intID]');
+  var strOldTitle = $('input[name=strOldTitle]');
+  var strDLTitle  = $('input[name=strDLTitle]');
+  var strDLMatch  = $('input[name=strDLMatch]');
+  var strDLHow    = $('select[name=strDLHow]');
+  var strNZBFile  = $('input[name=strDLFixedFileName]');
+
+  if (strDLTitle.val()==''){strDLTitle.addClass('hightlight');alert('No value for download title');return false;} else strDLTitle.removeClass('hightlight');
+
+  /* build querystring */
+  var data = 'type=edit' + '&entrytype=' + entrytype.val()  + '&intID=' + intID.val() + '&strOldTitle=' + escape(strOldTitle.val()) + '&strDLTitle=' + escape(strDLTitle.val()) +
+  '&strDLMatch=' + escape(strDLMatch.val()) + '&strDLHow=' + strDLHow.val();
+
+  if(entrytype.val() == 'tvnzb'){
+    var strDLQual = $('select[name=strQuality]');
+    if (strDLMatch.val()==''){strDLMatch.addClass('hightlight');alert('No value for match pattern');return false;} else strDLMatch.removeClass('hightlight');
+    data = data + '&strDLQual=' + strDLQual.val();
+  }
+
+  if(entrytype.val() == 'nzbindex'){
+    var intMinSize  = $('input[name=intMinSize]');
+    var intMaxSize  = $('input[name=intMaxSize]');
+    var strPoster   = $('input[name=strPoster]');
+    var strExclude  = $('input[name=strExclude]');
+    if ((strDLMatch.val()=='') && (strPoster.val()=='') && (entrytype.val()=='nzbindex')){strDLMatch.addClass('hightlight');alert('No value for match pattern');return false;} else strDLMatch.removeClass('hightlight');
+    data = data + '&intMinSize=' + escape(intMinSize.val()) + '&intMaxSize=' + escape(intMaxSize.val()) + 
+    '&strPoster=' + escape(strPoster.val()) + '&strExclude=' + escape(strExclude.val());
+  }
+
+  if(strNZBFile.val() != ''){
+    data = data + '&strNZBFile=' + escape(strNZBFile.val());
+  }else if(strNZBFile.val() == '' && strDLHow.val() == 'auto'){
+    data = data + '&strNZBFile=';
+  }
+
+  /* disable the submit button while processing */
+  $('#submit').attr('disabled','true');
+
+  /* show the loading sign */
+  $('.loading').show();
+
+  $.ajax({
+    url: "lib/ajax/ajax_downloads.php",
+    type: "GET",
+    data: data,
+    cache: false,
+    success: function (html) {
+      if(html == 1){
+        $('#edit_form').fadeOut('slow');
+        $('#edit_done_msg').html('Entry successfully updated!');
+        $('#edit_done').addClass("blockquote_green").fadeIn('slow');
+      }else{
+        $('#edit_form').fadeOut('slow');
+        $('#edit_done_msg').html('An error occured while updating!');
+        $('#edit_done').addClass("blockquote_red").fadeIn('slow');
+      }
+      $('.loading').hide();
+    }
+  });
+
+  return false;
+});

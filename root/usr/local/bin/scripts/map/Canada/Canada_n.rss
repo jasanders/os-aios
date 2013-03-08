@@ -1,0 +1,230 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=21
+              forcastCondYPC=71
+              forcastCondWPC=19
+		forcastCondHPC=5
+		forcastCondFontSize=22
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>Canada</title>
+<link>./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Nanaimo</title>
+<cur>CAXX0313</cur>
+<for>Nanaimo</for>
+</item>
+
+<item>
+<title>Nanticoke</title>
+<cur>CAXX0314</cur>
+<for>Nanticoke</for>
+</item>
+
+<item>
+<title>Natashquan</title>
+<cur>CAXX0598</cur>
+<for>Natashquan</for>
+</item>
+
+<item>
+<title>Nelson</title>
+<cur>CAXX0315</cur>
+<for>Nelson</for>
+</item>
+
+<item>
+<title>Nelson House</title>
+<cur>CAXX0316</cur>
+<for>Nelson House</for>
+</item>
+
+<item>
+<title>New Waterford</title>
+<cur>CAXX0317</cur>
+<for>New Waterford</for>
+</item>
+
+<item>
+<title>New Westminster</title>
+<cur>CAXX0318</cur>
+<for>New Westminster</for>
+</item>
+
+<item>
+<title>Newcastle</title>
+<cur>CAXX0319</cur>
+<for>Newcastle</for>
+</item>
+
+<item>
+<title>Nezah</title>
+<cur>CAXX0320</cur>
+<for>Nezah</for>
+</item>
+
+<item>
+<title>Niagara Falls</title>
+<cur>CAXX0321</cur>
+<for>Niagara Falls</for>
+</item>
+
+<item>
+<title>Nicolet</title>
+<cur>CAXX0322</cur>
+<for>Nicolet</for>
+</item>
+
+<item>
+<title>Nipigon</title>
+<cur>CAXX0323</cur>
+<for>Nipigon</for>
+</item>
+
+<item>
+<title>Nobel</title>
+<cur>CAXX0324</cur>
+<for>Nobel</for>
+</item>
+
+<item>
+<title>North Battleford</title>
+<cur>CAXX0325</cur>
+<for>North Battleford</for>
+</item>
+
+<item>
+<title>North Bay</title>
+<cur>CAXX0326</cur>
+<for>North Bay</for>
+</item>
+
+<item>
+<title>North Sydney</title>
+<cur>CAXX0327</cur>
+<for>North Sydney</for>
+</item>
+
+<item>
+<title>North Vancouver</title>
+<cur>CAXX0328</cur>
+<for>North Vancouver</for>
+</item>
+
+<item>
+<title>North West River</title>
+<cur>CAXX0329</cur>
+<for>North West River</for>
+</item>
+
+<item>
+<title>North York</title>
+<cur>CAXX0330</cur>
+<for>North York</for>
+</item>
+
+<item>
+<title>Norway House</title>
+<cur>CAXX0572</cur>
+<for>Norway House</for>
+</item>
+
+<item>
+<title>Notre-Dame-du-Portage</title>
+<cur>CAXX0331</cur>
+<for>Notre-Dame-du-Portage</for>
+</item>
+
+</channel></rss>

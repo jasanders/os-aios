@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+
+  
+<channel>
+<title>Reality TV</title>
+
+<item>
+<title>Mantracker</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FMantrackerfan%2Fuploads%3Fvq%3Dmantracker%2Bhd,Mantracker</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/mantracker.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Tru TV - 300+ clips</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FtruTVnetwork%2Fuploads%3Forderby%3Dupdated,Tru+TV+-+300%2B+clips</link>
+<media:thumbnail url="http://profile.ak.fbcdn.net/hprofile-ak-snc4/hs355.snc4/41801_7990899756_310_n.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Carrier</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F742AB06E0AC46018,Carrier</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/carrier.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Guinness World Records 2010 - 2011</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FGuinnessWorldRecords%2Fuploads%3Forderby%3Dupdated,Guinness+World+Records+2010+-+2011</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/gwr.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+      <title>TMZ Live</title>
+      <link>http://tmz.vo.llnwd.net/o28/podcasts/xml/tmz_podcast.xml</link>
+	  <media:thumbnail url="/usr/local/etc/xLive/repoman/image/tmzlive.jpg" />
+	     <mediaDisplay name=threePartsView
+	sideColorLeft="0:0:0"
+        sideLeftWidthPC="18"
+	sideRightWidthPC="10"
+	sideColorRight="0:0:0"
+	headerXPC="14"
+	headerYPC="3"
+	headerWidthPC="95"
+	itemImageXPC="21"
+	itemImageYPC="18"
+	itemXPC="34"
+	itemYPC="18"
+	itemWidthPC="46"
+	menuXPC="5"
+	menuWidthPC="15"
+	capXPC="82"
+	capYPC="17"
+	capHeightPC="10"
+	headerCapXPC="90"
+	headerCapYPC="10"
+	headerCapWidthPC="0"
+        showDefaultInfo=yes
+	backgroundColor="0:0:0"
+	itemBackgroundColor="0:0:0"
+	infoYPC="85"
+	popupXPC="7"
+	popupWidthPC="15"
+	popupBorderColor="0:0:0"
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+
+</mediaDisplay>
+  </item>
+  
+ 
+<item>
+<title>TMZ Clips</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2Ftmz%2Fuploads%3Forderby%3Dupdated,TMZ+Clips</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/tmz.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Inside American Jail</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F55170D33B248F161,Inside+American+Jail</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/jail.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>The Principal's Office</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FPrincipalOffice%2Fuploads%3Forderby%3Dupdated,The+Principal%27s+Office</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/poffice.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Judge Show Clips</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F500A3A16A5DE6D26,Judge+Show+Clips</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/judge.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Snakes Byte TV</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FSnakeBytesTV%2Fuploads%3Forderby%3Dupdated,Snakes+Byte+TV</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/nsMOFVQGWL4/market_thumb.jpg?v=a58375" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>Campus PD Seasons 1,2 & 3</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FAB7A49A4CABA12E1,Campus+PD+Seasons+1%2C2+%26+3</link>
+<media:thumbnail url="http://pcm-tv.com/news/wp-content/uploads/2011/01/key_art_campus_pd1.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

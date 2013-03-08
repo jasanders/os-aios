@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name=photoView
+	rowCount=3
+	columnCount=5
+	drawItemText="no"
+	fontSize="16"
+	menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+	sliding="no"
+	idleImageXPC=40
+	idleImageYPC=40
+	idleImageWidthPC=20
+	idleImageHeightPC=26
+	>
+		   
+		   <backgroundDisplay>
+                        <image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+                       /usr/local/etc/xLive/repoman/repoman/image/black.jpg
+                        </image>
+                </backgroundDisplay>
+                <image  offsetXPC=0 offsetYPC=2.8 widthPC=100 heightPC=15.6>
+                /usr/local/etc/xLive/repoman/image/sportsmanheader.jpg
+                </image>
+				</mediaDisplay>
+  
+<channel>
+<title>Hunting</title>
+
+<item>
+
+  
+   <title>Hunting</title>
+ 
+<link>/usr/local/etc/xLive/repoman/hunting.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/hunting.jpg"/>
+<mediaDisplay name="photoView" showHeader="no" rowCount="2" columnCount="4" drawItemText="no" menuBorderColor="0:0:0" sideColorBottom="0:0:0" sideColorTop="0:0:0" itemImageXPC="10" itemOffsetXPC="10" backgroundColor="0:0:0" sliding="yes" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay> </item>
+  
+   
+<item>
+
+ <title>Fishing</title>
+ 
+<link>/usr/local/etc/xLive/repoman/fishing.rss</link>
+<media:thumbnail url="/usr/local/etc/xLive/repoman/image/fishing.jpg"/>
+<mediaDisplay name="photoView" showHeader="no" rowCount="2" columnCount="4" drawItemText="no" menuBorderColor="0:0:0" sideColorBottom="0:0:0" sideColorTop="0:0:0" itemImageXPC="10" itemOffsetXPC="10" backgroundColor="0:0:0" sliding="yes" idleImageXPC="80"
+	idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+> idleImageWidthPC="8"idleImageHeightPC="20">
+        <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	</mediaDisplay> </item>
+
+        
+	    
+  
+ 
+</channel>
+</rss>

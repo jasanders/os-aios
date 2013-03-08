@@ -1,0 +1,138 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<bookmark>PopupDialog</bookmark>
+
+<onEnter>
+print("^^^^^^^^^^^minipopup^^^^^^^^^^^^^^^^^^^^^^^^^^ = ");
+setRefreshTime(5000);
+</onEnter>
+
+
+<onRefresh>
+
+print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ = ");
+setRefreshTime(-1);
+postMessage("return");
+
+</onRefresh>
+
+
+
+<mediaDisplay
+showHeader=no
+name=onePartView
+forceFocusOnItem=yes
+itemBackgroundColor = -1:-1:-1
+ viewAreaXPC=0
+ viewAreaYPC=82
+ viewAreaWidthPC=100
+ viewAreaHeightPC=18
+ itemXPC=0
+
+ itemWidthPC=100
+
+	sideLeftWidthPC=100
+	sideRightWidthPC=0
+	imageLeftSide="../image/popup_bg.fsp"
+	imageRightSide=""
+>
+  <showHeader>no</showHeader>
+  <showDefaultInfo>no</showDefaultInfo>
+
+  <backgroundColor>-1:-1:-1</backgroundColor>
+  <sideColorTop>0:0:0</sideColorTop>
+  <sideColorBottom>0:0:0</sideColorBottom>
+  <sideColorLeft>-1:-1:-1</sideColorLeft>
+  <sideColorRight>0:0:0</sideColorRight>
+  <itemBackgroundColor>-1:-1:-1</itemBackgroundColor>
+  <focusBorderColor>-1:-1:-11</focusBorderColor>
+  <unFocusBorderColor>-1:-1:-1</unFocusBorderColor>
+
+<text offsetXPC="13.5" offsetYPC="22.2" widthPC="10" heightPC="50" fontSize=15 foregroundColor=222:229:244>
+<script>
+"$[NOTICE]";
+	</script>
+</text>
+
+<image offsetXPC="8" offsetYPC="20" widthPC=5 heightPC=45 >
+	<script>
+		icon = "../image/newmsg3.fsp";
+		icon;
+	</script>
+</image>
+
+<text offsetXPC=25 offsetYPC=25 widthPC=70 heightPC=40 fontSize=13 align=left backgroundColor=-1:-1:-1 foregroundColor=222:229:244>
+<script>
+im_tmpstatus;
+</script>
+</text>
+
+<itemDisplay>
+<text offsetXPC=2 offsetYPC=0 widthPC=200 heightPC=100 fontSize=10 backgroundColor=-1:-1:-1 foregroundColor=222:229:244>
+<script>
+itemT = getItemInfo("displayTitle");
+itemT;
+</script>
+</text>
+
+</itemDisplay>
+
+
+<onUserInput>
+<script>
+userInput = currentUserInput();
+print("in minipop menu---Catch input: ", userInput);
+if (userInput == "right")
+{
+	print("ignore right key");
+	"true";
+}
+else
+	"false";
+		
+</script>
+</onUserInput>
+
+</mediaDisplay>
+
+<script>
+	path = getStoragePath("tmp") + "im_tmpstatus.dat";
+      im_tmpstatus = readStringFromFile(path);
+	print("im_tmpstatus========",im_tmpstatus);
+
+</script>
+
+<item_template>
+<displayTitle>
+<script>
+
+</script>
+</displayTitle>
+<media:thumbnail>
+	<script>
+		face ="./IMS_Modules/gtalk/image/file.fsp";
+	</script>
+</media:thumbnail>
+
+<onClick>
+print("back to minipopup list ");
+
+null;
+</onClick>
+</item_template>
+
+<channel>
+<title>file list</title>
+<link>./gtalk_filedetails.rss</link>
+<media:thumbnail url="./IMS_Modules/gtalk/image/file.fsp" width="120" height="90" />
+
+<itemSize>
+<script>
+filenameCount=0;
+</script>
+</itemSize>
+
+</channel>
+</rss>
+

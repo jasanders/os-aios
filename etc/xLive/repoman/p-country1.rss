@@ -1,0 +1,118 @@
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>/usr/local/etc/xLive/repoman/image/dodge.jpg</image>
+</backgroundDisplay>
+           
+
+
+<channel>
+<title>Live Police, Fire, EMS and Amateur Radio Feeds</title>
+
+<item>
+
+     <title>Live Police, Fire, EMS and Amateur Radio Feeds</title>
+      <link>/usr/local/etc/xLive/repoman/p-country.rss</link>
+	<media:thumbnail url="/usr/local/etc/xLive/repoman/image/scanner.jpg"/>
+	<mediaDisplay name=photoFocusView 
+	focusItem="1"
+	imageFocus=null 
+	imageParentFocus=null 
+	backgroundColor="0:0:0"
+	rowCount="1"
+	columnCount="5"
+	drawItemText="no"
+	fontSize="15"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="92:3:239"
+	itemOffsetXPC="0"
+	itemOffsetYPC="60"
+	itemWidthPC="15.5"
+	itemHeightPC="15.5"
+	itemBackgroundWidthPC="16.5"
+	itemBackgroundHeightPC="16.5"
+	itemGapXPC="1.5"
+	focusItemOffsetYPC="52"
+	focusItemWidthPC="30.43"
+	focusItemHeightPC="30.43"
+	focusItemBackgroundWidthPC="31.5"
+	focusItemBackgroundHeightPC="31.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="85"
+	itemBorderColor="0:0:0"
+	showHeader="yes"
+	headerXPC="5"
+	showDefaultInfo="yes"
+	headerYPC="10"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage>/usr/local/etc/xLive/repoman/image/loading/hdd_mount_1.png </idleImage>
+<idleImage>/usr/local/etc/xLive/repoman/image/loading/hdd_mount_2.png </idleImage>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>/usr/local/etc/xLive/repoman/image/dodge.jpg</image>
+</backgroundDisplay>
+		</mediaDisplay>
+		<item_template>
+				<mediaDisplay name=photoFocusView 
+	focusItem="2"
+	imageFocus=null 
+	imageParentFocus=null 
+	backgroundColor="0:0:0"
+	rowCount="1"
+	columnCount="5"
+	drawItemText="no"
+	fontSize="15"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="92:3:239"
+	itemOffsetXPC="0"
+	itemOffsetYPC="60"
+	itemWidthPC="15.5"
+	itemHeightPC="15.5"
+	itemBackgroundWidthPC="0"
+	itemBackgroundHeightPC="0"
+	itemGapXPC="1.5"
+	focusItemOffsetYPC="52"
+	focusItemWidthPC="30.43"
+	focusItemHeightPC="30.43"
+	focusItemBackgroundWidthPC="31.5"
+	focusItemBackgroundHeightPC="31.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="85"
+	itemBorderColor="0:0:0"
+	showHeader="yes"
+	headerXPC="5"
+	showDefaultInfo="yes"
+	headerYPC="10"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+<backgroundDisplay>
+<image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>/usr/local/etc/xLive/repoman/image/dodge.jpg</image>
+</backgroundDisplay>
+			</mediaDisplay>
+		</item_template>
+	
+  </item>
+
+
+
+</channel>
+</rss>

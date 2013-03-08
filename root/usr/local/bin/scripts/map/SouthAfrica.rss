@@ -1,0 +1,525 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>South Africa</title>
+<link>./scripts/map/SouthAfrica.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Alexander Bay</title>
+<cur>SFXX0001</cur>
+<for>Alexander Bay</for>
+</item>
+
+<item>
+<title>Annadale</title>
+<cur>SFXX0002</cur>
+<for>Annadale</for>
+</item>
+
+<item>
+<title>Barkly West</title>
+<cur>SFXX0003</cur>
+<for>Barkly West</for>
+</item>
+
+<item>
+<title>Beauvallon</title>
+<cur>SFXX0004</cur>
+<for>Beauvallon</for>
+</item>
+
+<item>
+<title>Bellville</title>
+<cur>SFXX0005</cur>
+<for>Bellville</for>
+</item>
+
+<item>
+<title>Benoni</title>
+<cur>SFXX0006</cur>
+<for>Benoni</for>
+</item>
+
+<item>
+<title>Berlin</title>
+<cur>SFXX0007</cur>
+<for>Berlin</for>
+</item>
+
+<item>
+<title>Bethlehem Airport</title>
+<cur>SFXX0062</cur>
+<for>Bethlehem Airport</for>
+</item>
+
+<item>
+<title>Bloemfontein</title>
+<cur>SFXX0008</cur>
+<for>Bloemfontein</for>
+</item>
+
+<item>
+<title>Boshof</title>
+<cur>SFXX0009</cur>
+<for>Boshof</for>
+</item>
+
+<item>
+<title>Calvinia</title>
+<cur>SFXX0064</cur>
+<for>Calvinia</for>
+</item>
+
+<item>
+<title>Cape Point</title>
+<cur>SFXX0068</cur>
+<for>Cape Point</for>
+</item>
+
+<item>
+<title>Cape Town</title>
+<cur>SFXX0010</cur>
+<for>Cape Town</for>
+</item>
+
+<item>
+<title>Durban</title>
+<cur>SFXX0011</cur>
+<for>Durban</for>
+</item>
+
+<item>
+<title>East London</title>
+<cur>SFXX0012</cur>
+<for>East London</for>
+</item>
+
+<item>
+<title>Edenburg</title>
+<cur>SFXX0013</cur>
+<for>Edenburg</for>
+</item>
+
+<item>
+<title>Ferreira</title>
+<cur>SFXX0014</cur>
+<for>Ferreira</for>
+</item>
+
+<item>
+<title>George Airport</title>
+<cur>SFXX0066</cur>
+<for>George Airport</for>
+</item>
+
+<item>
+<title>Germiston</title>
+<cur>SFXX0015</cur>
+<for>Germiston</for>
+</item>
+
+<item>
+<title>Gough Island</title>
+<cur>SFXX0067</cur>
+<for>Gough Island</for>
+</item>
+
+<item>
+<title>Grootmis</title>
+<cur>SFXX0016</cur>
+<for>Grootmis</for>
+</item>
+
+<item>
+<title>Haga-Haga</title>
+<cur>SFXX0017</cur>
+<for>Haga-Haga</for>
+</item>
+
+<item>
+<title>Hamburg</title>
+<cur>SFXX0018</cur>
+<for>Hamburg</for>
+</item>
+
+<item>
+<title>Hermanus</title>
+<cur>SFXX0019</cur>
+<for>Hermanus</for>
+</item>
+
+<item>
+<title>Illovo</title>
+<cur>SFXX0020</cur>
+<for>Illovo</for>
+</item>
+
+<item>
+<title>Jacobsdal</title>
+<cur>SFXX0021</cur>
+<for>Jacobsdal</for>
+</item>
+
+<item>
+<title>Jeffrey's Bay</title>
+<cur>SFXX0022</cur>
+<for>Jeffrey's Bay</for>
+</item>
+
+<item>
+<title>Johannesburg</title>
+<cur>SFXX0023</cur>
+<for>Johannesburg</for>
+</item>
+
+<item>
+<title>Kakamas</title>
+<cur>SFXX0024</cur>
+<for>Kakamas</for>
+</item>
+
+<item>
+<title>Karos</title>
+<cur>SFXX0025</cur>
+<for>Karos</for>
+</item>
+
+<item>
+<title>Keimoes</title>
+<cur>SFXX0026</cur>
+<for>Keimoes</for>
+</item>
+
+<item>
+<title>Kempton Park</title>
+<cur>SFXX0027</cur>
+<for>Kempton Park</for>
+</item>
+
+<item>
+<title>Kimberley</title>
+<cur>SFXX0028</cur>
+<for>Kimberley</for>
+</item>
+
+<item>
+<title>King William's Town</title>
+<cur>SFXX0029</cur>
+<for>King William's Town</for>
+</item>
+
+<item>
+<title>Kleinsee</title>
+<cur>SFXX0030</cur>
+<for>Kleinsee</for>
+</item>
+
+<item>
+<title>Krugersdorp</title>
+<cur>SFXX0031</cur>
+<for>Krugersdorp</for>
+</item>
+
+<item>
+<title>Langebaanweg</title>
+<cur>SFXX0065</cur>
+<for>Langebaanweg</for>
+</item>
+
+<item>
+<title>Louisvale</title>
+<cur>SFXX0032</cur>
+<for>Louisvale</for>
+</item>
+
+<item>
+<title>Lyttelton</title>
+<cur>SFXX0033</cur>
+<for>Lyttelton</for>
+</item>
+
+<item>
+<title>Malmesbury</title>
+<cur>SFXX0034</cur>
+<for>Malmesbury</for>
+</item>
+
+<item>
+<title>Marion Island</title>
+<cur>SFXX0069</cur>
+<for>Marion Island</for>
+</item>
+
+<item>
+<title>Mphakane</title>
+<cur>SFXX0035</cur>
+<for>Mphakane</for>
+</item>
+
+<item>
+<title>Paarl</title>
+<cur>SFXX0036</cur>
+<for>Paarl</for>
+</item>
+
+<item>
+<title>Parow</title>
+<cur>SFXX0037</cur>
+<for>Parow</for>
+</item>
+
+<item>
+<title>Pietermaritzburg</title>
+<cur>SFXX0070</cur>
+<for>Pietermaritzburg</for>
+</item>
+
+<item>
+<title>Pietersburg</title>
+<cur>SFXX0038</cur>
+<for>Pietersburg</for>
+</item>
+
+<item>
+<title>Pinetown</title>
+<cur>SFXX0039</cur>
+<for>Pinetown</for>
+</item>
+
+<item>
+<title>Port Alfred</title>
+<cur>SFXX0040</cur>
+<for>Port Alfred</for>
+</item>
+
+<item>
+<title>Port Elizabeth</title>
+<cur>SFXX0041</cur>
+<for>Port Elizabeth</for>
+</item>
+
+<item>
+<title>Port Nolloth</title>
+<cur>SFXX0042</cur>
+<for>Port Nolloth</for>
+</item>
+
+<item>
+<title>Potgietersrus</title>
+<cur>SFXX0043</cur>
+<for>Potgietersrus</for>
+</item>
+
+<item>
+<title>Pretoria</title>
+<cur>SFXX0044</cur>
+<for>Pretoria</for>
+</item>
+
+<item>
+<title>Pretoria Irene</title>
+<cur>SFXX0061</cur>
+<for>Pretoria Irene</for>
+</item>
+
+<item>
+<title>Ritchie</title>
+<cur>SFXX0045</cur>
+<for>Ritchie</for>
+</item>
+
+<item>
+<title>Rustenburg</title>
+<cur>SFXX0046</cur>
+<for>Rustenburg</for>
+</item>
+
+<item>
+<title>Saldanha</title>
+<cur>SFXX0047</cur>
+<for>Saldanha</for>
+</item>
+
+<item>
+<title>Sekuruwe</title>
+<cur>SFXX0048</cur>
+<for>Sekuruwe</for>
+</item>
+
+<item>
+<title>Soweto</title>
+<cur>SFXX0049</cur>
+<for>Soweto</for>
+</item>
+
+<item>
+<title>Springbok</title>
+<cur>SFXX0063</cur>
+<for>Springbok</for>
+</item>
+
+<item>
+<title>Stanger</title>
+<cur>SFXX0050</cur>
+<for>Stanger</for>
+</item>
+
+<item>
+<title>Strand</title>
+<cur>SFXX0051</cur>
+<for>Strand</for>
+</item>
+
+<item>
+<title>Tembisa</title>
+<cur>SFXX0052</cur>
+<for>Tembisa</for>
+</item>
+
+<item>
+<title>Tongaat</title>
+<cur>SFXX0053</cur>
+<for>Tongaat</for>
+</item>
+
+<item>
+<title>Uitenhage</title>
+<cur>SFXX0054</cur>
+<for>Uitenhage</for>
+</item>
+
+<item>
+<title>Ulco</title>
+<cur>SFXX0055</cur>
+<for>Ulco</for>
+</item>
+
+<item>
+<title>Upington</title>
+<cur>SFXX0056</cur>
+<for>Upington</for>
+</item>
+
+<item>
+<title>Vereeniging</title>
+<cur>SFXX0057</cur>
+<for>Vereeniging</for>
+</item>
+
+<item>
+<title>Walmer</title>
+<cur>SFXX0058</cur>
+<for>Walmer</for>
+</item>
+
+<item>
+<title>Welkom</title>
+<cur>SFXX0059</cur>
+<for>Welkom</for>
+</item>
+
+<item>
+<title>Witbank</title>
+<cur>SFXX0060</cur>
+<for>Witbank</for>
+</item>
+
+</channel></rss>
+

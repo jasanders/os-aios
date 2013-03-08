@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Dle názvu</alpha>
+	<genre>Žánr</genre>
+	<recent>Naposledy přidané</recent>
+	<select>Vyber film podle:</select>
+	<update>Aktualizuj Jukebox</update>
+	<notwatched>Neshlédnuté</notwatched>
+	<year>Rok</year>
+	<search>Hledej</search>
+  <config>Nastavení</config>
+  <textInfo>Vítej v SRJG !&#x0A;&#x0A;1 - pro přehrání posledního sledovaného videa.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Seznam kláves:&#x0A;1 = Přepni zobrazení pro Jukebox&#x0A;Enter = Pro výběr&#x0A;Rtn = Předchozí obrazovka</helpGP>
+  <helpJbx>Seznam kláves:&#x0A;2 = Označ jako shlédnuté&#x0A;Enter = Vyber&#x0A;Rtn = Předchozí obrazovka&#x0A;Play = Přehraj video&#x0A;Goto = Jdi na video číslo&#x0A;<< = Zpět o 10 videí&#x0A;>> = Přeskoč 10 videí</helpJbx>
+  <helpSheet>Seznam kláves:&#x0A;2 = Označ jako shlédnuté&#x0A;Rtn = Předchozí obrazovka&#x0A;Enter = Přehraj video&#x0A;Play = Přehraj video&#x0A;< = Předchozí video&#x0A;> = Další video</helpSheet>
+</jukebox>
+<update>
+  <fast>Rychle</fast>
+  <rebuild>Přegeneruj</rebuild>
+</update>
+<cfg>
+  <Lang>Jazyk</Lang>
+  <Jukebox_Size>Zobrazení</Jukebox_Size>
+  <Movies_Path>Cesta k filmu</Movies_Path>
+ 	<Nfo_Path>Cesta k Nfo</Nfo_Path>
+	<Poster_Path>Cesta k Poster</Poster_Path>
+	<Sheet_Path>Cesta k Sheet</Sheet_Path>
+  <Movie_Filter>Filtr</Movie_Filter>
+  <SingleDb>Jednoduhá databáze</SingleDb>
+  <Recent_Max>Max. počet přidaných</Recent_Max>
+  <Imdb>Použij Imdb</Imdb>
+	<Dspl>Zobrazit</Dspl>
+  <UnlockRM>Povolit smazat</UnlockRM>
+  <Jukebox_Path>Cesta k Jukeboxu:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Verze:</Version>
+  <yes>Ano</yes>
+  <no>Ne</no>
+	<top>Kvalitní</top>
+	<bottom>Spodní</bottom>
+	<white>Bílá</white>
+	<black>Černá</black>
+	<yellow>Žlutá</yellow>
+	<transparent>Transparentní</transparent>
+	<browse>Prohlížet</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Žánr textu:</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Cesta k filmům:</FBrowser_Title>
+  <FBrowser_Valid>Potvrdit</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Aktivovat Imdb</Imdb_Use>
+  <Imdb_Lang>Anotace</Imdb_Lang>
+  <Imdb_Source>Náhodný poster</Imdb_Source>
+  <Imdb_Poster>Stáhnout poster</Imdb_Poster>
+  <Imdb_PBox>Poster Box</Imdb_PBox>
+  <Imdb_PPost>Náhodný poster</Imdb_PPost>
+  <Imdb_Sheet>Stáhnout tapetu</Imdb_Sheet>
+  <Imdb_SBox>Poster Box na tapetě</Imdb_SBox>
+  <Imdb_SPost>Náhodný poster na tapetě</Imdb_SPost>
+  <Imdb_Backdrop>Náhodné pozadí</Imdb_Backdrop>
+  <Imdb_Font>Písmo</Imdb_Font>
+  <Imdb_Genres>Obrázky žánrů</Imdb_Genres>
+  <Imdb_Tagline>Slogan</Imdb_Tagline>
+  <Imdb_Time>Formát času</Imdb_Time>
+  <Imdb_Info>Vytvoř info o souboru</Imdb_Info>
+  <Imdb_MaxDl>Vícenásobné stahování</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Upravit Menu</EditMenu>
+  <rmPoster>Odebrat Poster</rmPoster>
+  <rmSheet>Odebrat Sheet</rmSheet>
+  <rmNfo>Odebrat Nfo</rmNfo>
+  <rmMovie>Odebrat Movie</rmMovie>
+  <ValPoster>Opravdu chcete odstranit pouze Poster ?</ValPoster>
+  <ValSheet>Opravdu chcete odstranit pouze Sheet ?</ValSheet>
+  <ValNfo>Opravdu chcete odstranit pouze Nfo ?</ValNfo>
+  <ValMovie>Opravdu chcete odstranit všechny soubory, včetně filmu ?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Vyber titulky</SubtMenu>
+  <WtSubt>Bez titulků</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Titulky: Auto play</Subt_OneAuto>
+  <Subt_FontPath>Titulky: Cesta k fontu</Subt_FontPath>
+  <Subt_FontFile>Titulky: Aktivní font</Subt_FontFile>
+  <Subt_Color>Titulky: Barva</Subt_Color>
+  <Subt_ColorBg>Titulky: Barva pozadí</Subt_ColorBg>
+	<Subt_Size>Titulky: Velikost</Subt_Size>
+	<Subt_Pos>Titulky: Pozice</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Vyber font</FontMenu>
+</MFont>

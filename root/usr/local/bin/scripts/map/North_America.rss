@@ -1,0 +1,98 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+<title>North America</title>
+<link>./scripts/map/North_America.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Belize</title>
+<link>rss_file://./scripts/map/Belize.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Canada</title>
+<link>rss_file://./scripts/map/Canada.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Costa Rica</title>
+<link>rss_file://./scripts/map/CostaRica.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>El Salvador</title>
+<link>rss_file://./scripts/map/ElSalvador.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Guatemala</title>
+<link>rss_file://./scripts/map/Guatemala.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Honduras</title>
+<link>rss_file://./scripts/map/Honduras.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Mexico</title>
+<link>rss_file://./scripts/map/Mexico.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>23.625740</Latitude>
+<Longitude>-101.956253</Longitude>
+</item>
+
+<item>
+<title>Nicaragua</title>
+<link>rss_file://./scripts/map/Nicaragua.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>Panama</title>
+<link>rss_file://./scripts/map/Panama.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+<item>
+<title>The Bahamas</title>
+<link>rss_file://./scripts/map/TheBahamas.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+<zoom>country</zoom>
+<Latitude>62.358730</Latitude>
+<Longitude>-96.582092</Longitude>
+</item>
+
+</channel></rss>

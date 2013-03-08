@@ -1,0 +1,698 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community - xLive 10 -->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+<mediaDisplay name=photoView 
+	focusItem="0"
+	rowCount="1"
+	columnCount="4"
+	drawItemText="no"
+	fontSize="18"
+	sideTopHeightPC="0"
+	sideColorTop="0:0:0"
+	sideColorBottom="0:0:0"
+	itemOffsetXPC="4"
+	itemOffsetYPC="50"
+	itemWidthPC="21"
+	itemHeightPC="27"
+	itemGapXPC="1.5"
+	itemBackgroundColor="0:0:0"
+	bottomYPC="90"
+	bottomXPC="50"
+	itemBorderColor="0:0:0"
+	showHeader="no"
+	showDefaultinfo="yes"
+	headerXPC="0"
+	headerYPC="0"
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<backgroundDisplay>
+		  <image redraw="no" offsetXPC="1" offsetYPC="1" widthPC="98" heightPC="99">/usr/local/etc/xLive/repoman/backgrounds/main.jpg
+		  </image>
+</backgroundDisplay>
+
+
+
+
+
+
+<onUserInput>
+		userInput = currentUserInput(); 
+		if ( userInput == &quot;ENTR&quot; ) 
+		{ 
+			title = getItemInfo(&quot;title&quot;); 
+			writeStringToFile("/tmp/debug", title); 
+			if (title == &quot;Dsapac's Adult Section&quot;) 
+			{ 
+				if(login() == &quot;true&quot;) 
+				{ 
+					ret = "true"; 
+				} 
+			} 
+		}
+	</onUserInput>
+
+</mediaDisplay>
+
+
+<channel>
+<title>Discovery Channel </title>
+
+<item>
+
+<title>Discovery Channel </title>
+<link>/usr/local/etc/xLive/repoman/discovery.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 0)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/discovery_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/discovery_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+ 
+</item>
+	
+
+<item>
+<title>National Geographic</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fusers%2FNationalGeographic%2Fuploads%3Forderby%3Dupdated,National+Geographic</link>
+<media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 1)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/ng_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/ng_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+<title>Classic TV</title>
+<link>/usr/local/etc/xLive/repoman/classic/classictv.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 2)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/classictv_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/classictv_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="6"
+      columnCount="7"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+	
+
+<item>
+
+<title>Paranormal</title>
+<link>/usr/local/etc/xLive/repoman/paranormal.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 3)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/para_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/para_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+</item>
+
+
+<item>
+
+<title>Game Shows</title>
+<link>/usr/local/etc/xLive/repoman/gameshows/gameshows.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 4)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/gs_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/gs_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+</item>
+
+
+<item>
+
+<title>Documentaries</title>
+<link>/usr/local/etc/xLive/repoman/documentry.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 5)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/doc_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/doc_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+</item>
+
+
+	
+
+<item>
+<title>UFO TV</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F4CF2043C2C0E3747,UFO+TV</link>
+<media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 6)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/ufo_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/ufo_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+
+<title>Sports & Entertainment</title>
+<link>/usr/local/etc/xLive/repoman/sports.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 7)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/sport_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/sport_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+
+		
+	    </mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Reality TV</title>
+<link>/usr/local/etc/xLive/repoman/advent.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 8)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/reality_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/reality_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+</item>
+
+
+<item>
+
+<title>Anime Shows</title>
+<link>/usr/local/etc/xLive/repoman/anime.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 9)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/anime_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/anime_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"sliding="yes"
+idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+	
+
+
+
+
+
+<item>
+
+<title>Kids Corner</title>
+<link>/usr/local/etc/xLive/repoman/kids.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 10)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/kids_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/kids_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+   <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Afghanistan War</title>
+<link>/usr/local/etc/xLive/repoman/war.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 11)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/afghan_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/afghan_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+	
+
+<item>
+
+<title>Adobe Photoshop Tutorials</title>
+<link>/usr/local/etc/xLive/repoman/photoshop.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 12)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/ps_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/ps_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+
+		
+	    </mediaDisplay>
+</item>
+
+
+<item>
+
+<title>Revision3</title>
+<link>/usr/local/etc/xLive/repoman/revision3.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 13)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/revision_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/revision_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+<mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+
+		
+	    </mediaDisplay>
+</item>
+
+
+<item>
+
+<title>TWiT</title>
+<link>/usr/local/etc/xLive/repoman/twit.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 14)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/twit_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/twit_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+
+
+
+<item>
+
+<title>Movie Time </title>
+<link>/usr/local/etc/xLive/repoman/movies.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 15)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/movie_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/movie_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name=ThreePartsView
+	itemBackgroundColor=0:0:0
+	backgroundColor=0:0:0
+	sideLeftWidthPC=10
+	sideRightWidthPC=100
+	fontSize=16
+	showHeader="n0"
+	headerXPC=101
+	headerYPC=101
+	headerImageXPC=101 
+	headerImageYPC=101
+	itemImageXPC="9" 
+	itemImageYPC="21"
+    itemImageHeightPC="12" 
+	itemImageWidthPC="14"           
+    itemXPC="23"
+    itemYPC="20.5"			
+	itemPerPage="5"			
+	popupXPC = 7
+	popupYPC = 21
+	popupFontSize = 17
+	popupWidthPC = 15
+	popupBorderColor = 0:0:0
+	idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+	
+           <idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+
+		
+	    </mediaDisplay>
+</item>
+	
+
+<item>
+
+<title>Lynda.com</title>
+<link>/usr/local/etc/xLive/repoman/lynda.rss</link>
+  <media:thumbnail width="200" height="171">
+    <script>
+     if (getQueryItemIndex() == 16)
+     {
+          state=getDrawingItemState();
+          if (state == "focus") {"/usr/local/etc/xLive/repoman/image/focus_unfocus/lynda_focus.gif"; }
+          else					{"/usr/local/etc/xLive/repoman/image/focus_unfocus/lynda_unfocus.gif"; }
+     }
+    </script>
+  </media:thumbnail>
+  <mediaDisplay name="photoView"
+      showHeader="no"
+     rowCount="5"
+      columnCount="5"
+      drawItemText="no"
+      fontSize="16"	 
+	  menuBorderColor="0:0:0"
+	sideColorBottom="0:0:0"
+	sideColorTop="0:0:0"
+	itemImageXPC="10"
+	itemOffsetXPC="10"
+	backgroundColor="0:0:0"
+      sliding="yes"
+      idleImageXPC="80"
+idleImageYPC="80" 
+idleImageWidthPC="20"
+idleImageHeightPC="26"
+>
+<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading1.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading2.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading3.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading4.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading5.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading6.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+	<idleImage> /usr/local/etc/xLive/repoman/image/loading/loading7.png </idleImage>
+     
+      </mediaDisplay>
+</item>
+
+
+
+</channel>
+</rss>

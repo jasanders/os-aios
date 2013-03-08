@@ -1,0 +1,1 @@
+/usr/local/etc/srjg/srjg-gui.cgi

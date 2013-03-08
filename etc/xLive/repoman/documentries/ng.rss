@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  
+<channel>
+<title>NG Documentries</title>
+
+<item>
+<title>NG - Dam Beavers</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F20DEF33101C537C8,NG+-+Dam+Beavers</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/6nOuY7CoAwI/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NG - Inside VN War</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F76616720B25E382F,NG+-+Inside+VN+War</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/B5J9AnG9LA4/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+<item>
+<title>NG - Worlds Biggest Cave</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2F12659EC3E46431D1,NG+-+Worlds+Biggest+Cave</link>
+<media:thumbnail url="http://i4.ytimg.com/vi/cATsgHEaOiI/default.jpg" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>

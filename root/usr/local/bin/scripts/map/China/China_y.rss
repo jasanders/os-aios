@@ -1,0 +1,356 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1);
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	
+</item_template>
+
+<channel>
+<title>China</title>
+<link>./scripts/map/China_y.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Ya'An</title>
+<cur>CHXX0354</cur>
+<for>Ya%27An</for>
+</item>
+
+
+<item>
+<title>Yan An</title>
+<cur>CHXX0267</cur>
+<for>Yan%20An,China</for>
+</item>
+
+
+<item>
+<title>Yanchi</title>
+<cur>CHXX0263</cur>
+<for>Yanchi</for>
+</item>
+
+
+<item>
+<title>Yangcheng</title>
+<cur>CHXX0273</cur>
+<for>Yangcheng</for>
+</item>
+
+
+<item>
+<title>Yangjiang</title>
+<cur>CHXX0500</cur>
+<for>Yangjiang</for>
+</item>
+
+
+<item>
+<title>Yangliuqing</title>
+<cur>CHXX0151</cur>
+<for>Yangliuqing</for>
+</item>
+
+
+<item>
+<title>Yangquan</title>
+<cur>CHXX0152</cur>
+<for>Yangquan</for>
+</item>
+
+
+<item>
+<title>Yanji</title>
+<cur>CHXX0291</cur>
+<for>Yanji</for>
+</item>
+
+
+<item>
+<title>Yanzhou</title>
+<cur>CHXX0321</cur>
+<for>Yanzhou</for>
+</item>
+
+
+<item>
+<title>Yaxian</title>
+<cur>CHXX0507</cur>
+<for>Yaxian</for>
+</item>
+
+
+<item>
+<title>Yibin</title>
+<cur>CHXX0362</cur>
+<for>Yibin</for>
+</item>
+
+
+<item>
+<title>Yichang</title>
+<cur>CHXX0407</cur>
+<for>Yichang</for>
+</item>
+
+
+<item>
+<title>Yinchuan</title>
+<cur>CHXX0259</cur>
+<for>Yinchuan</for>
+</item>
+
+
+<item>
+<title>Yingkou</title>
+<cur>CHXX0304</cur>
+<for>Yingkou</for>
+</item>
+
+<item>
+<title>Yining</title>
+<cur>CHXX0203</cur>
+<for>Yining</for>
+</item>
+
+
+<item>
+<title>Yiwu</title>
+<cur>CHXX0218</cur>
+<for>Yiwu</for>
+</item>
+
+
+<item>
+<title>Yiyang</title>
+<cur>CHXX0156</cur>
+<for>Yiyang</for>
+</item>
+
+
+<item>
+<title>Yiyuan</title>
+<cur>CHXX0317</cur>
+<for>Yiyuan</for>
+</item>
+
+
+<item>
+<title>Yong'An</title>
+<cur>CHXX0473</cur>
+<for>Yong%27An</for>
+</item>
+
+
+<item>
+<title>Yongchuan</title>
+<cur>CHXX0157</cur>
+<for>Yongchuan</for>
+</item>
+
+
+<item>
+<title>Yongning</title>
+<cur>CHXX0158</cur>
+<for>Yongning</for>
+</item>
+
+
+<item>
+<title>Yongshujiao</title>
+<cur>CHXX0510</cur>
+<for>Yongshujiao</for>
+</item>
+
+
+<item>
+<title>Youyang</title>
+<cur>CHXX0414</cur>
+<for>Youyang</for>
+</item>
+
+
+<item>
+<title>Yu Xian</title>
+<cur>CHXX0258</cur>
+<for>Yu%20Xian</for>
+</item>
+
+
+<item>
+<title>Yuanjiang</title>
+<cur>CHXX0382</cur>
+<for>Yuanjiang</for>
+</item>
+
+
+<item>
+<title>Yuanling</title>
+<cur>CHXX0415</cur>
+<for>Yuanling</for>
+</item>
+
+
+<item>
+<title>Yuanmou</title>
+<cur>CHXX0372</cur>
+<for>Yuanmou</for>
+</item>
+
+
+<item>
+<title>Yuanping</title>
+<cur>CHXX0261</cur>
+<for>Yuanping</for>
+</item>
+
+
+<item>
+<title>Yucheng</title>
+<cur>CHXX0159</cur>
+<for>Yucheng</for>
+</item>
+
+
+<item>
+<title>Yuci</title>
+<cur>CHXX0160</cur>
+<for>Yuci</for>
+</item>
+
+
+<item>
+<title>Yueyang</title>
+<cur>CHXX0411</cur>
+<for>Yueyang</for>
+</item>
+
+
+<item>
+<title>Yulin</title>
+<cur>CHXX0260</cur>
+<for>Yulin</for>
+</item>
+
+
+<item>
+<title>Yumenzhen</title>
+<cur>CHXX0224</cur>
+<for>Yumenzhen</for>
+</item>
+
+
+<item>
+<title>Yuncheng</title>
+<cur>CHXX0272</cur>
+<for>Yuncheng</for>
+</item>
+
+
+<item>
+<title>Yushe</title>
+<cur>CHXX0265</cur>
+<for>Yushe</for>
+</item>
+
+
+<item>
+<title>Yushu</title>
+<cur>CHXX0334</cur>
+<for>Yushu</for>
+</item>
+
+
+
+</channel></rss>

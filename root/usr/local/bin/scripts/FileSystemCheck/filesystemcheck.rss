@@ -1,0 +1,176 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+click_button = 1;
+print("enter filesystemcheck.rss");
+unsetEnv("fschkReturn");
+redrawDisplay();
+</onEnter>
+
+<mediaDisplay
+	name=photoView
+	viewAreaXPC=34.4
+	viewAreaYPC=33.3
+	viewAreaWidthPC=31.1
+	viewAreaHeightPC=33.3
+	rowCount = 1
+	columnCount = 1
+
+	topArea.heightPC=0
+	topArea.yPC=100
+	bottomYPC=100
+
+	drawItemBorder=no
+
+	itemOffsetXPC=2
+	itemOffsetYPC=80
+	itemHeightPC=12
+	itemGapXPC = 6
+
+	imageFocus=null
+
+	showHeader=no
+	showDefaultInfo=no
+
+	backgroundColor=-1:-1:-1
+	itemBackgroundColor =-1:-1:-1
+	itemGrid.elementBackground = -1:-1:-1
+>
+
+ <onEnter>
+	setFullScreenFade(64);
+</onEnter>  
+	
+<!-- <backgroundDisplay name=filesystem_check_bg>
+<text offsetXPC=0 backgroundColor=255:0:255 offsetYPC=0 widthPC=100 heightPC=100>
+</text>
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	"image/setup/setup_popup_bg_simple.png";
+	</script>
+	</image>
+</backgroundDisplay> -->
+<backgroundDisplay name=filesystem_check_bg>  
+	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+	<script>
+	"image/setup/setup_popup_bg_simple.png";
+	</script>
+	</image>
+</backgroundDisplay>
+
+<!-- <onUserInput>
+index = getFocusItemIndex();
+input = currentUserInput();
+ret = "false";
+if (index == 0 &amp;&amp; input == "enter")
+{
+	/* TODO, check file system */
+        doRecoverDBCorrupt();
+	postMessage("return");
+	ret = "true";
+	click_button = 2;
+}
+else if (index == 1 &amp;&amp; input == "enter")
+{
+        skipDBCorrupt();
+	postMessage("return");
+	ret = "true";
+	click_button = 3;
+}
+else if (input == "up")
+{
+	ret = "true";
+}
+ret;
+</onUserInput> -->
+
+
+<onUserInput>
+index = getFocusItemIndex();
+input = currentUserInput();
+ret = "false";
+if ( input == "enter")
+{
+	postMessage("return");
+	ret = "true";
+	click_button = 3;
+}
+
+else if (input == "up")
+{
+	ret = "true";
+}
+ret;
+</onUserInput>
+
+
+<text offsetXPC=5 fontSize=14 backgroundColor=-1:-1:-1 offsetYPC=10 widthPC=90 lines=1 heightPC=20 align=center useBackgroundSurface=yes>
+$[POPUP_MSG]
+</text>
+
+<text offsetXPC=5 fontSize=14 backgroundColor=-1:-1:-1 offsetYPC=30 widthPC=90 lines=5 heightPC=50 useBackgroundSurface=yes>
+$[CHECK_FILESYSTEM]
+ 
+</text>
+
+<itemDisplay>
+	<!-- <text offsetXPC=0 backgroundColor=-1:-1:-1 offsetYPC=0 widthPC=100 heightPC=100 useBackgroundSurface=yes/> -->
+	<image offsetXPC=20 offsetYPC=0 widthPC=60 heightPC=100>
+	<script>
+	if (getDrawingItemState() == "focus")
+	{
+		"image/setup/setup_popup_bar_focus.png";
+	}
+	else
+	{
+		null;
+	}
+	</script>
+	</image>
+
+	<text foregroundColor=250:250:250 offsetXPC=5 offsetYPC=5 widthPC=90 heightPC=90 fontSize=15 align=center backgroundColor=-1:-1:-1>
+		<script>
+			getItemInfo("title");
+		</script>
+	</text>
+</itemDisplay>
+
+</mediaDisplay>
+
+
+<channel>
+
+<!-- <item>
+<title>
+$[Confirm]
+</title>
+</item>
+
+<item>
+<title>
+$[Cancel]
+</title>
+</item> -->
+
+	
+<item>
+<title>
+ $[I_KNOW]
+</title>
+</item>
+
+
+</channel>
+
+<onExit>
+if(click_button == 1)
+{
+	skipDBCorrupt();
+}
+print("====== exit from filesystemcheck.rss ======");
+setEnv("fschkReturn", "yes");
+</onExit>
+
+</rss>

@@ -1,0 +1,100 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<main>
+	<alpha>Alfabético</alpha>
+	<genre>Género</genre>
+	<recent>Añadidas recientemente</recent>
+	<select>Selección por:</select>
+	<update>Actualizar</update>
+	<notwatched>No vistas</notwatched>
+	<year>Año</year>
+	<search>Buscar</search>
+  <config>Config</config>
+  <textInfo>Bienvenido en el SRJG !&#x0A;&#x0A;1 - para reproducir el último vídeo visto.</textInfo>
+</main>
+<jukebox>
+	<helpGP>Keys list:&#x0A;1 = Switch View for the Jukebox&#x0A;Enter = To select&#x0A;Rtn = Previous screen</helpGP>
+  <helpJbx>Keys list:&#x0A;2 = Mark as Watched&#x0A;Enter = Select&#x0A;Rtn = Previous screen&#x0A;Play = Play video&#x0A;Goto = Seek the video number&#x0A;<< = Go back 10 videos&#x0A;>> = Skip 10 videos</helpJbx>
+  <helpSheet>Keys list:&#x0A;2 = Mark as Watched&#x0A;Rtn = Previous screen&#x0A;Enter = Play video&#x0A;Play = Play video&#x0A;< = Previous video&#x0A;> = Next video</helpSheet>
+</jukebox>
+<update>
+  <fast>Rápido</fast>
+  <rebuild>Reconstruir</rebuild>
+</update>
+<cfg>
+  <Lang>Lengua</Lang>
+  <Jukebox_Size>Vista</Jukebox_Size>
+  <Movies_Path>Ruta des las películas</Movies_Path>
+	<Nfo_Path>Ruta Nfo</Nfo_Path>
+	<Poster_Path>Ruta Bolsillos</Poster_Path>
+	<Sheet_Path>Ruta Sheet</Sheet_Path>
+  <Movie_Filter>Filtrar</Movie_Filter>
+  <SingleDb>Base única</SingleDb>
+  <Recent_Max>Max películas recientes</Recent_Max>
+  <Imdb>Usar Imdb</Imdb>
+	<Dspl>La pantalla</Dspl>
+	<UnlockRM>Autorizar la supresión</UnlockRM>
+  <Jukebox_Path>Ruta del Jukebox:</Jukebox_Path>
+  <Port>Port:</Port>
+  <Version>Versión:</Version>
+  <yes>Sí</yes>
+  <no>No</no>
+	<top>Alto</top>
+	<bottom>Bajo</bottom>
+	<white>Blanco</white>
+	<black>Negro</black>
+	<yellow>amarillo</yellow>
+	<transparent>Transparente</transparent>
+	<browse>Explorar</browse>
+</cfg>
+<Dspl>
+  <Dspl_Genre_txt>Texto del género:</Dspl_Genre_txt>
+</Dspl>
+<FBrowser>
+  <FBrowser_Title>Ruta des las películas:</FBrowser_Title>
+  <FBrowser_Valid>para validar</FBrowser_Valid>
+</FBrowser>
+<Imdb>
+  <Imdb_Use>Activar Imdb</Imdb_Use>
+  <Imdb_Lang>Interfaz</Imdb_Lang>
+  <Imdb_Source>Origen</Imdb_Source>
+  <Imdb_Poster>Descargar la Carátula</Imdb_Poster>
+  <Imdb_PBox>Marco de la Carátula</Imdb_PBox>
+  <Imdb_PPost>Carátula aleatorio</Imdb_PPost>
+  <Imdb_Sheet>Descargar el Sheet</Imdb_Sheet>
+  <Imdb_SBox>Marco Carátula en el Sheet</Imdb_SBox>
+  <Imdb_SPost>Carátula aleatorio en el Sheet</Imdb_SPost>
+  <Imdb_Backdrop>Imagen de fondo aleatorio</Imdb_Backdrop>
+  <Imdb_Font>Fuente de carácter</Imdb_Font>
+  <Imdb_Genres>Género en imagen</Imdb_Genres>
+  <Imdb_Tagline>Línea de Tag</Imdb_Tagline>
+  <Imdb_Time>Formato de la duración</Imdb_Time>
+  <Imdb_Info>Generar el nfo</Imdb_Info>
+  <Imdb_MaxDl>Descargas simultáneas</Imdb_MaxDl>
+</Imdb>
+<MEdit>
+  <EditMenu>Menú edición</EditMenu>
+  <rmPoster>Eliminar la Carátula</rmPoster>
+  <rmSheet>Eliminar el Sheet</rmSheet>
+  <rmNfo>Eliminar el nfo</rmNfo>
+  <rmMovie>Eliminar la película</rmMovie>
+  <ValPoster>¿Quieres eliminar sólo la Carátula ?</ValPoster>
+  <ValSheet>¿Quieres eliminar sólo el Sheet ?</ValSheet>
+  <ValNfo>¿Quieres eliminar sólo el Nfo ?</ValNfo>
+  <ValMovie>¿Quieres eliminar la película y todos esos archivos?</ValMovie>
+</MEdit>
+<MSubt>
+  <SubtMenu>Seleccione los subtítulos</SubtMenu>
+  <WtSubt>Sin subtítulos</WtSubt>
+</MSubt>
+<Subt>
+  <Subt_OneAuto>Subt: Auto play</Subt_OneAuto>
+  <Subt_FontPath>Subt: ruta de las fuentes</Subt_FontPath>
+  <Subt_FontFile>Subt: fuente activa</Subt_FontFile>
+  <Subt_Color>Subt: Color</Subt_Color>
+  <Subt_ColorBg>Subt: Color del fondo</Subt_ColorBg>
+	<Subt_Size>Subt: Tamaño</Subt_Size>
+	<Subt_Pos>Subt: Posición</Subt_Pos>
+</Subt>
+<MFont>
+  <FontMenu>Seleccione una fuente</FontMenu>
+</MFont>

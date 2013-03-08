@@ -1,0 +1,25 @@
+#!/bin/sh
+
+umount /mnt/old/dev	# It seems that dev may not be unloaded successfully.
+umount /mnt/old/tmp /mnt/old
+mount -a
+
+grep -q "rtk_nand" /proc/cmdline
+if [ $? = 0 ]; then
+	mkdir -p /usr/local/etc
+	/etc/init.d/mount.rcS /usr/local/etc
+	if [ $? = 1 ]; then
+		mount /dev/mtdblock/2 /usr/local/etc
+	fi
+fi
+
+read FIRM_URL < /tmp/installing_source
+
+if [ "$FIRM_URL" != "" ]; then
+	loader_a -t $FIRM_URL -u -n&
+else
+	loader_a -u -n&
+fi
+
+echo "Welcome to Realtek Linux"
+

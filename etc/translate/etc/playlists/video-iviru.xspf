@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" version="1">
+  <title>ivi.ru</title>
+    <trackList>
+<track>
+  <location>http://www.ivi.ru/rss/new</location>
+  <title>Главная</title>
+  <meta rel="rssLink">ivi.ru</meta>
+  <meta rel="feedTitle">ivi.ru</meta>
+  <meta rel="feedPath">/</meta>
+  <meta rel="feedIndent">0</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/</location>
+  <title>Кино</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино</meta>
+  <meta rel="feedPath">/-/14/</meta>
+  <meta rel="feedIndent">0</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/94</location>
+  <title>Боевик</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Боевик</meta>
+  <meta rel="feedPath">/-/14/94</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/103</location>
+  <title>Военный</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Военный</meta>
+  <meta rel="feedPath">/-/14/103</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/97</location>
+  <title>Детектив</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Детектив</meta>
+  <meta rel="feedPath">/-/14/97</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/105</location>
+  <title>Драма</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Драма</meta>
+  <meta rel="feedPath">/-/14/105</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/109</location>
+  <title>Документальный</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Документальный</meta>
+  <meta rel="feedPath">/-/14/109</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/95</location>
+  <title>Комедия</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Комедия</meta>
+  <meta rel="feedPath">/-/14/95</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/107</location>
+  <title>Мелодрама</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Мелодрама</meta>
+  <meta rel="feedPath">/-/14/107</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/101</location>
+  <title>Приключения</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Приключения</meta>
+  <meta rel="feedPath">/-/14/101</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/127</location>
+  <title>Триллер</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Триллер</meta>
+  <meta rel="feedPath">/-/14/127</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/14/99</location>
+  <title>Ужасы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Кино / Ужасы</meta>
+  <meta rel="feedPath">/-/14/99</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/</location>
+  <title>Сериалы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы</meta>
+  <meta rel="feedPath">/-/15/</meta>
+  <meta rel="feedIndent">0</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/93</location>
+  <title>Боевик</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Боевик</meta>
+  <meta rel="feedPath">/-/15/93</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/102</location>
+  <title>Военный</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Военный</meta>
+  <meta rel="feedPath">/-/15/102</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/96</location>
+  <title>Детектив</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Детектив</meta>
+  <meta rel="feedPath">/-/15/96</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/108</location>
+  <title>Документальный</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Документальный</meta>
+  <meta rel="feedPath">/-/15/108</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/104</location>
+  <title>Драма</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Драма</meta>
+  <meta rel="feedPath">/-/15/104</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/110</location>
+  <title>Комедийный</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Комедийный</meta>
+  <meta rel="feedPath">/-/15/110</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/106</location>
+  <title>Мелодрама</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Мелодрама</meta>
+  <meta rel="feedPath">/-/15/106</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/100</location>
+  <title>Приключения</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Приключения</meta>
+  <meta rel="feedPath">/-/15/100</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/128</location>
+  <title>Триллер</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Триллер</meta>
+  <meta rel="feedPath">/-/15/128</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/15/98</location>
+  <title>Ужасы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Сериалы / Ужасы</meta>
+  <meta rel="feedPath">/-/15/98</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/</location>
+  <title>Программы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы</meta>
+  <meta rel="feedPath">/-/16/</meta>
+  <meta rel="feedIndent">0</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/113</location>
+  <title>Авто-мото</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Авто-мото</meta>
+  <meta rel="feedPath">/-/16/113</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/117</location>
+  <title>Вокруг света</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Вокруг света</meta>
+  <meta rel="feedPath">/-/16/117</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/126</location>
+  <title>Воспитание детей</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Воспитание детей</meta>
+  <meta rel="feedPath">/-/16/126</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/112</location>
+  <title>Гламур</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Гламур</meta>
+  <meta rel="feedPath">/-/16/112</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/116</location>
+  <title>Дом и сад</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Дом и сад</meta>
+  <meta rel="feedPath">/-/16/116</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/120</location>
+  <title>Красота и здоровье</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Красота и здоровье</meta>
+  <meta rel="feedPath">/-/16/120</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/130</location>
+  <title>Кулинария</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Кулинария</meta>
+  <meta rel="feedPath">/-/16/130</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/118</location>
+  <title>Охота и рыбалка</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Охота и рыбалка</meta>
+  <meta rel="feedPath">/-/16/118</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/119</location>
+  <title>Познавательные</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Познавательные</meta>
+  <meta rel="feedPath">/-/16/119</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/114</location>
+  <title>Психология и гороскопы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Психология и гороскопы</meta>
+  <meta rel="feedPath">/-/16/114</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/16/111</location>
+  <title>Юмористические</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Программы / Юмористические</meta>
+  <meta rel="feedPath">/-/16/111</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/17/</location>
+  <title>Мультфильмы</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Мультфильмы</meta>
+  <meta rel="feedPath">/-/17/</meta>
+  <meta rel="feedIndent">0</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/17/125</location>
+  <title>Аниме</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Мультфильмы / Аниме</meta>
+  <meta rel="feedPath">/-/17/125</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/17/124</location>
+  <title>Взрослые</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Мультфильмы / Взрослые</meta>
+  <meta rel="feedPath">/-/17/124</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+<track>
+  <location>http://www.ivi.ru/rss/new/-/17/123</location>
+  <title>Детские</title>
+  <meta rel="rssLink">rss_file://../etc/translate/app/ivi/</meta>
+  <meta rel="feedTitle">Мультфильмы / Детские</meta>
+  <meta rel="feedPath">/-/17/123</meta>
+  <meta rel="feedIndent">20</meta>
+</track>
+  </trackList>
+</playlist>

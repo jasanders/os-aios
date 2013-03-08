@@ -1,0 +1,33 @@
+About files in lang
+
+---------------
+<lang>_genre
+
+Translate genre and/or affect an existing picture to a genre
+
+Examples line:
+|Tous les Films>All Movies|
+|Drame>Drama|
+|Comédie dramatique>Drama|
+
+The first sentence is the localized genre and the second is the name of the referenced genre (the name of the genre picture)
+You could use the same second sentence to display the same picture.
+
+Making changes in this file, no need to rebuild the database.
+
+---------------
+<lagn>_genreGrp
+
+Grouping and/or renaming genre
+You must use translated genre (only english genre are not translated).
+This function could be used to rename the genre with a correct name.
+
+Example line:
+s:<name>Sci-fi</name>:<name>Science fiction</name>:
+If find genre "Sci-fi", it is renamed as "Science fiction"
+If the genre "Science fiction" exist, all movies "Sci-fi" are grouped with those of "Science fiction"
+
+Making changes in this file, need to rebuild the database Jukebox
+
+
+

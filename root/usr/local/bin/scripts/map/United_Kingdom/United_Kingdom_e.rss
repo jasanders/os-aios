@@ -1,0 +1,257 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<script>
+la = getItemInfoArray("cur");
+fa = getItemInfoArray("for");
+</script>
+<item_template>
+<link>
+<script>"http://weather.yahooapis.com/forecastrss?p="+getStringArrayAt(la, -1)+"&amp;u=c";
+</script>
+</link>
+<forcast>
+<script>"http://api.wunderground.com/auto/wui/geo/ForecastXML/index.xml?query="+getStringArrayAt(fa, -1)+",United%20Kingdom";
+</script>
+</forcast>
+<mediaDisplay name=weatherViewRss
+              curConditionXPC=10
+		curConditionYPC=20
+		curConditionWPC=15
+		curConditionHPC=4
+		curConditionResultXPC=27
+		curConditionResultWPC=18
+              curConditionFontSize=22
+		curConditionFontColor="120:250:200"
+
+		timePictureXPC=7
+		timePictureYPC=15
+		timePictureWidthPC=50
+		timePictureHeightPC=45
+		
+    		curConditionURLBase="./image/weather/%s.png"
+		curConditionLogoXPC=43
+		curConditionLogoYPC=20
+		curConditionLogoWPC=10
+		curConditionLogoHPC=15
+
+		curWeatherXPC=13
+		curWeatherYPC=13
+		curWeatherWPC=30
+		curWeatherHPC=5
+		curWeatherFontSize=22
+		curWeatherFontColor="250:130:80"
+
+		forcastDays=2
+		useForcast=no
+              forcastDaysGapXPC=23
+
+              forcastDateXPC=20
+              forcastDateYPC=63
+		forcastDateWPC=15
+		forcastDateHPC=5
+		forcastDateFontSize=22
+		forcastDateColor="250:230:80"
+
+		forcastCondXPC=20
+              forcastCondYPC=71
+              forcastCondWPC=16
+		forcastCondHPC=5
+		forcastCondFontSize=20
+		
+              forcastLogoURLBase="./image/weather/%s.png"
+		forcastLogoXPC=10
+    		forcastLogoYPC=68
+		forcastLogoWPC=10
+		forcastLogoHPC=15
+
+    		forcastTempXPC=20.5
+    		forcastTempYPC=78
+		forcastTempWPC=20
+		forcastTempHPC=5
+              forcastTempFontSize=22
+
+
+		mapPictureXPC="63" 
+		mapPictureYPC="14"
+		mapPictureWidthPC="27"
+		mapPictureHeightPC="70"
+	>
+	<background>
+		<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100 
+		backgroundColor=33:40:58 cornerRounding=10/>	
+		<text offsetXPC=5  offsetYPC= 10 widthPC=90 heightPC=78 
+		backgroundColor=46:51:68 cornerRounding=5/>
+		<text offsetXPC=5.5  offsetYPC= 10.89 widthPC=89 heightPC=76.61 
+		backgroundColor=27:35:51 cornerRounding=5/>		
+		
+		<text offsetXPC=12  offsetYPC=3 widthPC=60 heightPC=7 fontSize=22
+		backgroundColor=33:40:58 foregroundColor=245:255:255>
+			<script_replace>
+				getItemInfo(-1, "title");
+			</script_replace>
+		</text>
+	</background>
+
+	</mediaDisplay>
+	</item_template>
+<channel>
+<title>United Kingdom</title>
+<link>./scripts/map/United_kingdom_e.rss</link>
+<media:thumbnail url="image/weather.jpg"/>
+
+<item>
+<title>Earlston</title>
+<cur>UKXX1017</cur>
+<for>Earlston</for>
+</item>
+<item>
+<title>Easington</title>
+<cur>UKXX0232</cur>
+<for>Easington</for>
+</item>
+<item>
+<title>East Grinstead</title>
+<cur>UKXX0904</cur>
+<for>East%20Grinstead</for>
+</item>
+<item>
+<title>East Kilbride</title>
+<cur>UKXX0049</cur>
+<for>East%20Kilbride</for>
+</item>
+<item>
+<title>East Linton</title>
+<cur>UKXX1460</cur>
+<for>East%20Linton</for>
+</item>
+<item>
+<title>East Midlands</title>
+<cur>UKXX0050</cur>
+<for>East%20Midlands</for>
+</item>
+<item>
+<title>Eastleigh</title>
+<cur>UKXX0051</cur>
+<for>Eastleigh</for>
+</item>
+<item>
+<title>Ebbw Vale</title>
+<cur>UKXX1589</cur>
+<for>Ebbw%20Vale</for>
+</item>
+<item>
+<title>Eccles</title>
+<cur>UKXX0822</cur>
+<for>Eccles</for>
+</item>
+<item>
+<title>Edenbridge</title>
+<cur>UKXX1217</cur>
+<for>Edenbridge</for>
+</item>
+<item>
+<title>Edinburgh</title>
+<cur>UKXX0052</cur>
+<for>Edinburgh</for>
+</item>
+<item>
+<title>Egham</title>
+<cur>UKXX1124</cur>
+<for>Egham</for>
+</item>
+<item>
+<title>Egremont</title>
+<cur>UKXX1443</cur>
+<for>Egremont</for>
+</item>
+<item>
+<title>Elgin</title>
+<cur>UKXX0869</cur>
+<for>Elgin</for>
+</item>
+<item>
+<title>Ellesmere Port</title>
+<cur>UKXX1546</cur>
+<for>Ellesmere%20Port</for>
+</item>
+<item>
+<title>Ellon</title>
+<cur>UKXX0053</cur>
+<for>Ellon</for>
+</item>
+<item>
+<title>Eltham</title>
+<cur>UKXX1808</cur>
+<for>Eltham</for>
+</item>
+<item>
+<title>Ely</title>
+<cur>UKXX1851</cur>
+<for>Ely</for>
+</item>
+<item>
+<title>Emley Moor</title>
+<cur>UKXX2080</cur>
+<for>Emley%20Moor</for>
+</item>
+<item>
+<title>Emsworth</title>
+<cur>UKXX1505</cur>
+<for>Emsworth</for>
+</item>
+<item>
+<title>Enfield</title>
+<cur>UKXX1561</cur>
+<for>Enfield</for>
+</item>
+<item>
+<title>Enniskillen</title>
+<cur>UKXX0349</cur>
+<for>Enniskillen</for>
+</item>
+<item>
+<title>Epping</title>
+<cur>UKXX1853</cur>
+<for>Epping</for>
+</item>
+<item>
+<title>Epsom</title>
+<cur>UKXX1228</cur>
+<for>Epsom</for>
+</item>
+<item>
+<title>Erskine</title>
+<cur>UKXX1698</cur>
+<for>Erskine</for>
+</item>
+<item>
+<title>Esher</title>
+<cur>UKXX0482</cur>
+<for>Esher</for>
+</item>
+<item>
+<title>Eskdalemuir</title>
+<cur>UKXX0169</cur>
+<for>Eskdalemuir</for>
+</item>
+<item>
+<title>Evesham</title>
+<cur>UKXX1521</cur>
+<for>Evesham</for>
+</item>
+<item>
+<title>Exeter</title>
+<cur>UKXX0054</cur>
+<for>Exeter</for>
+</item>
+<item>
+<title>Exton</title>
+<cur>UKXX0234</cur>
+<for>Exton</for>
+</item>
+<item>
+<title>Eyemouth</title>
+<cur>UKXX0421</cur>
+<for>Eyemouth</for>
+</item>
+</channel></rss>

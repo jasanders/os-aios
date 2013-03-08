@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+
+<onEnter>
+print(" --->> Enter home.rss");
+</onEnter>
+
+<onExit>
+print(" --->> Leave home.rss");
+</onExit>
+
+<!-- help item list layout -->
+<mediaDisplay 
+  name=onePartView 
+  itemPerPage=12
+  backgroundColor=255:0:0
+  sideColorTop=139:146:156
+  sideColorBottom=139:146:156
+  sideColorLeft=139:146:156
+  sideColorRight=139:146:156
+  itemBackgroundColor=0:255:0
+  
+  sideLeftWidthPC =100
+  sideLeftHeightPC=100 
+  imageLeftSide="menubar/image/Help_bg.brt" 
+  
+  sideRightWidthPC  =0 
+  sideRightHeightPC=0
+  
+  viewAreaXPC=0 
+  viewAreaYPC=0  
+  viewAreaWidthPC=100 
+  viewAreaHeightPC=100  
+  
+  showHeader=no
+  showDefaultInfo=no >
+  
+  <onUserInput>
+	userInput = currentUserInput();
+    if ("return" == userInput){
+		postMessage("return");
+        false;
+    }
+  </onUserInput>
+
+  <itemDisplay>
+	<text offsetXPC=0  offsetYPC= 0 widthPC=100 heightPC=100  fontSize=12>
+		<script>
+      title = getItemInfo("title");		
+		</script>
+
+	    <foregroundColor>
+		  <script>
+		    queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			lastSelectedIndex = getSelectedItemIndex();
+	
+			if (queryIndex == focusIndex) { 
+			  color="25:24:1";
+			}
+			else  {
+        		  color="200:200:200";
+			}
+          </script>
+		</foregroundColor>
+
+	    <backgroundColor>
+		  <script>
+		    queryIndex = getQueryItemIndex();
+			focusIndex = getFocusItemIndex();
+			lastSelectedIndex = getSelectedItemIndex();
+	
+			if (queryIndex == focusIndex) { 
+			  color="161:178:201";
+			}
+			else  {
+                          color="33:40:58";
+			}
+          </script>
+		</backgroundColor>
+
+
+    </text>
+  </itemDisplay>
+
+	
+</mediaDisplay>
+
+<!-- this item template put the general layout for all the help content pages -->
+<!-- you still can have variation of the layout on each page by using mediaDisplay element -->
+<!-- mediaDisplay attribute can exist only in one place, only elements can be merged -->
+<item_template>
+ <mediaDisplay name=onePartView  viewAreaXPC=0 viewAreaYPC=0 viewAreaWidthPC=100 viewAreaHeightPC=100>
+	<image offsetXPC=0 offsetYPC=00 widthPC=100 heightPC=100> 
+    menubar/image/Help_bg.brt
+	</image>
+	
+ </mediaDisplay>	
+</item_template>
+
+
+<!-- Start the help list -->
+<channel>
+	<title>Help Menu</title>
+	<link>./scripts/help/help.rss</link>
+
+
+<item>
+<title>Menus and the Remote Control</title>
+<link> rss_file://./menubar/scripts/help/help_menu.rss </link>
+</item>
+
+
+<item>
+<title>Devices</title>
+<link> rss_file://./menubar/scripts/help/help_finddevices.rss </link>
+
+</item>
+
+<item>
+<title>Movies: Find</title>
+<link> rss_file://./menubar/scripts/help/help_findmovies.rss </link>
+
+</item>
+
+<item>
+<title>Movies: Play</title>
+<link> rss_file://./menubar/scripts/help/help_playmovies.rss </link>
+</item>
+
+<item>
+<title>Pictures: Find</title>
+<link> rss_file://./menubar/scripts/help/help_findpictures.rss </link>
+</item>
+
+<item>
+<title>Pictures: Set up slideshow</title>
+<link> rss_file://./menubar/scripts/help/help_setupslideshows.rss </link>
+</item>
+
+<item>
+<title>Pictures: Play Slideshow</title>
+<link> rss_file://./menubar/scripts/help/help_playslideshow.rss </link>
+</item>
+
+<item>
+<title>Pictures: play music with Slideshow </title>
+<link> rss_file://./menubar/scripts/help/help_musicslideshow.rss </link>
+</item>
+
+<item>
+<title>Music: Find</title>
+<link> rss_file://./menubar/scripts/help/help_findmusic.rss </link>
+</item>
+
+<item>
+<title>Music: Play</title>
+<link> rss_file://./menubar/scripts/help/help_playmusic.rss</link>
+</item>
+
+<item>
+<title>Internet media services</title>
+<link> rss_file://./menubar/scripts/help/help_useinternet.rss</link>
+</item>
+
+<item>
+<title>Search</title>
+<link> rss_file://./menubar/scripts/help/help_search.rss</link>
+</item>
+
+
+</channel>
+</rss>
+
+
+

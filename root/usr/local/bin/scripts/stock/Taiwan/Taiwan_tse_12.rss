@@ -1,0 +1,72 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <channel>
+        <title>橡膠類股</title>
+        <link>./scripts/stock/Taiwan.rss</link>
+        <media:thumbnail url="image/stock.jpg" />
+        <item>
+            <title>2101 南港</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2101.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2101" />
+        </item>
+        <item>
+            <title>2102 泰豐</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2102.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2102" />
+        </item>
+        <item>
+            <title>2103 台橡</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2103.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2103" />
+        </item>
+        <item>
+            <title>2104 中橡</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2104.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2104" />
+        </item>
+        <item>
+            <title>2105 正新</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2105.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2105" />
+        </item>
+        <item>
+            <title>2106 建大</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2106.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2106" />
+        </item>
+        <item>
+            <title>2107 厚生</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2107.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2107" />
+        </item>
+        <item>
+            <title>2108 南帝</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2108.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2108" />
+        </item>
+        <item>
+            <title>2109 華豐</title>
+            <link>http://finance.yahoo.com/d/quotes.csv?s=2109.TW&amp;f=nl1c6p2vt1d1ohgps1j1kja2redyb</link>
+            <media:thumbnail url="image/stock.jpg" />
+            <mediaDisplay name="stockView" backgroundColor="33:40:58" />
+            <news url="http://tw.stock.yahoo.com/rss/s/2109" />
+        </item>
+    </channel>
+</rss>
+        

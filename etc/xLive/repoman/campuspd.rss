@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--Xtreamer Community 2010 - xLive9.1 Cap-->
+<rss version="2.0" xmlns:media="http://purl.org/dc/elements/1.1/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+
+ <backgroundDisplay>
+ <image  offsetXPC=0 offsetYPC=2.8 widthPC=100 heightPC=15.6>
+                http://i2.ytimg.com/vi/E7ekqlrmnd0/background.jpg
+                </image>
+</backgroundDisplay>
+  
+<channel>
+<title>Campus PD</title>
+
+<item>
+<title>Campus PD</title>
+<link>http://127.0.0.1/cgi-bin/scripts/php1/y.php?query=1,http%3A%2F%2Fgdata.youtube.com%2Ffeeds%2Fapi%2Fplaylists%2FAB7A49A4CABA12E1,Campus+PD</link>
+<media:thumbnail url="http://i3.ytimg.com/vi/nsMOFVQGWL4/market_thumb.jpg?v=a58375" />
+<mediaDisplay name="threePartsView"/>
+</item>
+
+</channel>
+</rss>
