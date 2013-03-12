@@ -1771,8 +1771,8 @@ I know
 Change category
 Compile Time
 DTS-HD output 
-7.1 CH
-5.1 CH
+Lossless
+Lossy (core)
 Dolby TrueHD Output
 SPDIF Downmix output（LPCM 2.0 CH）
 Bulgarian
@@ -2015,7 +2015,7 @@ OK : Start from last play
 Which existing connection profile do you want to replace?
 background have EPG， REC and timeshift process， can't execute TV Region setting.
 background have EPG， REC and timeshift process， can't execute channnel scan.
-Can not create videos，music，pictures databases，play file throuth  file manager
+Can't create media libraries on the HDD, manually remove ".Theater" folder or use the File Manager.
 Press Red key to ON/OFF PBC
 Do you wish to continue without navigation menu?
 The system will reboot itself automatically after deactivating Netflix.

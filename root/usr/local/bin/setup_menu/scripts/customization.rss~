@@ -852,10 +852,10 @@
 </item>
 
 <item>
-<title>Format HDD (ext3)+ Reboot</title>
+<title>Formate HDD (ext3)+ Reboot</title>
 <mediaDisplay>
 	<onEnter>
-		popupHeader = "Format HDD then Reboot ?";
+		popupHeader = "Formate HDD then Reboot ?";
 		popupOptionSize = 1;
 		popupOptions = pushBackStringArray(popupOptions, "YES");
 		popupOptionFocus= "YES";
