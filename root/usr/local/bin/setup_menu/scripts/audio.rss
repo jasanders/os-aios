@@ -737,6 +737,30 @@
 </onClick>
 </item>
 
+<item>
+<title>$[AUDIO_HD_OUTPUT]</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "$[AUDIO_HD_OUTPU_TIPS]";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "$[AUDIO_HD_RAW]");
+		popupOptions = pushBackStringArray(popupOptions, "$[AUDIO_HD_REDUCE]");
+		popupOptionFocus = getCurrentSetting("$[AUDIO_HD_OUTPUT]");
+		popupOptionWide = 3;
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			setSPDIF5_1(ret);
+		}
+	</script>
+</onClick>
+</item>
+
+
  <!--  ----------------------------------	add by blueb ------------------------------------ -->
 <item>
 <title>$[IR_KEY_TONE]</title>
