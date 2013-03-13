@@ -12,7 +12,11 @@
 	  	menuArray = pushBackStringArray(menuArray, "MusicLib");
 	  	menuArray = pushBackStringArray(menuArray, "PhotoLib");
 		menuArray = pushBackStringArray(menuArray, "ENwww");		
-	  	menuArray = pushBackStringArray(menuArray, "2x5");		
+	  	menuArray = pushBackStringArray(menuArray, "2x5");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");		
 	  	writeStringToFile(subStoragePath, menuArray);
 		}
 	GUI_3 = getStringArrayAt(menuArray, 0);	
@@ -21,6 +25,11 @@
 	PhotoMenu = getStringArrayAt(menuArray, 3);
 	BrowserMenu = getStringArrayAt(menuArray, 4);
 	CoverScreenSize= getStringArrayAt(menuArray, 5);
+	
+	FileMenu = getStringArrayAt(menuArray, 6);
+	APPMenu = getStringArrayAt(menuArray, 7);
+	BMMenu = getStringArrayAt(menuArray, 8);
+	SetupMenu = getStringArrayAt(menuArray, 9);
 	
 </script>
 
@@ -366,7 +375,19 @@
 			}
 			else if ( title == "Cover Screen Size" ) {
 				CoverScreenSize;			
-			}	
+			}
+			else if ( title == "File Menu" ) {
+				FileMenu;			
+			}
+			else if ( title == "APP Menu" ) {
+				APPMenu;			
+			}
+			else if ( title == "Bookmark Menu" ) {
+				BMMenu;			
+			}
+			else if ( title == "Setup Menu" ) {
+				SetupMenu;			
+			}
 			else {
 				getCurrentSetting(title);
 			}
@@ -590,7 +611,12 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);		
-	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);		
+	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -603,7 +629,7 @@
 <mediaDisplay>
 	<onEnter>
 		popupHeader = "Video Menu";
-		popupOptionSize = 7;
+		popupOptionSize = 8;
 		popupOptions = pushBackStringArray(popupOptions, "SRJG JukeBox");
 		popupOptions = pushBackStringArray(popupOptions, "RSS JukeBox");
 		popupOptions = pushBackStringArray(popupOptions, "Euro IMS");
@@ -611,6 +637,7 @@
 		popupOptions = pushBackStringArray(popupOptions, "YouTubeXL");
 		popupOptions = pushBackStringArray(popupOptions, "Asia IMS");
 		popupOptions = pushBackStringArray(popupOptions, "VideoLib");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
 		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 1);
 	</onEnter>
 </mediaDisplay>
@@ -627,7 +654,12 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);		
-	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);		
+	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+		
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -639,11 +671,12 @@
 <mediaDisplay>
 	<onEnter>
 		popupHeader = "Music Menu";
-		popupOptionSize = 4;
+		popupOptionSize = 5;
 		popupOptions = pushBackStringArray(popupOptions,"Shoutcast");
 		popupOptions = pushBackStringArray(popupOptions,"Audio Podcast");
 		popupOptions = pushBackStringArray(popupOptions,"RSS Audio");
 		popupOptions = pushBackStringArray(popupOptions,"MusicLib");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
 		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 2);
 	</onEnter>
 </mediaDisplay>
@@ -660,7 +693,12 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);		
-	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);		
+	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+		
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -672,10 +710,11 @@
 <mediaDisplay>
 	<onEnter>
 		popupHeader = "Photo Menu";
-		popupOptionSize = 3;
+		popupOptionSize = 4;
 		popupOptions = pushBackStringArray(popupOptions,"flicker");
 		popupOptions = pushBackStringArray(popupOptions,"Picasa");
 		popupOptions = pushBackStringArray(popupOptions,"PhotoLib");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
 		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 3);
 	</onEnter>
 </mediaDisplay>
@@ -692,7 +731,12 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);		
-	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);		
+	  		menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+		
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -704,9 +748,10 @@
 <mediaDisplay>
 	<onEnter>
 		popupHeader = "Browser Menu";
-		popupOptionSize = 2;
+		popupOptionSize = 3;
 		popupOptions = pushBackStringArray(popupOptions,"ENwww");
 		popupOptions = pushBackStringArray(popupOptions,"CNwww");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
 		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 4);
 	</onEnter>
 </mediaDisplay>
@@ -723,7 +768,12 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);
-			menuArray = pushBackStringArray(menuArray, CoverScreenSize);			
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+			
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -766,7 +816,156 @@
 	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
 	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
 			menuArray = pushBackStringArray(menuArray, BrowserMenu);
-			menuArray = pushBackStringArray(menuArray, CoverScreenSize);		
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+		
+	  		writeStringToFile(subStoragePath, menuArray);	
+		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>File Menu</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "File Menu";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions,"ON");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
+		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 6);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			FileMenu = ret;
+			subStoragePath = "/usr/local/etc/CustomMenus.dat";
+			menuArray = null;
+			menuArray = pushBackStringArray(menuArray, GUI_3);
+			menuArray = pushBackStringArray(menuArray, VideoMenu);
+	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
+	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
+			menuArray = pushBackStringArray(menuArray, BrowserMenu);
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+			
+	  		writeStringToFile(subStoragePath, menuArray);	
+		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>APP Menu</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "APP Menu";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions,"ON");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
+		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 7);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			APPMenu = ret;
+			subStoragePath = "/usr/local/etc/CustomMenus.dat";
+			menuArray = null;
+			menuArray = pushBackStringArray(menuArray, GUI_3);
+			menuArray = pushBackStringArray(menuArray, VideoMenu);
+	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
+	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
+			menuArray = pushBackStringArray(menuArray, BrowserMenu);
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+			
+	  		writeStringToFile(subStoragePath, menuArray);	
+		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>Bookmark Menu</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "Bookmark Menu";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions,"ON");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
+		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 8);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			BMMenu = ret;
+			subStoragePath = "/usr/local/etc/CustomMenus.dat";
+			menuArray = null;
+			menuArray = pushBackStringArray(menuArray, GUI_3);
+			menuArray = pushBackStringArray(menuArray, VideoMenu);
+	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
+	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
+			menuArray = pushBackStringArray(menuArray, BrowserMenu);
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+			
+	  		writeStringToFile(subStoragePath, menuArray);	
+		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>Setup Menu</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "Setup Menu";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions,"ON");
+		popupOptions = pushBackStringArray(popupOptions,"OFF");
+		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 9);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			SetupMenu = ret;
+			subStoragePath = "/usr/local/etc/CustomMenus.dat";
+			menuArray = null;
+			menuArray = pushBackStringArray(menuArray, GUI_3);
+			menuArray = pushBackStringArray(menuArray, VideoMenu);
+	  		menuArray = pushBackStringArray(menuArray, MusicMenu);
+	  		menuArray = pushBackStringArray(menuArray, PhotoMenu);
+			menuArray = pushBackStringArray(menuArray, BrowserMenu);
+			menuArray = pushBackStringArray(menuArray, CoverScreenSize);
+			menuArray = pushBackStringArray(menuArray, FileMenu);
+			menuArray = pushBackStringArray(menuArray, APPMenu);
+			menuArray = pushBackStringArray(menuArray, BMMenu);
+			menuArray = pushBackStringArray(menuArray, SetupMenu);
+			
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
 	</script>
@@ -852,10 +1051,10 @@
 </item>
 
 <item>
-<title>Format HDD (ext3)+ Reboot</title>
+<title>Formate HDD (ext3)+ Reboot</title>
 <mediaDisplay>
 	<onEnter>
-		popupHeader = "Format HDD then Reboot ?";
+		popupHeader = "Formate HDD then Reboot ?";
 		popupOptionSize = 1;
 		popupOptions = pushBackStringArray(popupOptions, "YES");
 		popupOptionFocus= "YES";

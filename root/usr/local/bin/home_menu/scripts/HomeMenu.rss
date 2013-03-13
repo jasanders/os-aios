@@ -29,7 +29,12 @@
 	  	menuArray = pushBackStringArray(menuArray, "MusicLib");
 	  	menuArray = pushBackStringArray(menuArray, "PhotoLib");
 		menuArray = pushBackStringArray(menuArray, "ENwww");		
-		menuArray = pushBackStringArray(menuArray, "2x5");			  	
+		menuArray = pushBackStringArray(menuArray, "2x5");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");
+		menuArray = pushBackStringArray(menuArray, "ON");
+					  	
 		writeStringToFile(subStoragePath, menuArray);
 		}
 	GUI_3 = getStringArrayAt(menuArray, 0);	
@@ -37,7 +42,52 @@
 	MusicMenu = getStringArrayAt(menuArray, 2);
 	PhotoMenu = getStringArrayAt(menuArray, 3);
 	BrowserMenu = getStringArrayAt(menuArray, 4);
+
+	FileMenu = getStringArrayAt(menuArray, 6);
+	APPMenu = getStringArrayAt(menuArray, 7);
+	BMMenu = getStringArrayAt(menuArray, 8);
+	SetupMenu = getStringArrayAt(menuArray, 9);
+	itemsize=8;
 	
+	focusArray = null;
+	
+	FileMenuDisable="no";
+	if (FileMenu=="OFF") {FileMenuDisable="yes";itemsize=itemsize-1;}
+	
+	VideoMenuDisable="no";	
+	if (VideoMenu=="OFF") {VideoMenuDisable="yes";itemsize=itemsize-1;}
+	
+	MusicMenuDisable="no";
+	if (MusicMenu=="OFF") {MusicMenuDisable="yes";itemsize=itemsize-1;}
+	
+	PhotoMenuDisable="no";
+	if (PhotoMenu=="OFF") {PhotoMenuDisable="yes";itemsize=itemsize-1;}	
+	
+	APPMenuDisable="no";
+	if (APPMenu=="OFF") {APPMenuDisable="yes";itemsize=itemsize-1;}
+	
+	BrowserMenuDisable="no";
+	if (BrowserMenu=="OFF") {BrowserMenuDisable="yes";itemsize=itemsize-1;}
+	
+	BMMenuDisable="no";
+	if (BMMenu=="OFF") {BMMenuDisable="yes";itemsize=itemsize-1;}
+	
+	SetupMenuDisable="no";
+	if (SetupMenu=="OFF") {SetupMenuDisable="yes";itemsize=itemsize-1;}
+	
+	if(GUI_3 == "ON")
+	{
+	if (FileMenu!="OFF") focusArray = pushBackStringArray(focusArray, "0");	
+	if (VideoMenu!="OFF") focusArray = pushBackStringArray(focusArray, "1");
+	if (MusicMenu!="OFF") focusArray = pushBackStringArray(focusArray, "2");	
+	if (PhotoMenu!="OFF") focusArray = pushBackStringArray(focusArray, "3");
+	if (APPMenu!="OFF") focusArray = pushBackStringArray(focusArray, "4");
+	if (BrowserMenu!="OFF") focusArray = pushBackStringArray(focusArray, "5");
+	if (BMMenu!="OFF") focusArray = pushBackStringArray(focusArray, "6");
+	if (SetupMenu!="OFF") focusArray = pushBackStringArray(focusArray, "7");
+ 	}
+	
+
 </script>
 
 <onRefresh>
@@ -111,55 +161,6 @@ redrawState = "no";
 	IsScanning = 0;
 	SetScreenSaverStatus("no");
 </onExit>
-
-
-  <!--
-  <mediaDisplay name=photoView
-
-	backgroundImage=-1:-1:-1
-	forceRedrawItems=yes
-
-	viewAreaXPC=0
-	viewAreaYPC=0
-	viewAreaWidthPC=100
-	viewAreaHeightPC=100
-
-	bottomYPC=60
-	sideTopHeightPC=35
-	itemGapXPC=1
-	itemGapYPC=1.8
-	centerXPC=9.4
-	centerYPC=15
-	itemWidthPC=4.5
-	itemHeightPC=8.1
-	centerHeightPC=12
-	itemBackgroundColor=0:0:0
-	drawItemBorder=no
-	imageBorderPC=1
-	rowCount=7
-	columnCount=1
-
-	enableStretchBlt=no
-	circlingItems=no
-
-	showHeader = "no"
-	showDefaultInfo=no
-
-	DoAnimation = "no"
-	AnimationType = 1
-	AnimationStep = 26
-	AnimationDelay = 1
-	BackgroundDark = "no"
-
-	sliding=no
-	stretchInFocus=no
-
-	
-	idleImageXPC=83.12
-	idleImageYPC=89.58
-	idleImageWidthPC=3.125
-	idleImageHeightPC=5.56	
->    -->
 
 <mediaDisplay name=onePartView 
  	viewAreaXPC=0
@@ -254,26 +255,6 @@ redrawState = "no";
 			</script>
 		</image>
 		
-<!-- 	<text align=center  offsetXPC=36 offsetYPC=0 widthPC=50 heightPC=100 foregroundColor=0:0:0 backgroundColor=-1:-1:-1  >		
-		<fontSize>
-		<script>
-		if (getDrawingItemState() == "focus")
-			"20";
-		else
-			"16";
-		</script>
-		</fontSize>
-		<script>
-			if (getDrawingItemState() == "focus")
-				str = getItemInfo(-1, "title");
-			else
-				str = null;
-			str;	
-		</script>
-	</text> -->
-
-
-		
 </itemDisplay>
 
 
@@ -281,8 +262,7 @@ redrawState = "no";
 	<!-- you can also use postMessage to do the initial operation on the focus item -->
 	<onEnter>
 	redrawState = "yes";
-  		executeScript("UpgradeCheck");
- 		CurAPName = getCurrentAPName();
+  		CurAPName = getCurrentAPName();
  		image_type = ".fsp";
  		print("CurAPName:", CurAPName, "===> FS PNG");
 
@@ -297,25 +277,7 @@ redrawState = "no";
 
 		SetScreenSaverStatus("yes");
           	unsetEnv("UsingBookMarkDB");
-		
-		FocusCnt = 0;
 
-		FileFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;
-		MovieFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;
-		MusicFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;
-		PhotoFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;
-		IMSFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;	
-		WebKitFocus = FocusCnt;	
-			FocusCnt = FocusCnt + 1;		
-		BookmarkFocus = FocusCnt;
-			FocusCnt = FocusCnt + 1;
-		SetupFocus = FocusCnt;
-		
 		CurrentSel = 0;
 		activeAPPFocus = getEnv("activeAPP");
 		if(activeAPPFocus != null){
@@ -406,42 +368,42 @@ redrawState = "no";
 		}
 		else if(userInput == "one" || userInput == "1")
       		{    
-          		setFocusItemIndex(0);
+          		setFocusItemIndex(0%itemsize);
 			redrawDisplay();
       		}
       		else if(userInput == "two" || userInput == "2")
       		{
-          		setFocusItemIndex(1);
+          		setFocusItemIndex(1%itemsize);
           		redrawDisplay();
       		}
       		else if(userInput == "three" || userInput == "3")
       		{
-         		setFocusItemIndex(2);
+         		setFocusItemIndex(2%itemsize);
           		redrawDisplay();
        		}
       		else if(userInput == "four" || userInput == "4")
       		{
-         		setFocusItemIndex(3);
+         		setFocusItemIndex(3%itemsize);
           		redrawDisplay();
         	}
       		else if(userInput == "five" || userInput == "5")
       		{
-			setFocusItemIndex(4);
+			setFocusItemIndex(4%itemsize);
 			redrawDisplay();
       		}
       		else if(userInput == "six" || userInput == "6")
       		{
-          		setFocusItemIndex(5);
+          		setFocusItemIndex(5%itemsize);
           		redrawDisplay();
      		}
       		else if(userInput == "seven" || userInput == "7")
       		{
-          		setFocusItemIndex(6);
+          		setFocusItemIndex(6%itemsize);
           		redrawDisplay();
       		}
       		else if(userInput == "eight" || userInput == "8")
       		{
-          		setFocusItemIndex(7);
+          		setFocusItemIndex(7%itemsize);
           		redrawDisplay();
       		}			
 		else{
@@ -455,13 +417,6 @@ redrawState = "no";
 	<!-- return true means the event has been handled -->
 	<!-- return false means the View will continue to handle the event -->
 
-<!-- 	<text offsetXPC=0 offsetYPC=55 widthPC=100 heightPC=10 fontSize=22 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=center redraw=yes useBackgroundSurface=yes>
-		<script>
-			focusIndex = getFocusItemIndex();
-			title = getItemInfo(focusIndex, "title");
-		</script>
-	</text> -->
-
 	<image offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 >
 		<redraw>
 			<script>
@@ -473,8 +428,8 @@ redrawState = "no";
  		focusIndex = getFocusItemIndex();   
 		if(GUI_3 == "ON")
 		{
-			BG_image="./home_menu/image/mybg-"+focusIndex+".png";
-			BG_image;		
+		BG_image="./home_menu/image/mybg-"+getStringArrayAt(focusArray, focusIndex)+".png";
+		BG_image;		
  		}else null;
 		</script>
 	</image>	
@@ -494,10 +449,6 @@ redrawState = "no";
 		</script>
 	</image>
  
-
-	
-<!-- 	<text offsetXPC=20 offsetYPC=73.05 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=0:0:0 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=yes redraw=yes> -->
-	
 <text offsetXPC=12 offsetYPC=87 widthPC=73 heightPC=5.5 fontSize=14 foregroundColor=255:255:255 backgroundColor=-1:-1:-1 align=left tailDots=yes useBackgroundSurface=no redraw=yes>
 		<script>
 			hint = null;
@@ -529,28 +480,6 @@ redrawState = "no";
 			hint;
 		</script>
 	</text>
-
-
-	
-<!-- 	<image offsetXPC=7.2 offsetYPC=6.4 widthPC=32.5 heightPC=71.1 useBackgroundSurface=yes redraw=yes>
-		<script>
-			focusIndex = getFocusItemIndex();
-			currImg = getStringArrayAt(titImgArray,focusIndex);	
-			 		
-			 		img = getItemInfo(-1, "media:thumbnail");
-					 
-			 
-				if (getDrawingItemState() == "focus")
-				{					
-					img;
-				}
-				else
-					null;
-			 
-		img;
-		</script>
-	</image>	 -->
-	
 	
 	<!--  status  begin -->
  
@@ -584,21 +513,7 @@ redrawState = "no";
 				"./home_menu/image/" + currImg + "UNFOCUS.fsp";
 		</script>
 	</image>
-<!-- 		<image offsetXPC=46 offsetYPC=42.7 widthPC=3.6 heightPC=6.9 useBackgroundSurface=yes >
-		<redraw>
-			<script>
-				redrawState;
-			</script>
-		</redraw>		
-		<script>
-			stat = getSysStatus("wf_conn");
-			currImg = getStringArrayAt(statusArray,2);
-			if (stat == "1")
-				"./home_menu/image/" + currImg + "FOCUS.fsp";
-			else
-				"./home_menu/image/" + currImg + "UNFOCUS.fsp";
-		</script>
-	</image> -->
+
 		<image offsetXPC=76 offsetYPC=86 widthPC=3.6 heightPC=6.9 useBackgroundSurface=no  >
 				<redraw>
 			<script>
@@ -680,25 +595,6 @@ redrawState = "no";
 				"./home_menu/image/" + currImg + "UNFOCUS.fsp";
 		</script>
 	</image>
-
-	
-	
-	
- 
-<!-- 		<image offsetXPC=38 offsetYPC=50 widthPC=3.6 heightPC=6.9 useBackgroundSurface=yes redraw=yes >	
-		<script>
-			"./home_menu/image/HDD.fsp";
-		</script>
-	</image>	
-  	<text offsetXPC=42 offsetYPC=50 widthPC=20 heightPC=6.9 useBackgroundSurface=yes redraw=yes>
-		<script>
-			if (hddFree == null)
-				hddFree = hddFreeSize();
-				
-			hddFree;	
-		</script>
-	</text> -->
-	
 	
 	<text offsetXPC=30 offsetYPC=85 widthPC=40 heightPC=8.5 fontSize=20 foregroundColor=255:255:255 backgroundColor=-1:-1:-1 align=center tailDots=yes useBackgroundSurface=no redraw=yes>
 		<script>
@@ -714,15 +610,6 @@ redrawState = "no";
 			currTime();
 		</script>
 	</text>
-<!--
-	<text offsetXPC=20 offsetYPC=5 widthPC=50 heightPC=6.9 useBackgroundSurface=no redraw=yes>
-		<script>
-myCurStatus="";			
-myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+CurrentSubType5+" "+CurrentSubType6+" "+CurrentSubType7;
-			myCurStatus;
-		</script>
-	</text>
--->	
 	 
 </mediaDisplay>
 
@@ -760,31 +647,17 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 	<title> HomeMenu </title>
 	<link>./home_menu/scripts/HomeMenu.rss</link>
 
-
-<!--
 <item>
-<title>$[IMS_DTV]</title>
-<imagePath> home_menu/image/Home_AVin </imagePath>
+<title>$[IMS_FILE_MANAGER]</title>
+<imagePath> home_menu/image/Home_FileManager </imagePath>
 <disable>
 	<script>
-		IsAVinDisable;
+		FileMenuDisable;
 	</script>
 </disable>
 <onClick>
 	<script>
-		APName = "RootAP";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
- -->
-<item>
-<title>$[IMS_FILE_MANAGER]</title>
-<imagePath> home_menu/image/Home_FileManager </imagePath>
-<onClick>
-	<script>
-		setEnv("activeAPP",FileFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		subStoragePath = getStoragePath("key");
 		subStoragePath = subStoragePath + "DeviceSelects.dat";
 		selectArray = readStringFromFile(subStoragePath);
@@ -808,9 +681,14 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 <title>$[GBROWSER_MOVIE]</title>
 <imagePath> home_menu/image/Home_Movie </imagePath>
 <group> DB </group>
+<disable>
+	<script>
+		VideoMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-		setEnv("activeAPP",MovieFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		if(VideoMenu == "SRJG JukeBox"){
 			APName = "IMSAP";
 			MenuType = "TopMenu";
@@ -872,9 +750,14 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 <title>$[GBROWSER_MUSIC]</title>
 <imagePath> home_menu/image/Home_Music </imagePath>
 <group> DB </group>
+<disable>
+	<script>
+		MusicMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-		setEnv("activeAPP",MusicFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		if(MusicMenu == "Shoutcast"){
 			APName = "IMSAP";
 			MenuType = "TopMenu";
@@ -922,9 +805,14 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 <title>$[GBROWSER_PICTURE]</title>
 <imagePath> home_menu/image/Home_Photo </imagePath>
 <group> DB </group>
+<disable>
+	<script>
+		PhotoMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-		setEnv("activeAPP",PhotoFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		if(PhotoMenu == "flicker"){
 			APName = "IMSAP";
 			MenuType = "TopMenu";
@@ -962,9 +850,14 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 <item>
 <title>$[INET_APPS]</title>
 <imagePath> home_menu/image/Home_Internet </imagePath>
+<disable>
+	<script>
+		APPMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-		setEnv("activeAPP",IMSFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		APName = "IMSAP";
 		MenuType = "TopMenu";
 		MenuLink = "rss_file://./scripts/menu.rss";
@@ -975,42 +868,17 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 </onClick>
 </item>
 
-<!--==========================================-->
-<!--  www browser   -->
-<!-- <item>
-<title>$[IMS_APP]</title>
-<imagePath> home_menu/image/Home_WEB </imagePath>
-
-<disable>
-	<script>
-		if (IsAVinDisable == "no")
-			"yes";
-		else
-			"no";
-	</script>
-</disable>
-
-<onClick>
-	<script>
-			APName = "WebKitAP";
-			swf_path = "";
-			Init_item = "dailymotion";
-			CurAPName = getCurrentAPName();
-			CurMenuType = "TopMenu";
-			CurMenuLink = "rss_file://./home_menu/scripts/HomeMenu.rss";
-			menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
-			null;
-		null;
-	</script>
-</onClick>
-</item> -->
-
 <item>
 <title>$[BRO_JYS]</title>
 <imagePath> home_menu/image/Home_WEB </imagePath>
+<disable>
+	<script>
+		BrowserMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>		
-			setEnv("activeAPP",WebKitFocus);			
+			setEnv("activeAPP",getFocusItemIndex());			
 			Init_item = "realpilot";
 			if(BrowserMenu == "CNwww"){Init_item = "";}
 			APName = "WebKitAP";
@@ -1024,245 +892,17 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 </onClick>
 </item>
 
-<!--
-<item>
-<title>$[IMS_MARKET]</title>
-<disable>
-	<script>
-		MarketDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Market </imagePath>
-<onClick>
-	<script>
-		APName = "SWFMenuAP";
-		swf_path = GetMenuPath("AppStore");
-		Init_item = "6";
-		CurAPName = getCurrentAPName();
-		CurMenuType = "TopMenu";
-		CurMenuLink = "rss_file://./home_menu/scripts/HomeMenu.rss";
-		menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
-		null;
-	</script>
-</onClick>
-</item>
--->
-
-
-<!--
-<item>
-<title>Video Podcast</title>
-<disable>
-	<script>
-		PodcastDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/v_home_174</imagePath>
-<onClick>
-	<script>
-
-		APName = "IMSAP";
-		MenuType = "TopMenu";
-		MenuLink = "http://218.210.127.133/VideoPodcast/scripts/videopodcast.rss";
-		menuCmd(APName, MenuType, MenuLink, BltType);
-
-		null;
-	</script>
-</onClick>
-</item>
--->
-
-
-
-<!--
-<item>
-<title>$[IMS_WEB_BROWSER]</title>
-<disable>
-	<script>
-		WebBrowserDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Opera </imagePath>
-<onClick>
-	<script>
-		APName = "WebBrowserAP";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
-
-
-<item>
-<title>Flash Home Menu</title>
-<disable>
-	<script>
-		flashUIDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_FlashUI </imagePath>
-<onClick>
-    <script>
-        APName = "SWFHomeAP";
-        MenuLink = "./swf/loader/deploy/Navigator.swf";
-        menuCmd(APName, MenuLink);
-        null;
-    </script>
-</onClick>
-</item>
-
-<item>
-<title>$[Cinema_Now]</title>
-<disable>
-	<script>
-		CinemaNowDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Opera </imagePath>
-<onClick>
-	<script>
-		APName = "CinemaNowAP";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
-
-<item>
-<title>Netflix</title>
-<disable>
-	<script>
-		NetflixDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Netflix </imagePath>
-<onClick>
-	<script>
-		APName = "NetFlixAP";
-		swf_path = GetMenuPath("NetFlix");
-		Init_item = "0";
-		CurAPName = getCurrentAPName();
-		CurMenuType = "TopMenu";
-		CurMenuLink = "rss_file://./home_menu/scripts/HomeMenu.rss";
-		menuCmd(APName, swf_path, Init_item, CurAPName, CurMenuType, CurMenuLink);
-		null;
-	</script>
-</onClick>
-</item>
-
-<item>
-<title>$[WEBKIT_YOUTUBE_XL]</title>
-<disable>
-	<script>
-		WebKitDisableYXL;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_XL_W </imagePath>
-<onClick>
-	<script>
-		APName = "WebKitAP_youtubexl";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
-
-<item>
-<title>$[WEBKIT_CNTV]</title>
-<disable>
-	<script>
-		WebKitDisableCNTV;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_CNTV </imagePath>
-<onClick>
-	<script>
-		APName = "WebKitAP_cntv";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
-
-<item>
-<title>$[WEBKIT]</title>
-<disable>
-	<script>
-		WebKitDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Webkit </imagePath>
-<onClick>
-	<script>
-		APName = "WebKitAP";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
-
-
-<item>
-<title>$[YAHOO_WIDGET]</title>
-<disable>
-	<script>
-		"yes";
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Opera </imagePath>
-<onClick>
-    <script>
-        APName = "YahooWidgetAP";
-        menuCmd(APName);
-        null;
-    </script>
-</onClick>
-</item>
-
-<item>
-<title>$[WEBKIT_YOUTUBE_XL]</title>
-<disable>
-	<script>
-		YoutubeXLAPDisable;
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_XL_O </imagePath>
-<onClick>
-	<script>
-		APName = "YoutubeXLAP";
-		menuCmd(APName);
-		null;
-	</script>
-</onClick>
-</item>
--->
-
-
-<!--  <item>
-<title>$[APP_MGR]</title>
-<disable>
-	<script>
-		"no";
-	</script>
-</disable>
-<imagePath> home_menu/image/Home_Soft </imagePath>
-<onClick>
-	<script>
-
-		APName = "AppMgrAP";
-		menuCmd(APName);
-		null;
-		 
-	</script>
-</onClick>
-</item>   -->
-
 <item>
 <title>$[BOOKMARK]</title>
 <imagePath> home_menu/image/Home_bookmark </imagePath>
+<disable>
+	<script>
+		BMMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-			setEnv("activeAPP",BookmarkFocus);
+			setEnv("activeAPP",getFocusItemIndex());
 			setEnv("UsingBookMarkDB","yes");
 			subStoragePath = getStoragePath("key");
 			subStoragePath = subStoragePath + "MoviesSelects.dat";
@@ -1287,40 +927,17 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 </onClick>
 </item>
 
-<!--<item>
-<title>Movie Jukebox</title>
-<imagePath> home_menu/image/Home_bookmark </imagePath>
-<onClick>
-	<script>
-		APName = "IMSAP";
-		setEnv("JukeBox","true");
-		MenuType = "TopMenu";
-		MenuLink = "rss_file://./IMS_Modules/Movie_Jukebox/Movie_Jukebox.rss";
-		menuCmd(APName, MenuType, MenuLink, BltType);
-		null;
-	</script>
-</onClick>
-</item>-->
-<!--<item>
-<title>SRJG Jukebox</title>
-<imagePath> home_menu/image/Home_bookmark </imagePath>
-<onClick>
-	<script>
-		APName = "IMSAP";
-		setEnv("JukeBox2","true");
-		MenuType = "TopMenu";
-		MenuLink = "rss_file:///usr/local/etc/srjg/SrjgMainMenu.rss";
-		menuCmd(APName, MenuType, MenuLink, BltType);
-		null;
-	</script>
-</onClick>
-</item>-->
 <item>
 <title>$[SETUP_MENU]</title>
 <imagePath> home_menu/image/Home_Setup </imagePath>
+<disable>
+	<script>
+		SetupMenuDisable;
+	</script>
+</disable>
 <onClick>
 	<script>
-		setEnv("activeAPP",SetupFocus);
+		setEnv("activeAPP",getFocusItemIndex());
 		APName = "MenuBarAP";
 		MenuType = "TopMenu";
 		MenuLink = "rss_file://./setup_menu/scripts/setup.rss";
@@ -1331,44 +948,6 @@ myCurStatus=CurrentAP+" "+CurrentType+" "+PlayMusic+" "+CurrentSubType+" "+Curre
 </onClick>
 </item>
 
-
 </channel>
-
-<UpgradeCheck>
-	VersionNum = "0";
-	UpgStoragePath = getStoragePath("key") + "UpgradeVersion.dat";
-	VersionArray = readStringFromFile(UpgStoragePath);
-	StrVersion = null;
-	if (VersionArray == null){
-		executeScript("UpdateVersion");
-	}else{
-		StrVersion = getStringArrayAt(VersionArray, 0);
-		if(StrVersion != VersionNum){
-			executeScript("UpdateVersion");
-		}
-	}
-</UpgradeCheck>
-
-<UpdateVersion>
-	print("========================== UpgradeCheck", VersionNum ," ================");
-	print("    original:", StrVersion);
-	print("    new:", VersionNum);
-	VersionArray = null;
-	VersionArray = pushBackStringArray(VersionArray, VersionNum);
-	writeStringToFile(UpgStoragePath, VersionArray);
-
-	print("delete setting files");
-	print("=============================================================");
-	DelPath = getStoragePath("key") + "MoviesSelects.dat";
-	DeleteFile(DelPath);
-	DelPath = getStoragePath("key") + "MusicSelects.dat";
-	DeleteFile(DelPath);
-	DelPath = getStoragePath("key") + "PicturePlayingSelects.dat";
-	DeleteFile(DelPath);
-	DelPath = getStoragePath("key") + "PictureSelects.dat";
-	DeleteFile(DelPath);
-	DelPath = getStoragePath("key") + "DeviceSelects.dat";
-	DeleteFile(DelPath);
-</UpdateVersion>
 
 </rss>
