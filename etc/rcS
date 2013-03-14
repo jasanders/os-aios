@@ -35,15 +35,23 @@ DEFAULT_AP_DIR=/usr/local/bin
 echo 33554432 >/proc/sys/kernel/shmall                                
 echo 33554432 >/proc/sys/kernel/shmmax           
 
+read LOG_ENABLED <"/usr/local/etc/aios_log.dat"
+if [ "$LOG_ENABLED" != "ON" ]; then
+OUTPUT="/dev/null"
+else
+OUTPUT="/tmp/aios.log"
+fi
+
+
 sleep 8
 if [ -f $DEFAULT_AP_DIR/DvdPlayer ] && [ -x $DEFAULT_AP_DIR/DvdPlayer ]; then
 	cd $DEFAULT_AP_DIR
 	if [ -f $DEFAULT_AP_DIR/RootApp ] && [ -x $DEFAULT_AP_DIR/RootApp ]; then
 		echo Running dvdplayer with RootApp
-		./RootApp DvdPlayer&
+		./RootApp DvdPlayer > $OUTPUT 2>&1 &
 	else
 		echo Running dvdplayer
-		./DvdPlayer&
+		./DvdPlayer > $OUTPUT 2>&1 &
 	fi
 else
 	echo 1 > /sys/realtek_boards/reclaim_dvr
