@@ -37,7 +37,8 @@
 		menuArray = pushBackStringArray(menuArray, "OFF");
 	  	writeStringToFile(subStoragePath, menuArray);
 		}
-	Logging = getStringArrayAt(menuArray, 0);	
+	Logging = getStringArrayAt(menuArray, 0);
+	Theme = "Enter To Download";	
 </script>
 
 <onEnter>
@@ -397,6 +398,9 @@
 			}
 			else if ( title == "Logging" ) {
 				Logging;			
+			}
+			else if ( title == "Theme" ) {
+				Theme;			
 			}
 			else {
 				getCurrentSetting(title);
@@ -1105,6 +1109,59 @@ getURL("http://127.0.0.1/cgi-bin/custom/standby_new.php?time=-2");
 			menuArray = pushBackStringArray(menuArray, Logging);
 	  		writeStringToFile(subStoragePath, menuArray);	
 		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>Theme</title>
+<mediaDisplay>
+	<onEnter>
+		menuArray = null;
+		menuArray=getURL("http://os-aios.googlecode.com/files/Theme_Catalog.dat");		
+		popupHeader = "Theme Download";
+		if (menuArray == null){
+		popupOptions = pushBackStringArray(popupOptions, "ERR: Fetching File");
+		popupOptionFocus= getStringArrayAt(popupOptions, 0);
+		}
+		else{indexCount = 0;
+			while (1) {
+		popupOptions = pushBackStringArray(popupOptions,getStringArrayAt(menuArray,indexCount));
+			if (getStringArrayAt(menuArray,indexCount+2) == null) {
+				break;
+				}
+			indexCount += 2;
+			themeCount += 1;		
+			}
+		subStoragePath = "/tmp/Theme_Catalog.dat";
+		writeStringToFile(subStoragePath, menuArray);		
+		}	
+		popupOptionSize = themeCount+1;
+		popupOptionFocus= getStringArrayAt(popupOptions, 0);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";	
+		ret = doModalRss(rss);
+		Theme= "";		
+		if( ret != null )
+		{
+			Theme= "ERR: Fetching File";			
+			if(ret != "ERR: Fetching File")
+			{
+			menuArray = null;
+			subStoragePath = "/tmp/Theme_Catalog.dat";		
+			menuArray = readStringFromFile(subStoragePath);
+		 	if (menuArray != null)
+			{indexCount = 0;
+			while (1) {
+			if (getStringArrayAt(menuArray,indexCount) == ret) break;			
+			indexCount += 2;}
+Theme = getURL("http://127.0.0.1/cgi-bin/custom/download_bg.php?url="+getStringArrayAt(menuArray,indexCount+1));}	
+			}
+		}
+		postMessage("zero");
 	</script>
 </onClick>
 </item>
