@@ -39,6 +39,7 @@
 		}
 	Logging = getStringArrayAt(menuArray, 0);
 	Theme = "Enter To Download";	
+	Euro_ims= "Enter To Download";
 </script>
 
 <onEnter>
@@ -401,6 +402,9 @@
 			}
 			else if ( title == "Theme" ) {
 				Theme;			
+			}
+			else if ( title == "EURO IMS" ) {
+				Euro_ims;			
 			}
 			else {
 				getCurrentSetting(title);
@@ -1160,6 +1164,30 @@ getURL("http://127.0.0.1/cgi-bin/custom/standby_new.php?time=-2");
 			indexCount += 2;}
 Theme = getURL("http://127.0.0.1/cgi-bin/custom/download_bg.php?url="+getStringArrayAt(menuArray,indexCount+1));}	
 			}
+		}
+		postMessage("zero");
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>EURO IMS</title>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "Update Euro IMS (takes time) ?";
+		popupOptionSize = 1;
+		popupOptions = pushBackStringArray(popupOptions, "OK");
+		popupOptionFocus= "OK";
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";	
+		ret = doModalRss(rss);
+		Euro_ims= "";		
+		if( ret != null )
+		{
+		   Euro_ims = getURL("http://127.0.0.1/cgi-bin/custom/wget_unzip.php?url=http://os-aios.googlecode.com/files/euro_ims.zip&amp;dest=/usr/local/etc/");
 		}
 		postMessage("zero");
 	</script>
