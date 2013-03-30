@@ -119,7 +119,7 @@ GenerateMovieList()
 # Replace the comma in Movie_Filter to pipes |
 Movie_Filter=`echo ${Movie_Filter} | sed 's/,/|/ g'`
 
-find "${Movies_Path}" \
+find "${Movies_Path}" -follow \
   | egrep -i 'exclu.txt|\.(asf|avi|dat|divx|flv|img|iso|m1v|m2p|m2t|m2ts|m2v|m4v|mkv|mov|mp4|mpg|mts|qt|rm|rmp4|rmvb|tp|trp|ts|vob|wmv)$' \
   | egrep -iv "${Movie_Filter}" > ${MoviesList}
 
@@ -743,7 +743,7 @@ cat <<EOF
 					jumpToLink("Watchcgi"); /* update watched state in database */
 					"false";
 				}
-        else if (userInput == "edit") {
+        else if (userInput == "option_red") {
           MovieID=getItemInfo(-1, "IdMovie");
           MTitle=getItemInfo(-1, "title");
           setEnv("MTitle", MTitle);
@@ -753,7 +753,7 @@ cat <<EOF
 EOF
 else
 cat <<EOF
-        else if (userInput == "edit") {
+        else if (userInput == "option_red") {
 					"true";
 				}
 EOF
@@ -2262,7 +2262,7 @@ rm ${Fxml} 2>/dev/null
 
 if [ -z `awk 2>&1 | grep 1.1.3` ]; then
   awkBin=awk
-else awkBin=/usr/local/bin/package/awk; fi
+else awkBin=/usr/local/bin/Resource/package/awk; fi
 
 ${awkBin} '
 $0 ~ /\015$/ { sub( "\015$", "" ) }
@@ -2380,7 +2380,8 @@ else
   }
 
   cancelIdle();
-  playItemURL("${CategoryTitle}", 0, "mediaDisplay", "previewWindow");
+  if ( SubTitle == "true" )  playItemURL("${CategoryTitle}", 0, "mediaDisplay", "previewWindow");
+  else playItemURL("${CategoryTitle}", 0);
     
   stream_elapsed = "Wait...";
   check_counter = 15;
@@ -2679,7 +2680,7 @@ else if (input == "up" || input == "U")
       fontoffset = "0.5" + fontoffset ;
       ret = "true";
 }
-else if ( input == "edit" ) {
+else if ( input == "option_red" ) {
   dlok = doModalRss("http://127.0.0.1:$Port/cgi-bin/srjg.cgi?SubtPopup@");
   /* reload config */
   Config = "/usr/local/etc/srjg.cfg";

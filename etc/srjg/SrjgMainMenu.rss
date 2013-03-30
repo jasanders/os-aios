@@ -150,7 +150,7 @@
         mode=urlEncode(mode);
         jumpToLink("SelectionEntered");
         ret="false";
-      } else if (userInput == "edit") {
+      } else if (userInput == "option_red") {
         ret="true";
       } else if (userInput == "one") {
 	    	LastFile = readStringFromFile(Jukebox_Path + "recently_played");

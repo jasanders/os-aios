@@ -146,7 +146,7 @@ GenerateMovieList()
 # Replace the comma in Movie_Filter to pipes |
 Movie_Filter=`echo ${Movie_Filter} | sed 's/,/|/ g'`
 echo "Searching for movies.."
-find "${Movies_Path}" \
+find "${Movies_Path}" -follow \
   | egrep -i 'exclu.txt|\.(asf|avi|dat|divx|flv|img|iso|m1v|m2p|m2t|m2ts|m2v|m4v|mkv|mov|mp4|mpg|mts|qt|rm|rmp4|rmvb|tp|trp|ts|vob|wmv)$' \
   | egrep -iv "${Movie_Filter}" > ${MoviesList}
 
