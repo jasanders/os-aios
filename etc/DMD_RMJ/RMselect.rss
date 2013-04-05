@@ -1,0 +1,626 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- DMD RM Jukebox v. 2.2 by Martini(CZ) from DMD team
+     Contact: w0m@seznam.cz, http://www.hddplayer.cz
+     I give all rights to modify this script, but give my name, site and DMD logo
+     on the background image.
+     If you want add this application to youre custom firmware, please send me youre 
+     e-mail and link to youre web site. 
+-->
+
+<onEnter> 
+/* WHERE IS THIS SCRIPT ? */
+ scriptPath="/usr/local/etc/DMD_RMJ/";
+/**************************/
+  
+/* ANOTHER WAY */
+/* rmPath =getStoragePath("key"); */
+/* Config= rmPath + "RMusic.cfg"; */
+/* EtatCfg = loadXMLFile(Config); */                     
+/* if (EtatCfg == null) scriptPath="/tmp/app/ims/"; else scriptPath=getXMLText("Script", 0); */
+
+  font1=scriptPath+"BEDROCKN.TTF";
+  font2=scriptPath+"TIMES_SQ.TTF";
+  font3=scriptPath+"TESLA_18.ttf";
+	showIdle();
+	prepareAnimation();
+  setRefreshTime(60000);
+  NewPl=null;
+  nameArray = null;
+  cestaArray = null;
+  imageArray = null;
+  numArray = null;
+  Erreur=0;
+  nic=0;
+  rmPath =getStoragePath("key");
+  tmpPath =getStoragePath("tmp");
+  Albumlist= rmPath + "Albumlist.xml";
+  Config= rmPath + "RMusic.cfg";
+  jukebox2File = "/tmp/rmjukebox.dat";
+  Info = "http://127.0.0.1/cgi-bin/soubces.cgi";
+  A_Music=0;
+  executeScript("chargeCfg"); 
+  Ch_Music=getXMLText("Chem", 0);                  /* Charge le chemin des musiques */
+  idx=0;
+  channelStr="";
+  pos=0;
+  page=0;
+  nowSelected=0;
+  nowPlayed=0;
+  
+  NewPl = loadXMLFile(Albumlist);                     
+  if (NewPl == null) {
+    print("Nemohu najít playlist");
+    if (nic==1) {
+        postMessage("return");
+    } else {
+        executeScript("aktualizace");    
+        Erreur=1;
+    }              
+/*    postMessage("return"); */
+  } else {
+    print("Playlist nalezen");
+
+    ACountT = getXMLText("AMusic", "ACount", 0);
+    ACount = Add(ACountT,1);
+    stred = Integer(ACountT/2);
+    while (A_Music != ACount) {
+      name=getXMLText("AMusic", "Aname", A_Music);
+        if (name == "" || name == null) {name="..";}
+      cesta=getXMLText("AMusic", "Adir", A_Music);
+      image=getXMLText("AMusic", "Apic", A_Music);
+        if (image == "" || image == null) {
+           image=scriptPath + "rm_nocover.jpg";
+        } else {
+           image=Ch_Music+cesta+"/"+image;
+        }
+      cesta=Ch_Music+cesta+"/";
+      nameArray = pushBackStringArray(nameArray, name);
+      cestaArray = pushBackStringArray(cestaArray, cesta);
+      imageArray = pushBackStringArray(imageArray, image);
+      A_Music=A_Music+1;
+ 
+       if (A_Music >= 100) {
+          S_Music=A_Music;
+       } else {
+        if (A_Music >= 10) {
+          S_Music="0"+A_Music;
+        } else {
+          S_Music="00"+A_Music;
+        }
+       } 
+      numArray = pushBackStringArray(numArray, S_Music);
+    }
+  }
+  A_Music=0;
+  setFocusItemIndex(stred);
+</onEnter>	
+
+<onRefresh>
+
+	
+</onRefresh>
+
+
+	<onExit>
+/* reclaim memory */
+ tearDownPlaybackFlow();
+ setRefreshTime(-1);
+</onExit>
+
+<mediaDisplay name=photoFocusView 
+	backgroundColor=5:5:5	
+  rollItems="yes"
+	sliding=yes
+	sideColorBottom="-1:-1:-1"
+	
+	rowCount=1
+	columnCount=7
+	fontSize = 18
+
+   viewAreaXPC=0
+   viewAreaYPC=0
+   viewAreaWidthPC=100
+   viewAreaHeightPC=100
+	
+	sideTopHeightPC = 0
+	sideColorTop = 2:2:2
+	menuBorderColor = 2:2:2
+	menuFontColor = 226:229:159
+	
+
+	menuOffsetXPC = 6
+	menuOffsetYPC = 17.5
+	menuItemHeightPC = 3.5
+	menuItemWidthPC = 20
+	
+	itemGrid.element.xPC = 9.3	
+	itemGrid.element.yPC = 44.65
+	
+	itemGrid.element.widthPC=9.2
+	itemGrid.element.heightPC=16.35
+	itemGrid.elementBackground.widthPC=10.5
+	itemGrid.elementBackground.heightPC=18.65		
+	
+	itemGrid.gapXPC=1.35
+
+	
+	itemGrid.focusElement.yPC = 33
+	itemGrid.heightPC = 25
+	
+	itemGrid.focusElement.widthPC=15.7
+	itemGrid.focusElement.heightPC=28	
+	itemGrid.focusElementBackground.widthPC=17.1
+	itemGrid.focusElementBackground.heightPC=30.5
+	itemBackgroundColor = 13:77:140
+	
+  sideBottomHeightPC=0	
+	bottomArea.yPC=100
+	blitBackground=no
+	showHeader=no
+	showDefaultInfo=no
+  
+    	fadeInFocus=yes
+  itemGrid.focusElementBackground.image = "focus_frame.png" 	
+	itemGrid.elementBackground.image="unfocus_frame.png"
+> 
+	<slideItems>
+		<script> 
+		pageInfo = getPageInfo("majorContext");
+		print("----------------------", pageInfo);
+		if (pageInfo == "items")
+		{
+			"yes";
+		}
+		else
+		{
+			"no";
+		}
+		</script>
+	</slideItems>
+
+  <idleImage> image/POPUP_LOADING_01.png </idleImage>
+  <idleImage> image/POPUP_LOADING_02.png </idleImage>
+  <idleImage> image/POPUP_LOADING_03.png </idleImage>
+  <idleImage> image/POPUP_LOADING_04.png </idleImage>
+  <idleImage> image/POPUP_LOADING_05.png </idleImage>
+  <idleImage> image/POPUP_LOADING_06.png </idleImage>
+  <idleImage> image/POPUP_LOADING_07.png </idleImage>
+  <idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+	<backgroundDisplay>
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>print(scriptPath + "rm_album.jpg");</script>
+    </image>
+      <text align="center" lines="2" offsetXPC="36.5" offsetYPC="35" widthPC="29.4" heightPC="15" 
+        fontSize="17" backgroundColor="5:5:5" foregroundColor="200:150:0"
+        redraw=no>
+        <script>
+            print("");
+        </script>
+    </text>
+
+
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>print(scriptPath + "jukebox_off.png");</script>
+    </image>
+ <!--   <text redraw="yes" align="left" offsetXPC="0" offsetYPC="0" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="100:100:100">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+    print(page);
+    </script>
+  </text>
+ -->
+
+   <text redraw="yes" align="left" offsetXPC="28" offsetYPC="65" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+    pos = page;
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="65.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="28" offsetYPC="69.4" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,1);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="69.4" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="28" offsetYPC="74.7" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,2);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="75" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="28" offsetYPC="78.9" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,3);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="78.9" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="28" offsetYPC="84.3" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,4);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="84.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="28" offsetYPC="88.4" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,5);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="25.2" offsetYPC="88.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="65" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,6);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="65.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="69.4" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,7);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="69.4" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="74.7" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,8);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="75" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="78.9" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,9);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="78.9" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="84.3" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,10);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="84.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="yes" align="left" offsetXPC="53" offsetYPC="88.4" widthPC="22" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=Add(page,11);
+    sng=getStringArrayAt(nameArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="yes" align="left" offsetXPC="50.2" offsetYPC="88.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(numArray,pos);
+    print(sngIndex);</script>
+  </text>  
+               
+
+	</backgroundDisplay>
+
+
+	<onUserInput>
+  userInput = currentUserInput();
+print("*********************"+userInput+"****************");
+
+		if (userInput=="edit"){
+				"true";
+				
+	  } else if (userInput == "pagedown") {              
+    pageT=Add(page, 12) ;
+    if (ACount >= pageT) {
+      page=Add(page, 6) ;
+      RedrawDisplay();     
+    }
+    "true";
+
+  } else if (userInput == "pageup") {                        
+    pageT=Minus(page, 6) ;
+    if (pageT >= 0) {
+      page=pageT ;
+      RedrawDisplay();     
+    }
+    "true";
+
+  } else if (userInput == "down") { 
+    idx = getQueryItemIndex();
+    idx = Minus(idx, 7);                       
+    test=getStringArrayAt(numArray, idx);
+    if (test != null) {
+  		setFocusItemIndex(idx);      
+    RedrawDisplay();     
+    }
+    "true";
+
+  } else if (userInput == "up") { 
+    idx = getQueryItemIndex(); 
+    idx = Add(idx, 7);                      
+    test=getStringArrayAt(numArray, idx);
+    if (test != null) {
+  		setFocusItemIndex(idx);      
+    RedrawDisplay();     
+    }
+    "true";
+
+  } else if (userInput == "one" || userInput == "two" || userInput == "three" || userInput == "four" || userInput == "five" || userInput == "six" || userInput == "seven" || userInput == "eight" || userInput == "nine" || userInput == "zero") {
+    numInput = userInput;
+    executeScript("numSelector");
+    "true";			
+
+  } else if ( userInput == "video_play" || userInput == "enter" || userInput == "video_pause") {
+		    curidx = getFocusItemIndex();
+		    New_Music = getStringArrayAt(cestaArray, curidx) + ".";
+		    
+		    writeStringToFile("/tmp/rmjukebox.dat", New_Music);
+        showIdle();                                               /* active l'animation d'attente */
+        dlok = loadXMLFile(Info);
+        cancelIdle();
+        setReturnString("Confirm");
+        postMessage("return");
+/*        asrss = "rss_file://" +scriptPath + "RMalbum.rss";  */
+/*        ret = doModalRss(asrss);                        */              
+/*      if (ret == "Confirm") {                           */
+/*        executeScript("onEnter");                       */
+/*      } else postMessage("return");                     */
+
+/*        jumpToLink("rmAlbum");                          */
+
+/*        executeScript("chargeListe"); */
+        "true";
+
+			}
+	</onUserInput>
+  <text align="center" lines="1" offsetXPC="39" offsetYPC="14.2" widthPC="20.4" heightPC="4" 
+        fontSize="17" backgroundColor="20:20:20" foregroundColor="210:16:16"
+        redraw=yes>
+    <fontFile><script>font2;</script></fontFile>
+        <script>
+            pagenum = getItemInfo("numTitle");
+            nowPlayed = getPageInfo("focusItemIndex")-1; 
+            str = pagenum + " / " + getPageInfo("itemCount"); 
+            print(str);
+        </script>
+    </text>
+  <text align="center" lines="2" offsetXPC="39" offsetYPC="18" widthPC="20.4" heightPC="8.2" 
+        fontSize="17" backgroundColor="20:20:20" foregroundColor="200:150:0"
+        redraw=yes>
+    <fontFile><script>font1;</script></fontFile>
+        <script>
+            pagetitle = getItemInfo("displayTitle"); 
+            print(pagetitle);
+        </script>
+    </text>
+   	
+</mediaDisplay>
+	
+<item_template>
+       <displayTitle>
+            <script>
+				getStringArrayAt(nameArray , -1);
+			</script>
+        </displayTitle>
+        <media:thumbnail>
+            <script>
+			url = getStringArrayAt(imageArray , -1);
+     	print("thumbnail:");
+     	print(url);
+     	url;
+			</script>
+        </media:thumbnail>
+      		<media:content type="image/jpeg" />  
+       <numTitle>
+            <script>
+				getStringArrayAt(numArray , -1);
+			</script>
+        </numTitle>
+
+		<onClick>
+			print("onClick");
+		</onClick>
+</item_template>
+
+<rmAlbum>
+<link><script>scriptPath + "RMalbum.rss";</script></link>
+</rmAlbum>
+
+<chargeCfg>
+  /* Chargement de la config */
+    EtatCfg = loadXMLFile(Config);                     /* charge la config */
+    if (EtatCfg == null) {
+      print("Nemohu najít CFG");
+      Erreur=1;
+      postMessage("return");
+  } else {
+      print("CFG nalezen");
+  }
+</chargeCfg>
+
+<numSelector>
+  if (numInput == "one") {
+			channelStr = channelStr + "1";
+		} else if (numInput == "two") {
+			channelStr = channelStr + "2";
+		} else if (numInput == "three") {
+			channelStr = channelStr + "3";
+		} else if (numInput == "four") {
+			channelStr = channelStr + "4";
+		} else if (numInput == "five") {
+			channelStr = channelStr + "5";
+		} else if (numInput == "six") {
+			channelStr = channelStr + "6";
+		} else if (numInput == "seven") {
+			channelStr = channelStr + "7";
+		} else if (numInput == "eight") {
+			channelStr = channelStr + "8";
+		} else if (numInput == "nine") {
+			channelStr = channelStr + "9";
+		} else if (numInput == "zero" &amp;&amp; channelStr != "") {
+			channelStr = channelStr + "0";
+		}
+
+			idx = Integer(channelStr) - 1;
+			if (idx > ACount) {
+			 channelStr = "";
+			 idx = 0;
+      }
+  		setFocusItemIndex(idx);
+			RedrawDisplay();
+</numSelector>
+
+<aktualizace>   
+      rmrss = "rss_file://" + scriptPath + "RMbrowser.rss";
+      ret = doModalRss(rmrss);
+      if (ret == "Confirm") { 
+        executeScript("onEnter");
+      } else {
+        nic=1; 
+        executeScript("onEnter");
+      }
+</aktualizace>
+
+<channel>
+  <title>Album Select</title>
+  <link><script>scriptPath + "RMselect.rss";</script></link>	
+  <itemSize>
+     <script>
+        ACount;
+     </script>
+  </itemSize>
+</channel>
+</rss>
+

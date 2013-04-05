@@ -40,6 +40,22 @@
 	Logging = getStringArrayAt(menuArray, 0);
 	Theme = "Enter To Download";	
 	Euro_ims= "Enter To Download";
+	
+	subStoragePath = "/usr/local/etc/iCap/aios_scap.dat";
+	menuArray = readStringFromFile(subStoragePath);
+	if (menuArray == null){
+		menuArray = pushBackStringArray(menuArray, "OFF");
+	  	writeStringToFile(subStoragePath, menuArray);
+		}
+	scrcap = getStringArrayAt(menuArray, 0);
+
+	subStoragePath = "/usr/local/etc/iCap/aios_scaploc.dat";
+	menuArray = readStringFromFile(subStoragePath);
+	if (menuArray == null){
+		menuArray = pushBackStringArray(menuArray, "/tmp/");
+	  	writeStringToFile(subStoragePath, menuArray);
+		}
+	scrcaploc = getStringArrayAt(menuArray, 0);
 </script>
 
 <onEnter>
@@ -406,6 +422,12 @@
 			else if ( title == "EURO IMS" ) {
 				Euro_ims;			
 			}
+			else if ( title == "Screen Capture" ) {
+				scrcap;			
+			}
+			else if ( title == "Screen Capture Location" ) {
+				scrcaploc;			
+			}
 			else {
 				getCurrentSetting(title);
 			}
@@ -597,6 +619,22 @@
 		</script>
 	</image>
 	<!--  status  end -->
+
+<!-- app help info  -->
+ <text offsetXPC=75 offsetYPC=83 widthPC=20  heightPC=8  fontSize=10 align=left  foregroundColor=255:255:255 useBackgroundSurface="yes" redraw=yes>
+	<script>
+			focusIndex = getFocusItemIndex();		 
+			title = getItemInfo(focusIndex, "hintL1");
+			title;		
+	</script>			
+</text>
+<text offsetXPC=75 offsetYPC=88 widthPC=20  heightPC=8  fontSize=10 align=left  lines=2 foregroundColor=255:255:255 useBackgroundSurface="yes" redraw=yes>
+	<script>
+			focusIndex = getFocusItemIndex();		 
+			title = getItemInfo(focusIndex, "hintL2");
+			title;		
+	</script>
+</text>	
 	
 </mediaDisplay>
 
@@ -694,6 +732,9 @@
 		popupOptions = pushBackStringArray(popupOptions,"Audio Podcast");
 		popupOptions = pushBackStringArray(popupOptions,"RSS Audio");
 		popupOptions = pushBackStringArray(popupOptions,"MusicLib");
+		popupOptions = pushBackStringArray(popupOptions,"DMD RMusic Jukebox (Album)");
+		popupOptions = pushBackStringArray(popupOptions,"DMD RMusic Jukebox (Random)");
+		popupOptions = pushBackStringArray(popupOptions,"RMusic Jukebox");
 		popupOptions = pushBackStringArray(popupOptions,"OFF");
 		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/CustomMenus.dat"), 2);
 	</onEnter>
@@ -1193,6 +1234,71 @@ Theme = getURL("http://127.0.0.1/cgi-bin/custom/download_bg.php?url="+getStringA
 	</script>
 </onClick>
 </item>
+
+<item>
+<title>Screen Capture</title>
+<hintL1>Use BOOKMARKS button</hintL1>
+<hintL2>to capture still images</hintL2>
+<mediaDisplay>
+	<onEnter>
+		popupHeader = "Screen Capture (requires reboot)";
+		popupOptionSize = 2;
+		popupOptions = pushBackStringArray(popupOptions, "ON");
+		popupOptions = pushBackStringArray(popupOptions, "OFF");
+		popupOptionFocus= getStringArrayAt(readStringFromFile("/usr/local/etc/iCap/aios_scap.dat"),0);
+	</onEnter>
+</mediaDisplay>
+<onClick>
+	<script>
+		rss = "rss_file://./setup_menu/scripts/dynamicPopup.rss";
+		ret = doModalRss(rss);
+		if( ret != NULL ) {
+			scrcap = ret;
+			subStoragePath = "/usr/local/etc/iCap/aios_scap.dat";
+			menuArray = null;
+			menuArray = pushBackStringArray(menuArray, scrcap);
+	  		writeStringToFile(subStoragePath, menuArray);	
+		}
+	</script>
+</onClick>
+</item>
+
+<item>
+<title>Screen Capture Location</title>
+<hintL1> 
+<script>
+	hintL1="";	
+	if(scrcap == "ON"){
+		hintL1="Saved in scrcap folder under:";
+		}
+	hintL1;
+</script>
+</hintL1>
+<hintL2>
+<script>
+	hintL2="Enable Screen Capture to set";	
+	if(scrcap == "ON"){
+		hintL2 = readStringFromFile("/usr/local/etc/iCap/aios_scaploc.dat");
+		}
+	hintL2;
+</script>
+</hintL2>
+<onClick>
+	<script>if(scrcap == "ON"){
+		oldLoc = readStringFromFile("/usr/local/etc/iCap/aios_scaploc.dat");
+		ret = doModalRss("http://127.0.0.1/cgi-bin/FBrowser.cgi?FBrowser@");
+		if( ret != NULL ) {
+			if( ret != oldLoc ) {
+				writeStringToFile("/usr/local/etc/iCap/aios_scaploc.dat",ret);
+				scrcaploc = ret;
+			}
+		    }
+		}
+		postMessage("zero");
+	</script>
+</onClick>
+</item>
+
 
 </channel>
 </rss>

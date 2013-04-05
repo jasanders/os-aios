@@ -1,0 +1,832 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- DMD RM Jukebox v. 2.2 by Martini(CZ) from DMD team
+     Contact: w0m@seznam.cz, http://www.hddplayer.cz
+     I give all rights to modify this script, but give my name, site and DMD logo
+     on the background image.
+     If you want add this application to youre custom firmware, please send me youre 
+     e-mail and link to youre web site. 
+-->
+
+<onEnter> 
+/* WHERE IS THIS SCRIPT ? */
+ scriptPath="/usr/local/etc/DMD_RMJ/";
+/**************************/
+
+/* ANOTHER WAY */
+/* rmPath =getStoragePath("key"); */
+/* Config= rmPath + "RMusic.cfg"; */
+/* EtatCfg = loadXMLFile(Config); */                     
+/* if (EtatCfg == null) scriptPath="/tmp/app/ims/"; else scriptPath=getXMLText("Script", 0); */
+  
+  font1=scriptPath+"BEDROCKN.TTF";
+  font2=scriptPath+"TIMES_SQ.TTF";
+  font3=scriptPath+"TESLA_18.ttf";
+  showIdle(); 
+  playStatus = 0;
+  setRefreshTime(150);
+  ret=0;   
+  gmt=2;
+  odpocet=399;
+  channelStr="";
+  EtatPl=null;
+  Erreur=0;
+  rmPath =getStoragePath("key");
+  tmpPath =getStoragePath("tmp");
+  Playlist= "/tmp/album.xml";
+  Config= rmPath + "RMusic.cfg";
+  jukebox2File = "/tmp/rmjukebox.dat";
+  Info = "http://127.0.0.1/cgi-bin/soubces.cgi";
+  albumMode=1;
+  helpMode=0;
+  AleaM=230;
+  RMCount=0;
+  L_Music=0;
+  MemoM=0;
+    full_file = "";
+    full_dir = "";
+    song_dir = "";
+    full_song = "";
+    name_song = "";
+    ext_song = "";
+    img_song = "";
+    cover_song = "";
+    cd_img = "";
+
+  songArray = null;
+  trackArray = null;
+  executeScript("chargeListe");                     /* charge le fichier liste de musiques */
+  executeScript("songInfo");
+  page=0;
+  nowSelected=0;
+  nowPlayed=0;
+executeScript("playThis");                 
+/*    jumpToLink("rmSelect");   */
+    
+</onEnter>
+
+<onExit>                                                                          
+  playItemURL(-1, 1);                              
+  setRefreshTime(-1);
+  /* reclaim memory */
+ tearDownPlaybackFlow();
+  cancelIdle();
+</onExit>
+
+<onRefresh>
+  odpocet = odpocet + 1;
+  if (odpocet==400) {
+    Cas = getURL("http://127.0.0.1/cgi-bin/custom/get_time.php?date_time="+currTime());
+			odpocet = 0;
+      EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+			RedrawDisplay();
+  }
+  progress = getPlaybackStatus();
+ 		bufProgress = getCachedStreamDataSize(0, 262144);
+ 		playElapsed = getStringArrayAt(progress, 0);
+		playTime = getStringArrayAt(progress, 1);
+		playStatus = getStringArrayAt(progress, 3);
+		print("Media status =", progress);	
+			if (playElapsed != 0)
+			{
+				x = Integer(playElapsed / 60);
+				h = Integer(playElapsed / 3600);
+				s = playElapsed - (x * 60);m = x - (h * 60);
+				if(h &lt; 10) elapsedTime = "0" + sprintf("%s:", h); else elapsedTime = sprintf("%s:", h);
+				if(m &lt; 10)  elapsedTime += "0";elapsedTime += sprintf("%s:", m);
+				if(s &lt; 10)  elapsedTime += "0";elapsedTime += sprintf("%s", s);
+				print("elapsedTime =", elapsedTime);				
+				if(AllTime == null)
+				{
+					x = Integer(playTime / 60);
+					h = Integer(playTime / 3600);
+					s = playTime - (x * 60);m = x - (h * 60);
+					if(h &lt; 10) AllTime = "0" + sprintf("%s:", h); else AllTime = sprintf("%s:", h);
+					if(m &lt; 10)  AllTime += "0";AllTime += sprintf("%s:", m);
+					if(s &lt; 10)  AllTime += "0";AllTime += sprintf("%s", s);
+					print("AllTime =", AllTime);
+				}				
+      }
+  updatePlaybackProgress(progress, "mediaDisplay", "backgroundDisplay", "progressBar");
+    itemCount = getPageInfo("itemCount");
+if (Erreur == 1) { 
+executeScript("rmSelect");
+}
+
+</onRefresh>
+
+<mediaDisplay
+  name=onePartView
+  showHeader=no
+  showDefaultInfo=no
+  drawItemBorder=no
+  itemPerPage="1"
+  columnCount="1"
+  viewAreaXPC=0
+  viewAreaYPC=0
+  viewAreaWidthPC=100
+  viewAreaHeightPC=100
+  itemImageXPC="100"
+  itemImageYPC="100"
+  itemImageWidthPC="0"
+  itemImageHeightPC="0"
+  itemBackgroundWidthPC="0"
+  itemXPC="50"
+  itemYPC="49.5"
+  itemOffsetXPC="0"
+  itemOffsetYPC=0
+  itemWidthPC="2.5"
+  itemHeightPC=3.4
+ 		itemGapYPC=0.2
+ 		itemGapXPC=0
+  sideTopHeightPC=0
+  sideBottomHeightPC=0
+  bottomYPC=100
+  itemAlignt="center"
+  backgroundColor=0:0:0
+  idleImageYPC="50"
+
+     >
+
+  <idleImage> image/POPUP_LOADING_01.png </idleImage>
+  <idleImage> image/POPUP_LOADING_02.png </idleImage>
+  <idleImage> image/POPUP_LOADING_03.png </idleImage>
+  <idleImage> image/POPUP_LOADING_04.png </idleImage>
+  <idleImage> image/POPUP_LOADING_05.png </idleImage>
+  <idleImage> image/POPUP_LOADING_06.png </idleImage>
+  <idleImage> image/POPUP_LOADING_07.png </idleImage>
+  <idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+  <backgroundDisplay>
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>print(scriptPath + "rm_album.jpg");</script>
+    </image>
+    <image redraw="no" offsetXPC="33.9" offsetYPC="34.2" widthPC="14.5" heightPC="25.8">
+      <script>print(cover_song);</script>
+    </image>
+    <image redraw="no" offsetXPC="28.4" offsetYPC="40.7" widthPC="4.4" heightPC="16.65">
+      <script>print(cd_img);</script>
+    </image>
+    <image redraw="no" offsetXPC="58.2" offsetYPC="33.5" widthPC="3.1" heightPC="5.5">
+      <script>
+      if (albumMode==1) mode_img=scriptPath + "order.png"; else mode_img=scriptPath + "random.png";
+      print(mode_img);
+      </script>
+    </image>
+
+  <text redraw="yes" align="center" offsetXPC="54" offsetYPC="55" widthPC="11.5" heightPC="5" fontSize="20" backgroundColor="-1:-1:-1" foregroundColor="200:150:0">
+    <fontFile><script>font2;</script></fontFile>
+    <script>Cas;</script>
+  </text>
+
+  <text redraw="no" align="center" lines="2" offsetXPC="38.5" offsetYPC="14" widthPC="22" heightPC="6.5" fontSize="17" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(full_song);</script>
+  </text>
+  <text redraw="no" align="center" lines="2" offsetXPC="38.5" offsetYPC="20.5" widthPC="22" heightPC="4.5" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(Music);</script>
+  </text>
+
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="65" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos = page + 0;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="65.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="69.4" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+1;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="69.4" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="74.7" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+2;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="75" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="78.9" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+3;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="78.9" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="84.3" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+4;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="84.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="27" offsetYPC="88.4" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+5;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="88.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="65" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+6;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="65.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="69.4" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+7;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="69.4" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="74.7" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+8;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="75" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="78.9" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+9;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="78.9" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="84.3" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+10;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="84.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+  <text redraw="no" align="left" offsetXPC="52" offsetYPC="88.4" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="0:0:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>
+    pos=page+11;
+    sng=getStringArrayAt(songArray,pos);
+    print(sng);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50.2" offsetYPC="88.5" widthPC="4" heightPC="8" fontSize="12" backgroundColor="-1:-1:-1">
+    <fontFile><script>font3;</script></fontFile>
+    <foregroundColor>
+    <script>
+    if (nowPlayed == pos) {
+    foregroundColor="0:50:100";
+    } else foregroundColor="0:0:0";
+    </script>    
+    </foregroundColor>
+    <script>
+    sngIndex=getStringArrayAt(trackArray,pos);
+    print(sngIndex);</script>
+  </text>  
+               
+  <text redraw="no" align="right" offsetXPC="54" offsetYPC="35" widthPC="11.5" heightPC="3" fontSize="18" backgroundColor="-1:-1:-1" foregroundColor="210:16:16">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+      print(RMCount);
+    </script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="54" offsetYPC="35" widthPC="11.5" heightPC="3" fontSize="18" backgroundColor="-1:-1:-1" foregroundColor="210:16:16">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+      musIndex=getStringArrayAt(trackArray,L_Music);
+      print(musIndex);
+    </script>
+  </text>
+
+	<progressBar backgroundColor=-1:-1:-1 offsetXPC=34 offsetYPC=31.5 widthPC=31 heightPC=3>
+    <bar offsetXPC="20" offsetYPC="35" widthPC="60" heightPC="30" barColor="40:40:40" progressColor="50:100:150" />
+		<text redraw=yes offsetXPC=0 offsetYPC=0 widthPC=25 heightPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=155:155:155>
+    <fontFile><script>font2;</script></fontFile>
+			<script>if (playStatus == 2) elapsedTime; else "--:--:--";</script>
+		</text>
+		<text redraw=yes align=right offsetXPC=75 offsetYPC=0 widthPC=25 heightPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=155:155:155>
+    <fontFile><script>font2;</script></fontFile>
+			<script>if (playStatus == 2 &amp;&amp; AllTime != "00:00:00") AllTime; else "--:--:--";</script>
+		</text>
+		<destructor offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 color=-1:-1:-1>
+		</destructor>
+	</progressBar>
+
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>
+      if (playStatus==0) off_img=scriptPath + "jukebox_off.png"; else off_img="";
+      print(off_img);
+      </script>
+    </image>
+
+  </backgroundDisplay>
+
+  <onUserInput>
+  userInput = currentUserInput();
+print("*********************"+userInput+"****************");
+
+  if (userInput == "right") {              
+    test=getStringArrayAt(songArray, page+12);
+    if (test != null) {
+      page=page+6 ;
+      RedrawDisplay();     
+    }
+    "true";
+
+  } else if (userInput == "left") {                        
+    test=getStringArrayAt(songArray, page-6);
+    if (test != null) {
+      page=page-6 ;
+      RedrawDisplay();     
+    }
+    "true";
+
+	} else if (userInput == "return") {                          
+   if ( playStatus != 0 ){ 
+     playItemURL(-1, 1);                                     
+     executeScript("playStop"); 
+   } 
+    "false";
+
+  } else if (userInput == "pagedown" ) {                           
+    playItemURL(-1, 1);                                           
+    if (EtatPl == null){
+      executeScript("chargeListe");                               
+    }
+    if (albumMode==1) { 
+    executeScript("playNext");
+    } else {
+    executeScript("playRandom");
+    }                                     
+    "false";
+
+  } else if (userInput == "pageup" ) {                           
+    playItemURL(-1, 1);                                            
+    if (EtatPl == null){
+      executeScript("chargeListe");                               
+    }
+       executeScript("playPrev");    
+    "false";
+    
+  } else if (userInput == "one" || userInput == "two" || userInput == "three" || userInput == "four" || userInput == "five" || userInput == "six" || userInput == "seven" || userInput == "eight" || userInput == "nine" || userInput == "zero") {
+    numInput = userInput;
+    executeScript("numSelector");
+    "true";			
+
+  } else if (userInput == "enter") {
+    if (playStatus != 0 ) playItemURL(-1, 1);
+    if (EtatPl == null) executeScript("chargeListe");                              
+   if (albumMode == 1 ){
+    if (channelStr != "") {
+			    L_Music = Integer(channelStr) - 1;
+			    channelStr = "";
+          executeScript("playThis");        
+    } else {
+ 					L_Music = getFocusItemIndex();
+          executeScript("playThis");
+    }                                
+     } else {
+      executeScript("playRandom");
+     }                                 
+    "false";
+    
+  } else if (userInput == "video_play" || userInput == "video_pause") { 
+    if (playStatus == 0 ){
+     if (albumMode == 1 ){
+      if (channelStr != "") {
+			    L_Music = Integer(channelStr) - 1;
+			    channelStr = "";
+          executeScript("playThis");        
+      } else {
+ 					L_Music = getFocusItemIndex();
+          executeScript("playThis");
+      }
+     } else {
+      executeScript("playRandom");
+      }                                
+    }
+    "false"; 
+
+  } else if (userInput == "video_repeat" || userInput == "video_abrepeat") {
+    if (albumMode==1) {
+    albumMode=0;
+    } else albumMode=1;
+    RedrawDisplay();
+    "true"; 
+    
+  } else if (userInput == "setup" || userInput == "video_sfwd") {
+        if ( playStatus != 0 ){
+          playItemURL(-1, 1);
+          executeScript("playStop");                   
+        }
+        asrss = "rss_file://" + scriptPath + "RMbrowser.rss";
+        ret = doModalRss(asrss);                                      
+      if (ret == "Album") {
+        executeScript("onEnter");
+      } else executeScript("chargeListe");
+    "true";
+    
+  } else if (userInput == "video_search") {
+      if (playStatus != 0){
+        playItemURL(-1, 1);
+        executeScript("playStop");
+      }
+
+/*      jumpToLink("rmSelect");  */
+
+        asrss = "rss_file://" + scriptPath + "RMselect.rss";
+        ret = doModalRss(asrss);                                      
+      if (ret == "Confirm") {
+        executeScript("onEnter");
+      } else executeScript("chargeListe");
+
+    "true"; 
+  
+  } else if (userInput == "video_completed") {                     
+    playItemURL(-1, 1);                                           
+    if (EtatPl == null){
+      executeScript("chargeListe");                               
+    }
+    if (albumMode==1) { 
+    executeScript("playNext");
+    } else {
+    executeScript("playRandom");
+    }                                     
+    "false";
+
+  } else if (userInput == "video_load_error") {                    
+    postMessage("enter");                                         
+    if (EtatPl == null){
+      executeScript("chargeListe");                                
+    }
+    errorCount=errorCount+1;
+    if (errorCount == 3){
+      executeScript("playStop");
+      errorCount=0;
+      postMessage("return");
+    } else {
+      if (albumMode==1) { 
+        executeScript("playNext");
+      } else {
+        executeScript("playRandom");
+      }                                     
+    }    
+
+    "false";
+
+  } else if (userInput == "video_stop") {                        
+    if (playStatus != 0) {
+       playItemURL(-1, 1);
+       executeScript("playStop");
+     }
+    "false";
+
+  } 
+  </onUserInput>
+  <itemDisplay>
+    <text redraw="yes"  fontSize="13" alignt="center" lines="1" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100" foregroundColor="97:117:170">
+    <fontFile><script>font3;</script></fontFile>
+      <backgroundColor>
+        <script>
+  					idxItem = getQueryItemIndex();
+  					focus = getFocusItemIndex();
+  			    if(focus==idxItem) "0:0:0"; else "50:50:50";
+        </script>
+      </backgroundColor>
+        <script>
+           getStringArrayAt(trackArray , -1);
+        </script>
+     </text>
+  </itemDisplay>
+</mediaDisplay>
+
+<chargeListe>
+  showIdle();                                        
+
+  EtatPl = loadXMLFile(Playlist);                     
+  if (EtatPl == null) {
+    print("Nemohu najít playlist");
+    Erreur=1;                
+/*    jumpToLink("rmSelect");    */
+
+    postMessage("video_search"); 
+ 
+  } else {
+    print("Playlist nalezen");
+
+    RMCountT = getXMLText("RMusic", "RMCount", 0);
+    RMCount = Add(RMCountT,1);
+    while (L_Music != RMCount) {
+      sng=getXMLText("RMusic", "music", L_Music);
+      songArray = pushBackStringArray(songArray, sng);
+      L_Music=L_Music+1;
+      if (L_Music >= 10) {
+      S_Music=L_Music;
+      } else {
+      S_Music="0"+L_Music;
+      }
+      trackArray = pushBackStringArray(trackArray, S_Music);
+    }
+  }
+  L_Music=0;
+  cancelIdle();
+</chargeListe>
+
+<songInfo>
+    jukebox2Array = readStringFromFile(jukebox2File);
+    full_file = getStringArrayAt(jukebox2Array, 0);
+    next_song = getStringArrayAt(jukebox2Array, 1);
+    cur_time = getStringArrayAt(jukebox2Array, 2);
+    full_dir = getStringArrayAt(jukebox2Array, 3);
+    song_dir = getStringArrayAt(jukebox2Array, 4);
+    full_song = getStringArrayAt(jukebox2Array, 5);
+    name_song = getStringArrayAt(jukebox2Array, 6);
+    ext_song = getStringArrayAt(jukebox2Array, 7);
+    img_song = getStringArrayAt(jukebox2Array, 8);
+    
+    Ch_Music = full_dir ;
+    
+    if (img_song == null ){
+      cover_song = scriptPath + "rm_nocover.jpg";
+    } else {
+      cover_song = full_dir + img_song;
+    }
+</songInfo>
+
+<playThis>
+    AllTime = null;
+    channelStr = "";
+    setFocusItemIndex(L_Music);
+    nowPlayed = L_Music;
+if (Erreur != 1) { 
+    Music = getXMLText("RMusic", "music", L_Music);      
+    cd_img = scriptPath + "rm_cd.png";
+    playItemURL(Ch_Music+Music,5);                       
+    RedrawDisplay();
+} else {
+    RedrawDisplay();
+}
+</playThis>
+
+<playNext>
+    MemoM=L_Music;
+    L_Music = Add(L_Music, 1);
+    if (L_Music >= RMCount) {
+       L_Music = 0;
+    }
+executeScript("playThis");                    
+</playNext>
+
+<playPrev>
+  if (albumMode==1) {   
+    if (L_Music == 0) {
+       L_Music = RMCount - 1;
+    } else {
+       L_Music = L_Music - 1;
+    }
+   } else L_Music=MemoM; 
+executeScript("playThis");                       
+</playPrev>
+
+<playStop>
+    nowSelected=0;
+    nowPlayed=0;
+    channelStr = "";
+    AllTime = null;
+    L_Music=0;
+    cd_img = "";
+    setFocusItemIndex(0);
+    RedrawDisplay();
+</playStop>
+
+<playRandom>
+    MemoM=L_Music;
+      Temps = getPts();                        /* temps systeme en secondes */
+      if (Temps==null) {
+        if (next_song == null) {
+          dlok = loadXMLFile(Info);
+          jukebox2Array = readStringFromFile(jukebox2File);
+          next_song = getStringArrayAt(jukebox2Array, 1);
+          cur_time = getStringArrayAt(jukebox2Array, 2);
+          EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+        }
+       Temps = next_song; 
+      }
+    while(L_Music == MemoM) {                       /* Evite d'avoir deux fois de suite la même musique */
+      Alea = Integer(Temps%AleaM);                             /* génère des nombres de 0 à AleaM */
+      Alea = Integer(Temps/Alea);                              /* Divise le temps systeme par Alea */
+      L_Music = Integer(Alea%RMCount);                         /* Limite haute pour les nombres pour ne pas dépasser le nb de musiques */
+      AleaM += 5;                                     /* Modifie le calcul s'il se fait dans la même seconde */
+    }
+  executeScript("playThis");
+</playRandom>
+
+<numSelector>
+  if (numInput == "one") {
+			channelStr = channelStr + "1";
+		} else if (numInput == "two") {
+			channelStr = channelStr + "2";
+		} else if (numInput == "three") {
+			channelStr = channelStr + "3";
+		} else if (numInput == "four") {
+			channelStr = channelStr + "4";
+		} else if (numInput == "five") {
+			channelStr = channelStr + "5";
+		} else if (numInput == "six") {
+			channelStr = channelStr + "6";
+		} else if (numInput == "seven") {
+			channelStr = channelStr + "7";
+		} else if (numInput == "eight") {
+			channelStr = channelStr + "8";
+		} else if (numInput == "nine") {
+			channelStr = channelStr + "9";
+		} else if (numInput == "zero" &amp;&amp; channelStr != "") {
+			channelStr = channelStr + "0";
+		}
+
+			idx = Integer(channelStr) - 1;
+			if (idx > RMCount) {
+			 channelStr = "";
+			 idx = 0;
+      }
+  		setFocusItemIndex(idx);
+			RedrawDisplay();
+</numSelector>
+
+<rmSelect>
+        asrss = "rss_file://" + scriptPath + "RMselect.rss";
+        ret = doModalRss(asrss);                                      
+      if (ret == "Confirm") {
+        executeScript("onEnter");
+      } else postMessage("return");
+</rmSelect>
+
+<item_template>
+ 			<onClick>
+        
+ 			</onClick>
+
+  <displayTitle>
+     <script>
+        getStringArrayAt(trackArray , -1);
+     </script>
+  </displayTitle>
+</item_template>
+
+<channel>
+  <title>Album Jukebox</title>
+  <link><script>scriptPath + "RMalbum.rss";</script></link>	
+  <itemSize>
+     <script>
+        RMCount;
+     </script>
+  </itemSize>
+
+</channel>
+</rss>

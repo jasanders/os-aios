@@ -1,0 +1,513 @@
+<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- GeekyHMB Random RSS Music Version 1.0 for HMB, Hyundai & Ellion box
+     by Zozodesbois
+     http://geekyhmb.fr.cr/content/Random_RSS_Music
+     modified to:
+     DMD RM Jukebox v. 2.2 by Martini(CZ) from DMD team
+     Contact: w0m@seznam.cz, http://www.hddplayer.cz
+     I give all rights to modify this script, but give our names, sites and DMD logo
+     on the background image.
+     If you want add this application to youre custom firmware, please send me youre 
+     e-mail and link to youre web site. -->
+-->
+
+<onEnter> 
+/* WHERE IS THIS SCRIPT ? */
+ scriptPath="/usr/local/etc/DMD_RMJ/";
+/**************************/
+
+/* ANOTHER WAY */
+/* rmPath =getStoragePath("key"); */
+/* Config= rmPath + "RMusic.cfg"; */
+/* EtatCfg = loadXMLFile(Config); */                     
+/* if (EtatCfg == null) scriptPath="/tmp/app/ims/"; else scriptPath=getXMLText("Script", 0); */
+  
+  font1=scriptPath+"BEDROCKN.TTF";
+  font2=scriptPath+"TIMES_SQ.TTF";
+  font3=scriptPath+"TESLA_18.ttf";
+  showIdle();
+  playStatus = 0;
+  setRefreshTime(150);
+  ret=0;   
+  gmt=2;
+  odpocet=399;
+  EtatPl=null;
+  Erreur=0;
+  nic=0;
+  rmPath =getStoragePath("key");
+  Playlist= rmPath + "Playlist.xml";
+  Config= rmPath + "RMusic.cfg";
+  jukebox2File = "/tmp/rmjukebox.dat";
+  Info = "http://127.0.0.1/cgi-bin/soubces.cgi";
+  Aplaylist = "http://127.0.0.1/cgi-bin/RMusic_update.cgi";
+  Music= "Stiskni PLAY pro spuštění přehrávání, 2 pro aktualizaci playlistu";
+  albumEnable=0;
+  albumMode=0;
+  helpMode=0;
+  AleaM=230;
+  RMCount=0;
+  L_Music=0;
+  MemoM=0;
+    full_file = "";
+    full_dir = "";
+    song_dir = "";
+    full_song = "";
+    name_song = "";
+    ext_song = "";
+    img_song = "";
+    cover_song = "";
+    cd_img = "";
+  errorCount=0;
+  executeScript("chargeCfg"); 
+  Ch_Music=getXMLText("Chem", 0);                  /* Charge le chemin des musiques */
+  Ch_Music_jukebox=Ch_Music;
+  postMessage("enter");
+</onEnter>
+
+<onExit> 
+  playItemURL(-1, 1);                              /* Arrêt de la musique à la sortie */
+  setRefreshTime(-1);
+  /* reclaim memory */
+ tearDownPlaybackFlow();
+  cancelIdle();
+</onExit>
+
+<onRefresh>
+  odpocet = odpocet + 1;
+  if (odpocet==400) {
+    
+    Cas = getURL("http://127.0.0.1/cgi-bin/custom/get_time.php?date_time="+currTime());
+			odpocet = 0;
+      /*EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+			RedrawDisplay();
+  }
+  progress = getPlaybackStatus();
+ 		bufProgress = getCachedStreamDataSize(0, 262144);
+ 		playElapsed = getStringArrayAt(progress, 0);
+		playTime = getStringArrayAt(progress, 1);
+		playStatus = getStringArrayAt(progress, 3);
+		print("Media status =", progress);	
+			if (playElapsed != 0)
+			{
+				x = Integer(playElapsed / 60);
+				h = Integer(playElapsed / 3600);
+				s = playElapsed - (x * 60);m = x - (h * 60);
+				if(h &lt; 10) elapsedTime = "0" + sprintf("%s:", h); else elapsedTime = sprintf("%s:", h);
+				if(m &lt; 10)  elapsedTime += "0";elapsedTime += sprintf("%s:", m);
+				if(s &lt; 10)  elapsedTime += "0";elapsedTime += sprintf("%s", s);
+				print("elapsedTime =", elapsedTime);				
+				if(AllTime == null)
+				{
+					x = Integer(playTime / 60);
+					h = Integer(playTime / 3600);
+					s = playTime - (x * 60);m = x - (h * 60);
+					if(h &lt; 10) AllTime = "0" + sprintf("%s:", h); else AllTime = sprintf("%s:", h);
+					if(m &lt; 10)  AllTime += "0";AllTime += sprintf("%s:", m);
+					if(s &lt; 10)  AllTime += "0";AllTime += sprintf("%s", s);
+					print("AllTime =", AllTime);
+				}				
+      }
+  updatePlaybackProgress(progress, "mediaDisplay", "backgroundDisplay", "progressBar");
+</onRefresh>
+
+<mediaDisplay
+  name=photoView
+	
+  showHeader=no
+  showDefaultInfo=no
+  drawItemBorder=no
+
+  viewAreaXPC=0
+  viewAreaYPC=0
+  viewAreaWidthPC=100
+  viewAreaHeightPC=100
+
+  itemOffsetXPC=0
+  itemOffsetYPC=0
+
+  sideTopHeightPC=0
+  sideBottomHeightPC=0
+  bottomYPC=100
+ 
+  backgroundColor=0:0:0
+  idleImageYPC="50"
+
+     >
+
+  <idleImage> image/POPUP_LOADING_01.png </idleImage>
+  <idleImage> image/POPUP_LOADING_02.png </idleImage>
+  <idleImage> image/POPUP_LOADING_03.png </idleImage>
+  <idleImage> image/POPUP_LOADING_04.png </idleImage>
+  <idleImage> image/POPUP_LOADING_05.png </idleImage>
+  <idleImage> image/POPUP_LOADING_06.png </idleImage>
+  <idleImage> image/POPUP_LOADING_07.png </idleImage>
+  <idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+  <backgroundDisplay>
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>print(scriptPath + "rm_album.jpg");</script>
+    </image>
+    <image redraw="no" offsetXPC="33.9" offsetYPC="34.2" widthPC="14.5" heightPC="25.8">
+      <script>print(cover_song);</script>
+    </image>
+    <image redraw="no" offsetXPC="28.4" offsetYPC="40.7" widthPC="4.4" heightPC="16.65">
+      <script>print(cd_img);</script>
+    </image>
+    <image redraw="no" offsetXPC="58.2" offsetYPC="33.5" widthPC="3.1" heightPC="5.5">
+      <script>
+      print(scriptPath + "random.png");
+      </script>
+    </image>
+
+  <text redraw="yes" align="center" offsetXPC="54" offsetYPC="55" widthPC="11.5" heightPC="5" fontSize="20" backgroundColor="-1:-1:-1" foregroundColor="200:150:0">
+    <fontFile><script>font2;</script></fontFile>
+    <script>Cas;</script>
+  </text>
+
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="65" widthPC="24.8" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print("Jukebox Path:");</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50" offsetYPC="65" widthPC="26" heightPC="8" fontSize="13"  backgroundColor="-1:-1:-1" foregroundColor="30:60:90">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(Ch_Music);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="25.2" offsetYPC="69.4" widthPC="24.8" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print("Now Playing:");</script>
+  </text>
+<text redraw="no" align="right" offsetXPC="25.2" offsetYPC="69.4" widthPC="23" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="30:60:90">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(ext_song);</script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="50" offsetYPC="69.4" widthPC="26" heightPC="8" fontSize="13" backgroundColor="-1:-1:-1" foregroundColor="30:60:90">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(song_dir);</script>
+  </text>
+  <text redraw="no" align="center" lines="1" offsetXPC="25.35" offsetYPC="77" widthPC="49" heightPC="7.5" fontSize="24" backgroundColor="0:0:0" foregroundColor="200:150:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(name_song);</script>
+  </text>
+  <text redraw="no" align="center" lines="1" offsetXPC="25.35" offsetYPC="86.7" widthPC="49" heightPC="7.2" fontSize="20" backgroundColor="0:0:0" foregroundColor="200:150:0">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(full_song);</script>
+  </text>
+
+  <text redraw="no" align="center" lines="2" offsetXPC="38.5" offsetYPC="14" widthPC="22" heightPC="6.5" fontSize="17" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(name_song);</script>
+  </text>
+  <text redraw="no" align="center" lines="2" offsetXPC="38.5" offsetYPC="20.5" widthPC="22" heightPC="4.5" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="50:50:50">
+    <fontFile><script>font1;</script></fontFile>
+    <script>print(full_song);</script>
+  </text>
+  
+  <text redraw="no" align="right" offsetXPC="54" offsetYPC="35" widthPC="11.5" heightPC="3" fontSize="18" backgroundColor="-1:-1:-1" foregroundColor="210:16:16">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+      if (playStatus != 0 ){
+        L_MusicT = L_Music;
+        RMCountT = RMCount;
+      } else {
+        L_MusicT = "--";
+        RMCountT = "--";
+      }
+      print(RMCountT);
+    </script>
+  </text>
+  <text redraw="no" align="left" offsetXPC="54" offsetYPC="35" widthPC="11.5" heightPC="3" fontSize="18" backgroundColor="-1:-1:-1" foregroundColor="210:16:16">
+    <fontFile><script>font2;</script></fontFile>
+    <script>
+      print(L_MusicT);
+    </script>
+  </text>
+    <image redraw="no" offsetXPC="25.35" offsetYPC="77" widthPC="49" heightPC="16.9">
+      <script>
+    if (helpMode == 1) {
+    print(scriptPath + "rm_help.png");
+    } else print(""); 
+       </script>
+    </image>    
+
+	<progressBar backgroundColor=-1:-1:-1 offsetXPC=34 offsetYPC=31.5 widthPC=31 heightPC=3>
+    <bar offsetXPC="20" offsetYPC="35" widthPC="60" heightPC="30" barColor="40:40:40" progressColor="50:100:150" />
+		<text redraw=yes offsetXPC=0 offsetYPC=0 widthPC=25 heightPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=155:155:155>
+    <fontFile><script>font2;</script></fontFile>
+			<script>if (playStatus == 2) elapsedTime; else "--:--:--";</script>
+		</text>
+		<text redraw=yes align=right offsetXPC=75 offsetYPC=0 widthPC=25 heightPC=100 fontSize=12 backgroundColor=-1:-1:-1 foregroundColor=155:155:155>
+    <fontFile><script>font2;</script></fontFile>
+			<script>if (playStatus == 2 &amp;&amp; AllTime != "00:00:00") AllTime; else "--:--:--";</script>
+		</text>        
+		<destructor offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100 color=-1:-1:-1>
+		</destructor>
+	</progressBar>
+
+    <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+      <script>
+      if (playStatus==0) off_img=scriptPath + "jukebox_off.png"; else off_img="";
+      print(off_img);
+      </script>
+    </image>
+
+  </backgroundDisplay>
+
+  <onUserInput>
+  userInput = currentUserInput();
+print("*********************"+userInput+"****************");
+/* writeStringToFile("/tmp/vstup.txt", userInput);  */
+
+  if (userInput == "left" || userInput == "right") {               /* -- Capture pour ne rien faire -- */
+    "false";
+  } else if (userInput == "return") { 
+   if ( playStatus != 0 ){ 
+     playItemURL(-1, 1);                                     /* stop lecture */
+     executeScript("playStop"); 
+   } 
+   "false";
+    
+  } else if (userInput == "pagedown" ) {                             /* -- Lecture suivante -- */
+    playItemURL(-1, 1);                                            /* stop lecture */
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Chargement de liste la premiere fois */
+    }
+    executeScript("playRandom");                                   /* Lecture aléatoire */
+    
+    "false";
+  } else if (userInput == "pageup" ) {                           /* -- Lecture suivante -- */
+    playItemURL(-1, 1);                                            /* stop lecture */
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Chargement de liste la premiere fois */
+    }
+    if (MemoM == 0 || MemoM == null) {
+       executeScript("playRandom");                                   /* Lecture aléatoire */
+    } else {
+       executeScript("playPrev");    
+    }
+    "false";
+    
+  } else if (userInput == "setup" || userInput == "video_sfwd") {
+        if ( playStatus != 0 ){
+          playItemURL(-1, 1);
+          executeScript("playStop");                   
+        }
+       executeScript("aktualizace");    
+    "true";
+    
+  } else if (userInput == "display") {
+     if (helpMode == 1) {
+       helpMode=0;
+       RedrawDisplay();
+     } else {
+       helpMode=1;
+       RedrawDisplay();     
+     }    
+    "false";
+  } else if (userInput == "video_play" || userInput == "video_pause" || userInput == "enter") { /* -- Lecture -- */
+    if (playStatus == 0 ){
+      if (EtatPl == null){
+        executeScript("chargeListe");                              /* Chargement de liste la premiere fois */
+      }
+      executeScript("playRandom");                                 /* Lecture aléatoire */ 
+    }
+    "false";
+  } else if (userInput == "video_search" || userInput == "video_repeat" || userInput == "video_abrepeat") {
+    if (albumEnable==1) {
+      if (playStatus != 0){
+        playItemURL(-1, 1);
+      }
+      executeScript("playStop");                              
+      jumpToLink("rmAlbum");
+      Playlist = rmPath + "Playlist.xml"; 
+      executeScript("chargeListe");                    
+      Ch_Music = Ch_Music_jukebox;
+                                      
+    }
+    "true";
+    
+  } else if (userInput == "video_completed") {                     /* -- Lecture Terminée - enchainement -- */
+    playItemURL(-1, 1);                                            /* Stop Lecture */
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Script de chargement de liste la premiere fois */
+    }
+    executeScript("playRandom");                                   /* script de lecture aléatoire */
+    "false";
+    
+  } else if (userInput == "video_load_error") {                    /* -- Lecture erreur -- */
+    albumEnable=0;
+    postMessage("enter");
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Chargement de liste la premiere fois */
+    }
+    errorCount=errorCount+1;
+    if (errorCount == 3){
+      executeScript("playStop");
+      errorCount=0;
+    } else {
+      executeScript("playRandom");                                /* Chargement de liste la premiere fois */
+    }    
+                                 
+    "false";
+    
+  } else if (userInput == "video_stop") {                          /* -- Stop Lecture -- */
+    
+    if (albumMode == 1) {
+       executeScript("onEnter");
+     } else {
+       executeScript("playStop"); 
+     }
+    "false";
+  }
+  </onUserInput>
+</mediaDisplay>
+
+<chargeCfg>
+  /* Chargement de la config */
+    EtatCfg = loadXMLFile(Config);                     /* charge la config */
+    if (EtatCfg == null) {
+      print("Nemohu najít CFG");
+      executeScript("aktualizace");          
+  } else {
+      print("CFG nalezen");
+      Ch_Music=getXMLText("Chem", 0);                 
+  }
+</chargeCfg>
+
+<chargeListe>
+  /* Initilalisation de la liste des musiques */
+  showIdle();                                         /* active l'animation d'attente */
+
+  EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+  if (EtatPl == null) {
+    print("Nemohu najít playlist");
+    if (nic==1) {
+        postMessage("return");
+    } else {
+        executeScript("aktualizace");    
+        Erreur=1;
+    }              
+/*    postMessage("return"); */
+  } else {
+    print("Playlist nalezen");
+    RMCount = getXMLText("RMusic", "RMCount", 0);     /* Charge le nb de musiques */
+  }
+  cancelIdle();                                       /* arrête l'animation d'attente */
+</chargeListe>
+
+<songInfo>
+    jukebox2Array = readStringFromFile(jukebox2File);
+    full_file = getStringArrayAt(jukebox2Array, 0);
+    next_song = getStringArrayAt(jukebox2Array, 1);
+    cur_time = getStringArrayAt(jukebox2Array, 2);
+    full_dir = getStringArrayAt(jukebox2Array, 3);
+    song_dir = getStringArrayAt(jukebox2Array, 4);
+    full_song = getStringArrayAt(jukebox2Array, 5);
+    name_song = getStringArrayAt(jukebox2Array, 6);
+    ext_song = getStringArrayAt(jukebox2Array, 7);
+    img_song = getStringArrayAt(jukebox2Array, 8);
+    
+    if (img_song == null ){
+      cover_song = scriptPath + "rm_nocover.jpg";
+    } else {
+      cover_song = full_dir + img_song;
+    }
+    cd_img = scriptPath + "rm_cd.png";
+    albumEnable=1;
+   RedrawDisplay(); 
+</songInfo>
+
+<playRandom>
+  if (Erreur != 1){
+    /* lecture alléatoire d'une musique */
+    MemoM=L_Music;
+      Temps = getPts();                        /* temps systeme en secondes */
+      if (Temps==null) {
+        if (next_song == null) {
+          dlok = loadXMLFile(Info);
+          jukebox2Array = readStringFromFile(jukebox2File);
+          next_song = getStringArrayAt(jukebox2Array, 1);
+          cur_time = getStringArrayAt(jukebox2Array, 2);
+          EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+        }
+       Temps = next_song; 
+      }
+    while(L_Music == MemoM) {                       /* Evite d'avoir deux fois de suite la même musique */
+      Alea = Integer(Temps%AleaM);                             /* génère des nombres de 0 à AleaM */
+      Alea = Integer(Temps/Alea);                              /* Divise le temps systeme par Alea */
+      L_Music = Integer(Alea%RMCount);                         /* Limite haute pour les nombres pour ne pas dépasser le nb de musiques */
+
+      AleaM += 5;                                     /* Modifie le calcul s'il se fait dans la même seconde */
+    }
+    Music = getXMLText("RMusic", "music", L_Music); /* Lit la musique à la position indiquée */       
+
+    if (albumMode == 0 ) { 
+   		 writeStringToFile(jukebox2File, Ch_Music+Music);
+       dlok = loadXMLFile(Info);
+       executeScript("songInfo");
+       EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+     } else if (albumMode == 1 ) {
+       name_song = Music;
+       RedrawDisplay();
+     }  
+    playItemURL(Ch_Music+Music,5);                  /* Joue la musique en mode musique (5) */     
+   } else executeScript("onEnter");
+</playRandom>
+
+<playPrev>
+    Music = getXMLText("RMusic", "music", MemoM); /* Lit la musique à la position indiquée */       
+    L_Music=MemoM;
+    if (albumMode == 0 ) { 
+    		writeStringToFile(jukebox2File, Ch_Music+Music);
+        dlok = loadXMLFile(Info);
+        executeScript("songInfo");
+        EtatPl = loadXMLFile(Playlist);                     /* charge le fichier liste de musiques */
+     } else if (albumMode == 1 ) {
+       name_song = Music;
+       RedrawDisplay();
+     }  
+    playItemURL(Ch_Music+Music,5);                  /* Joue la musique en mode musique (5) */     
+</playPrev>
+
+<playStop>
+    full_file = "";
+    full_dir = "";
+    song_dir = "";
+    full_song = "";
+    name_song = "";
+    ext_song = "";
+    img_song = "";
+    cover_song = "";
+    cd_img = "";
+    RedrawDisplay();
+</playStop>
+
+<rmAlbum>
+<link><script>scriptPath + "RMalbum.rss";</script></link>
+</rmAlbum>
+
+<rmBrowser>
+<link><script>scriptPath + "RMbrowser.rss";</script></link>
+</rmBrowser>
+
+<aktualizace>   
+      rmrss = "rss_file://" + scriptPath + "RMbrowser.rss";
+      ret = doModalRss(rmrss);
+      if (ret == "Confirm") { 
+        executeScript("onEnter");
+      } else if (ret == "Album") {
+        jumpToLink("rmAlbum");
+        Playlist = rmPath + "Playlist.xml"; 
+        executeScript("chargeListe");                    
+        Ch_Music = Ch_Music_jukebox;          
+      } else {
+        nic=1; 
+        executeScript("chargeListe");
+      }
+</aktualizace>
+
+<channel>
+  <title>Musique Aleatoire</title>
+  <link><script>scriptPath + "RMusic.rss";</script></link>	
+</channel>
+</rss>

@@ -1,0 +1,1 @@
+/usr/local/etc/FBrowser/FBrowser.cgi

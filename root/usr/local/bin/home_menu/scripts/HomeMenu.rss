@@ -360,7 +360,17 @@ redrawState = "no";
 			}
 		}
 		
-		
+               else if (userInput =="right")                                                             
+              {                                                                                          
+                    
+                   postMessage("down");                                                                 
+                   "true";                                                                              
+               }                                                                                         
+               else if (userInput == "left")                                                             
+               {                                                                                         
+                    postMessage("up");                                                                  
+                    "true";                                                                             
+                }                                                                                                                                                                                                                                                                                                      
 		else if ("notification" == userInput){
 			print("==");			
 			redrawDisplay();
@@ -772,6 +782,21 @@ redrawState = "no";
 			APName = "IMSAP";
 			MenuType = "TopMenu";
 			MenuLink = "rss_file:///usr/local/etc/translate/rss/etc-menu-radio.rss";
+			menuCmd(APName, MenuType, MenuLink, BltType);}
+		else if(MusicMenu == "DMD RMusic Jukebox (Album)"){
+			APName = "IMSAP";
+			MenuType = "TopMenu";
+			MenuLink = "rss_file://../etc/DMD_RMJ/RMalbum.rss";
+			menuCmd(APName, MenuType, MenuLink, BltType);}
+		else if(MusicMenu == "DMD RMusic Jukebox (Random)"){
+			APName = "IMSAP";
+			MenuType = "TopMenu";
+			MenuLink = "rss_file://../etc/DMD_RMJ/RMusic.rss";
+			menuCmd(APName, MenuType, MenuLink, BltType);}
+		else if(MusicMenu == "RMusic Jukebox"){
+			APName = "IMSAP";
+			MenuType = "TopMenu";
+			MenuLink = "rss_file://../etc/RMusic/RMusic.rss";
 			menuCmd(APName, MenuType, MenuLink, BltType);}
 		else if(DBReady == "true"){
 			fixForOneTouchMus();

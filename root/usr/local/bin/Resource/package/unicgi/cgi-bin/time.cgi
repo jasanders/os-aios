@@ -1,0 +1,1 @@
+/usr/local/etc/DMD_RMJ/cgi-bin/time.cgi

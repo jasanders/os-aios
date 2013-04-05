@@ -1,0 +1,15 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<Main>
+  <Main_Info>Key Display for Help</Main_Info>
+  <Main_NoPlst>(RED - Path of musics, 2 - Make a Playlist)</Main_NoPlst>
+  <Main_Help>INFORMATION&#x0A;&#x0A;ENTER / PLAY - Start to play music&#x0A;PAGE DOWN / UP - Next Random music&#x0A;1 - On / Off To search Posters on Internet&#x0A;2 - Make or / and update the Playlist&#x0A;RED - To change music's folder&#x0A;FAST FORWARD / BACKWARD - To change the play speed&#x0A;SKIP LEFT/RIGHT - Skip a few seconds Before/After&#x0A;PAUSE / PLAY - To pause / start playing&#x0A;STOP - Stop playing&#x0A;MUTE - To mute&#x0A;REPEAT - Start / Stop repeat to infinity the curent play</Main_Help>
+  <Main_MPath>Music's path</Main_MPath>
+</Main>
+<FBrowser>
+  <FBrowser_Title>Music's path</FBrowser_Title>
+  <FBrowser_Valid>To select</FBrowser_Valid>
+</FBrowser>
+<UpdtDialog>
+    <UpdtDialog_Quest>Make a Playlist ?</UpdtDialog_Quest>
+    <UpdtDialog_Confirm>Accept</UpdtDialog_Confirm>
+</UpdtDialog>

@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- GeekyHMB Random RSS Music for HMB, Hyundai & Ellion box
+     by Zozodesbois
+     http://geekyhmb.niloo.fr/content/Random_RSS_Music
+     I give all rights to modify this script, but give my name and site.
+-->
+
+<onEnter>
+  cancelIdle();
+  setRefreshTime(150);
+  IMG_Flip=0;     /* The current image */
+  IMG_Tmp=0;      /* 0 stop and display Bg, other if time count between 2 images */
+  IMG_Max=12;     /* Max number of images to flip 8 in the net and 4 in local: front.jpg folder.jpg cover.jpg "music".jpg */
+  IMG_Array=null; /* Array of existing images */
+  IMG_AFound=0;   /* number of existing images */
+  ret=0;
+  EtatPl=null;
+  Erreur=0;
+  Key_Info="false";
+  Key_Goto="false";
+  CH_Scripts="/usr/local/etc/RMusic/";
+  Bg_Image=CH_Scripts+"Modules/GeekyHMB_RMusic.jpg";
+  BarEmpty=CH_Scripts+"Modules/red_bar.png";
+  BarFull=CH_Scripts+"Modules/focus_on.png";
+  CSV_Img=Bg_Image;
+  AleaM=230;
+  EnCours=0;
+  RMCount=-1;
+  RMNb=0;
+  L_Music=null;
+  MemoM=0;
+  /* Load config file */
+  EtatCfg = loadXMLFile(CH_Scripts+"RMusic.cfg");   /* charge la config */
+  if (EtatCfg == null) {
+    print("Impossible de lire le fichier cfg");
+    Erreur=1;
+    postMessage("return");
+  } else {
+    print("Le fichier cfg est lu");
+    Ch_Music=getXMLText("MPath", 0);                  /* Music Path */
+    Port=getXMLText("Port", 0);                       /* port number to execute CGI scripts */
+    SNet=getXMLText("SNet", 0);                 /* use Google image Search */
+  }
+  Language=getXMLText("Language", 0);
+
+  PLST_Lst=CH_Scripts+"_RMusicPlst.lst";
+  PLST_Cpt=CH_Scripts+"_RMusicPlst.cpt";
+  PLST_Err=CH_Scripts+"PlstError.txt";
+  PLST_Tag=CH_Scripts+"PlstTag.txt";
+  PLST_Nok=CH_Scripts+"Modules/Playlist_Nok.png";
+  PLST_Ok=CH_Scripts+"Modules/Playlist_Ok.png";
+  IMG_SNetOn=CH_Scripts+"Modules/SNet_On.png";
+  IMG_SNetOff=CH_Scripts+"Modules/SNet_Off.png";
+
+  langfile = loadXMLFile(CH_Scripts+"lang/"+Language);
+  if (langfile != null) {
+    Main_Info = getXMLText("Main", "Main_Info");
+    Main_NoPlst = getXMLText("Main", "Main_NoPlst");
+    Main_Help = getXMLText("Main", "Main_Help");
+    Main_MPath = getXMLText("Main", "Main_MPath");
+  }
+  Music_title=Main_Info;
+  playItemURL(-1, 1);                              /* Stop Music play */
+  RedrawDisplay();
+</onEnter>
+
+<onExit>
+  playItemURL(-1, 1);                              /* Stop Music play */
+  setRefreshTime(-1);
+</onExit>
+
+<onRefresh>
+  if ( IMG_Tmp &gt; 0 ) IMG_Tmp+=1;
+  if ( IMG_Tmp &gt; 50 ){
+    IMG_Flip +=1;
+    if ( IMG_Flip &gt; IMG_Max ) IMG_Flip=0;
+    redrawDisplay();
+    IMG_Tmp=1;
+  }
+  progress = getPlaybackStatus();
+  updatePlaybackProgress(progress, "mediaDisplay", "backgroundDisplay", "progressBar");
+</onRefresh>
+
+<mediaDisplay
+  name=photoView
+  
+  showHeader=no
+  showDefaultInfo=no
+  drawItemBorder=no
+
+  viewAreaXPC=0
+  viewAreaYPC=0
+  viewAreaWidthPC=100
+  viewAreaHeightPC=100
+
+  itemOffsetXPC=0
+  itemOffsetYPC=0
+
+  sideTopHeightPC=0
+  sideBottomHeightPC=0
+  bottomYPC=100
+
+  backgroundColor=0:0:0
+     >
+
+  <idleImage> image/POPUP_LOADING_01.png </idleImage>
+  <idleImage> image/POPUP_LOADING_02.png </idleImage>
+  <idleImage> image/POPUP_LOADING_03.png </idleImage>
+  <idleImage> image/POPUP_LOADING_04.png </idleImage>
+  <idleImage> image/POPUP_LOADING_05.png </idleImage>
+  <idleImage> image/POPUP_LOADING_06.png </idleImage>
+  <idleImage> image/POPUP_LOADING_07.png </idleImage>
+  <idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+  <backgroundDisplay>
+
+  <image redraw="no" offsetXPC="0" offsetYPC="0" widthPC="100" heightPC="100">
+    <script>print(Bg_Image);</script>
+  </image>
+  
+  <progressBar backgroundColor="100:100:100" offsetXPC="8" offsetYPC="84" widthPC="36" heightPC="3">
+    <bar offsetXPC="1" offsetYPC="5" widthPC="98" heightPC="90" barColor="0:0:0" progressColor="255:255:255" />
+  </progressBar>
+
+  </backgroundDisplay>
+
+  <!-- Ref image -->
+  <image redraw="yes" offsetXPC=60 offsetYPC=4 backgroundColor="-1:-1:-1" widthPC=32 heightPC=39 >
+    <script>
+      if ( IMG_Array != null &amp;&amp; IMG_Tmp &gt; 0) {
+        IMG_Pict = getStringArrayAt(IMG_Array,IMG_Flip);
+        if ( IMG_Pict == null ){
+          IMG_Flip=0;
+          IMG_Pict = getStringArrayAt(IMG_Array,IMG_Flip);
+        }
+      } else IMG_Pict="";
+      print(IMG_Pict);
+    </script>
+  </image>
+
+  <!-- ref image +1 -->
+  <image redraw="yes" offsetXPC=38 offsetYPC=4 backgroundColor="-1:-1:-1" widthPC=20 heightPC=24 >
+    <script>
+      if ( IMG_Array != null &amp;&amp; IMG_Tmp &gt; 0) {
+        IMG_FlipX=IMG_Flip +1;
+        if ( IMG_FlipX &gt; IMG_AFound ) IMG_FlipX = 0;
+        IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        if ( IMG_Pict == null ){
+          IMG_FlipX=0;
+          IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        }
+      } else IMG_Pict="";
+      print(IMG_Pict);
+    </script>
+  </image>
+
+  <!-- ref image -1 -->
+  <image redraw="yes" offsetXPC=70 offsetYPC=45 backgroundColor="-1:-1:-1" widthPC=19 heightPC=23 >
+    <script>
+      if ( IMG_Array != null &amp;&amp; IMG_Tmp &gt; 0) {
+        IMG_FlipX=IMG_Flip -1;
+        if ( IMG_FlipX == -1 ) IMG_FlipX=IMG_AFound -1;
+        if ( IMG_FlipX &lt; 0 ) IMG_FlipX = IMG_Flip;
+        IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        if ( IMG_Pict == null ){
+          IMG_FlipX=0;
+          IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        }
+      } else IMG_Pict="";
+      print(IMG_Pict);
+    </script>
+  </image>
+
+  <!-- ref image -2 -->
+  <image redraw="yes" offsetXPC=73 offsetYPC=70 backgroundColor="-1:-1:-1" widthPC=15 heightPC=17 >
+    <script>
+      if ( IMG_Array != null &amp;&amp; IMG_Tmp &gt; 0) {
+        IMG_FlipX=IMG_Flip -2;
+        if ( IMG_FlipX == -1 ) IMG_FlipX=IMG_AFound -1;
+        else if ( IMG_FlipX == -2 ) IMG_FlipX=IMG_AFound-2;
+        if ( IMG_FlipX &lt; 0 ) IMG_FlipX = IMG_Flip;
+        IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        if ( IMG_Pict == null ){
+          IMG_FlipX=0;
+          IMG_Pict = getStringArrayAt(IMG_Array,IMG_FlipX);
+        }
+      } else IMG_Pict="";
+      print(IMG_Pict);
+    </script>
+  </image>
+
+  <!-- Music Path --> 
+  <text redraw="no" align="left" offsetXPC="5" offsetYPC="80" widthPC="100" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>print(Main_MPath+": "+Ch_Music);</script>
+  </text>
+
+  <!-- Music title -->
+  <text redraw="no" align="left" offsetXPC="5" offsetYPC="88" widthPC="100" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>print(Music_title);</script>
+  </text>
+
+  <!-- Internet indicator on/off -->
+  <image redraw="no" offsetXPC=90 offsetYPC=85 backgroundColor="-1:-1:-1" widthPC=4 heightPC=5 >
+    <script>
+      if (SNet=="on") IMG_SNet=IMG_SNetOn;
+      else IMG_SNet=IMG_SNetOff;
+      print(IMG_SNet);
+    </script>
+  </image>
+
+  <!-- Playlist ready -->
+  <image redraw="no" offsetXPC=10 offsetYPC=10 backgroundColor="-1:-1:-1" widthPC=15 heightPC=15 >
+    <script>
+      EtatPlst = readStringFromFile(PLST_Cpt);
+      if ( EtatPlst == null ) {
+        PLST_State=PLST_Nok;
+        RMNb=0;
+      } else {
+        PLST_State=PLST_Ok;
+        RMNb = getStringArrayAt(EtatPlst, 0);
+      }
+      print(PLST_State);
+    </script>
+  </image>
+
+  <!-- Random selection -->
+  <text redraw="no" align="left" offsetXPC="45" offsetYPC="84" widthPC="13" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>
+        if (RMCount &lt; 0 ){
+          DRMC = RMNb;
+          DRMA = RMNb;
+          DRML=0;
+        } else {
+          DRMC = RMCount;
+          DRMA = add(DRMC,1);
+          DRML = add(L_Music,1);
+        }
+      print("N°"+DRML+" / "+ DRMA);
+    </script>
+  </text>
+
+  <!-- Playlist start -->
+  <text redraw="no" align="left" offsetXPC="8" offsetYPC="92" widthPC="2" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">0</text>
+
+  <!-- Playlist Progress bar -->
+ 
+  <image redraw="no" offsetXPC="10" offsetYPC="91.7" widthPC="78" heightPC="3.2">
+    <script>print(BarEmpty);</script>
+  </image>
+  
+  <image redraw="no" offsetXPC="10" offsetYPC="92.1" heightPC="2.4">
+    <widthPC>
+      <script>
+        nb=78*(RMNb -DRMC)/RMNb;
+      </script>
+    </widthPC>
+    <script>print(BarFull);</script>
+  </image>
+
+  <!-- Progress count in the Playlist bar -->
+  <text redraw="no" align="center" offsetXPC="10" offsetYPC="92" widthPC="78" heightPC="3" fontSize="11" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>
+        print(RMNb -DRMC);
+    </script>
+  </text>
+
+  <!-- Total musics in the Playlist -->
+  <text redraw="no" align="left" offsetXPC="89" offsetYPC="92" widthPC="8" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>
+      print(RMNb);
+    </script>
+  </text>
+
+  <!-- If Playlist doesn't found display text help -->
+  <text redraw="no" align="left" offsetXPC="5" offsetYPC="5" widthPC="100" heightPC="3" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <script>
+      if (EtatPlst==null) print(Main_NoPlst);
+      else print ("");
+    </script>
+  </text>
+
+  <!-- Full page Background Help -->
+  <image redraw="no" offsetXPC=10 offsetYPC=10 backgroundColor="-1:-1:-1">
+    <widthPC><script>if (Key_Info == "true") 80; else 0; </script></widthPC>
+    <heightPC><script>if (Key_Info == "true") 80; else 0; </script></heightPC>
+    <script>print(CH_Scripts+"Modules/info.png");</script>
+  </image>
+
+  <!-- Full page text Help -->
+  <text redraw="no" align="left" lines=15 offsetXPC="15" offsetYPC="15" fontSize="12" backgroundColor="-1:-1:-1" foregroundColor="255:255:255">
+    <widthPC><script>if (Key_Info == "true") 75; else 0; </script></widthPC>
+    <heightPC><script>if (Key_Info == "true") 75; else 0; </script></heightPC>
+    <script>
+      print(Main_Help);
+    </script>
+  </text>
+
+  <onUserInput>
+  userInput = currentUserInput();
+print("*********************"+userInput+"****************");
+
+  if (userInput == "left" || userInput == "right") {               /* -- To do nothing -- */
+    "true";
+  } else if (userInput == "pagedown" || userInput == "pageup" ) {  /* -- Next Play -- */
+    playItemURL(-1, 1);                                            /* Stop */
+    IMG_Tmp = 0;
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Load the playlist */
+    }
+    executeScript("playRandom");                                   /* Random Play */
+    "true";
+  } else if (userInput == "zero") {
+    PlstTag=readStringFromFile(PLST_Tag);                            /* Load old file list */
+    PlstTag=pushBackStringArray(PlstTag, Ch_Music+Music_title+"."+Music_ext); /* Add the curent song name to a logTag  */
+    writeStringToFile(PLST_Tag, PlstTag);                            /* Write List of Tagged songs */
+    "false";
+  } else if (userInput == "one") {
+    if ( SNet == "on" ) SNet = "off";
+    else SNet = "on";
+    ret = doModalRss("http://127.0.0.1:"+Port+"/cgi-bin/RMusic.cgi?UpdateCfg@"+SNet+"@SNet@");
+    "false";
+  } else if (userInput == "two") {
+      ret = doModalRss("http://127.0.0.1:"+Port+"/cgi-bin/RMusic.cgi?UpdatingDialog@");
+      if (ret == "Confirm") {
+        showIdle();
+        ret = doModalRss("http://127.0.0.1:"+Port+"/cgi-bin/RMusic.cgi?UpdatingPL@");
+        cancelIdle();
+        if ( EnCours == 1 ){
+          playItemURL(-1, 1);                                     /* Stop */
+          EnCours = 0; 
+        }
+        executeScript("onEnter");
+      }
+    "false";
+  } else if (userInput == "video_play" || userInput == "enter") { /* -- Play -- */
+    if (EnCours == 0 ){
+      if (EtatPl == null){
+        executeScript("chargeListe");                              /* Load the playlist */
+      }
+      executeScript("playRandom");                                 /* Random Play */
+    }
+    "false";
+  } else if (userInput == "video_completed") {                     /* -- End of play, goto next -- */
+    playItemURL(-1, 1);                                            /* Stop */
+    IMG_Tmp = 0;
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Load the Playlist */
+    }
+    executeScript("playRandom");                                   /* Random Play */
+    "false";
+  } else if (userInput == "video_load_error") {                    /* -- Error Play -- */
+    postMessage("enter");                                          /* Validate the request button */
+   /* EnCours = 0; */
+    PlstError=readStringFromFile(PLST_Err);                              /* load old error list */
+    PlstError=pushBackStringArray(PlstError, Ch_Music+Music_title+"."+Music_ext); /* Add the song name in error to the end of log,  */
+    writeStringToFile(PLST_Err, PlstError);                              /* Write List of Error songs */
+    if (EtatPl == null){
+      executeScript("chargeListe");                                /* Load Playlist */
+    }
+    executeScript("playRandom");                                   /* Random Play */
+    "false";
+  } else if (userInput == "video_stop") {                          /* -- Stop -- */
+    IMG_Tmp = 0;
+    EnCours = 0;
+    "false";
+  } else if (userInput == "option_red") {
+    ret = doModalRss("http://127.0.0.1:"+Port+"/cgi-bin/RMusic.cgi?FBrowser@");
+    if (ret != null) executeScript("onEnter");
+    "true";
+  } else if( userInput == "display") {
+    if (Key_Info == "true") {
+      Key_Info = "false";
+      setRefreshTime(150);
+    } else {
+      Key_Info = "true";
+      setRefreshTime(-1);
+    }
+    redrawDisplay();
+    ret = "true";
+  } else if( userInput == "return" &amp;&amp; Key_Info == "true" ) {
+    Key_Info = "false";
+    setRefreshTime(150);
+    redrawDisplay();
+    ret = "true";
+  }
+  </onUserInput>
+</mediaDisplay>
+
+<chargeListe>
+  showIdle();
+  PLST_Array = readStringFromFile(PLST_Lst);                     /* Load Playlist file */
+  if (PLST_Array == null) {
+    print("Impossible de lire le fichier plst");
+    Erreur=1;
+/*    postMessage("return"); */
+  } else {
+    print("Le fichier plst est lu");
+    Etat = readStringFromFile(PLST_Cpt);                     /* Load Playlist lines count */
+    if ( Etat == null ){
+      Erreur=1;
+      EtatPl=false;
+    } else {
+      RMCount = getStringArrayAt(Etat, 0);
+      if (RMCount == 0){
+        Erreur=1;
+        EtatPl=false;
+      } else {
+        EtatPl=1;
+        RMNb=RMCount;
+      }
+    }
+  }
+  cancelIdle();
+  RedrawDisplay();
+</chargeListe>
+
+<playRandom>
+  if (Erreur != 1 &amp;&amp; RMCount != null){
+    showIdle();
+    /* Play random music */
+    Temps = getPTS();                             /* unic number */
+    Alea = Temps%AleaM;                           /* To get a number between 0 and AleaM */
+    Alea = Temps/Alea;
+    L_Music = Alea%RMCount;                       /* Number Max of musics to not over (start fro 0 to RMCount -1)*/
+    L_Title= 2 * L_Music;                           /* locate the music file in the PLST array ( 0 to RMCount -1 )*/
+    L_Ext= add(L_Title,1);                                /* the next line content the extension */
+    Music_title = getStringArrayAt(PLST_Array,L_Title);   /* read the title at the located position */
+    Music_ext = getStringArrayAt(PLST_Array,L_Ext);       /* read the extention */
+    PLST_Array=deleteStringArrayAt(PLST_Array, L_Title);  /* remove music from the playlist Array */
+    PLST_Array=deleteStringArrayAt(PLST_Array, L_Title);  /* Two times because 2 lines by musics */
+    RMCount -= 1;
+    if (RMCount &lt; 1) EtatPl=null;
+    EnCours = 1;
+    IMG_Array=null;
+    IMG_cpt=0;
+    IMG_AFound=0;
+    Music_Enc=urlEncode(Music_title);
+    if ( SNet == "on" ) {
+      /* use service search to find poster links */
+      ret=dldUrl2File("https://ajax.googleapis.com/ajax/services/search/images?v=1.0&amp;q="+Music_Enc+"&amp;rsz=8", "/tmp/RMusic_Pict.txt");
+      if (ret == 1){
+        /* find images links and download them in /tmp */
+        ret=doModalRss("http://127.0.0.1:"+Port+"/cgi-bin/RMusic.cgi?ImgSearch@");
+        IMG_Tmp=1;
+        /* search existing local images */
+        while ( IMG_cpt &lt; IMG_Max ) {
+          IMG_cpt +=1;
+          IMG_Pict="/tmp/RMusic_"+IMG_cpt+".jpg";
+          Etat = readStringFromFile(IMG_Pict);
+          if (Etat!=null){
+            IMG_Array=pushBackStringArray(IMG_Array, IMG_Pict);
+            IMG_AFound +=1;
+          }
+        }
+      } else {
+        IMG_cpt=0;
+        while ( IMG_cpt  &lt; IMG_Max ){
+          IMG_cpt +=1;
+          deleteFile("/tmp/RMusic_"+IMG_cpt+".jpg");
+        }
+      }
+    }
+    /* If exists add Music Posters */
+    CPT1=0;
+    while ( CPT1 &lt; 4 ) {
+      if ( CPT1==0 ) IMG_Pict= Ch_Music+Music_title+".jpg";
+      else if ( CPT1==1 ) IMG_Pict= Ch_Music+getURL("http://127.0.0.1/cgi-bin/custom/get_folder.php?file_path="+Music_title)+"/folder.jpg";
+      else if ( CPT1==2 ) IMG_Pict= Ch_Music+getURL("http://127.0.0.1/cgi-bin/custom/get_folder.php?file_path="+Music_title)+"/front.jpg";
+      else if ( CPT1==3 ) IMG_Pict= Ch_Music+getURL("http://127.0.0.1/cgi-bin/custom/get_folder.php?file_path="+Music_title)+"/cover.jpg";
+      Etat = readStringFromFile(IMG_Pict);
+      if (Etat!=null){
+        IMG_Array=pushBackStringArray(IMG_Array, IMG_Pict);
+        IMG_AFound +=1;
+        IMG_Tmp=1;
+      }
+      CPT1 +=1;
+    }
+    cancelIdle();
+    RedrawDisplay();
+    playItemURL(Ch_Music+Music_title+"."+Music_ext,5);         /* play selected music */
+  }
+</playRandom>
+
+<channel>
+  <title>Musique Aleatoire</title>
+</channel>
+</rss>

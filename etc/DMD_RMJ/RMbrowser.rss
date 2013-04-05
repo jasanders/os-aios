@@ -1,0 +1,268 @@
+<?xml version='1.0' ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<!-- DMD RM Jukebox v. 2.2 by Martini(CZ) from DMD team
+     Contact: w0m@seznam.cz, http://www.hddplayer.cz
+     I give all rights to modify this script, but give my name, site and DMD logo
+     on the background image.
+     If you want add this application to youre custom firmware, please send me youre 
+     e-mail and link to youre web site. 
+-->
+
+<onEnter> 
+/* WHERE IS THIS SCRIPT ? */
+ scriptPath="/usr/local/etc/DMD_RMJ/";
+/**************************/
+  
+/* ANOTHER WAY */
+/* rmPath =getStoragePath("key"); */
+/* Config= rmPath + "RMusic.cfg"; */
+/* EtatCfg = loadXMLFile(Config); */                     
+/* if (EtatCfg == null) scriptPath="/tmp/app/ims/"; else scriptPath=getXMLText("Script", 0); */
+
+  font1=scriptPath+"BEDROCKN.TTF";
+  font2=scriptPath+"TIMES_SQ.TTF";
+  font3=scriptPath+"TESLA_18.ttf";
+
+setRefreshTime(1000);
+  EtatPl=null;
+  dirCount=0;
+  Erreur=0;
+  rmPath =getStoragePath("key");
+  Playlist= "/tmp/album.xml";
+  Config= rmPath + "RMusic.cfg";
+  dir2File = "/tmp/dirlist.dat";
+  Info = "http://127.0.0.1/cgi-bin/dirlist.cgi";
+  Aplaylist = "http://127.0.0.1/cgi-bin/RMusic_update.cgi";
+  Album = "http://127.0.0.1/cgi-bin/soubces.cgi";
+  dirArray = null;
+  trackArray = null;
+  executeScript("chargeCfg"); 
+  executeScript("listDir");
+  
+setFocusItemIndex(0);
+RedrawDisplay();
+</onEnter> 
+
+<onRefresh>
+	
+</onRefresh>
+
+<mediaDisplay name="onePartView"
+  sideLeftWidthPC="0"
+  sideColorLeft="0:0:0"
+	sideRightWidthPC="0"
+	fontSize="14"
+	focusFontColor="210:16:16"
+	itemAlignt="center"
+	 viewAreaXPC=29.7
+   viewAreaYPC=26
+   viewAreaWidthPC=40
+   viewAreaHeightPC=50
+
+	headerImageWidthPC="0"
+	itemImageHeightPC="0"
+	itemImageWidthPC="0"
+	itemXPC="10"
+	itemYPC="15"
+	itemWidthPC="80"
+	itemHeightPC="10"
+	itemBackgroundColor="0:0:0"
+	itemPerPage="6"
+  itemGap="0"
+	infoYPC="90"
+	infoXPC="90"
+	backgroundColor="0:0:0"
+	showHeader="no"
+	showDefaultInfo="no"
+>
+<backgroundDisplay>
+        <image  offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=100>
+            <script>print(scriptPath + "mc_popup.png");</script>
+        </image>
+</backgroundDisplay>
+  <image redraw="no" offsetXPC="10" offsetYPC="3" widthPC="13" heightPC="11">
+      <script>print(scriptPath + "folder.png");</script>
+  </image>
+        <image redraw="no" offsetXPC="2" offsetYPC="85" widthPC="96" heightPC="13">
+                <script>print(scriptPath + "mc_info.png");</script>
+        </image>        
+        <image redraw="no" offsetXPC="5" offsetYPC="90" widthPC="9" heightPC="7.2">
+                <script>print(scriptPath + "repeat.png");</script>
+        </image>        
+        <image redraw="no" offsetXPC="50" offsetYPC="90.5" widthPC="9" heightPC="7.2">
+                <script>print(scriptPath + "play.png");</script>
+        </image>        
+
+<idleImage> image/POPUP_LOADING_01.png </idleImage>
+<idleImage> image/POPUP_LOADING_02.png </idleImage>
+<idleImage> image/POPUP_LOADING_03.png </idleImage>
+<idleImage> image/POPUP_LOADING_04.png </idleImage>
+<idleImage> image/POPUP_LOADING_05.png </idleImage>
+<idleImage> image/POPUP_LOADING_06.png </idleImage>
+<idleImage> image/POPUP_LOADING_07.png </idleImage>
+<idleImage> image/POPUP_LOADING_08.png </idleImage>
+
+<text align="center" offsetXPC=0 offsetYPC=0 widthPC=100 heightPC=10 fontSize=14 backgroundColor=-1:-1:-1    foregroundColor=70:140:210>
+<script>print("Select Folder:");</script>
+</text>
+<text align="left" offsetXPC=15.5 offsetYPC=89 widthPC=33 heightPC=10 fontSize=12 backgroundColor=-1:-1:-1    foregroundColor=200:200:200>
+<script>print("Set RMJ Source");</script>
+</text>
+<text align="left" offsetXPC=60.5 offsetYPC=89 widthPC=33 heightPC=10 fontSize=12 backgroundColor=-1:-1:-1    foregroundColor=200:200:200>
+<script>print("Play as Album");</script>
+</text>
+<text redraw="yes" align="center" offsetXPC=2 offsetYPC=75 widthPC=96 heightPC=10 fontSize=10 backgroundColor=0:0:0    foregroundColor=200:150:0>
+   <script>
+		    curidx = getFocusItemIndex();
+		    if (curidx != 0) {
+		      New = getStringArrayAt(pathArray, curidx);
+		    } else {
+		      New = Ch_Music;
+		    }
+        print(New);
+    </script>
+</text>
+
+<!--
+	<itemDisplay>
+		<image offsetXPC="0" offsetYPC="0" widthPC="7" heightPC="100">
+			<script>
+					  "../etc/translate/rss/image/folder.png";
+			</script>
+		</image>
+		<text offsetXPC="6" offsetYPC="0" widthPC="94" heightPC="100" fontSize="15" backgroundColor="-1:-1:-1" foregroundColor="160:160:160">
+			<script>
+			  Folder Browser;
+			</script>
+		</text>
+	</itemDisplay>
+-->
+
+<onUserInput>
+	userInput = currentUserInput();
+	print("*********************"+userInput+"****************");
+
+	if ( userInput == "enter" || userInput == "right"){
+		    curidx = getFocusItemIndex();
+		    Ch_Music = getStringArrayAt(pathArray, curidx);
+		    executeScript("listDir");
+  
+        setFocusItemIndex(0);
+        RedrawDisplay();
+        "true";
+
+  } else if ( userInput == "left") {
+        setFocusItemIndex(0);
+        postMessage("enter");
+        "true";
+
+  } else if ( userInput == "video_play" || userInput == "video_pause") {
+		    curidx = getFocusItemIndex();
+		    if (curidx != 0) {
+		      New_Music = getStringArrayAt(pathArray, curidx) + ".";
+		    } else {
+		      New_Music = Ch_Music + ".";
+		    }
+		    
+		    writeStringToFile("/tmp/rmjukebox.dat", New_Music);
+        showIdle();                                               /* active l'animation d'attente */
+        dlok = loadXMLFile(Album);
+        cancelIdle();
+        setReturnString("Album");
+        postMessage("return");
+        "true";
+
+  } else if ( userInput == "video_repeat" || userInput == "video_abrepeat") {
+		    curidx = getFocusItemIndex();
+		    if (curidx != 0) {
+		      New_Music = getStringArrayAt(pathArray, curidx);
+		    } else {
+		      New_Music = Ch_Music;
+		    }
+		    Ch_Path = "&lt;Chem&gt;" + New_Music + "&lt;/Chem&gt;" + "&#xA;";
+        writeStringToFile(Config, Ch_Path);
+        showIdle();                                               /* active l'animation d'attente */
+        dlok = loadXMLFile(Aplaylist);
+        cancelIdle();
+        setReturnString("Confirm");
+        postMessage("return");
+
+        "true";
+
+  }
+</onUserInput>
+</mediaDisplay>
+
+<chargeCfg>
+   EtatCfg = loadXMLFile(Config);
+   if (EtatCfg == null) {
+     print("CFG file not found");
+     Ch_Music="/tmp/ramfs/volumes/";
+     Ch_Path = "&lt;Chem&gt;" + Ch_Music + "&lt;/Chem&gt;" + "&#xA;";
+     writeStringToFile(Config, Ch_Path);
+ } else {
+     print("CFG file found, OK");
+     Ch_Music=getXMLText("Chem", 0);
+ }
+</chargeCfg>
+
+<listDir>
+  writeStringToFile(dir2File, Ch_Music);
+    dlok = loadXMLFile(Info);
+    test="";
+    dirArray=null;
+    titleArray=null;
+    pathArray=null;
+    idx=0;
+    dirArray = readStringFromFile(dir2File);
+    while (test != " ") {
+      if (idx==0) {
+        title = "..";
+        path = getStringArrayAt(dirArray, idx);
+      } else {
+        test = getStringArrayAt(dirArray, idx);
+        if (test == "*") test = " ";
+        if (test != " ") {  
+          title = test;
+          path = Ch_Music + test + "/";
+        }
+      }
+      titleArray = pushBackStringArray(titleArray,title);
+      pathArray = pushBackStringArray(pathArray,path);
+      
+      idx=Add(idx,1);
+    }
+    dirCount=idx - 1;
+    
+</listDir>
+
+<item_template>
+       <displayTitle>
+            <script>
+				getStringArrayAt(titleArray , -1);
+			</script>
+        </displayTitle>
+        <media:thumbnail>
+            <script>
+			url = scriptPath + "folder.png";
+     	print("thumbnail:");
+     	print(url);
+     	url;
+			</script>
+        </media:thumbnail>
+      		<media:content type="image/jpeg" />  
+		<onClick>
+			print("onClick");
+		</onClick>
+</item_template>
+<channel>
+        <title></title>
+        <link><script>scriptPath + "RMbrowser.rss";</script></link>
+        <media:thumbnail url="image/folder.png" width="120" height="90" />
+  <itemSize>
+     <script>
+        dirCount;
+     </script>
+  </itemSize>
+</channel>
+</rss>

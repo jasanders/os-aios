@@ -1,0 +1,15 @@
+<?xml encoding="UTF-8" version="1.0"?>
+<Main>
+  <Main_Info>Touche Display pour l'aide</Main_Info>
+  <Main_NoPlst>(RED - Chemin des musiques, 2 - Créez une Playlist)</Main_NoPlst>
+  <Main_Help>INFORMATION&#x0A;&#x0A;ENTER / PLAY - Démarrer la musique&#x0A;PAGE DOWN / UP - Musique aléatoire suivante&#x0A;1 - Activer / Désactiver la recherche de pochettes sur Internet&#x0A;2 - Crée ou / et Met à jour la playlist&#x0A;RED - Changer de dossier de musique&#x0A;FAST FORWARD / BACKWARD - Change la vitesse de lecture&#x0A;SKIP LEFT/RIGHT - Saut Avant/Arrière de quelques secondes&#x0A;PAUSE / PLAY - Met en pause / reprend la lecture&#x0A;STOP - Arrête la lecture&#x0A;MUTE - coupe le son&#x0A;REPEAT - Active / Désactive la lecture en boucle du morceau en cours</Main_Help>
+  <Main_MPath>Chemin des musiques</Main_MPath>
+</Main>
+<FBrowser>
+  <FBrowser_Title>Chemin des musiques</FBrowser_Title>
+  <FBrowser_Valid>pour valider</FBrowser_Valid>
+</FBrowser>
+<UpdtDialog>
+    <UpdtDialog_Quest>Créer la Playlist ?</UpdtDialog_Quest>
+    <UpdtDialog_Confirm>Accepter</UpdtDialog_Confirm>
+</UpdtDialog>
